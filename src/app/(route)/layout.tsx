@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import RecoilProvider from '../context/RecoilProvider'
+import '../ui/globals.css'
 
 export const metadata: Metadata = {
   title: 'MeetFolio',
