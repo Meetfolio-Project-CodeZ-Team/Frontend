@@ -11,10 +11,8 @@ const SignupContainer = () => {
 
   return (
     <div className="flex flex-col items-center mt-[170px]">
-      <div className="text-5xl font-semibold leading-[75px] mb-[70px]">
-        회원가입
-      </div>
-      <div className="text-3xl font-semibold leading-[75px] mb-14">
+      <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
+      <div className="text-3xl font-semibold leading-[75px] mb-20">
         {SIGNUP.Description}
       </div>
       <div className="flex flex-col gap-y-5 mb-12">
