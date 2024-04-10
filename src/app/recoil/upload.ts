@@ -15,20 +15,6 @@ export const uploadForm = atom<FormData>({
   default: new FormData(),
 })
 
-// export const uploadDataState = atom<UploadPFTypes>({
-//   key: 'uploadDataState',
-//   default: {
-//     articleType: 'PORTFOLIO',
-//     title: '',
-//     content: [],
-//     skills: [],
-//     tags: [],
-//     teamMembersId: [],
-//     sharedText: '',
-//     thumbnail: '',
-//   },
-// });
-
 export const crewRecruiterState = atom<null>({
   key: 'crewRecruiterState',
   default: null,
