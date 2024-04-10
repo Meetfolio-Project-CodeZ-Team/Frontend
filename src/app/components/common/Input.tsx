@@ -3,7 +3,7 @@
 import { INPUT_STYLE } from '@/app/constants/styles'
 
 interface InputProps {
-  type: 'login' | 'default'
+  type: 'login' | 'default' | 'auth'
   textValue?: string
   inputType?: string
   name?: string
