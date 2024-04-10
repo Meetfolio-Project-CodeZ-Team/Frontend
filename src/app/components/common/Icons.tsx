@@ -1,14 +1,14 @@
-'use client';
+'use client'
 
 interface IconsProps {
-  name: IconPathTypes;
-  hoverFill?: string;
-  className?: string;
-  onClick?: () => void;
+  name: IconPathTypes
+  hoverFill?: string
+  className?: string
+  onClick?: () => void
 }
 
 const Icons = ({ name, className, hoverFill, onClick }: IconsProps) => {
-  const { width, height, fill, path, options } = name;
+  const { width, height, fill, path, options } = name
   return (
     <svg
       width={width}
@@ -20,7 +20,7 @@ const Icons = ({ name, className, hoverFill, onClick }: IconsProps) => {
     >
       <path d={path} {...options} />
     </svg>
-  );
-};
+  )
+}
 
-export default Icons;
+export default Icons
