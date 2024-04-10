@@ -1,16 +1,14 @@
 'use client'
 
+import Header from '@/app/components/layout/Header'
 import LoginContainer from '@/app/components/login/LoginContainer'
 
 export default function LoginPage() {
   return (
-    <section className="flex flex-col items-center min-h-screen bg-black">
-      <div className=" w-[1440px] mx-auto">
-        <div className="w-[100%] mx-auto">
-          <div>
-            <LoginContainer />
-          </div>
-        </div>
+    <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen border-b border-slate-600">
+      <div className="w-[1440px] mx-auto">
+        <Header />
+        <LoginContainer />
       </div>
     </section>
   )
