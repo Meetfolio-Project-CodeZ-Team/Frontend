@@ -14,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className=" h-screen min-w-[850px] mx-auto">
+      <body className="bg-[#DEE5ED] h-screen min-w-[850px] mx-auto">
         <RecoilProvider>{children}</RecoilProvider>
       </body>
     </html>

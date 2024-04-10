@@ -1,6 +1,6 @@
 interface GradientHeartProps {
-  width: number;
-  height: number;
+  width: number
+  height: number
 }
 
 const GradientHeart = ({ width, height }: GradientHeartProps) => {
@@ -30,7 +30,7 @@ const GradientHeart = ({ width, height }: GradientHeartProps) => {
         </linearGradient>
       </defs>
     </svg>
-  );
-};
+  )
+}
 
-export default GradientHeart;
+export default GradientHeart

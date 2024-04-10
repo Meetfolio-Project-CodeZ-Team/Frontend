@@ -1,42 +1,43 @@
-import Icons from 'components/common/Icons';
-import SearchBar from 'components/common/SearchBar';
-import Link from 'next/link';
-import { search, weneed } from 'ui/IconsPath';
-
+import Link from 'next/link'
 interface HeaderProps {
-  nickname: string;
-  userId: number;
-  isPreview?: boolean;
+  nickname: string
+  userId: number
+  isPreview?: boolean
 }
 
-const Header = ({ nickname, userId, isPreview }: HeaderProps) => {
+const Header = () => {
   return (
-    <header
-      className={`z-20 w-full h-[60px] bg-black text-white flex justify-between items-center min-w-[800px] ${
-        isPreview ? 'pointer-events-none' : ''
-      }`}
-    >
-      <div className="h-full flex items-center gap-[78px]">
-        <Link href={'/main/portfolio'}>
-          <Icons name={weneed} />
+    <div className=" w-full border-b-2 border-[#486284]">
+      <header className="w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[100px]">
+        <Link
+          className="flex items-center justify-center gap-x-2.5 h-9"
+          href={'/main'}
+        >
+          <div className="w-9 h-9 bg-[#486284] rounded-[100px]"></div>
+          <div className="w-[150x] h-11 text-[32px] font-semibold leading-[48px]">
+            Meetfolio
+          </div>
         </Link>
-        <div className="relative">
-          <Icons name={search} className="absolute left-2 top-2 z-20" />
-          <SearchBar />
+        <div className="flex w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
+          <Link href="login">경험분해하기</Link>
+          <Link href="login">AI자기소개서솔루션</Link>
+          <Link href="login">커뮤니티</Link>
+          <div className="flex">
+            <div className="w-[22px] h-[2px] origin-top-left rotate-90 opacity-80 border border-[#486284]"></div>
+            <Link
+              href="login"
+              className="underline underline-offset-1 text-base"
+            >
+              회원가입
+            </Link>
+          </div>
+          <button className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium">
+            로그인
+          </button>
         </div>
-      </div>
-      <div className="flex gap-[40px] cursor-pointer">
-        <Link href={userId == -1 ? '/login' : `/mypage/${userId}`}>
-          마이페이지
-        </Link>
-        {nickname !== 'guest' ? (
-          <p>{nickname}님</p>
-        ) : (
-          <Link href={'/login'}>로그인</Link>
-        )}
-      </div>
-    </header>
-  );
-};
+      </header>
+    </div>
+  )
+}
 
-export default Header;
+export default Header

@@ -1,7 +1,7 @@
-import Icons from 'components/common/Icons';
-import { FOOTER_TEXT } from 'constants/main';
-import { weneed } from 'ui/IconsPath';
-import { Github, Instagram, KakaoTalk, LeetsBlue } from 'ui/Logos';
+import Icons from 'components/common/Icons'
+import { FOOTER_TEXT } from 'constants/main'
+import { weneed } from 'ui/IconsPath'
+import { Github, Instagram, KakaoTalk, LeetsBlue } from 'ui/Logos'
 
 const Footer = () => {
   return (
@@ -30,7 +30,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
