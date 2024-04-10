@@ -25,14 +25,14 @@ const Header = () => {
           <div className="flex">
             <div className="w-[22px] h-[2px] origin-top-left rotate-90 opacity-80 border border-[#486284]"></div>
             <Link
-              href="login"
+              href="signup"
               className="underline underline-offset-1 text-base"
             >
               회원가입
             </Link>
           </div>
           <button className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium">
-            로그인
+            <Link href="login">로그인</Link>
           </button>
         </div>
       </header>
