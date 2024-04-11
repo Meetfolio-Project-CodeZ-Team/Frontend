@@ -8,6 +8,8 @@ export const BUTTON_STYLE = {
     `w-[220px] h-[70px] text-[26px] text-[#486283] bg-[#CED7E4] font-semibold rounded-[30px] ${className} `,
   complete: (className: string) =>
     `w-[330px] h-[70px] text-[28px] text-white bg-[#7AA9E7] font-semibold rounded-[30px] ${className} `,
+  mainBtn: (className: string) =>
+    `w-[480px] h-[56px] text-[28px] text-white text-2xl font-semibold  bg-[#1A202C] rounded-[20px] ${className} `,
 } as const
 
 export const INPUT_STYLE = {

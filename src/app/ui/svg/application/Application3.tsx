@@ -1,14 +1,19 @@
 const Application3 = () => {
   return (
-    <div style={{ position: 'relative' }}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="153"
-        height="160"
-        viewBox="0 0 153 160"
-        fill="none"
-        style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}
-      >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="153"
+      height="160"
+      viewBox="0 0 153 160"
+      fill="none"
+    >
+      <g clip-path="url(#clip0_389_3773)">
+        <g filter="url(#filter0_f_389_3773)">
+          <path
+            d="M76.5 160C118.75 160 153 124.183 153 80C153 35.8172 118.75 0 76.5 0C34.2502 0 0 35.8172 0 80C0 124.183 34.2502 160 76.5 160Z"
+            fill="url(#paint0_radial_389_3773)"
+          />
+        </g>
         <g opacity="0.2">
           <path
             d="M76.3358 30C74.3582 30 72.7576 31.6775 72.7576 33.75V54.1675C72.7576 56.24 74.3582 57.9175 76.3358 57.9175C78.3134 57.9175 79.9141 56.24 79.9141 54.1675V33.75C79.9141 31.6775 78.3134 30 76.3358 30Z"
@@ -107,34 +112,45 @@ const Application3 = () => {
           d="M88.6593 56.3774C89.2223 56.7199 89.8378 56.8824 90.4461 56.8824C91.6841 56.8824 92.884 56.2099 93.5472 55.0074L103.287 37.3274C104.277 35.5349 103.688 33.2399 101.978 32.2049C100.265 31.1674 98.0796 31.7824 97.0897 33.5774L87.3497 51.2574C86.3621 53.0474 86.9489 55.3424 88.6593 56.3774Z"
           fill="white"
         />
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="191"
-        height="200"
-        viewBox="0 0 191 200"
-        fill="none"
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }}
-      >
-        <path
-          d="M95.4198 200C148.119 200 190.84 155.228 190.84 100C190.84 44.7715 148.119 0 95.4198 0C42.7209 0 0 44.7715 0 100C0 155.228 42.7209 200 95.4198 200Z"
-          fill="url(#paint0_radial_543_128)"
-        />
-        <defs>
-          <radialGradient
-            id="paint0_radial_543_128"
-            cx="0"
-            cy="0"
-            r="1"
-            gradientUnits="userSpaceOnUse"
-            gradientTransform="translate(95.4198 100) rotate(90) scale(100 95.4198)"
-          >
-            <stop offset="0.33" stop-color="#7AAAE8" />
-            <stop offset="1" stop-color="#DEE5ED" stop-opacity="0" />
-          </radialGradient>
-        </defs>
-      </svg>
-    </div>
+      </g>
+      <defs>
+        <filter
+          id="filter0_f_389_3773"
+          x="-4"
+          y="-4"
+          width="161"
+          height="168"
+          filterUnits="userSpaceOnUse"
+          color-interpolation-filters="sRGB"
+        >
+          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="BackgroundImageFix"
+            result="shape"
+          />
+          <feGaussianBlur
+            stdDeviation="2"
+            result="effect1_foregroundBlur_389_3773"
+          />
+        </filter>
+        <radialGradient
+          id="paint0_radial_389_3773"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="translate(76.5 80) rotate(90) scale(80 76.5)"
+        >
+          <stop stop-color="#7AAAE8" />
+          <stop offset="1" stop-color="#DEE5ED" />
+        </radialGradient>
+        <clipPath id="clip0_389_3773">
+          <rect width="152.672" height="160" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
   )
 }
 
