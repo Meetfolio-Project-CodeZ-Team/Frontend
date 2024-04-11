@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
-import { JOBKEYWORD, SIGNUP } from '@/app/constants/auth'
+import { GRADE, JOBKEYWORD, SIGNUP } from '@/app/constants/auth'
 import Keyword from './Keyword'
+import DropDown from './dropdown/DropDown'
 
 const OnBoardContainer = () => {
   const [password, setPassWord] = useState('')
-  const [authCode, setAuthCode] = useState('')
 
   return (
     <div className="flex flex-col items-center mt-[95px]">
@@ -18,15 +18,15 @@ const OnBoardContainer = () => {
       </div>
       <div className="flex flex-col gap-y-1.5 mb-8">
         <div className="flex flex-col">
-          <div className="w-[146.22px] text-gray-900 text-xl font-semibold leading-[30px]">
+          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             가천대 이메일
           </div>
           <div className="flex w-[700px] pl-10 h-[60px] items-center text-xl font-medium text-[#6D727C] bg-white rounded-[6px] border-[2px] border-[#C4C4C4]">
-            meetfolio@gachon.ac.kr
+            {SIGNUP.Email}
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="w-[146.22px] text-gray-900 text-xl font-semibold leading-[30px]">
+          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             비밀번호
           </div>
           <Input
@@ -36,7 +36,7 @@ const OnBoardContainer = () => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="w-[146.22px] text-gray-900 text-xl font-semibold leading-[30px]">
+          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학과
           </div>
           <Input
@@ -46,22 +46,23 @@ const OnBoardContainer = () => {
           />
         </div>
         <div className="flex flex-col">
-          <div className="w-[146.22px] text-gray-900 text-xl font-semibold leading-[30px]">
+          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학년 및 학적
           </div>
-          <Input
-            type={'onboard'}
-            onChange={(e) => setPassWord(e.target.value)}
-            placeholder="본인 학년 선택"
+          <DropDown
+            options={GRADE}
+            title="본인 학년 선택"
+            announcement={''}
+            onSelect={(option) => console.log(option, '선택완료')}
           />
         </div>
         <div className="flex flex-col">
-          <div className="w-[146.22px] text-gray-900 text-xl font-semibold leading-[30px]">
+          <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
             희망직무
           </div>
           <div className="flex gap-x-8">
             {JOBKEYWORD.map((str, index) => (
-              <Keyword keyword={str} />
+              <Keyword keyword={str} key={index} />
             ))}
           </div>
         </div>

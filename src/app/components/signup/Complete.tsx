@@ -20,15 +20,11 @@ const Complete = () => {
           <br />
           {COMPLETE[1]}
         </span>
-        <span className="text-slate-600">
-          {COMPLETE[2]}
-        </span>
-        <span className="text-gray-900">
-          {COMPLETE[3]}
-        </span>
+        <span className="text-slate-600">{COMPLETE[2]}</span>
+        <span className="text-gray-900">{COMPLETE[3]}</span>
       </div>
       <div className="w-[692px] h-5 text-center text-zinc-600 text-xl font-medium leading-[30px] my-9">
-        {COMPLETE[4]}   
+        {COMPLETE[4]}
       </div>
       <Button
         buttonText="로그인 하러가기"
