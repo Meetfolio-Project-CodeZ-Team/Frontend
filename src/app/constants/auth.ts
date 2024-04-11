@@ -16,8 +16,10 @@ export const JOBKEYWORD = [
 
 export const COMPLETE = [
   '모든 회원가입 절차가 완료되었습니다.',
-  '로그인 후',
+  '로그인 후 ',
   'Meetfolio',
   '의 다양한 서비스를 이용해보세요!',
   '*회원 가입 내역 확인 및 수정은 마이페이지 - 개인정보 수정에서 가능합니다.',
 ]
+
+export const GRADE = ['1학년', '2학년', '3학년', '4학년', '졸업생']
