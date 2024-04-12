@@ -7,6 +7,5 @@ export const DASHBOARD = {
   Point: '포인트 통계',
 } as const
 
-export const SERVICE =['자기소개서 피드백', '직무 역량 분석', '총 사용량']
+export const SERVICE = ['자기소개서 피드백', '직무 역량 분석', '총 사용량']
 export const POINT = ['자기소개서 조회', 'AI 직무 역량 분석', '총합']
-
