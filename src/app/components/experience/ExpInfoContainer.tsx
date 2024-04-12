@@ -1,7 +1,7 @@
 import Button from '../common/Button'
 import Input from '../common/Input'
 
-const ExperienceContainer = () => {
+const ExpInfoContainer = () => {
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-start items-end inline-flex mt-[85px] gap-[25px]">
@@ -33,6 +33,7 @@ const ExperienceContainer = () => {
         </div>
       </div>
       <div className="w-[1311px] h-[1.42px] relative mt-[18px] ">
+      <div className="w-[1311px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[430px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800"></div>
       </div>
       <form>
@@ -159,7 +160,7 @@ const ExperienceContainer = () => {
             <div className="w-[139px] h-8 left-[29px] top-[4px] absolute text-center text-black text-base font-semibold leading-normal">
               경험 동기 & 이유
             </div>
-            <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-semibold leading-normal">
+            <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
               100자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
@@ -183,4 +184,4 @@ const ExperienceContainer = () => {
   )
 }
 
-export default ExperienceContainer
+export default ExpInfoContainer
