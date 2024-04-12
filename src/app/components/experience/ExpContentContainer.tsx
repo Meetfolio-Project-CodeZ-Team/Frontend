@@ -56,7 +56,7 @@ const ExpContentContainer = () => {
               <textarea
                 id="detail"
                 name="detail"
-                placeholder="ex) 개발 기간이 짧아서 최대한 빠르게 수행해야 했음. "
+                placeholder="ex) 개발 기간이 짧아서 최대한 빠르게 수행해야 했음"
                 maxLength={100}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
@@ -84,7 +84,7 @@ const ExpContentContainer = () => {
               <textarea
                 id="advance"
                 name="advance"
-                placeholder="ex) 팀 프로젝트를 통해 개발 및 협업 역량 향상되었음."
+                placeholder="ex) 팀 프로젝트를 통해 개발 및 협업 역량 향상되었음"
                 maxLength={100}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
