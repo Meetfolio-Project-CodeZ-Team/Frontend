@@ -5,8 +5,9 @@ interface ServiceUsageProps {
   analysisCount: number
   totalCount: number
 }
-const ServiceUsage = (ServiceUsage: ServiceUsageProps) => {
-  const { feedbackCount, analysisCount, totalCount } = ServiceUsage
+
+const ServiceUsage = (serviceUsage: ServiceUsageProps) => {
+  const { feedbackCount, analysisCount, totalCount } = serviceUsage
   return (
     <div className="w-[1018px] h-[180px] relative rounded-[10px] shadow border-2 border-stone-300">
       <div className="absolute flex items-center gap-x-[15px] left-[20px] top-[24px] text-[25px] font-bold leading-[37.50px]">
