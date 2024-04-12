@@ -33,7 +33,7 @@ const ExpInfoContainer = () => {
         </div>
       </div>
       <div className="w-[1311px] h-[1.42px] relative mt-[18px] justify-center items-center mx-auto ">
-      <div className="w-[1311px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
+        <div className="w-[1311px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[400px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800"></div>
       </div>
       <form>
