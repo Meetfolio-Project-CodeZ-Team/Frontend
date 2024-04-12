@@ -6,7 +6,7 @@ import Line from '@/app/ui/svg/main/Line'
 
 const MainSolution = () => {
   return (
-    <div className="flex flex-col items-center mt-[97px]">
+    <div className="flex flex-col items-center mt-[97px] pb-[111px]">
       <div className="text-[#486283] text-5xl font-medium leading-[72px]">
         {SOLUTION.Title}
       </div>

@@ -1,6 +1,7 @@
-import { CARD } from '@/app/constants/main'
+import { BUTTON_TEXT, CARD } from '@/app/constants/main'
 import Card from '../common/Card'
 import CardContainer from './containers/CardContainer'
+import Button from '../common/Button'
 
 const MainCard = () => {
   return (
@@ -12,7 +13,15 @@ const MainCard = () => {
         {CARD[1]}
       </div>
       <CardContainer />
-      <div className="mb-12"></div>
+      <div className="mt-12 mb-[72px]">
+        <Button
+          buttonText={BUTTON_TEXT.Card}
+          type={'mainBtn'}
+          isDisabled={false}
+          onClickHandler={() => console.log('클릭')}
+          className="bg-[#486283]"
+        />
+      </div>
     </div>
   )
 }
