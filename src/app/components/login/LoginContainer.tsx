@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+
 import Button from '../common/Button'
 import Input from '../common/Input'
+import { useRouter } from 'next/navigation'
 
 const LoginContainer = () => {
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
+  const router = useRouter()
 
   return (
     <div className="flex flex-col items-center mt-[170px] gap-y-12">
@@ -28,7 +31,7 @@ const LoginContainer = () => {
           buttonText={'로그인'}
           type={'loginB'}
           isDisabled={false}
-          onClickHandler={() => console.log('로그인 로직')}
+          onClickHandler={() => router.push('/Admin')}
         />
         <Button
           buttonText={'회원가입'}
