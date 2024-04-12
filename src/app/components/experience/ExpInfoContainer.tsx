@@ -4,7 +4,7 @@ import Input from '../common/Input'
 const ExpInfoContainer = () => {
   return (
     <div className="justify-center items-center">
-      <div className="w-[1440px] h-[39px] justify-start items-end inline-flex mt-[85px] gap-[25px]">
+      <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
         <div className="w-[437px] opacity-60 text-center">
           <span className="text-gray-900 text-[26px] font-semibold  leading-[39px]">
             ¹
@@ -32,9 +32,9 @@ const ExpInfoContainer = () => {
           </span>
         </div>
       </div>
-      <div className="w-[1311px] h-[1.42px] relative mt-[18px] ">
+      <div className="w-[1311px] h-[1.42px] relative mt-[18px] justify-center items-center mx-auto ">
       <div className="w-[1311px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[430px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800"></div>
+        <div className="w-[400px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800"></div>
       </div>
       <form>
         <div className="w-[1200px] h-[515px] relative mt-[82px] justify-center items-center mx-auto">
