@@ -5,9 +5,9 @@ import Completed from '@/app/components/signup/Complete'
 
 export default function OnBoardPage() {
   return (
-    <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen">
-      <div className="w-[1440px] mx-auto">
+    <section className="flex flex-col items-center min-h-screen">
         <Header />
+      <div className="w-[1440px] mx-auto">
         <Completed />
       </div>
     </section>

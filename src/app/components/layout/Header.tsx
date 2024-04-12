@@ -8,11 +8,11 @@ interface HeaderProps {
 
 const Header = ({ isAdmin }: HeaderProps) => {
   return (
-    <div className=" w-full border-b-2 border-[#486284]">
-      <header className="w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[100px]">
+    <div className="relative w-full border-b-2 border-[#486284]">
+      <header className=" relative w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[60px]">
         <Link
           href={'/main'}
-          className="flex items-center justify-center gap-x-2.5 h-9"
+          className="absolute flex items-center justify-center gap-x-2.5 h-9"
         >
           <div className="w-9 h-9 bg-[#486284] rounded-[100px]"></div>
           <div className="flex w-[150x] h-[auto] text-[32px] font-semibold leading-[48px]">
@@ -25,7 +25,7 @@ const Header = ({ isAdmin }: HeaderProps) => {
           </div>
         </Link>
         {!isAdmin ? (
-          <div className="flex w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
+          <div className="absolute right-[40px] flex w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
             <Link href="login">경험분해하기</Link>
             <Link href="login">AI자기소개서솔루션</Link>
             <Link href="login">커뮤니티</Link>
@@ -45,7 +45,7 @@ const Header = ({ isAdmin }: HeaderProps) => {
             </Link>
           </div>
         ) : (
-          <div className="flex flex-row-reverse w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
+          <div className="absolute right-[40px] flex flex-row-reverse w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
             프로필
           </div>
         )}

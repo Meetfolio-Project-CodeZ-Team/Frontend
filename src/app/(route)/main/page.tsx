@@ -6,7 +6,7 @@ import MainContainer from '@/app/components/main/containers/MainContainer'
 
 export default function MainPage() {
   return (
-    <section className="flex flex-col items-center w-full min-h-screen">
+    <section className="flex flex-col items-center min-h-screen">
       <Header />
       <div className="w-[1440px] mb-10">
         <MainContainer />
