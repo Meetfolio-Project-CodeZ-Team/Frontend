@@ -33,3 +33,14 @@ export const star = {
     strokeWidth: 3,
   },
 }
+
+export const doughnut = {
+  path: 'M13.5 1.5C7.14873 1.5 2 6.64873 2 13C2 19.3513 7.14873 24.5 13.5 24.5C19.8513 24.5 25 19.3513 25 13M13.5 1.5C19.8513 1.5 25 6.64873 25 13M13.5 1.5V13M25 13H13.5M21.1667 21.3056L13.5 13',
+  width: 27,
+  height: 27,
+  fill: 'none',
+  options: {
+    stroke: 'black',
+    strokeWidth: 3,
+  },
+}
