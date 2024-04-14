@@ -1,7 +1,19 @@
 import Button from '../common/Button'
 import Input from '../common/Input'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil';
+import { expNum } from '../../recoil/experience';
 
 const ExpKeywordContainer = () => {
+  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum);
+
+  const goToNextPage = () => {
+    setExperienceNumber(experienceNumber + 1);
+  };
+
+  const goToPreviousPage = () => {
+    setExperienceNumber(experienceNumber - 1);
+  };
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -123,10 +135,12 @@ const ExpKeywordContainer = () => {
         </div>
       </form>
       <div className="w-[1440px] h-20 pb-[200px] relative  mt-[80px] justify-center items-center inline-flex gap-[50px] mx-auto">
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold">
+        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+        onClick={goToPreviousPage}>
           이전으로
         </button>
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold">
+        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+        onClick={goToNextPage}>
           다음으로
         </button>
       </div>

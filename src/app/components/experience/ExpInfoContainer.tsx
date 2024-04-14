@@ -1,7 +1,22 @@
+import { useState } from 'react'
+import { useRecoilState } from 'recoil';
+import { expNum } from '../../recoil/experience';
 import Button from '../common/Button'
 import Input from '../common/Input'
 
 const ExpInfoContainer = () => {
+  const [expTitle, setExpTitle] = useState('')
+  const [expStartDate, setExpStartDate] = useState('')
+  const [expEndDate, setExpEndDate] = useState('')
+  const [expType, setExpType] = useState('')
+  const [expTask, setExpTask] = useState('')
+  const [expMotivation, setExpMotivation] = useState('')
+  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+
+  const goToNextPage = () => {
+    setExperienceNumber(experienceNumber + 1)
+  }
+
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -53,6 +68,8 @@ const ExpInfoContainer = () => {
             <div className="w-[988px] h-[55px] left-[5px] top-[39px] absolute">
               <input
                 type="text"
+                value={expTitle}
+                onChange={(e) => setExpTitle(e.target.value)}
                 id="title"
                 name="title"
                 placeholder="ex) 가천대 해커톤 대회 참가"
@@ -65,6 +82,8 @@ const ExpInfoContainer = () => {
             <div className="w-[737px] h-[78px] left-[5px] top-[39px] absolute">
               <input
                 type="text"
+                value={expStartDate}
+                onChange={(e) => setExpStartDate(e.target.value)}
                 id="startDate"
                 name="startDate"
                 placeholder="YYYY/MM/DD"
@@ -84,6 +103,8 @@ const ExpInfoContainer = () => {
             <div className="w-[290px] h-[55px] left-[452px] top-[39px] absolute">
               <input
                 type="text"
+                value={expEndDate}
+                onChange={(e) => setExpEndDate(e.target.value)}
                 id="endDate"
                 name="endDate"
                 placeholder="YYYY/MM/DD"
@@ -109,6 +130,8 @@ const ExpInfoContainer = () => {
             <div className="w-[988px] h-[55px] left-0 top-[39px] absolute">
               <input
                 type="text"
+                value={expType}
+                onChange={(e) => setExpType(e.target.value)}
                 id="experienceType"
                 name="experienceType"
                 placeholder="ex) 대외활동, 공모전, 인턴, 아르바이트"
@@ -137,6 +160,8 @@ const ExpInfoContainer = () => {
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
+                value={expTask}
+                onChange={(e) => setExpTask(e.target.value)}
                 id="task"
                 name="task"
                 placeholder="ex)  와이어 프레임 설계, AI 모델링, UI/UX 디자인 "
@@ -165,6 +190,8 @@ const ExpInfoContainer = () => {
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
+                value={expMotivation}
+                onChange={(e) => setExpMotivation(e.target.value)}
                 id="motivation"
                 name="motivation"
                 placeholder="ex)  팀 프로젝트를 통해 개발 및 협업 역량을 향상시키고 싶어서 참여함. "
@@ -176,7 +203,8 @@ const ExpInfoContainer = () => {
         </div>
       </form>
       <div className="w-[600px] h-20 pb-[200px] relative  mt-[10px] justify-center items-center mx-auto">
-        <button className="text-white  bg-stone-300 border-0 py-[30px] px-[250px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold">
+        <button className="text-white  bg-stone-300 border-0 py-[30px] px-[250px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+        onClick={goToNextPage}>
           다음으로
         </button>
       </div>
