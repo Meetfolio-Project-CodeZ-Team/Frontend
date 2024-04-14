@@ -1,15 +1,24 @@
 import Button from '../common/Button'
 import Input from '../common/Input'
-import { useRecoilState } from 'recoil';
-import { expNum, expData } from '../../recoil/experience';
+import { useRecoilState } from 'recoil'
+import { expNum, expData } from '../../recoil/experience'
 
 const ExpContentContainer = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum);
-  const [experienceData, setExperienceData] = useRecoilState(expData);
+  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  const [experienceData, setExperienceData] = useRecoilState(expData)
 
   const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1);
-  };
+    setExperienceNumber(experienceNumber - 1)
+  }
+
+  const handleTextareaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
+    setExperienceData({
+      ...experienceData,
+      [event.target.name]: event.target.value,
+    })
+  }
 
   const saveData = async () => {
     // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
@@ -20,13 +29,13 @@ const ExpContentContainer = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(experienceData),
-    });
+    })
 
     if (!response.ok) {
       // 에러 처리를 여기에 작성해주세요.
-      console.error('데이터 저장에 실패했습니다.');
+      console.error('데이터 저장에 실패했습니다.')
     }
-  };
+  }
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -79,6 +88,8 @@ const ExpContentContainer = () => {
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
+                value={experienceData.detail}
+                onChange={handleTextareaChange}
                 id="detail"
                 name="detail"
                 placeholder="ex) 개발 기간이 짧아서 최대한 빠르게 수행해야 했음"
@@ -107,6 +118,8 @@ const ExpContentContainer = () => {
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
+                value={experienceData.advance}
+                onChange={handleTextareaChange}
                 id="advance"
                 name="advance"
                 placeholder="ex) 팀 프로젝트를 통해 개발 및 협업 역량 향상되었음"
@@ -118,12 +131,16 @@ const ExpContentContainer = () => {
         </div>
       </form>
       <div className="w-[1440px] h-20 pb-[110px] relative  mt-[50px] justify-center items-center inline-flex gap-[50px] mx-auto">
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-        onClick={goToPreviousPage}>
+        <button
+          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={goToPreviousPage}
+        >
           이전으로
         </button>
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-        onClick={saveData}>
+        <button
+          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={saveData}
+        >
           저장하기
         </button>
       </div>
