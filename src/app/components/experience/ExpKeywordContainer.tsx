@@ -1,19 +1,28 @@
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { useState } from 'react'
-import { useRecoilState } from 'recoil';
-import { expNum } from '../../recoil/experience';
+import { useRecoilState } from 'recoil'
+import { expNum, expData } from '../../recoil/experience'
 
 const ExpKeywordContainer = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum);
+  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  const [experienceData, setExperienceData] = useRecoilState(expData)
 
   const goToNextPage = () => {
-    setExperienceNumber(experienceNumber + 1);
-  };
+    setExperienceNumber(experienceNumber + 1)
+  }
 
   const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1);
-  };
+    setExperienceNumber(experienceNumber - 1)
+  }
+
+  const [selectedJob, setSelectedJob] = useState('')
+
+  const handleButtonClick = (job: string, event: React.MouseEvent) => {
+    event.preventDefault()
+    setExperienceData({ ...experienceData, jobKeyword: job })
+  }
+
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -52,28 +61,46 @@ const ExpKeywordContainer = () => {
         <div className="w-[1200px] h-[241px] relative mt-[82px] justify-center items-center mx-auto">
           <div className="w-[1200px] h-[241px] left-0 top-0 absolute">
             <div className="w-[1200px] h-[241px] left-0 top-0 absolute bg-white rounded-[30px] shadow">
-              <button className="w-[105px] h-11 left-[248px] top-[146px] absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+              {/* <button className="w-[105px] h-11 left-[248px] top-[146px] absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+                백엔드
+              </button> */}
+              <button
+                className={`w-[105px] h-11 left-[248px] top-[146px] absolute text-black ${experienceData.jobKeyword === '백엔드' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('백엔드', event)}
+              >
                 백엔드
               </button>
             </div>
 
             <div className="w-28 h-11 left-[387px] top-[146px] absolute">
-              <button className="w-[105px] h-11 left-[3px] top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+              <button
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '웹 개발' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('웹 개발', event)}
+              >
                 웹 개발
               </button>
             </div>
             <div className="w-28 h-11 left-[529px] top-[146px] absolute">
-              <button className="w-[105px] h-11 left-[3px] top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+              <button
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '앱 개발' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('앱 개발', event)}
+              >
                 앱 개발
               </button>
             </div>
             <div className="w-28 h-11 left-[671px] top-[146px] absolute">
-              <button className="w-[105px] h-11 left-[3px] top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+              <button
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '디자인' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('디자인', event)}
+              >
                 디자인
               </button>
             </div>
             <div className="w-28 h-11 left-[813px] top-[146px] absolute">
-              <button className="w-[105px] h-11 left-[3px] top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
+              <button
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === 'AI' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('AI', event)}
+              >
                 AI
               </button>
             </div>
@@ -135,12 +162,16 @@ const ExpKeywordContainer = () => {
         </div>
       </form>
       <div className="w-[1440px] h-20 pb-[200px] relative  mt-[80px] justify-center items-center inline-flex gap-[50px] mx-auto">
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-        onClick={goToPreviousPage}>
+        <button
+          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={goToPreviousPage}
+        >
           이전으로
         </button>
-        <button className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-        onClick={goToNextPage}>
+        <button
+          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={goToNextPage}
+        >
           다음으로
         </button>
       </div>
