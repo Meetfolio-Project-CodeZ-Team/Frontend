@@ -1,4 +1,4 @@
-interface ExperiencDataTypes {
+interface ExperienceDataTypes {
     title: string
     startDate: string
     endDate: string
