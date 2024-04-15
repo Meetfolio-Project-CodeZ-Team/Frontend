@@ -22,7 +22,6 @@ const ExpFinishContainer = () => {
 
   const saveData = async () => {
     // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
     const response = await fetch('/api/save', {
       method: 'POST',
       headers: {
