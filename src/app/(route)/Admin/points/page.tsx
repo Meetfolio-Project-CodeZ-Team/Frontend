@@ -1,19 +1,19 @@
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
-import BoardContainer from '@/app/components/admin/containers/BoardContainer'
+import PointsContainer from '@/app/components/admin/containers/PointsContainer'
 import Header from '@/app/components/layout/Header'
 
-const boardPage = () => {
+const pointPage = () => {
   return (
     <section className="flex flex-col min-h-screen">
       <Header isAdmin={true} />
       <div className="flex w-[full] h-[980px]">
         <AdminNavContainer selected={'dashboard'} />
         <div className="flex-grow">
-          <BoardContainer />
+          <PointsContainer />
         </div>
       </div>
     </section>
   )
 }
 
-export default boardPage
+export default pointPage
