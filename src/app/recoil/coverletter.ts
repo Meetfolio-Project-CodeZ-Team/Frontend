@@ -6,13 +6,13 @@ export const covletNum = atom<number>({
 })
 
 export const covletData = atom<CoverLetterDataTypes>({
-  key: 'Data',
+  key: 'covletData',
   default: {
     question: '',
     answer: '',
     job: '', // null
     keyword1: '', // null
     keyword2: '', // null
-    // "shareType":  PUBLIC // null
+    shareType:  '' // null
   },
 })

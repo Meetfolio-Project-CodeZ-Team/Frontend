@@ -9,4 +9,5 @@ interface ExperienceDataTypes {
     stack: string
     detail: string
     advance: string
+    expStacks: string[]
   }

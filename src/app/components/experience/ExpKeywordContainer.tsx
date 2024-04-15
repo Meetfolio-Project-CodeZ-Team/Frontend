@@ -3,28 +3,47 @@ import Input from '../common/Input'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
+import Stack from '../common/Stack'
+import NameBox from '../common/NameBox'
 
 const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
-  const [expStack, setExpStack] = useState<string[]>([])
+  const { expStacks } = experienceData;
 
-  const handleAddKeyword = (keyword: string) => {
-    if (expStack.length < 3) {
-      setExpStack([...expStack, keyword])
+
+  const [expStack, setExpStack] = useState('')
+  // const [expStacks, setExpStacks] = useState<string[]>([])
+
+  // console.log(expStacks.join(',')) // 배열 스트링으로 변환
+
+  const handleDelete = (index: number) => {
+    const newStrings = [...experienceData.expStacks];
+    newStrings.splice(index, 1);
+    setExperienceData({ ...experienceData, expStacks: newStrings });
+  };
+
+  const handleAddKeyword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    if (experienceData.expStacks.length < 3) {
+      setExperienceData({
+        ...experienceData,
+        expStacks: [...experienceData.expStacks, expStack],
+      });
+      setExpStack('');
     }
-  }
+  };
 
-  const handleRemoveKeyword = (index: number) => {
-    const newExpStack = [...expStack]
-    newExpStack.splice(index, 1)
-    setExpStack(newExpStack)
-  }
+  // const handleRemoveKeyword = (index: number) => {
+  //   const newExpStack = [...expStack]
+  //   newExpStack.splice(index, 1)
+  //   setExpStack(newExpStack)
+  // }
 
-  const handleSave = (event: React.MouseEvent) => {
-    event.preventDefault()
-    setExperienceData({ ...experienceData, stack: expStack.join(', ') })
-  }
+  // const handleSave = (event: React.MouseEvent) => {
+  //   event.preventDefault()
+  //   setExperienceData({ ...experienceData, stack: expStack.join(', ') })
+  // }
 
   const goToNextPage = () => {
     setExperienceNumber(experienceNumber + 1)
@@ -155,33 +174,39 @@ const ExpKeywordContainer = () => {
                 placeholder="ex) Next.js, 리액트 네이티브, Spring Boot"
                 maxLength={50}
                 className="w-full h-[50px] bg-white border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-                onKeyPress={(event) => {
-                  if (event.key === 'Enter') {
-                    handleAddKeyword(event.currentTarget.value)
-                    event.currentTarget.value = ''
-                  }
-                }}
+                onChange={(e) => setExpStack(e.target.value)}
               />
             </div>
+            
             <div className="w-[104px] h-[55px] left-[669px] top-[39px] absolute">
               {/* <button className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
                 추가하기
               </button> */}
+
               <button
                 className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg"
-                onClick={handleSave}
+                onClick={handleAddKeyword}
               >
                 추가하기
               </button>
               {/* 기술 스택 키워드 목록 */}
-              {expStack.map((keyword, index) => (
-                <div key={index}>
-                  <span>{keyword}</span>
-                  <button onClick={() => handleRemoveKeyword(index)}>X</button>
+            </div>
+          </div>
+          <div className='w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]'>
+              {expStacks.map((stack, i) => (
+                <div key={i}>
+                  <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
+                    <NameBox stack={stack} />
+                    <button
+                      className="flex bg-slate-600 w-24 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
+                      onClick={() => handleDelete(i)}
+                    >
+                      X
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
           <div className="w-[863px] h-[97px] left-[168px] top-[14px] absolute text-center">
             <span className="text-black text-4xl font-semibold leading-[54px]">
               본인이 사용한 기술 스택을 입력하세요.
@@ -192,6 +217,7 @@ const ExpKeywordContainer = () => {
             </span>
           </div>
         </div>
+        
       </form>
       <div className="w-[1440px] h-20 pb-[200px] relative  mt-[80px] justify-center items-center inline-flex gap-[50px] mx-auto">
         <button
