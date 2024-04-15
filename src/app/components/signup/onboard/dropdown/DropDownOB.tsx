@@ -6,7 +6,6 @@ import { dropdown } from '@/app/ui/IconsPath'
 interface DropDownProps {
   options: readonly string[]
   title: string
-  announcement: string
   onSelect: (selectedTag: string) => void
 }
 

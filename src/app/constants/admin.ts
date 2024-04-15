@@ -9,3 +9,11 @@ export const DASHBOARD = {
 
 export const SERVICE = ['자기소개서 피드백', '직무 역량 분석', '총 사용량']
 export const POINT = ['자기소개서 조회', 'AI 직무 역량 분석', '총합']
+export const USER_BOARD_H = [
+  '이메일',
+  '학년 및 학적',
+  '학과',
+  '희망 직무',
+  '보유 포인트',
+  '삭제',
+]

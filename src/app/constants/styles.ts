@@ -21,3 +21,9 @@ export const INPUT_STYLE = {
   onboard: (className: string) =>
     `w-[700px] text-xl font-medium pl-10 h-[60px] bg-white rounded-[10px] rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
 } as const
+
+export const DROPDOWN_STYLE = {
+  default: (className: string) => `${className}`,
+  user: (className: string) =>
+    `w-[700px] text-xl font-medium pl-7 h-20 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
+}

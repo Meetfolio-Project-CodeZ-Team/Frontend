@@ -5,7 +5,7 @@ import Button from '../../common/Button'
 import Input from '../../common/Input'
 import { GRADE, JOBKEYWORD, SIGNUP } from '@/app/constants/auth'
 import Keyword from './Keyword'
-import DropDown from './dropdown/DropDown'
+import DropDown from './dropdown/DropDownOB'
 
 const OnBoardContainer = () => {
   const [password, setPassWord] = useState('')
@@ -52,7 +52,6 @@ const OnBoardContainer = () => {
           <DropDown
             options={GRADE}
             title="본인 학년 선택"
-            announcement={''}
             onSelect={(option) => console.log(option, '선택완료')}
           />
         </div>
