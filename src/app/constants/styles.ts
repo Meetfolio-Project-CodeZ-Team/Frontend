@@ -19,7 +19,9 @@ export const INPUT_STYLE = {
   auth: (className: string) =>
     `w-[250px] text-xl font-medium pl-7 h-18 bg-white rounded-[10px] focus:outline-none ${className}`,
   onboard: (className: string) =>
-    `w-[700px] text-xl font-medium pl-10 h-[60px] bg-white rounded-[10px] rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
+    `w-[700px] text-xl font-medium pl-10 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
+  search: (className: string) =>
+    `w-[280px] h-[32px] bg-white rounded-[10px] focus:outline-none ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {

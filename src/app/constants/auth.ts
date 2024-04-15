@@ -25,3 +25,4 @@ export const COMPLETE = [
 export const GRADE = ['1학년', '2학년', '3학년', '4학년', '졸업생']
 
 export const JOBKEYWORD_USER = [...JOBKEYWORD, '전체']
+export const Board = ['그룹원 모집', '취업정보']

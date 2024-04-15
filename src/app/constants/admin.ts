@@ -17,3 +17,10 @@ export const USER_BOARD_H = [
   '보유 포인트',
   '삭제',
 ]
+export const COMUNITY_BOARD_H = [
+  '작성일',
+  '작성자 아이디',
+  '게시판 종류',
+  '제목',
+  '삭제',
+]

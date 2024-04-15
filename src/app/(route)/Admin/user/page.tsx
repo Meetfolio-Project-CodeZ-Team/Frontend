@@ -1,9 +1,8 @@
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import UserContainer from '@/app/components/admin/containers/UserContainer'
 import Header from '@/app/components/layout/Header'
-import React from 'react'
 
-const page = () => {
+const userPage = () => {
   return (
     <section className="flex flex-col min-h-screen">
       <Header isAdmin={true} />
@@ -17,4 +16,4 @@ const page = () => {
   )
 }
 
-export default page
+export default userPage

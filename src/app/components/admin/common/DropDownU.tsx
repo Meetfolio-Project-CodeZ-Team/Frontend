@@ -42,7 +42,7 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
         className="flex relative w-[200px] h-[45px] rounded-[10px] bg-white border-[1px] border-[#486284] cursor-pointer"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
-        <p className="absolute top-[10px] left-[80px] text-[#486284]">
+        <p className="m-auto text-[#486284]">
           {selectedOption ? selectedOption : title}
         </p>
         <div className="absolute top-[16px] left-[164px]">
@@ -52,7 +52,7 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
       <div className="relative">
         {isOpen && (
           <div
-            className="absolute w-full h-[180px] top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
+            className="absolute w-full h-auto top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
             ref={dropdownRef}
           >
             {options.map((option, index) => (
