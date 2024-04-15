@@ -49,7 +49,7 @@ const CalendarDropDown = ({
         <div
           className={` text-[#486284] ${selectedOption ? 'w-[74px] justify-center-center text-center' : 'absolute left-[17px]'}`}
         >
-          {selectedOption ? selectedOption : title}
+          {selectedOption ? selectedOption + title : title}
         </div>
         {!selectedOption && (
           <div className="absolute top-[6px] left-[33px]">

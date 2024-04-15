@@ -48,7 +48,7 @@ const PointsContainer = () => {
             month={month}
           />
         ) : (
-          <PaymentAnal />
+          <PaymentAnal year={year} month={month} totalSales={'500000000'} />
         )}
       </div>
     </div>
