@@ -76,3 +76,13 @@ export const search = {
     strokeWidth: 1,
   },
 }
+export const close = {
+  path: 'M18 18.8169L12 12.8169M12 12.8169L6 6.81689M12 12.8169L18 6.81689M12 12.8169L6 18.8169',
+  width: 24,
+  height: 24,
+  fill: 'none',
+  options: {
+    stroke: 'black',
+    strokeWidth: 3,
+  },
+}
