@@ -1,6 +1,7 @@
 import { MODEL_NAV } from '@/app/constants/admin'
 import { useState } from 'react'
 import ModelUsage from '../model/ModelUsage'
+import ModelTrain from '../model/ModelTrain'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useState(0)
@@ -34,13 +35,7 @@ const ModelContainer = () => {
             totalCount={430}
           />
         )}
-        {titleNum === 1 && (
-          <ModelUsage
-            feedbackCount={110}
-            analysisCount={320}
-            totalCount={430}
-          />
-        )}
+        {titleNum === 1 && <ModelTrain />}
         {titleNum === 2 && (
           <ModelUsage
             feedbackCount={110}
