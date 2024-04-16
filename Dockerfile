@@ -35,7 +35,6 @@ WORKDIR /usr/src/app
 
 # .next/standalone를 포함한 빌드 결과물 복사
 COPY --from=builder /usr/src/app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./.next/standalone
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
 
 # 컨테이너가 수신 대기할 포트 설정
