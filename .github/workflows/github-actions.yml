@@ -33,5 +33,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
-            sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -p 3000:3000 meetfolio-web:latest
+            sudo docker run --name meetfolio-web -e TZ=Asia/Seoul -p 3000:3000 meetfolio-web:latest
             docker image prune -af
