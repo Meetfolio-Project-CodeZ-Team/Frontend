@@ -37,4 +37,4 @@ WORKDIR /usr/src/app
 EXPOSE 3000
 
 # 애플리케이션 실행 명령
-RUN npm run dev
+CMD ["npm", "run", "dev"]
