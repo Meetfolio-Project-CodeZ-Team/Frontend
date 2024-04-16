@@ -18,5 +18,6 @@ export const expData = atom<ExperienceDataTypes>({
     stack: '',
     detail: '',
     advance: '',
+    expStacks: [],
   },
 })

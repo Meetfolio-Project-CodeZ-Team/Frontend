@@ -4,5 +4,5 @@ interface CoverLetterDataTypes {
   job: string // null
   keyword1: string // null
   keyword2: string // null
-  // "shareType":  PUBLIC // null
+  shareType: string // null
 }
