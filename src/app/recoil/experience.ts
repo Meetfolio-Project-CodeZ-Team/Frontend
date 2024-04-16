@@ -5,7 +5,7 @@ export const expNum = atom<number>({
   default: 0,
 })
 
-export const expData = atom<ExperiencDataTypes>({
+export const expData = atom<ExperienceDataTypes>({
   key: 'expData',
   default: {
     title: '',
