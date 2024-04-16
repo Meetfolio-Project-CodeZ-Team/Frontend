@@ -10,4 +10,6 @@ export const INPUT_STYLE = {
   default: (className: string) => `${className}`,
   login: (className: string) =>
     `w-[700px] text-xl font-medium pl-7 h-20 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
+  exp1: (className: string) =>
+    `w-[900px] text-xl font-medium pl-7 h-15 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
 } as const
