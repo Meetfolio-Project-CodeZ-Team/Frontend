@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package.json package-lock.json ./
 
 # 의존성 설치 (잠긴 lock 파일 수정 또는 생성 방지)
-RUN npm ci
+RUN yarn --frozen-lockfile 
 
 ###########################################################
 
@@ -23,7 +23,7 @@ WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
 
-RUN npm run build
+RUN yarn run build
 
 ###########################################################
 
