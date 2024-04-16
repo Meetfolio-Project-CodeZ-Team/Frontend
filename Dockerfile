@@ -20,7 +20,7 @@ FROM node:18-alpine AS builder
 WORKDIR /front
 
 # node_modules 등의 의존성 복사
-COPY --from=deps /front/node_modules ./node_modules
+COPY --from=deps /node_modules ./front/node_modules
 COPY . .
 
 RUN yarn build
