@@ -1,0 +1,92 @@
+export const mookPoint = [
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+  {
+    createdAt: '2024-01-01',
+    email: 'member1@gachon.ac.kr',
+    payment: 100,
+    point: 100,
+  },
+]

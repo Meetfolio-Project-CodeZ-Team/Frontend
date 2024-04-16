@@ -5,9 +5,9 @@ import LoginContainer from '@/app/components/login/LoginContainer'
 
 export default function LoginPage() {
   return (
-    <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen ">
+    <section className="flex flex-col items-center min-h-screen">
+      <Header />
       <div className="w-[1440px] mx-auto">
-        <Header />
         <LoginContainer />
       </div>
     </section>
