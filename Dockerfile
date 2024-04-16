@@ -16,9 +16,6 @@ RUN npm ci
 # 2단계: Next.js 빌드
 FROM node:18-alpine AS builder
 
-# Docker 빌드 시 개발 모드를 나타내는 환경 변수 설정
-ARG ENV_MODE
-
 # 작업 디렉터리 지정
 WORKDIR /usr/src/app
 
@@ -26,8 +23,6 @@ WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
 
-# 환경에 따라 .env 파일을 올바르게 가져오기
-COPY .env.${ENV_MODE} ./.env.production
 RUN npm run build
 
 ###########################################################
@@ -37,10 +32,6 @@ FROM node:18-alpine AS runner
 
 # 작업 디렉터리 지정
 WORKDIR /usr/src/app
-
-# 컨테이너 내에 시스템 사용자 추가
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
 
 # .next/standalone를 포함한 빌드 결과물 복사
 COPY --from=builder /usr/src/app/public ./public
