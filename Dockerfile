@@ -6,7 +6,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /front
 
 # package.json, package-lock.json, yarn.lock 복사
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .
 
 # 의존성 설치 (잠긴 lock 파일 수정 또는 생성 방지)
 RUN yarn --frozen-lockfile 
