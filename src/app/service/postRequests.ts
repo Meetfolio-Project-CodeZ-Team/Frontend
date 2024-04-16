@@ -2,20 +2,20 @@ const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
 const commonHeaders = {
   'Content-Type': 'application/json',
 }
-
+interface authContent {
+  email: string
+  authCode: string
+}
 const postRequest = async (
   url: string,
-  accessToken: string,
   body: any = null,
-  isFormData: boolean = false,
+  accessToken?: string,
 ) => {
   try {
     const response = await fetch(url, {
       method: 'POST',
-      headers: isFormData
-        ? { Authorization: 'Bearer ' + accessToken }
-        : { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
-      body: isFormData ? body : JSON.stringify(body),
+      headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
+      body: JSON.stringify(body),
     }).then((res) => res.json())
     return response
   } catch (error) {
@@ -23,41 +23,22 @@ const postRequest = async (
   }
 }
 
-export const postLikes = async (articleId: string, accessToken: string) => {
-  const url = `${SERVER_URL}/likes/${articleId}`
-  return await postRequest(url, accessToken)
+export const postSignUp = async (email: string) => {
+  const url = `${SERVER_URL}/api/signup/email`
+  return await postRequest(url, email)
 }
 
-export const postBookmarks = async (articleId: string, accessToken: string) => {
-  const url = `${SERVER_URL}/bookmarks/${articleId}`
-  return await postRequest(url, accessToken)
+export const postAuthCode = async (authContent: authContent) => {
+  const url = `${SERVER_URL}/api/signup/email/authentication`
+  console.log(authContent, '로 요청')
+  return await postRequest(url, authContent)
 }
+// export const postBookmarks = async (articleId: string, accessToken: string) => {
+//   const url = `${SERVER_URL}/bookmarks/${articleId}`
+//   return await postRequest(url, accessToken)
+// }
 
-export const postComment = async (
-  articleId: string,
-  comment: { content: string },
-  parentId: string,
-  accessToken: string,
-) => {
-  const url = `${SERVER_URL}/comments/${articleId}`
-  return await postRequest(url, accessToken, {
-    ...comment,
-    parentId: parentId,
-  })
-}
-
-export const postRecruiter = async (articleId: string, accessToken: string) => {
-  const url = `${SERVER_URL}/recruitForms/${articleId}`
-  return await postRequest(url, accessToken)
-}
-
-export const postApplicant = async (
-  articleId: string,
-  bodyData: FormData,
-  accessToken: string,
-) => {
-  const url = `${SERVER_URL}/application-forms/${articleId}`
-  const res = await postRequest(url, accessToken, bodyData, true)
-  console.log(res)
-  return res
-}
+// export const postRecruiter = async (articleId: string, accessToken: string) => {
+//   const url = `${SERVER_URL}/recruitForms/${articleId}`
+//   return await postRequest(url, accessToken)
+// }

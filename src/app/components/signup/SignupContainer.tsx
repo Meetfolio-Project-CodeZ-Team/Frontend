@@ -9,6 +9,36 @@ const SignupContainer = () => {
   const [email, setEmail] = useState('')
   const [authCode, setAuthCode] = useState('')
 
+  const getAuthCode = async (email: string) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email + SIGNUP.Email }),
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup`,
+      requestOptions,
+    )
+    console.log(res)
+  }
+
+  const authorizeCode = async (email: string, authCode: string) => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: email + SIGNUP.Email, authCode: authCode }),
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
+      requestOptions,
+    )
+    console.log(res)
+  }
+
   return (
     <div className="flex flex-col items-center mt-[170px]">
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
@@ -31,7 +61,7 @@ const SignupContainer = () => {
             buttonText={'인증 코드 전송'}
             type={'auth'}
             isDisabled={false}
-            onClickHandler={() => console.log('로그인 로직')}
+            onClickHandler={() => getAuthCode(email)}
           />
         </div>
         <Input
@@ -45,7 +75,7 @@ const SignupContainer = () => {
           buttonText={SIGNUP.Auth}
           type={'loginW'}
           isDisabled={false}
-          onClickHandler={() => console.log('로그인 로직')}
+          onClickHandler={() => authorizeCode(email, authCode)}
         />
       </div>
     </div>
