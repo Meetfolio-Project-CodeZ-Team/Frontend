@@ -13,7 +13,7 @@ const ServiceUsage = (serviceUsage: ServiceUsageProps) => {
       <div className="absolute flex items-center gap-x-[15px] left-[20px] top-[24px] text-[25px] font-bold leading-[37.50px]">
         {DASHBOARD.Service} <ServiceIcon />
       </div>
-      <div className="absolute flex items-center gap-x-[60px] left-[86px] top-[92px]">
+      <div className="absolute flex items-center gap-x-[60px] left-[80px] top-[92px]">
         <div className="flex justify-center items-end gap-x-12 font-bold">
           <div className="text-zinc-600 pb-2 text-[22px]">{SERVICE[0]}</div>
           <div className="text-black text-[35px]">{feedbackCount}건</div>

@@ -8,7 +8,9 @@ export const DASHBOARD = {
 } as const
 
 export const SERVICE = ['자기소개서 피드백', '직무 역량 분석', '총 사용량']
+
 export const POINT = ['자기소개서 조회', 'AI 직무 역량 분석', '총합']
+
 export const USER_BOARD_H = [
   '이메일',
   '학년 및 학적',
@@ -55,3 +57,24 @@ export const MONTH = [
   '12',
 ]
 export const PAYMENT_H = ['결제 일시', '이메일', '결제 금액', '충전한 포인트']
+
+export const MODEL_NAV = ['AI 서비스 통계', '학습  관리', '버전 관리']
+
+export const MODEL_NAME = ['model_ver_1', 'model_ver_2', 'model_ver_3']
+export const MODEL_EVALUATION = [
+  {
+    modelName: 'model_ver_1',
+    accuracy: 80,
+    loss: 20.01,
+  },
+  {
+    modelName: 'model_ver_2',
+    accuracy: 90,
+    loss: 10.01,
+  },
+  {
+    modelName: 'model_ver_3',
+    accuracy: 30,
+    loss: 80.01,
+  },
+]

@@ -1,3 +1,4 @@
+'use client'
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import DashboardContainer from '@/app/components/admin/containers/DashboardContainer'
 import Header from '@/app/components/layout/Header'
