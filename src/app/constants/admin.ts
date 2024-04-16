@@ -54,3 +54,4 @@ export const MONTH = [
   '11',
   '12',
 ]
+export const PAYMENT_H = ['결제 일시', '이메일', '결제 금액', '충전한 포인트']
