@@ -3,7 +3,7 @@ FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 
 # 작업 디렉터리 지정
-WORKDIR /usr/src/app
+WORKDIR /front
 
 # package.json, package-lock.json, yarn.lock 복사
 COPY package.json package-lock.json ./
@@ -17,10 +17,10 @@ RUN yarn --frozen-lockfile
 FROM node:18-alpine AS builder
 
 # 작업 디렉터리 지정
-WORKDIR /usr/src/app
+WORKDIR /front
 
 # node_modules 등의 의존성 복사
-COPY --from=deps /usr/src/app/node_modules ./node_modules
+COPY --from=deps /front/node_modules ./node_modules
 COPY . .
 
 RUN yarn build
@@ -31,7 +31,7 @@ RUN yarn build
 FROM node:18-alpine AS runner
 
 # 작업 디렉터리 지정
-WORKDIR /usr/src/app
+WORKDIR /front
 
 # 컨테이너가 수신 대기할 포트 설정
 EXPOSE 3000
