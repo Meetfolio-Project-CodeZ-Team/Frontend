@@ -253,15 +253,15 @@ const CovletMain = () => {
               1000자 이내
             </div>
             <div className="w-[842.50px] h-[647.41px] left-0 top-0 absolute">
-            <textarea
-                  value={coverletterData.answer}
-                  onChange={handleTextareaChange}
-                  id="answer"
-                  name="answer"
-                  placeholder="질문에 대한 답변을 적어보세요."
-                  maxLength={1000}
-                  className="w-full h-[640px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-                />
+              <textarea
+                value={coverletterData.answer}
+                onChange={handleTextareaChange}
+                id="answer"
+                name="answer"
+                placeholder="질문에 대한 답변을 적어보세요."
+                maxLength={1000}
+                className="w-full h-[640px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
+              />
             </div>
           </div>
         </div>
@@ -271,16 +271,16 @@ const CovletMain = () => {
               100자 이내
             </div>
             <div className="w-[842.50px] h-[60.48px] left-0 top-0 absolute">
-            <input
-                  type="text"
-                  value={coverletterData.question}
-                  onChange={handleInputChange}
-                  id="question"
-                  name="question"
-                  placeholder="문항 질문을 적어보세요"
-                  maxLength={100}
-                  className="w-full h-[60px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-                />
+              <input
+                type="text"
+                value={coverletterData.question}
+                onChange={handleInputChange}
+                id="question"
+                name="question"
+                placeholder="문항 질문을 적어보세요"
+                maxLength={100}
+                className="w-full h-[60px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
+              />
             </div>
           </div>
           <div className="w-[194.65px] h-[48.86px] left-0 top-[7px] absolute text-center text-black text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">

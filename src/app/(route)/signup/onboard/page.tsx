@@ -1,5 +1,3 @@
-'use client'
-
 import Header from '@/app/components/layout/Header'
 import OnBoardContainer from '@/app/components/signup/onboard/OnBoardContainer'
 

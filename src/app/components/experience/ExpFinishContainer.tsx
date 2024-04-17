@@ -197,11 +197,11 @@ const ExpFinishContainer = () => {
               확인
             </div> */}
             <button
-                className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-                // onClick={(event) => handleButtonClick('백엔드', event)}
-              >
-                확인
-              </button>
+              className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
+              // onClick={(event) => handleButtonClick('백엔드', event)}
+            >
+              확인
+            </button>
           </div>
         </div>
       </div>

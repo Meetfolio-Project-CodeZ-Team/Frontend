@@ -4,10 +4,14 @@ import { useState } from 'react'
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { SIGNUP } from '@/app/constants/auth'
+import { useRouter } from 'next/navigation'
+import { useRecoilState } from 'recoil'
+import { emailState } from '@/app/recoil/signUp'
 
 const SignupContainer = () => {
-  const [email, setEmail] = useState('')
   const [authCode, setAuthCode] = useState('')
+  const [email, setEmail] = useRecoilState(emailState)
+  const router = useRouter()
 
   const getAuthCode = async (email: string) => {
     const requestOptions = {
@@ -18,7 +22,7 @@ const SignupContainer = () => {
       body: JSON.stringify({ email: email + SIGNUP.Email }),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/email`,
       requestOptions,
     )
     console.log(res)
@@ -36,6 +40,7 @@ const SignupContainer = () => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
       requestOptions,
     )
+    router.push('/signup/onboard')
     console.log(res)
   }
 
