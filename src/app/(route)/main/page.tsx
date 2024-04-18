@@ -36,9 +36,9 @@ export default function MainPage() {
           profile={memberInfo?.profile}
         />
         <div className="w-[1440px] mb-10">
-          <MainContainer />
+          <MainContainer nickname={memberInfo?.memberName}/>
         </div>
-        <IntroudeContainer />
+        <IntroudeContainer nickname={memberInfo?.memberName} />
       </section>
     )
   }

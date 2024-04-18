@@ -26,7 +26,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
         </Link>
         {!isAdmin ? (
           <div className="absolute right-[40px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
-            <Link href="login">경험분해하기</Link>
+            <Link href="experience">경험분해하기</Link>
             <Link href="login">AI자기소개서솔루션</Link>
             <Link href="login">커뮤니티</Link>
             <div className="flex gap">

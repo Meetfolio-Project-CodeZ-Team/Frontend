@@ -1,9 +1,13 @@
 import { BUTTON_TEXT, CARD } from '@/app/constants/main'
-import Card from '../common/Card'
 import CardContainer from './containers/CardContainer'
 import Button from '../common/Button'
+import { useRouter } from 'next/navigation'
+interface MainCardProps {
+  nickname?: string
+}
+const MainCard = ({ nickname }: MainCardProps) => {
+  const router = useRouter()
 
-const MainCard = () => {
   return (
     <div className="flex flex-col items-center bg-[#FAFBFD] pt-[100px]">
       <div className="text-center text-[#486284] text-5xl font-medium leading-[72px]">
@@ -14,13 +18,17 @@ const MainCard = () => {
       </div>
       <CardContainer />
       <div className="mt-12 mb-[72px]">
-        <Button
-          buttonText={BUTTON_TEXT.Card}
-          type={'mainBtn'}
-          isDisabled={false}
-          onClickHandler={() => console.log('클릭')}
-          className="bg-[#486283]"
-        />
+        {nickname ? (
+          <div></div>
+        ) : (
+          <Button
+            buttonText={BUTTON_TEXT.Card}
+            type={'mainBtn'}
+            isDisabled={false}
+            onClickHandler={() => router.push('/login')}
+            className="bg-[#486283]"
+          />
+        )}
       </div>
     </div>
   )
