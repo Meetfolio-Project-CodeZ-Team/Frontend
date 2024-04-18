@@ -1,5 +1,5 @@
 import Header from '@/app/components/layout/Header'
-import OnBoardContainer from '@/app/components/signup/onboard/OnBoardContainer'
+import OnBoardContainer from '@/app/components/signup/containers/OnBoardContainer'
 
 export default function OnBoardPage() {
   return (

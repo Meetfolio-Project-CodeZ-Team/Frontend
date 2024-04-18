@@ -4,8 +4,8 @@ import { useState } from 'react'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
 import { GRADE, GRADE_ENUM, JOBKEYWORD, SIGNUP } from '@/app/constants/auth'
-import Keyword from './Keyword'
-import DropDown from './dropdown/DropDownOB'
+import Keyword from '../onboard/Keyword'
+import DropDown from '../onboard/dropdown/DropDownOB'
 import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
 import { useRouter } from 'next/navigation'
@@ -17,7 +17,8 @@ const OnBoardContainer = () => {
   const [grade, setGrade] = useState('')
   const [major, setMajor] = useState('')
   const [email, setEmail] = useRecoilState(emailState)
-
+  const isEntered =
+    clickedKeyword !== '' && password !== '' && grade !== '' && major !== ''
   const handleClick = (keyword: string) => {
     setClickedKeyword(keyword)
   }
@@ -109,8 +110,9 @@ const OnBoardContainer = () => {
         <Button
           buttonText="가입하기"
           type={'loginB'}
-          isDisabled={false}
+          isDisabled={!isEntered}
           onClickHandler={() => signUp()}
+          className={!isEntered ? 'text-[#b5b5b5] bg-white' : ''}
         />
       </div>
     </div>

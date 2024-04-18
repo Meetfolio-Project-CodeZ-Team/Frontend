@@ -1,19 +1,23 @@
 'use client'
 
 import { useState } from 'react'
-import Button from '../common/Button'
-import Input from '../common/Input'
+import Button from '../../common/Button'
+import Input from '../../common/Input'
 import { SIGNUP } from '@/app/constants/auth'
 import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { editAlert } from '@/app/utils/toast'
 
 const SignupContainer = () => {
-  const [authCode, setAuthCode] = useState('')
   const [email, setEmail] = useRecoilState(emailState)
+  const [authCode, setAuthCode] = useState('')
   const router = useRouter()
 
   const getAuthCode = async (email: string) => {
+    editAlert()
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -46,6 +50,7 @@ const SignupContainer = () => {
 
   return (
     <div className="flex flex-col items-center mt-[170px]">
+      <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
       <div className="text-3xl font-semibold leading-[75px] mb-20">
         {SIGNUP.Description}
@@ -65,8 +70,9 @@ const SignupContainer = () => {
           <Button
             buttonText={'인증 코드 전송'}
             type={'auth'}
-            isDisabled={false}
+            isDisabled={email === ''}
             onClickHandler={() => getAuthCode(email)}
+            className={email === '' ? 'bg-white text-[#b5b5b5]' : ''}
           />
         </div>
         <Input
@@ -79,8 +85,9 @@ const SignupContainer = () => {
         <Button
           buttonText={SIGNUP.Auth}
           type={'loginW'}
-          isDisabled={false}
+          isDisabled={authCode === ''}
           onClickHandler={() => authorizeCode(email, authCode)}
+          className={authCode === '' ? 'bg-white text-[#b5b5b5]' : ''}
         />
       </div>
     </div>

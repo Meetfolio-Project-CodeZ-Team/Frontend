@@ -11,7 +11,7 @@ const LoginContainer = () => {
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
   const router = useRouter()
-
+  const isInserted = id === '' || pw === ''
   const postLogin = async () => {
     const requestOptions = {
       method: 'POST',
@@ -38,7 +38,7 @@ const LoginContainer = () => {
         <Input
           type={'login'}
           onChange={(e) => setId(e.target.value)}
-          placeholder="아이디"
+          placeholder={`아이디(${SIGNUP.Email}을 제외하고 입력)`}
         />
         <Input
           type={'login'}
@@ -50,8 +50,9 @@ const LoginContainer = () => {
         <Button
           buttonText={'로그인'}
           type={'loginB'}
-          isDisabled={false}
+          isDisabled={isInserted}
           onClickHandler={() => postLogin()}
+          className={isInserted ? 'text-[#b5b5b5] bg-white' : ''}
         />
         <Button
           buttonText={'회원가입'}
