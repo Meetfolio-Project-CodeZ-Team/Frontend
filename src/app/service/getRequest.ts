@@ -12,7 +12,6 @@ const getRequest = async (url: string, accessToken?: string) => {
     const response = await fetch(url, {
       headers: headers,
     }).then((res) => res.json())
-    console.log(response, '카드요청이에요')
 
     return response
   } catch (error) {

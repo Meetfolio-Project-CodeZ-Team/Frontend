@@ -4,8 +4,9 @@ import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
 interface MainCardProps {
   nickname?: string
+  cardData: CardDataTypes[]
 }
-const MainCard = ({ nickname }: MainCardProps) => {
+const MainCard = ({ nickname, cardData }: MainCardProps) => {
   const router = useRouter()
 
   return (
@@ -16,7 +17,7 @@ const MainCard = ({ nickname }: MainCardProps) => {
       <div className="flex text-lg font-normal leading-[27px] mt-7 mb-[50px]">
         {CARD[1]}
       </div>
-      <CardContainer />
+      <CardContainer cardData={cardData} />
       <div className="mt-12 mb-[72px]">
         {nickname ? (
           <div></div>

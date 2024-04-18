@@ -7,8 +7,10 @@ import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-coverflow'
-
-export default function CardContainer() {
+interface CardContainerProps {
+  cardData: CardDataTypes[]
+}
+export default function CardContainer({ cardData }: CardContainerProps) {
   return (
     <Swiper
       className="my-6"
@@ -18,7 +20,7 @@ export default function CardContainer() {
       slideToClickedSlide={true}
       coverflowEffect={{
         rotate: 40,
-        stretch: 0,
+        stretch: 10,
         depth: 100,
         modifier: 1,
         slideShadows: false,
@@ -30,20 +32,18 @@ export default function CardContainer() {
       slidesPerView={4}
       autoplay={{ delay: 2000, disableOnInteraction: false }}
     >
-      {Array(12)
-        .fill('1')
-        .map((_, index) => (
-          <SwiperSlide key={index}>
-            <Card
-              experienceType={'봉사활동'}
-              startDate={'2023.04'}
-              endDate={'2023.06'}
-              jobKeyword={'웹퍼블리셔'}
-              stack={'리액트'}
-              title={'IT 교육 봉사'}
-            />
-          </SwiperSlide>
-        ))}
+      {cardData.map((card, index) => (
+        <SwiperSlide key={index}>
+          <Card
+            experienceType={card.experienceType}
+            startDate={card.startDate}
+            endDate={card.endDate}
+            jobKeyword={card.jobKeyword}
+            stack={card.stack}
+            title={card.jobKeyword}
+          />
+        </SwiperSlide>
+      ))}
     </Swiper>
   )
 }

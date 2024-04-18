@@ -36,9 +36,12 @@ export default function MainPage() {
           profile={memberInfo?.profile}
         />
         <div className="w-[1440px] mb-10">
-          <MainContainer nickname={memberInfo?.memberName}/>
+          <MainContainer nickname={memberInfo?.memberName} />
         </div>
-        <IntroudeContainer nickname={memberInfo?.memberName} />
+        <IntroudeContainer
+          nickname={memberInfo?.memberName}
+          cardData={recommendCardInfo}
+        />
       </section>
     )
   }
