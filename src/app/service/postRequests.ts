@@ -13,7 +13,8 @@ const postRequest = async (
       method: 'POST',
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
-    }).then((res) => res.json())
+    })
+    console.log(response, '서버로부터 응답')
     return response
   } catch (error) {
     console.log('Error:', error)
@@ -34,4 +35,22 @@ export const postSignUp = async (signUpContent: signupTypes) => {
   const url = `${SERVER_URL}/api/signup`
   console.log(signUpContent, '로 요청')
   return await postRequest(url, signUpContent)
+}
+
+// export const postLogin = async (LoginContent: loginContent) => {
+//   return await postRequest(url, LoginContent)
+// }
+
+export const postLogin = async (LoginContent: loginContent) => {
+  try {
+    const url = `${SERVER_URL}/api/login`
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { ...commonHeaders },
+      body: JSON.stringify(LoginContent),
+    })
+    return response
+  } catch (error) {
+    console.log('Error:', error)
+  }
 }

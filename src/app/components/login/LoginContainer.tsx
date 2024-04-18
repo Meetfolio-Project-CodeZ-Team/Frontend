@@ -5,11 +5,31 @@ import { useState } from 'react'
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRouter } from 'next/navigation'
+import { SIGNUP } from '@/app/constants/auth'
 
 const LoginContainer = () => {
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
   const router = useRouter()
+
+  const postLogin = async () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: id + SIGNUP.Email, password: pw }),
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login`,
+      requestOptions,
+    )
+    const resData = await res.json()
+    const token = resData?.token
+    const tokenValue = token.substring(7)
+    document.cookie = `accessToken=${tokenValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
+    router.push('/main')
+  }
 
   return (
     <div className="flex flex-col items-center mt-[170px] gap-y-12">
@@ -31,13 +51,13 @@ const LoginContainer = () => {
           buttonText={'로그인'}
           type={'loginB'}
           isDisabled={false}
-          onClickHandler={() => router.push('/Admin')}
+          onClickHandler={() => postLogin()}
         />
         <Button
           buttonText={'회원가입'}
           type={'loginW'}
           isDisabled={false}
-          onClickHandler={() => console.log('로그인 로직')}
+          onClickHandler={() => router.push('/signup')}
         />
       </div>
     </div>

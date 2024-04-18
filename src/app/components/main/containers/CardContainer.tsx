@@ -29,8 +29,6 @@ export default function CardContainer() {
       modules={[Pagination, EffectCoverflow, Autoplay]}
       slidesPerView={4}
       autoplay={{ delay: 2000, disableOnInteraction: false }}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
     >
       {Array(12)
         .fill('1')

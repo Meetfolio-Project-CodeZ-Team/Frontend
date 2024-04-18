@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
 export const emailState = atom<string>({
-  key: 'emailState',
+  key: 'email',
   default: '',
 })

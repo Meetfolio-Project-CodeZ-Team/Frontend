@@ -18,3 +18,7 @@ type GradeEnum = {
   '4학년': string
   졸업생: string
 }
+interface loginContent {
+  email: string
+  password: string
+}
