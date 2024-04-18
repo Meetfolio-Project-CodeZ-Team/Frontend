@@ -9,6 +9,9 @@ import DropDown from '../onboard/dropdown/DropDownOB'
 import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
 import { useRouter } from 'next/navigation'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { pwAlert } from '@/app/utils/toast'
 
 const OnBoardContainer = () => {
   const router = useRouter()
@@ -23,29 +26,35 @@ const OnBoardContainer = () => {
     setClickedKeyword(keyword)
   }
   const signUp = async () => {
-    const requestBody = {
-      email: email + SIGNUP.Email,
-      password: password,
-      grade: getGradeValue(grade),
-      jobKeyword: getJOBValue(clickedKeyword),
-      major: 'COMPUTER_ENGINEERING',
+    if (/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,20}$/.test(password)) {
+      const requestBody = {
+        email: email + SIGNUP.Email,
+        password: password,
+        grade: getGradeValue(grade),
+        jobKeyword: getJOBValue(clickedKeyword),
+        major: 'COMPUTER_ENGINEERING',
+      }
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      }
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup`,
+        requestOptions,
+      )
+      router.push('/signup/complete')
+    } else {
+      setPassWord((prev) => '')
+      pwAlert()
     }
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    }
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup`,
-      requestOptions,
-    )
-    router.push('/signup/complete')
   }
 
   return (
     <div className="flex flex-col items-center mt-[95px]">
+      <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-6">회원가입</div>
       <div className="text-3xl font-medium leading-[45px] mb-7">
         {SIGNUP.OnBoard}
@@ -67,6 +76,7 @@ const OnBoardContainer = () => {
             type={'onboard'}
             onChange={(e) => setPassWord(e.target.value)}
             placeholder={SIGNUP.Password}
+            textValue={password}
           />
         </div>
         <div className="flex flex-col">

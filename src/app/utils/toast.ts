@@ -11,9 +11,9 @@ export const editAlert = () => {
   })
 }
 
-export const deleteAlert = () => {
-  toast.error('삭제되었습니다', {
-    icon: () => '🗑️',
+export const pwAlert = () => {
+  toast.error('문자,숫자포함 8-20자 비밀번호를 설정해주세요', {
+    icon: () => '🔒',
     theme: 'dark',
     closeOnClick: true,
     autoClose: 2000,
@@ -21,8 +21,8 @@ export const deleteAlert = () => {
   })
 }
 
-export const exceedAlert = () => {
-  toast.warning('최대 2명까지 추가 가능합니다', {
+export const mismatchAlert = () => {
+  toast.warning('올바르지 않은 인증코드입니다.', {
     icon: () => '🚫',
     theme: 'dark',
     closeOnClick: true,
