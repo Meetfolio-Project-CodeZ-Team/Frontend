@@ -23,7 +23,7 @@ export const getCardMain = async (accessToken: string) => {
   const url = `${SERVER_URL}/api`
   return await getRequest(url, accessToken)
 }
-export const getDashBoard = async (accessToken: string) => {
+export const  getDashBoard = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/dashboard`
   return await getRequest(url, accessToken)
 }

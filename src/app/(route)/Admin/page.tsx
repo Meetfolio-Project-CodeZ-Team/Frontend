@@ -39,7 +39,7 @@ export default function AdminPage() {
         <div className="flex w-[full] h-[980px]">
           <AdminNavContainer selected={'dashboard'} />
           <div className="flex-grow">
-            <DashboardContainer />
+            <DashboardContainer DashboardInfo={data} />
           </div>
         </div>
       </section>

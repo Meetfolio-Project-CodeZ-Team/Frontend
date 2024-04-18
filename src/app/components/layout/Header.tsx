@@ -65,8 +65,11 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
             )}
           </div>
         ) : (
-          <div className="absolute right-[40px] flex flex-row-reverse w-[600px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
-            프로필
+          <div className="absolute right-[40px] flex-row-reverse w-[600px] gap-[30px] h-9 flex gap items-center">
+            <div className=" text-[#486284] text-lg cursor-pointer items-center ">
+              관리자
+            </div>
+            <div className="w-[22px] h-[2px] rotate-90 opacity-80 border border-[#486284]"></div>
           </div>
         )}
       </header>

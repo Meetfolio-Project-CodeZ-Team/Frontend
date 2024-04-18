@@ -2,8 +2,15 @@ import JobAnal from '../dashboard/JobAnal'
 import PointAnal from '../dashboard/PointAnal'
 import ServiceUsage from '../dashboard/ServiceUsage'
 import UserUsage from '../dashboard/UserUsage'
+interface DashboardContainerProps {
+  DashboardInfo: ResponseDashBoard
+}
 
-const DashboardContainer = () => {
+const DashboardContainer = ({ DashboardInfo }: DashboardContainerProps) => {
+  // const { aiSolutionInfo, memberInfo, pointInfo, paymentInfo } = DashboardInfo
+  // const { feedbackCount, analysisCount, totalCount, satisfaction } =
+  //   aiSolutionInfo
+  // const { myPoint, listSize, totalPage, totalElements } = pointInfo
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[32px] font-bold leading-[48px]">대시보드</div>
