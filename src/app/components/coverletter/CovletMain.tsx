@@ -161,13 +161,13 @@ const CovletMain = () => {
             <ExpCard />
             <ExpCard />
           </div>
-        </div> */} 
+        </div>  */}
         //자소서 작성 중 경험카드 세부조회
-        {/* <div className='w-[450px] h-[1100px] mt-[80px] '>
+        <div className='w-[450px] h-[1100px] mt-[80px] '>
           <div className="w-[350px] h-full ml-[16px] gap-[20px]">
             <ExpCardDetail />
           </div>
-        </div> */} 
+        </div> 
       </div>
     </div>
   )
