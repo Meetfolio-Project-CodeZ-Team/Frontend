@@ -53,3 +53,16 @@ interface ResponseUser {
   isFirst: boolean
   isLast: boolean
 }
+
+interface ResponsePoint {
+  yearMonth: string
+  coverLetterPoint: number
+  analysisPoint: number
+  totalPoint: number
+}
+interface ResponsePayment {
+  yearMonth: string
+  coverLetterPoint: number
+  analysisPoint: number
+  totalPoint: number
+}
