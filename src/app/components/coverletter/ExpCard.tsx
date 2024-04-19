@@ -1,4 +1,5 @@
 const ExpCard = () => {
+    //자소서 메인화면 키워드1,키워드2,지원직무 입력창 컴포넌트
   return (
     <div className="w-[304px] h-[388px] mt-[20px] relative bg-slate-200 rounded-[10px]">
       <div className="w-24 h-9 px-5 left-[17.52px] top-[328.91px] absolute bg-white rounded justify-center items-center gap-2 inline-flex">
