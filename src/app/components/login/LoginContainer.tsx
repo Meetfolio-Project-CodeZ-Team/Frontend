@@ -8,17 +8,19 @@ import { useRouter } from 'next/navigation'
 import { SIGNUP } from '@/app/constants/auth'
 
 const LoginContainer = () => {
+  const router = useRouter()
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
-  const router = useRouter()
   const isInserted = id === '' || pw === ''
   const postLogin = async () => {
+    const isAdmin = id === 'admin' ? 'admin' : id + SIGNUP.Email
+    const path = id === 'admin' ? 'Admin' : 'main'
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: id + SIGNUP.Email, password: pw }),
+      body: JSON.stringify({ email: isAdmin, password: pw }),
     }
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login`,
@@ -28,7 +30,7 @@ const LoginContainer = () => {
     const token = resData?.token
     const tokenValue = token.substring(7)
     document.cookie = `accessToken=${tokenValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
-    router.push('/main')
+    router.push(path)
   }
 
   return (

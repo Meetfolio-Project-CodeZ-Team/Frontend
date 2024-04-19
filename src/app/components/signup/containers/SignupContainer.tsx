@@ -9,7 +9,7 @@ import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { editAlert, mismatchAlert } from '@/app/utils/toast'
+import { authCodeAlert, mismatchAlert } from '@/app/utils/toast'
 
 const SignupContainer = () => {
   const [email, setEmail] = useRecoilState(emailState)
@@ -17,7 +17,7 @@ const SignupContainer = () => {
   const router = useRouter()
 
   const getAuthCode = async (email: string) => {
-    editAlert()
+    authCodeAlert()
     const requestOptions = {
       method: 'POST',
       headers: {
@@ -60,7 +60,7 @@ const SignupContainer = () => {
 
   return (
     <div className="flex flex-col items-center mt-[170px]">
-      <ToastContainer style={{ width: 450, height: 180 }} />
+      <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
       <div className="text-3xl font-semibold leading-[75px] mb-20">
         {SIGNUP.Description}

@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-export const editAlert = () => {
+export const authCodeAlert = () => {
   toast.info('5분내에 인증코드를 입력해주세요', {
     icon: () => '🔑',
     theme: 'dark',
