@@ -35,11 +35,21 @@ export const getUser = async (accessToken: string, jobKeyword?: string) => {
     : `${SERVER_URL}/api/admins/members-management`
   return await getRequest(url, accessToken)
 }
+
 export const getPoint = async (
   accessToken: string,
   year: string,
   month: string,
 ) => {
-  const url = `${SERVER_URL}/api/admins/members-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/point-management?year=${year}&month=${month}`
+  return await getRequest(url, accessToken)
+}
+
+export const getPayment = async (
+  accessToken: string,
+  year: string,
+  month: string,
+) => {
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }

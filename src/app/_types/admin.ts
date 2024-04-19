@@ -60,9 +60,31 @@ interface ResponsePoint {
   analysisPoint: number
   totalPoint: number
 }
-interface ResponsePayment {
-  yearMonth: string
-  coverLetterPoint: number
-  analysisPoint: number
+
+interface MemberInfoPoint {
+  authority: string
+  memberName: string
+  profile: string
+  major: string
+}
+interface PaymentListTypes {
+  createdAt: string
+  payment: number
+  point: number
   totalPoint: number
+}
+
+interface PaymentInfoTypes {
+  myPoint: number
+  paymentList: PaymentListTypes[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}
+
+interface ResponsePayment {
+  memberInfo: MemberInfoPoint
+  paymentInfo: PaymentInfoTypes
 }

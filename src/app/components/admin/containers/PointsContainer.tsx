@@ -10,16 +10,20 @@ const PointsContainer = () => {
   const [year, setYear] = useState('2024')
   const [month, setMonth] = useState('04')
   const [pointData, setPointData] = useState<ResponsePoint | null>(null)
-  const [paymentData, setPaymentData] = useState<ResponsePoint | null>(null)
+  const [paymentData, setPaymentData] = useState<ResponsePayment | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/point?year=${year}&month=${month}`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/${isPoint ? 'point' : 'payment'}?year=${year}&month=${month}`,
       )
       const resData = await response.json()
       console.log('가져온 resData', resData)
-      setPointData(resData.result)
+      if (isPoint) {
+        setPointData(resData.result)
+      } else {
+        setPaymentData(resData.result)
+      }
     }
     fetchData()
   }, [isPoint])

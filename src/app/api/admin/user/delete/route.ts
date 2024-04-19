@@ -7,7 +7,7 @@ export async function DELETE(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const userId = searchParams.get('userId') || ''
-  
+
   const data = await deleteUser(accessToken, userId)
   return NextResponse.json(data)
 }

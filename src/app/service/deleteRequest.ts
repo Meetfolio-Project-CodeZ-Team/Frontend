@@ -13,7 +13,7 @@ const deleteRequest = async (url: string, accessToken?: string) => {
       method: 'DELETE',
       headers: headers,
     }).then((res) => res.json())
-console.log(response);
+    console.log(response)
 
     return response
   } catch (error) {

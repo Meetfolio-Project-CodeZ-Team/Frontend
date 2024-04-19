@@ -32,9 +32,9 @@ const UserInfo = (userInfo: UserInfoProps) => {
       },
     )
     if (res.ok) {
-      window.location.reload();
+      window.location.reload()
     } else {
-      console.error('Failed to delete user');
+      console.error('Failed to delete user')
     }
   }
   return (
