@@ -27,9 +27,12 @@ const LoginContainer = () => {
       requestOptions,
     )
     const resData = await res.json()
-    const token = resData?.token
-    const tokenValue = token.substring(7)
-    document.cookie = `accessToken=${tokenValue}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
+    const access = resData?.access
+    const refresh = resData?.refresh
+    const accessToken = access.substring(7)
+    const refreshToken = refresh.substring(7)
+    document.cookie = `accessToken=${accessToken}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
+    document.cookie = `refreshToken=${refreshToken}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`
     router.push(path)
   }
 
