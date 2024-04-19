@@ -5,6 +5,8 @@ interface UserBoardProps {
   userInfoData: ResponseUser
 }
 const UserBoard = (userInfoData: UserBoardProps) => {
+  console.log(userInfoData);
+  
   return (
     <div className="flex flex-col w-[1034px] h-[720px] mt-[22px]">
       <div className="flex w-[1034px] h-[50px] pl-[37px] border-y border-[#616161] items-center text-black text-lg">

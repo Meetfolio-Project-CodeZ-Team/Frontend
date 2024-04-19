@@ -2,9 +2,10 @@
 import { useEffect, useRef, useState } from 'react'
 import Icons from '../../common/Icons'
 import { dropdown } from '@/app/ui/IconsPath'
+import { JOB_ENUM } from '@/app/constants/auth'
 
 interface DropDownUProps {
-  options: readonly string[]
+  options: readonly JobType[]
   title: string
   onSelect: (selectedTag: string) => void
 }
@@ -30,9 +31,11 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
     }
   }
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: JobType) => {
+    console.log('선택완료');
+    
     setSelectedOption(option)
-    onSelect(option)
+    onSelect(JOB_ENUM[option])
     setIsOpen(false)
   }
 

@@ -15,4 +15,4 @@ interface ResponseMain {
   memberInfo: memberInfo
   recommendCardInfo: CardDataTypes[]
 }
-type JobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드'
+type JobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드' | '전체'
