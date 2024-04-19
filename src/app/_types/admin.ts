@@ -33,5 +33,23 @@ interface pointListTypes {
   createdAt: string
   point: number
   type: string
+
   totalPoint: number
+}
+interface memberInfoTypes {
+  memberId: number
+  registrationDate: string
+  email: string
+  grade: string
+  major: string
+  jobKeyword: string
+  point: number
+}
+interface ResponseUser {
+  memberList: memberInfoTypes[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
 }

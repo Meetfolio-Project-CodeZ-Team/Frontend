@@ -1,8 +1,10 @@
 import { USER_BOARD_H } from '@/app/constants/admin'
 import UserInfo from './UserInfo'
-import { mookUser } from '../common/mookData'
 
-const UserBoard = () => {
+interface UserBoardProps {
+  userInfoData: ResponseUser
+}
+const UserBoard = (userInfoData: UserBoardProps) => {
   return (
     <div className="flex flex-col w-[1034px] h-[720px] mt-[22px]">
       <div className="flex w-[1034px] h-[50px] pl-[37px] border-y border-[#616161] items-center text-black text-lg">
@@ -14,9 +16,9 @@ const UserBoard = () => {
         <div className="ml-[56px]">{USER_BOARD_H[4]}</div>
         <div className="ml-[62px]">{USER_BOARD_H[5]}</div>
       </div>
-      {mookUser.map((userInfo, i) => (
+      {userInfoData.userInfoData.memberList.map((userInfo, i) => (
         <UserInfo
-          registrationDate={userInfo.registrationDate}
+          registrationDate={'20' + userInfo.registrationDate}
           email={userInfo.email}
           grade={userInfo.grade}
           major={userInfo.major}
