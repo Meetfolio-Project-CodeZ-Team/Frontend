@@ -17,7 +17,8 @@ const ExpKeywordContainer = () => {
 
   // console.log(expStacks.join(',')) // 배열 스트링으로 변환
 
-  const handleDelete = (index: number) => {
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, index: number) => {
+    event.preventDefault();
     const newStrings = [...experienceData.expStacks];
     newStrings.splice(index, 1);
     setExperienceData({ ...experienceData, expStacks: newStrings });
@@ -28,7 +29,7 @@ const ExpKeywordContainer = () => {
     if (experienceData.expStacks.length < 3) {
       setExperienceData({
         ...experienceData,
-        expStacks: [...experienceData.expStacks, expStack],
+        expStacks: [...experienceData.expStacks, expStack]
       });
       setExpStack('');
     }
@@ -169,6 +170,7 @@ const ExpKeywordContainer = () => {
             <div className="w-[660px] h-[55px] left-[5px] top-[39px] absolute">
               <input
                 type="text"
+                value={expStack}
                 id="stack"
                 name="stack"
                 placeholder="ex) Next.js, 리액트 네이티브, Spring Boot"
@@ -198,8 +200,8 @@ const ExpKeywordContainer = () => {
                   <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
                     <NameBox stack={stack} />
                     <button
-                      className="flex bg-slate-600 w-24 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
-                      onClick={() => handleDelete(i)}
+                      className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
+                      onClick={(e) => handleDelete(e,i)}
                     >
                       X
                     </button>

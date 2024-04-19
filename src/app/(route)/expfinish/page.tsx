@@ -6,11 +6,18 @@ import LoginContainer from '@/app/components/login/LoginContainer'
 
 export default function ExpFinishPage() {
   return (
-    <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen ">
-      <div className="w-[1440px] mx-auto">
-        <Header />
+    <section className="flex flex-col items-center min-h-screen ">
+      <Header />
+      <div className="w-[1440px] mb-10">
         <ExpFinishContainer />
       </div>
     </section>
+    //   <section className="flex flex-col items-center min-h-screen">
+    //   <Header />
+    //   <div className="w-[1440px] mb-10">
+    //     <MainContainer />
+    //   </div>
+    //   <IntroudeContainer />
+    // </section>
   )
 }

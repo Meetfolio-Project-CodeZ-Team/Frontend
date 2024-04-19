@@ -100,7 +100,7 @@ const ExpInfoContainer = () => {
                 onChange={handleInputChange}
                 id="startDate"
                 name="startDate"
-                placeholder="YYYY/MM/DD"
+                placeholder="YYYYMMDD"
                 maxLength={8}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
@@ -121,7 +121,7 @@ const ExpInfoContainer = () => {
                 onChange={handleInputChange}
                 id="endDate"
                 name="endDate"
-                placeholder="YYYY/MM/DD"
+                placeholder="YYYYMMDD"
                 maxLength={8}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />

@@ -3,6 +3,7 @@ import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 
+
 const ExpContentContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
@@ -21,18 +22,15 @@ const ExpContentContainer = () => {
   }
 
   const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
-    const response = await fetch('/api/save', {
+    const response = await fetch(process.env.NEXT_PUBLIC_SERVER + '/api/experiences', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(experienceData),
     })
-
+  
     if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
       console.error('데이터 저장에 실패했습니다.')
     }
   }
