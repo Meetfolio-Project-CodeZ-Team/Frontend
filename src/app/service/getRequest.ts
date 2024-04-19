@@ -27,7 +27,10 @@ export const getDashBoard = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/dashboard`
   return await getRequest(url, accessToken)
 }
-export const getUser = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/admins/members-management`
+export const getUser = async (accessToken: string, jobKeyword?: string) => {
+  jobKeyword
+  const url = jobKeyword
+    ? `${SERVER_URL}/api/admins/members-management?jobKeyword=${jobKeyword}`
+    : `${SERVER_URL}/api/admins/members-management`
   return await getRequest(url, accessToken)
 }
