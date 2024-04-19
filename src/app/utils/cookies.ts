@@ -10,8 +10,12 @@ export const getCookie = (req: Request, name: string) => {
   }
 }
 
-export const logout = () => {
-  document.cookie =
-    'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'
-  window.location.href = '/main'
+export const logout = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login/logout`,
+    {
+      method: 'DELETE',
+    },
+  )
+  console.log('로그아웃 요청', res)
 }

@@ -57,7 +57,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
               <Link href="/main">
                 <button
                   className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium"
-                  onClick={logout}
+                  onClick={() => logout()}
                 >
                   로그아웃
                 </button>

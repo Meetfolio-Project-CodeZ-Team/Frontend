@@ -13,6 +13,7 @@ const deleteRequest = async (url: string, accessToken?: string) => {
       method: 'DELETE',
       headers: headers,
     }).then((res) => res.json())
+console.log(response);
 
     return response
   } catch (error) {
@@ -22,5 +23,9 @@ const deleteRequest = async (url: string, accessToken?: string) => {
 
 export const deleteUser = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/admins/members-management/${id}`
+  return await deleteRequest(url, accessToken)
+}
+export const logoutRequest = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/logout`
   return await deleteRequest(url, accessToken)
 }

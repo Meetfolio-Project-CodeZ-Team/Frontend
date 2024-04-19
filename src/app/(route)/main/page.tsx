@@ -16,12 +16,6 @@ export default function MainPage() {
       console.log('가져온 resData', resData)
 
       setData(resData.result)
-      // if (resData.tokens) {
-      //   setTokens(
-      //     responseData.tokens.accessToken,
-      //     responseData.tokens.refreshToken,
-      //   )
-      // }
     }
     fetchData()
   }, [])
