@@ -72,7 +72,7 @@ export const noContentsAlert = () => {
 }
 
 export const deletePostAlert = () => {
-  toast.error('게시물이 삭제되었습니다. 잠시후 메인페이지로 이동합니다.', {
+  toast.error('해당 회원이 탈퇴 되었습니다.', {
     icon: () => '🗑️',
     theme: 'dark',
     closeOnClick: true,

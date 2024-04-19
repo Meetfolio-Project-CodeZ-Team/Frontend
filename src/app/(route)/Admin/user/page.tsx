@@ -14,13 +14,11 @@ const userPage = () => {
       )
       const resData = await response.json()
       console.log('가져온 resData', resData)
-
       setData(resData.result)
     }
     fetchData()
   }, [])
   if (data) {
-    console.log(data, '대쉬보드 데이터 가져오기~')
     return (
       <section className="flex flex-col min-h-screen">
         <Header isAdmin={true} />

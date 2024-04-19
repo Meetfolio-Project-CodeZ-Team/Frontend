@@ -5,8 +5,8 @@ interface UserBoardProps {
   userInfoData: ResponseUser
 }
 const UserBoard = (userInfoData: UserBoardProps) => {
-  console.log(userInfoData);
-  
+  console.log(userInfoData)
+
   return (
     <div className="flex flex-col w-[1034px] h-[720px] mt-[22px]">
       <div className="flex w-[1034px] h-[50px] pl-[37px] border-y border-[#616161] items-center text-black text-lg">
@@ -19,14 +19,17 @@ const UserBoard = (userInfoData: UserBoardProps) => {
         <div className="ml-[62px]">{USER_BOARD_H[5]}</div>
       </div>
       {userInfoData.userInfoData.memberList.map((userInfo, i) => (
-        <UserInfo
-          registrationDate={'20' + userInfo.registrationDate}
-          email={userInfo.email}
-          grade={userInfo.grade}
-          major={userInfo.major}
-          jobKeyword={userInfo.jobKeyword}
-          point={userInfo.point}
-        />
+        <div key={i}>
+          <UserInfo
+            registrationDate={'20' + userInfo.registrationDate}
+            email={userInfo.email}
+            grade={userInfo.grade}
+            major={userInfo.major}
+            jobKeyword={userInfo.jobKeyword}
+            point={userInfo.point}
+            userId={userInfo.memberId}
+          />
+        </div>
       ))}
     </div>
   )
