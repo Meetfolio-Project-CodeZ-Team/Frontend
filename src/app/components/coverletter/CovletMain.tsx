@@ -153,14 +153,21 @@ const CovletMain = () => {
             경험카드를 참고해 자소서를 작성해보세요
           </span>
         </div>
-        <div className='w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide'>
+        //자소서 작성 중 경험카드 리스트 조회
+        {/* <div className='w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide'>
           <div className="w-[350px] h-full ml-[80px] gap-[20px]">
             <ExpCard />
             <ExpCard />
             <ExpCard />
             <ExpCard />
           </div>
-        </div>
+        </div> */} 
+        //자소서 작성 중 경험카드 세부조회
+        {/* <div className='w-[450px] h-[1100px] mt-[80px] '>
+          <div className="w-[350px] h-full ml-[16px] gap-[20px]">
+            <ExpCardDetail />
+          </div>
+        </div> */} 
       </div>
     </div>
   )
