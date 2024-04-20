@@ -78,11 +78,18 @@ export const MODEL_EVALUATION = [
     loss: 80.01,
   },
 ]
-export const MODEL_TRAIN_H = [
+export const MODEL_MANAGE_H = [
   '모델 생성일',
   '모델명',
   '버전 정보',
   '성능',
   '학습일',
   '배포 상태',
+]
+export const MODEL_TRAIN_H = [
+  '학습 데이터 리스트',
+  '데이터 저장일',
+  '지원 직무',
+  '사이트',
+  '사이트 URL',
 ]

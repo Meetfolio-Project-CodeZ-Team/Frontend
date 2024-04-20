@@ -34,6 +34,7 @@ const ExpContentContainer = () => {
       console.error('데이터 저장에 실패했습니다.')
     }
   }
+  
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">

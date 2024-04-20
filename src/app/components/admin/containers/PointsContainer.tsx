@@ -1,6 +1,6 @@
 'use client'
 import { MONTH, POINT_ANAL, YEAR } from '@/app/constants/admin'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PaymentAnal from '../point/PaymentAnal'
 import PointAnalDetail from '../point/PointAnalDetail'
 import CalendarDropDown from '../point/CalendarDropDown'
@@ -9,6 +9,25 @@ const PointsContainer = () => {
   const [isPoint, setIsPoint] = useState(true)
   const [year, setYear] = useState('2024')
   const [month, setMonth] = useState('04')
+  const [pointData, setPointData] = useState<ResponsePoint | null>(null)
+  const [paymentData, setPaymentData] = useState<ResponsePayment | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/${isPoint ? 'point' : 'payment'}?year=${year}&month=${month}`,
+      )
+      const resData = await response.json()
+      console.log('가져온 resData', resData)
+      if (isPoint) {
+        setPointData(resData.result)
+      } else {
+        setPaymentData(resData.result)
+      }
+    }
+    fetchData()
+  }, [isPoint])
+
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[32px] font-bold  mb-9">매출 관리</div>

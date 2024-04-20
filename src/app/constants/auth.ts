@@ -8,8 +8,8 @@ export const SIGNUP = {
 
 export const JOBKEYWORD = [
   '백엔드',
-  '웹 개발',
-  '앱 개발',
+  '웹개발',
+  '앱개발',
   '디자인',
   'AI',
 ] as const
@@ -24,5 +24,22 @@ export const COMPLETE = [
 
 export const GRADE = ['1학년', '2학년', '3학년', '4학년', '졸업생']
 
-export const JOBKEYWORD_USER = [...JOBKEYWORD, '전체']
+export const JOBKEYWORD_USER: JobType[] = [...JOBKEYWORD, '전체']
 export const Board = ['그룹원 모집', '취업정보']
+
+export const GRADE_ENUM: GradeEnum = {
+  '1학년': 'FRESHMAN',
+  '2학년': 'SOPHOMORE',
+  '3학년': 'JUNIOR',
+  '4학년': 'SENIOR',
+  졸업생: 'GRADUATE',
+}
+
+export const JOB_ENUM = {
+  백엔드: 'BACKEND',
+  웹개발: 'WEB',
+  앱개발: 'APP',
+  디자인: 'DESIGN',
+  AI: 'AI',
+  전체: '',
+}

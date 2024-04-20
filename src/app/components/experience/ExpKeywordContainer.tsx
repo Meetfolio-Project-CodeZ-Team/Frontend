@@ -9,31 +9,33 @@ import NameBox from '../common/NameBox'
 const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
-  const { expStacks } = experienceData;
-
+  const { expStacks } = experienceData
 
   const [expStack, setExpStack] = useState('')
   // const [expStacks, setExpStacks] = useState<string[]>([])
 
   // console.log(expStacks.join(',')) // 배열 스트링으로 변환
 
-  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>, index: number) => {
-    event.preventDefault();
-    const newStrings = [...experienceData.expStacks];
-    newStrings.splice(index, 1);
-    setExperienceData({ ...experienceData, expStacks: newStrings });
-  };
+  const handleDelete = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    event.preventDefault()
+    const newStrings = [...experienceData.expStacks]
+    newStrings.splice(index, 1)
+    setExperienceData({ ...experienceData, expStacks: newStrings })
+  }
 
   const handleAddKeyword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
+    event.preventDefault()
     if (experienceData.expStacks.length < 3) {
       setExperienceData({
         ...experienceData,
-        expStacks: [...experienceData.expStacks, expStack]
-      });
-      setExpStack('');
+        expStacks: [...experienceData.expStacks, expStack],
+      })
+      setExpStack('')
     }
-  };
+  }
 
   // const handleRemoveKeyword = (index: number) => {
   //   const newExpStack = [...expStack]
@@ -179,7 +181,7 @@ const ExpKeywordContainer = () => {
                 onChange={(e) => setExpStack(e.target.value)}
               />
             </div>
-            
+
             <div className="w-[104px] h-[55px] left-[669px] top-[39px] absolute">
               {/* <button className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
                 추가하기
@@ -194,21 +196,21 @@ const ExpKeywordContainer = () => {
               {/* 기술 스택 키워드 목록 */}
             </div>
           </div>
-          <div className='w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]'>
-              {expStacks.map((stack, i) => (
-                <div key={i}>
-                  <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
-                    <NameBox stack={stack} />
-                    <button
-                      className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
-                      onClick={(e) => handleDelete(e,i)}
-                    >
-                      X
-                    </button>
-                  </div>
+          <div className="w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]">
+            {expStacks.map((stack, i) => (
+              <div key={i}>
+                <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
+                  <NameBox stack={stack} />
+                  <button
+                    className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
+                    onClick={(e) => handleDelete(e, i)}
+                  >
+                    X
+                  </button>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
           <div className="w-[863px] h-[97px] left-[168px] top-[14px] absolute text-center">
             <span className="text-black text-4xl font-semibold leading-[54px]">
               본인이 사용한 기술 스택을 입력하세요.
@@ -219,7 +221,6 @@ const ExpKeywordContainer = () => {
             </span>
           </div>
         </div>
-        
       </form>
       <div className="w-[1440px] h-20 pb-[200px] relative  mt-[80px] justify-center items-center inline-flex gap-[50px] mx-auto">
         <button

@@ -18,7 +18,7 @@ export default function ExperiencePage() {
   useEffect(() => {
     router.push('../../experience')
   }, [experienceNumber, router])
-  
+
   return (
     <section className="flex flex-col items-center min-h-screen ">
         <Header />
