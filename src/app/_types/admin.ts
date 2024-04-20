@@ -66,11 +66,10 @@ interface PaymentListTypes {
   createdAt: string
   payment: number
   point: number
-  totalPoint: number
+  email: string
 }
 
 interface PaymentInfoTypes {
-  myPoint: number
   paymentList: PaymentListTypes[]
   listSize: number
   totalPage: number
@@ -80,6 +79,6 @@ interface PaymentInfoTypes {
 }
 
 interface ResponsePayment {
-  memberInfo: MemberInfoPoint
+  totalSales: number
   paymentInfo: PaymentInfoTypes
 }

@@ -5,10 +5,11 @@ import PointInfo from './PointInfo'
 interface PaymentAnalProps {
   year: string
   month: string
-  totalSales: string
+  totalSales: number
+  paymentList: PaymentListTypes[]
 }
 const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
-  const { year, month, totalSales } = paymentAnal
+  const { year, month, totalSales, paymentList } = paymentAnal
   return (
     <div className="flex flex-col items-center gap-y-6 mt-[62px]">
       <div className="text-[40px] font-bold">
@@ -25,7 +26,7 @@ const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
           <div className="ml-[150px]">{PAYMENT_H[3]}</div>
         </div>
         <div className="flex flex-col h-[480px] overflow-y-auto scrollbar-hide">
-          {mookPoint.map((point, i) => (
+          {paymentList.map((point, i) => (
             <PointInfo
               createdAt={point.createdAt}
               email={point.email}

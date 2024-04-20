@@ -29,17 +29,16 @@ export const COMUNITY_BOARD_H = [
 export const POINT_ANAL = ['포인트 사용 통계', '결제 내역 조회']
 
 export const YEAR = [
+  '2016',
+  '2017',
+  '2018',
+  '2019',
   '2020',
   '2021',
   '2022',
   '2023',
   '2024',
   '2025',
-  '2026',
-  '2027',
-  '2028',
-  '2029',
-  '2030',
 ]
 export const MONTH = [
   '01',

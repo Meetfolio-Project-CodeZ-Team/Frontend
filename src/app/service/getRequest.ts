@@ -12,8 +12,6 @@ const getRequest = async (url: string, accessToken?: string) => {
     const response = await fetch(url, {
       headers: headers,
     }).then((res) => res.json())
-    console.log('get요청 header', headers)
-
     return response
   } catch (error) {
     console.log('Error:', error)
