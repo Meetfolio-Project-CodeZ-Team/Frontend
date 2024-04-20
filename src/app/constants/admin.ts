@@ -92,3 +92,5 @@ export const MODEL_TRAIN_H = [
   '사이트',
   '사이트 URL',
 ]
+
+export const MODEL_PATH = ['service', 'train/data', 'version']

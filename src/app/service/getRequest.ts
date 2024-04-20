@@ -53,3 +53,13 @@ export const getPayment = async (
   const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }
+
+export const getModelData = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/model-management`
+  return await getRequest(url, accessToken)
+}
+
+export const getTrainData = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management`
+  return await getRequest(url, accessToken)
+}

@@ -82,3 +82,34 @@ interface ResponsePayment {
   totalSales: number
   paymentInfo: PaymentInfoTypes
 }
+
+interface ResponseModelData {
+  modelEvaluation: EvaluationTypes[]
+  aiserviceInfo: aiServiceInfoTypes
+}
+interface EvaluationTypes {
+  modelName: string
+  accuracy: number
+  loss: number
+}
+interface aiServiceInfoTypes {
+  feedbackCount: number
+  analysisCount: number
+  totalCount: number
+  satisfaction: number
+}
+
+interface ResponseTrainData {
+  datasetInfo: datasetInfoTypes[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}
+interface datasetInfoTypes {
+  createdAt: string
+  job: string
+  domain: string
+  url: string
+}

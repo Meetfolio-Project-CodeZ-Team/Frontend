@@ -1,14 +1,32 @@
 'use client'
-import { MODEL_NAV } from '@/app/constants/admin'
-import { useState } from 'react'
+import { MODEL_NAV, MODEL_PATH } from '@/app/constants/admin'
+import { useEffect, useState } from 'react'
 import ModelUsage from '../model/ModelUsage'
 import ModelManage from '../model/ModelManage'
 import ModelTrain from '../model/ModelTrain'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useState(0)
+  const [modelData, setModelData] = useState<ResponseModelData | null>(null)
+  const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
+
   const marginBorder =
     titleNum === 1 ? 'ml-[145px]' : titleNum === 2 ? 'ml-[290px]' : ''
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
+      )
+      const resData = await response.json()
+      console.log('가져온 resData', resData)
+      if (titleNum === 0) setModelData(resData)
+      else if (titleNum === 1) setTrainData(resData)
+      else setModelData(resData)
+    }
+    fetchData()
+  }, [titleNum])
+
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[32px] font-bold  mb-9">AI 관리</div>
