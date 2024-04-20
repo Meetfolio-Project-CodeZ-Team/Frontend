@@ -1,5 +1,4 @@
 import { PAYMENT_H } from '@/app/constants/admin'
-import { mookPoint } from './mookpoint'
 import PointInfo from './PointInfo'
 
 interface PaymentAnalProps {
