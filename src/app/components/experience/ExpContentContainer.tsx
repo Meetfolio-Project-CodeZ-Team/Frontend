@@ -21,20 +21,26 @@ const ExpContentContainer = () => {
     })
   }
 
-  const saveData = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_SERVER + '/api/experiences', {
+  const saveExpData = async () => {
+    const { expStacks, ...dataToSend } = experienceData
+
+    const response = await fetch('/api/experiences', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(experienceData),
+      body: JSON.stringify({
+        ...dataToSend,
+        stack: expStacks.join('/'),
+        jobKeyword: 'AI',
+      }),
     })
   
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
   }
-  
+
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -138,7 +144,7 @@ const ExpContentContainer = () => {
         </button>
         <button
           className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
+          onClick={saveExpData}
         >
           저장하기
         </button>

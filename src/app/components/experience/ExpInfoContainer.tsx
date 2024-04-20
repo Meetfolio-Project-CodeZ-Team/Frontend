@@ -103,7 +103,7 @@ const ExpInfoContainer = () => {
                 id="startDate"
                 name="startDate"
                 placeholder="YYYYMMDD"
-                maxLength={8}
+                maxLength={10}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
               <div className="w-[133px] h-[23px] left-[157px] top-[50px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
@@ -124,7 +124,7 @@ const ExpInfoContainer = () => {
                 id="endDate"
                 name="endDate"
                 placeholder="YYYYMMDD"
-                maxLength={8}
+                maxLength={10}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>

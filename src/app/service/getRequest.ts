@@ -50,3 +50,12 @@ export const getPayment = async (
   const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }
+
+export const getExpRequest = async (
+  accessToken: string,
+  year: string,
+  month: string,
+) => {
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
+  return await getRequest(url, accessToken)
+}

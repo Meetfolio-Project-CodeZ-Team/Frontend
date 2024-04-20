@@ -54,3 +54,9 @@ export const postLogin = async (LoginContent: loginContent) => {
     console.log('Error:', error)
   }
 }
+
+export const postExperience = async (experienceContent: ExperienceDataTypes, accessToken: string) => {
+  const url = `${SERVER_URL}/api/experiences`
+  console.log(experienceContent, '로 요청')
+  return await postRequest(url, experienceContent, accessToken)
+}
