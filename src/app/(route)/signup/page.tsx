@@ -1,7 +1,7 @@
 'use client'
 
 import Header from '@/app/components/layout/Header'
-import SignupContainer from '@/app/components/signup/SignupContainer'
+import SignupContainer from '@/app/components/signup/containers/SignupContainer'
 
 export default function SignupPage() {
   return (

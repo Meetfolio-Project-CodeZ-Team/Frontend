@@ -24,12 +24,14 @@ const ExpInfoContainer = () => {
     })
   }
 
-  const handleTextareaChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleTextareaChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>,
+  ) => {
     setExperienceData({
       ...experienceData,
       [event.target.name]: event.target.value,
-    });
-  };
+    })
+  }
 
   return (
     <div className="justify-center items-center">

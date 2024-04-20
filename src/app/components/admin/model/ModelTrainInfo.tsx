@@ -1,50 +1,31 @@
-import React from 'react'
-import Icons from '../../common/Icons'
-import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
 import DeleteModal from '../common/DeleteModal'
 
 interface ModelTrainInfoProps {
-  modelId: number
-  version: number
-  modelName: string
-  fileName: string
-  filePath: string
-  status: string
-  createdDate: string
-  learnedDate: string
-  activatedDate: string
+  createdAt: string
+  job: string
+  domain: string
+  url: string
 }
 
-const ModelTrainInfo = (trainInfo: ModelTrainInfoProps) => {
-  const {
-    modelId,
-    version,
-    modelName,
-    fileName,
-    filePath,
-    status,
-    createdDate,
-    learnedDate,
-    activatedDate,
-  } = trainInfo
-
+const ModelTrainInfo = ({
+  createdAt,
+  job,
+  domain,
+  url,
+}: ModelTrainInfoProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-
   return (
-    <div className="flex flex-col w-[1034px] h-[50px]">
-      <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
-        <div className="w-[121px] text-center">{createdDate}</div>
-        <div className="w-[228px] text-center">{modelName}</div>
-        <div className="w-[278px] text-center">{version}</div>
-        <div className="w-[145px] text-center">{status}</div>
-        <div className="w-[145px] text-center">{learnedDate}</div>
-        <div className="w-[145px] text-center">{status}</div>
-        <div
-          className="ml-[168px] flex text-center cursor-pointer"
-          onClick={openModal}
-        >
-          <Icons name={boardDelete} />
+    <div className="flex flex-col w-[1034px] h-auto">
+      <div className="flex w-[1034px] h-[75px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
+        <div className="w-[105px] text-center">{'2024-01-01'}</div>
+        <div className="w-[176px] text-center">{'백엔드'}</div>
+        <div className="w-[245px] text-center">{'링커리어'}</div>
+        <div className="w-[350px] h-[auto] text-sm whitespace-normal">
+          {`https://linkareer.com/cover-letter/32580?page=1&role=%EA%B0%9C%EB%B0%9C%EC%9E%90&sort=RELEVANCE&tab=all`}
+        </div>
+        <div onClick={handleModalClick}>
+          {isOpen && <DeleteModal closeModal={closeModal} />}
         </div>
         <div onClick={handleModalClick}>
           {isOpen && <DeleteModal closeModal={closeModal} />}

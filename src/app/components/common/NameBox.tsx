@@ -1,4 +1,3 @@
-
 interface NameBoxProps {
   stack: string
 }

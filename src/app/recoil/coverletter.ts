@@ -13,6 +13,6 @@ export const covletData = atom<CoverLetterDataTypes>({
     job: '', // null
     keyword1: '', // null
     keyword2: '', // null
-    shareType:  '' // null
+    shareType: '', // null
   },
 })
