@@ -1,3 +1,4 @@
+'use client'
 import { MODEL_NAV } from '@/app/constants/admin'
 import { useState } from 'react'
 import ModelUsage from '../model/ModelUsage'
@@ -6,7 +7,8 @@ import ModelTrain from '../model/ModelTrain'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useState(0)
-
+  const marginBorder =
+    titleNum === 1 ? 'ml-[145px]' : titleNum === 2 ? 'ml-[290px]' : ''
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[32px] font-bold  mb-9">AI 관리</div>
@@ -24,7 +26,7 @@ const ModelContainer = () => {
         </div>
       </div>
       <div
-        className={`w-[150px] ml-${titleNum * 145} h-0 border-2 border-black`}
+        className={`w-[150px] ${marginBorder} h-0 border-2 border-black`}
       ></div>
       <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">

@@ -1,3 +1,5 @@
+'use client'
+
 import { logout } from '@/app/utils/cookies'
 import Link from 'next/link'
 interface HeaderProps {
@@ -25,7 +27,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           </div>
         </Link>
         {!isAdmin ? (
-          <div className="absolute right-[40px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
+          <div className="absolute right-[10px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
             <Link href="experience">경험분해하기</Link>
             <Link href="login">AI자기소개서솔루션</Link>
             <Link href="login">커뮤니티</Link>

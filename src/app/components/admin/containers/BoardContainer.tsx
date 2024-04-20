@@ -1,5 +1,5 @@
 'use client'
-import { Board } from '@/app/constants/auth'
+import { Board, JOBKEYWORD } from '@/app/constants/auth'
 import DropDownU from '../common/DropDownU'
 import ComunityBoard from '@/app/components/admin/board/ComunityBoard'
 import SearhBoard from '../board/SearhBoard'
@@ -11,7 +11,7 @@ const BoardContainer = () => {
       <div className="flex items-center w-[1013px] justify-between">
         <SearhBoard />
         <DropDownU
-          options={Board}
+          options={JOBKEYWORD}
           title={'전체'}
           onSelect={() => console.log('클릭')}
         />
