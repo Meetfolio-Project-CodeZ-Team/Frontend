@@ -57,7 +57,7 @@ const LoginContainer = () => {
           type={'loginB'}
           isDisabled={isInserted}
           onClickHandler={() => postLogin()}
-          className={isInserted ? 'text-[#b5b5b5] bg-white' : ''}
+          className={isInserted ? 'text-[#787878] bg-white' : ''}
         />
         <Button
           buttonText={'회원가입'}

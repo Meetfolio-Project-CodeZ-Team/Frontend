@@ -150,9 +150,9 @@ const getJOBValue = (job: string): string => {
   switch (job) {
     case '백엔드':
       return 'BACKEND'
-    case '웹 개발':
+    case '웹개발':
       return 'WEB'
-    case '앱 개발':
+    case '앱개발':
       return 'APP'
     case '디자인':
       return 'DESIGN'
