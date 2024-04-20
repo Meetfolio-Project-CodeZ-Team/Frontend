@@ -7,8 +7,8 @@ interface ModelValue {
 }
 
 interface ResponseDashBoard {
-  aiSolutionInfo: AISolutionTypes
-  memberInfo: memberInfo
+  aiServiceInfo: AISolutionTypes
+  membersInfo: jobInfo
   pointInfo: pointInfoTypes
   paymentInfo: number
 }
@@ -21,19 +21,14 @@ interface AISolutionTypes {
 }
 
 interface pointInfoTypes {
-  myPoint: number
-  pointList: pointListTypes[]
-  listSize: number
-  totalPage: number
-  totalElements: number
-  isFirst: boolean
-  isLast: boolean
+  analysisPoint: number
+  solutionPoint: number
+  totalPoint: number
 }
 interface pointListTypes {
   createdAt: string
   point: number
   type: string
-
   totalPoint: number
 }
 interface memberInfoTypes {

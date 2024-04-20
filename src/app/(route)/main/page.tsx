@@ -3,10 +3,14 @@
 import Header from '@/app/components/layout/Header'
 import IntroudeContainer from '@/app/components/main/containers/IntroduceContainer'
 import MainContainer from '@/app/components/main/containers/MainContainer'
+import { userState } from '@/app/recoil/signUp'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 export default function MainPage() {
   const [data, setData] = useState<ResponseMain | null>(null)
+  const [userInfo, setUser] = useRecoilState(userState)
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -22,7 +26,7 @@ export default function MainPage() {
   if (data) {
     const { memberInfo, recommendCardInfo } = data
     console.log(memberInfo, recommendCardInfo, '메인에서 가져오기~')
-
+    setUser(memberInfo)
     return (
       <section className="flex flex-col items-center min-h-screen">
         <Header

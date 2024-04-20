@@ -11,6 +11,16 @@ interface memberInfo {
   profile: string
   major: string | null
 }
+
+interface jobInfo {
+  ai: number
+  backend: number
+  app: number
+  design: number
+  totalCount: number
+  web: number
+}
+
 interface ResponseMain {
   memberInfo: memberInfo
   recommendCardInfo: CardDataTypes[]

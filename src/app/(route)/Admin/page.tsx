@@ -9,26 +9,19 @@ export default function AdminPage() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/dashboard`,
       )
       const resData = await response.json()
       console.log('가져온 resData', resData)
-
       setData(resData.result)
-      // if (resData.tokens) {
-      //   setTokens(
-      //     responseData.tokens.accessToken,
-      //     responseData.tokens.refreshToken,
-      //   )
-      // }
     }
     fetchData()
   }, [])
   if (data) {
-    const { aiSolutionInfo, memberInfo, pointInfo, paymentInfo } = data
+    const { aiServiceInfo, membersInfo, pointInfo, paymentInfo } = data
     console.log(
-      aiSolutionInfo,
-      memberInfo,
+      aiServiceInfo,
+      membersInfo,
       pointInfo,
       paymentInfo,
       '대쉬보드 데이터 가져오기~',
