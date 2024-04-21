@@ -4,18 +4,26 @@ import ModelTrainInfo from './ModelTrainInfo'
 import Button from '../../common/Button'
 import { useState } from 'react'
 import AddTrainData from './AddTrainData'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { addTrainData } from '@/app/utils/toast'
 
 interface ModelTrainProps {
   trainData: datasetInfoTypes[]
 }
 const ModelTrain = ({ trainData }: ModelTrainProps) => {
-  console.log(trainData)
   const [isAdd, setIsAdd] = useState(false)
 
+  const succeedAdd = () => {
+    addTrainData()
+    setIsAdd(false)
+  }
+
   return isAdd ? (
-    <AddTrainData />
+    <AddTrainData addComplete={() => succeedAdd()} />
   ) : (
     <div className="flex flex-col w-[1010px] h-[780px] items-center">
+      <ToastContainer />
       <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-b border-[#616161] items-center text-black text-lg">
         <div className="font-bold">{MODEL_TRAIN_H[1]}</div>
@@ -23,7 +31,7 @@ const ModelTrain = ({ trainData }: ModelTrainProps) => {
         <div className="ml-[125px]">{MODEL_TRAIN_H[3]}</div>
         <div className="ml-[300px]">{MODEL_TRAIN_H[4]}</div>
       </div>
-      <div className="h-[620px] overflow-y-auto scrollbar-hide">
+      <div className="h-[580px] overflow-y-auto scrollbar-hide">
         {trainData.map((data, i) => (
           <div key={i}>
             <ModelTrainInfo
