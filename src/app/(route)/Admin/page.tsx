@@ -29,7 +29,7 @@ export default function AdminPage() {
     return (
       <section className="flex flex-col min-h-screen">
         <Header isAdmin={true} />
-        <div className="flex w-[full] h-[980px]">
+        <div className="flex w-[full] h-[auto]">
           <AdminNavContainer selected={'dashboard'} />
           <div className="flex-grow">
             <DashboardContainer DashboardInfo={data} />
