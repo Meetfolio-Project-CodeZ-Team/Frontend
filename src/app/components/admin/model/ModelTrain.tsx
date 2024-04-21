@@ -1,15 +1,21 @@
+'use client'
 import { MODEL_TRAIN_H } from '@/app/constants/admin'
 import ModelTrainInfo from './ModelTrainInfo'
 import Button from '../../common/Button'
+import { useState } from 'react'
+import AddTrainData from './AddTrainData'
 
 interface ModelTrainProps {
   trainData: datasetInfoTypes[]
 }
 const ModelTrain = ({ trainData }: ModelTrainProps) => {
   console.log(trainData)
+  const [isAdd, setIsAdd] = useState(false)
 
-  return (
-    <div className="flex flex-col w-[1010px] h-[780px] mt-[12px] items-center">
+  return isAdd ? (
+    <AddTrainData />
+  ) : (
+    <div className="flex flex-col w-[1010px] h-[780px] items-center">
       <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-b border-[#616161] items-center text-black text-lg">
         <div className="font-bold">{MODEL_TRAIN_H[1]}</div>
@@ -35,13 +41,13 @@ const ModelTrain = ({ trainData }: ModelTrainProps) => {
           type={'modelBtn'}
           className="bg-white border-2 border-[#486283] text-[#486283]"
           isDisabled={false}
-          onClickHandler={() => console.log('hi')}
+          onClickHandler={() => setIsAdd(true)}
         />
         <Button
           buttonText={'추가학습'}
           type={'modelBtn'}
           isDisabled={false}
-          onClickHandler={() => console.log('hi')}
+          onClickHandler={() => setIsAdd(true)}
         />
       </div>
     </div>

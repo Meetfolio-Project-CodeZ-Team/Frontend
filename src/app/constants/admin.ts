@@ -94,3 +94,10 @@ export const MODEL_TRAIN_H = [
 ]
 
 export const MODEL_PATH = ['service', 'train/data', 'version']
+
+export const ADD_TRAIN_H = [
+  '사이트 이름',
+  '사이트 URL',
+  '지원 직무',
+  '자기소개서 답변',
+]

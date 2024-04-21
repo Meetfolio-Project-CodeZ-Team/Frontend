@@ -12,6 +12,8 @@ export const BUTTON_STYLE = {
     `w-[480px] h-[56px] text-[28px] text-white text-2xl font-semibold  bg-[#1A202C] rounded-[20px] ${className} `,
   modelBtn: (className: string) =>
     `w-[150px] h-[50px] text-xl font-semibold bg-[#7AA9E7] rounded-[20px] ${className} `,
+  addDataBtn: (className: string) =>
+    `w-[820px] h-[60px] text-[26px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
 } as const
 
 export const INPUT_STYLE = {
@@ -26,6 +28,8 @@ export const INPUT_STYLE = {
     `w-[280px] h-[32px] bg-white rounded-[10px] focus:outline-none ${className}`,
   exp1: (className: string) =>
     `w-[900px] text-xl font-medium pl-7 h-15 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
+  train: (className: string) =>
+    `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {
