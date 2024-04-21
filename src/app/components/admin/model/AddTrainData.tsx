@@ -7,11 +7,16 @@ import Button from '../../common/Button'
 import DropDownModel from './DropDownModel'
 import { JOBKEYWORD } from '@/app/constants/auth'
 
-const AddTrainData = () => {
+interface AddTrainDataProps {
+  addComplete: () => void
+}
+
+const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
   const [domain, setDomain] = useState('')
   const [url, setUrl] = useState('')
   const [job, setJob] = useState('')
   const [data, setData] = useState('')
+  console.log(data.length)
 
   const postTrainData = async () => {
     const requestOptions = {
@@ -25,6 +30,7 @@ const AddTrainData = () => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train`,
       requestOptions,
     )
+    addComplete()
   }
 
   console.log(job)

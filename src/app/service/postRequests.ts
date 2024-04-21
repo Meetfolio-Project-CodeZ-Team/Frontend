@@ -37,10 +37,6 @@ export const postSignUp = async (signUpContent: signupTypes) => {
   return await postRequest(url, signUpContent)
 }
 
-// export const postLogin = async (LoginContent: loginContent) => {
-//   return await postRequest(url, LoginContent)
-// }
-
 export const postLogin = async (LoginContent: loginContent) => {
   try {
     const url = `${SERVER_URL}/api/login`
@@ -53,4 +49,13 @@ export const postLogin = async (LoginContent: loginContent) => {
   } catch (error) {
     console.log('Error:', error)
   }
+}
+
+export const postTrainData = async (
+  accessToken: string,
+  trainData: datasetInfoTypes,
+) => {
+  const url = `${SERVER_URL}/api/admins/data-management`
+  console.log(trainData, '로 요청')
+  return await postRequest(url, trainData, accessToken)
 }
