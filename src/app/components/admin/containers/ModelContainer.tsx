@@ -9,7 +9,6 @@ const ModelContainer = () => {
   const [titleNum, setTitleNum] = useState(0)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
-
   const marginBorder =
     titleNum === 1 ? 'ml-[145px]' : titleNum === 2 ? 'ml-[290px]' : ''
 
@@ -19,10 +18,10 @@ const ModelContainer = () => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
       )
       const resData = await response.json()
-      console.log('가져온 resData', resData)
-      if (titleNum === 0) setModelData(resData)
-      else if (titleNum === 1) setTrainData(resData)
-      else setModelData(resData)
+      if (titleNum === 0) setModelData(resData.result)
+      else if (titleNum === 1) setTrainData(resData.result)
+      else setModelData(resData.result)
+      console.log('가져온 resData', resData.result)
     }
     fetchData()
   }, [titleNum])
@@ -48,13 +47,7 @@ const ModelContainer = () => {
       ></div>
       <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">
-        {titleNum === 0 && (
-          <ModelUsage
-            feedbackCount={110}
-            analysisCount={320}
-            totalCount={430}
-          />
-        )}
+        {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
         {titleNum === 1 && <ModelTrain />}
         {titleNum === 2 && <ModelManage />}
       </div>

@@ -1,4 +1,3 @@
-'use client'
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import ModelContainer from '@/app/components/admin/containers/ModelContainer'
 import Header from '@/app/components/layout/Header'
