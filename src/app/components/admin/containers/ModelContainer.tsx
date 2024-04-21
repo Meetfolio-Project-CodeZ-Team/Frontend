@@ -48,7 +48,9 @@ const ModelContainer = () => {
       <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">
         {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
-        {titleNum === 1 && <ModelTrain />}
+        {titleNum === 1 && trainData && (
+          <ModelTrain trainData={trainData.datasetInfo} />
+        )}
         {titleNum === 2 && <ModelManage />}
       </div>
     </div>
