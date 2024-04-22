@@ -4,6 +4,7 @@ import PortfolioContainer from '@/app/components/mypage/PortfolioContainer'
 import Header from '@/app/components/layout/Header'
 import MyCovletDetail from '@/app/components/mypage/MyCovletDetail'
 import MyExpList from '@/app/components/mypage/MyExpList'
+import MyExpCardDetail from '@/app/components/mypage/MyExpCardDetail'
 
 export default function UserPortPage() {
   
@@ -14,8 +15,9 @@ export default function UserPortPage() {
         <UserNavContainer selected={'portfolio'} />
         <div className="flex-grow">
           {/* <PortfolioContainer /> */}
-          {/* <MyCovletDetail /> */}
-          <MyExpList />
+          <MyCovletDetail />
+          {/* <MyExpList /> */}
+          {/* <MyExpCardDetail/> */}
         </div>
       </div>
     </section>
