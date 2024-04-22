@@ -6,11 +6,15 @@ import { useState } from 'react'
 
 interface DeleteModalProps {
   closeModal: () => void
+  deleteUser?: () => void
 }
-const DeleteModal = ({ closeModal }: DeleteModalProps) => {
+const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
   const [isDeleted, setIsDeleted] = useState(false)
   const handleDelete = () => {
     setIsDeleted(true)
+    if (deleteUser) {
+      deleteUser()
+    }
   }
 
   return (

@@ -2,47 +2,71 @@ const AI2 = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="160"
-      height="160"
-      viewBox="0 0 160 160"
+      width="116"
+      height="102"
+      viewBox="0 0 116 102"
       fill="none"
     >
-      <g clip-path="url(#clip0_389_3739)">
+      <g opacity="0.2">
         <path
-          d="M80 160C124.183 160 160 124.183 160 80C160 35.8172 124.183 0 80 0C35.8172 0 0 35.8172 0 80C0 124.183 35.8172 160 80 160Z"
-          fill="#4F5D73"
-        />
-        <g opacity="0.2">
-          <path
-            d="M45 70H35C29.4775 70 25 74.4775 25 80V112.5C25 118.023 29.4775 122.5 35 122.5H55V80C55 74.4775 50.5225 70 45 70Z"
-            fill="#231F20"
-          />
-          <path
-            d="M85 32.5H75C69.4775 32.5 65 36.9775 65 42.5V122.5H95V42.5C95 36.9775 90.5225 32.5 85 32.5Z"
-            fill="#231F20"
-          />
-          <path
-            d="M125 82.5H115C109.477 82.5 105 86.9775 105 92.5V122.5H125C130.523 122.5 135 118.023 135 112.5V92.5C135 86.9775 130.523 82.5 125 82.5Z"
-            fill="#231F20"
-          />
-        </g>
-        <path
-          d="M45 65H35C29.4775 65 25 69.4775 25 75V107.5C25 113.023 29.4775 117.5 35 117.5H55V75C55 69.4775 50.5225 65 45 65Z"
-          fill="#DEE5ED"
+          d="M20 49H10C4.4775 49 0 53.4775 0 59V91.5C0 97.0225 4.4775 101.5 10 101.5H30V59C30 53.4775 25.5225 49 20 49Z"
+          fill="#231F20"
         />
         <path
-          d="M85 27.5H75C69.4775 27.5 65 31.9775 65 37.5V117.5H95V37.5C95 31.9775 90.5225 27.5 85 27.5Z"
-          fill="#7AAAE8"
+          d="M60 11.5H50C44.4775 11.5 40 15.9775 40 21.5V101.5H70V21.5C70 15.9775 65.5225 11.5 60 11.5Z"
+          fill="#231F20"
         />
         <path
-          d="M125 77.5H115C109.477 77.5 105 81.9775 105 87.5V117.5H125C130.523 117.5 135 113.023 135 107.5V87.5C135 81.9775 130.523 77.5 125 77.5Z"
-          fill="white"
+          d="M100 61.5H90C84.4775 61.5 80 65.9775 80 71.5V101.5H100C105.523 101.5 110 97.0225 110 91.5V71.5C110 65.9775 105.523 61.5 100 61.5Z"
+          fill="#231F20"
         />
       </g>
+      <path
+        d="M26 38H16C10.4775 38 6 42.4775 6 48V80.5C6 86.0225 10.4775 90.5 16 90.5H36V48C36 42.4775 31.5225 38 26 38Z"
+        fill="url(#paint0_linear_389_3740)"
+      />
+      <path
+        d="M66 0.5H56C50.4775 0.5 46 4.9775 46 10.5V90.5H76V10.5C76 4.9775 71.5225 0.5 66 0.5Z"
+        fill="url(#paint1_linear_389_3740)"
+      />
+      <path
+        d="M106 50.5H96C90.4775 50.5 86 54.9775 86 60.5V90.5H106C111.523 90.5 116 86.0225 116 80.5V60.5C116 54.9775 111.523 50.5 106 50.5Z"
+        fill="url(#paint2_linear_389_3740)"
+      />
       <defs>
-        <clipPath id="clip0_389_3739">
-          <rect width="160" height="160" fill="white" />
-        </clipPath>
+        <linearGradient
+          id="paint0_linear_389_3740"
+          x1="21"
+          y1="38"
+          x2="21"
+          y2="90.5"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.5" stop-color="#486284" />
+          <stop offset="1" stop-color="#10161E" />
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_389_3740"
+          x1="61"
+          y1="0.5"
+          x2="61"
+          y2="90.5"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.41" stop-color="#7AAAE8" />
+          <stop offset="1" stop-color="#445F82" />
+        </linearGradient>
+        <linearGradient
+          id="paint2_linear_389_3740"
+          x1="101"
+          y1="50.5"
+          x2="101"
+          y2="90.5"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.41" stop-color="white" />
+          <stop offset="1" stop-color="#BACEE7" />
+        </linearGradient>
       </defs>
     </svg>
   )

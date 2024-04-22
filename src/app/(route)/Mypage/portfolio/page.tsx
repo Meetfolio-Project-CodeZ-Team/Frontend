@@ -15,8 +15,8 @@ export default function UserPortPage() {
         <UserNavContainer selected={'portfolio'} />
         <div className="flex-grow">
           {/* <PortfolioContainer /> */}
-          <MyCovletDetail />
-          {/* <MyExpList /> */}
+          {/* <MyCovletDetail /> */}
+          <MyExpList />
           {/* <MyExpCardDetail/> */}
         </div>
       </div>

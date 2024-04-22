@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import Button from '../common/Button'
 import { COMPLETE } from '@/app/constants/auth'
+import { useRouter } from 'next/navigation'
 
 const Complete = () => {
+  const router = useRouter()
+
   return (
     <div className="flex flex-col items-center mt-[193px]">
       <Image
@@ -30,7 +33,7 @@ const Complete = () => {
         buttonText="로그인 하러가기"
         type={'complete'}
         isDisabled={false}
-        onClickHandler={() => console.log('로그인 로직')}
+        onClickHandler={() => router.push('/login')}
       />
     </div>
   )
