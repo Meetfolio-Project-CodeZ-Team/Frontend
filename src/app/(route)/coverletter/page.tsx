@@ -11,6 +11,7 @@ import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
+import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
 
 export default function CovletMainPage() {
   // const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -36,7 +37,8 @@ export default function CovletMainPage() {
     <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen ">
       <div className="w-[1440px] mx-auto">
         <Header />
-        <CovletMain />
+        {/* <CovletMain /> */}
+        <CovletAiFeed />
         {/* <CovletSave /> */}
         {/* {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
