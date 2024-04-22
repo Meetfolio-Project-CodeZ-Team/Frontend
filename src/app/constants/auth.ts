@@ -3,10 +3,10 @@ export const SIGNUP = {
   Email: '@gachon.ac.kr',
   Auth: '재학생 인증하기',
   OnBoard: '회원이 되어 다양한 서비스를 경험해보세요!',
-  Password: '비밀번호 입력  ( 문자, 숫자 포함 8 ~ 20자 )',
+  Password: '비밀번호 입력  ( 특수문자, 문자, 숫자 포함 8 ~ 20자 )',
 } as const
 
-export const JOBKEYWORD = [
+export const JOBKEYWORD: onlyJobType[] = [
   '백엔드',
   '웹개발',
   '앱개발',
@@ -22,12 +22,13 @@ export const COMPLETE = [
   '*회원 가입 내역 확인 및 수정은 마이페이지 - 개인정보 수정에서 가능합니다.',
 ]
 
-export const GRADE = ['1학년', '2학년', '3학년', '4학년', '졸업생']
+export const GRADE: GradeEnum[] = ['1학년', '2학년', '3학년', '4학년', '졸업생']
 
 export const JOBKEYWORD_USER: JobType[] = [...JOBKEYWORD, '전체']
+
 export const Board = ['그룹원 모집', '취업정보']
 
-export const GRADE_ENUM: GradeEnum = {
+export const GRADE_ENUM = {
   '1학년': 'FRESHMAN',
   '2학년': 'SOPHOMORE',
   '3학년': 'JUNIOR',

@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from 'react'
 import Icons from '../../../common/Icons'
 import { dropdown } from '@/app/ui/IconsPath'
 
-interface DropDownProps {
-  options: readonly string[]
+interface DropDownOBProps {
+  options: readonly GradeEnum[]
   title: string
-  onSelect: (selectedTag: string) => void
+  onSelect: (selectedTag: GradeEnum) => void
 }
 
-const DropDown = ({ options, title, onSelect }: DropDownProps) => {
+const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('')
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -30,7 +30,7 @@ const DropDown = ({ options, title, onSelect }: DropDownProps) => {
     }
   }
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: GradeEnum) => {
     setSelectedOption(option)
     onSelect(option)
     setIsOpen(false)
@@ -76,4 +76,4 @@ const DropDown = ({ options, title, onSelect }: DropDownProps) => {
   )
 }
 
-export default DropDown
+export default DropDownOB

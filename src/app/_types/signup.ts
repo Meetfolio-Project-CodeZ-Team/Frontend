@@ -11,13 +11,8 @@ interface signupTypes {
   jobKeyword: string
 }
 
-type GradeEnum = {
-  '1학년': string
-  '2학년': string
-  '3학년': string
-  '4학년': string
-  졸업생: string
-}
+type GradeEnum = '1학년' | '2학년' | '3학년' | '4학년' | '졸업생'
+
 interface loginContent {
   email: string
   password: string
