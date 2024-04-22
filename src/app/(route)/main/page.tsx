@@ -1,5 +1,6 @@
 'use client'
 
+import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import IntroudeContainer from '@/app/components/main/containers/IntroduceContainer'
 import MainContainer from '@/app/components/main/containers/MainContainer'
@@ -40,6 +41,7 @@ export default function MainPage() {
           nickname={memberInfo?.memberName}
           cardData={recommendCardInfo}
         />
+        <Footer />
       </section>
     )
   }
