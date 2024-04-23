@@ -37,10 +37,6 @@ export const postSignUp = async (signUpContent: signupTypes) => {
   return await postRequest(url, signUpContent)
 }
 
-// export const postLogin = async (LoginContent: loginContent) => {
-//   return await postRequest(url, LoginContent)
-// }
-
 export const postLogin = async (LoginContent: loginContent) => {
   try {
     const url = `${SERVER_URL}/api/login`
@@ -59,4 +55,13 @@ export const postExperience = async (experienceContent: ExperienceDataTypes, acc
   const url = `${SERVER_URL}/api/experiences`
   console.log(experienceContent, '로 요청')
   return await postRequest(url, experienceContent, accessToken)
+}
+
+export const postTrainData = async (
+  accessToken: string,
+  trainData: datasetInfoTypes,
+) => {
+  const url = `${SERVER_URL}/api/admins/data-management`
+  console.log(trainData, '로 요청')
+  return await postRequest(url, trainData, accessToken)
 }

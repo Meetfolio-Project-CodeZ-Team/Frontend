@@ -1,23 +1,21 @@
-import { MODEL_EVALUATION } from '@/app/constants/admin'
 import ServiceUsage from '../dashboard/ServiceUsage'
 import ModelAnal from './ModelAnal'
 
 interface ModelUsageProps {
-  feedbackCount: number
-  analysisCount: number
-  totalCount: number
+  modelData: ResponseModelData
 }
 
-const ModelUsage = (modelAnal: ModelUsageProps) => {
-  const { feedbackCount, analysisCount, totalCount } = modelAnal
+const ModelUsage = ({ modelData }: ModelUsageProps) => {
+  const aiInfo = modelData.aiserviceInfo
+  const evInfo = modelData.modelEvaluation
   return (
     <div className="flex flex-col">
       <ServiceUsage
-        feedbackCount={feedbackCount}
-        analysisCount={analysisCount}
-        totalCount={totalCount}
+        feedbackCount={aiInfo.feedbackCount}
+        analysisCount={aiInfo.analysisCount}
+        totalCount={aiInfo.totalCount}
       />
-      <ModelAnal modelEvaluation={MODEL_EVALUATION} />
+      <ModelAnal modelEvaluation={evInfo} />
     </div>
   )
 }

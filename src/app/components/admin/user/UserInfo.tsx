@@ -3,8 +3,7 @@ import Icons from '../../common/Icons'
 import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
 import DeleteModal from '../common/DeleteModal'
-import { deletePostAlert } from '@/app/utils/toast'
-import { useRouter } from 'next/navigation'
+import { deleteUserAlert } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -24,7 +23,7 @@ const UserInfo = (userInfo: UserInfoProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const deleteUser = async (userId: number) => {
-    deletePostAlert()
+    deleteUserAlert()
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user/delete?userId=${userId}`,
       {

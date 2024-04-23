@@ -21,10 +21,12 @@ export const getCardMain = async (accessToken: string) => {
   const url = `${SERVER_URL}/api`
   return await getRequest(url, accessToken)
 }
+
 export const getDashBoard = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/dashboard`
   return await getRequest(url, accessToken)
 }
+
 export const getUser = async (accessToken: string, jobKeyword?: string) => {
   jobKeyword
   const url = jobKeyword
@@ -57,5 +59,14 @@ export const getExpRequest = async (
   month: string,
 ) => {
   const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
+  return await getRequest(url, accessToken)
+}
+export const getModelData = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/model-management`
+  return await getRequest(url, accessToken)
+}
+
+export const getTrainData = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management`
   return await getRequest(url, accessToken)
 }

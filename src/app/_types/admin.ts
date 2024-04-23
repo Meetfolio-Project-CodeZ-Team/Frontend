@@ -7,8 +7,8 @@ interface ModelValue {
 }
 
 interface ResponseDashBoard {
-  aiSolutionInfo: AISolutionTypes
-  memberInfo: memberInfo
+  aiServiceInfo: AISolutionTypes
+  membersInfo: jobInfo
   pointInfo: pointInfoTypes
   paymentInfo: number
 }
@@ -21,19 +21,14 @@ interface AISolutionTypes {
 }
 
 interface pointInfoTypes {
-  myPoint: number
-  pointList: pointListTypes[]
-  listSize: number
-  totalPage: number
-  totalElements: number
-  isFirst: boolean
-  isLast: boolean
+  analysisPoint: number
+  solutionPoint: number
+  totalPoint: number
 }
 interface pointListTypes {
   createdAt: string
   point: number
   type: string
-
   totalPoint: number
 }
 interface memberInfoTypes {
@@ -71,11 +66,10 @@ interface PaymentListTypes {
   createdAt: string
   payment: number
   point: number
-  totalPoint: number
+  email: string
 }
 
 interface PaymentInfoTypes {
-  myPoint: number
   paymentList: PaymentListTypes[]
   listSize: number
   totalPage: number
@@ -85,6 +79,37 @@ interface PaymentInfoTypes {
 }
 
 interface ResponsePayment {
-  memberInfo: MemberInfoPoint
+  totalSales: number
   paymentInfo: PaymentInfoTypes
+}
+
+interface ResponseModelData {
+  modelEvaluation: EvaluationTypes[]
+  aiserviceInfo: aiServiceInfoTypes
+}
+interface EvaluationTypes {
+  modelName: string
+  accuracy: number
+  loss: number
+}
+interface aiServiceInfoTypes {
+  feedbackCount: number
+  analysisCount: number
+  totalCount: number
+  satisfaction: number
+}
+
+interface ResponseTrainData {
+  datasetInfo: datasetInfoTypes[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}
+interface datasetInfoTypes {
+  createdAt: string
+  job: string
+  domain: string
+  url: string
 }

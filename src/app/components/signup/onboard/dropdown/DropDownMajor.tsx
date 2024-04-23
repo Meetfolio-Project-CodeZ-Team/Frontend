@@ -3,13 +3,13 @@ import { useEffect, useRef, useState } from 'react'
 import Icons from '../../../common/Icons'
 import { dropdown } from '@/app/ui/IconsPath'
 
-interface DropDownOBProps {
-  options: readonly GradeEnum[]
+interface DropDownMajorProps {
+  options: any[],
   title: string
-  onSelect: (selectedTag: GradeEnum) => void
+  onSelect: (selectedTag: any) => void
 }
 
-const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
+const DropDownMajor = ({ options, title, onSelect }: DropDownMajorProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('')
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -37,7 +37,7 @@ const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
   }
 
   return (
-    <div className="flex flex-col text-xl font-medium">
+    <div className="flex flex-col w-[340px]  text-xl font-medium">
       <div
         className="flex w-auto h-[60px] pl-10 pr-6 rounded-[6px] bg-white border-[2px] border-[#C4C4C4] items-center place-content-between cursor-pointer"
         onClick={() => setIsOpen((prevState) => !prevState)}
@@ -50,7 +50,7 @@ const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
       <div className="relative">
         {isOpen && (
           <div
-            className="absolute w-full h-[180px] top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
+            className="absolute w-full h-[auto] max-h-[150px] top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
             ref={dropdownRef}
           >
             {options.map((option, index) => (
@@ -76,4 +76,4 @@ const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
   )
 }
 
-export default DropDownOB
+export default DropDownMajor
