@@ -1,15 +1,16 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import Icons from '../../../common/Icons'
+import Icons from '../../common/Icons'
 import { dropdown } from '@/app/ui/IconsPath'
+import { JOB_ENUM } from '@/app/constants/auth'
 
-interface DropDownOBProps {
-  options: readonly GradeEnum[]
+interface DropDownModelProps {
+  options: readonly onlyJobType[]
   title: string
-  onSelect: (selectedTag: GradeEnum) => void
+  onSelect: (selectedTag: string) => void
 }
 
-const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
+const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('')
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -30,33 +31,37 @@ const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
     }
   }
 
-  const handleOptionClick = (option: GradeEnum) => {
+  const handleOptionClick = (option: JobType) => {
+    console.log('선택완료')
+
     setSelectedOption(option)
-    onSelect(option)
+    onSelect(JOB_ENUM[option])
     setIsOpen(false)
   }
 
   return (
-    <div className="flex flex-col text-xl font-medium">
+    <div className="flex flex-col text-base font-bold">
       <div
-        className="flex w-auto h-[60px] pl-10 pr-6 rounded-[6px] bg-white border-[2px] border-[#C4C4C4] items-center place-content-between cursor-pointer"
+        className="flex relative w-[400px] h-[60px] rounded-[10px] bg-white border-2 border-[#486284] cursor-pointer"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
-        <p className={`${selectedOption ? 'text-black' : 'text-[#a1a6ae]'} `}>
+        <p className="m-auto text-[#486284]">
           {selectedOption ? selectedOption : title}
         </p>
-        <Icons name={dropdown} />
+        <div className="absolute top-[24px] right-[24px]">
+          <Icons name={dropdown} />
+        </div>
       </div>
       <div className="relative">
         {isOpen && (
           <div
-            className="absolute w-full h-[180px] top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
+            className="absolute w-[400px] h-auto top-full left-0 bg-[#DEE5ED] rounded-[6px] overflow-auto scrollbar-hide"
             ref={dropdownRef}
           >
             {options.map((option, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-center w-full h-[37px] py-1 cursor-pointer hover:bg-gray-100 border-t-2 border-[#D3DCE7] ${
+                className={`flex items-center justify-center w-full h-[50px] py-1 cursor-pointer hover:bg-gray-100 border-t-2 border-[#b4cae4] ${
                   index == 0 ? 'border-none' : ''
                 }
                 `}
@@ -76,4 +81,4 @@ const DropDownOB = ({ options, title, onSelect }: DropDownOBProps) => {
   )
 }
 
-export default DropDownOB
+export default DropDownModel

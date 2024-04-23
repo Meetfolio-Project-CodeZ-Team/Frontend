@@ -15,7 +15,7 @@ import Web2 from '@/app/ui/svg/web/Web2'
 import Web3 from '@/app/ui/svg/web/Web3'
 
 interface ShowCardProps {
-  JOBKEYWORD: JobType
+  JOBKEYWORD: onlyJobType
 }
 
 const ShowCard = ({ JOBKEYWORD }: ShowCardProps) => {

@@ -26,7 +26,7 @@ const PointsContainer = () => {
       }
     }
     fetchData()
-  }, [isPoint])
+  }, [isPoint, year, month])
 
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
@@ -60,14 +60,19 @@ const PointsContainer = () => {
       <div className="flex w-[1013px]">
         {isPoint ? (
           <PointAnalDetail
-            feedBack={140}
-            analysis={260}
-            total={400}
+            feedBack={pointData?.coverLetterPoint || 0}
+            analysis={pointData?.analysisPoint || 0}
+            total={pointData?.totalPoint || 0}
             year={year}
             month={month}
           />
         ) : (
-          <PaymentAnal year={year} month={month} totalSales={'500000000'} />
+          <PaymentAnal
+            year={year}
+            month={month}
+            totalSales={paymentData?.totalSales || 0}
+            paymentList={paymentData?.paymentInfo.paymentList || []}
+          />
         )}
       </div>
     </div>

@@ -7,18 +7,36 @@ interface DashboardContainerProps {
 }
 
 const DashboardContainer = ({ DashboardInfo }: DashboardContainerProps) => {
-  // const { aiSolutionInfo, memberInfo, pointInfo, paymentInfo } = DashboardInfo
-  // const { feedbackCount, analysisCount, totalCount, satisfaction } =
-  //   aiSolutionInfo
-  // const { myPoint, listSize, totalPage, totalElements } = pointInfo
+  const { aiServiceInfo, membersInfo, pointInfo, paymentInfo } = DashboardInfo
+  const { feedbackCount, analysisCount, totalCount, satisfaction } =
+    aiServiceInfo
+  const { analysisPoint, solutionPoint, totalPoint } = pointInfo
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[32px] font-bold leading-[48px]">대시보드</div>
-      <ServiceUsage feedbackCount={50} analysisCount={50} totalCount={100} />
-      <UserUsage totalCount={1000} satisfaction={4.8} paymentInfo={1000000} />
+      <ServiceUsage
+        feedbackCount={feedbackCount}
+        analysisCount={analysisCount}
+        totalCount={totalCount}
+      />
+      <UserUsage
+        totalCount={membersInfo.totalCount}
+        satisfaction={satisfaction}
+        paymentInfo={paymentInfo}
+      />
       <div className="flex gap-x-[15px]">
-        <JobAnal backend={20} frontend={15} app={10} design={20} ai={35} />
-        <PointAnal feedBack={700} analysis={400} total={1100} />
+        <JobAnal
+          backend={membersInfo.backend}
+          frontend={membersInfo.web}
+          app={membersInfo.app}
+          design={membersInfo.design}
+          ai={membersInfo.ai}
+        />
+        <PointAnal
+          feedBack={solutionPoint}
+          analysis={analysisPoint}
+          total={totalPoint}
+        />
       </div>
     </div>
   )

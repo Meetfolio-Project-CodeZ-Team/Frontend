@@ -17,5 +17,10 @@ export const logout = async () => {
       method: 'DELETE',
     },
   )
+  document.cookie =
+    'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  document.cookie =
+    'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  window.location.href = '/main'
   console.log('로그아웃 요청', res)
 }
