@@ -29,17 +29,16 @@ export const COMUNITY_BOARD_H = [
 export const POINT_ANAL = ['포인트 사용 통계', '결제 내역 조회']
 
 export const YEAR = [
+  '2016',
+  '2017',
+  '2018',
+  '2019',
   '2020',
   '2021',
   '2022',
   '2023',
   '2024',
   '2025',
-  '2026',
-  '2027',
-  '2028',
-  '2029',
-  '2030',
 ]
 export const MONTH = [
   '01',
@@ -78,11 +77,27 @@ export const MODEL_EVALUATION = [
     loss: 80.01,
   },
 ]
-export const MODEL_TRAIN_H = [
+export const MODEL_MANAGE_H = [
   '모델 생성일',
   '모델명',
   '버전 정보',
   '성능',
   '학습일',
   '배포 상태',
+]
+export const MODEL_TRAIN_H = [
+  '학습 데이터 리스트',
+  '데이터 저장일',
+  '지원 직무',
+  '사이트',
+  '사이트 URL',
+]
+
+export const MODEL_PATH = ['service', 'train/data', 'version']
+
+export const ADD_TRAIN_H = [
+  '사이트 이름',
+  '사이트 URL',
+  '지원 직무',
+  '자기소개서 답변',
 ]

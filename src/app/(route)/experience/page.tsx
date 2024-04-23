@@ -9,6 +9,7 @@ import Header from '@/app/components/layout/Header'
 import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
+import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -18,14 +19,15 @@ export default function ExperiencePage() {
   useEffect(() => {
     router.push('../../experience')
   }, [experienceNumber, router])
-  
+
   return (
-    <section className="flex flex-col items-center w-[1440px] mx-auto min-h-screen ">
-      <div className="w-[1440px] mx-auto">
+    <section className="flex flex-col items-center min-h-screen ">
         <Header />
+      <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
         {experienceNumber === 2 && <ExpContentContainer />}
+        {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
     </section>
   )

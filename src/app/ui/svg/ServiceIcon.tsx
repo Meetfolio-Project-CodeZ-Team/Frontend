@@ -12,9 +12,9 @@ const ServiceIcon = () => {
       <path
         d="M1.65039 1.8999H28.3171M1.65039 11.8999H18.3171M1.65039 21.8999H8.31706"
         stroke="black"
-        stroke-width="3"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )

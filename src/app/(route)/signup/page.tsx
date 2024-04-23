@@ -1,7 +1,8 @@
 'use client'
 
+import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
-import SignupContainer from '@/app/components/signup/SignupContainer'
+import SignupContainer from '@/app/components/signup/containers/SignupContainer'
 
 export default function SignupPage() {
   return (
@@ -10,6 +11,7 @@ export default function SignupPage() {
       <div className="w-[1440px] mx-auto">
         <SignupContainer />
       </div>
+      <Footer />
     </section>
   )
 }

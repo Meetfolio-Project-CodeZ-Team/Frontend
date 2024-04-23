@@ -168,3 +168,4 @@ export const mookBoard = [
     type: '취업 정보',
   },
 ]
+export const mookModelManage = [{}]

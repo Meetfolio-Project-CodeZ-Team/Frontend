@@ -1,26 +1,63 @@
+'use client'
 import { MODEL_TRAIN_H } from '@/app/constants/admin'
-import React from 'react'
+import ModelTrainInfo from './ModelTrainInfo'
+import Button from '../../common/Button'
+import { useState } from 'react'
+import AddTrainData from './AddTrainData'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { addTrainData } from '@/app/utils/toast'
 
-const ModelTrain = () => {
-  return (
-    <div className="flex flex-col w-[1010px] h-[720px] mt-[12px]">
+interface ModelTrainProps {
+  trainData: datasetInfoTypes[]
+}
+const ModelTrain = ({ trainData }: ModelTrainProps) => {
+  const [isAdd, setIsAdd] = useState(false)
+
+  const succeedAdd = () => {
+    addTrainData()
+    setIsAdd(false)
+  }
+
+  return isAdd ? (
+    <AddTrainData addComplete={() => succeedAdd()} />
+  ) : (
+    <div className="flex flex-col w-[1010px] h-[780px] items-center">
+      <ToastContainer />
+      <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-b border-[#616161] items-center text-black text-lg">
-        <div className="font-bold">{MODEL_TRAIN_H[0]}</div>
-        <div className="ml-[107px] ">{MODEL_TRAIN_H[1]}</div>
-        <div className="ml-[116px]">{MODEL_TRAIN_H[2]}</div>
-        <div className="ml-[100px]">{MODEL_TRAIN_H[3]}</div>
-        <div className="ml-[110px]">{MODEL_TRAIN_H[4]}</div>
-        <div className="ml-[107px]">{MODEL_TRAIN_H[5]}</div>
+        <div className="font-bold">{MODEL_TRAIN_H[1]}</div>
+        <div className="ml-[105px] ">{MODEL_TRAIN_H[2]}</div>
+        <div className="ml-[125px]">{MODEL_TRAIN_H[3]}</div>
+        <div className="ml-[300px]">{MODEL_TRAIN_H[4]}</div>
       </div>
-      {/* {mookBoard.map((Board, i) => (
-        <ComunityInfo
-          createdAt={Board.createdAt}
-          memberName={Board.memberName}
-          title={Board.title}
-          boardId={Board.boardId}
-          type={Board.type}
+      <div className="h-[580px] overflow-y-auto scrollbar-hide">
+        {trainData.map((data, i) => (
+          <div key={i}>
+            <ModelTrainInfo
+              createdAt={data.createdAt}
+              job={data.job}
+              domain={data.domain}
+              url={data.url}
+            />
+          </div>
+        ))}
+      </div>
+      <div className=" w-[1010px] flex flex-row-reverse gap-x-5">
+        <Button
+          buttonText={'데이터 추가'}
+          type={'modelBtn'}
+          className="bg-white border-2 border-[#486283] text-[#486283]"
+          isDisabled={false}
+          onClickHandler={() => setIsAdd(true)}
         />
-      ))} */}
+        <Button
+          buttonText={'추가학습'}
+          type={'modelBtn'}
+          isDisabled={false}
+          onClickHandler={() => setIsAdd(true)}
+        />
+      </div>
     </div>
   )
 }

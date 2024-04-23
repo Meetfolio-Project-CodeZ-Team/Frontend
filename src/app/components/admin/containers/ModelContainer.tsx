@@ -1,11 +1,30 @@
-import { MODEL_NAV } from '@/app/constants/admin'
-import { useState } from 'react'
+'use client'
+import { MODEL_NAV, MODEL_PATH } from '@/app/constants/admin'
+import { useEffect, useState } from 'react'
 import ModelUsage from '../model/ModelUsage'
+import ModelManage from '../model/ModelManage'
 import ModelTrain from '../model/ModelTrain'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useState(0)
-  console.log(titleNum, '으로 변경')
+  const [modelData, setModelData] = useState<ResponseModelData | null>(null)
+  const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
+  const marginBorder =
+    titleNum === 1 ? 'ml-[145px]' : titleNum === 2 ? 'ml-[290px]' : ''
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
+      )
+      const resData = await response.json()
+      if (titleNum === 0) setModelData(resData.result)
+      else if (titleNum === 1) setTrainData(resData.result)
+      else setModelData(resData.result)
+      console.log('가져온 resData', resData.result)
+    }
+    fetchData()
+  }, [titleNum])
 
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
@@ -24,25 +43,15 @@ const ModelContainer = () => {
         </div>
       </div>
       <div
-        className={`w-[160px] ml-[${titleNum * 140}px] h-[0px] border-2 border-zinc-600`}
+        className={`w-[150px] ${marginBorder} h-0 border-2 border-black`}
       ></div>
-      <div className="w-[1021px] h-[0px] border border-[#616161] mb-7"></div>
+      <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">
-        {titleNum === 0 && (
-          <ModelUsage
-            feedbackCount={110}
-            analysisCount={320}
-            totalCount={430}
-          />
+        {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
+        {titleNum === 1 && trainData && (
+          <ModelTrain trainData={trainData.datasetInfo} />
         )}
-        {titleNum === 1 && <ModelTrain />}
-        {titleNum === 2 && (
-          <ModelUsage
-            feedbackCount={110}
-            analysisCount={320}
-            totalCount={430}
-          />
-        )}
+        {titleNum === 2 && <ModelManage />}
       </div>
     </div>
   )
