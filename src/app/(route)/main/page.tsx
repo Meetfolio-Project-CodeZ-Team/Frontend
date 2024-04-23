@@ -11,13 +11,13 @@ import { useRecoilState } from 'recoil'
 export default function MainPage() {
   const [data, setData] = useState<ResponseMain | null>(null)
   const [userInfo, setUser] = useRecoilState(userState)
+  console.log('가져온 유저 정보', userInfo)
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:3000/api/main`)
+      const response = await fetch(`http://34.64.177.41:3000/api/main`)
       const resData = await response.json()
-      console.log('가져온 resData', resData)
-
+      setUser(resData.result.memberInfo)
       setData(resData.result)
     }
     fetchData()
@@ -25,7 +25,6 @@ export default function MainPage() {
   if (data) {
     const { memberInfo, recommendCardInfo } = data
     console.log(memberInfo, recommendCardInfo, '메인에서 가져오기~')
-    setUser(memberInfo)
     return (
       <section className="flex flex-col items-center min-h-screen">
         <Header

@@ -10,9 +10,12 @@ import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
+import { userState } from '@/app/recoil/signUp'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  const [userInfo, setUser] = useRecoilState(userState)
+
   const router = useRouter()
 
   // 페이지가 로드될 때마다 expNum 상태를 확인하고 해당 페이지로 이동합니다.
@@ -22,7 +25,7 @@ export default function ExperiencePage() {
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
-      <Header />
+      <Header profile={userInfo.memberName}/>
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
