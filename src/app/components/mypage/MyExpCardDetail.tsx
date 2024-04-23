@@ -80,7 +80,7 @@ const MyExpCardDetail = ({
     console.log('경험카드 삭제 요청이에요', experienceId)
     try {
       const res = await fetch(
-        `http://localhost:3000/api/mypage/myExp/delete?experienceId=${experienceId}`,
+        `http://34.64.177.41:3000/api/mypage/myExp/delete?experienceId=${experienceId}`,
         {
           method: 'DELETE',
         },

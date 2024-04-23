@@ -15,7 +15,7 @@ const PointsContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `http://localhost:3000/api/admin/${isPoint ? 'point' : 'payment'}?year=${year}&month=${month}`,
+        `http://34.64.177.41:3000/api/admin/${isPoint ? 'point' : 'payment'}?year=${year}&month=${month}`,
       )
       const resData = await response.json()
       console.log('가져온 resData', resData)

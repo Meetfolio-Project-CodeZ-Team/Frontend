@@ -58,7 +58,7 @@ const OnBoardContainer = () => {
         body: JSON.stringify(requestBody),
       }
       const res = await fetch(
-        `http://localhost:3000/api/signu`,
+        `http://34.64.177.41:3000/api/signu`,
         requestOptions,
       )
       router.push('/signup/complete')
