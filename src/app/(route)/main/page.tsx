@@ -15,7 +15,7 @@ export default function MainPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:3000/api/main`)
+      const response = await fetch(`http://34.64.177.41:3000/api/main`)
       const resData = await response.json()
       setUser(resData.result.memberInfo)
       setData(resData.result)
