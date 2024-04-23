@@ -27,7 +27,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
       body: JSON.stringify({ domain: domain, url: url, data: data, job: job }),
     }
     const res = await fetch(
-      `http://localhost:3000/api/admin/model/train`,
+      `http://34.64.177.41:3000/api/admin/model/train`,
       requestOptions,
     )
     addComplete()

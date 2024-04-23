@@ -26,7 +26,7 @@ const SignupContainer = () => {
       body: JSON.stringify({ email: email + SIGNUP.Email }),
     }
     const res = await fetch(
-      `http://localhost:3000/api/signup/email`,
+      `http://34.64.177.41:3000/api/signup/email`,
       requestOptions,
     )
   }
@@ -44,7 +44,7 @@ const SignupContainer = () => {
         }),
       }
       const res = await fetch(
-        `http://localhost:3000/api/signup/auth`,
+        `http://34.64.177.41:3000/api/signup/auth`,
         requestOptions,
       )
       if (!res.ok) {

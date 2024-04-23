@@ -24,7 +24,7 @@ const LoginContainer = () => {
       body: JSON.stringify({ email: isAdmin, password: pw }),
     }
     const res = await fetch(
-      `http://localhost:3000/api/login`,
+      `http://34.64.177.41:3000/api/login`,
       requestOptions,
     )
     if (!res.ok) {

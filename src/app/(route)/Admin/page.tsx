@@ -9,7 +9,7 @@ export default function AdminPage() {
   const [data, setData] = useState<ResponseDashBoard | null>(null)
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:3000/api/admin/dashboard`)
+      const response = await fetch(`http://34.64.177.41:3000/api/admin/dashboard`)
       const resData = await response.json()
       console.log('가져온 resData', resData)
       setData(resData.result)
