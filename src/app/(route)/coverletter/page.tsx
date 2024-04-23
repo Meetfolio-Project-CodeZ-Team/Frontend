@@ -22,15 +22,13 @@ export default function CovletMainPage() {
     router.push('../../coverletter')
   }, [covletNumber, router])
   return (
-    
     <section className="flex flex-col items-center min-h-screen ">
-    <Header />
-  <div className="w-[1440px] mb-10">
-    {covletNumber === 0 && <CovletMain />}
-    {covletNumber === 1 && <CovletSave />}
-    {/* {covletNumber === 2 && <ExpContentContainer />} */}
-    
-  </div>
-</section>
+      <Header />
+      <div className="w-[1440px] mb-10">
+        {covletNumber === 0 && <CovletMain />}
+        {covletNumber === 1 && <CovletSave />}
+        {/* {covletNumber === 2 && <ExpContentContainer />} */}
+      </div>
+    </section>
   )
 }

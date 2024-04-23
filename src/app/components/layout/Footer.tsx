@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="border-r-2 pr-2">Dana</div>
             <div className="border-r-2 px-2">Kylo</div>
             <div className="border-r-2 px-2">Nakdo</div>
-            <div className='pl-2'>Minkyu</div>
+            <div className="pl-2">Minkyu</div>
           </div>
         </div>
       </footer>

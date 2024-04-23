@@ -30,15 +30,11 @@ const deleteRequest = async (
 }
 
 export const deleteExp = async (accessToken: string, id: string) => {
-    const url = `${SERVER_URL}/api/experiences${id}`
-    return await deleteExpRequest(url, accessToken)
+  const url = `${SERVER_URL}/api/experiences${id}`
+  return await deleteExpRequest(url, accessToken)
 }
 
-
-const deleteExpRequest = async (
-  url: string,
-  accessToken?: string,
-) => {
+const deleteExpRequest = async (url: string, accessToken?: string) => {
   try {
     const headers = accessToken
       ? {
@@ -46,8 +42,8 @@ const deleteExpRequest = async (
           Authorization: 'Bearer ' + accessToken,
         }
       : commonHeaders
-      console.log(headers, '헤더스');
-      
+    console.log(headers, '헤더스')
+
     const response = await fetch(url, {
       method: 'DELETE',
       headers: headers,

@@ -1,34 +1,34 @@
 'use client'
 
-import { useEffect, useState } from "react";
-import MyCovletCard from "./MyCovletCard"
+import { useEffect, useState } from 'react'
+import MyCovletCard from './MyCovletCard'
 interface CovletCard {
-  question: string;
-  answer: string;
-  coverLetterId: number;
+  question: string
+  answer: string
+  coverLetterId: number
 }
 
 const PortfolioContainer = () => {
-  const [covletCards, setCovletCards] = useState<CovletCard[]>([]);
+  const [covletCards, setCovletCards] = useState<CovletCard[]>([])
 
   useEffect(() => {
     // 서버에서 경험카드 데이터를 가져오는 함수
     const fetchCovletCards = async () => {
       try {
-        const response = await fetch('/api/mypage/myCovlet');
+        const response = await fetch('/api/mypage/myCovlet')
         if (!response.ok) {
-          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.');
+          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
-        const data = await response.json();
+        const data = await response.json()
         console.log(data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result.coverLetterInfo);
+        setCovletCards(data.result.coverLetterInfo)
       } catch (error) {
-        console.error(error);
+        console.error(error)
       }
-    };
+    }
 
-    fetchCovletCards();
-  }, []);
+    fetchCovletCards()
+  }, [])
 
   console.log(covletCards)
 
@@ -46,17 +46,18 @@ const PortfolioContainer = () => {
         </div>
         <div className="w-[963px] h-[830px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[0px] gap-[20px]">
-          {covletCards.map((card) => (
-          <MyCovletCard key={card.coverLetterId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
-        ))}
+            {covletCards.map((card) => (
+              <MyCovletCard keyword1={''} keyword2={''} jobKeyword={''} key={card.coverLetterId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
+            ))}
           </div>
         </div>
         <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">
-        <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[140px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800"/></div>
+          <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
+          <div className="w-[140px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800" />
+        </div>
       </div>
     </div>
   )
 }
 
-export default PortfolioContainer     
+export default PortfolioContainer

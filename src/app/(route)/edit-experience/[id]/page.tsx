@@ -29,7 +29,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
             setExperienceData({
               ...data.result.experienceInfo,
               expStacks: data.result.experienceInfo.stack.split('/'),
-              jobKeyword:transKeyword(data.result.experienceInfo.jobKeyword),
+              jobKeyword: transKeyword(data.result.experienceInfo.jobKeyword),
             })
             // experienceNumber는 서버 응답에 따라 조정되어야 합니다. 현재 API 응답에 이 값이 포함되어 있지 않다면 다른 로직이 필요합니다.
           }
@@ -46,7 +46,9 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
-        {experienceNumber === 2 && <ExpContentContainer isEdit={true} id={params.id}/>}
+        {experienceNumber === 2 && (
+          <ExpContentContainer isEdit={true} id={params.id} />
+        )}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
     </section>
@@ -54,17 +56,17 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 }
 
 export default EditExperiencePage
-const transKeyword=(keyword:string)=>{
-  switch(keyword){
+const transKeyword = (keyword: string) => {
+  switch (keyword) {
     case '백엔드':
-    return 'BACKEND'
+      return 'BACKEND'
     case 'AI':
-    return 'AI'
+      return 'AI'
     case '웹개발':
-    return 'WEB'
+      return 'WEB'
     case '앱개발':
-    return 'APP'
+      return 'APP'
     case '디자인':
-    return 'DESIGN'
+      return 'DESIGN'
   }
 }

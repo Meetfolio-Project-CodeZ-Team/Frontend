@@ -38,14 +38,14 @@ const CovletMain = () => {
   }
 
   const saveCovData = async () => {
-    const { answer, question, shareType } = coverletterData;
-    
+    const { answer, question, shareType } = coverletterData
+
     // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
     if (!answer || !question || !shareType) {
-      console.error('모든 필드를 채워주세요.');
-      return;
+      console.error('모든 필드를 채워주세요.')
+      return
     }
-  
+
     const response = await fetch('/api/coverletters', {
       method: 'POST',
       headers: {
@@ -56,17 +56,17 @@ const CovletMain = () => {
         question,
         shareType, // 공개/비공개 여부
       }),
-    });
-  
+    })
+
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.');
+      console.error('데이터 저장에 실패했습니다.')
     } else {
       // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
-      console.log('데이터가 성공적으로 저장되었습니다.');
-      goToNextPage();
+      console.log('데이터가 성공적으로 저장되었습니다.')
+      goToNextPage()
     }
-  };
-  
+  }
+
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -178,11 +178,11 @@ const CovletMain = () => {
           </div>
         </div>  */}
         {/* //자소서 작성 중 경험카드 세부조회 */}
-        <div className='w-[450px] h-[1100px] mt-[80px] '>
+        <div className="w-[450px] h-[1100px] mt-[80px] ">
           <div className="w-[350px] h-full ml-[16px] gap-[20px]">
             <ExpCardDetail />
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   )
