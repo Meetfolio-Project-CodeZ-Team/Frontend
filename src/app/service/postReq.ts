@@ -34,7 +34,7 @@ export const postCoverLetter = async (
   coverletterContent: CoverLetterDataTypes,
   accessToken: string,
 ) => {
-  const url = `${SERVER_URL}/api/experiences`
+  const url = `${SERVER_URL}/api/coverLetters`
   console.log(coverletterContent, '로 요청')
   return await postRequest(url, coverletterContent, accessToken)
 }

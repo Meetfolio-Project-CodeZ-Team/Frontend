@@ -10,6 +10,7 @@ const CovletSave = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+console.log(coverletterData, '자소서 데이터 현황');
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)

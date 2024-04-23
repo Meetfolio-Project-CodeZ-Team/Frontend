@@ -68,15 +68,15 @@ const MyCovletCard = ({
         <br />
         <br />{' '}
       </div>
-      {isOpen && covletCards && <MyCovletDetail
-        coverLetterId={covletCards.coverLetterId}
+      {/* {isOpen && covletCards && <MyCovletDetail
+        coverLetterId={covletCards?=.coverLetterId}
         question={covletCards.question}
         jobKeyword={covletCards.jobKeyword}
         keyword1={covletCards.keyword1}
         keyword2={covletCards.keyword2}
         
         // closeModal={setIsOpen(false)}
-      />}
+      />} */}
     </div>
   )
 }
