@@ -3,10 +3,8 @@ import BoardContainer from '@/app/components/admin/containers/BoardContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import { userState } from '@/app/recoil/signUp'
-import { useRecoilState } from 'recoil'
 
 const boardPage = () => {
-  const [userInfo, setUser] = useRecoilState(userState)
 
   return (
     <section className="flex flex-col min-h-screen">
