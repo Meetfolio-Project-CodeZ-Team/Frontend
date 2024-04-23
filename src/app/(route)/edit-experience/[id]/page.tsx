@@ -60,9 +60,9 @@ const transKeyword=(keyword:string)=>{
     return 'BACKEND'
     case 'AI':
     return 'AI'
-    case '웹 개발':
+    case '웹개발':
     return 'WEB'
-    case '앱 개발':
+    case '앱개발':
     return 'APP'
     case '디자인':
     return 'DESIGN'
