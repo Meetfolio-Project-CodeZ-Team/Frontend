@@ -19,7 +19,7 @@ const UserContainer = ({ userInfoData }: UserContainerProps) => {
     console.log(data, ' 직무 선택후 가져온 유저정보')
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?jobKeyword=${selectedJob}`,
+        `http://localhost:3000/api/admin/user?jobKeyword=${selectedJob}`,
       )
       if (!response.ok) {
         throw new Error('Failed to fetch user data')

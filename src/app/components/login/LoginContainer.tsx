@@ -24,7 +24,7 @@ const LoginContainer = () => {
       body: JSON.stringify({ email: isAdmin, password: pw }),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login`,
+      `http://localhost:3000/api/login`,
       requestOptions,
     )
     if (!res.ok) {

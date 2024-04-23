@@ -27,7 +27,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
       body: JSON.stringify({ domain: domain, url: url, data: data, job: job }),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train`,
+      `http://localhost:3000/api/admin/model/train`,
       requestOptions,
     )
     addComplete()

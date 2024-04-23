@@ -14,9 +14,7 @@ export default function MainPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main`,
-      )
+      const response = await fetch(`http://localhost:3000/api/main`)
       const resData = await response.json()
       console.log('가져온 resData', resData)
 

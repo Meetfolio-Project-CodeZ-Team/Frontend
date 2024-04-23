@@ -25,7 +25,7 @@ export const postExperience = async (
   experienceContent: ExperienceDataTypes,
   accessToken: string,
 ) => {
-  const url = `${SERVER_URL}/api/experiences`
+  const url = `http://34.64.177.41:9090/api/experiences`
   console.log(experienceContent, '로 요청')
   return await postRequest(url, experienceContent, accessToken)
 }
@@ -34,7 +34,7 @@ export const postCoverLetter = async (
   coverletterContent: CoverLetterDataTypes,
   accessToken: string,
 ) => {
-  const url = `${SERVER_URL}/api/coverLetters`
+  const url = `http://34.64.177.41:9090/api/coverLetters`
   console.log(coverletterContent, '로 요청')
   return await postRequest(url, coverletterContent, accessToken)
 }
