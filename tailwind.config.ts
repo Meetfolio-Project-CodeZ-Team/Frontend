@@ -15,9 +15,8 @@ const config: Config = {
       },
       // fontFamily: {
       //   Pretendard: ["Pretendard", "sans-serif"],
-        
+
       // },
-  
     },
   },
   plugins: [require('tailwind-scrollbar-hide')],

@@ -10,8 +10,8 @@ const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const { expStacks } = experienceData
-  console.log(experienceData, '리코일 데이터어');
-  
+  console.log(experienceData, '리코일 데이터어')
+
   const [expStack, setExpStack] = useState('')
   // const [expStacks, setExpStacks] = useState<string[]>([])
 
@@ -35,7 +35,6 @@ const ExpKeywordContainer = () => {
         expStacks: [...experienceData.expStacks, expStack],
       })
       setExpStack('')
-      
     }
   }
 
@@ -199,19 +198,20 @@ const ExpKeywordContainer = () => {
             </div>
           </div>
           <div className="w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]">
-            {expStacks&&expStacks.map((stack, i) => (
-              <div key={i}>
-                <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
-                  <NameBox stack={stack} />
-                  <button
-                    className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
-                    onClick={(e) => handleDelete(e, i)}
-                  >
-                    X
-                  </button>
+            {expStacks &&
+              expStacks.map((stack, i) => (
+                <div key={i}>
+                  <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
+                    <NameBox stack={stack} />
+                    <button
+                      className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
+                      onClick={(e) => handleDelete(e, i)}
+                    >
+                      X
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
           <div className="w-[863px] h-[97px] left-[168px] top-[14px] absolute text-center">
             <span className="text-black text-4xl font-semibold leading-[54px]">

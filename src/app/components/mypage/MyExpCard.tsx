@@ -24,7 +24,7 @@ interface ExperienceCardDetail {
   motivation: string
   detail: string
   advance: string
-  closeModal: ()=>void
+  closeModal: () => void
 }
 
 const MyExpCard = ({
@@ -59,7 +59,7 @@ const MyExpCard = ({
     }
     setIsOpen(true)
   }
-  
+
   return (
     <div
       className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] bg-[#DEE5ED] rounded-[10px] cursor-pointer"
@@ -87,20 +87,22 @@ const MyExpCard = ({
           {stack}
         </div>
       </div>
-      {isOpen && expCards && <MyExpCardDetail
-        experienceId={experienceId||0}
-        title={expCards.title}
-        startDate={expCards.startDate}
-        endDate={expCards.endDate}
-        experienceType={expCards.experienceType}
-        jobKeyword={expCards.jobKeyword}
-        stack={expCards.stack}
-        task={expCards.task}
-        motivation={expCards.motivation}
-        detail={expCards.detail}
-        advance={expCards.advance}
-        closeModal={()=>setIsOpen(false)}
-      />}
+      {isOpen && expCards && (
+        <MyExpCardDetail
+          experienceId={experienceId || 0}
+          title={expCards.title}
+          startDate={expCards.startDate}
+          endDate={expCards.endDate}
+          experienceType={expCards.experienceType}
+          jobKeyword={expCards.jobKeyword}
+          stack={expCards.stack}
+          task={expCards.task}
+          motivation={expCards.motivation}
+          detail={expCards.detail}
+          advance={expCards.advance}
+          closeModal={() => setIsOpen(false)}
+        />
+      )}
     </div>
   )
 }

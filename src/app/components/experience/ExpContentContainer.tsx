@@ -8,7 +8,7 @@ interface ExpFinishContainerProps {
   id: string
 }
 
-const ExpContentContainer = ({isEdit, id}:ExpFinishContainerProps) => {
+const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
 
@@ -29,12 +29,13 @@ const ExpContentContainer = ({isEdit, id}:ExpFinishContainerProps) => {
   }
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
-    console.log(experienceData,isEdit, '로 수정요청')
+    console.log(experienceData, isEdit, '로 수정요청')
 
-    const urlPath = isEdit ? `/api/experiences/update?id=${id}` : `/api/experiences`;
-    const methodType = isEdit ? 'PATCH' : 'POST';
-    const response = 
-    await fetch(urlPath, {
+    const urlPath = isEdit
+      ? `/api/experiences/update?id=${id}`
+      : `/api/experiences`
+    const methodType = isEdit ? 'PATCH' : 'POST'
+    const response = await fetch(urlPath, {
       method: methodType,
       headers: {
         'Content-Type': 'application/json',
@@ -43,9 +44,8 @@ const ExpContentContainer = ({isEdit, id}:ExpFinishContainerProps) => {
         ...dataToSend,
         stack: expStacks.join(' / '),
       }),
-      
     })
-    
+
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }

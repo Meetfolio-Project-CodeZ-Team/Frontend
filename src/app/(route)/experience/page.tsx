@@ -22,11 +22,11 @@ export default function ExperiencePage() {
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
-        <Header />
+      <Header />
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
-        {experienceNumber === 2 && <ExpContentContainer />}
+        {experienceNumber === 2 && <ExpContentContainer id={''} />}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
     </section>

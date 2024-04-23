@@ -4,7 +4,7 @@ import Icons from '../../../common/Icons'
 import { dropdown } from '@/app/ui/IconsPath'
 
 interface DropDownMajorProps {
-  options: any[],
+  options: any[]
   title: string
   onSelect: (selectedTag: any) => void
 }

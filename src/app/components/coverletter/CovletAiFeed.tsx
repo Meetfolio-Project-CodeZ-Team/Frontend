@@ -121,7 +121,7 @@ const CovletAiFeed = () => {
               </div>
               <input
                 type="text"
-                value={coverletterData.job}
+                value={''}
                 onChange={handleInputChange}
                 id="job"
                 name="job"
@@ -238,7 +238,7 @@ const CovletAiFeed = () => {
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveData}
         >
-         솔루션 결과 저장하기
+          솔루션 결과 저장하기
         </button>
       </div>
       <div className="w-[463px] h-[2330px] left-[977px] top-[18px] absolute items-center justify-center">

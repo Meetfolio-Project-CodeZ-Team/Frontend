@@ -14,21 +14,19 @@ import CovletSave from '@/app/components/coverletter/CovletSave'
 import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
 
 export default function CovletMainPage() {
-//   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
+  //   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const router = useRouter()
 
   // 페이지가 로드될 때마다 expNum 상태를 확인하고 해당 페이지로 이동합니다.
-//   useEffect(() => {
-//     router.push('../../coverletter')
-//   }, [covletNumber, router])
+  //   useEffect(() => {
+  //     router.push('../../coverletter')
+  //   }, [covletNumber, router])
   return (
-    
     <section className="flex flex-col items-center min-h-screen ">
-    <Header />
-  <div className="w-[1440px] mb-10">
-    <CovletAiFeed/>
-    
-  </div>
-</section>
+      <Header />
+      <div className="w-[1440px] mb-10">
+        <CovletAiFeed />
+      </div>
+    </section>
   )
 }

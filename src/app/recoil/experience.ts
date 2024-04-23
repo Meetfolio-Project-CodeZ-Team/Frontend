@@ -6,18 +6,18 @@ export const expNum = atom<number>({
 })
 
 export interface ExperienceDataTypes {
-  experienceId?: number; // 선택적 필드로 추가
-  title: string;
-  startDate: string;
-  endDate: string;
-  experienceType: string;
-  task: string;
-  motivation: string;
-  jobKeyword: string;
-  stack: string;
-  detail: string;
-  advance: string;
-  expStacks: string[];
+  experienceId?: number // 선택적 필드로 추가
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  task: string
+  motivation: string
+  jobKeyword: string
+  stack: string
+  detail: string
+  advance: string
+  expStacks: string[]
 }
 
 export const expData = atom<ExperienceDataTypes>({
