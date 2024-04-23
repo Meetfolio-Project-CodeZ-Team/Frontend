@@ -10,7 +10,8 @@ const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const { expStacks } = experienceData
-
+  console.log(experienceData, '리코일 데이터어');
+  
   const [expStack, setExpStack] = useState('')
   // const [expStacks, setExpStacks] = useState<string[]>([])
 
@@ -34,6 +35,7 @@ const ExpKeywordContainer = () => {
         expStacks: [...experienceData.expStacks, expStack],
       })
       setExpStack('')
+      
     }
   }
 
@@ -105,8 +107,8 @@ const ExpKeywordContainer = () => {
                 백엔드
               </button> */}
               <button
-                className={`w-[105px] h-11 left-[248px] top-[146px] absolute text-black ${experienceData.jobKeyword === '백엔드' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
-                onClick={(event) => handleButtonClick('백엔드', event)}
+                className={`w-[105px] h-11 left-[248px] top-[146px] absolute text-black ${experienceData.jobKeyword === 'BACKEND' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('BACKEND', event)}
               >
                 백엔드
               </button>
@@ -114,24 +116,24 @@ const ExpKeywordContainer = () => {
 
             <div className="w-28 h-11 left-[387px] top-[146px] absolute">
               <button
-                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '웹 개발' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
-                onClick={(event) => handleButtonClick('웹 개발', event)}
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === 'WEB' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('WEB', event)}
               >
                 웹 개발
               </button>
             </div>
             <div className="w-28 h-11 left-[529px] top-[146px] absolute">
               <button
-                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '앱 개발' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
-                onClick={(event) => handleButtonClick('앱 개발', event)}
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === 'APP' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('APP', event)}
               >
                 앱 개발
               </button>
             </div>
             <div className="w-28 h-11 left-[671px] top-[146px] absolute">
               <button
-                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === '디자인' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
-                onClick={(event) => handleButtonClick('디자인', event)}
+                className={`w-[105px] h-11 left-[3px] top-0 absolute text-black ${experienceData.jobKeyword === 'DESIGN' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
+                onClick={(event) => handleButtonClick('DESIGN', event)}
               >
                 디자인
               </button>
@@ -197,7 +199,7 @@ const ExpKeywordContainer = () => {
             </div>
           </div>
           <div className="w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]">
-            {expStacks.map((stack, i) => (
+            {expStacks&&expStacks.map((stack, i) => (
               <div key={i}>
                 <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
                   <NameBox stack={stack} />

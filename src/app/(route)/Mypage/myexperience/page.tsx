@@ -6,7 +6,8 @@ import MyCovletDetail from '@/app/components/mypage/MyCovletDetail'
 import MyExpList from '@/app/components/mypage/MyExpList'
 import MyExpCardDetail from '@/app/components/mypage/MyExpCardDetail'
 
-export default function UserPortPage() {
+export default function MyExperiencePage() {
+  
   
   return (
     <section className="flex flex-col min-h-screen">

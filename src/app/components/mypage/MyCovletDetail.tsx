@@ -1,6 +1,6 @@
 'use client'
 
-import MyCovlet from './MyCovlet'
+import MyCovlet from './MyCovletCard'
 
 const MyCovletDetail = () => {
   return (
@@ -117,7 +117,7 @@ const MyCovletDetail = () => {
         <div className="w-[140px] h-[58px] left-0 top-0 absolute">
           <div className="w-14 h-6 left-[41.94px] top-[17px] absolute text-center text-slate-600 text-[25px] font-semibold font-['Plus Jakarta Sans'] leading-[37.50px]">
             수정
-          </div>
+        </div>
         </div>
         <div className="w-[140px] h-[58px] left-[194px] top-0 absolute">
           <div className="w-14 h-6 left-[41.94px] top-[17px] absolute text-center text-slate-600 text-[25px] font-semibold font-['Plus Jakarta Sans'] leading-[37.50px]">

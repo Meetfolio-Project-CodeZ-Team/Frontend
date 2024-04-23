@@ -3,8 +3,12 @@ import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 
+interface ExpFinishContainerProps {
+  isEdit?: boolean
+  id: string
+}
 
-const ExpContentContainer = () => {
+const ExpContentContainer = ({isEdit, id}:ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
 
@@ -20,27 +24,34 @@ const ExpContentContainer = () => {
       [event.target.name]: event.target.value,
     })
   }
-
+  const goToNextPage = () => {
+    setExperienceNumber(experienceNumber + 1)
+  }
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
+    console.log(experienceData,isEdit, '로 수정요청')
 
-    const response = await fetch('/api/experiences', {
-      method: 'POST',
+    const urlPath = isEdit ? `/api/experiences/update?id=${id}` : `/api/experiences`;
+    const methodType = isEdit ? 'PATCH' : 'POST';
+    const response = 
+    await fetch(urlPath, {
+      method: methodType,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         ...dataToSend,
-        stack: expStacks.join('/'),
-        jobKeyword: 'AI',
+        stack: expStacks.join(' / '),
       }),
+      
     })
-  
+    
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
+    goToNextPage()
   }
-
+  console.log(experienceData.stack)
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">

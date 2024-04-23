@@ -36,22 +36,38 @@ const CovletSave = () => {
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
 
-  const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
-    const response = await fetch('/api/save', {
+  const saveCovData = async () => {
+    const { answer, question, shareType, keyword1, keyword2, jobKeyword } = coverletterData;
+    
+    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
+    if (!answer || !question || !shareType) {
+      console.error('모든 필드를 채워주세요.');
+      return;
+    }
+  
+    const response = await fetch('/api/coverletters', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(experienceData),
-    })
-
+      body: JSON.stringify({
+        answer,
+        question,
+        shareType,
+        keyword1,
+        keyword2,
+        jobKeyword, // 공개/비공개 여부
+      }),
+    });
+  
     if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
-      console.error('데이터 저장에 실패했습니다.')
+      console.error('데이터 저장에 실패했습니다.');
+    } else {
+      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
+      console.log('데이터가 성공적으로 저장되었습니다.');
+      
     }
-  }
+  };
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -64,7 +80,7 @@ const CovletSave = () => {
           <div className="w-[845px] h-[118.08px] left-[53px] top-[144.67px] absolute inline-flex gap-[20px]">
             <div className="w-[255px] h-[118.08px] left-0 top-0 absolute">
               {' '}
-              // 키워드1
+               
               <div className="w-[255px] h-[86.65px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                   <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
@@ -89,7 +105,7 @@ const CovletSave = () => {
             </div>
             <div className="w-[258px] h-[117.68px] left-[292px] top-0 absolute">
               {' '}
-              // 키워드2
+              
               <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                 <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
@@ -112,7 +128,7 @@ const CovletSave = () => {
             </div>
             <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
               {' '}
-              // 지원직무
+              
               <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                 <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
@@ -121,11 +137,11 @@ const CovletSave = () => {
               </div>
               <input
                 type="text"
-                value={coverletterData.job}
+                value={coverletterData.jobKeyword}
                 onChange={handleInputChange}
-                id="job"
-                name="job"
-                placeholder="ex) 웹퍼블리셔"
+                id="jobKeyword"
+                name="jobKeyword"
+                placeholder="ex) AI"
                 maxLength={12}
                 className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
@@ -233,7 +249,7 @@ const CovletSave = () => {
         </div> */}
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
+          onClick={saveCovData}
         >
           자기소개서 작성 완료
         </button>

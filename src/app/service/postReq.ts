@@ -29,3 +29,12 @@ export const postExperience = async (
   console.log(experienceContent, '로 요청')
   return await postRequest(url, experienceContent, accessToken)
 }
+
+export const postCoverLetter = async (
+  coverletterContent: CoverLetterDataTypes,
+  accessToken: string,
+) => {
+  const url = `${SERVER_URL}/api/experiences`
+  console.log(coverletterContent, '로 요청')
+  return await postRequest(url, coverletterContent, accessToken)
+}

@@ -102,18 +102,18 @@ const ExpInfoContainer = () => {
                 onChange={handleInputChange}
                 id="startDate"
                 name="startDate"
-                placeholder="YYYYMMDD"
+                placeholder="YYYY-MM-DD"
                 maxLength={10}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
               <div className="w-[133px] h-[23px] left-[157px] top-[50px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-                ex) 20240218
+                ex) 2024-02-18
               </div>
               <div className="w-[66px] h-[33px] left-[333px] top-0 absolute text-center text-black text-opacity-40 text-[32px] font-semibold  leading-[48px]">
                 ~
               </div>
               <div className="w-[133px] h-[23px] left-[604px] top-[50px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-                ex) 20240218
+                ex) 2024-02-18
               </div>
             </div>
             <div className="w-[290px] h-[55px] left-[452px] top-[39px] absolute">

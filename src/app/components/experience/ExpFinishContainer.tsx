@@ -1,11 +1,15 @@
+'use client'
+
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
+import { useRouter } from 'next/navigation';
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
+  const router = useRouter();
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -19,19 +23,28 @@ const ExpFinishContainer = () => {
       [event.target.name]: event.target.value,
     })
   }
+  const handleButtonClick = () => {
+    router.push('/main');// '/main'으로 경로 이동
+  };
 
-  const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    const response = await fetch('/api/save', {
+  const saveExpData = async () => {
+    const { expStacks, ...dataToSend } = experienceData
+    console.log(experienceData.stack);
+    
+
+    const response = await fetch('/api/experiences', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(experienceData),
+      body: JSON.stringify({
+        ...dataToSend,
+        stack: expStacks.join(' / '),
+        jobKeyword: 'AI',
+      }),
     })
-
+    console.log(experienceData.stack);
     if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
       console.error('데이터 저장에 실패했습니다.')
     }
   }
@@ -138,7 +151,7 @@ const ExpFinishContainer = () => {
         </button>
         <button
           className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
+          onClick={saveExpData}
         >
           저장하기
         </button>
@@ -151,25 +164,25 @@ const ExpFinishContainer = () => {
             <div className="w-[350px] h-9 left-[35.77px] top-[121.55px] absolute">
               <div className="w-24 h-9 px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
                 <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                  백엔드
+                  {experienceData.jobKeyword}
                 </div>
               </div>
               <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
                 <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                  Spring Boot / JAVA / Kotlin
+                  {experienceData.expStacks.join(' / ')}
                 </div>
               </div>
             </div>
             <div className="w-[110px] h-[30px] px-5 left-[359px] top-[34px] absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
               <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                대외활동
+                {experienceData.experienceType}
               </div>
             </div>
-            <div className="w-[138px] h-6 left-[31px] top-[68px] absolute text-center text-gray-900 text-3xl font-semibold leading-[45px]">
-              경험 제목
+            <div className="w-[400px] h-6 left-[30px] top-[68px] absolute text-start text-gray-900 text-2xl font-semibold leading-[45px]">
+              {experienceData.title}
             </div>
-            <div className="w-[187px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-xl font-bold font-['Plus Jakarta Sans']">
-              2024.01-2024.03
+            <div className="w-[300px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans']">
+              {experienceData.startDate}~{experienceData.endDate}
             </div>
             <div className="w-[416px] h-[172px] left-[28.77px] top-[189.55px] absolute">
               <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
@@ -177,8 +190,7 @@ const ExpFinishContainer = () => {
               </div>
               <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
               <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                피그마 디자인을 도맡아서 하였구요. 경험 분해 페이지 구현 및
-                설계, 설계서 작성 등
+                {experienceData.task}
               </div>
             </div>
             <div className="w-[416px] h-[172px] left-[28.77px] top-[384.55px] absolute">
@@ -187,50 +199,29 @@ const ExpFinishContainer = () => {
               </div>
               <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
               <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                해커톤 대회에 참가할 생각이 없었는데 협업 경험을 해보고 싶었고
-                개발능력도 향상시키고 싶어서 이 경험을 하게 되었습니다.
+                {experienceData.motivation}
               </div>
             </div>
             <div className="w-[416px] h-[172px] left-[28.77px] top-[584.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                경험 동기
+              <div className="w-[250px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
+              나의 활동 & 경험 내용
               </div>
               <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
               <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                해커톤 대회에 참가할 생각이 없었는데 협업 경험을 해보고 싶었고
-                개발능력도 향상시키고 싶어서 이 경험을 하게 되었습니다.
+              {experienceData.detail}
               </div>
             </div>
+            
             <div className="w-[416px] h-[172px] left-[28.77px] top-[784.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                경험 동기
+              <div className="w-[140px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
+                결과 및 성과
               </div>
               <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
               <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                해커톤 대회에 참가할 생각이 없었는데 협업 경험을 해보고 싶었고
-                개발능력도 향상시키고 싶어서 이 경험을 하게 되었습니다.
+                {experienceData.advance}
               </div>
             </div>
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[984.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                경험 동기
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                해커톤 대회에 참가할 생각이 없었는데 협업 경험을 해보고 싶었고
-                개발능력도 향상시키고 싶어서 이 경험을 하게 되었습니다.
-              </div>
-            </div>
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[1184.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                경험 동기
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                해커톤 대회에 참가할 생각이 없었는데 협업 경험을 해보고 싶었고
-                개발능력도 향상시키고 싶어서 이 경험을 하게 되었습니다.
-              </div>
-            </div>
+            
           </div>
           <div className="w-[150.05px] h-[61.46px] left-[200px] top-[585px] absolute bg-black justify-center items-center rounded-[10px]">
             {/* <div className="w-[60.02px] h-[25.43px] left-[44.95px] top-[18.02px] absolute text-center text-white text-[25px] font-semibold leading-[37.50px]">
@@ -238,7 +229,7 @@ const ExpFinishContainer = () => {
             </div> */}
             <button
               className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-              // onClick={(event) => handleButtonClick('백엔드', event)}
+              onClick={ handleButtonClick}
             >
               확인
             </button>
