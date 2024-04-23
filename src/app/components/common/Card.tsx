@@ -7,6 +7,7 @@ interface CardProps {
   jobKeyword: onlyJobType
   stack: string
   title: string
+  experienceId?: number
 }
 
 const Card = ({
@@ -16,6 +17,7 @@ const Card = ({
   jobKeyword,
   stack,
   title,
+  experienceId,
 }: CardProps) => {
   const stackArr = stack.split(',')
   console.log(stackArr)

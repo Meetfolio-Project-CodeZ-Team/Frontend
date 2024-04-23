@@ -1,18 +1,19 @@
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
-import { covletData } from '@/app/recoil/coverletter'
+import { covletNum, covletData } from '../../recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 import ExpCardDetail from '@/app/components/coverletter/ExpCardDetail'
 
 const CovletMain = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [experienceData, setExperienceData] = useRecoilState(expData)
+  const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
-  const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1)
+  // const goToPreviousPage = () => {
+  //   setExperienceNumber(experienceNumber - 1)
+  // }
+  const goToNextPage = () => {
+    setCovletNumber(covletNumber + 1)
   }
 
   const handleTextareaChange = (
@@ -36,22 +37,36 @@ const CovletMain = () => {
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
 
-  const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
-    const response = await fetch('/api/save', {
+  const saveCovData = async () => {
+    const { answer, question, shareType } = coverletterData;
+    
+    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
+    if (!answer || !question || !shareType) {
+      console.error('모든 필드를 채워주세요.');
+      return;
+    }
+  
+    const response = await fetch('/api/coverletters', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(experienceData),
-    })
-
+      body: JSON.stringify({
+        answer,
+        question,
+        shareType, // 공개/비공개 여부
+      }),
+    });
+  
     if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
-      console.error('데이터 저장에 실패했습니다.')
+      console.error('데이터 저장에 실패했습니다.');
+    } else {
+      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
+      console.log('데이터가 성공적으로 저장되었습니다.');
+      goToNextPage();
     }
-  }
+  };
+  
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -66,16 +81,16 @@ const CovletMain = () => {
                 공개
               </div> */}
               <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === '공개' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('공개', event)}
+                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PUBLIC' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
+                onClick={(event) => handleButtonClick('PUBLIC', event)}
               >
                 공개
               </button>
             </div>
             <div className="w-[180px] h-[60px] relative">
               <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === '비공개' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('비공개', event)}
+                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PRIVATE' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
+                onClick={(event) => handleButtonClick('PRIVATE', event)}
               >
                 비공개
               </button>
@@ -132,7 +147,7 @@ const CovletMain = () => {
         </div> */}
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
+          onClick={goToNextPage}
         >
           저장하기
         </button>
