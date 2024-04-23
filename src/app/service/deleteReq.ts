@@ -30,7 +30,7 @@ const deleteRequest = async (
 }
 
 export const deleteExp = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/experiences${id}`
+  const url = `http://34.64.177.41:9090/api/experiences${id}`
   return await deleteExpRequest(url, accessToken)
 }
 

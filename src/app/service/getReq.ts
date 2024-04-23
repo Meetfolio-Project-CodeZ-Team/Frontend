@@ -19,21 +19,21 @@ const getRequest = async (url: string, accessToken?: string) => {
 }
 
 export const getMyExp = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/experience-cards`
+  const url = `http://34.64.177.41:9090/api/experience-cards`
   return await getRequest(url, accessToken)
 }
 
 export const getMyExpDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/experiences/${id}`
+  const url = `http://34.64.177.41:9090/api/experiences/${id}`
   return await getRequest(url, accessToken)
 }
 
 export const getMyCovlet = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/coverLetters/{coverLetterId}`
+  const url = `http://34.64.177.41:9090/api/coverLetters/{coverLetterId}`
   return await getRequest(url, accessToken)
 }
 
 export const getMyCovletDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/coverLetters/${id}`
+  const url = `http://34.64.177.41:9090/api/coverLetters/${id}`
   return await getRequest(url, accessToken)
 }

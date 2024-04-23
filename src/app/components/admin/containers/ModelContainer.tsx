@@ -15,7 +15,7 @@ const ModelContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
+        `http://localhost:3000/api/admin/model/${MODEL_PATH[titleNum]}`,
       )
       const resData = await response.json()
       if (titleNum === 0) setModelData(resData.result)

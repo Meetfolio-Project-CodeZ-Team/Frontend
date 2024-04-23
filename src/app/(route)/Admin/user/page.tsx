@@ -11,7 +11,7 @@ const userPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user`,
+        `http://localhost:3000/api/admin/user`,
       )
       const resData = await response.json()
       console.log('가져온 resData', resData)

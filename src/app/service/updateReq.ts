@@ -27,7 +27,7 @@ export const updateExp = async (
   accessToken: string,
   id: string,
 ) => {
-  const url = `${SERVER_URL}/api/experiences${id}`
+  const url = `http://34.64.177.41:9090/api/experiences${id}`
   console.log(url, '요청경로')
 
   return await patchRequest(url, experienceContent, accessToken)
