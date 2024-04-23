@@ -3,7 +3,12 @@ import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 
-const ExpContentContainer = () => {
+interface ExpFinishContainerProps {
+  isEdit?: boolean
+  id: string
+}
+
+const ExpContentContainer = ({isEdit, id}:ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
 
@@ -19,23 +24,34 @@ const ExpContentContainer = () => {
       [event.target.name]: event.target.value,
     })
   }
+  const goToNextPage = () => {
+    setExperienceNumber(experienceNumber + 1)
+  }
+  const saveExpData = async () => {
+    const { expStacks, ...dataToSend } = experienceData
+    console.log(experienceData,isEdit, '로 수정요청')
 
-  const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
-    const response = await fetch('/api/save', {
-      method: 'POST',
+    const urlPath = isEdit ? `/api/experiences/update?id=${id}` : `/api/experiences`;
+    const methodType = isEdit ? 'PATCH' : 'POST';
+    const response = 
+    await fetch(urlPath, {
+      method: methodType,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(experienceData),
+      body: JSON.stringify({
+        ...dataToSend,
+        stack: expStacks.join(' / '),
+      }),
+      
     })
-
+    
     if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
       console.error('데이터 저장에 실패했습니다.')
     }
+    goToNextPage()
   }
+  console.log(experienceData.stack)
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -139,7 +155,7 @@ const ExpContentContainer = () => {
         </button>
         <button
           className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
+          onClick={saveExpData}
         >
           저장하기
         </button>

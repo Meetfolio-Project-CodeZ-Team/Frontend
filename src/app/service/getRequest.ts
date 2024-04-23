@@ -17,7 +17,6 @@ const getRequest = async (url: string, accessToken?: string) => {
     console.log('Error:', error)
   }
 }
-
 export const getCardMain = async (accessToken: string) => {
   const url = `${SERVER_URL}/api`
   return await getRequest(url, accessToken)
@@ -54,6 +53,14 @@ export const getPayment = async (
   return await getRequest(url, accessToken)
 }
 
+export const getExpRequest = async (
+  accessToken: string,
+  year: string,
+  month: string,
+) => {
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
+  return await getRequest(url, accessToken)
+}
 export const getModelData = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/model-management`
   return await getRequest(url, accessToken)
