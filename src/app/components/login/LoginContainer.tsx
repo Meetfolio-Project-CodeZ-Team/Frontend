@@ -12,6 +12,7 @@ const LoginContainer = () => {
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
   const isInserted = id === '' || pw === ''
+
   const postLogin = async () => {
     const isAdmin = id === 'admin' ? 'admin' : id + SIGNUP.Email
     const path = id === 'admin' ? 'Admin' : 'main'
@@ -26,6 +27,10 @@ const LoginContainer = () => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login`,
       requestOptions,
     )
+    if (!res.ok) {
+      throw new Error('Failed to login')
+    }
+
     const resData = await res.json()
     const access = resData?.access
     const refresh = resData?.refresh
@@ -57,7 +62,7 @@ const LoginContainer = () => {
           type={'loginB'}
           isDisabled={isInserted}
           onClickHandler={() => postLogin()}
-          className={isInserted ? 'text-[#787878] bg-white' : ''}
+          className={isInserted ? ' bg-white' : 'text-white'}
         />
         <Button
           buttonText={'회원가입'}

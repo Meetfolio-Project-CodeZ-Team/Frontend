@@ -4,7 +4,7 @@ interface CardProps {
   experienceType: string
   startDate: string
   endDate: string
-  jobKeyword: JobType
+  jobKeyword: onlyJobType
   stack: string
   title: string
 }

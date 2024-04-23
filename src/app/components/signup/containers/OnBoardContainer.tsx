@@ -4,6 +4,8 @@ import { useState } from 'react'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
 import {
+  CLASS_ENUM,
+  COLLEGE,
   GRADE,
   GRADE_ENUM,
   JOB_ENUM,
@@ -18,12 +20,14 @@ import { useRouter } from 'next/navigation'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { pwAlert } from '@/app/utils/toast'
+import DropDownMajor from '../onboard/dropdown/DropDownMajor'
 
 const OnBoardContainer = () => {
   const router = useRouter()
   const [password, setPassWord] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
+  const [college, setCollege] = useState<collegeType>('IT융합대학')
   const [major, setMajor] = useState('')
   const [email, setEmail] = useRecoilState(emailState)
   const isEntered = password !== '' && major !== ''
@@ -31,7 +35,7 @@ const OnBoardContainer = () => {
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
-  
+
   const signUp = async () => {
     if (
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
@@ -43,7 +47,7 @@ const OnBoardContainer = () => {
         password: password,
         grade: GRADE_ENUM[grade],
         jobKeyword: JOB_ENUM[clickedKeyword],
-        major: 'COMPUTER_ENGINEERING',
+        major: major,
       }
       console.log(requestBody)
       const requestOptions = {
@@ -95,11 +99,18 @@ const OnBoardContainer = () => {
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학과
           </div>
-          <Input
-            type={'onboard'}
-            onChange={(e) => setMajor(e.target.value)}
-            placeholder="본인 학과 입력"
-          />
+          <div className="flex gap-x-5">
+            <DropDownMajor
+              options={COLLEGE}
+              title={'단과대를 선택'}
+              onSelect={(option) => setCollege(option)}
+            />
+            <DropDownMajor
+              options={CLASS_ENUM[college]}
+              title={'학과를 선택'}
+              onSelect={(option) => setMajor(option)}
+            />
+          </div>
         </div>
         <div className="flex flex-col">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
@@ -130,7 +141,7 @@ const OnBoardContainer = () => {
           type={'loginB'}
           isDisabled={!isEntered}
           onClickHandler={() => signUp()}
-          className={!isEntered ? 'text-[#b5b5b5] bg-white' : ''}
+          className={!isEntered ? 'text-[#767575] bg-white' : ''}
         />
       </div>
     </div>
@@ -138,20 +149,3 @@ const OnBoardContainer = () => {
 }
 
 export default OnBoardContainer
-
-const getJOBValue = (job: string): string => {
-  switch (job) {
-    case '백엔드':
-      return 'BACKEND'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-    case 'AI':
-      return 'AI'
-    default:
-      return ''
-  }
-}

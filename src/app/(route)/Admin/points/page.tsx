@@ -1,5 +1,6 @@
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import PointsContainer from '@/app/components/admin/containers/PointsContainer'
+import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 
 const pointPage = () => {
@@ -12,6 +13,7 @@ const pointPage = () => {
           <PointsContainer />
         </div>
       </div>
+      <Footer />
     </section>
   )
 }

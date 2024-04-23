@@ -2,6 +2,7 @@
 
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import UserContainer from '@/app/components/admin/containers/UserContainer'
+import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 
@@ -28,6 +29,7 @@ const userPage = () => {
             <UserContainer userInfoData={data} />
           </div>
         </div>
+        <Footer />
       </section>
     )
   }

@@ -3,7 +3,7 @@ interface CardDataTypes {
   startDate: string
   endDate: string
   experienceType: string
-  jobKeyword: JobType
+  jobKeyword: onlyJobType
   stack: string
 }
 interface memberInfo {
@@ -27,3 +27,4 @@ interface ResponseMain {
 }
 type JobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드' | '전체'
 type onlyJobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드'
+
