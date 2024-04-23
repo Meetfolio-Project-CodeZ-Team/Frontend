@@ -10,9 +10,11 @@ import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
 import { JOB_ENUM } from '@/app/constants/auth'
+import { userState } from '@/app/recoil/signUp'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  const [userInfo, setUser] = useRecoilState(userState)
 
   const [experienceData, setExperienceData] = useRecoilState(expData)
   console.log(experienceData)
@@ -42,7 +44,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col items-center min-h-screen">
-      <Header />
+      <Header profile={userInfo.memberName} />
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
