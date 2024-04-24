@@ -23,8 +23,18 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest .
           docker push ${{secrets.DOCKER_USERNAME}}/meetfolio-web:latest
 
+      - name: Set ENV
+        env:
+          NEXT_PUBLIC_SERVER: ${{ secrets.NEXT_PUBLIC_SERVER }}
+          NEXT_PUBLIC_NEXT_SERVER: ${{ secrets.NEXT_PUBLIC_NEXT_SERVER }}
+        run: |
+          echo "NEXT_PUBLIC_SERVER=$NEXT_PUBLIC_SERVER" > .env.local
+          echo "NEXT_PUBLIC_NEXT_SERVER=$NEXT_PUBLIC_NEXT_SERVER" >> .env.local
+
       - name: Deploy in GCP
         uses: appleboy/ssh-action@master
+        env:
+          ENVFILE: "/home/meetfolio4/.env.local"
         with:
           host: ${{ secrets.GCE_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -33,5 +43,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
-            sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -e PORT=60005 -p 60005:60005 meetfolio-web:latest
+            sudo docker run -d --name meetfolio-web -v $ENVFILE:/usr/src/app -e TZ=Asia/Seoul -p 3000:3000 meetfolio-web:latest
             docker image prune -af
