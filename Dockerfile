@@ -34,7 +34,7 @@ COPY --from=builder /usr/src/app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
 
-EXPOSE 60005
+EXPOSE 3000
 
 # node로 애플리케이션 실행
 CMD ["node", "server.js"] 
