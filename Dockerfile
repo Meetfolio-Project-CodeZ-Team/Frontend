@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
  
 COPY package.json package-lock.json ./ 
 
-RUN yarn --frozen-lockfile 
+RUN npm ci --only=production
 
 ###########################################################
 
@@ -18,7 +18,7 @@ WORKDIR /usr/src/app
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 ###########################################################
 
