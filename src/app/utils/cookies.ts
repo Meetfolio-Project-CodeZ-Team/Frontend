@@ -12,7 +12,7 @@ export const getCookie = (req: Request, name: string) => {
 
 export const logout = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login/logout`,
+    `${process.env.NEXT_PUBLIC_NEXT_SERVER}}/api/login/logout`,
     {
       method: 'DELETE',
     },

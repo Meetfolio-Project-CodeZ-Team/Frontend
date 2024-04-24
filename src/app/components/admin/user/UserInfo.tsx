@@ -25,7 +25,7 @@ const UserInfo = (userInfo: UserInfoProps) => {
   const deleteUser = async (userId: number) => {
     deleteUserAlert()
     const res = await fetch(
-      `http://34.64.177.41:3000/api/admin/user/delete?userId=${userId}`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user/delete?userId=${userId}`,
       {
         method: 'DELETE',
       },
