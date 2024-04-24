@@ -19,7 +19,11 @@ const nextConfig = {
     ],
   },
   reactStrictMode: false,
-  output: "standalone"
+  output: "standalone",
+  server: {
+    port: 60005
+  }
 }
+
 
 export default nextConfig
