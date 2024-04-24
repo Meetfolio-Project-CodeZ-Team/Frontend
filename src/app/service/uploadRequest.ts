@@ -24,7 +24,7 @@ export const uploadPortfolio = async (
   portfolio: FormData,
   accessToken: string,
 ) => {
-  const url = `http://34.64.177.41:9090/portfolio`
+  const url = `${SERVER_URL}/portfolio`
   return await postRequest(url, portfolio, accessToken)
 }
 
@@ -32,6 +32,6 @@ export const uploadRecruit = async (
   portfolio: FormData,
   accessToken: string,
 ) => {
-  const url = `http://34.64.177.41:9090/recruit`
+  const url = `${SERVER_URL}/recruit`
   return await postRequest(url, portfolio, accessToken)
 }

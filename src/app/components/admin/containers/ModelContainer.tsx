@@ -15,13 +15,12 @@ const ModelContainer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `http://34.64.177.41:3000/api/admin/model/${MODEL_PATH[titleNum]}`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
       )
       const resData = await response.json()
       if (titleNum === 0) setModelData(resData.result)
       else if (titleNum === 1) setTrainData(resData.result)
       else setModelData(resData.result)
-      console.log('가져온 resData', resData.result)
     }
     fetchData()
   }, [titleNum])

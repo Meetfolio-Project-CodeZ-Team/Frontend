@@ -26,7 +26,7 @@ const deleteRequest = async (
 }
 
 export const deleteUser = async (accessToken: string, id: string) => {
-  const url = `http://34.64.177.41:9090/api/admins/members-management/${id}`
+  const url = `${SERVER_URL}/api/admins/members-management/${id}`
   return await deleteRequest(url, accessToken)
 }
 
@@ -34,6 +34,6 @@ export const logoutRequest = async (
   accessToken: string,
   refreshToken: string,
 ) => {
-  const url = `http://34.64.177.41:9090/api/logout`
+  const url = `${SERVER_URL}/api/logout`
   return await deleteRequest(url, accessToken, refreshToken)
 }

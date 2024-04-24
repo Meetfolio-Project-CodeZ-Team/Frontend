@@ -18,20 +18,20 @@ const getRequest = async (url: string, accessToken?: string) => {
   }
 }
 export const getCardMain = async (accessToken: string) => {
-  const url = `http://34.64.177.41:9090/api`
+  const url = `${SERVER_URL}/api`
   return await getRequest(url, accessToken)
 }
 
 export const getDashBoard = async (accessToken: string) => {
-  const url = `http://34.64.177.41:9090/api/admins/dashboard`
+  const url = `${SERVER_URL}/api/admins/dashboard`
   return await getRequest(url, accessToken)
 }
 
 export const getUser = async (accessToken: string, jobKeyword?: string) => {
   jobKeyword
   const url = jobKeyword
-    ? `http://34.64.177.41:9090/api/admins/members-management?jobKeyword=${jobKeyword}`
-    : `http://34.64.177.41:9090/api/admins/members-management`
+    ? `${SERVER_URL}/api/admins/members-management?jobKeyword=${jobKeyword}`
+    : `${SERVER_URL}/api/admins/members-management`
   return await getRequest(url, accessToken)
 }
 
@@ -40,7 +40,7 @@ export const getPoint = async (
   year: string,
   month: string,
 ) => {
-  const url = `http://34.64.177.41:9090/api/admins/point-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/point-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }
 
@@ -49,7 +49,7 @@ export const getPayment = async (
   year: string,
   month: string,
 ) => {
-  const url = `http://34.64.177.41:9090/api/admins/payment-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }
 
@@ -58,15 +58,15 @@ export const getExpRequest = async (
   year: string,
   month: string,
 ) => {
-  const url = `http://34.64.177.41:9090/api/admins/payment-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
   return await getRequest(url, accessToken)
 }
 export const getModelData = async (accessToken: string) => {
-  const url = `http://34.64.177.41:9090/api/admins/model-management`
+  const url = `${SERVER_URL}/api/admins/model-management`
   return await getRequest(url, accessToken)
 }
 
 export const getTrainData = async (accessToken: string) => {
-  const url = `http://34.64.177.41:9090/api/admins/data-management`
+  const url = `${SERVER_URL}/api/admins/data-management`
   return await getRequest(url, accessToken)
 }
