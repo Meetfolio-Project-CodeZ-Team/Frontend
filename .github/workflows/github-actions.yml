@@ -33,7 +33,7 @@ jobs:
             echo "NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }}" > .env.local
             echo "NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }}" >> .env.local
             echo "TZ=Asia/Seoul" >> .env.local
-            cat .env
+            cat .env.local
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
