@@ -45,9 +45,10 @@ jobs:
             echo "NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }}" > .env.local
             echo "NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }}" >> .env.local
             cat .env.local
+            echo "ENVFILE: $ENVFILE"
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
             sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -e PORT=60005 -p 60005:60005 meetfolio-web:latest
-            sudo docker cp $ENVFILE meetfolio-web:/usr/src/app
+            sudo docker cp "$ENVFILE" meetfolio-web:/usr/src/app/.env.local
             sudo docker image prune -af
