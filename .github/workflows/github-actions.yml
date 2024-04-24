@@ -37,5 +37,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
-            sudo docker run -d --name meetfolio-web --env-file ./.env -p 60005:60005 meetfolio-web:latest
+            sudo docker run -d --name meetfolio-web --env-file ./.env -e PORT=60005 -p 60005:60005 meetfolio-web:latest
             docker image prune -af
