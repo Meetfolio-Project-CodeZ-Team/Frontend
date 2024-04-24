@@ -34,7 +34,7 @@ jobs:
       - name: Deploy in GCP
         uses: appleboy/ssh-action@master
         env:
-	        ENVFILE: "/home/meetfolio4/.env.local"
+	  ENVFILE: "/home/meetfolio4/.env.local"
         with:
           host: ${{ secrets.GCE_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
