@@ -20,7 +20,7 @@ jobs:
 
       - name: Docker build and Push
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest --build-arg NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }} --build-arg NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }} .
           docker push ${{secrets.DOCKER_USERNAME}}/meetfolio-web:latest
 
       - name: Deploy in GCP
@@ -30,12 +30,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }}" > .env.local
-            echo "NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }}" >> .env.local
-            echo "TZ=Asia/Seoul" >> .env.local
-            cat .env.local
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
-            sudo docker run -d --name meetfolio-web --env-file .env.local -e PORT=60005 -p 60005:60005 meetfolio-web:latest
+            sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -e PORT=60005 -p 60005:60005 meetfolio-web:latest
             docker image prune -af
