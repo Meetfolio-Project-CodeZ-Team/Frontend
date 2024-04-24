@@ -30,7 +30,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            echo "NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }}" >> .env
+            echo "SERVER_URL=${{ secrets.SERVER_URL }}" >> .env
             echo "NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }}" >> .env
             echo "TZ=Asia/Seoul" >> .env
             cat .env
