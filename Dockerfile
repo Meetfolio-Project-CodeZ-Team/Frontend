@@ -9,14 +9,10 @@ WORKDIR /usr/src/app
 # Dependancy install을 위해 package.json, package-lock.json 복사 
 COPY package.json package-lock.json ./
 
-# ARG로 받은 환경변수를 .env.local 파일에 작성
 ARG NEXT_PUBLIC_SERVER
 ARG NEXT_PUBLIC_NEXT_SERVER
 RUN echo "NEXT_PUBLIC_SERVER=${NEXT_PUBLIC_SERVER}" > .env.local
 RUN echo "NEXT_PUBLIC_NEXT_SERVER=${NEXT_PUBLIC_NEXT_SERVER}" >> .env.local
-
-# 생성한 .env.local 파일을 Docker 컨테이너 내의 /usr/src/app로 복사
-COPY .env.local ./
 
 # Dependancy 설치 (새로운 lock 파일 수정 또는 생성 방지)
 RUN yarn --frozen-lockfile 
@@ -32,6 +28,9 @@ WORKDIR /usr/src/app
 # node_modules 등의 dependancy를 복사함.
 COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
+
+# Build 도중 생성된 .env.local 파일을 복사
+COPY --from=deps /usr/src/app/.env.local ./.env.local
 
 RUN yarn build
 
