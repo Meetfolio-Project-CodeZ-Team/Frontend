@@ -6,11 +6,6 @@ WORKDIR /usr/src/app
 
 COPY package.json package-lock.json ./
 
-ARG NEXT_PUBLIC_SERVER
-ARG NEXT_PUBLIC_NEXT_SERVER
-RUN echo "NEXT_PUBLIC_SERVER=${NEXT_PUBLIC_SERVER}" > .env.local
-RUN echo "NEXT_PUBLIC_NEXT_SERVER=${NEXT_PUBLIC_NEXT_SERVER}" >> .env.local
-
 RUN yarn --frozen-lockfile 
 
 ###########################################################
