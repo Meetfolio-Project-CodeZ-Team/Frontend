@@ -3,10 +3,15 @@ FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 
 WORKDIR /usr/src/app
- 
-COPY package.json package-lock.json ./ 
 
-RUN yarn --frozen-lockfile
+COPY package.json package-lock.json ./
+
+ARG NEXT_PUBLIC_SERVER
+ARG NEXT_PUBLIC_NEXT_SERVER
+RUN echo "NEXT_PUBLIC_SERVER=${NEXT_PUBLIC_SERVER}" > .env.local
+RUN echo "NEXT_PUBLIC_NEXT_SERVER=${NEXT_PUBLIC_NEXT_SERVER}" >> .env.local
+
+RUN yarn --frozen-lockfile 
 
 ###########################################################
 
@@ -34,6 +39,7 @@ COPY --from=builder /usr/src/app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
 
+# 컨테이너의 수신 대기 포트를 60005으로 설정
 EXPOSE 60005
 
 # node로 애플리케이션 실행
