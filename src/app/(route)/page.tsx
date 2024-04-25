@@ -26,7 +26,6 @@ export default function MainPage() {
     }
     fetchData()
   }, [])
-  console.log(data)
 
   if (data) {
     const { memberInfo, recommendCardInfo } = data

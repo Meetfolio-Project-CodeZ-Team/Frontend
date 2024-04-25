@@ -27,9 +27,9 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           </div>
         </Link>
         {!isAdmin ? (
-          <div className="absolute right-[10px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
+          <div className="absolute right-[10px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg font-semibold cursor-pointer items-center ">
             <Link href={`${nickname ? '/experience' : '/login'}`}>
-              경험분해하기
+              경험카드생성
             </Link>
             <Link href={`${nickname ? '/coverletter' : '/login'}`}>
               AI자기소개서솔루션
