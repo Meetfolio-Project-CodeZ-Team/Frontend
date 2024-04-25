@@ -13,7 +13,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
     <div className="relative w-full border-b-2 border-[#486284]">
       <header className=" relative w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[60px]">
         <Link
-          href={isAdmin ? '/admin' : '/'}
+          href={isAdmin ? '/Admin' : '/'}
           className="absolute flex items-center justify-center gap-x-2.5 h-9"
         >
           <div className="w-9 h-9 bg-[#486284] rounded-[100px]"></div>

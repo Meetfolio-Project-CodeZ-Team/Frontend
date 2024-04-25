@@ -61,7 +61,7 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
             {options.map((option, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-center w-full h-[37px] py-1 cursor-pointer hover:bg-gray-100 border-t border-[#486284] ${
+                className={`flex items-center justify-center w-full h-[37px] py-1 cursor-pointer hover:bg-gray-100  border-t-2 border-[#b4cae4] ${
                   index == 0 ? 'border-none' : ''
                 }
                 `}
