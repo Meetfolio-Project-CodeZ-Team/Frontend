@@ -7,7 +7,7 @@ export default function OnBoardPage() {
   return (
     <section className="flex flex-col items-center min-h-screen">
       <Header/>
-      <div className="w-[1440px] mx-auto">
+      <div className="w-[1440px] mx-auto mb-10">
         <OnBoardContainer />
       </div>
       <Footer />

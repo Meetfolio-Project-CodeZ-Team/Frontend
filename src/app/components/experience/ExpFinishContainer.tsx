@@ -24,7 +24,7 @@ const ExpFinishContainer = () => {
     })
   }
   const handleButtonClick = () => {
-    router.push('/main') // '/main'으로 경로 이동
+    router.push('/') // '/main'으로 경로 이동
   }
 
   const saveExpData = async () => {

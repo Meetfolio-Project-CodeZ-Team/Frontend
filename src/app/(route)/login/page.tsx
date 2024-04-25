@@ -8,7 +8,7 @@ export default function LoginPage() {
   return (
     <section className="flex flex-col items-center min-h-screen">
       <Header />
-      <div className="w-[1440px] mx-auto">
+      <div className="w-[1440px] mx-auto mb-10">
         <LoginContainer />
       </div>
       <Footer />
