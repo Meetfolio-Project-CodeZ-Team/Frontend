@@ -10,7 +10,7 @@ export default function UserMyPage() {
 
   return (
     <section className="flex flex-col min-h-screen">
-      <Header profile={userInfo.memberName}/>
+      <Header profile={userInfo.memberName} />
       <div className="flex w-[full] h-[980px]">
         <UserNavContainer selected={'portfolio'} />
         <div className="flex-grow">

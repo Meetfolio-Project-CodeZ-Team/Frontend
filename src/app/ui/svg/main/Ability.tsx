@@ -7,7 +7,7 @@ const Ability = () => {
       viewBox="0 0 120 120"
       fill="none"
     >
-      <g clip-path="url(#clip0_389_3227)">
+      <g clipPath="url(#clip0_389_3227)">
         <path
           d="M60 120C93.1371 120 120 93.1371 120 60C120 26.8629 93.1371 0 60 0C26.8629 0 0 26.8629 0 60C0 93.1371 26.8629 120 60 120Z"
           fill="#7AAAE8"

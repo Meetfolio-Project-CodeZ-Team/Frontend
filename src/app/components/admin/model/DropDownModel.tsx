@@ -32,7 +32,6 @@ const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
   }
 
   const handleOptionClick = (option: JobType) => {
-
     setSelectedOption(option)
     onSelect(JOB_ENUM[option])
     setIsOpen(false)

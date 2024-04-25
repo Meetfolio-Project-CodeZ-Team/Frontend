@@ -65,5 +65,5 @@ export {
   deleteUserAlert,
   textLimitAlert,
   addTrainData,
-  failLogin
+  failLogin,
 }

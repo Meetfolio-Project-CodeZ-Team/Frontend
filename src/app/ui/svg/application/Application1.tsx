@@ -40,8 +40,8 @@ const Application1 = () => {
           y2="123.75"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#4F5D73" />
-          <stop offset="0.785" stop-color="#95AFD9" />
+          <stop stopColor="#4F5D73" />
+          <stop offset="0.785" stopColor="#95AFD9" />
         </linearGradient>
       </defs>
     </svg>

@@ -25,7 +25,7 @@ export default function ExperiencePage() {
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
-      <Header profile={userInfo.memberName}/>
+      <Header profile={userInfo.memberName} />
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
