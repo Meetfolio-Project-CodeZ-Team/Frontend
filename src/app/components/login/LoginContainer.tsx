@@ -51,6 +51,7 @@ const LoginContainer = () => {
           placeholder={`아이디(${SIGNUP.Email}을 제외하고 입력)`}
         />
         <Input
+          inputType='password'
           type={'login'}
           onChange={(e) => setPw(e.target.value)}
           placeholder="비밀번호"

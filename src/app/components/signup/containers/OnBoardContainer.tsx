@@ -25,13 +25,14 @@ import DropDownMajor from '../onboard/dropdown/DropDownMajor'
 const OnBoardContainer = () => {
   const router = useRouter()
   const [password, setPassWord] = useState('')
+  const [checkPW, setCheckPW] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
   const [college, setCollege] = useState<collegeType>('IT융합대학')
   const [major, setMajor] = useState('')
   const [email, setEmail] = useRecoilState(emailState)
   const isEntered = password !== '' && major !== ''
-
+  const isSame = checkPW === password
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
@@ -88,12 +89,25 @@ const OnBoardContainer = () => {
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             비밀번호
           </div>
-          <Input
-            type={'onboard'}
-            onChange={(e) => setPassWord(e.target.value)}
-            placeholder={SIGNUP.Password}
-            textValue={password}
-          />
+          <div className="flex gap-x-3 items-center">
+            <Input
+              inputType="password"
+              type={'password'}
+              onChange={(e) => setPassWord(e.target.value)}
+              placeholder={SIGNUP.Password}
+              textValue={password}
+            />
+            <Input
+              inputType="password"
+              type={'password'}
+              onChange={(e) => setCheckPW(e.target.value)}
+              placeholder={SIGNUP.Password}
+              textValue={checkPW}
+            />
+            <div className={`flex items-center justify-center w-[72px] p-2 text-lg font-semibold rounded-[10px]  ${isSame ? 'bg-white text-[#486283]':'bg-white text-[#6D727C]'}`}>
+              {isSame ? '일치' : '불일치'}
+            </div>
+          </div>
         </div>
         <div className="flex flex-col">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
@@ -141,7 +155,7 @@ const OnBoardContainer = () => {
           type={'loginB'}
           isDisabled={!isEntered}
           onClickHandler={() => signUp()}
-          className={!isEntered ? 'text-[#767575] bg-white' : ''}
+          className={!isEntered ? 'text-[#767575] bg-white' : 'text-white'}
         />
       </div>
     </div>

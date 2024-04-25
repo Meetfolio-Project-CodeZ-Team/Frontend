@@ -3,7 +3,7 @@ export const SIGNUP = {
   Email: '@gachon.ac.kr',
   Auth: '재학생 인증하기',
   OnBoard: '회원이 되어 다양한 서비스를 경험해보세요!',
-  Password: '비밀번호 입력  ( 특수문자, 문자, 숫자 포함 8 ~ 20자 )',
+  Password: '특수문자, 문자, 숫자 포함 8 ~ 20자',
 } as const
 
 export const JOBKEYWORD: onlyJobType[] = [
