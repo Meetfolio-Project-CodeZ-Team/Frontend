@@ -2,7 +2,30 @@
 
 import MyCovlet from './MyCovletCard'
 
-const MyCovletDetail = () => {
+interface CovletCardDetail {
+  coverLetterId: number
+  question: string
+  answer: string
+  keyword1: string
+  keyword2: string
+  jobKeyword: onlyJobType
+  closeModal: ()=>void;
+}
+
+const MyCovletCardDetail = ({
+  coverLetterId,
+  question,
+  answer,
+  keyword1,
+  keyword2,
+  jobKeyword,
+  closeModal,
+}: CovletCardDetail) => {
+  const handleModalClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  ) => {
+    event.stopPropagation()
+  }
   return (
     <div className="w-full h-[1725px] relative">
       <div className="w-full h-[1725px] left-0 top-0 absolute">
@@ -156,4 +179,4 @@ const MyCovletDetail = () => {
   )
 }
 
-export default MyCovletDetail
+export default MyCovletCardDetail;

@@ -38,16 +38,16 @@ console.log(coverletterData, '자소서 데이터 현황');
   }
 
   const saveCovData = async () => {
-    const { answer, question, shareType, keyword1, keyword2, jobKeyword } = coverletterData;
+    const { answer, question, shareType, keyword1, keyword2, jobKeyword, coverLetterId } = coverletterData;
     
     // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
-    if (!answer || !question || !shareType) {
+    if (!answer || !question || !shareType || !keyword1 || !keyword2 || !jobKeyword) {
       console.error('모든 필드를 채워주세요.');
       return;
     }
   
-    const response = await fetch('/api/coverletters', {
-      method: 'POST',
+    const response = await fetch('/api/coverletters/save', {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },

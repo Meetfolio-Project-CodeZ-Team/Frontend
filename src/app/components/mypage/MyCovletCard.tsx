@@ -4,7 +4,7 @@ import MyCovletDetail from './MyCovletDetail'
 interface MyCovletCardProps {
   question: string
   answer: string
-  coverLetterId: number
+  coverLetterId?: number
   keyword1: string
   keyword2: string
   jobKeyword: string
@@ -17,6 +17,7 @@ interface CovletCardDetail {
   keyword1: string
   keyword2: string
   jobKeyword: string
+  closeModal: ()=>void
 }
 
 const MyCovletCard = ({
@@ -25,7 +26,7 @@ const MyCovletCard = ({
   coverLetterId,
   keyword1,
   keyword2,
-  jobKeyword
+  jobKeyword,
 }: MyCovletCardProps) => {
   
   
@@ -33,7 +34,7 @@ const MyCovletCard = ({
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
 
-  console.log(covletCards)
+  console.log(coverLetterId, '자소서 정보 id')
   const fetchCovletCards = async () => {
     try {
       const response = await fetch(`/api/mypage/myCovletDetail?coverLetterId=${coverLetterId}`);
@@ -68,15 +69,15 @@ const MyCovletCard = ({
         <br />
         <br />{' '}
       </div>
-      {/* {isOpen && covletCards && <MyCovletDetail
-        coverLetterId={covletCards?=.coverLetterId}
+      {isOpen && covletCards && <MyCovletDetail
+        coverLetterId={coverLetterId||0}
         question={covletCards.question}
-        jobKeyword={covletCards.jobKeyword}
+        // jobKeyword={covletCards.jobKeyword}
         keyword1={covletCards.keyword1}
         keyword2={covletCards.keyword2}
         
         // closeModal={setIsOpen(false)}
-      />} */}
+      />}
     </div>
   )
 }

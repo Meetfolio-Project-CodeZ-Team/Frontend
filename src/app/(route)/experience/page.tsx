@@ -26,7 +26,7 @@ export default function ExperiencePage() {
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
-        {experienceNumber === 2 && <ExpContentContainer />}
+        {experienceNumber === 2 && <ExpContentContainer isEdit={false}/>}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
     </section>

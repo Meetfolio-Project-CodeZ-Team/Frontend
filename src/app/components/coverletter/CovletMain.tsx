@@ -1,6 +1,4 @@
-import Button from '../common/Button'
-import Input from '../common/Input'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { covletNum, covletData } from '../../recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 import ExpCardDetail from '@/app/components/coverletter/ExpCardDetail'
@@ -37,36 +35,70 @@ const CovletMain = () => {
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
 
+  // const saveCovData = async () => {
+  //   const { answer, question, shareType, keyword1, keyword2, jobKeyword } = coverletterData;
+
+  //   // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
+  //   if (!answer || !question || !shareType) {
+  //     console.error('모든 필드를 채워주세요.');
+  //     return;
+  //   }
+
+  //   const response = await fetch('/api/coverletters', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       answer,
+  //       question,
+  //       shareType,
+  //       keyword1: null,
+  //       keyword2: null,
+  //       jobKeyword: null, // 공개/비공개 여부
+  //     }),
+  //   });
+
+  //   if (!response.ok) {
+  //     console.error('데이터 저장에 실패했습니다.');
+  //   } else {
+  //     // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
+  //     console.log('데이터가 성공적으로 저장되었습니다.');
+  //     goToNextPage();
+  //   }
+  // };
+  const { answer, question, shareType } = useRecoilValue(covletData)
   const saveCovData = async () => {
-    const { answer, question, shareType } = coverletterData;
-    
-    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
-    if (!answer || !question || !shareType) {
-      console.error('모든 필드를 채워주세요.');
-      return;
+    // 필요한 모든 데이터가 있는지 확인
+    const requestBody = {
+      question,
+      answer,
+      shareType,
     }
-  
-    const response = await fetch('/api/coverletters', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        answer,
-        question,
-        shareType, // 공개/비공개 여부
-      }),
-    });
-  
-    if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.');
-    } else {
-      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
-      console.log('데이터가 성공적으로 저장되었습니다.');
-      goToNextPage();
+
+    try {
+      const response = await fetch('/api/coverletters', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          requestBody,
+        }),
+      })
+
+      if (!response.ok) {
+        console.error('서버 에러:', response.status, response.statusText)
+      } else {
+        const data = await response.json()
+        console.log('데이터가 성공적으로 저장되었습니다.',response.status)
+        
+      }
+    } catch (error) {
+      console.error('요청 중 오류가 발생했습니다.', error)
     }
   };
-  
+
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -147,7 +179,7 @@ const CovletMain = () => {
         </div> */}
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={goToNextPage}
+          onClick={saveCovData}
         >
           저장하기
         </button>
@@ -169,20 +201,20 @@ const CovletMain = () => {
           </span>
         </div>
         {/* //자소서 작성 중 경험카드 리스트 조회 */}
-        {/* <div className='w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide'>
+        <div className="w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] gap-[20px]">
             <ExpCard />
             <ExpCard />
             <ExpCard />
             <ExpCard />
           </div>
-        </div>  */}
-        {/* //자소서 작성 중 경험카드 세부조회 */}
-        <div className='w-[450px] h-[1100px] mt-[80px] '>
+        </div>
+        {/* //자소서 작성 중 경험카드 세부조회
+        {/* <div className='w-[450px] h-[1100px] mt-[80px] '>
           <div className="w-[350px] h-full ml-[16px] gap-[20px]">
             <ExpCardDetail />
           </div>
-        </div> 
+        </div>  */}
       </div>
     </div>
   )

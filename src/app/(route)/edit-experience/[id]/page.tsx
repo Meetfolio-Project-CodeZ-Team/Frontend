@@ -16,6 +16,8 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 
   const [experienceData, setExperienceData] = useRecoilState(expData)
   console.log(experienceData)
+  console.log(experienceNumber, '현재 페이지 번호');
+  
   const router = useRouter()
 
   useEffect(() => {

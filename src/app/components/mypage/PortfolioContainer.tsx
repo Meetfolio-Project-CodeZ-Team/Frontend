@@ -6,6 +6,9 @@ interface CovletCard {
   question: string;
   answer: string;
   coverLetterId: number;
+  keyword1: string;
+  keyword2: string;
+  jobKeyword: onlyJobType
 }
 
 const PortfolioContainer = () => {
@@ -20,8 +23,8 @@ const PortfolioContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.');
         }
         const data = await response.json();
-        console.log(data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result.coverLetterInfo);
+        console.log('자소서 데이터',data) // 타입 에러가 발생하지 않아야 함
+        setCovletCards(data.result);
       } catch (error) {
         console.error(error);
       }
@@ -30,7 +33,7 @@ const PortfolioContainer = () => {
     fetchCovletCards();
   }, []);
 
-  console.log(covletCards)
+  console.log(covletCards, '자소서 목록 정보')
 
   return (
     <div className="w-full h-[1090px] relative">

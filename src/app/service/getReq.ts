@@ -29,7 +29,7 @@ export const getMyExpDetail = async (accessToken: string, id: string) => {
 }
 
 export const getMyCovlet = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/coverLetters/{coverLetterId}`
+  const url = `${SERVER_URL}/api/coverLetters`
   return await getRequest(url, accessToken)
 }
 
