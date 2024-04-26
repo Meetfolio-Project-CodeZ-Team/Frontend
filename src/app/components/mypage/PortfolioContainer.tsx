@@ -6,16 +6,14 @@ interface CovletCard {
   question: string;
   answer: string;
   coverLetterId: number;
-  keyword1: string;
-  keyword2: string;
-  jobKeyword: onlyJobType
+  createdAt: string
 }
 
 const PortfolioContainer = () => {
   const [covletCards, setCovletCards] = useState<CovletCard[]>([]);
 
   useEffect(() => {
-    // 서버에서 경험카드 데이터를 가져오는 함수
+    // 서버에서 자소서카드 데이터를 가져오는 함수
     const fetchCovletCards = async () => {
       try {
         const response = await fetch('/api/mypage/myCovlet');
@@ -24,7 +22,7 @@ const PortfolioContainer = () => {
         }
         const data = await response.json();
         console.log('자소서 데이터',data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result);
+        setCovletCards(data.result.list);
       } catch (error) {
         console.error(error);
       }
@@ -37,7 +35,7 @@ const PortfolioContainer = () => {
 
   return (
     <div className="w-full h-[1090px] relative">
-      <div className="w-[1122px] h-[979px] left-0 top-0 absolute bg-gray-50 " />
+      <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />
       <div className="w-[963px] h-[970px] left-[75px] top-[42px] absolute ">
         <div className="w-[248px] h-[30px] left-[14px] top-0 absolute justify-start items-center gap-[60px] inline-flex">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
@@ -49,8 +47,8 @@ const PortfolioContainer = () => {
         </div>
         <div className="w-[963px] h-[830px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[0px] gap-[20px]">
-          {covletCards.map((card) => (
-          <MyCovletCard key={card.coverLetterId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
+          {covletCards.map((a) => (
+          <MyCovletCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
         ))}
           </div>
         </div>
