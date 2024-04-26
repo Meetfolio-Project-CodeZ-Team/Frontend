@@ -13,10 +13,9 @@ interface CovletCardDetail {
   keyword2: string
   jobKeyword: string
   shareType: string
-  // closeModal: ()=>void;
 }
 
-const MyCovletDetail = ({
+const MyCovletCardDetail = ({
   coverLetterId,
   question,
   answer,
@@ -24,13 +23,7 @@ const MyCovletDetail = ({
   keyword2,
   jobKeyword,
   shareType,
-  // closeModal,
 }: CovletCardDetail) => {
-  const handleModalClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) => {
-    event.stopPropagation()
-  }
   console.log(coverLetterId, 'id 수정 삭제에서 가져오기')
 
   const router = useRouter()
@@ -187,4 +180,4 @@ const MyCovletDetail = ({
   )
 }
 
-export default MyCovletDetail
+export default MyCovletCardDetail

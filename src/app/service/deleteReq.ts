@@ -59,6 +59,6 @@ export const deleteExp = async (accessToken: string, id: string) => {
 }
 
 export const deleteCov = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/covletters/${id}`
+  const url = `${SERVER_URL}/api/coverLetters/${id}`
   return await deleteRequest(url, accessToken)
 }
