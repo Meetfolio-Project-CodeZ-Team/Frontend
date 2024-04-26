@@ -1,29 +1,35 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { useRouter } from 'next/navigation'
 import { expNum, expData } from '../../../recoil/experience'
 import Header from '@/app/components/layout/Header'
 import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
-import { JOB_ENUM } from '@/app/constants/auth'
 import { userState } from '@/app/recoil/signUp'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [userInfo, setUser] = useRecoilState(userState)
+  const [userInfo, setUser] = useState<memberInfo|null>(null)
 
   const [experienceData, setExperienceData] = useRecoilState(expData)
   console.log(experienceData)
-  const router = useRouter()
 
   useEffect(() => {
-    // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main/user`,
+      )
+      const resData = await response.json()
+      setUser(resData.result)
+    }
+    fetchData()
+  }, [])
+
+  useEffect(() => {
     if (params.id && typeof params.id === 'string') {
-      // id의 존재성과 문자열 타입 확인
       fetch(`/api/mypage/myExpDetail?experienceId=${params.id}`) // 쿼리 파라미터로 id 사용
         .then((response) => response.json())
         .then((data) => {
@@ -44,7 +50,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col items-center min-h-screen">
-      <Header profile={userInfo.memberName} />
+      <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
