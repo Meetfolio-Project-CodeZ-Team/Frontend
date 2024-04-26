@@ -67,15 +67,10 @@ const CovletMain = () => {
   //     goToNextPage();
   //   }
   // };
-  const { answer, question, shareType } = useRecoilValue(covletData)
+  
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인
-    const requestBody = {
-      question,
-      answer,
-      shareType,
-    }
-
+    const {question, answer, shareType } = coverletterData;
     try {
       const response = await fetch('/api/coverletters', {
         method: 'POST',
@@ -83,7 +78,9 @@ const CovletMain = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          requestBody,
+          question,
+          answer,
+          shareType,
         }),
       })
 
@@ -93,10 +90,12 @@ const CovletMain = () => {
         const data = await response.json()
         console.log('데이터가 성공적으로 저장되었습니다.',response.status)
         
+        
       }
     } catch (error) {
       console.error('요청 중 오류가 발생했습니다.', error)
     }
+    goToNextPage()
   };
 
   return (
