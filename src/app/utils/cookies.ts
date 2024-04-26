@@ -1,5 +1,5 @@
 import { parse } from 'cookie'
-
+const NEXT_SERVER = process.env.NEXT_PUBLIC_NEXT_SERVER
 export const getCookie = (req: Request, name: string) => {
   try {
     const cookieHeader = req.headers.get('cookie')
@@ -12,7 +12,7 @@ export const getCookie = (req: Request, name: string) => {
 
 export const logout = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login/logout`,
+    `${NEXT_SERVER}/api/login/logout`,
     {
       method: 'DELETE',
     },

@@ -70,3 +70,8 @@ export const getTrainData = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/data-management`
   return await getRequest(url, accessToken)
 }
+
+export const getUserHeader = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/members`
+  return await getRequest(url, accessToken)
+}
