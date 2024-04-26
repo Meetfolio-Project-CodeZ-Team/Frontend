@@ -1,3 +1,4 @@
+import { useModal } from '@/app/hooks/useModal'
 import ShowCard from '../main/ShowCard'
 
 interface CardProps {
@@ -7,7 +8,7 @@ interface CardProps {
   jobKeyword: onlyJobType
   stack: string
   title: string
-  experienceId?: number
+  experienceId: number
 }
 
 const Card = ({
@@ -19,13 +20,12 @@ const Card = ({
   title,
   experienceId,
 }: CardProps) => {
-  const stackArr = stack.split(',')
-  console.log(stackArr)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   return (
     <div className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] bg-[#DEE5ED] rounded-[10px]">
       <div className="top-3 right-4 absolute">
-        <div className="flex items-center justify-center w-[96px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px]">
+        <div className="flex relative items-center justify-center w-[96px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px]">
           {experienceType}
         </div>
       </div>
@@ -46,6 +46,9 @@ const Card = ({
           {stack}
         </div>
       </div>
+      {/* {isOpen && (
+        <CardDetail closeModal={closeModal} experienceId={experienceId} />
+      )} */}
     </div>
   )
 }

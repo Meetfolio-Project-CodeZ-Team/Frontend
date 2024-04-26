@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Icons from '../../common/Icons'
 import { boardDelete } from '@/app/ui/IconsPath'
