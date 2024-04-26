@@ -5,6 +5,9 @@ import '../ui/globals.css'
 export const metadata: Metadata = {
   title: 'MeetFolio',
   description: 'Manage your own Personal Statement!',
+  icons: {
+    icon: '/Icons/favicon.ico',
+  },
 }
 
 export default function RootLayout({
