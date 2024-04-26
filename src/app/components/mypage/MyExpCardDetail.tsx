@@ -165,9 +165,9 @@ const MyExpCardDetail = ({
             수정
           </button>
         </div>
-        <div className="w-[150.05px] h-[61.46px] left-[300px] top-[585px] absolute bg-blue-400 justify-center items-center rounded-[10px]">
+        <div className="w-[150.05px] h-[61.46px] left-[300px] top-[585px] absolute border-[2px] border-gray-600 bg-white justify-center items-center rounded-[10px]">
           <button
-            className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
+            className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-slate-600  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
             onClick={()=>deleteExp(experienceId)}
           >
             삭제

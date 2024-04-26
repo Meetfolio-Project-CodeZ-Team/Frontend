@@ -10,11 +10,11 @@ import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 
 const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
-    const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
-    const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
+  const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   console.log(coverletterData)
-  console.log(covletNumber, '현재 페이지 번호');
-  
+  console.log(covletNumber, '현재 페이지 번호')
+
   const router = useRouter()
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
           if (data && data.result && data.result.coverLetterInfo) {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
-              
-              jobKeyword:transKeyword(data.result.coverLetterInfo.jobKeyword),
+
+              jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
             })
             // experienceNumber는 서버 응답에 따라 조정되어야 합니다. 현재 API 응답에 이 값이 포함되어 있지 않다면 다른 로직이 필요합니다.
           }
@@ -40,31 +40,29 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   }, [params.id])
 
   return (
-    
     <section className="flex flex-col items-center min-h-screen ">
-    <Header />
-  <div className="w-[1440px] mb-10">
-    {covletNumber === 0 && <CovletMain />}
-    {covletNumber === 1 && <CovletSave />}
-    {/* {covletNumber === 2 && <ExpContentContainer />} */}
-    
-  </div>
-</section>
+      <Header />
+      <div className="w-[1440px] mb-10">
+        {covletNumber === 0 && <CovletMain isEdit={true} id={params.id} />}
+        {covletNumber === 1 && <CovletSave />}
+        {/* {covletNumber === 2 && <ExpContentContainer />} */}
+      </div>
+    </section>
   )
 }
 
 export default EditCoverLetterPage
-const transKeyword=(keyword:string)=>{
-  switch(keyword){
+const transKeyword = (keyword: string) => {
+  switch (keyword) {
     case '백엔드':
-    return 'BACKEND'
+      return 'BACKEND'
     case 'AI':
-    return 'AI'
+      return 'AI'
     case '웹개발':
-    return 'WEB'
+      return 'WEB'
     case '앱개발':
-    return 'APP'
+      return 'APP'
     case '디자인':
-    return 'DESIGN'
+      return 'DESIGN'
   }
 }

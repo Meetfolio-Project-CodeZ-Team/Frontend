@@ -2,7 +2,7 @@
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import PortfolioContainer from '@/app/components/mypage/PortfolioContainer'
 import Header from '@/app/components/layout/Header'
-import MyCovletDetail from '@/app/components/mypage/MyCovletDetail'
+import MyCovletDetail from '@/app/components/mypage/MyCovletCardDetail'
 import MyExpList from '@/app/components/mypage/MyExpList'
 import MyExpCardDetail from '@/app/components/mypage/MyExpCardDetail'
 

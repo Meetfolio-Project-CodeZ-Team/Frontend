@@ -3,7 +3,13 @@ import { covletNum, covletData } from '../../recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 import ExpCardDetail from '@/app/components/coverletter/ExpCardDetail'
 
-const CovletMain = () => {
+interface CovletFinishContainerProps {
+  isEdit?: boolean
+  id?: string
+}
+
+
+const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
@@ -34,69 +40,31 @@ const CovletMain = () => {
     event.preventDefault()
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
-
-  // const saveCovData = async () => {
-  //   const { answer, question, shareType, keyword1, keyword2, jobKeyword } = coverletterData;
-
-  //   // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
-  //   if (!answer || !question || !shareType) {
-  //     console.error('모든 필드를 채워주세요.');
-  //     return;
-  //   }
-
-  //   const response = await fetch('/api/coverletters', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       answer,
-  //       question,
-  //       shareType,
-  //       keyword1: null,
-  //       keyword2: null,
-  //       jobKeyword: null, // 공개/비공개 여부
-  //     }),
-  //   });
-
-  //   if (!response.ok) {
-  //     console.error('데이터 저장에 실패했습니다.');
-  //   } else {
-  //     // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
-  //     console.log('데이터가 성공적으로 저장되었습니다.');
-  //     goToNextPage();
-  //   }
-  // };
   
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인
-    const {question, answer, shareType } = coverletterData;
-    try {
-      const response = await fetch('/api/coverletters', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question,
-          answer,
-          shareType,
-        }),
-      })
+    const {...dataToSend } = coverletterData;
+    console.log(coverletterData,isEdit, '로 수정요청')
 
-      if (!response.ok) {
-        console.error('서버 에러:', response.status, response.statusText)
-      } else {
-        const data = await response.json()
-        console.log('데이터가 성공적으로 저장되었습니다.',response.status)
-        
-        
-      }
-    } catch (error) {
-      console.error('요청 중 오류가 발생했습니다.', error)
+    const urlPath = isEdit ? `/api/coverletters/save?id=${id}` : `/api/coverLetters`;
+    const methodType = isEdit ? 'PATCH' : 'POST';
+    const response = 
+    await fetch(urlPath, {
+      method: methodType,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...dataToSend,
+      }),
+      
+    })
+    
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
     }
     goToNextPage()
-  };
+  }
 
   return (
     <div className="w-[1440px] h-[1319px] relative">

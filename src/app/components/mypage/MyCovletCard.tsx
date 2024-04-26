@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import MyCovletDetail from './MyCovletDetail'
 import { useRouter } from 'next/navigation'
 
 interface MyCovletCardProps {

@@ -16,7 +16,7 @@ interface CovletCardDetail {
   // closeModal: ()=>void;
 }
 
-const MyCovletCardDetail = ({
+const MyCovletDetail = ({
   coverLetterId,
   question,
   answer,
@@ -48,6 +48,28 @@ const MyCovletCardDetail = ({
     })
 
     router.push(`/edit-coverletter/${coverLetterId}`)
+  }
+
+  const deleteCov = async (coverLetterId: number) => {
+    console.log('자소서 삭제 요청이에요', coverLetterId)
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myCovlet/delete?coverLetterId=${coverLetterId}`,
+        {
+          method: 'DELETE',
+        },
+      )
+
+      if (res.ok) {
+        console.log('자기소개서가 성공적으로 삭제되었습니다.')
+        router.push(`/Mypage`)
+      } else {
+        const errorData = await res.json()
+        console.error('Error details:', errorData)
+      }
+    } catch (error) {
+      console.error('Network or other error:', error)
+    }
   }
 
   return (
@@ -112,23 +134,26 @@ const MyCovletCardDetail = ({
           추천 자기소개서 문항
         </div>
       </div>
-      <div className="w-[334px] h-[58px] left-[731px] top-[1606px] absolute">
+      <div className="w-[334px] h-[58px] left-[731px] top-[1606px] absolute flex justify-between items-center">
         <div
-          className="w-[140px] h-[58px] left-0 top-0 absolute bg-blue-400 justify-center items-center rounded-[10px]"
+          className="w-[140px] h-[58px] left-0 top-0 absolute bg-blue-400  rounded-[10px] cursor-pointer"
           onClick={onEditClick}
         >
-          <button
-            className={`w-[140px] h-[58px] left-0 top-0 absolute   text-white  border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
+          <div
+            className={`w-[140px] h-[58px] left-0 top-0 flex justify-center items-center   text-white text-center border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
           >
             수정
-          </button>
+          </div>
         </div>
-        <div className="w-[140px] h-[58px] left-[194px] top-0 absolute border-[2px] border-gray-600  bg-white justify-center items-center rounded-[10px]">
-          <button
-            className={`w-[140px] h-[58px] left-0 top-0 absolute text-slate-600  border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
+        <div
+          className="w-[140px] h-[58px] left-[194px] top-0 absolute border-[2px] border-gray-600 justify-center items-center bg-white rounded-[10px] cursor-pointer"
+          onClick={() => deleteCov(coverLetterId)}
+        >
+          <div
+            className={`w-[140px] h-[58px] left-0 top-0 flex justify-center items-center text-slate-600  border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
           >
             삭제
-          </button>
+          </div>
         </div>
       </div>
       <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
@@ -162,4 +187,4 @@ const MyCovletCardDetail = ({
   )
 }
 
-export default MyCovletCardDetail
+export default MyCovletDetail

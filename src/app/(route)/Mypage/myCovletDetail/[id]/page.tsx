@@ -8,7 +8,7 @@ import { JOB_ENUM } from '@/app/constants/auth'
 import { covletData, covletNum } from '@/app/recoil/coverletter'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
-import MyCovletCardDetail from '@/app/components/mypage/MyCovletDetail'
+import MyCovletDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 
 const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
@@ -47,7 +47,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
       <div className="flex w-[full] h-[980px]">
         <UserNavContainer selected={'portfolio'} />
         <div className="flex-grow">
-          <MyCovletCardDetail
+          <MyCovletDetail
             coverLetterId={Number(params.id)}
             question={coverletterData.question}
             answer={coverletterData.answer}
