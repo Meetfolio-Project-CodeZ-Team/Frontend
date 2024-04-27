@@ -71,6 +71,20 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
 
+  const handleCopyText = async () => {
+    const textArea = document.getElementById('answer') as HTMLTextAreaElement; // 타입 단언
+    if (textArea) { // null 체크
+      try {
+        await navigator.clipboard.writeText(textArea.value);
+        console.log('Text copied to clipboard');
+        // 복사 성공 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+        // 복사 실패 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      }
+    }
+  };
+
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인
     const { ...dataToSend } = coverletterData
@@ -99,7 +113,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[179px] left-[10px] top-[900px] absolute">
+        <div className="w-[941px] h-[179px] left-[10px] top-[940px] absolute">
           <div className="w-[941px] h-[179px] left-0 top-0 absolute bg-white rounded-[30px] shadow" />
           <div className="left-[223px] top-[24px] absolute text-center text-black text-2xl font-bold  leading-9">
             작성한 자기소개서를 다른 사용자에게 공개하시겠어요?
@@ -127,9 +141,9 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      <div className="w-[941px] h-[857px] left-[10px] top-[18px] absolute">
-        <div className="w-[941px] h-[857px] left-0 top-0 absolute">
-          <div className="w-[941px] h-[857px] left-0 top-0 absolute bg-white rounded-[30px]" />
+      <div className="w-[941px] h-[900px] left-[10px] top-[18px] absolute">
+        <div className="w-[941px] h-[900px] left-0 top-0 absolute">
+          <div className="w-[941px] h-[900px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[682.16px] left-[37.64px] top-[155.84px] absolute">
             <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[646.84px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               1000자 이내
@@ -145,6 +159,12 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
                 className="w-full h-[640px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
+            <button
+              onClick={handleCopyText}
+              className="absolute top-[680px] right-2 mt-2 mr-2 p-2 bg-blue-400 text-white rounded-[10px]"
+            >
+              복사하기
+            </button>
           </div>
         </div>
         <div className="w-[856.48px] h-[131.21px] left-[26.89px] top-[3.74px] absolute">
@@ -170,7 +190,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      <div className="w-[870px] h-[60px] left-[59px] top-[1105px] absolute">
+      <div className="w-[870px] h-[60px] left-[59px] top-[1150px] absolute">
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
         </div> */}
