@@ -2,16 +2,46 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { covletNum, covletData } from '../../recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 import ExpCardDetail from '@/app/components/coverletter/ExpCardDetail'
+import MyExpCard from '../mypage/MyExpCard'
+import { useEffect, useState } from 'react'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
   id?: string
 }
+interface ExperienceCard {
+  experienceId: number
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  jobKeyword: onlyJobType
+  stack: string
+}
 
-
-const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
+const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+
+  useEffect(() => {
+    // 서버에서 경험카드 데이터를 가져오는 함수
+    const fetchExpCards = async () => {
+      try {
+        const response = await fetch('/api/mypage/myExp')
+        if (!response.ok) {
+          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
+        }
+        const data = await response.json()
+        console.log(data) // 타입 에러가 발생하지 않아야 함
+        setExpCards(data.result.experienceCardInfo.experienceCardItems)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchExpCards()
+  }, [])
 
   // const goToPreviousPage = () => {
   //   setExperienceNumber(experienceNumber - 1)
@@ -40,16 +70,31 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
     event.preventDefault()
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
-  
+
+  const handleCopyText = async () => {
+    const textArea = document.getElementById('answer') as HTMLTextAreaElement; // 타입 단언
+    if (textArea) { // null 체크
+      try {
+        await navigator.clipboard.writeText(textArea.value);
+        console.log('Text copied to clipboard');
+        // 복사 성공 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      } catch (err) {
+        console.error('Failed to copy text: ', err);
+        // 복사 실패 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      }
+    }
+  };
+
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인
-    const {...dataToSend } = coverletterData;
-    console.log(coverletterData,isEdit, '로 수정요청')
+    const { ...dataToSend } = coverletterData
+    console.log(coverletterData, isEdit, '로 수정요청')
 
-    const urlPath = isEdit ? `/api/coverletters/save?id=${id}` : `/api/coverletters`;
-    const methodType = isEdit ? 'PATCH' : 'POST';
-    const response = 
-    await fetch(urlPath, {
+    const urlPath = isEdit
+      ? `/api/coverletters/save?id=${id}`
+      : `/api/coverletters`
+    const methodType = isEdit ? 'PATCH' : 'POST'
+    const response = await fetch(urlPath, {
       method: methodType,
       headers: {
         'Content-Type': 'application/json',
@@ -57,9 +102,8 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
       body: JSON.stringify({
         ...dataToSend,
       }),
-      
     })
-    
+
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
@@ -69,7 +113,7 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[179px] left-[10px] top-[900px] absolute">
+        <div className="w-[941px] h-[179px] left-[10px] top-[940px] absolute">
           <div className="w-[941px] h-[179px] left-0 top-0 absolute bg-white rounded-[30px] shadow" />
           <div className="left-[223px] top-[24px] absolute text-center text-black text-2xl font-bold  leading-9">
             작성한 자기소개서를 다른 사용자에게 공개하시겠어요?
@@ -97,9 +141,9 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      <div className="w-[941px] h-[857px] left-[10px] top-[18px] absolute">
-        <div className="w-[941px] h-[857px] left-0 top-0 absolute">
-          <div className="w-[941px] h-[857px] left-0 top-0 absolute bg-white rounded-[30px]" />
+      <div className="w-[941px] h-[900px] left-[10px] top-[18px] absolute">
+        <div className="w-[941px] h-[900px] left-0 top-0 absolute">
+          <div className="w-[941px] h-[900px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[682.16px] left-[37.64px] top-[155.84px] absolute">
             <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[646.84px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               1000자 이내
@@ -115,6 +159,12 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
                 className="w-full h-[640px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
+            <button
+              onClick={handleCopyText}
+              className="absolute top-[680px] right-2 mt-2 mr-2 p-2 bg-blue-400 text-white rounded-[10px]"
+            >
+              복사하기
+            </button>
           </div>
         </div>
         <div className="w-[856.48px] h-[131.21px] left-[26.89px] top-[3.74px] absolute">
@@ -140,7 +190,7 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      <div className="w-[870px] h-[60px] left-[59px] top-[1105px] absolute">
+      <div className="w-[870px] h-[60px] left-[59px] top-[1150px] absolute">
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
         </div> */}
@@ -152,7 +202,7 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
         </button>
       </div>
       <div className="w-[463px] h-[1233px] left-[977px] top-[18px] absolute items-center justify-center">
-        <div className="w-[463px] h-[1233px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow" />
+        <div className="w-[463px] h-[1233px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow " />
         <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
           <span className="text-black text-[25px] font-medium  leading-[37.50px]">
             {' '}
@@ -168,12 +218,13 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
           </span>
         </div>
         {/* //자소서 작성 중 경험카드 리스트 조회 */}
-        <div className="w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] gap-[20px]">
-            <ExpCard />
-            <ExpCard />
-            <ExpCard />
-            <ExpCard />
+        <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
+          <div className="w-[350px] h-full ml-[80px] ">
+            {expCards.map((card) => (
+              <div className="mb-[20px]">
+                <MyExpCard key={card.experienceId} {...card} />
+              </div>
+            ))}
           </div>
         </div>
         {/* //자소서 작성 중 경험카드 세부조회
