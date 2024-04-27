@@ -32,3 +32,14 @@ export const updateExp = async (
 
   return await patchRequest(url, experienceContent, accessToken)
 }
+
+export const saveCov = async (
+  coverLetterContent: CoverLetterDataTypes,
+  accessToken: string,
+  id: string,
+) => {
+  const url = `${SERVER_URL}/api/coverLetters/${id}`
+  console.log(url, '요청경로');
+  
+  return await patchRequest(url,coverLetterContent, accessToken )
+}

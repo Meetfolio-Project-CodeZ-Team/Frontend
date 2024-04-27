@@ -5,14 +5,24 @@ export const covletNum = atom<number>({
   default: 0,
 })
 
+export interface CoverLetterDataTypes {
+  coverLetterId?: number // 선택적 필드로 추가
+  question: string
+  answer: string
+  shareType: string
+  keyword1?: string 
+  keyword2?: string 
+  jobKeyword?: string 
+}
+
 export const covletData = atom<CoverLetterDataTypes>({
   key: 'covletData',
   default: {
     question: '',
     answer: '',
-    jobKeyword: '', // null
-    keyword1: '', // null
-    keyword2: '', // null
-    shareType: '', // null
+    shareType: '',
+    keyword1: '',
+    keyword2: '',
+    jobKeyword: '',
   },
 })
