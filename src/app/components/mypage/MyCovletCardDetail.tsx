@@ -58,6 +58,8 @@ const MyCovletCardDetail = ({
     document.body.removeChild(textArea);
   };
 
+  
+
   const onEditClick = () => {
     setCoverLetterData({
       coverLetterId,
