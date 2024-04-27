@@ -9,6 +9,7 @@ import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
+import Footer from '@/app/components/layout/Footer'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -45,6 +46,7 @@ export default function ExperiencePage() {
         {experienceNumber === 2 && <ExpContentContainer isEdit={false}/>}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
+      <Footer />
     </section>
   )
 }
