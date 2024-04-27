@@ -6,6 +6,9 @@ import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRouter } from 'next/navigation'
 import { SIGNUP } from '@/app/constants/auth'
+import { failLogin } from '@/app/utils/toast'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const LoginContainer = () => {
   const router = useRouter()
@@ -28,7 +31,7 @@ const LoginContainer = () => {
       requestOptions,
     )
     if (!res.ok) {
-      throw new Error('Failed to login')
+      failLogin()
     }
 
     const resData = await res.json()
@@ -43,6 +46,7 @@ const LoginContainer = () => {
 
   return (
     <div className="flex flex-col items-center mt-[170px] gap-y-12">
+      <ToastContainer />
       <div className="text-6xl font-semibold leading-[90px]">로그인</div>
       <div className="flex flex-col gap-y-5">
         <Input
@@ -51,6 +55,7 @@ const LoginContainer = () => {
           placeholder={`아이디(${SIGNUP.Email}을 제외하고 입력)`}
         />
         <Input
+          inputType="password"
           type={'login'}
           onChange={(e) => setPw(e.target.value)}
           placeholder="비밀번호"

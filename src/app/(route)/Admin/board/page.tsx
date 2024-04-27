@@ -5,7 +5,6 @@ import Header from '@/app/components/layout/Header'
 import { userState } from '@/app/recoil/signUp'
 
 const boardPage = () => {
-
   return (
     <section className="flex flex-col min-h-screen">
       <Header isAdmin={true} />

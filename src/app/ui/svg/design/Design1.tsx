@@ -43,8 +43,8 @@ const Design1 = () => {
           y2="131.702"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7AAAE8" />
-          <stop offset="0.72" stop-color="white" />
+          <stop stopColor="#7AAAE8" />
+          <stop offset="0.72" stopColor="white" />
         </linearGradient>
       </defs>
     </svg>

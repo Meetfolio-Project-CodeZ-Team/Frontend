@@ -32,8 +32,6 @@ const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
   }
 
   const handleOptionClick = (option: JobType) => {
-    console.log('선택완료')
-
     setSelectedOption(option)
     onSelect(JOB_ENUM[option])
     setIsOpen(false)
@@ -55,7 +53,7 @@ const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
       <div className="relative">
         {isOpen && (
           <div
-            className="absolute w-[400px] h-auto top-full left-0 bg-[#DEE5ED] rounded-[6px] overflow-auto scrollbar-hide"
+            className="absolute w-[400px] h-auto top-full left-0 bg-white rounded-[10px] border-x-2 border-b-2 border-[#486284]  overflow-auto scrollbar-hide"
             ref={dropdownRef}
           >
             {options.map((option, index) => (

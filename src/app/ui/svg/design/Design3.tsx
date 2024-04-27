@@ -26,8 +26,8 @@ const Design3 = () => {
           y2="165.821"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#486284" />
-          <stop offset="0.665" stop-color="#B9C9E2" />
+          <stop stopColor="#486284" />
+          <stop offset="0.665" stopColor="#B9C9E2" />
         </linearGradient>
       </defs>
     </svg>

@@ -87,6 +87,7 @@ const SignupContainer = () => {
         </div>
         <Input
           type={'login'}
+          inputType="password"
           onChange={(e) => setAuthCode(e.target.value)}
           placeholder="인증코드 입력하기"
           textValue={authCode}

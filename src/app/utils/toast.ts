@@ -45,8 +45,15 @@ const textLimitAlert = () => {
 }
 
 const addTrainData = () => {
-  toast.success('학습데이터가 추가되었습니다.', {
-    icon: () => '📃',
+  toast.error('학습데이터가 추가되었습니다.', {
+    icon: () => '✏️',
+    ...commonOptions,
+  })
+}
+
+const failLogin = () => {
+  toast.success('올바르지 않은 id 혹은 pw입니다.', {
+    icon: () => '🔒',
     ...commonOptions,
   })
 }
@@ -58,4 +65,5 @@ export {
   deleteUserAlert,
   textLimitAlert,
   addTrainData,
+  failLogin,
 }

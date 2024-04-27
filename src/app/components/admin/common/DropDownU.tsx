@@ -42,7 +42,7 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
   return (
     <div className="flex flex-col text-base font-bold">
       <div
-        className="flex relative w-[200px] h-[45px] rounded-[10px] bg-white border-[1px] border-[#486284] cursor-pointer"
+        className="flex relative w-[200px] h-[45px] rounded-[10px] bg-white border-2 border-[#486284] cursor-pointer"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
         <p className="m-auto text-[#486284]">
@@ -55,13 +55,13 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
       <div className="relative">
         {isOpen && (
           <div
-            className="absolute w-full h-auto top-full left-0 bg-white rounded-[6px] overflow-auto scrollbar-hide"
+            className="absolute w-full h-auto top-full left-0 bg-white rounded-[6px] border-x-2 border-b-2 border-[#486284] overflow-auto scrollbar-hide"
             ref={dropdownRef}
           >
             {options.map((option, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-center w-full h-[37px] py-1 cursor-pointer hover:bg-gray-100 border-t-2 border-[#D3DCE7] ${
+                className={`flex items-center justify-center w-full h-[37px] py-1 cursor-pointer hover:bg-gray-100  border-t-2 border-[#b4cae4] ${
                   index == 0 ? 'border-none' : ''
                 }
                 `}

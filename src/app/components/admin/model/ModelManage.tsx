@@ -1,7 +1,5 @@
 import { MODEL_MANAGE_H } from '@/app/constants/admin'
 import React from 'react'
-import ModelManageInfo from './ModelManageInfo'
-import { mookBoard } from '../common/mookData'
 
 const ModelManage = () => {
   return (

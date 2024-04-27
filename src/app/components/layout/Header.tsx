@@ -13,7 +13,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
     <div className="relative w-full border-b-2 border-[#486284]">
       <header className=" relative w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[60px]">
         <Link
-          href={isAdmin ? '/Admin' : '/main'}
+          href={isAdmin ? '/Admin' : '/'}
           className="absolute flex items-center justify-center gap-x-2.5 h-9"
         >
           <div className="w-9 h-9 bg-[#486284] rounded-[100px]"></div>
@@ -27,10 +27,14 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           </div>
         </Link>
         {!isAdmin ? (
-          <div className="absolute right-[10px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg cursor-pointer items-center ">
-            <Link href="/experience">경험분해하기</Link>
-            <Link href="/coverletter">AI자기소개서솔루션</Link>
-            <Link href="login">커뮤니티</Link>
+          <div className="absolute right-[10px] flex w-[650px] gap-[30px] h-9 text-[#486284] text-lg font-semibold cursor-pointer items-center ">
+            <Link href={`${nickname ? '/experience' : '/login'}`}>
+              경험카드생성
+            </Link>
+            <Link href={`${nickname ? '/coverletter' : '/login'}`}>
+              AI자기소개서솔루션
+            </Link>
+            <Link href={`${nickname ? '/comunity' : '/login'}`}>커뮤니티</Link>
             <div className="flex gap">
               <div className="w-[22px] h-[2px] origin-top-left rotate-90 opacity-80 border border-[#486284]"></div>
               {!nickname ? (
@@ -56,7 +60,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
                 </button>
               </Link>
             ) : (
-              <Link href="/main">
+              <Link href="/">
                 <button
                   className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium"
                   onClick={() => logout()}
@@ -68,7 +72,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           </div>
         ) : (
           <div className="absolute right-[40px] flex-row-reverse w-[600px] gap-[30px] h-9 flex gap items-center">
-            <Link href="/main">
+            <Link href="/">
               <button
                 className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium"
                 onClick={() => logout()}
