@@ -30,6 +30,11 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   }, [])
 
   useEffect(() => {
+    // 첫 로드시에만 experienceNumber를 0으로 설정
+    setCovletNumber(0);
+  }, []); 
+
+  useEffect(() => {
     // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
     if (params.id && typeof params.id === 'string') {
       // id의 존재성과 문자열 타입 확인

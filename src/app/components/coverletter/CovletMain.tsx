@@ -2,16 +2,46 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { covletNum, covletData } from '../../recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 import ExpCardDetail from '@/app/components/coverletter/ExpCardDetail'
+import MyExpCard from '../mypage/MyExpCard'
+import { useEffect, useState } from 'react'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
   id?: string
 }
+interface ExperienceCard {
+  experienceId: number
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  jobKeyword: onlyJobType
+  stack: string
+}
 
-
-const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
+const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+
+  useEffect(() => {
+    // 서버에서 경험카드 데이터를 가져오는 함수
+    const fetchExpCards = async () => {
+      try {
+        const response = await fetch('/api/mypage/myExp')
+        if (!response.ok) {
+          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
+        }
+        const data = await response.json()
+        console.log(data) // 타입 에러가 발생하지 않아야 함
+        setExpCards(data.result.experienceCardInfo.experienceCardItems)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    fetchExpCards()
+  }, [])
 
   // const goToPreviousPage = () => {
   //   setExperienceNumber(experienceNumber - 1)
@@ -40,16 +70,17 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
     event.preventDefault()
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
-  
+
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인
-    const {...dataToSend } = coverletterData;
-    console.log(coverletterData,isEdit, '로 수정요청')
+    const { ...dataToSend } = coverletterData
+    console.log(coverletterData, isEdit, '로 수정요청')
 
-    const urlPath = isEdit ? `/api/coverletters/save?id=${id}` : `/api/coverletters`;
-    const methodType = isEdit ? 'PATCH' : 'POST';
-    const response = 
-    await fetch(urlPath, {
+    const urlPath = isEdit
+      ? `/api/coverletters/save?id=${id}`
+      : `/api/coverletters`
+    const methodType = isEdit ? 'PATCH' : 'POST'
+    const response = await fetch(urlPath, {
       method: methodType,
       headers: {
         'Content-Type': 'application/json',
@@ -57,9 +88,8 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
       body: JSON.stringify({
         ...dataToSend,
       }),
-      
     })
-    
+
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
@@ -152,7 +182,7 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
         </button>
       </div>
       <div className="w-[463px] h-[1233px] left-[977px] top-[18px] absolute items-center justify-center">
-        <div className="w-[463px] h-[1233px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow" />
+        <div className="w-[463px] h-[1233px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow " />
         <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
           <span className="text-black text-[25px] font-medium  leading-[37.50px]">
             {' '}
@@ -168,12 +198,13 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
           </span>
         </div>
         {/* //자소서 작성 중 경험카드 리스트 조회 */}
-        <div className="w-[450px] h-[1100px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] gap-[20px]">
-            <ExpCard />
-            <ExpCard />
-            <ExpCard />
-            <ExpCard />
+        <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
+          <div className="w-[350px] h-full ml-[80px] ">
+            {expCards.map((card) => (
+              <div className="mb-[20px]">
+                <MyExpCard key={card.experienceId} {...card} />
+              </div>
+            ))}
           </div>
         </div>
         {/* //자소서 작성 중 경험카드 세부조회
