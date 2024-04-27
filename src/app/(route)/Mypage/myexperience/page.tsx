@@ -3,6 +3,7 @@ import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import Header from '@/app/components/layout/Header'
 import MyExpList from '@/app/components/mypage/MyExpList'
 import { useEffect, useState } from 'react'
+import Footer from '@/app/components/layout/Footer'
 
 export default function MyExperiencePage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
@@ -26,6 +27,7 @@ export default function MyExperiencePage() {
           <MyExpList />
         </div>
       </div>
+      <Footer />
     </section>
   )
 }
