@@ -28,8 +28,8 @@ const Back3 = () => {
           y2="139.6"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7AAAE8" />
-          <stop offset="0.745" stop-color="#CFE8FF" />
+          <stop stopColor="#7AAAE8" />
+          <stop offset="0.745" stopColor="#CFE8FF" />
         </linearGradient>
       </defs>
     </svg>

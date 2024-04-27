@@ -47,7 +47,13 @@ const PortfolioContainer = () => {
         <div className="w-[963px] h-[830px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[0px] gap-[20px]">
             {covletCards.map((card) => (
-              <MyCovletCard keyword1={''} keyword2={''} jobKeyword={''} key={card.coverLetterId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
+              <MyCovletCard
+                keyword1={''}
+                keyword2={''}
+                jobKeyword={''}
+                key={card.coverLetterId}
+                {...card}
+              /> // 데이터를 MyExpCard 컴포넌트에 전달
             ))}
           </div>
         </div>

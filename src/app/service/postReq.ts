@@ -3,11 +3,7 @@ const commonHeaders = {
   'Content-Type': 'application/json',
 }
 
-const postRequest = async (
-  url: string,
-  body: any = null,
-  accessToken?: string,
-) => {
+const postRequest = async (url: string, body: any, accessToken?: string) => {
   try {
     const response = await fetch(url, {
       method: 'POST',

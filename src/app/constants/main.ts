@@ -2,7 +2,7 @@ export const INTRODUCE = [
   'MEETFOLIO에서',
   '자기소개서 솔루션을 받아보세요',
   'MeetFolio에서는 AI 서비스를 통해 자기소개서 솔루션을 제공합니다.',
-  '나의 경험을 분해하고, AI 자기소개서 피드백과 AI 직무 역량 분석 서비스를 경험해보세요.',
+  '경험카드를 생성하고, AI 자기소개서 피드백과 AI 직무 역량 분석 서비스를 경험해보세요.',
 ] as const
 
 export const BUTTON_TEXT = {
@@ -13,7 +13,7 @@ export const BUTTON_TEXT = {
 export const SOLUTION = {
   Title: 'AI 자기소개서 솔루션',
   Step: [
-    '경험 분해 하기',
+    '경험 카드 생성',
     '~',
     'AI 자기소개서 피드백',
     '~',
@@ -22,7 +22,7 @@ export const SOLUTION = {
   Explanation1: [
     '내 ',
     '경험을 분해하여 카드',
-    '를 제작해 직무 경험을',
+    '를 생성해 직무 경험을',
     '구조적으로 정리하고, 자기소개서를 작성합니다.',
   ],
   Explanation2: [

@@ -7,7 +7,7 @@ const Application3 = () => {
       viewBox="0 0 153 160"
       fill="none"
     >
-      <g clip-path="url(#clip0_389_3773)">
+      <g clipPath="url(#clip0_389_3773)">
         <g filter="url(#filter0_f_389_3773)">
           <path
             d="M76.5 160C118.75 160 153 124.183 153 80C153 35.8172 118.75 0 76.5 0C34.2502 0 0 35.8172 0 80C0 124.183 34.2502 160 76.5 160Z"
@@ -143,8 +143,8 @@ const Application3 = () => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(76.5 80) rotate(90) scale(80 76.5)"
         >
-          <stop stop-color="#7AAAE8" />
-          <stop offset="1" stop-color="#DEE5ED" />
+          <stop stopColor="#7AAAE8" />
+          <stop offset="1" stopColor="#DEE5ED" />
         </radialGradient>
         <clipPath id="clip0_389_3773">
           <rect width="152.672" height="160" fill="white" />

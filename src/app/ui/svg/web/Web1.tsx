@@ -29,12 +29,12 @@ const Web1 = () => {
           y2="112.014"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.0001" stop-color="#84B7FA" />
-          <stop offset="0.59" stop-color="white" />
-          <stop offset="0.5901" stop-color="white" />
-          <stop offset="0.5902" stop-color="white" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="white" />
+          <stop offset="0.0001" stopColor="#84B7FA" />
+          <stop offset="0.59" stopColor="white" />
+          <stop offset="0.5901" stopColor="white" />
+          <stop offset="0.5902" stopColor="white" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
       </defs>
     </svg>

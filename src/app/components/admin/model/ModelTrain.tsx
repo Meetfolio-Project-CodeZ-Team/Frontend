@@ -45,14 +45,14 @@ const ModelTrain = ({ trainData }: ModelTrainProps) => {
       </div>
       <div className=" w-[1010px] flex flex-row-reverse gap-x-5">
         <Button
-          buttonText={'데이터 추가'}
+          buttonText={'추가학습'}
           type={'modelBtn'}
           className="bg-white border-2 border-[#486283] text-[#486283]"
           isDisabled={false}
           onClickHandler={() => setIsAdd(true)}
         />
         <Button
-          buttonText={'추가학습'}
+          buttonText={'데이터 추가'}
           type={'modelBtn'}
           isDisabled={false}
           onClickHandler={() => setIsAdd(true)}

@@ -46,8 +46,8 @@ const AI3 = () => {
           y2="130"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.335" stop-color="white" />
-          <stop offset="1" stop-color="#486284" />
+          <stop offset="0.335" stopColor="white" />
+          <stop offset="1" stopColor="#486284" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_543_94"
@@ -57,8 +57,8 @@ const AI3 = () => {
           y2="159.375"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.325" stop-color="white" />
-          <stop offset="1" stop-color="#486284" />
+          <stop offset="0.325" stopColor="white" />
+          <stop offset="1" stopColor="#486284" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_543_94"
@@ -68,8 +68,8 @@ const AI3 = () => {
           y2="130"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.41" stop-color="white" />
-          <stop offset="1" stop-color="#486284" />
+          <stop offset="0.41" stopColor="white" />
+          <stop offset="1" stopColor="#486284" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_543_94"
@@ -79,8 +79,8 @@ const AI3 = () => {
           y2="89.0625"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#486284" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#486284" />
         </linearGradient>
       </defs>
     </svg>

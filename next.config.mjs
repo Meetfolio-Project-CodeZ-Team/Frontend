@@ -3,8 +3,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/main',
+        source: '/main',
+        destination: '/',
         permanent: true,
       },
     ]
@@ -19,7 +19,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: false,
-  output: "standalone"
+  output: 'standalone',
 }
 
 export default nextConfig
