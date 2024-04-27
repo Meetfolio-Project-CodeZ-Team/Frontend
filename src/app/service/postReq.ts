@@ -5,7 +5,7 @@ const commonHeaders = {
 
 const postRequest = async (
   url: string,
-  body: any = null,
+  body: any,
   accessToken?: string,
 ) => {
   try {
