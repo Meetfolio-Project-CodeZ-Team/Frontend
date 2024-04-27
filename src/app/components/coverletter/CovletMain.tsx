@@ -46,7 +46,7 @@ const CovletMain = ({isEdit, id}:CovletFinishContainerProps) => {
     const {...dataToSend } = coverletterData;
     console.log(coverletterData,isEdit, '로 수정요청')
 
-    const urlPath = isEdit ? `/api/coverletters/save?id=${id}` : `/api/coverLetters`;
+    const urlPath = isEdit ? `/api/coverletters/save?id=${id}` : `/api/coverletters`;
     const methodType = isEdit ? 'PATCH' : 'POST';
     const response = 
     await fetch(urlPath, {
