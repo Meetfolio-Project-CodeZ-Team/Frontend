@@ -2,7 +2,7 @@ name: Deploy Next.js with Docker
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
 
 jobs:
   build:
@@ -20,7 +20,10 @@ jobs:
 
       - name: Docker build and Push
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest .
+          docker build \
+            --build-arg NEXT_PUBLIC_SERVER=${{ secrets.NEXT_PUBLIC_SERVER }} \
+            --build-arg NEXT_PUBLIC_NEXT_SERVER=${{ secrets.NEXT_PUBLIC_NEXT_SERVER }} \
+            -t ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest .
           docker push ${{secrets.DOCKER_USERNAME}}/meetfolio-web:latest
 
       - name: Deploy in GCP
@@ -33,5 +36,5 @@ jobs:
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest
             sudo docker tag ${{ secrets.DOCKER_USERNAME }}/meetfolio-web:latest meetfolio-web:latest
             sudo docker rm -f meetfolio-web
-            sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -p 3000:3000 meetfolio-web:latest
-            docker image prune -af
+            sudo docker run -d --name meetfolio-web -e TZ=Asia/Seoul -e PORT=60005 -p 60005:60005 meetfolio-web:latest
+            sudo docker image prune -af
