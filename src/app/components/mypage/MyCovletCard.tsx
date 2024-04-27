@@ -30,7 +30,7 @@ const MyCovletCard = ({
   const router = useRouter();
   console.log(coverLetterId, '자소서 정보 id')
   const fetchCovletCards = () => {
-    router.push(`/Mypage/myCovletDetail/${coverLetterId}`);
+    router.push(`/mypage/myCovletDetail/${coverLetterId}`);
   }
 
   return (

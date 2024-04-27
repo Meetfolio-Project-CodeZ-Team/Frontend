@@ -45,10 +45,10 @@ const MyExpList = () => {
       <div className="w-[963px] h-[970px] left-[75px] top-[42px] absolute ">
         <div className="w-[248px] h-[30px] left-[14px] top-0 absolute justify-start items-center gap-[60px] inline-flex">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/Mypage">내 자기소개서</Link>
+            <Link href="/mypage">내 자기소개서</Link>
           </div>
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/Mypage/myexperience">경험 카드</Link>
+            <Link href="/mypage/myexperience">경험 카드</Link>
           </div>
         </div>
         <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">
