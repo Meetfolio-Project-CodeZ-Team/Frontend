@@ -37,24 +37,26 @@ const CovletSave = () => {
   }
 
   const saveCovData = async () => {
-    const { answer, question, shareType, keyword1, keyword2, jobKeyword } =
-      coverletterData
+    const { answer, question, shareType, keyword1, keyword2, jobKeyword, coverLetterId } = coverletterData;
 
-    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
-    if (!answer || !question || !shareType) {
-      console.error('모든 필드를 채워주세요.')
-      return
+    if (!coverLetterId) {
+      console.error('coverLetterId가 없습니다.');
+      return;
     }
-
-    const response = await fetch('/api/coverletters', {
-      method: 'POST',
+    
+    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
+    if (!answer || !question || !shareType || !keyword1 || !keyword2 || !jobKeyword) {
+      console.error('모든 필드를 채워주세요.');
+      return;
+    }
+  
+    const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        answer,
-        question,
-        shareType,
+        
         keyword1,
         keyword2,
         jobKeyword, // 공개/비공개 여부

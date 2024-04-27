@@ -5,7 +5,7 @@ import { expNum, expData } from '../../recoil/experience'
 
 interface ExpFinishContainerProps {
   isEdit?: boolean
-  id: string
+  id?: string
 }
 
 const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
