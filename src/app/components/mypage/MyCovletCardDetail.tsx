@@ -55,7 +55,7 @@ const MyCovletCardDetail = ({
 
       if (res.ok) {
         console.log('자기소개서가 성공적으로 삭제되었습니다.')
-        router.push(`/Mypage`)
+        router.push(`/mypage`)
       } else {
         const errorData = await res.json()
         console.error('Error details:', errorData)

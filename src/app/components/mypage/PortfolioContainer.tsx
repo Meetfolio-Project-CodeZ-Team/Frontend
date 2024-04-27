@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from 'react'
 import MyCovletCard from './MyCovletCard'
+import Link from 'next/link'
 interface CovletCard {
-  question: string;
-  answer: string;
-  coverLetterId: number;
+  question: string
+  answer: string
+  coverLetterId: number
   createdAt: string
 }
 
@@ -20,9 +21,9 @@ const PortfolioContainer = () => {
         if (!response.ok) {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
-        const data = await response.json();
-        console.log('자소서 데이터',data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result.list);
+        const data = await response.json()
+        console.log('자소서 데이터', data) // 타입 에러가 발생하지 않아야 함
+        setCovletCards(data.result.list)
       } catch (error) {
         console.error(error)
       }
@@ -39,17 +40,17 @@ const PortfolioContainer = () => {
       <div className="w-[963px] h-[970px] left-[75px] top-[42px] absolute ">
         <div className="w-[248px] h-[30px] left-[14px] top-0 absolute justify-start items-center gap-[60px] inline-flex">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            내 자기소개서
+            <Link href="/mypage">내 자기소개서</Link>
           </div>
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            경험 카드
+            <Link href="/mypage/myexperience">경험 카드</Link>
           </div>
         </div>
         <div className="w-[963px] h-[830px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[0px] gap-[20px]">
-          {covletCards.map((a) => (
-          <MyCovletCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
-        ))}
+            {covletCards.map((a) => (
+              <MyCovletCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
+            ))}
           </div>
         </div>
         <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">

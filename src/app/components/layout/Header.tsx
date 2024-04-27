@@ -47,7 +47,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
               ) : (
                 <div className="flex items-center gap-x-2">
                   <div className="w-6 h-6 bg-[#486284] rounded-[100px]"></div>
-                  <Link href="/Mypage/myexperience" className="text-base">
+                  <Link href="/mypage" className="text-base">
                     {nickname}
                   </Link>
                 </div>

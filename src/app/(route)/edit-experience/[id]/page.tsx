@@ -29,6 +29,11 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   }, [])
 
   useEffect(() => {
+    // 첫 로드시에만 experienceNumber를 0으로 설정
+    setExperienceNumber(0);
+  }, []); 
+
+  useEffect(() => {
     if (params.id && typeof params.id === 'string') {
       fetch(`/api/mypage/myExpDetail?experienceId=${params.id}`) // 쿼리 파라미터로 id 사용
         .then((response) => response.json())
