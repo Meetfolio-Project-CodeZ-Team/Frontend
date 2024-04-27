@@ -103,17 +103,17 @@ const MyExpCardDetail = ({
               </div>
             </div>
             <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
-              <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
+              <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal overflow-x-auto whitespace-nowrap scrollbar-hide">
                 {stack}
               </div>
             </div>
           </div>
           <div className="w-[110px] h-[30px] px-5 left-[359px] top-[34px] absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
-            <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
+            <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal overflow-x-auto whitespace-nowrap scrollbar-hide">
               {experienceType}
             </div>
           </div>
-          <div className="w-[400px] h-6 left-[30px] top-[68px] absolute text-start text-gray-900 text-2xl font-semibold leading-[45px]">
+          <div className="w-[300px] h-10 left-[30px] top-[68px] absolute  text-gray-900 text-2xl font-semibold leading-[45px] overflow-x-auto whitespace-nowrap scrollbar-hide">
             {title}
           </div>
           <div className="w-[300px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans']">

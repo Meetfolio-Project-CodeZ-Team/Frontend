@@ -66,7 +66,7 @@ const MyExpCard = ({
       onClick={fetchExpCards}
     >
       <div className="top-3 right-4 absolute">
-        <div className="flex items-center justify-center w-[96px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px]">
+        <div className="flex items-center justify-center w-[95px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px] overflow-x-auto whitespace-nowrap scrollbar-hide">
           {experienceType}
         </div>
       </div>
@@ -76,15 +76,17 @@ const MyExpCard = ({
       <div className="absolute top-[258px] text-[15px] font-bold">
         {startDate + '~' + endDate}
       </div>
-      <div className="absolute top-[282px] text-2xl font-bold leading-9">
+      <div className="absolute w-[230px] top-[282px] text-2xl font-bold leading-9 overflow-x-auto whitespace-nowrap scrollbar-hide">
         {title}
       </div>
       <div className="flex gap-x-[20px] absolute top-[328px] text-[16px] font-semibold">
         <div className="flex w-20 h-9 px-3 bg-white rounded justify-center items-center gap-2">
           {jobKeyword}
         </div>
-        <div className="flex w-26 h-9 px-2 text-[12px] bg-white rounded justify-center items-center gap-2">
-          {stack}
+        <div className="flex w-[180px] h-9 px-1 bg-white rounded justify-center items-center gap-2 ">
+          <div className="flex w-[170px] h-5  text-[12px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+            {stack}
+          </div>
         </div>
       </div>
       {isOpen && expCards && (

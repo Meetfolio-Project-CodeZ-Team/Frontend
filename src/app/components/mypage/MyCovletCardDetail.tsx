@@ -29,6 +29,17 @@ const MyCovletCardDetail = ({
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
+  const handleCopyAnswer = async () => {
+    try {
+      await navigator.clipboard.writeText(answer);
+      console.log('Answer copied to clipboard');
+      // 복사 성공 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+    } catch (err) {
+      console.error('Failed to copy answer: ', err);
+      // 복사 실패 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+    }
+  };
+
   const onEditClick = () => {
     setCoverLetterData({
       coverLetterId,
@@ -70,10 +81,16 @@ const MyCovletCardDetail = ({
       <div className="w-full h-[1725px] left-0 top-0 absolute">
         <div className="w-[1124px] h-[1725px] left-0 top-0 absolute bg-white" />
         <div className="w-[1029px] h-[603.47px] left-[49px] top-[222px] absolute">
-          <div className="w-[936.64px] h-[574.47px] left-[34px] top-[29px] absolute text-black text-xl font-medium leading-[30px]">
+          <div className="w-[936.64px] h-[440px] left-[34px] top-[29px] absolute text-black text-xl font-medium leading-[30px]">
             {answer}
           </div>
         </div>
+        <button
+      onClick={handleCopyAnswer}
+      className="p-2 bg-blue-400 text-white rounded absolute right-[550px] top-[690px] mt-2 mr-2"
+    >
+      복사하기
+    </button>
       </div>
       <div className="w-[1029px] h-[808px] left-[49px] top-[765px] absolute">
         <div className="w-[1029px] h-[808px] left-0 top-0 absolute">
