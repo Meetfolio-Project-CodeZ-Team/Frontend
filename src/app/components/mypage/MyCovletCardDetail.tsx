@@ -29,15 +29,33 @@ const MyCovletCardDetail = ({
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
-  const handleCopyAnswer = async () => {
+  const handleCopyAnswer = () => {
+    // 동적으로 textarea를 생성
+    const textArea = document.createElement("textarea");
+    // 복사할 텍스트 설정
+    textArea.value = answer;
+    // 스타일을 설정하여 뷰포트 밖으로 임시 textarea를 숨김
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+    textArea.style.top = "-9999px";
+    document.body.appendChild(textArea);
+    // 텍스트 선택
+    textArea.focus();
+    textArea.select();
+  
     try {
-      await navigator.clipboard.writeText(answer);
-      console.log('Answer copied to clipboard');
-      // 복사 성공 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      // 텍스트를 클립보드에 복사
+      const successful = document.execCommand('copy');
+      const msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copying text command was ' + msg);
+      alert('Text copied to clipboard!');
     } catch (err) {
-      console.error('Failed to copy answer: ', err);
-      // 복사 실패 메시지를 표시하거나 사용자에게 알림을 제공하는 코드
+      console.error('Failed to copy text: ', err);
+      alert('Failed to copy text.');
     }
+  
+    // 생성된 textarea 요소를 제거
+    document.body.removeChild(textArea);
   };
 
   const onEditClick = () => {
