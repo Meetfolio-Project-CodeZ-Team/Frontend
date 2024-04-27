@@ -44,7 +44,7 @@ const SignupContainer = () => {
         }),
       }
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}}/api/signup/auth`,
         requestOptions,
       )
       if (!res.ok) {
@@ -87,6 +87,7 @@ const SignupContainer = () => {
         </div>
         <Input
           type={'login'}
+          inputType="password"
           onChange={(e) => setAuthCode(e.target.value)}
           placeholder="인증코드 입력하기"
           textValue={authCode}

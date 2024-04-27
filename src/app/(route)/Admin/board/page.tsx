@@ -2,6 +2,7 @@ import AdminNavContainer from '@/app/components/admin/containers/AdminNavContain
 import BoardContainer from '@/app/components/admin/containers/BoardContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
+import { userState } from '@/app/recoil/signUp'
 
 const boardPage = () => {
   return (

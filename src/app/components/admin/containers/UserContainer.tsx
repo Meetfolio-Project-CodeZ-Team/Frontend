@@ -16,7 +16,6 @@ const UserContainer = ({ userInfoData }: UserContainerProps) => {
   }, [userInfoData])
 
   const getKeywordUser = async (selectedJob: string) => {
-    console.log(data, ' 직무 선택후 가져온 유저정보')
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?jobKeyword=${selectedJob}`,

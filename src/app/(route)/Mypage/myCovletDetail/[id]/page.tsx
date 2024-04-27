@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useRouter } from 'next/navigation'
 import Header from '@/app/components/layout/Header'
@@ -14,10 +14,22 @@ import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
   console.log(coverletterData)
   console.log(covletNumber, '현재 페이지 번호')
 
   const router = useRouter()
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main/user`,
+      )
+      const resData = await response.json()
+      setUser(resData.result)
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
     // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
@@ -43,7 +55,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col min-h-screen ">
-      <Header />
+      <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
         <UserNavContainer selected={'portfolio'} />
         <div className="flex-grow">

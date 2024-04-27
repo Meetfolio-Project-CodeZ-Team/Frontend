@@ -7,11 +7,11 @@ const ExpCardDetail = () => {
         </div>
       </div>
       <div className="w-[380px] h-[700px] left-[27.89px] top-[31px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-      <div className="w-24 h-[30px] px-5 left-[280px] top-0 absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
-        <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-          대외활동
+        <div className="w-24 h-[30px] px-5 left-[280px] top-0 absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
+          <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
+            대외활동
+          </div>
         </div>
-      </div>
         <div className="w-[340.53px] h-[38.21px] left-[18.11px] top-[100px] absolute">
           <div className="w-[93.40px] h-[38.21px] px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
             <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">

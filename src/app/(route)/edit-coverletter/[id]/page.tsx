@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useRouter } from 'next/navigation'
 import Header from '@/app/components/layout/Header'
@@ -12,10 +12,22 @@ import CovletSave from '@/app/components/coverletter/CovletSave'
 const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
   console.log(coverletterData)
   console.log(covletNumber, '현재 페이지 번호')
 
   const router = useRouter()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main/user`,
+      )
+      const resData = await response.json()
+      setUser(resData.result)
+    }
+    fetchData()
+  }, [])
 
   useEffect(() => {
     // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
@@ -41,7 +53,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
-      <Header />
+      <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
         {covletNumber === 0 && <CovletMain isEdit={true} id={params.id} />}
         {covletNumber === 1 && <CovletSave />}

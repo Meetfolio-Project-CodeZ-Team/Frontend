@@ -21,7 +21,6 @@ const ModelContainer = () => {
       if (titleNum === 0) setModelData(resData.result)
       else if (titleNum === 1) setTrainData(resData.result)
       else setModelData(resData.result)
-      console.log('가져온 resData', resData.result)
     }
     fetchData()
   }, [titleNum])

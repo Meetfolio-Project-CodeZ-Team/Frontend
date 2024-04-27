@@ -30,6 +30,8 @@ export const INPUT_STYLE = {
     `w-[900px] text-xl font-medium pl-7 h-15 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
   train: (className: string) =>
     `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
+  password: (className: string) =>
+    `w-[300px] text-lg font-medium pl-6 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {

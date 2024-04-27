@@ -66,7 +66,7 @@ const CalendarDropDown = ({
             {options.map((option, index) => (
               <div
                 key={index}
-                className={`flex items-center justify-center w-[74px] h-[24px] py-1 cursor-pointer hover:bg-gray-100 border-b-2 border-[#D3DCE7 ] ${
+                className={`flex items-center justify-center w-[74px] h-[24px] py-1 cursor-pointer hover:bg-gray-100 border-b-2 border-[#D3DCE7] ${
                   index == 0 ? 'border-b' : ''
                 }
                 `}

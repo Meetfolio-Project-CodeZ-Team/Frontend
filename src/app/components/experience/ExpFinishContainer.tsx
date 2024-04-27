@@ -4,12 +4,12 @@ import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
-  const router = useRouter();
+  const router = useRouter()
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -24,13 +24,12 @@ const ExpFinishContainer = () => {
     })
   }
   const handleButtonClick = () => {
-    router.push('/main');// '/main'으로 경로 이동
-  };
+    router.push('/') // '/main'으로 경로 이동
+  }
 
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
-    console.log(experienceData.stack);
-    
+    console.log(experienceData.stack)
 
     const response = await fetch('/api/experiences', {
       method: 'POST',
@@ -43,7 +42,7 @@ const ExpFinishContainer = () => {
         jobKeyword: 'AI',
       }),
     })
-    console.log(experienceData.stack);
+    console.log(experienceData.stack)
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
@@ -204,14 +203,14 @@ const ExpFinishContainer = () => {
             </div>
             <div className="w-[416px] h-[172px] left-[28.77px] top-[584.55px] absolute">
               <div className="w-[250px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-              나의 활동 & 경험 내용
+                나의 활동 & 경험 내용
               </div>
               <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
               <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-              {experienceData.detail}
+                {experienceData.detail}
               </div>
             </div>
-            
+
             <div className="w-[416px] h-[172px] left-[28.77px] top-[784.55px] absolute">
               <div className="w-[140px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
                 결과 및 성과
@@ -221,7 +220,6 @@ const ExpFinishContainer = () => {
                 {experienceData.advance}
               </div>
             </div>
-            
           </div>
           <div className="w-[150.05px] h-[61.46px] left-[200px] top-[585px] absolute bg-black justify-center items-center rounded-[10px]">
             {/* <div className="w-[60.02px] h-[25.43px] left-[44.95px] top-[18.02px] absolute text-center text-white text-[25px] font-semibold leading-[37.50px]">
@@ -229,7 +227,7 @@ const ExpFinishContainer = () => {
             </div> */}
             <button
               className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-              onClick={ handleButtonClick}
+              onClick={handleButtonClick}
             >
               확인
             </button>

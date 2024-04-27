@@ -5,7 +5,7 @@ import MyExpCard from './MyExpCard'
 import expCards from './MyExpCard'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import { log } from 'console'
 
 interface ExperienceCardDetail {
@@ -20,7 +20,7 @@ interface ExperienceCardDetail {
   motivation: string
   detail: string
   advance: string
-  closeModal: ()=>void;
+  closeModal: () => void
 }
 
 const MyExpCardDetail = ({
@@ -42,9 +42,9 @@ const MyExpCardDetail = ({
   ) => {
     event.stopPropagation()
   }
-  console.log(experienceId, 'id  수정 삭제에서 가져오기');
-  
-  const router = useRouter();
+  console.log(experienceId, 'id  수정 삭제에서 가져오기')
+
+  const router = useRouter()
   const [experienceData, setExperienceData] = useRecoilState(expData)
  
   const onEditClick = () => {
@@ -61,30 +61,30 @@ const MyExpCardDetail = ({
       stack,
       jobKeyword,
       expStacks: stack.split(' / '),
-    });
-  
-    router.push(`/edit-experience/${experienceId}`);
-  };
+    })
+
+    router.push(`/edit-experience/${experienceId}`)
+  }
 
   const deleteExp = async (experienceId: number) => {
-    console.log('경험카드 삭제 요청이에요', experienceId);
+    console.log('경험카드 삭제 요청이에요', experienceId)
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
         {
           method: 'DELETE',
-        }
-      );
-  
+        },
+      )
+
       if (res.ok) {
-        console.log('경험카드가 성공적으로 삭제되었습니다.');
-        window.location.reload();
+        console.log('경험카드가 성공적으로 삭제되었습니다.')
+        window.location.reload()
       } else {
-        const errorData = await res.json();
-        console.error('Error details:', errorData);
+        const errorData = await res.json()
+        console.error('Error details:', errorData)
       }
     } catch (error) {
-      console.error('Network or other error:', error);
+      console.error('Network or other error:', error)
     }
   }
   return (
@@ -92,7 +92,10 @@ const MyExpCardDetail = ({
       <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
       <div className="w-[550px] h-[700px] flex flex-col justify-center items-center absolute ">
         <div className="w-[550px] h-[650px] relative  bg-white rounded-[20px]" />
-        <div className="w-[500px] h-[500px] left-[30px] top-[55px] overflow-y-auto scrollbar-hide absolute bg-slate-200 rounded-[20px] shadow" onClick={handleModalClick}>
+        <div
+          className="w-[500px] h-[500px] left-[30px] top-[55px] overflow-y-auto scrollbar-hide absolute bg-slate-200 rounded-[20px] shadow"
+          onClick={handleModalClick}
+        >
           <div className="w-[350px] h-9 left-[35.77px] top-[121.55px] absolute">
             <div className="w-24 h-9 px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
               <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
@@ -116,7 +119,10 @@ const MyExpCardDetail = ({
           <div className="w-[300px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans']">
             {startDate}~{endDate}
           </div>
-          <div className="w-[20px] h-6 right-[16px] top-[10px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans'] cursor-pointer" onClick={closeModal}>
+          <div
+            className="w-[20px] h-6 right-[16px] top-[10px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans'] cursor-pointer"
+            onClick={closeModal}
+          >
             X
           </div>
           <div className="w-[416px] h-[172px] left-[28.77px] top-[189.55px] absolute">

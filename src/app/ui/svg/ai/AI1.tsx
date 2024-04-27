@@ -7,7 +7,7 @@ const AI1 = () => {
       viewBox="0 0 200 200"
       fill="none"
     >
-      <g clip-path="url(#clip0_389_3702)">
+      <g clipPath="url(#clip0_389_3702)">
         <path
           d="M100 200C155.228 200 200 155.228 200 100C200 44.7715 155.228 0 100 0C44.7715 0 0 44.7715 0 100C0 155.228 44.7715 200 100 200Z"
           fill="#DEE5ED"
@@ -52,8 +52,8 @@ const AI1 = () => {
           y2="165.502"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7AAAE8" />
-          <stop offset="1" stop-color="#486284" />
+          <stop stopColor="#7AAAE8" />
+          <stop offset="1" stopColor="#486284" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_389_3702"
@@ -63,8 +63,8 @@ const AI1 = () => {
           y2="137.502"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#7AAAE8" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#7AAAE8" />
         </linearGradient>
         <clipPath id="clip0_389_3702">
           <rect width="200" height="200" fill="white" />

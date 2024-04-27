@@ -28,9 +28,9 @@ export const updateExp = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/experiences${id}`
-  console.log(url, '요청경로');
-  
-  return await patchRequest(url,experienceContent, accessToken )
+  console.log(url, '요청경로')
+
+  return await patchRequest(url, experienceContent, accessToken)
 }
 
 export const saveCov = async (

@@ -5,12 +5,11 @@ import { expNum, expData } from '../../recoil/experience'
 import { covletData } from '@/app/recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
 
-
 const CovletSave = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
-console.log(coverletterData, '자소서 데이터 현황');
+  console.log(coverletterData, '자소서 데이터 현황')
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -62,16 +61,15 @@ console.log(coverletterData, '자소서 데이터 현황');
         keyword2,
         jobKeyword, // 공개/비공개 여부
       }),
-    });
-  
+    })
+
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.');
+      console.error('데이터 저장에 실패했습니다.')
     } else {
       // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
-      console.log('데이터가 성공적으로 저장되었습니다.');
-      
+      console.log('데이터가 성공적으로 저장되었습니다.')
     }
-  };
+  }
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -84,7 +82,6 @@ console.log(coverletterData, '자소서 데이터 현황');
           <div className="w-[845px] h-[118.08px] left-[53px] top-[144.67px] absolute inline-flex gap-[20px]">
             <div className="w-[255px] h-[118.08px] left-0 top-0 absolute">
               {' '}
-               
               <div className="w-[255px] h-[86.65px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                   <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
@@ -109,7 +106,6 @@ console.log(coverletterData, '자소서 데이터 현황');
             </div>
             <div className="w-[258px] h-[117.68px] left-[292px] top-0 absolute">
               {' '}
-              
               <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                 <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
@@ -132,7 +128,6 @@ console.log(coverletterData, '자소서 데이터 현황');
             </div>
             <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
               {' '}
-              
               <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                 <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                 <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
@@ -163,7 +158,7 @@ console.log(coverletterData, '자소서 데이터 현황');
             </button>
           </div>
           <div className="w-[315px] h-[64.07px] left-[560px] top-[315.01px] absolute">
-          <button
+            <button
               className={`w-[280px] h-[60px] relative text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
               // onClick={(event) => handleButtonClick('공개', event)}
             >

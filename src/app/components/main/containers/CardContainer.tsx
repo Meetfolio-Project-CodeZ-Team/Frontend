@@ -41,6 +41,7 @@ export default function CardContainer({ cardData }: CardContainerProps) {
             jobKeyword={card.jobKeyword}
             stack={card.stack}
             title={card.jobKeyword}
+            experienceId={card.experienceId}
           />
         </SwiperSlide>
       ))}

@@ -39,8 +39,8 @@ const deleteRequest = async (
           Authorization: 'Bearer ' + accessToken,
         }
       : commonHeaders
-      console.log(headers, '헤더스');
-      
+    console.log(headers, '헤더스')
+
     const response = await fetch(url, {
       method: 'DELETE',
       headers: headers,

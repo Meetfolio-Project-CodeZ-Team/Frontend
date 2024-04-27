@@ -5,6 +5,7 @@ interface CardDataTypes {
   experienceType: string
   jobKeyword: onlyJobType
   stack: string
+  experienceId: number
 }
 interface memberInfo {
   memberName: string
