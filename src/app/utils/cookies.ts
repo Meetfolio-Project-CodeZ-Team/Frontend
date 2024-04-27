@@ -11,12 +11,9 @@ export const getCookie = (req: Request, name: string) => {
 }
 
 export const logout = async () => {
-  const res = await fetch(
-    `${NEXT_SERVER}/api/login/logout`,
-    {
-      method: 'DELETE',
-    },
-  )
+  const res = await fetch(`${NEXT_SERVER}/api/login/logout`, {
+    method: 'DELETE',
+  })
   document.cookie =
     'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
   document.cookie =

@@ -12,7 +12,7 @@ import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [userInfo, setUser] = useState<memberInfo|null>(null)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   const router = useRouter()
 

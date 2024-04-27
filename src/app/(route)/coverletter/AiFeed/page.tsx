@@ -15,7 +15,7 @@ import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
 import { userState } from '@/app/recoil/signUp'
 
 export default function CovletMainPage() {
-  const [userInfo, setUser] = useState<memberInfo|null>(null)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
   const router = useRouter()
 
   useEffect(() => {

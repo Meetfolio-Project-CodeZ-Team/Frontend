@@ -5,7 +5,7 @@ import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 
 export default function UserMyPage() {
-  const [userInfo, setUser] = useState<memberInfo|null>(null)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {

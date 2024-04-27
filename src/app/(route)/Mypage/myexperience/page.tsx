@@ -5,7 +5,7 @@ import MyExpList from '@/app/components/mypage/MyExpList'
 import { useEffect, useState } from 'react'
 
 export default function MyExperiencePage() {
-  const [userInfo, setUser] = useState<memberInfo|null>(null)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
     const fetchData = async () => {

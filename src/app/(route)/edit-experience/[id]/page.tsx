@@ -12,7 +12,7 @@ import { userState } from '@/app/recoil/signUp'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [userInfo, setUser] = useState<memberInfo|null>(null)
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   const [experienceData, setExperienceData] = useRecoilState(expData)
   console.log(experienceData)
