@@ -28,8 +28,13 @@ export default function ExperiencePage() {
   }, [])
 
   useEffect(() => {
-    router.push('../../experience')
-  }, [experienceNumber, router])
+    // 첫 로드시에만 experienceNumber를 0으로 설정
+    setExperienceNumber(0);
+  }, []); 
+
+  // useEffect(() => {
+  //   router.push('../../experience')
+  // }, [experienceNumber, router])
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
