@@ -55,7 +55,7 @@ const PortfolioContainer = () => {
         </div>
         <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">
           <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-          <div className="w-[140px] h-[0px] left-0 top-[1.42px] absolute border-4 border-gray-800" />
+          <div className="w-[140px] h-[0px] left-0 top-[1.42px] absolute border-2 border-gray-800" />
         </div>
       </div>
     </div>

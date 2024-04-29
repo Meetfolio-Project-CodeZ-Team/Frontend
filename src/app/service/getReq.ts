@@ -37,3 +37,8 @@ export const getMyCovletDetail = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}`
   return await getRequest(url, accessToken)
 }
+
+export const getUserInfo = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/mypage`
+  return await getRequest(url, accessToken)
+}

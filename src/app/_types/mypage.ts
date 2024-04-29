@@ -5,3 +5,14 @@ interface ModelValue {
   accuracy: number
   loss: number
 }
+
+interface UserInfoTypes {
+  memberId?: number // 선택적 필드로 추가
+  email: string
+  major: string
+  grade: string
+  status: string
+  registrationDate: string
+  jobKeyword?: string
+  point?: number
+}
