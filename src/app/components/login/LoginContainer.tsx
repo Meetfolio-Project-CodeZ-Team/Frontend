@@ -18,7 +18,7 @@ const LoginContainer = () => {
 
   const postLogin = async () => {
     const isAdmin = id === 'admin' ? 'admin' : id + SIGNUP.Email
-    const path = id === 'admin' ? 'Admin' : 'main'
+    const path = id === 'admin' ? 'admin' : 'main'
     const requestOptions = {
       method: 'POST',
       headers: {
