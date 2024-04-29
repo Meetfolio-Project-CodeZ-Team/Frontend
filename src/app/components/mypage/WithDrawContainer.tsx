@@ -13,10 +13,10 @@ const WithDrawContainer = () => {
         <div className="w-[160px] h-[0px] left-[155px] top-[1.42px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[280px] h-[30px] left-[96px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
-        <div className="text-gray-900 text-xl font-bold font-['Plus Jakarta Sans'] leading-[30px]">
+        <div className="text-gray-900 text-xl font-bold leading-[30px]">
           <Link href="/mypage/userinfo">개인 정보 수정</Link>
         </div>
-        <div className="text-gray-900 text-xl font-bold font-['Plus Jakarta Sans'] leading-[30px]">
+        <div className="text-gray-900 text-xl font-bold leading-[30px]">
           <Link href="/mypage/withdraw">회원 탈퇴</Link>
         </div>
       </div>
@@ -24,11 +24,11 @@ const WithDrawContainer = () => {
         개인 정보 설정
       </div>
       <div className="left-[84px] top-[231px] absolute">
-        <span className="text-black text-xl font-bold font-['Plus Jakarta Sans'] leading-[30px]">
+        <span className="text-black text-xl font-bold leading-[30px]">
           졍말 탈퇴하시겠어요?
           <br />
         </span>
-        <span className="text-black text-xl font-medium font-['Plus Jakarta Sans'] leading-[30px]">
+        <span className="text-black text-xl font-medium leading-[30px]">
           <br />
           탈퇴 시 모든 이용 내역 및 저장된 포트폴리오가 삭제되며,
           <br />
@@ -37,7 +37,7 @@ const WithDrawContainer = () => {
         </span>
       </div>
 
-      {/* <div className="w-[95.85px] h-[20.69px] left-[22.58px] top-[11.66px] absolute text-center text-slate-600 text-lg font-semibold font-['Plus Jakarta Sans'] leading-[27px]">
+      {/* <div className="w-[95.85px] h-[20.69px] left-[22.58px] top-[11.66px] absolute text-center text-slate-600 text-lg font-semibold leading-[27px]">
           탈퇴하기
         </div> */}
       <div className="w-[150.05px] h-[50px] left-[895px] top-[504px] absolute bg-slate-300 rounded-[10px] flex items-center justify-center">

@@ -28,7 +28,7 @@ const UserNavContainer = ({ selected, nickname }: UserNavContainerProps) => {
         </Link>
         <Link
           className={`${selected === 'points' && 'font-bold'}`}
-          href="/Admin/points"
+          href="/mypage/mypoint"
         >
           포인트
         </Link>
