@@ -54,7 +54,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
               )}
             </div>
             {!nickname ? (
-              <Link href="login">
+              <Link href="/login">
                 <button className="w-[82px] h-[38px] bg-[#486284] text-white text-sm rounded font-medium">
                   로그인
                 </button>

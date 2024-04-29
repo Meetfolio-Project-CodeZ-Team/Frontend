@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-
 import Button from '../common/Button'
 import Input from '../common/Input'
 import { useRouter } from 'next/navigation'
@@ -9,11 +8,14 @@ import { SIGNUP } from '@/app/constants/auth'
 import { failLogin } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Icons from '../common/Icons'
+import { eye } from '@/app/ui/IconsPath'
 
 const LoginContainer = () => {
   const router = useRouter()
   const [id, setId] = useState('')
   const [pw, setPw] = useState('')
+  const [isOpen, setIsOpen] = useState(false)
   const isInserted = id === '' || pw === ''
 
   const postLogin = async () => {
@@ -54,12 +56,21 @@ const LoginContainer = () => {
           onChange={(e) => setId(e.target.value)}
           placeholder={`아이디(${SIGNUP.Email}을 제외하고 입력)`}
         />
-        <Input
-          inputType="password"
-          type={'login'}
-          onChange={(e) => setPw(e.target.value)}
-          placeholder="비밀번호"
-        />
+        <div className="flex gap-x-4 items-center">
+          <Input
+            inputType={isOpen ? '' : 'password'}
+            type={'login'}
+            onChange={(e) => setPw(e.target.value)}
+            placeholder="비밀번호"
+          />
+          <div
+            className="cursor-pointer"
+            onMouseDown={() => setIsOpen(true)}
+            onMouseUp={() => setIsOpen(false)}
+          >
+            <Icons name={eye} />
+          </div>
+        </div>
       </div>
       <div className="flex flex-col gap-y-5">
         <Button

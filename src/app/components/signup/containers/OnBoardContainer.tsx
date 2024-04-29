@@ -105,7 +105,7 @@ const OnBoardContainer = () => {
               textValue={checkPW}
             />
             <div
-              className={`flex items-center justify-center w-[72px] p-2 text-lg font-semibold rounded-[10px]  ${isSame ? 'bg-white text-[#486283]' : 'bg-white text-[#6D727C]'}`}
+              className={`flex items-center justify-center w-[72px] p-2 text-lg font-semibold rounded-[10px]  ${isSame ? 'bg-[#486283] text-white' : 'bg-white text-[#6D727C]'}`}
             >
               {isSame ? '일치' : '불일치'}
             </div>
