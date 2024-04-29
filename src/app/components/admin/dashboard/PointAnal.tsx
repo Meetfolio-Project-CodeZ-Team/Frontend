@@ -19,10 +19,11 @@ interface PointAnalProps {
   feedBack: number
   analysis: number
   total: number
+  yearMonth: string
 }
 
 const PointAnal = (pointAnal: PointAnalProps) => {
-  const { feedBack, analysis, total } = pointAnal
+  const { feedBack, analysis, total, yearMonth } = pointAnal
 
   const options = {
     responsive: true,

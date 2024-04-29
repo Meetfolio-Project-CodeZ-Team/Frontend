@@ -10,6 +10,6 @@ interface IconOptions {
   strokeWidth?: number
   strokeLinecap?: 'round' | 'butt' | 'square' | 'inherit' | undefined
   strokeLinejoin?: 'round' | 'bevel' | 'miter' | 'inherit' | undefined
-  fillRule?: 'evenodd' | 'inherit' | 'nonzero' | undefined
-  clipRule?: 'evenodd' | 'inherit' | 'nonzero' | undefined
+  fillRule?: 'evenodd' | 'inherit' | 'nonzero'
+  clipRule?: 'evenodd' | 'inherit' | 'nonzero'
 }

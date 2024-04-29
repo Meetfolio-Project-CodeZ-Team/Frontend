@@ -1,4 +1,4 @@
-import { getDashBoard } from '@/app/service/getRequest'
+import { getDashBoard } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 

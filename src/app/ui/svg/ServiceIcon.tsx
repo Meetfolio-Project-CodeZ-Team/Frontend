@@ -4,8 +4,8 @@ const ServiceIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="30"
-      height="24"
+      width="24"
+      height="18"
       viewBox="0 0 30 24"
       fill="none"
     >

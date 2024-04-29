@@ -28,10 +28,7 @@ const commonHeaders = {
 //     console.log('Error:', error)
 //   }
 // }
-const deleteRequest = async (
-  url: string,
-  accessToken?: string,
-) => {
+const deleteRequest = async (url: string, accessToken?: string) => {
   try {
     const headers = accessToken
       ? {
@@ -54,8 +51,8 @@ const deleteRequest = async (
 }
 
 export const deleteExp = async (accessToken: string, id: string) => {
-    const url = `${SERVER_URL}/api/experiences/${id}`
-    return await deleteRequest(url, accessToken)
+  const url = `${SERVER_URL}/api/experiences/${id}`
+  return await deleteRequest(url, accessToken)
 }
 
 export const deleteCov = async (accessToken: string, id: string) => {

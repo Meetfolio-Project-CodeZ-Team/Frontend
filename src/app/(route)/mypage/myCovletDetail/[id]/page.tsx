@@ -19,7 +19,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   console.log(covletNumber, '현재 페이지 번호')
 
   const router = useRouter()
-  
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
