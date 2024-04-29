@@ -5,7 +5,4 @@ export const emailState = atom<string>({
   default: '',
 })
 
-export const userState = atom<memberInfo>({
-  key: 'userState',
-  default: { memberName: '', profile: '', major: '' },
-})
+

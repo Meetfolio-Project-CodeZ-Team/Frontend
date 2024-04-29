@@ -8,7 +8,6 @@ import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
-import { userState } from '@/app/recoil/signUp'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)

@@ -11,6 +11,7 @@ interface memberInfo {
   memberName: string
   profile: string
   major: string | null
+  authority?:string
 }
 
 interface jobInfo {
