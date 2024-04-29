@@ -5,7 +5,7 @@ import { expNum, expData } from '../../recoil/experience'
 
 interface ExpFinishContainerProps {
   isEdit?: boolean
-  id: string
+  id?: string
 }
 
 const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
@@ -33,8 +33,8 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
 
     const urlPath = isEdit
       ? `/api/experiences/update?id=${id}`
-      : `/api/experiences`
-    const methodType = isEdit ? 'PATCH' : 'POST'
+      : `/api/experiences`;
+    const methodType = isEdit ? 'PATCH' : 'POST';
     const response = await fetch(urlPath, {
       method: methodType,
       headers: {

@@ -3,7 +3,7 @@
 import MyCovlet from './MyCovletCard'
 import MyExpCard from './MyExpCard'
 import expCards from './MyExpCard'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 import { useRouter } from 'next/navigation'
 import { log } from 'console'
@@ -46,7 +46,9 @@ const MyExpCardDetail = ({
 
   const router = useRouter()
   const [experienceData, setExperienceData] = useRecoilState(expData)
+ 
   const onEditClick = () => {
+  
     setExperienceData({
       title,
       startDate,
@@ -64,18 +66,6 @@ const MyExpCardDetail = ({
     router.push(`/edit-experience/${experienceId}`)
   }
 
-  const onDeleteClick = async () => {
-    const response = await fetch(`/api/mypage/myExp`, {
-      method: 'DELETE',
-    })
-
-    if (response.ok) {
-      console.log('Experience deleted successfully')
-      router.push('/Mypage/myexperience') // 예를 들어 목록 페이지로 리다이렉트
-    } else {
-      console.error('Failed to delete the experience')
-    }
-  }
   const deleteExp = async (experienceId: number) => {
     console.log('경험카드 삭제 요청이에요', experienceId)
     try {
@@ -113,17 +103,17 @@ const MyExpCardDetail = ({
               </div>
             </div>
             <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
-              <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
+              <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal overflow-x-auto whitespace-nowrap scrollbar-hide">
                 {stack}
               </div>
             </div>
           </div>
           <div className="w-[110px] h-[30px] px-5 left-[359px] top-[34px] absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
-            <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
+            <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal overflow-x-auto whitespace-nowrap scrollbar-hide">
               {experienceType}
             </div>
           </div>
-          <div className="w-[400px] h-6 left-[30px] top-[68px] absolute text-start text-gray-900 text-2xl font-semibold leading-[45px]">
+          <div className="w-[300px] h-10 left-[30px] top-[68px] absolute  text-gray-900 text-2xl font-semibold leading-[45px] overflow-x-auto whitespace-nowrap scrollbar-hide">
             {title}
           </div>
           <div className="w-[300px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans']">
@@ -181,10 +171,10 @@ const MyExpCardDetail = ({
             수정
           </button>
         </div>
-        <div className="w-[150.05px] h-[61.46px] left-[300px] top-[585px] absolute bg-blue-400 justify-center items-center rounded-[10px]">
+        <div className="w-[150.05px] h-[61.46px] left-[300px] top-[585px] absolute border-[2px] border-gray-600 bg-white justify-center items-center rounded-[10px]">
           <button
-            className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-            onClick={() => deleteExp(experienceId)}
+            className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-slate-600  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
+            onClick={()=>deleteExp(experienceId)}
           >
             삭제
           </button>

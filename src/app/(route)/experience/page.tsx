@@ -9,6 +9,7 @@ import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
+import Footer from '@/app/components/layout/Footer'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -28,8 +29,13 @@ export default function ExperiencePage() {
   }, [])
 
   useEffect(() => {
-    router.push('../../experience')
-  }, [experienceNumber, router])
+    // 첫 로드시에만 experienceNumber를 0으로 설정
+    setExperienceNumber(0);
+  }, []); 
+
+  // useEffect(() => {
+  //   router.push('../../experience')
+  // }, [experienceNumber, router])
 
   return (
     <section className="flex flex-col items-center min-h-screen ">
@@ -37,9 +43,10 @@ export default function ExperiencePage() {
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
-        {experienceNumber === 2 && <ExpContentContainer id={''} />}
+        {experienceNumber === 2 && <ExpContentContainer isEdit={false}/>}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
+      <Footer />
     </section>
   )
 }
