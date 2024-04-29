@@ -30,7 +30,7 @@ export default function MainPage() {
         <Header
           nickname={memberInfo?.memberName}
           profile={memberInfo?.profile}
-          isAdmin={memberInfo?.authority==='ADMIN'}
+          isAdmin={memberInfo?.authority === 'ADMIN'}
         />
         <div className="w-[1440px] mb-10">
           <MainContainer nickname={memberInfo?.memberName} />

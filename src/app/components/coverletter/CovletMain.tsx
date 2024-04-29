@@ -72,25 +72,24 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   }
 
   const handleCopyText = () => {
-    const textArea = document.getElementById('answer') as HTMLTextAreaElement;
+    const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
       // 텍스트 영역을 선택합니다.
-      textArea.select();
-      textArea.setSelectionRange(0, 99999); // 모바일 기기를 위해
-  
+      textArea.select()
+      textArea.setSelectionRange(0, 99999) // 모바일 기기를 위해
+
       // 복사 명령을 실행합니다.
       try {
-        const successful = document.execCommand('copy');
-        const msg = successful ? 'successful' : 'unsuccessful';
-        console.log('Copy text command was ' + msg);
-        alert('Copied to clipboard!');
+        const successful = document.execCommand('copy')
+        const msg = successful ? 'successful' : 'unsuccessful'
+        console.log('Copy text command was ' + msg)
+        alert('Copied to clipboard!')
       } catch (err) {
-        console.error('Unable to copy text: ', err);
-        alert('Failed to copy text.');
+        console.error('Unable to copy text: ', err)
+        alert('Failed to copy text.')
       }
     }
-  };
-  
+  }
 
   const saveCovData = async () => {
     // 필요한 모든 데이터가 있는지 확인

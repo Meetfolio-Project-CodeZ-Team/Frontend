@@ -8,10 +8,10 @@ export async function PATCH(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const id = searchParams.get('id') || ''
-  console.log('넥스트 서버에서 가져온 자소서 id',id);
-  
+  console.log('넥스트 서버에서 가져온 자소서 id', id)
+
   const covletData = await request.json()
-  
+
   const data = await saveCov(covletData, accessToken, id)
   return NextResponse.json(data)
 }

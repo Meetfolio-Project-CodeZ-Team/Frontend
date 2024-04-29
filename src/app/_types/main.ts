@@ -11,7 +11,7 @@ interface memberInfo {
   memberName: string
   profile: string
   major: string | null
-  authority?:string
+  authority?: string
 }
 
 interface jobInfo {
@@ -29,5 +29,3 @@ interface ResponseMain {
 }
 type JobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드' | '전체'
 type onlyJobType = '웹개발' | '앱개발' | '디자인' | 'AI' | '백엔드'
-
-

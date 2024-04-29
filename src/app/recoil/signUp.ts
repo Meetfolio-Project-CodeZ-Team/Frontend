@@ -4,5 +4,3 @@ export const emailState = atom<string>({
   key: 'email',
   default: '',
 })
-
-

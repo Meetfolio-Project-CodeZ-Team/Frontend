@@ -30,8 +30,8 @@ export default function ExperiencePage() {
 
   useEffect(() => {
     // 첫 로드시에만 experienceNumber를 0으로 설정
-    setExperienceNumber(0);
-  }, []); 
+    setExperienceNumber(0)
+  }, [])
 
   // useEffect(() => {
   //   router.push('../../experience')
@@ -43,7 +43,7 @@ export default function ExperiencePage() {
       <div className="w-[1440px] mb-10">
         {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
-        {experienceNumber === 2 && <ExpContentContainer isEdit={false}/>}
+        {experienceNumber === 2 && <ExpContentContainer isEdit={false} />}
         {experienceNumber === 3 && <ExpFinishContainer />}
       </div>
       <Footer />

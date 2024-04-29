@@ -39,7 +39,7 @@ export const saveCov = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}`
-  console.log(url, '요청경로');
-  
-  return await patchRequest(url,coverLetterContent, accessToken )
+  console.log(url, '요청경로')
+
+  return await patchRequest(url, coverLetterContent, accessToken)
 }
