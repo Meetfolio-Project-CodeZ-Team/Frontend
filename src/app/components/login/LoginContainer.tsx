@@ -47,10 +47,10 @@ const LoginContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-[170px] gap-y-12">
+    <div className="flex flex-col items-center justify-center mt-[150px] gap-y-12">
       <ToastContainer />
       <div className="text-6xl font-semibold leading-[90px]">로그인</div>
-      <div className="flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-5 ml-9">
         <Input
           type={'login'}
           onChange={(e) => setId(e.target.value)}
