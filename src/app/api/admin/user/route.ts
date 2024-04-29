@@ -1,4 +1,4 @@
-import { getUser } from '@/app/service/getRequest'
+import { getUser } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 
