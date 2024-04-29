@@ -34,7 +34,7 @@ const UserNavContainer = ({ selected, nickname }: UserNavContainerProps) => {
         </Link>
         <Link
           className={`${selected === 'user' && 'font-bold'}`}
-          href="/mypage/user"
+          href="/mypage/userinfo"
         >
           개인 정보 설정
         </Link>

@@ -123,10 +123,10 @@ const EditUserInfo = () => {
       </div>
       <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-          개인 정보 수정
+        <Link href="/mypage/userinfo">개인 정보 수정</Link>
         </div>
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-          회원 탈퇴
+        <Link href="/mypage/withdraw">회원 탈퇴</Link>
         </div>
       </div>
       <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
