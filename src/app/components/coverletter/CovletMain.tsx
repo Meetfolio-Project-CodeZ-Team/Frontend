@@ -25,7 +25,8 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
 
   useEffect(() => {
-    // 서버에서 경험카드 데이터를 가져오는 함수
+    console.log('카드 데이터 가져옴')
+
     const fetchExpCards = async () => {
       try {
         const response = await fetch('/api/mypage/myExp')
@@ -33,13 +34,11 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log(data) // 타입 에러가 발생하지 않아야 함
         setExpCards(data.result.experienceCardInfo.experienceCardItems)
       } catch (error) {
         console.error(error)
       }
     }
-
     fetchExpCards()
   }, [])
 
@@ -92,7 +91,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   }
 
   const saveCovData = async () => {
-    // 필요한 모든 데이터가 있는지 확인
     const { ...dataToSend } = coverletterData
     console.log(coverletterData, isEdit, '로 수정요청')
 
@@ -109,6 +107,14 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         ...dataToSend,
       }),
     })
+    const resData = await response.json()
+    setCoverLetterData({
+      ...coverletterData,
+      coverLetterId: resData.result.coverLetterId,
+    })
+    console.log(coverletterData,'자소서 데이터 현황');
+    
+    console.log(resData, '포스트 후 응답')
 
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
@@ -223,7 +229,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             경험카드를 참고해 자소서를 작성해보세요
           </span>
         </div>
-        {/* //자소서 작성 중 경험카드 리스트 조회 */}
         <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] ">
             {expCards.map((card) => (

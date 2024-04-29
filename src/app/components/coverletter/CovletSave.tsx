@@ -55,7 +55,6 @@ const CovletSave = () => {
       return
     }
 
-    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
     if (
       !answer ||
       !question ||
@@ -74,9 +73,12 @@ const CovletSave = () => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        answer,
+        question,
+        shareType,
         keyword1,
         keyword2,
-        jobKeyword, // 공개/비공개 여부
+        jobKeyword,
       }),
     })
 

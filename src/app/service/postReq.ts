@@ -11,7 +11,7 @@ const postRequest = async (url: string, body: any, accessToken?: string) => {
       body: JSON.stringify(body),
     })
     console.log(response, '서버로부터 응답')
-    return response
+    return response.json()
   } catch (error) {
     console.log('Error:', error)
   }
