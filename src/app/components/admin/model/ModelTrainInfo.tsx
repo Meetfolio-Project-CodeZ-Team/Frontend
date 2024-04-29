@@ -15,12 +15,12 @@ const ModelTrainInfo = ({
 }: ModelTrainInfoProps) => {
   return (
     <div className="flex flex-col w-[1010px] h-auto">
-      <div className="flex w-[1010px] h-[75px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
-        <div className="w-[110px] text-center">{createdAt}</div>
+      <div className="flex w-[1010px] h-[64px] pl-2 border-b border-[#BDBDBD] items-center text-black text-base">
+        <div className="w-[110px] text-center">{createdAt.substring(0, 8)}</div>
         <div className="w-[260px] text-center">{job}</div>
         <div className="w-[110px] text-center">{domain}</div>
         <div className="ml-[150px]">
-          <div className="w-[320px] text-center text-sm break-all">{url}</div>
+          <div className="w-[320px] text-center text-xs break-all">{url}</div>
         </div>
       </div>
     </div>

@@ -18,7 +18,6 @@ const PointsContainer = () => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/${isPoint ? 'point' : 'payment'}?year=${year}&month=${month}`,
       )
       const resData = await response.json()
-      console.log('가져온 resData', resData)
       if (isPoint) {
         setPointData(resData.result)
       } else {

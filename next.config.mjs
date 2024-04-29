@@ -19,7 +19,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: false,
-  output: "standalone"
+  output: 'standalone',
 }
 
 export default nextConfig

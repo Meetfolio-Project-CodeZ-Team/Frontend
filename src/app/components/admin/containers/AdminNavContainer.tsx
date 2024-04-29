@@ -15,31 +15,31 @@ const AdminNavContainer = ({ selected }: AdminNavContainerProps) => {
       <div className="flex flex-col gap-y-8 text-[22px] font-normal leading-[33px]">
         <Link
           className={`${selected === 'dashboard' && 'font-bold'}`}
-          href="/Admin"
+          href="/admin"
         >
           대시보드
         </Link>
         <Link
           className={`${selected === 'user' && 'font-bold'}`}
-          href="/Admin/user"
+          href="/admin/user"
         >
           회원관리
         </Link>
         <Link
           className={`${selected === 'model' && 'font-bold'}`}
-          href="/Admin/model"
+          href="/admin/model"
         >
           AI 관리
         </Link>
         <Link
           className={`${selected === 'points' && 'font-bold'}`}
-          href="/Admin/points"
+          href="/admin/points"
         >
           매출 관리
         </Link>
         <Link
           className={`${selected === 'board' && 'font-bold'}`}
-          href="/Admin/board"
+          href="/admin/board"
         >
           커뮤니티 관리
         </Link>

@@ -1,4 +1,4 @@
-import { getPoint } from '@/app/service/getRequest'
+import { getPoint } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 

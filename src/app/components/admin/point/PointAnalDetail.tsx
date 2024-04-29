@@ -72,13 +72,13 @@ const PointAnal = (pointAnal: PointAnalProps) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-y-8 mt-[62px]">
-      <div className="text-[40px] font-bold">
+    <div className="flex flex-col items-center gap-y-8 mt-[36px]">
+      <div className="text-[32px] font-bold">
         {year}년 {month}월
       </div>
       <div className="flex flex-col w-[949px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 p-[17px] mb-[108px]">
         <div className="flex items-center justify-center">
-          <div className="w-[949px] h-[auto] mt-8">
+          <div className="w-[949px] h-[auto] mt-4 px-6">
             <Bar options={options} data={data} />
           </div>
         </div>

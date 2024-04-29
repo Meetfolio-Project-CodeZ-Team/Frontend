@@ -1,4 +1,4 @@
-import { getCardMain } from '@/app/service/getRequest'
+import { getCardMain } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 
