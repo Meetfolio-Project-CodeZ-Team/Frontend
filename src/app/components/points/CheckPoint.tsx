@@ -56,7 +56,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               buttonText={CHECK_BUTTON[0]}
               type={'auth'}
               isDisabled={false}
-              onClickHandler={() => console.log('i')}
+              onClickHandler={openModal}
               className="bg-blue-400 text-white"
             />
             <Button
@@ -66,7 +66,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               onClickHandler={openModal}
               className="bg-[black] text-white"
             />
-            {isOpen && <ChargePoint />}
+            {isOpen && <ChargePoint closeCharge={closeModal} cost={cost} />}
           </div>
         </div>
       </div>

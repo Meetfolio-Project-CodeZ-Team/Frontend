@@ -181,7 +181,13 @@ const CovletSave = () => {
             >
               AI 직무 역량 분석
             </button>
-            {isOpen && <CheckPoint closeModal={closeModal} cost={300} />}
+            {isOpen && (
+              <CheckPoint
+                closeCheck={closeModal}
+                cost={300}
+                coverLetterId={coverletterData.coverLetterId || 0}
+              />
+            )}
           </div>
           <div className="w-[785px] h-[54px] left-[80px] top-[395.17px] absolute justify-start items-start gap-[95px] inline-flex">
             <div className="text-center">
