@@ -59,7 +59,7 @@ const OnBoardContainer = () => {
         body: JSON.stringify(requestBody),
       }
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signu`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup`,
         requestOptions,
       )
       router.push('/signup/complete')

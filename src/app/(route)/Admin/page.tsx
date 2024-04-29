@@ -13,7 +13,6 @@ export default function AdminPage() {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/dashboard`,
       )
       const resData = await response.json()
-      console.log('가져온 resData', resData)
       setData(resData.result)
     }
     fetchData()
