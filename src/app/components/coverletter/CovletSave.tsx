@@ -4,11 +4,14 @@ import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 import { covletData } from '@/app/recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
+import { useModal } from '@/app/hooks/useModal'
+import CheckPoint from '../points/CheckPoint'
 
 const CovletSave = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   console.log(coverletterData, '자소서 데이터 현황')
 
   const goToPreviousPage = () => {
@@ -174,10 +177,11 @@ const CovletSave = () => {
           <div className="w-[315px] h-[64.07px] left-[560px] top-[315.01px] absolute">
             <button
               className={`w-[280px] h-[60px] relative text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-              // onClick={(event) => handleButtonClick('공개', event)}
+              onClick={openModal}
             >
               AI 직무 역량 분석
             </button>
+            {isOpen && <CheckPoint closeModal={closeModal} cost={300} />}
           </div>
           <div className="w-[785px] h-[54px] left-[80px] top-[395.17px] absolute justify-start items-start gap-[95px] inline-flex">
             <div className="text-center">
