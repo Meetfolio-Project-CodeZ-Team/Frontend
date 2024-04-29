@@ -16,6 +16,7 @@ interface CheckPointProps {
 const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [myPoint, setMyPoint] = useState(0)
+  console.log(coverLetterId, '자소서 번호')
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +64,9 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               buttonText={CHECK_BUTTON[1]}
               type={'auth'}
               isDisabled={false}
-              onClickHandler={openModal}
+              onClickHandler={() =>
+                usingPoint(cost, 'USE_COVER_LETTER  ', coverLetterId)
+              }
               className="bg-[black] text-white"
             />
             {isOpen && <ChargePoint closeCharge={closeModal} cost={cost} />}
@@ -75,3 +78,27 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
 }
 
 export default CheckPoint
+
+const usingPoint = async (
+  cost: number,
+  usingType: string,
+  coverLetterId: number,
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        type: usingType,
+        point: cost,
+      }),
+    },
+  )
+  if (!response.ok) {
+    console.error('데이터 저장에 실패했습니다.')
+  }
+  const responseData = await response.json()
+}

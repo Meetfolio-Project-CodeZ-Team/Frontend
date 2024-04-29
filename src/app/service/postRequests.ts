@@ -14,7 +14,8 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, '요건 서버로부터 응답')
+    console.log(response, '요청 후 응답')
+
     return response.json()
   } catch (error) {
     console.log('Error:', error)
@@ -33,7 +34,6 @@ export const postAuthCode = async (authContent: authContent) => {
 
 export const postSignUp = async (signUpContent: signupTypes) => {
   const url = `${SERVER_URL}/api/signup`
-  console.log(signUpContent, '로 요청')
   return await postRequest(url, signUpContent)
 }
 
@@ -74,5 +74,14 @@ export const postChargeKakao = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/payments/request`
+  return await postRequest(url, point, accessToken)
+}
+
+export const postUsingPoint = async (
+  point: usingPointTypes,
+  id: string,
+  accessToken: string,
+) => {
+  const url = `${SERVER_URL}/api/coverLetters/${id}/points`
   return await postRequest(url, point, accessToken)
 }

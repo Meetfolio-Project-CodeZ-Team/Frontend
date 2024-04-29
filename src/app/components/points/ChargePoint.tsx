@@ -6,6 +6,7 @@ import { CHARGE_BUTTON, CHARGE_POINT } from '@/app/constants/point'
 import Input from '../common/Input'
 import { useState } from 'react'
 import Button from '../common/Button'
+import { useRouter } from 'next/navigation'
 
 interface ChargePointProps {
   closeCharge: () => void
@@ -13,6 +14,7 @@ interface ChargePointProps {
 }
 
 const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
+  const router = useRouter()
   const [chargeP, setChargeP] = useState('')
 
   return (
@@ -87,5 +89,15 @@ const chargeKakao = async (chargeP: string) => {
     console.error('데이터 저장에 실패했습니다.')
   }
   const responseData = await response.json()
+  const popup = window.open(
+    responseData.result.nextRedirectPcUrl,
+    '_blank',
+    'width=600,height=600',
+  )
+  if (popup) {
+    popup.focus()
+    const popupURL = popup.location.href
+    console.log('팝업 창의 URL:', popupURL)
+  }
   console.log(responseData)
 }
