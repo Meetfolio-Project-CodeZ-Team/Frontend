@@ -75,3 +75,8 @@ export const getUserHeader = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/members`
   return await getRequest(url, accessToken)
 }
+
+export const getPointInfo = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/points`
+  return await getRequest(url, accessToken)
+}

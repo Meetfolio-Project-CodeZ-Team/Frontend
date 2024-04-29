@@ -1,20 +1,39 @@
+'use client'
 import { close } from '@/app/ui/IconsPath'
 import Icons from '../common/Icons'
 import { CHECK_BUTTON, CHECK_POINT } from '@/app/constants/point'
 import Button from '../common/Button'
+import { useEffect, useState } from 'react'
+import { useModal } from '@/app/hooks/useModal'
+import ChargePoint from './ChargePoint'
 
 interface CheckPointProps {
-  closeModal: () => void
+  closeCheck: () => void
   cost: number
+  coverLetterId: number
 }
 
-const CheckPoint = ({ closeModal, cost }: CheckPointProps) => {
+const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  const [myPoint, setMyPoint] = useState(0)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point/check`,
+      )
+      const data = await response.json()
+      setMyPoint(data.result.point)
+    }
+    fetchData()
+  }, [])
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[648px] rounded-[20px] bg-white relative flex justify-center">
         <div
           className="right-[20px] top-[20px] absolute cursor-pointer"
-          onClick={closeModal}
+          onClick={closeCheck}
         >
           <Icons name={close} />
         </div>
@@ -22,7 +41,7 @@ const CheckPoint = ({ closeModal, cost }: CheckPointProps) => {
           <div className="text-3xl">{CHECK_POINT[0]}</div>
           <div className="w-full flex flex-col gap-y-4">
             {CHECK_POINT[1]}
-            <div className="text-3xl">{800}P</div>
+            <div className="text-3xl">{myPoint}P</div>
           </div>
           <div className="w-full flex flex-col gap-y-4">
             {CHECK_POINT[2]}
@@ -30,7 +49,7 @@ const CheckPoint = ({ closeModal, cost }: CheckPointProps) => {
           </div>
           <div className="w-full flex flex-col gap-y-4">
             {CHECK_POINT[3]}
-            <div className="text-3xl">{800 - cost}P</div>
+            <div className="text-3xl">{myPoint - cost}P</div>
           </div>
           <div className="flex gap-x-4">
             <Button
@@ -44,9 +63,10 @@ const CheckPoint = ({ closeModal, cost }: CheckPointProps) => {
               buttonText={CHECK_BUTTON[1]}
               type={'auth'}
               isDisabled={false}
-              onClickHandler={() => console.log('i')}
+              onClickHandler={openModal}
               className="bg-[black] text-white"
             />
+            {isOpen && <ChargePoint />}
           </div>
         </div>
       </div>
