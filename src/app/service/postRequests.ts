@@ -14,8 +14,8 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, '서버로부터 응답')
-    return response
+    console.log(response, '요건 서버로부터 응답')
+    return response.json()
   } catch (error) {
     console.log('Error:', error)
   }
@@ -67,4 +67,12 @@ export const postTrainData = async (
   const url = `${SERVER_URL}/api/admins/data-management`
   console.log(trainData, '로 요청')
   return await postRequest(url, trainData, accessToken)
+}
+
+export const postChargeKakao = async (
+  point: chargePointTypes,
+  accessToken: string,
+) => {
+  const url = `${SERVER_URL}/api/payments/request`
+  return await postRequest(url, point, accessToken)
 }

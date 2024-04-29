@@ -60,7 +60,7 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
             buttonText={CHARGE_BUTTON[0]}
             type={'default'}
             isDisabled={false}
-            onClickHandler={() => console.log('i')}
+            onClickHandler={() => chargeKakao(chargeP)}
             className="bg-[#7AAAE8] text-white w-[440px] h-[70px] text-2xl font-semibold rounded-[20px]"
           />
         </div>
@@ -70,3 +70,22 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
 }
 
 export default ChargePoint
+
+const chargeKakao = async (chargeP: string) => {
+  const point = Number(chargeP)
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point/charge`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ point: point, payment: point }),
+    },
+  )
+  if (!response.ok) {
+    console.error('데이터 저장에 실패했습니다.')
+  }
+  const responseData = await response.json()
+  console.log(responseData)
+}
