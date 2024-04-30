@@ -1,11 +1,11 @@
 'use client'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import Header from '@/app/components/layout/Header'
-import MyExpList from '@/app/components/mypage/MyExpList'
 import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
+import EditUserInfo from '@/app/components/mypage/EditUserInfo'
 
-export default function MyExperiencePage() {
+export default function MyUserPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
@@ -20,11 +20,11 @@ export default function MyExperiencePage() {
   }, [])
   return (
     <section className="flex flex-col min-h-screen">
-      <Header nickname={userInfo?.memberName}  />
+      <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'portfolio'}  nickname={userInfo?.memberName} />
+        <UserNavContainer selected={'user'}  nickname={userInfo?.memberName}/>
         <div className="flex-grow">
-          <MyExpList />
+          <EditUserInfo />
         </div>
       </div>
       <Footer />
