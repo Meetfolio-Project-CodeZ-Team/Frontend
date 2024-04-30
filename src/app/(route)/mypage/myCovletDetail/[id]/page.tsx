@@ -57,7 +57,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
     <section className="flex flex-col min-h-screen ">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'portfolio'} />
+        <UserNavContainer selected={'portfolio'}  nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <MyCovletCardDetail
             coverLetterId={Number(params.id)}

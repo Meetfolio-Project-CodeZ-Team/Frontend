@@ -58,6 +58,13 @@ const failLogin = () => {
   })
 }
 
+const updateUserInfo = () => {
+  toast.success('회원 정보 수정이 완료되었습니다.', {
+    icon: () => '✏️',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -66,4 +73,5 @@ export {
   textLimitAlert,
   addTrainData,
   failLogin,
+  updateUserInfo,
 }
