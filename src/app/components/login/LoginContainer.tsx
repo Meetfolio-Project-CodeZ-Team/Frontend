@@ -56,7 +56,7 @@ const LoginContainer = () => {
           onChange={(e) => setId(e.target.value)}
           placeholder={`아이디(${SIGNUP.Email}을 제외하고 입력)`}
         />
-        <div className="flex gap-x-4 items-center">
+        <div className="flex gap-x-4 items-center relative">
           <Input
             inputType={isOpen ? '' : 'password'}
             type={'login'}
@@ -64,7 +64,7 @@ const LoginContainer = () => {
             placeholder="비밀번호"
           />
           <div
-            className="cursor-pointer"
+            className="cursor-pointer absolute right-4"
             onMouseDown={() => setIsOpen(true)}
             onMouseUp={() => setIsOpen(false)}
           >

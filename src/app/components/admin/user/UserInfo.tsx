@@ -16,12 +16,22 @@ interface UserInfoProps {
   jobKeyword: string
   point: number
   userId: number
+  status: string
 }
 
 const UserInfo = (userInfo: UserInfoProps) => {
-  const { registrationDate, email, grade, major, jobKeyword, point, userId } =
-    userInfo
+  const {
+    registrationDate,
+    email,
+    grade,
+    major,
+    jobKeyword,
+    point,
+    userId,
+    status,
+  } = userInfo
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  const isActive = status === 'ACTIVE'
 
   const deleteUser = async (userId: number) => {
     deleteUserAlert()
@@ -47,10 +57,10 @@ const UserInfo = (userInfo: UserInfoProps) => {
         <div className="w-[107px] text-center">{jobKeyword}</div>
         <div className="w-[152px] text-center">{point}</div>
         <div
-          className="ml-[26px] flex text-center cursor-pointer"
+          className={`ml-[26px] flex items-center justify-center cursor-pointer w-[68px] h-10 ${isActive ? 'bg-[#7AAAE8] text-white' : 'bg-slate-400 text-black'}  text-base p-2 font-semibold rounded-[10px]`}
           onClick={openModal}
         >
-          <Icons name={boardDelete} />
+          {isActive ? '활성' : '비활성'}
         </div>
         <ToastContainer />
         <div onClick={handleModalClick}>

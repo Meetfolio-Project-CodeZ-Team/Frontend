@@ -16,7 +16,7 @@ const UserBoard = (userInfoData: UserBoardProps) => {
         <div className="ml-[85px]">{USER_BOARD_H[2]}</div>
         <div className="ml-[92px]">{USER_BOARD_H[3]}</div>
         <div className="ml-[56px]">{USER_BOARD_H[4]}</div>
-        <div className="ml-[62px]">{USER_BOARD_H[5]}</div>
+        <div className="ml-[78px]">{USER_BOARD_H[5]}</div>
       </div>
       {userInfoData.userInfoData.memberList.map((userInfo, i) => (
         <div key={i}>
@@ -28,6 +28,7 @@ const UserBoard = (userInfoData: UserBoardProps) => {
             jobKeyword={userInfo.jobKeyword}
             point={userInfo.point}
             userId={userInfo.memberId}
+            status={userInfo.status}
           />
         </div>
       ))}
