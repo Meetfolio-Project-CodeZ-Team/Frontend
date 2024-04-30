@@ -5,7 +5,15 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { userData } from '@/app/recoil/mypage'
 import Input from '../common/Input'
-import { COLLEGE, CLASS_ENUM, GRADE, SIGNUP, JOBKEYWORD, GRADE_ENUM, JOB_ENUM } from '@/app/constants/auth'
+import {
+  COLLEGE,
+  CLASS_ENUM,
+  GRADE,
+  SIGNUP,
+  JOBKEYWORD,
+  GRADE_ENUM,
+  JOB_ENUM,
+} from '@/app/constants/auth'
 import DropDownMajor from '../signup/onboard/dropdown/DropDownMajor'
 import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 import Keyword from '../signup/onboard/Keyword'
@@ -16,15 +24,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 interface UserInfoProps {
-  email: string
-  grade: string
-  major: string
-  jobKeyword: onlyJobType
   memberId?: number
-  point: number
-  status: string
-  registrationDate: string
-  password: string
 }
 
 interface UserInfo {
@@ -35,10 +35,10 @@ interface UserInfo {
   memberId?: number
 }
 
-const EditUserInfo = ({memberId}:UserInfoProps) => {
+const EditUserInfo = () => {
   const [userInfoData, setUserInfoData] = useState(userData)
   const router = useRouter()
-  
+
   const [password, setPassWord] = useState('')
   const [checkPW, setCheckPW] = useState('')
   const [pw, setPw] = useState('')
@@ -51,59 +51,60 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
   const [userInfos, setUserInfos] = useState<UserInfo>()
 
   const updateUser = async () => {
-  // 비밀번호 패턴 검사
-  if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
-    const requestBody = {
-      password: password,
-      grade: GRADE_ENUM[grade],
-      jobKeyword: JOB_ENUM[clickedKeyword],
-      major: major,
-    };
-
-    const requestOptions = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    };
-
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update?memberId=${memberId}`,
-        requestOptions,
-      );
-      
-
-      if (!response.ok) {
-        throw new Error('서버 오류로 정보 수정에 실패했습니다.');
+    // 비밀번호 패턴 검사
+    if (
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
+        password,
+      )
+    ) {
+      const requestBody = {
+        password: password,
+        grade: GRADE_ENUM[grade],
+        jobKeyword: JOB_ENUM[clickedKeyword],
+        major: major,
       }
 
-      // 성공적으로 수정이 되었을 경우 처리 로직
-      // 예: 서버로부터의 응답에 따라 상태 업데이트 또는 사용자 알림
-      
-      console.log('정보가 성공적으로 수정되었습니다.');
-      console.log(requestBody, '수정한 회원정보 데이터')
-      updateUserInfo()
+      const requestOptions = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      }
 
-    } catch (error) {
-      console.error('정보 수정 중 오류가 발생했습니다:', error);
-      // 사용자에게 오류 메시지 표시
-      // 예: toast.error('정보 수정 중 오류가 발생했습니다.');
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update?memberId=${userInfos?.memberId}`,
+          requestOptions,
+        )
+
+        if (!response.ok) {
+          throw new Error('서버 오류로 정보 수정에 실패했습니다.')
+        }
+
+        // 성공적으로 수정이 되었을 경우 처리 로직
+        // 예: 서버로부터의 응답에 따라 상태 업데이트 또는 사용자 알림
+
+        console.log('정보가 성공적으로 수정되었습니다.')
+        console.log(requestBody, '수정한 회원정보 데이터')
+        updateUserInfo()
+      } catch (error) {
+        console.error('정보 수정 중 오류가 발생했습니다:', error)
+        // 사용자에게 오류 메시지 표시
+        // 예: toast.error('정보 수정 중 오류가 발생했습니다.');
+      }
+    } else {
+      // 비밀번호가 유효하지 않은 경우
+      setPassWord('')
+      pwAlert()
     }
-  } else {
-    // 비밀번호가 유효하지 않은 경우
-    setPassWord('');
-    pwAlert();
   }
-};
 
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
     const fetchUserInfos = async () => {
       try {
         const response = await fetch('/api/mypage/user')
@@ -130,10 +131,10 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
       </div>
       <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-        <Link href="/mypage/userinfo">개인 정보 수정</Link>
+          <Link href="/mypage/userinfo">개인 정보 수정</Link>
         </div>
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-        <Link href="/mypage/withdraw">회원 탈퇴</Link>
+          <Link href="/mypage/withdraw">회원 탈퇴</Link>
         </div>
       </div>
       <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
@@ -207,7 +208,7 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
           />
         </div>
         <div className="w-[680px] h-[89px] relative z-0">
-        <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
+          <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
             희망직무
           </div>
           <div className="flex gap-x-8">
@@ -220,14 +221,14 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
         </div>
       </div>
       <div className="w-[675.95px] h-[60px] left-[79px] top-[738px] absolute">
-      <Button
+        <Button
           buttonText="수정하기"
           type={'loginB'}
           isDisabled={!isEntered}
           onClickHandler={() => updateUser()}
           className={!isEntered ? 'text-[#767575] bg-white' : 'text-white'}
         />
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </div>
   )

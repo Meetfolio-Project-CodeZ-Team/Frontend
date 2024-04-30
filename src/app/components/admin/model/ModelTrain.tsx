@@ -22,7 +22,7 @@ const ModelTrain = ({ trainData }: ModelTrainProps) => {
   return isAdd ? (
     <AddTrainData addComplete={() => succeedAdd()} />
   ) : (
-    <div className="flex flex-col w-[1010px] h-[780px] items-center">
+    <div className="flex flex-col w-[1010px] h-[720px] items-center">
       <ToastContainer />
       <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-y border-[#616161] items-center text-black text-lg">
@@ -31,7 +31,7 @@ const ModelTrain = ({ trainData }: ModelTrainProps) => {
         <div className="ml-[125px]">{MODEL_TRAIN_H[3]}</div>
         <div className="ml-[300px]">{MODEL_TRAIN_H[4]}</div>
       </div>
-      <div className="h-[580px] overflow-y-auto scrollbar-hide">
+      <div className="h-[520px] overflow-y-auto scrollbar-hide">
         {trainData.map((data, i) => (
           <div key={i}>
             <ModelTrainInfo

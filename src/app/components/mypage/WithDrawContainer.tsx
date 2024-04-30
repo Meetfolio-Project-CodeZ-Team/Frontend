@@ -19,7 +19,7 @@ interface UserInfoProps {
   registrationDate: string
 }
 
-const WithDrawContainer = ({memberId}:UserInfoProps) => {
+const WithDrawContainer = () => {
   const router = useRouter()
   const [userInfos, setUserInfos] = useState<UserInfoProps>()
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
@@ -39,7 +39,7 @@ const WithDrawContainer = ({memberId}:UserInfoProps) => {
         console.error(error)
       }
     }
-  
+
     fetchUserInfos()
   }, [])
 
@@ -55,7 +55,7 @@ const WithDrawContainer = ({memberId}:UserInfoProps) => {
 
       if (res.ok) {
         console.log('회원탈퇴 성공적으로 되었습니다.')
-        logout();
+        logout()
         router.push(`/main`)
       } else {
         const errorData = await res.json()
@@ -65,7 +65,6 @@ const WithDrawContainer = ({memberId}:UserInfoProps) => {
       console.error('Network or other error:', error)
     }
   }
-
 
   return (
     <div className="w-[1120px] h-[981px] relative">
@@ -103,19 +102,21 @@ const WithDrawContainer = ({memberId}:UserInfoProps) => {
           탈퇴하기
         </div> */}
       <div className="w-[150.05px] h-[50px] left-[895px] top-[504px] absolute bg-slate-300 rounded-[10px] flex items-center justify-center">
-        <button className="text-slate-600 text-xl font-semibold border-0 focus:outline-none rounded-[10px]"
-        onClick={openModal}>
+        <button
+          className="text-slate-600 text-xl font-semibold border-0 focus:outline-none rounded-[10px]"
+          onClick={openModal}
+        >
           탈퇴하기
         </button>
       </div>
       <div onClick={handleModalClick}>
-          {isOpen && (
-            <DeleteModal
-              closeModal={closeModal}
-              deleteUser={() => deleteUser()}
-            />
-          )}
-        </div>
+        {isOpen && (
+          <DeleteModal
+            closeModal={closeModal}
+            deleteUser={() => deleteUser()}
+          />
+        )}
+      </div>
     </div>
   )
 }
