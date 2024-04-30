@@ -30,6 +30,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train`,
       requestOptions,
     )
+    window.location.reload()
     addComplete()
   }
 

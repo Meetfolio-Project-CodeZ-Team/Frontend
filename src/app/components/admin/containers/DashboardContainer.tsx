@@ -10,10 +10,10 @@ const DashboardContainer = ({ DashboardInfo }: DashboardContainerProps) => {
   const { aiServiceInfo, membersInfo, pointInfo, paymentInfo } = DashboardInfo
   const { feedbackCount, analysisCount, totalCount, satisfaction } =
     aiServiceInfo
-  const { analysisPoint, solutionPoint, totalPoint } = pointInfo
+  const { analysisPoint, coverLetterPoint, totalPoint, yearMonth } = pointInfo
   return (
-    <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
-      <div className="text-[32px] font-bold leading-[48px]">대시보드</div>
+    <div className="flex flex-col gap-y-8 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
+      <div className="text-[28px] font-bold">대시보드</div>
       <ServiceUsage
         feedbackCount={feedbackCount}
         analysisCount={analysisCount}
@@ -33,9 +33,10 @@ const DashboardContainer = ({ DashboardInfo }: DashboardContainerProps) => {
           ai={membersInfo.ai}
         />
         <PointAnal
-          feedBack={solutionPoint}
+          feedBack={coverLetterPoint}
           analysis={analysisPoint}
           total={totalPoint}
+          yearMonth={yearMonth}
         />
       </div>
     </div>

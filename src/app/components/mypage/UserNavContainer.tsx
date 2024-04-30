@@ -16,25 +16,25 @@ const UserNavContainer = ({ selected, nickname }: UserNavContainerProps) => {
       <div className="flex flex-col gap-y-8 text-[22px] font-normal leading-[33px]">
         <Link
           className={`${selected === 'portfolio' && 'font-bold'}`}
-          href="/Admin"
+          href="/mypage"
         >
           포트폴리오
         </Link>
         <Link
           className={`${selected === 'board' && 'font-bold'}`}
-          href="/Admin/board"
+          href="/admin/board"
         >
           커뮤니티 관리
         </Link>
         <Link
           className={`${selected === 'points' && 'font-bold'}`}
-          href="/Admin/points"
+          href="/mypage/mypoint"
         >
           포인트
         </Link>
         <Link
           className={`${selected === 'user' && 'font-bold'}`}
-          href="/Admin/user"
+          href="/mypage/userinfo"
         >
           개인 정보 설정
         </Link>

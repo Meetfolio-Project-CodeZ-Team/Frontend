@@ -10,9 +10,9 @@ export interface CoverLetterDataTypes {
   question: string
   answer: string
   shareType: string
-  keyword1?: string 
-  keyword2?: string 
-  jobKeyword?: string 
+  keyword1?: string
+  keyword2?: string
+  jobKeyword?: string
 }
 
 export const covletData = atom<CoverLetterDataTypes>({

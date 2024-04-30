@@ -22,8 +22,9 @@ interface AISolutionTypes {
 
 interface pointInfoTypes {
   analysisPoint: number
-  solutionPoint: number
+  coverLetterPoint: number
   totalPoint: number
+  yearMonth: string
 }
 interface pointListTypes {
   createdAt: string

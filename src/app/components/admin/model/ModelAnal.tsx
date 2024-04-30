@@ -31,7 +31,7 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
             font: {
               weight: 'bold' as const,
               family: "'Pretendard', sans-serif",
-              size: 20,
+              size: 16,
             },
           },
         },
@@ -52,7 +52,7 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
             color: 'black',
             font: {
               weight: 'bold' as const,
-              size: 16,
+              size: 14,
               family: " 'Pretendard', sans-serif",
             },
           },
@@ -62,7 +62,7 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
             color: 'black',
             font: {
               weight: 'bold' as const,
-              size: 16,
+              size: 14,
               family: " 'Pretendard', sans-serif",
             },
           },
@@ -86,7 +86,7 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
         modelEvaluation[2].loss || 0,
       ],
     ]
-    const data = {
+    const acc = {
       labels,
       datasets: [
         {
@@ -94,6 +94,11 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
           data: value[0],
           backgroundColor: ['#F5CF87'],
         },
+      ],
+    }
+    const loss = {
+      labels,
+      datasets: [
         {
           label: 'loss',
           data: value[1],
@@ -103,14 +108,17 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
     }
 
     return (
-      <div className="flex flex-col w-[1018px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 p-[17px] mt-[23px] mb-[20px]">
-        <div className="flex items-center gap-x-2.5">
-          <div className="text-[26px] font-bold ">AI 모델 성능 지표</div>
+      <div className="flex flex-col w-[1018px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 py-8 px-4 my-7 gap-y-4">
+        <div className="flex items-center gap-x-3">
+          <div className="text-2xl font-bold ">AI 모델 성능 지표</div>
           <Icons name={model} />
         </div>
-        <div className="flex items-center justify-center">
-          <div className="w-[850px] h-[auto] mt-8">
-            <Bar options={options} data={data} />
+        <div className="flex w-auto  gap-x-5">
+          <div className="flex w-[500px] h-full">
+            <Bar options={options} data={acc} />
+          </div>
+          <div className="flex w-[500px] h-full">
+            <Bar options={options} data={loss} />
           </div>
         </div>
       </div>

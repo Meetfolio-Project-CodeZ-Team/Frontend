@@ -4,11 +4,14 @@ import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 import { covletData } from '@/app/recoil/coverletter'
 import ExpCard from '@/app/components/coverletter/ExpCard'
+import { useModal } from '@/app/hooks/useModal'
+import CheckPoint from '../points/CheckPoint'
 
 const CovletSave = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   console.log(coverletterData, '자소서 데이터 현황')
 
   const goToPreviousPage = () => {
@@ -37,29 +40,45 @@ const CovletSave = () => {
   }
 
   const saveCovData = async () => {
-    const { answer, question, shareType, keyword1, keyword2, jobKeyword, coverLetterId } = coverletterData;
+    const {
+      answer,
+      question,
+      shareType,
+      keyword1,
+      keyword2,
+      jobKeyword,
+      coverLetterId,
+    } = coverletterData
 
     if (!coverLetterId) {
-      console.error('coverLetterId가 없습니다.');
-      return;
+      console.error('coverLetterId가 없습니다.')
+      return
     }
-    
-    // POST 요청을 보내기 전에 필요한 데이터가 있는지 확인
-    if (!answer || !question || !shareType || !keyword1 || !keyword2 || !jobKeyword) {
-      console.error('모든 필드를 채워주세요.');
-      return;
+
+    if (
+      !answer ||
+      !question ||
+      !shareType ||
+      !keyword1 ||
+      !keyword2 ||
+      !jobKeyword
+    ) {
+      console.error('모든 필드를 채워주세요.')
+      return
     }
-  
+
     const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        
+        answer,
+        question,
+        shareType,
         keyword1,
         keyword2,
-        jobKeyword, // 공개/비공개 여부
+        jobKeyword,
       }),
     })
 
@@ -160,10 +179,17 @@ const CovletSave = () => {
           <div className="w-[315px] h-[64.07px] left-[560px] top-[315.01px] absolute">
             <button
               className={`w-[280px] h-[60px] relative text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-              // onClick={(event) => handleButtonClick('공개', event)}
+              onClick={openModal}
             >
               AI 직무 역량 분석
             </button>
+            {isOpen && (
+              <CheckPoint
+                closeCheck={closeModal}
+                cost={300}
+                coverLetterId={coverletterData.coverLetterId || 0}
+              />
+            )}
           </div>
           <div className="w-[785px] h-[54px] left-[80px] top-[395.17px] absolute justify-start items-start gap-[95px] inline-flex">
             <div className="text-center">

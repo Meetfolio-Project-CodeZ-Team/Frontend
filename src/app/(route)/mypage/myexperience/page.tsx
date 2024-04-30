@@ -20,9 +20,9 @@ export default function MyExperiencePage() {
   }, [])
   return (
     <section className="flex flex-col min-h-screen">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName}  />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'portfolio'} />
+        <UserNavContainer selected={'portfolio'}  nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <MyExpList />
         </div>

@@ -12,7 +12,6 @@ import ExpContentContainer from '@/app/components/experience/ExpContentContainer
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
-import { userState } from '@/app/recoil/signUp'
 
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
