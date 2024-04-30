@@ -4,18 +4,52 @@ import { useEffect, useState } from 'react'
 import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
 
+interface UserInfoProps {
+  email: string
+  grade: string
+  major: string
+  jobKeyword: onlyJobType
+  memberId?: number
+  point: number
+  status: string
+  registrationDate: string
+}
+
+
 const MyPointContainer = () => {
+  
+  const [userInfos, setUserInfos] = useState<UserInfoProps>()
+
+  useEffect(() => {
+    // 서버에서 자소서카드 데이터를 가져오는 함수
+    const fetchUserInfos = async () => {
+      try {
+        const response = await fetch('/api/mypage/user')
+        if (!response.ok) {
+          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
+        }
+        const data = await response.json()
+        console.log('유저 정보 데이터', data.result) // 타입 에러가 발생하지 않아야 함
+        setUserInfos(data.result)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  
+    fetchUserInfos()
+  }, [])
+  
   return (
     <div className="w-[1120px] h-[981px] relative">
       <div className="w-[1120px] h-[981px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-[981px] h-32 left-[70px] top-[130px] absolute">
         <div className="w-[981px] h-32 left-0 top-0 absolute bg-slate-600 rounded-[5px]" />
-        <div className="w-[93.84px] h-[75px] left-[42px] top-[26px] absolute">
-          <div className="w-[76.24px] left-0 top-0 absolute text-white text-xl font-medium leading-[30px]">
+        <div className="w-[300px] h-[75px] left-[42px] top-[26px] absolute">
+          <div className="w-[280px] left-0 top-0 absolute text-white text-xl font-medium leading-[30px]">
             내 포인트
           </div>
           <div className="w-[93.53px] left-[0.32px] top-[30px] absolute text-white text-3xl font-bold leading-[45px]">
-            1000P
+          {userInfos?.point}P
           </div>
         </div>
       </div>
@@ -70,7 +104,7 @@ const MyPointContainer = () => {
               사용 유형{' '}
             </div>
             <div className="text-black text-lg font-normal leading-[27px]">
-              보유 포인트
+              {userInfos?.point}
             </div>
           </div>
           <div className="w-[962px] h-[0px] left-0 top-[39px] absolute border border-stone-300"></div>

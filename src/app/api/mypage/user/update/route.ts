@@ -1,4 +1,3 @@
-import { deleteUser } from '@/app/service/deleteRequest'
 import { updateUser } from '@/app/service/updateReq'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'

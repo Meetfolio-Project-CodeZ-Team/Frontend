@@ -15,4 +15,5 @@ interface UserInfoTypes {
   registrationDate: string
   jobKeyword?: string
   point?: number
+  password?: string
 }

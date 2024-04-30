@@ -3,8 +3,70 @@
 import { useEffect, useState } from 'react'
 import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { logout } from '@/app/utils/cookies'
+import { useModal } from '@/app/hooks/useModal'
+import DeleteModal from './common/DeleteModal'
 
-const WithDrawContainer = () => {
+interface UserInfoProps {
+  email: string
+  grade: string
+  major: string
+  jobKeyword: onlyJobType
+  memberId?: number
+  point: number
+  status: string
+  registrationDate: string
+}
+
+const WithDrawContainer = ({memberId}:UserInfoProps) => {
+  const router = useRouter()
+  const [userInfos, setUserInfos] = useState<UserInfoProps>()
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+
+  useEffect(() => {
+    // 서버에서 자소서카드 데이터를 가져오는 함수
+    const fetchUserInfos = async () => {
+      try {
+        const response = await fetch('/api/mypage/user')
+        if (!response.ok) {
+          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
+        }
+        const data = await response.json()
+        console.log('유저 정보 데이터', data.result) // 타입 에러가 발생하지 않아야 함
+        setUserInfos(data.result)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+  
+    fetchUserInfos()
+  }, [])
+
+  const deleteUser = async () => {
+    console.log('회원탈퇴 요청이에요')
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/delete`,
+        {
+          method: 'DELETE',
+        },
+      )
+
+      if (res.ok) {
+        console.log('회원탈퇴 성공적으로 되었습니다.')
+        logout();
+        router.push(`/main`)
+      } else {
+        const errorData = await res.json()
+        console.error('Error details:', errorData)
+      }
+    } catch (error) {
+      console.error('Network or other error:', error)
+    }
+  }
+
+
   return (
     <div className="w-[1120px] h-[981px] relative">
       <div className="w-[1120px] h-[981px] left-0 top-0 absolute bg-gray-50" />
@@ -41,10 +103,19 @@ const WithDrawContainer = () => {
           탈퇴하기
         </div> */}
       <div className="w-[150.05px] h-[50px] left-[895px] top-[504px] absolute bg-slate-300 rounded-[10px] flex items-center justify-center">
-        <button className="text-slate-600 text-xl font-semibold border-0 focus:outline-none rounded-[10px]">
+        <button className="text-slate-600 text-xl font-semibold border-0 focus:outline-none rounded-[10px]"
+        onClick={openModal}>
           탈퇴하기
         </button>
       </div>
+      <div onClick={handleModalClick}>
+          {isOpen && (
+            <DeleteModal
+              closeModal={closeModal}
+              deleteUser={() => deleteUser()}
+            />
+          )}
+        </div>
     </div>
   )
 }

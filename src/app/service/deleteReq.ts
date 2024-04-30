@@ -28,12 +28,17 @@ const commonHeaders = {
 //     console.log('Error:', error)
 //   }
 // }
-const deleteRequest = async (url: string, accessToken?: string) => {
+const deleteRequest = async (
+  url: string,
+  accessToken?: string,
+  refreshToken?: string,
+) => {
   try {
     const headers = accessToken
       ? {
           ...commonHeaders,
           Authorization: 'Bearer ' + accessToken,
+          RefreshToken: 'Bearer ' + refreshToken,
         }
       : commonHeaders
     console.log(headers, '헤더스')
@@ -58,4 +63,9 @@ export const deleteExp = async (accessToken: string, id: string) => {
 export const deleteCov = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}`
   return await deleteRequest(url, accessToken)
+}
+
+export const deleteUser = async (accessToken: string, refreshToken: string) => {
+  const url = `${SERVER_URL}/api/withdrawl`
+  return await deleteRequest(url, accessToken, refreshToken)
 }

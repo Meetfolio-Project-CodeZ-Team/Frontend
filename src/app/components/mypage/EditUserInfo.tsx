@@ -11,17 +11,20 @@ import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 import Keyword from '../signup/onboard/Keyword'
 import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
-import { pwAlert } from '@/app/utils/toast'
+import { pwAlert, updateUserInfo } from '@/app/utils/toast'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface UserInfoProps {
   email: string
   grade: string
   major: string
   jobKeyword: onlyJobType
-  memberId: number
+  memberId?: number
   point: number
   status: string
   registrationDate: string
+  password: string
 }
 
 interface UserInfo {
@@ -29,9 +32,10 @@ interface UserInfo {
   grade: string
   major: string
   jobKeyword: string
+  memberId?: number
 }
 
-const EditUserInfo = () => {
+const EditUserInfo = ({memberId}:UserInfoProps) => {
   const [userInfoData, setUserInfoData] = useState(userData)
   const router = useRouter()
   
@@ -43,7 +47,8 @@ const EditUserInfo = () => {
   const [college, setCollege] = useState<collegeType>('IT융합대학')
   const [major, setMajor] = useState('')
   const isEntered = password !== '' && major !== ''
-  const [userInfos, setUserInfos] = useState<UserInfo[]>([])
+  const isSame = checkPW === password
+  const [userInfos, setUserInfos] = useState<UserInfo>()
 
   const updateUser = async () => {
   // 비밀번호 패턴 검사
@@ -65,9 +70,10 @@ const EditUserInfo = () => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update?memberId=${memberId}`,
         requestOptions,
       );
+      
 
       if (!response.ok) {
         throw new Error('서버 오류로 정보 수정에 실패했습니다.');
@@ -75,9 +81,10 @@ const EditUserInfo = () => {
 
       // 성공적으로 수정이 되었을 경우 처리 로직
       // 예: 서버로부터의 응답에 따라 상태 업데이트 또는 사용자 알림
+      
       console.log('정보가 성공적으로 수정되었습니다.');
-      // 여기에서 상태 업데이트 또는 페이지 이동 로직을 구현하십시오.
-      // 예: router.push('/mypage'); 
+      console.log(requestBody, '수정한 회원정보 데이터')
+      updateUserInfo()
 
     } catch (error) {
       console.error('정보 수정 중 오류가 발생했습니다:', error);
@@ -135,7 +142,7 @@ const EditUserInfo = () => {
       <div className="w-[680px] h-[501.88px] left-[81px] top-[196px] absolute flex-col justify-start items-start gap-5 inline-flex">
         <div className="w-[241px] h-[62.88px] relative">
           <div className="w-[218px] h-[19.88px] left-[23px] top-[40px] absolute text-zinc-600 text-xl font-medium leading-[30px]">
-            {userInfos.email}
+            {userInfos?.email}
           </div>
           <div className="w-[138px] left-0 top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
             아이디
@@ -160,6 +167,11 @@ const EditUserInfo = () => {
               placeholder={SIGNUP.Password}
               textValue={checkPW}
             />
+            <div
+              className={`flex items-center justify-center w-[72px] p-2 text-lg font-semibold rounded-[10px]  ${isSame ? 'bg-[#486283] text-white' : 'bg-white text-[#6D727C]'}`}
+            >
+              {isSame ? '일치' : '불일치'}
+            </div>
           </div>
         </div>
         <div className="w-[638px] h-[90px] relative z-20">
@@ -215,6 +227,7 @@ const EditUserInfo = () => {
           onClickHandler={() => updateUser()}
           className={!isEntered ? 'text-[#767575] bg-white' : 'text-white'}
         />
+        <ToastContainer/>
       </div>
     </div>
   )

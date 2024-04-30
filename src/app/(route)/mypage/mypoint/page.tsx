@@ -24,7 +24,7 @@ export default function MyPointPage() {
       <div className="flex w-[full] h-[980px]">
         <UserNavContainer selected={'points'}  nickname={userInfo?.memberName}/>
         <div className="flex-grow">
-          <MyPointContainer />
+          <MyPointContainer  />
         </div>
       </div>
       <Footer />
