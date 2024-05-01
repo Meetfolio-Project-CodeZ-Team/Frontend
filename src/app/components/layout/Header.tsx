@@ -39,7 +39,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
               <div className="w-[22px] h-[2px] origin-top-left rotate-90 opacity-80 border border-[#486284]"></div>
               {!nickname ? (
                 <Link
-                  href="signup"
+                  href="/signup"
                   className="underline underline-offset-1 text-base"
                 >
                   회원가입

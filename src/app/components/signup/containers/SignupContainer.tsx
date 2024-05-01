@@ -59,10 +59,10 @@ const SignupContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-[170px]">
+    <div className="flex flex-col items-center mt-[80px] mb-12">
       <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
-      <div className="text-3xl font-semibold leading-[75px] mb-20">
+      <div className="text-3xl font-semibold leading-[75px] mb-12">
         {SIGNUP.Description}
       </div>
       <div className="flex flex-col gap-y-5 mb-12">
@@ -73,7 +73,7 @@ const SignupContainer = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="아이디"
             />
-            <div className="flex items-center w-[187px] text-[#667BA6] text-[26px] font-semibold leading-[39px]">
+            <div className="flex items-center w-[187px] text-[#667BA6] text-[20px] font-semibold">
               {SIGNUP.Email}
             </div>
           </div>
@@ -82,7 +82,7 @@ const SignupContainer = () => {
             type={'auth'}
             isDisabled={email === ''}
             onClickHandler={() => getAuthCode(email)}
-            className={email === '' ? 'bg-white text-[#b5b5b5]' : ''}
+            className={email === '' ? 'text-[#C4C4C4] bg-white' : ''}
           />
         </div>
         <Input

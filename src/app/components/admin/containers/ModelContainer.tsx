@@ -10,7 +10,7 @@ const ModelContainer = () => {
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const marginBorder =
-    titleNum === 1 ? 'ml-[145px]' : titleNum === 2 ? 'ml-[290px]' : ''
+    titleNum === 1 ? 'ml-[160px]' : titleNum === 2 ? 'ml-[300px]' : ''
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +40,10 @@ const ModelContainer = () => {
             </div>
           ))}
         </div>
+        <div
+          className={`w-[128px] ${marginBorder} h-0 border-2 border-black absolute top-[35px]`}
+        ></div>
       </div>
-      <div
-        className={`w-[150px] ${marginBorder} h-0 border-2 border-black`}
-      ></div>
       <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">
         {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}

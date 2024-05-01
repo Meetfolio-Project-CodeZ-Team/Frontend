@@ -5,7 +5,7 @@ export const BUTTON_STYLE = {
   loginB: (className: string) =>
     `w-[700px] ${className} h-20 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[30px]`,
   auth: (className: string) =>
-    `w-[220px] h-[70px] text-[26px] text-[#486283] bg-[#CED7E4] font-semibold rounded-[30px] ${className} `,
+    `w-[220px] h-[70px] text-[22px] text-white bg-[#486283] font-semibold rounded-[30px] ${className} `,
   complete: (className: string) =>
     `w-[330px] h-[70px] text-[28px] text-white bg-[#7AA9E7] font-semibold rounded-[30px] ${className} `,
   mainBtn: (className: string) =>
