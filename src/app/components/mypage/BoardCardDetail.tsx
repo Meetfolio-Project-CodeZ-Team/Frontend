@@ -84,4 +84,5 @@ const BoardCardDetail = () => {
     </div>
   )
 }
+
 export default BoardCardDetail
