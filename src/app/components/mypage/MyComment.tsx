@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
+import MyCommentCard from './MyCommentCard'
 interface CovletCard {
   question: string
   answer: string
@@ -34,8 +35,8 @@ const MyComment = () => {
   console.log(covletCards, '자소서 목록 정보')
 
   return (
-    <div className="w-[1120px] h-[1267px] relative">
-      <div className="w-[1120px] h-[982px] left-0 top-0 absolute bg-gray-50" />
+    <div className="w-full h-[1090px] relative">
+      <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-[962px] h-[0px] left-[65px] top-[170px] absolute">
         <div className="w-[962px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[82px] h-[0px] left-[255px] top-[-1px] absolute border-2 border-gray-800" />
@@ -49,6 +50,13 @@ const MyComment = () => {
         </div>
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
         <Link href="/mypage/mycomment">내 댓글</Link>
+        </div>
+      </div>
+      <div className="w-[1100px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+        <div className="w-[500px] h-full ml-[60px] gap-[20px]">
+          {covletCards.map((a) => (
+            <MyCommentCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
+          ))}
         </div>
       </div>
       <div className="w-[120px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
