@@ -1,12 +1,8 @@
 'use client'
 
-import MyCovlet from './MyCovletCard'
-import MyExpCard from './MyExpCard'
-import expCards from './MyExpCard'
 import { useRecoilState, useRecoilValue } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
+import { expData } from '../../recoil/experience'
 import { useRouter } from 'next/navigation'
-import { log } from 'console'
 
 interface ExperienceCardDetail {
   experienceId: number

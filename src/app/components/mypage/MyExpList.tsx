@@ -1,8 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Card from '../common/Card'
-import MyCovlet from './MyCovletCard'
 import MyExpCard from './MyExpCard'
 import { useState, useEffect } from 'react'
 

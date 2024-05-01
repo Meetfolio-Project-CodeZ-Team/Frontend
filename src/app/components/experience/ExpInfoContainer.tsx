@@ -1,21 +1,27 @@
-import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
-import Button from '../common/Button'
-import Input from '../common/Input'
+import { useEffect, useRef, useState } from 'react'
 
-const ExpInfoContainer = () => {
-  // const [expTitle, setExpTitle] = useState('')
-  // const [expStartDate, setExpStartDate] = useState('')
-  // const [expEndDate, setExpEndDate] = useState('')
-  // const [expType, setExpType] = useState('')
-  // const [expTask, setExpTask] = useState('')
-  // const [expMotivation, setExpMotivation] = useState('')
+interface ExpFinishContainerProps {
+  isEdit?: boolean
+  id?: string
+}
+
+const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
 
+  const isEntered =
+    experienceData.title !== '' &&
+    experienceData.startDate !== '' &&
+    experienceData.endDate !== '' &&
+    experienceData.experienceType !== '' &&
+    experienceData.task !== '' &&
+    experienceData.motivation !== ''
+
   const goToNextPage = () => {
     setExperienceNumber(experienceNumber + 1)
+    window.scrollTo(0, 0)
   }
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setExperienceData({
@@ -220,8 +226,14 @@ const ExpInfoContainer = () => {
       </form>
       <div className="w-[600px] h-20 pb-[200px] relative  mt-[10px] justify-center items-center mx-auto">
         <button
-          className="text-white  bg-stone-300 border-0 py-[30px] px-[250px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          className={`text-xl font-semibold border-0 py-[30px] px-[250px] focus:outline-none rounded-[30px] ${
+            !isEntered
+              ? 'bg-slate-200 text-slate-600 border-2 border-slate-600'
+              : 'bg-black text-white'
+          }`}
           onClick={goToNextPage}
+          type="button"
+          disabled={!isEntered}
         >
           다음으로
         </button>

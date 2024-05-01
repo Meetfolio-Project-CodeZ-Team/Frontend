@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
 
 const PointChargeContainer = () => {

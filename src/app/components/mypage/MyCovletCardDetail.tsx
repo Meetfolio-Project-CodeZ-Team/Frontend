@@ -1,7 +1,6 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import MyCovlet from './MyCovletCard'
 import { useRecoilState } from 'recoil'
 import { covletData } from '@/app/recoil/coverletter'
 

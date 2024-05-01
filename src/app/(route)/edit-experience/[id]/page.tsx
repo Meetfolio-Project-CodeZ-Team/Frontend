@@ -56,7 +56,9 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
     <section className="flex flex-col items-center min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
-        {experienceNumber === 0 && <ExpInfoContainer />}
+        {experienceNumber === 0 && (
+          <ExpInfoContainer isEdit={true} id={params.id}  />
+        )}
         {experienceNumber === 1 && <ExpKeywordContainer />}
         {experienceNumber === 2 && (
           <ExpContentContainer isEdit={true} id={params.id} />

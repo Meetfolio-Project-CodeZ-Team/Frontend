@@ -1,5 +1,3 @@
-import Button from '../common/Button'
-import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 
@@ -11,9 +9,13 @@ interface ExpFinishContainerProps {
 const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
+  const isEntered =
+    experienceData.detail !== '' &&
+    experienceData.advance !== ''
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
+    window.scrollTo(0, 0);
   }
 
   const handleTextareaChange = (
@@ -150,12 +152,19 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
         <button
           className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={goToPreviousPage}
+          type="button"
         >
           이전으로
         </button>
         <button
-          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          className={` border-0 py-[20px] px-[120px] focus:outline-none  rounded-[30px] text-xl font-semibold ${
+            !isEntered
+              ? 'bg-slate-200 text-slate-600 border-2 border-slate-600'
+              : 'bg-black text-white'
+          }`}
           onClick={saveExpData}
+          type="button"
+          disabled={!isEntered}
         >
           저장하기
         </button>

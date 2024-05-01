@@ -3,7 +3,6 @@ import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
-import EditUserInfo from '@/app/components/mypage/EditUserInfo'
 import WithDrawContainer from '@/app/components/mypage/WithDrawContainer'
 
 export default function WithDrawPage() {
