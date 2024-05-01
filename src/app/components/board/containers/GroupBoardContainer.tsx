@@ -25,7 +25,6 @@ const GroupBoardContainer = () => {
       <GroupPost data={mookBoard} />
       <GroupPost data={mookBoard} />
       <GroupPost data={mookBoard} />
-      <GroupPost data={mookBoard} />
     </div>
   )
 }

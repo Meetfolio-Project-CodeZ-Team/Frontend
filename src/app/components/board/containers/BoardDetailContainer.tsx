@@ -9,7 +9,7 @@ const BoardDetailContainer = () => {
   console.log('detail 페이지에서 받아오는 id', selectedId)
 
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative border-white border-b-2">
       {isSelected ? (
             <CommentContainer />
       ) : (

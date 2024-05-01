@@ -15,7 +15,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
 
   return (
     <div
-      className="w-[380px] h-[240px] relative bg-white rounded-[10px] cursor-pointer"
+      className="w-[380px] h-[220px] relative bg-white rounded-[10px] cursor-pointer"
       onClick={() => setSelectedId(data.boardId)}
     >
       <div className="absolute left-7 top-5">
@@ -34,7 +34,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
       <div className="absolute top-[106px] left-[28px] text-base font-normal w-[323px] h-[70px]">
         {data.title}
       </div>
-      <div className="absolute top-[194px] left-[277px] flex gap-x-2 text-[18px]">
+      <div className="absolute top-[174px] left-[277px] flex gap-x-2 text-[18px]">
         <div className="flex gap-x-[3px]">
           <Like color={'black'} size={24}/>
           <div>{data.likeCount}</div>

@@ -21,15 +21,15 @@ const CommentContainer = () => {
       {isClicked ? (
         <div className="w-full h-full relative bg-white">
           <div
-            className="bg-[#486283] w-full h-20 flex items-center justify-center absolute top-0 cursor-pointer"
+            className="bg-[#486283] w-full h-16 flex items-center justify-center absolute top-0 cursor-pointer"
             onClick={() => setIsClicked(false)}
           >
-            <div className="text-white text-3xl font-bold">게시물보기</div>
-            <div className="rotate-180 absolute top-5 left-10">
+            <div className="text-white text-2xl font-bold">게시물보기</div>
+            <div className="rotate-180 absolute top-2.5 left-10">
               <CommentUp />
             </div>
           </div>
-          <div className="absolute top-20 w-full h-[170px] pl-6 pt-[21px] bg-[#EDEDED]">
+          <div className="absolute top-16 w-full h-[170px] pl-6 pt-[21px] bg-[#EDEDED]">
             <div className="absolute">
               <textarea
                 className="text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none"
@@ -47,7 +47,7 @@ const CommentContainer = () => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-full h-[90%] overflow-y-auto">
+          <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-[90%] h-[90%] overflow-y-auto scrollbar-hide">
             <Comment data={mookComment} />
             <Comment data={mookComment} />
             <Comment data={mookComment} />
@@ -61,18 +61,18 @@ const CommentContainer = () => {
           </div>
         </div>
       ) : (
-        <div className="bg-[#486283] w-full flex h-20 absolute bottom-0">
-          <div className="absolute top-[25px] left-[27px] cursor-pointer">
-            <Like color={'white'} size={36} />
+        <div className="bg-[#486283] w-full flex h-16 absolute bottom-0">
+          <div className="absolute top-5 left-[27px] cursor-pointer">
+            <Like color={'white'} size={32} />
           </div>
           <div
-            className="absolute top-[22px] right-[54px] flex items-center gap-x-2 cursor-pointer"
+            className="absolute top-3 right-[54px] flex items-center gap-x-2 cursor-pointer"
             onClick={() => setIsClicked(true)}
           >
             <div>
               <CommentUp />
             </div>
-            <div className="text-white text-2xl font-bold">댓글</div>
+            <div className="text-white text-xl font-bold">댓글</div>
           </div>
         </div>
       )}
