@@ -72,7 +72,7 @@ const SignupContainer = () => {
               type={'auth'}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="아이디"
-              className='h-16px'
+              className="h-16px"
             />
             <div className="flex items-center w-[187px] text-[#667BA6] text-[20px] font-semibold">
               {SIGNUP.Email}

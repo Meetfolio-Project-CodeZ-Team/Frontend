@@ -21,7 +21,7 @@ export default function JobBoardPage() {
   return (
     <section className="flex flex-col min-h-screen relative">
       <Header />
-      <div className="flex w-[full] mb-[200px]">
+      <div className="flex w-[full] mb-[240px] h-[1280px]">
         <BoardContainer />
         <div className="flex-grow"></div>
       </div>

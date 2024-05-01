@@ -8,15 +8,8 @@ const Complete = () => {
 
   return (
     <div className="flex flex-col items-center mt-[120px] mb-[80px]">
-      <Image
-        width={80}
-        height={60}
-        src="/Images/check.png"
-        alt="checkImage"
-      />
-      <div className="text-4xl font-semibold m-8">
-        '회원가입 완료'
-      </div>
+      <Image width={80} height={60} src="/Images/check.png" alt="checkImage" />
+      <div className="text-4xl font-semibold m-8">'회원가입 완료'</div>
       <div className="text-center text-2xl font-medium">
         <span className="text-gray-900">
           {COMPLETE[0]}

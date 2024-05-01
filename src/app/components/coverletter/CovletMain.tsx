@@ -112,8 +112,8 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       ...coverletterData,
       coverLetterId: resData.result.coverLetterId,
     })
-    console.log(coverletterData,'자소서 데이터 현황');
-    
+    console.log(coverletterData, '자소서 데이터 현황')
+
     console.log(resData, '포스트 후 응답')
 
     if (!response.ok) {

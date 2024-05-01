@@ -15,9 +15,7 @@ interface UserInfoProps {
   registrationDate: string
 }
 
-
 const MyPointContainer = () => {
-  
   const [userInfos, setUserInfos] = useState<UserInfoProps>()
 
   useEffect(() => {
@@ -35,10 +33,10 @@ const MyPointContainer = () => {
         console.error(error)
       }
     }
-  
+
     fetchUserInfos()
   }, [])
-  
+
   return (
     <div className="w-[1120px] h-[981px] relative">
       <div className="w-[1120px] h-[981px] left-0 top-0 absolute bg-gray-50" />
@@ -49,7 +47,7 @@ const MyPointContainer = () => {
             내 포인트
           </div>
           <div className="w-[93.53px] left-[0.32px] top-[30px] absolute text-white text-3xl font-bold leading-[45px]">
-          {userInfos?.point}P
+            {userInfos?.point}P
           </div>
         </div>
       </div>

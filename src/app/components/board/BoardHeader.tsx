@@ -21,7 +21,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
 
   return (
     <div className="flex flex-col w-[full] relative">
-      <div className="flex w-[780px] justify-between items-center h-auto">
+      <div className="flex w-[773px] justify-between items-center h-auto">
         <div className="flex w-[auto] items-center gap-x-[60px] text-xl pl-5 mr-auto">
           <div
             className={`${isJob ? 'font-semibold' : ''} cursor-pointer`}
@@ -51,7 +51,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[47px] z-50`}
       />
       <div className="flex flex-col items-center my-6">
-        <div className="flex gap-x-[52px]">
+        <div className="flex gap-x-[56px]">
           {JOBKEYWORD.map((str, index) => (
             <div key={index} onClick={() => handleClick(str)}>
               <Keyword keyword={str} clickKeyword={clickedKeyword} />

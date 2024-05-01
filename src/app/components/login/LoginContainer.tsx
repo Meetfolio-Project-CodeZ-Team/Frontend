@@ -9,7 +9,7 @@ import { failLogin } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
-import { eye } from '@/app/ui/IconsPath'
+import { eye } from '@/app/ui/eye'
 import Link from 'next/link'
 
 const LoginContainer = () => {
