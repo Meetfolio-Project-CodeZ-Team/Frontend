@@ -4,9 +4,18 @@ import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useState } from 'react'
 import Button from '../../common/Button'
+import Comment from '../Comment'
 
 const CommentContainer = () => {
   const [isClicked, setIsClicked] = useState(false)
+  const mookComment = {
+    commentId: 1,
+    content: '우와 정말 대단한걸요? 장난 없네용 히히',
+    memberName: 'yng1404',
+    profile: 'string',
+    sinceCreation: 2022,
+  }
+
   return (
     <div className="flex w-full h-full">
       {isClicked ? (
@@ -15,9 +24,7 @@ const CommentContainer = () => {
             className="bg-[#486283] w-full h-20 flex items-center justify-center absolute top-0 cursor-pointer"
             onClick={() => setIsClicked(false)}
           >
-            <div className="text-white text-3xl font-bold">
-              게시물보기
-            </div>
+            <div className="text-white text-3xl font-bold">게시물보기</div>
             <div className="rotate-180 absolute top-5 left-10">
               <CommentUp />
             </div>
@@ -39,6 +46,18 @@ const CommentContainer = () => {
                 }}
               />
             </div>
+          </div>
+          <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-full h-[90%] overflow-y-auto">
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
+            <Comment data={mookComment} />
           </div>
         </div>
       ) : (

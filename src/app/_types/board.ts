@@ -28,3 +28,11 @@ interface GroupBoardInfoTypes {
   peopleNumber: number
   registrationDate: string
 }
+
+interface CommentTypes {
+  commentId: number
+  content: string
+  memberName: string
+  profile: string
+  sinceCreation: number
+}
