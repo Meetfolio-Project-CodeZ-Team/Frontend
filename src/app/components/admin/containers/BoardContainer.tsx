@@ -2,7 +2,7 @@
 import { Board, JOBKEYWORD } from '@/app/constants/auth'
 import DropDownU from '../common/DropDownU'
 import ComunityBoard from '@/app/components/admin/board/ComunityBoard'
-import SearhBoard from '../board/SearhBoard'
+import SearhBoard from '../board/SearhBoardInfo'
 
 const BoardContainer = () => {
   return (
