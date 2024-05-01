@@ -51,7 +51,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[47px] z-50`}
       />
       <div className="flex flex-col items-center my-6">
-        <div className="flex gap-x-[56px]">
+        <div className="flex gap-x-[54px]">
           {JOBKEYWORD.map((str, index) => (
             <div key={index} onClick={() => handleClick(str)}>
               <Keyword keyword={str} clickKeyword={clickedKeyword} />

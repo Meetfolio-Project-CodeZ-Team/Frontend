@@ -2,14 +2,22 @@ import Like from '@/app/ui/svg/main/Like'
 import React from 'react'
 import Icons from '../common/Icons'
 import { comment } from '@/app/ui/IconsPath'
+import { useRecoilState } from 'recoil'
+import { selectedPostId } from '@/app/recoil/board'
 
 interface GroupPostProps {
   data: GroupBoardInfoTypes
 }
 
 const GroupPost = ({ data }: GroupPostProps) => {
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  console.log(selectedId, '번 게시물 선택 됨')
+
   return (
-    <div className="w-[380px] h-[240px] relative bg-white rounded-[10px]">
+    <div
+      className="w-[380px] h-[240px] relative bg-white rounded-[10px] cursor-pointer"
+      onClick={() => setSelectedId(data.boardId)}
+    >
       <div className="absolute left-7 top-5">
         <div className="w-9 h-9 bg-[#486284] rounded-[100px]" />
       </div>
@@ -28,7 +36,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
       </div>
       <div className="absolute top-[194px] left-[277px] flex gap-x-2 text-[18px]">
         <div className="flex gap-x-[3px]">
-          <Like />
+          <Like color={'black'} size={24}/>
           <div>{data.likeCount}</div>
         </div>
         <div className="flex items-center gap-x-1 font-normal">

@@ -2,6 +2,7 @@
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import DashboardContainer from '@/app/components/admin/containers/DashboardContainer'
 import BoardContainer from '@/app/components/board/containers/BoardContainer'
+import BoardDetailContainer from '@/app/components/board/containers/BoardDetailContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
@@ -21,11 +22,15 @@ export default function JobBoardPage() {
   return (
     <section className="flex flex-col min-h-screen relative">
       <Header />
-      <div className="flex w-[full] mb-[240px] h-[1280px]">
+      <div className="flex w-[full] h-[1280px]">
         <BoardContainer />
-        <div className="flex-grow"></div>
+        <div className="flex-grow bg-white shadow-md">
+          <BoardDetailContainer />
+        </div>
       </div>
-      <Footer />
+      <div className="mt-[200px]">
+        <Footer />
+      </div>
     </section>
   )
 }
