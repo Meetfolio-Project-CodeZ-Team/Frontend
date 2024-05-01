@@ -126,7 +126,7 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
       <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-[962px] h-[0px] left-[79px] top-[172px] absolute">
         <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[160px] h-[0px] left-0 top-[1.42px] absolute border-2 border-gray-800" />
+        <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
         <div className="text-gray-900 text-xl font-bold leading-[30px]">

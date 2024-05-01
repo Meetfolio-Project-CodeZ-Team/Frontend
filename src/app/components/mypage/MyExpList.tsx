@@ -51,7 +51,7 @@ const MyExpList = () => {
         </div>
         <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">
           <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-          <div className="w-[140px] h-[0px] left-[150px] top-[1.42px] absolute border-2 border-gray-800" />
+          <div className="w-[140px] h-[0px] left-[150px] top-[-1px] absolute border-2 border-gray-800" />
         </div>
       </div>
       <div className="w-[963px] h-[830px] left-[72px] top-[120px] absolute flex flex-row flex-wrap gap-[20px] overflow-y-auto scrollbar-hide">
