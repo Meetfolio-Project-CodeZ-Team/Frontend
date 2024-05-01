@@ -27,9 +27,9 @@ export default function AdminPage() {
       '대쉬보드 데이터 가져오기~',
     )
     return (
-      <section className="flex flex-col min-h-screen">
+      <section className="flex flex-col min-h-screen relative">
         <Header isAdmin={true} />
-        <div className="flex w-[full] h-[auto]">
+        <div className="flex w-[full] mb-[200px]">
           <AdminNavContainer selected={'dashboard'} />
           <div className="flex-grow">
             <DashboardContainer DashboardInfo={data} />

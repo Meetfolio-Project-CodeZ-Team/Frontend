@@ -82,7 +82,7 @@ const SignupContainer = () => {
             type={'auth'}
             isDisabled={email === ''}
             onClickHandler={() => getAuthCode(email)}
-            className={email === '' ? 'text-[#C4C4C4] bg-white' : ''}
+            className={email === '' ? 'bg-white text-[#828282] ' : ''}
           />
         </div>
         <Input
