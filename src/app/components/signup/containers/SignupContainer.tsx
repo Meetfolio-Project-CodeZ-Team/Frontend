@@ -32,57 +32,53 @@ const SignupContainer = () => {
   }
 
   const authorizeCode = async (email: string, authCode: string) => {
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email + SIGNUP.Email,
-          authCode: authCode,
-        }),
-      }
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
-        requestOptions,
-      )
-      if (!res.ok) {
-        throw new Error('Authorization failed')
-      }
-      router.push('/signup/onboard')
-    } catch (error) {
-      console.error('Error:', error)
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email + SIGNUP.Email,
+        authCode: authCode,
+      }),
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
+      requestOptions,
+    )
+    if (!res.ok) {
       mismatchAlert()
       setAuthCode('')
     }
+    router.push('/signup/onboard')
   }
 
   return (
-    <div className="flex flex-col items-center mt-[170px]">
+    <div className="flex flex-col items-center mt-[80px] mb-12">
       <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
-      <div className="text-3xl font-semibold leading-[75px] mb-20">
+      <div className="text-2xl font-semibold leading-[75px] mb-12">
         {SIGNUP.Description}
       </div>
       <div className="flex flex-col gap-y-5 mb-12">
         <div className="flex items-center gap-x-6">
-          <div className="flex w-[450px] h-20 bg-white rounded-[10px] border border-[#C4C4C4]">
+          <div className="flex w-[360px] h-16 bg-white rounded-[10px] border border-[#C4C4C4]">
             <Input
               type={'auth'}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="아이디"
+              className="h-16px"
             />
-            <div className="flex items-center w-[187px] text-[#667BA6] text-[26px] font-semibold leading-[39px]">
+            <div className="flex items-center w-[187px] text-[#667BA6] text-[20px] font-semibold">
               {SIGNUP.Email}
             </div>
           </div>
           <Button
-            buttonText={'인증 코드 전송'}
-            type={'auth'}
+            buttonText={'인증코드 전송'}
+            type={'authCode'}
             isDisabled={email === ''}
             onClickHandler={() => getAuthCode(email)}
-            className={email === '' ? 'bg-white text-[#b5b5b5]' : ''}
+            className={`${email === '' ? 'bg-white text-[#7e7d7d]' : ''}`}
           />
         </div>
         <Input
@@ -98,7 +94,7 @@ const SignupContainer = () => {
           type={'loginW'}
           isDisabled={authCode === ''}
           onClickHandler={() => authorizeCode(email, authCode)}
-          className={authCode === '' ? 'bg-white text-[#b5b5b5]' : ''}
+          className={`${authCode === '' ? 'bg-white text-[#b5b5b5]' : ''} `}
         />
       </div>
     </div>

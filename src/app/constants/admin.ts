@@ -17,7 +17,7 @@ export const USER_BOARD_H = [
   '학과',
   '희망 직무',
   '보유 포인트',
-  '삭제',
+  '상태',
 ]
 export const COMUNITY_BOARD_H = [
   '작성일',

@@ -13,7 +13,7 @@ export const BUTTON_STYLE = {
   mainBtn: (className: string) =>
     `w-[480px] h-[56px] text-[28px] text-white text-2xl font-semibold  bg-[#1A202C] rounded-[20px] ${className} `,
   modelBtn: (className: string) =>
-    `w-[150px] h-[50px] text-xl font-semibold bg-[#7AA9E7] rounded-[20px] ${className} `,
+    `w-[120px] h-[48px] text-lg font-semibold bg-[#7AA9E7] rounded-[20px] ${className} `,
   addDataBtn: (className: string) =>
     `w-[820px] h-[60px] text-[26px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
 } as const
