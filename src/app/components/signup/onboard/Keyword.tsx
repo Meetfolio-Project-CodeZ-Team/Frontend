@@ -5,7 +5,7 @@ interface KeywordProps {
 
 const Keyword = ({ keyword, clickKeyword }: KeywordProps) => {
   const textStyle =
-    keyword === clickKeyword ? 'text-white bg-[#486283]' : 'bg-white text-black'
+    keyword === clickKeyword ? 'text-white bg-blue-400' : 'bg-white text-black'
   return (
     <div
       className={`${textStyle} flex w-28 h-11 items-center justify-center rounded-[10px] text-base font-medium leading-normal shadow-md cursor-pointer`}

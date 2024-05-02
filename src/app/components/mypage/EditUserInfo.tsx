@@ -73,7 +73,7 @@ const EditUserInfo = () => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
         requestOptions,
       );
-      
+
       
 
       if (!response.ok) {
@@ -208,10 +208,10 @@ const EditUserInfo = () => {
           />
         </div>
         <div className="w-[680px] h-[89px] relative z-0">
-        <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
+        <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
             희망직무
           </div>
-          <div className="flex gap-x-8">
+          <div className="flex gap-x-5">
             {JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>
                 <Keyword keyword={str} clickKeyword={clickedKeyword} />
@@ -220,13 +220,13 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[675.95px] h-[60px] left-[79px] top-[738px] absolute">
+      <div className="w-[600px] h-[80px] left-[79px] top-[738px] absolute">
       <Button
           buttonText="수정하기"
-          type={'loginB'}
+          type={'loginC'}
           isDisabled={!isEntered}
           onClickHandler={() => updateUser()}
-          className={!isEntered ? 'text-[#767575] bg-white' : 'text-white'}
+          className={!isEntered ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 ' : 'text-white bg-black'}
         />
         <ToastContainer/>
       </div>
