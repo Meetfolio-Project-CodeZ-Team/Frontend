@@ -17,7 +17,6 @@ interface UserInfoProps {
 interface UserPoint {
   myPoint: number
 }
-
 interface PointCardProps {
   createdAt: string
   type: string
