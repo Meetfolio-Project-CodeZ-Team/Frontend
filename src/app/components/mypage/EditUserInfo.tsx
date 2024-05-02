@@ -35,7 +35,7 @@ interface UserInfo {
   memberId?: number
 }
 
-const EditUserInfo = ({memberId}:UserInfoProps) => {
+const EditUserInfo = () => {
   const [userInfoData, setUserInfoData] = useState(userData)
   const router = useRouter()
   
@@ -70,7 +70,7 @@ const EditUserInfo = ({memberId}:UserInfoProps) => {
 
     try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update?memberId=${memberId}`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
         requestOptions,
       );
       
