@@ -1,7 +1,5 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
 
 const PointChargeContainer = () => {
@@ -21,7 +19,7 @@ const PointChargeContainer = () => {
       </div>
       <div className="w-[962px] h-[0px] left-[75px] top-[342px] absolute">
         <div className="w-[962px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[100px] h-[0px] left-[110px] top-[1.42px] absolute border-2 border-gray-800" />
+        <div className="w-[100px] h-[0px] left-[110px] top-[-1px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[962px] h-[510px] left-[76px] top-[342px] absolute flex-col justify-start items-start gap-3 inline-flex">
         <div className="w-[962px] h-[0px] relative">
