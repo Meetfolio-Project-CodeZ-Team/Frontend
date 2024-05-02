@@ -1,7 +1,5 @@
 'use client'
 
-import Button from '../common/Button'
-import Input from '../common/Input'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
 import { useRouter } from 'next/navigation'
@@ -10,6 +8,17 @@ const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const router = useRouter()
+
+  const displayKeyword = (keyword: any) => {
+    switch (keyword) {
+      case 'BACKEND': return '백엔드';
+      case 'AI': return 'AI';
+      case 'WEB': return '웹개발';
+      case 'APP': return '앱개발';
+      case 'DESIGN': return '디자인';
+      default: return keyword;
+    }
+  }
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -24,7 +33,20 @@ const ExpFinishContainer = () => {
     })
   }
   const handleButtonClick = () => {
-    router.push('/') // '/main'으로 경로 이동
+    setExperienceData({
+      title: '',
+      startDate: '',
+      endDate: '',
+      experienceType: '',
+      task: '',
+      motivation: '',
+      jobKeyword: '',
+      stack: '',
+      detail: '',
+      advance: '',
+      expStacks: []
+    });
+    router.push('/mypage/myexperience') // '/main'으로 경로 이동
   }
 
   const saveExpData = async () => {
@@ -47,6 +69,8 @@ const ExpFinishContainer = () => {
       console.error('데이터 저장에 실패했습니다.')
     }
   }
+
+  
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -163,7 +187,7 @@ const ExpFinishContainer = () => {
             <div className="w-[350px] h-9 left-[35.77px] top-[121.55px] absolute">
               <div className="w-24 h-9 px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
                 <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                  {experienceData.jobKeyword}
+                {displayKeyword(experienceData.jobKeyword)}
                 </div>
               </div>
               <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
@@ -239,3 +263,18 @@ const ExpFinishContainer = () => {
 }
 
 export default ExpFinishContainer
+
+const transKeyword = (keyword: string) => {
+  switch (keyword) {
+    case '백엔드':
+      return 'BACKEND'
+    case 'AI':
+      return 'AI'
+    case '웹개발':
+      return 'WEB'
+    case '앱개발':
+      return 'APP'
+    case '디자인':
+      return 'DESIGN'
+  }
+}

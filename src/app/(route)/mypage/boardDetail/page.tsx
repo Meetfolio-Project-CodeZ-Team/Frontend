@@ -3,9 +3,10 @@ import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
-import WithDrawContainer from '@/app/components/mypage/WithDrawContainer'
+import MyBoard from '@/app/components/mypage/MyBoard'
+import BoardCardDetail from '@/app/components/mypage/BoardCardDetail'
 
-export default function WithDrawPage() {
+export default function BoardDetailPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
@@ -22,12 +23,17 @@ export default function WithDrawPage() {
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'user'}  nickname={userInfo?.memberName}/>
+        <UserNavContainer
+          selected={'board'}
+          nickname={userInfo?.memberName}
+        />
         <div className="flex-grow">
-          <WithDrawContainer />
+          <BoardCardDetail />
         </div>
       </div>
       <Footer />
     </section>
   )
 }
+
+//폴더명 테스트

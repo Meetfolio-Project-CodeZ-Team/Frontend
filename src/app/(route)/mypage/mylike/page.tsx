@@ -3,9 +3,9 @@ import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
-import WithDrawContainer from '@/app/components/mypage/WithDrawContainer'
+import MyLike from '@/app/components/mypage/MyLike'
 
-export default function WithDrawPage() {
+export default function MyBoardPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
@@ -22,12 +22,17 @@ export default function WithDrawPage() {
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'user'}  nickname={userInfo?.memberName}/>
+        <UserNavContainer
+          selected={'board'}
+          nickname={userInfo?.memberName}
+        />
         <div className="flex-grow">
-          <WithDrawContainer />
+          <MyLike />
         </div>
       </div>
       <Footer />
     </section>
   )
 }
+
+//폴더명 테스트

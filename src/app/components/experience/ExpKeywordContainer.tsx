@@ -1,20 +1,25 @@
-import Button from '../common/Button'
-import Input from '../common/Input'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expNum, expData } from '../../recoil/experience'
-import Stack from '../common/Stack'
 import NameBox from '../common/NameBox'
 
 const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const { expStacks } = experienceData
-  console.log(experienceData, '리코일 데이터어')
+  const isEntered =
+    experienceData.jobKeyword !== '' && experienceData.expStacks.length > 0
 
-  const [expStack, setExpStack] = useState('')
+  console.log(
+    experienceData,
+    '리코일 데이터어',
+    experienceData.expStacks.length,
+  )
+  console.log('Job Keyword:', experienceData.jobKeyword)
+  console.log('Current expStack:', experienceData.expStacks.length)
+
   // const [expStacks, setExpStacks] = useState<string[]>([])
-
+  const [expStack, setExpStack] = useState('')
   // console.log(expStacks.join(',')) // 배열 스트링으로 변환
 
   const handleDelete = (
@@ -51,10 +56,12 @@ const ExpKeywordContainer = () => {
 
   const goToNextPage = () => {
     setExperienceNumber(experienceNumber + 1)
+    window.scrollTo(0, 0)
   }
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
+    window.scrollTo(0, 0)
   }
 
   const [selectedJob, setSelectedJob] = useState('')
@@ -191,6 +198,7 @@ const ExpKeywordContainer = () => {
               <button
                 className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg"
                 onClick={handleAddKeyword}
+                type="button"
               >
                 추가하기
               </button>
@@ -206,6 +214,7 @@ const ExpKeywordContainer = () => {
                     <button
                       className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
                       onClick={(e) => handleDelete(e, i)}
+                      type="button"
                     >
                       X
                     </button>
@@ -228,12 +237,19 @@ const ExpKeywordContainer = () => {
         <button
           className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={goToPreviousPage}
+          type="button"
         >
           이전으로
         </button>
         <button
-          className="text-white  bg-stone-300 border-0 py-[20px] px-[120px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          className={` border-0 py-[20px] px-[120px] focus:outline-none  rounded-[30px] text-xl font-semibold ${
+            !isEntered
+              ? 'bg-slate-200 text-slate-600 border-2 border-slate-600'
+              : 'bg-black text-white'
+          }`}
           onClick={goToNextPage}
+          type="button"
+          disabled={!isEntered}
         >
           다음으로
         </button>
