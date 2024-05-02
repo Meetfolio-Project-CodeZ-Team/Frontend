@@ -74,6 +74,7 @@ const EditUserInfo = () => {
         requestOptions,
       );
       
+      
 
       if (!response.ok) {
         throw new Error('서버 오류로 정보 수정에 실패했습니다.');
