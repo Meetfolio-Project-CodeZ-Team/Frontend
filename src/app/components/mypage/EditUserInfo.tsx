@@ -51,39 +51,39 @@ const EditUserInfo = () => {
   const [userInfos, setUserInfos] = useState<UserInfo>()
 
   const updateUser = async () => {
-    // 비밀번호 패턴 검사
-    if (
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
-        password,
-      )
-    ) {
-      const requestBody = {
-        password: password,
-        grade: GRADE_ENUM[grade],
-        jobKeyword: JOB_ENUM[clickedKeyword],
-        major: major,
+
+  // 비밀번호 패턴 검사
+  if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
+    const requestBody = {
+      password: password,
+      grade: GRADE_ENUM[grade],
+      jobKeyword: JOB_ENUM[clickedKeyword],
+      major: major,
+    };
+
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    };
+
+    try {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
+        requestOptions,
+      );
+
+      
+
+      if (!response.ok) {
+        throw new Error('서버 오류로 정보 수정에 실패했습니다.');
       }
 
-      const requestOptions = {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      }
+      
 
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update?memberId=${userInfos?.memberId}`,
-          requestOptions,
-        )
-
-        if (!response.ok) {
-          throw new Error('서버 오류로 정보 수정에 실패했습니다.')
-        }
-
-        // 성공적으로 수정이 되었을 경우 처리 로직
-        // 예: 서버로부터의 응답에 따라 상태 업데이트 또는 사용자 알림
+   
 
         console.log('정보가 성공적으로 수정되었습니다.')
         console.log(requestBody, '수정한 회원정보 데이터')
@@ -118,7 +118,6 @@ const EditUserInfo = () => {
         console.error(error)
       }
     }
-
     fetchUserInfos()
   }, [])
 
@@ -208,10 +207,12 @@ const EditUserInfo = () => {
           />
         </div>
         <div className="w-[680px] h-[89px] relative z-0">
-          <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
+
+        <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
+
             희망직무
           </div>
-          <div className="flex gap-x-8">
+          <div className="flex gap-x-5">
             {JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>
                 <Keyword keyword={str} clickKeyword={clickedKeyword} />
@@ -220,13 +221,15 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[675.95px] h-[60px] left-[79px] top-[738px] absolute">
-        <Button
+
+      <div className="w-[600px] h-[80px] left-[79px] top-[738px] absolute">
+      <Button
+
           buttonText="수정하기"
-          type={'loginB'}
+          type={'loginC'}
           isDisabled={!isEntered}
           onClickHandler={() => updateUser()}
-          className={!isEntered ? 'text-[#767575] bg-white' : 'text-white'}
+          className={!isEntered ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 ' : 'text-white bg-black'}
         />
         <ToastContainer />
       </div>

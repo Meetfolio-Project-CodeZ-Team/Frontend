@@ -3,7 +3,9 @@ export const BUTTON_STYLE = {
   loginW: (className: string) =>
     `w-[700px] h-20 text-[26px] text-[#486283] bg-white font-semibold rounded-[30px] ${className}`,
   loginB: (className: string) =>
-    `w-[700px] ${className} h-20 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[30px]`,
+    `w-[700px] ${className} h-20 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[20px]`,
+  loginC: (className: string) =>
+    `w-[645px] ${className} h-[55px] text-[22px] text-[#787878] bg-[#486283] font-semibold rounded-[20px]`,
   auth: (className: string) =>
     `w-[220px] h-[70px] text-[26px] text-[#486283] bg-[#CED7E4] font-semibold rounded-[30px] ${className} `,
   complete: (className: string) =>
@@ -12,6 +14,8 @@ export const BUTTON_STYLE = {
     `w-[480px] h-[56px] text-[28px] text-white text-2xl font-semibold  bg-[#1A202C] rounded-[20px] ${className} `,
   modelBtn: (className: string) =>
     `w-[120px] h-[48px] text-lg font-semibold bg-[#7AA9E7] rounded-[20px] ${className} `,
+  authCode: (className: string) =>
+    `w-[116px] h-14 text-base text-white bg-[#486283] font-semibold rounded-[20px] ${className} `,
   addDataBtn: (className: string) =>
     `w-[820px] h-[60px] text-[26px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
 } as const
