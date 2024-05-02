@@ -154,7 +154,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       <div className="w-[941px] h-[740px] left-[10px] top-[18px] absolute">
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
-          <div className="w-[856.53px] h-[500px] left-[37.64px] top-[170px] absolute">
+          <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
             <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[450px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               1000자 이내
             </div>
@@ -177,8 +177,8 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             </button>
           </div>
         </div>
-        <div className="w-[856.48px] h-[131.21px] left-[26.89px] top-[15px] absolute">
-          <div className="w-[842.50px] h-[75.90px] left-[10px] top-[55.31px] absolute">
+        <div className="w-[856.48px] h-[131.21px] left-[48px] top-[15px] absolute">
+          <div className="w-[842.50px] h-[75.90px] left-0 top-[55.31px] absolute">
             <div className="w-[87.11px] h-[6.58px] left-[754.95px] top-[69.32px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               100자 이내
             </div>
@@ -195,7 +195,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
               />
             </div>
           </div>
-          <div className="w-[194.65px] h-[48.86px] left-0 top-[10px] absolute text-center text-black text-2xl font-bold  leading-9">
+          <div className="w-[194.65px] h-[48.86px] left-[8px] top-[10px] absolute text-start text-black text-2xl font-bold  leading-9">
             새 자기소개서
           </div>
         </div>

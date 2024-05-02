@@ -1,3 +1,5 @@
+import Like from '@/app/ui/svg/main/Like'
+
 const BoardCardDetail = () => {
   return (
     <div className="w-full h-[982px] relative">
@@ -8,14 +10,14 @@ const BoardCardDetail = () => {
           댓글
         </div>
         <div className="w-[964px] h-[511px] left-[10px] top-[198px] absolute text-gray-900 text-xl font-medium leading-[30px]">
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
         </div>
         <div className="w-[1004.23px] h-[45px] left-[10px] top-0 absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="flex-col justify-start items-start gap-2.5 flex">
@@ -79,7 +81,9 @@ const BoardCardDetail = () => {
         <div className="left-[37px] top-0 absolute text-gray-900 text-[22px] font-semibold leading-[33px]">
           좋아요
         </div>
-        <div className="w-[25px] h-[23.53px] left-0 top-[4px] absolute"></div>
+        <div className="w-[30px] h-[28px] left-0 top-[4px] absolute">
+          <Like color={'black'} size={28} />
+        </div>
       </div>
     </div>
   )

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Like from '@/app/ui/svg/main/Like'
+import Comment from '@/app/ui/svg/main/Comment'
 
 interface MyCovletCardProps {
   question: string
@@ -35,11 +37,11 @@ const MyCommentCard = ({
 
   return (
     <div
-      className="w-[963px] h-60 relative mt-[20px] cursor-pointer"
+      className="w-[1100px] h-60 relative mt-[20px] cursor-pointer"
       onClick={fetchCovletCards}
     >
-      <div className="w-[963px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
-      <div className="w-[72px] h-[30px] px-3 left-[880px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
+      <div className="w-[1085px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
+      <div className="w-[72px] h-[30px] px-3 left-[990px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
         <div className="w-[100px] h-6 text-center text-slate-600 text-sm font-semibold leading-[22px]">
           공모전
         </div>
@@ -57,10 +59,10 @@ const MyCommentCard = ({
         </div>
         <div className="w-[37.77px] h-10 left-0 top-[7px] absolute bg-slate-600 rounded-full" />
       </div>
-      <div className="w-[900px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug">
+      <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug">
         내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
         내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-        내용 내용   내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+        내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
         내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
         내용 내용 내용내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
         내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
@@ -68,16 +70,26 @@ const MyCommentCard = ({
         <br />
         <br />{' '}
       </div>
-      <div className="w-[921px] h-[37px] left-[29px] top-[200px] absolute justify-start items-center gap-[600px] inline-flex">
-        <div className="w-[233px] h-[37px] text-slate-600 text-[15px] font-medium leading-snug">
-          웹 / 모바일 / 백엔드 / 디자인 / PM
+      <div className="w-[1040px] h-[37px] left-[29px] top-[200px] justify-center items-center gap-[680px] inline-flex absolute">
+        <div className="w-[250px] h-[37px] text-slate-600 text-[15px] font-medium  leading-snug">
+          웹 / 모바일 / 백엔드 / 디자인 / PM / AI
         </div>
-        <div className="w-[44.65px] h-[30px] relative justify-end items-center gap-[3px] flex">
-          <div className="w-[19px] left-[25.65px] top-0 absolute text-gray-900 text-lg font-normal leading-[10px]">
-            5
+        <div className="h-[37px] justify-start items-center gap-[18px] flex">
+          <div className="h-[37px] justify-between items-center flex">
+            <div className="w-4 h-4 relative mr-3 mb-[22px] ">
+              <Like color={'black'} size={24} />
+            </div>
+            <div className="w-[20px]  text-gray-900 text-lg font-normal mb-3  leading-[30px]">
+              100
+            </div>
           </div>
-          <div className="w-[19px] left-[50.65px] top-0 absolute text-gray-900 text-lg font-normal leading-[10px]">
-            5
+          <div className="h-[37px] justify-start items-center  flex">
+            <div className="w-4 h-4 relative mr-3 mb-[18px] ">
+              <Comment color={'black'} size={24} />
+            </div>
+            <div className="w-5 text-gray-900 text-lg font-normal mb-3 mr-3 leading-[30px]">
+              100
+            </div>
           </div>
         </div>
       </div>

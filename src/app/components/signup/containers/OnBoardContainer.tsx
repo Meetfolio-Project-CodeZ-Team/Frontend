@@ -86,8 +86,13 @@ const OnBoardContainer = () => {
           </div>
         </div>
         <div className="flex flex-col">
-          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
-            비밀번호
+          <div className="flex gap-x-[232px]">
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              비밀번호
+            </div>
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              비밀번호 확인
+            </div>
           </div>
           <div className="flex gap-x-3 items-center">
             <Input
