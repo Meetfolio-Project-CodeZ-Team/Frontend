@@ -51,36 +51,36 @@ const EditUserInfo = () => {
   const [userInfos, setUserInfos] = useState<UserInfo>()
 
   const updateUser = async () => {
-  // 비밀번호 패턴 검사
-  if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
-    const requestBody = {
-      password: password,
-      grade: GRADE_ENUM[grade],
-      jobKeyword: JOB_ENUM[clickedKeyword],
-      major: major,
-    };
-
-    const requestOptions = {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    };
-
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
-        requestOptions,
-      );
-
-      
-
-      if (!response.ok) {
-        throw new Error('서버 오류로 정보 수정에 실패했습니다.');
+    // 비밀번호 패턴 검사
+    if (
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
+        password,
+      )
+    ) {
+      const requestBody = {
+        password: password,
+        grade: GRADE_ENUM[grade],
+        jobKeyword: JOB_ENUM[clickedKeyword],
+        major: major,
       }
 
-      
+      const requestOptions = {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      }
+
+      try {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
+          requestOptions,
+        )
+
+        if (!response.ok) {
+          throw new Error('서버 오류로 정보 수정에 실패했습니다.')
+        }
 
         console.log('정보가 성공적으로 수정되었습니다.')
         console.log(requestBody, '수정한 회원정보 데이터')
@@ -145,9 +145,14 @@ const EditUserInfo = () => {
             아이디
           </div>
         </div>
-        <div className="w-[638px] h-[90px] relative">
-          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
-            비밀번호
+        <div className="w-[700px] h-[90px] relative">
+          <div className="flex gap-x-[232px]">
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              비밀번호
+            </div>
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              비밀번호 확인
+            </div>
           </div>
           <div className="flex gap-x-3 items-center">
             <Input
@@ -171,11 +176,11 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[638px] h-[90px] relative z-20">
+        <div className="w-[700px] h-[90px] relative z-20">
           <div className="w-[138px] left-[6px] top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
             학과
           </div>
-          <div className="w-[638px] h-[60px] left-0 top-[30px] absolute">
+          <div className="w-[700px] h-[60px] left-0 top-[30px] absolute">
             {/* <div className="w-[513.17px] h-[22.50px] left-[39.63px] top-[18.75px] absolute text-gray-900 text-xl font-medium leading-[30px]">
               {userInfos.major}
             </div> */}
@@ -193,7 +198,7 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[638px] h-[90px] relative z-10">
+        <div className="w-[700px] h-[90px] relative z-10">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학년 및 학적
           </div>
@@ -203,11 +208,11 @@ const EditUserInfo = () => {
             onSelect={(option) => setGrade(option)}
           />
         </div>
-        <div className="w-[680px] h-[89px] relative z-0">
-        <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
+        <div className="w-[700px] h-[89px] relative z-0">
+          <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
             희망직무
           </div>
-          <div className="flex gap-x-5">
+          <div className="flex gap-x-[35px]">
             {JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>
                 <Keyword keyword={str} clickKeyword={clickedKeyword} />
@@ -216,13 +221,17 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[600px] h-[80px] left-[79px] top-[738px] absolute">
-      <Button
+      <div className="w-[700px] h-[80px] left-[79px] top-[738px] absolute">
+        <Button
           buttonText="수정하기"
           type={'loginC'}
           isDisabled={!isEntered}
           onClickHandler={() => updateUser()}
-          className={!isEntered ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 ' : 'text-white bg-black'}
+          className={
+            !isEntered
+              ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 '
+              : 'text-white bg-black'
+          }
         />
         <ToastContainer />
       </div>
