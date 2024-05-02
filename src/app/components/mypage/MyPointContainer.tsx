@@ -14,7 +14,6 @@ interface UserInfoProps {
   status: string
   registrationDate: string
 }
-
 interface UserPoint {
   myPoint: number
 }
