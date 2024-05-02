@@ -32,12 +32,7 @@ interface PointCardProps {
   totalPoint: number
 }
 
-const MyPointContainer = ({
-  createdAt,
-  type,
-  point,
-  totalPoint,
-}: PointCardProps) => {
+const MyPointContainer = () => {
   const [userInfos, setUserInfos] = useState<UserPoint>()
   const [pointCards, setPointCards] = useState<PointCardProps[]>([])
 
