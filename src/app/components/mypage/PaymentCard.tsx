@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-interface PointCardProps {
+interface PaymentCardProps {
   createdAt: string
-  type: string
+  payment:number
   point: number
   totalPoint: number
 }
@@ -19,7 +19,7 @@ interface CovletCardDetail {
   // closeModal: () => void
 }
 
-const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
+const PaymentCard = ({ createdAt, payment, point, totalPoint }: PaymentCardProps) => {
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
@@ -33,7 +33,7 @@ const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
         {point}
       </div>
       <div className="text-black text-lg font-normal leading-snug absolute left-[622px] text-center w-[100px]">
-        {type}
+        {payment}
       </div>
       <div className="text-black text-lg font-normal leading-snug absolute left-[916px] text-center w-[100px]">
         {totalPoint}
@@ -42,4 +42,4 @@ const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
     </div>
   )
 }
-export default PointCard
+export default PaymentCard
