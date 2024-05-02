@@ -11,6 +11,7 @@ import { useRecoilState } from 'recoil'
 const BoardContainer = () => {
   const [isJob, setIsJob] = useState(true)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+console.log(boardData, '컨테이너에 데이터 전달');
 
   return (
     <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6">

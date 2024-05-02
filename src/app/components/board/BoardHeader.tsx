@@ -1,9 +1,9 @@
 'use client'
 
-import { JOBKEYWORD } from '@/app/constants/auth'
+import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
 import { BOARDTYPE } from '@/app/constants/board'
 import { boardDataState } from '@/app/recoil/board'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Keyword from '../signup/onboard/Keyword'
 import SearchBoard from './SearchBoard'
@@ -14,9 +14,22 @@ interface BoardHeaderProps {
 }
 
 const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
-  const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
+  const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
-  
+
+  useEffect(() => {
+    if (clickedKeyword !== null) {
+      const fetchData = async () => {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?category=${JOB_ENUM[clickedKeyword]}`,
+        )
+        const resData = await response.json()
+        setBoardData(resData.result.boardListInfo)
+      }
+      fetchData()
+    }
+  }, [clickedKeyword])
+
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
@@ -49,7 +62,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
       <div className="flex gap-x-[54px] my-6">
         {JOBKEYWORD.map((str, index) => (
           <div key={index} onClick={() => handleClick(str)}>
-            <Keyword keyword={str} clickKeyword={clickedKeyword} />
+            <Keyword keyword={str} clickKeyword={clickedKeyword || 'BACKEND'} />
           </div>
         ))}
       </div>

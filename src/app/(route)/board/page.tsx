@@ -10,15 +10,16 @@ import { useRecoilState } from 'recoil'
 export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  console.log(boardData, '메인에서 가져온 데이터')
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment`,
       )
       const resData = await response.json()
-      console.log(resData, 'resData값')
-      setData(resData.result)
       setBoardData(resData.result.boardListInfo)
+      setData(resData.result)
     }
     fetchData()
   }, [])

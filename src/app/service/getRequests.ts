@@ -83,11 +83,16 @@ export const getPointInfo = async (accessToken: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const getEmploymentAll = async (
+export const getEmploymentAll = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/boards/employment?page=0`
+  return await getRequest(url, accessToken)
+}
+
+export const getEmployment = async (
   accessToken: string,
   jobKeyword?: string,
   page?: number,
 ) => {
-  const url = `${SERVER_URL}/api/boards/employment?page=0`
+  const url = `${SERVER_URL}/api/boards/employment?page=0&category=${jobKeyword}`
   return await getRequest(url, accessToken)
 }
