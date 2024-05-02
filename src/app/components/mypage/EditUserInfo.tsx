@@ -115,7 +115,6 @@ const EditUserInfo = () => {
         console.error(error)
       }
     }
-
     fetchUserInfos()
   }, [])
 
