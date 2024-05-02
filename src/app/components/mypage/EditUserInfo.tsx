@@ -51,6 +51,7 @@ const EditUserInfo = () => {
   const [userInfos, setUserInfos] = useState<UserInfo>()
 
   const updateUser = async () => {
+
   // 비밀번호 패턴 검사
   if (/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
     const requestBody = {
@@ -81,6 +82,8 @@ const EditUserInfo = () => {
       }
 
       
+
+   
 
         console.log('정보가 성공적으로 수정되었습니다.')
         console.log(requestBody, '수정한 회원정보 데이터')
@@ -205,7 +208,9 @@ const EditUserInfo = () => {
           />
         </div>
         <div className="w-[680px] h-[89px] relative z-0">
+
         <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
+
             희망직무
           </div>
           <div className="flex gap-x-5">
@@ -217,8 +222,10 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
+
       <div className="w-[600px] h-[80px] left-[79px] top-[738px] absolute">
       <Button
+
           buttonText="수정하기"
           type={'loginC'}
           isDisabled={!isEntered}
