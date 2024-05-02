@@ -22,7 +22,7 @@ const UserNavContainer = ({ selected, nickname }: UserNavContainerProps) => {
         </Link>
         <Link
           className={`${selected === 'board' && 'font-bold'}`}
-          href="/admin/board"
+          href="/mypage/myboard"
         >
           커뮤니티 관리
         </Link>

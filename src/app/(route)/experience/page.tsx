@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { useRouter } from 'next/navigation'
-import { expNum } from '../../recoil/experience'
+import { expData, expNum } from '../../recoil/experience'
 import Header from '@/app/components/layout/Header'
 import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
@@ -13,7 +13,10 @@ import Footer from '@/app/components/layout/Footer'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  const [experienceData, setExperienceData] = useRecoilState(expData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
+  const [initialLoad, setInitialLoad] = useState(true);
+
 
   const router = useRouter()
 
@@ -30,6 +33,19 @@ export default function ExperiencePage() {
 
   useEffect(() => {
     // 첫 로드시에만 experienceNumber를 0으로 설정
+    setExperienceData({
+      title: '',
+      startDate: '',
+      endDate: '',
+      experienceType: '',
+      task: '',
+      motivation: '',
+      jobKeyword: '',
+      stack: '',
+      detail: '',
+      advance: '',
+      expStacks: []
+    });
     setExperienceNumber(0)
   }, [])
 
@@ -41,7 +57,7 @@ export default function ExperiencePage() {
     <section className="flex flex-col items-center min-h-screen ">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
-        {experienceNumber === 0 && <ExpInfoContainer />}
+        {experienceNumber === 0 && <ExpInfoContainer isEdit={false} />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
         {experienceNumber === 2 && <ExpContentContainer isEdit={false} />}
         {experienceNumber === 3 && <ExpFinishContainer />}
