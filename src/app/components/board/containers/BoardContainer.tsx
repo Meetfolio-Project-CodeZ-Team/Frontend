@@ -4,13 +4,13 @@ import BoardHeader from '../BoardHeader'
 import GroupBoardContainer from './GroupBoardContainer'
 import Button from '../../common/Button'
 import JobBoardContainer from './JobBoardContainer'
+import { boardDataState } from '@/app/recoil/board'
+import { useRecoilState } from 'recoil'
 
-interface BoardContainerProps {
-  boardData: boardListInfo
-}
 
-const BoardContainer = ({ boardData }: BoardContainerProps) => {
+const BoardContainer = () => {
   const [isJob, setIsJob] = useState(true)
+  const [boardData, setBoardData] = useRecoilState(boardDataState)
 
   return (
     <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6">

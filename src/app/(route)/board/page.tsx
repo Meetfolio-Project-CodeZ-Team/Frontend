@@ -3,11 +3,13 @@ import BoardContainer from '@/app/components/board/containers/BoardContainer'
 import BoardDetailContainer from '@/app/components/board/containers/BoardDetailContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
+import { boardDataState } from '@/app/recoil/board'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
-
+  const [boardData, setBoardData] = useRecoilState(boardDataState)
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -16,15 +18,17 @@ export default function JobBoardPage() {
       const resData = await response.json()
       console.log(resData, 'resData값')
       setData(resData.result)
+      setBoardData(resData.result.boardListInfo)
     }
     fetchData()
   }, [])
+
   if (data) {
     return (
       <section className="flex flex-col min-h-screen relative">
         <Header nickname={data?.memberInfo.memberName} />
         <div className="flex w-[full] h-[980px]">
-          <BoardContainer boardData={data?.boardListInfo} />
+          <BoardContainer />
           <div className="flex-grow bg-white shadow-2xl">
             <BoardDetailContainer />
           </div>

@@ -1,11 +1,12 @@
 'use client'
 
-import { BOARDTYPE } from '@/app/constants/board'
-import { useState } from 'react'
-import SearchBoard from './SearchBoard'
-import Button from '../common/Button'
 import { JOBKEYWORD } from '@/app/constants/auth'
+import { BOARDTYPE } from '@/app/constants/board'
+import { boardDataState } from '@/app/recoil/board'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 import Keyword from '../signup/onboard/Keyword'
+import SearchBoard from './SearchBoard'
 
 interface BoardHeaderProps {
   isJob: boolean
@@ -14,7 +15,8 @@ interface BoardHeaderProps {
 
 const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
-
+  const [boardData, setBoardData] = useRecoilState(boardDataState)
+  
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
