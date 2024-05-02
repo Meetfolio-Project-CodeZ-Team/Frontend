@@ -85,3 +85,8 @@ export const postUsingPoint = async (
   const url = `${SERVER_URL}/api/coverLetters/${id}/points`
   return await postRequest(url, point, accessToken)
 }
+
+export const postBoardDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await postRequest(url, null, accessToken)
+}

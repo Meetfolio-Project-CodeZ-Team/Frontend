@@ -14,7 +14,7 @@ const BoardContainer = () => {
 console.log(boardData, '컨테이너에 데이터 전달');
 
   return (
-    <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6">
+    <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6 relative">
       <BoardHeader isJob={isJob} setIsJob={setIsJob} />
       {isJob ? (
         <JobBoardContainer boardData={boardData} />
@@ -22,7 +22,7 @@ console.log(boardData, '컨테이너에 데이터 전달');
         <GroupBoardContainer />
       )}
 
-      <div className="flex w-full flex-row-reverse pt-6 pr-12">
+      <div className="flex w-full flex-row-reverse pt-6 pr-12 absolute top-[880px] right-6">
         <Button
           buttonText={'글쓰기'}
           type={'addBoardBtn'}

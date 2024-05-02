@@ -1,34 +1,38 @@
+'use client'
 import { NULLPOST } from '@/app/constants/board'
 import { selectedPostId } from '@/app/recoil/board'
 import { useRecoilValue } from 'recoil'
 import CommentContainer from './CommentContainer'
 import Button from '../../common/Button'
+import { useEffect, useState } from 'react'
 
 interface BoardDetailContainer {
   data: GroupBoardInfoTypes
 }
 
-const mookData = {
-  boardId: 0,
-  boardType: 'EMPLOYMENT',
-  memberName: 'yng1404',
-  title: 'string',
-  content:
-    'stringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstristringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstrinngstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstrin gstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringgstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringstringg',
-  likeCount: 0,
-  likeStatus: 'ACTIVE',
-  commentCount: 0,
-  jobCategory: '백엔드',
-  groupCategory: 'string',
-  recruitment: 'string',
-  peopleNumber: 0,
-  registrationDate: '2024-05-01',
-}
-
 const BoardDetailContainer = () => {
   const selectedId = useRecoilValue(selectedPostId)
   const isSelected = selectedId !== 999
-  console.log('detail 페이지에서 받아오는 id', selectedId)
+  const [data, setData] = useState<BoardInfoTypes | null>(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      const resData = await response.json()
+      setData(resData.result.boardInfo)
+    }
+    fetchData()
+  }, [selectedId])
+
+  console.log('디테일 가져온 데이터', data)
 
   return (
     <div className="w-full h-full relative border-white border-b-2">
@@ -36,13 +40,13 @@ const BoardDetailContainer = () => {
         <div className="w-full h-full relative">
           <div className="">
             <div className="absolute left-6 top-6 text-3xl font-semibold">
-              {mookData.title}
+              {data?.title}
             </div>
             <div className="absolute right-8 top-[52px] text-sm font-normal">
-              {mookData.registrationDate}
+              {data?.registrationDate}
             </div>
             <div className="absolute left-9 top-[120px] flex text-[15px] font-semibold">
-              {mookData.memberName}
+              {data?.memberName}
             </div>
             <div className="absolute gap-x-3 right-8 top-[120px] flex text-[15px] font-semibold">
               <Button
@@ -64,7 +68,7 @@ const BoardDetailContainer = () => {
               />
             </div>
             <div className="flex absolute pr-8 left-7 top-[190px] break-all h-[70%] overflow-y-auto">
-              {mookData.content}
+              {data?.content}
             </div>
           </div>
           <CommentContainer />
