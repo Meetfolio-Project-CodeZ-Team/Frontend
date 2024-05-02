@@ -38,26 +38,19 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         </div>
         <div className="flex gap-x-3 pb-2 items-center">
           <SearchBoard />
-          <Button
-            buttonText={'글 작성하기'}
-            type={'addBoardBtn'}
-            isDisabled={false}
-            onClickHandler={() => console.log('hi')}
-          />
+          
         </div>
       </div>
-      <div className="w-full h-[0px] border border-[#616161]" />
+      <div className="w-[93%] h-[0px] border border-[#616161]" />
       <div
-        className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[47px] z-50`}
+        className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[38.5px] z-50`}
       />
-      <div className="flex flex-col items-center my-6">
-        <div className="flex gap-x-[54px]">
+        <div className="flex gap-x-[54px] my-6">
           {JOBKEYWORD.map((str, index) => (
             <div key={index} onClick={() => handleClick(str)}>
               <Keyword keyword={str} clickKeyword={clickedKeyword} />
             </div>
           ))}
-        </div>
       </div>
     </div>
   )
