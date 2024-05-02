@@ -39,7 +39,7 @@ const MyLike = () => {
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
         <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[130px] h-[0px] left-[95px] top-[-1px] absolute border-2 border-gray-800" />
+        <div className="w-[130px] h-[0px] left-[95px] top-[-0.5px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[312px] h-[30px] left-[82px] top-[129px] absolute justify-start items-center gap-[60px] inline-flex">
       <div className="text-gray-900 text-xl font-bold leading-[30px]">

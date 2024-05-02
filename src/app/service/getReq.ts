@@ -47,3 +47,8 @@ export const getUserPoint = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/my-points`
   return await getRequest(url, accessToken)
 }
+
+export const getUserPayment = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/my-payments`
+  return await getRequest(url, accessToken)
+}
