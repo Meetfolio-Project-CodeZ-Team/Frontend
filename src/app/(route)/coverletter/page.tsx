@@ -31,9 +31,7 @@ export default function CovletMainPage() {
     fetchData()
   }, [covletNumber])
 
-  useEffect(() => {
-    router.push('../../coverletter')
-  }, [covletNumber, router])
+  
 
   console.log(userInfo?.memberName)
 
@@ -41,7 +39,7 @@ export default function CovletMainPage() {
     <section className="flex flex-col items-center min-h-screen ">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
-        {covletNumber === 0 && <CovletMain />}
+        {covletNumber === 0 && <CovletMain isEdit={false} />}
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
