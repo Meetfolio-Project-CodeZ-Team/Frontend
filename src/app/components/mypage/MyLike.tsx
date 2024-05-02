@@ -42,14 +42,14 @@ const MyLike = () => {
         <div className="w-[130px] h-[0px] left-[95px] top-[-1px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[312px] h-[30px] left-[82px] top-[129px] absolute justify-start items-center gap-[60px] inline-flex">
-      <div className="text-gray-900 text-xl font-bold leading-[30px]">
-        <Link href="/mypage/myboard">내 글</Link>
+        <div className="text-gray-900 text-xl font-bold leading-[30px]">
+          <Link href="/mypage/myboard">내 글</Link>
         </div>
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-        <Link href="/mypage/mylike">좋아요한 글</Link>
+          <Link href="/mypage/mylike">좋아요한 글</Link>
         </div>
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
-        <Link href="/mypage/mycomment">내 댓글</Link>
+          <Link href="/mypage/mycomment">내 댓글</Link>
         </div>
       </div>
       <div className="w-[1100px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">

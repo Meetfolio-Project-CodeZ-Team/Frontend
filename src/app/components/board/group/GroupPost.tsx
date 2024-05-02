@@ -1,12 +1,12 @@
 import Like from '@/app/ui/svg/main/Like'
 import React from 'react'
-import Icons from '../common/Icons'
+import Icons from '../../common/Icons'
 import { comment } from '@/app/ui/IconsPath'
 import { useRecoilState } from 'recoil'
 import { selectedPostId } from '@/app/recoil/board'
 
 interface GroupPostProps {
-  data: GroupBoardInfoTypes
+  data: BoardInfoTypes
 }
 
 const GroupPost = ({ data }: GroupPostProps) => {
@@ -36,7 +36,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
       </div>
       <div className="absolute top-[174px] left-[277px] flex gap-x-2 text-[18px]">
         <div className="flex gap-x-[3px]">
-          <Like color={'black'} size={24}/>
+          <Like color={'black'} size={24} />
           <div>{data.likeCount}</div>
         </div>
         <div className="flex items-center gap-x-1 font-normal">

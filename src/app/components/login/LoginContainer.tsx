@@ -83,9 +83,7 @@ const LoginContainer = () => {
           className={isInserted ? ' bg-white' : 'text-white'}
         />
         <Link href={'/signup'}>
-          <div className="pt-4 text-lg font-semibold underline">
-            회원가입
-          </div>
+          <div className="pt-4 text-lg font-semibold underline">회원가입</div>
         </Link>
       </div>
     </div>

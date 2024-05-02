@@ -38,19 +38,18 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         </div>
         <div className="flex gap-x-3 pb-2 items-center">
           <SearchBoard />
-          
         </div>
       </div>
       <div className="w-[93%] h-[0px] border border-[#616161]" />
       <div
         className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[38.5px] z-50`}
       />
-        <div className="flex gap-x-[54px] my-6">
-          {JOBKEYWORD.map((str, index) => (
-            <div key={index} onClick={() => handleClick(str)}>
-              <Keyword keyword={str} clickKeyword={clickedKeyword} />
-            </div>
-          ))}
+      <div className="flex gap-x-[54px] my-6">
+        {JOBKEYWORD.map((str, index) => (
+          <div key={index} onClick={() => handleClick(str)}>
+            <Keyword keyword={str} clickKeyword={clickedKeyword} />
+          </div>
+        ))}
       </div>
     </div>
   )

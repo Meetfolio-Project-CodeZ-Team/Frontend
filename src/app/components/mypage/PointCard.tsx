@@ -6,7 +6,6 @@ interface PointCardProps {
   type: string
   point: number
   totalPoint: number
-  
 }
 
 interface CovletCardDetail {
@@ -26,16 +25,18 @@ const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
   const router = useRouter()
 
   return (
-    
-      <div className='flex justify-between items-center w-full py-2'>
-      <div className="text-black text-lg font-normal leading-snug">{createdAt}</div>
+    <div className="flex justify-between items-center w-full py-2">
+      <div className="text-black text-lg font-normal leading-snug">
+        {createdAt}
+      </div>
       <div className="text-black text-lg font-normal leading-snug">{type}</div>
       <div className="text-black text-lg font-normal leading-snug">{point}</div>
-      <div className="text-black text-lg font-normal leading-snug">{totalPoint}</div>
-    
-      <div className="w-[962px] h-[0px] left-0 top-[39px] absolute border border-stone-300"></div>
+      <div className="text-black text-lg font-normal leading-snug">
+        {totalPoint}
       </div>
-    
+
+      <div className="w-[962px] h-[0px] left-0 top-[39px] absolute border border-stone-300"></div>
+    </div>
   )
 }
 export default PointCard

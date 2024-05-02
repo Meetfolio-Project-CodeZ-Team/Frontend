@@ -130,11 +130,10 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
           <div className="w-[428px] h-[60px] left-[240px] top-[89px] absolute justify-start items-start gap-[98px] inline-flex">
             <div className="w-[180px] h-[60px] relative">
-              
               <button
                 className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PUBLIC' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
                 onClick={(event) => handleButtonClick('PUBLIC', event)}
-                type='button'
+                type="button"
               >
                 공개
               </button>
@@ -143,7 +142,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
               <button
                 className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PRIVATE' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
                 onClick={(event) => handleButtonClick('PRIVATE', event)}
-                type='button'
+                type="button"
               >
                 비공개
               </button>
@@ -207,7 +206,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveCovData}
-          type='button'
+          type="button"
         >
           저장하기
         </button>

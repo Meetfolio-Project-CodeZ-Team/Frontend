@@ -1,6 +1,6 @@
-interface JobBoardInfoTypes {
+interface BoardInfoTypes {
   boardId: number
-  boardType: 'EMPLOYMENT'
+  boardType: 'EMPLOYMENT' | 'GROUP'
   memberName: string
   title: string
   content: string
@@ -35,4 +35,15 @@ interface CommentTypes {
   memberName: string
   profile: string
   sinceCreation: number
+}
+
+interface boardListInfo {
+  list: BoardInfoTypes[]
+  hasNext: boolean
+  first: boolean
+  last: boolean
+}
+interface ResponseEmploymentAll {
+  memberInfo: memberInfo
+  boardListInfo: boardListInfo
 }

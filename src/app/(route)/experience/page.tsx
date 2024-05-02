@@ -15,8 +15,7 @@ export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  const [initialLoad, setInitialLoad] = useState(true);
-
+  const [initialLoad, setInitialLoad] = useState(true)
 
   const router = useRouter()
 
@@ -44,8 +43,8 @@ export default function ExperiencePage() {
       stack: '',
       detail: '',
       advance: '',
-      expStacks: []
-    });
+      expStacks: [],
+    })
     setExperienceNumber(0)
   }, [])
 

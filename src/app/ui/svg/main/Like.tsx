@@ -1,9 +1,9 @@
-interface LikeProps{
-  color:string
-  size:number
+interface LikeProps {
+  color: string
+  size: number
 }
 
-const Like = ({color, size}: LikeProps) => {
+const Like = ({ color, size }: LikeProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,11 +19,7 @@ const Like = ({color, size}: LikeProps) => {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path
-        d="M8.39941 10V20"
-        stroke={color}
-        strokeWidth="2"
-      />
+      <path d="M8.39941 10V20" stroke={color} strokeWidth="2" />
     </svg>
   )
 }

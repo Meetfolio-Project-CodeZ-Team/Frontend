@@ -1,4 +1,8 @@
-import GroupPost from '../GroupPost'
+import GroupPost from '../group/GroupPost'
+
+interface BoardContainerProps {
+  boardData: boardListInfo
+}
 
 const mookBoard: GroupBoardInfoTypes = {
   boardId: 0,
