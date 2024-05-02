@@ -24,7 +24,7 @@ export default function JobBoardPage() {
       <Header />
       <div className="flex w-[full] h-[980px]">
         <BoardContainer />
-        <div className="flex-grow bg-white shadow-md">
+        <div className="flex-grow bg-white shadow-2xl">
           <BoardDetailContainer />
         </div>
       </div>

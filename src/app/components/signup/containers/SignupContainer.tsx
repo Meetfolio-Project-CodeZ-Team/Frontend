@@ -32,36 +32,31 @@ const SignupContainer = () => {
   }
 
   const authorizeCode = async (email: string, authCode: string) => {
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email + SIGNUP.Email,
-          authCode: authCode,
-        }),
-      }
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
-        requestOptions,
-      )
-      if (!res.ok) {
-        throw new Error('Authorization failed')
-      }
-      router.push('/signup/onboard')
-    } catch (error) {
-      console.error('Error:', error)
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email + SIGNUP.Email,
+        authCode: authCode,
+      }),
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
+      requestOptions,
+    )
+    if (!res.ok) {
       mismatchAlert()
       setAuthCode('')
     }
+    router.push('/signup/onboard')
   }
 
   return (
     <div className="flex flex-col items-center mt-[80px] mb-12">
       <ToastContainer style={{ width: 400, height: 180 }} />
-      <div className="text-4xl font-semibold leading-[75px] mb-7">회원가입</div>
+      <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
       <div className="text-2xl font-semibold leading-[75px] mb-12">
         {SIGNUP.Description}
       </div>
@@ -80,10 +75,10 @@ const SignupContainer = () => {
           </div>
           <Button
             buttonText={'인증코드 전송'}
-            type={'auth'}
+            type={'authCode'}
             isDisabled={email === ''}
             onClickHandler={() => getAuthCode(email)}
-            className={`${email === '' ? 'bg-white text-[#828282] ' : ''} w-[112px] h-14 text-base`}
+            className={`${email === '' ? 'bg-white text-[#7e7d7d]' : ''}`}
           />
         </div>
         <Input

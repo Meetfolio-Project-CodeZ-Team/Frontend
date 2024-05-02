@@ -11,7 +11,7 @@ const BoardDetailContainer = () => {
   return (
     <div className="w-full h-full relative border-white border-b-2">
       {isSelected ? (
-            <CommentContainer />
+          <CommentContainer />
       ) : (
         <div className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium">
           <span>{NULLPOST[0]}</span>

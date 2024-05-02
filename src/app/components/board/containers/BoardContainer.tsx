@@ -6,7 +6,7 @@ const BoardContainer = () => {
   const [isJob, setIsJob] = useState(false)
 
   return (
-    <div className="flex flex-col w-[860px] pl-[62px] pr-6 pt-6">
+    <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6">
       <BoardHeader isJob={isJob} setIsJob={setIsJob} />
       <GroupBoardContainer />
     </div>

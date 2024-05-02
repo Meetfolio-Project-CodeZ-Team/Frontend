@@ -16,6 +16,8 @@ export const BUTTON_STYLE = {
     `w-[820px] h-[60px] text-[26px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
   addBoardBtn: (className: string) =>
     `w-[116px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
+  authCode: (className: string) =>
+    `w-[116px] h-14 text-base text-white bg-[#486283] font-semibold rounded-[20px] ${className} `,
 } as const
 
 export const INPUT_STYLE = {

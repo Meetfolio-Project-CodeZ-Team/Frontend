@@ -47,7 +47,7 @@ const CommentContainer = () => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-[90%] h-[90%] overflow-y-auto scrollbar-hide">
+          <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
             <Comment data={mookComment} />
             <Comment data={mookComment} />
             <Comment data={mookComment} />

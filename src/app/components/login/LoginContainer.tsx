@@ -51,7 +51,7 @@ const LoginContainer = () => {
   return (
     <div className="flex flex-col items-center justify-center mt-[50px] mb-10 gap-y-12">
       <ToastContainer />
-      <div className="text-4xl font-semibold">로그인</div>
+      <div className="text-5xl font-semibold">로그인</div>
       <div className="flex flex-col gap-y-5">
         <Input
           type={'login'}
@@ -74,7 +74,7 @@ const LoginContainer = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-x-10">
+      <div className="flex flex-col items-center gap-x-10">
         <Button
           buttonText={'로그인'}
           type={'loginB'}
@@ -83,7 +83,7 @@ const LoginContainer = () => {
           className={isInserted ? ' bg-white' : 'text-white'}
         />
         <Link href={'/signup'}>
-          <div className="pl-4 pt-4 text-lg font-semibold underline">
+          <div className="pt-4 text-lg font-semibold underline">
             회원가입
           </div>
         </Link>
