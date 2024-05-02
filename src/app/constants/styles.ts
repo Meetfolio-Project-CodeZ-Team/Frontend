@@ -3,7 +3,9 @@ export const BUTTON_STYLE = {
   loginW: (className: string) =>
     `w-[700px] h-20 text-[26px] text-[#486283] bg-white font-semibold rounded-[30px] ${className}`,
   loginB: (className: string) =>
-    `w-[700px] ${className} h-20 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[30px]`,
+    `w-[700px] ${className} h-20 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[20px]`,
+  loginC: (className: string) =>
+    `w-[645px] ${className} h-[55px] text-[22px] text-[#787878] bg-[#486283] font-semibold rounded-[20px]`,
   auth: (className: string) =>
     `w-[220px] h-[70px] text-[26px] text-[#486283] bg-[#CED7E4] font-semibold rounded-[30px] ${className} `,
   complete: (className: string) =>
