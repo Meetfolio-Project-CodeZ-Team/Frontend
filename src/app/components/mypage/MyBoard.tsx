@@ -37,9 +37,9 @@ const MyBoard = () => {
   return (
     <div className="w-full h-[1090px] relative ">
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 mb-10" />
-      <div className="w-[962px] h-[0px] left-[65px] top-[170px] absolute">
-        <div className="w-[962px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[75px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
+      <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
+        <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
+        <div className="w-[75px] h-[0px] left-0 top-[-0.5px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[312px] h-[30px] left-[82px] top-[129px] absolute justify-start items-center gap-[60px] inline-flex">
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
@@ -52,7 +52,7 @@ const MyBoard = () => {
           <Link href="/mypage/mycomment">내 댓글</Link>
         </div>
       </div>
-      <div className="w-[1100px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {covletCards.map((a) => (
             <MyBoardCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
