@@ -27,7 +27,7 @@ const MyComment = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 게시글 데이터', data) // 타입 에러가 발생하지 않아야
+        console.log('댓글 단 게시글 데이터', data) // 타입 에러가 발생하지 않아야
         setBoardCards(data.result.boardListInfo.list)
       } catch (error) {
         console.error(error)
@@ -37,7 +37,7 @@ const MyComment = () => {
     fetchBoardCards()
   }, [])
 
-  console.log(boardCards, '게시글 목록 정보')
+  console.log(boardCards, '내 댓글 게시물 목록 정보')
 
   return (
     <div className="w-full h-[1090px] relative">

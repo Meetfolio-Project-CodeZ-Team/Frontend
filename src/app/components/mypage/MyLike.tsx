@@ -37,7 +37,7 @@ const MyLike = () => {
     fetchBoardCards()
   }, [])
 
-  console.log(boardCards, '게시글 목록 정보')
+  console.log(boardCards, '좋아요 게시물 목록 정보')
 
   return (
     <div className="w-full h-[1090px] relative">

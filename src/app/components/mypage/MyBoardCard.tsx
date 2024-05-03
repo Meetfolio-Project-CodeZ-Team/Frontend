@@ -42,9 +42,15 @@ const MyBoardCard = ({
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   console.log(boardId, '게시글 정보 id')
+  const fetchBoardCards = () => {
+    router.push(`/mypage/boardDetail/${boardId}`)
+  }
 
   return (
-    <div className="w-[1085px] h-60 relative mt-[20px] cursor-pointer">
+    <div
+      className="w-[1085px] h-60 relative mt-[20px] cursor-pointer"
+      onClick={fetchBoardCards}
+    >
       <div className="w-[1085px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
       <div className="w-[72px] h-[30px] px-3 left-[990px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
         <div className="w-[100px] h-6 text-center text-slate-600 text-sm font-semibold leading-[22px]">
