@@ -3,36 +3,41 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyBoardCard from './MyBoardCard'
-interface CovletCard {
-  question: string
-  answer: string
-  coverLetterId: number
-  createdAt: string
+interface BoardCard {
+  title?: string
+  content?: string
+  boardId?: number
+  groupCategory?: string
+  recruitment?: string
+  registrationDate?: string
+  memberName?: string
+  likeCount?: number
+  commentCount?: number
 }
 
 const MyBoard = () => {
-  const [covletCards, setCovletCards] = useState<CovletCard[]>([])
+  const [boardCards, setBoardCards] = useState<BoardCard[]>([])
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
-    const fetchCovletCards = async () => {
+    // 서버에서 게시글 목록 데이터를 가져오는 함수
+    const fetchBoardCards = async () => {
       try {
-        const response = await fetch('/api/mypage/myCovlet')
+        const response = await fetch(`/api/mypage/myboard`)
         if (!response.ok) {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('자소서 데이터', data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result.list)
+        console.log('유저 게시글 데이터', data) // 타입 에러가 발생하지 않아야
+        setBoardCards(data.result.boardListInfo.list)
       } catch (error) {
         console.error(error)
       }
     }
 
-    fetchCovletCards()
+    fetchBoardCards()
   }, [])
 
-  console.log(covletCards, '자소서 목록 정보')
+  console.log(boardCards, '게시글 목록 정보')
 
   return (
     <div className="w-full h-[1090px] relative ">
@@ -54,8 +59,8 @@ const MyBoard = () => {
       </div>
       <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-          {covletCards.map((a) => (
-            <MyBoardCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
+          {boardCards.map((a) => (
+            <MyBoardCard key={a.boardId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
           ))}
         </div>
       </div>
