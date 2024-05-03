@@ -7,11 +7,10 @@ import JobBoardContainer from './JobBoardContainer'
 import { boardDataState } from '@/app/recoil/board'
 import { useRecoilState } from 'recoil'
 
-
 const BoardContainer = () => {
   const [isJob, setIsJob] = useState(true)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
-console.log(boardData, '컨테이너에 데이터 전달');
+  console.log(boardData, isJob, '컨테이너에 데이터 전달')
 
   return (
     <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6 relative">
@@ -19,7 +18,7 @@ console.log(boardData, '컨테이너에 데이터 전달');
       {isJob ? (
         <JobBoardContainer boardData={boardData} />
       ) : (
-        <GroupBoardContainer />
+        <GroupBoardContainer boardData={boardData} />
       )}
 
       <div className="flex w-full flex-row-reverse pt-6 pr-12 absolute top-[880px] right-6">

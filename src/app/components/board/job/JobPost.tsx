@@ -28,11 +28,18 @@ const JobPost = ({ data }: JobPostProps) => {
       <div className="absolute top-[18px] left-[270px] w-[90px] px-5 h-[30px] rounded-[30px] border-2 border-[#486283] text-[#486283] text-sm font-semibold flex items-center justify-center">
         {data.jobCategory}
       </div>
-      <div className="absolute top-[80px] left-[28px] text-xl font-bold">
+      <div className="absolute top-[74px] left-[28px] text-xl font-bold">
         {data.title}
       </div>
       <div className="absolute top-[106px] left-[28px] text-base font-normal w-[323px] h-[70px]">
-        {data.title}
+        {data.content.length > 60 ? (
+          <>
+            {data.content.slice(0, 60)}
+            <span>...</span>
+          </>
+        ) : (
+          data.content
+        )}
       </div>
       <div className="absolute top-[174px] left-[277px] flex gap-x-2 text-[18px]">
         <div className="flex gap-x-[3px]">
