@@ -5,9 +5,28 @@ import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
 import MyBoard from '@/app/components/mypage/MyBoard'
 import BoardCardDetail from '@/app/components/mypage/BoardCardDetail'
+import { selectedPostId } from '@/app/recoil/board'
+import { useRecoilValue } from 'recoil'
 
-export default function BoardDetailPage() {
+interface BoardCardDetailProps {
+  title?: string
+  content: string
+  boardId: number
+  groupCategory: string
+  recruitment: string
+  registrationDate: string
+  memberName: string
+  peopleNumber: number
+  // closeModal: () => void
+}
+
+export default function BoardDetailPage({
+  params,
+}: {
+  params: { id: string }
+}) {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
+  const [boardCards, setBoardCards] = useState<BoardCardDetailProps[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,16 +38,18 @@ export default function BoardDetailPage() {
     }
     fetchData()
   }, [])
+
+  
+
   return (
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer
-          selected={'board'}
-          nickname={userInfo?.memberName}
-        />
+        <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
-          <BoardCardDetail />
+          <BoardCardDetail
+            
+          />
         </div>
       </div>
       <Footer />

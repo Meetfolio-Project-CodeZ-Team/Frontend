@@ -1,7 +1,10 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { covletNum, covletData } from '../../recoil/coverletter'
-import MyExpCard from '../mypage/MyExpCard'
+import { successCopy } from '@/app/utils/toast'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useRecoilState } from 'recoil'
+import { covletData, covletNum } from '../../recoil/coverletter'
+import MyExpCard from '../mypage/MyExpCard'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
@@ -80,7 +83,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
         console.log('Copy text command was ' + msg)
-        alert('Copied to clipboard!')
+        successCopy()
       } catch (err) {
         console.error('Unable to copy text: ', err)
         alert('Failed to copy text.')
@@ -110,8 +113,8 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       ...coverletterData,
       coverLetterId: resData.result.coverLetterId,
     })
-    console.log(coverletterData,'자소서 데이터 현황');
-    
+    console.log(coverletterData, '자소서 데이터 현황')
+
     console.log(resData, '포스트 후 응답')
 
     if (!response.ok) {
@@ -130,11 +133,10 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
           <div className="w-[428px] h-[60px] left-[240px] top-[89px] absolute justify-start items-start gap-[98px] inline-flex">
             <div className="w-[180px] h-[60px] relative">
-              
               <button
                 className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PUBLIC' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
                 onClick={(event) => handleButtonClick('PUBLIC', event)}
-                type='button'
+                type="button"
               >
                 공개
               </button>
@@ -143,7 +145,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
               <button
                 className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PRIVATE' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
                 onClick={(event) => handleButtonClick('PRIVATE', event)}
-                type='button'
+                type="button"
               >
                 비공개
               </button>
@@ -171,10 +173,25 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             </div>
             <button
               onClick={handleCopyText}
-              className="absolute top-[480px] right-2 mt-2 mr-2 p-2 bg-blue-400 text-white rounded-[10px]"
+              className="absolute w-[120px] top-[480px] right-0 mt-1 mr-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
             >
-              복사하기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+                />
+              </svg>
+              Copy Text
             </button>
+            <ToastContainer />
           </div>
         </div>
         <div className="w-[856.48px] h-[131.21px] left-[48px] top-[15px] absolute">
@@ -207,7 +224,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveCovData}
-          type='button'
+          type="button"
         >
           저장하기
         </button>

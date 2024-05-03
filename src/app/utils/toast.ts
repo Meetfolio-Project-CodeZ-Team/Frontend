@@ -65,6 +65,13 @@ const updateUserInfo = () => {
   })
 }
 
+const successCopy = () => {
+  toast.success('클립보드에 복사되었습니다!', {
+    icon: () => '✏️',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -74,4 +81,5 @@ export {
   addTrainData,
   failLogin,
   updateUserInfo,
+  successCopy,
 }
