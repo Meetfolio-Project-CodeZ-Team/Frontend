@@ -3,16 +3,19 @@ import BoardContainer from '@/app/components/board/containers/BoardContainer'
 import BoardDetailContainer from '@/app/components/board/containers/BoardDetailContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
-import { boardDataState } from '@/app/recoil/board'
+import { boardDataState, selectedPostId } from '@/app/recoil/board'
 import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useResetRecoilState } from 'recoil'
 
 export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  const resetId = useResetRecoilState(selectedPostId)
+
   console.log(boardData, '메인에서 가져온 데이터')
 
   useEffect(() => {
+    resetId()
     const fetchData = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment`,

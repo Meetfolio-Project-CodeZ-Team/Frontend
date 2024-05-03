@@ -17,6 +17,8 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
   const [clickedType, setClickedType] = useState<GroupBoardTypes | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  console.log(clickedType, '선택된 타입')
+  console.log(clickedKeyword, '선택된 키워드')
 
   useEffect(() => {
     if (clickedKeyword !== null) {
@@ -43,6 +45,20 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
       fetchData()
     }
   }, [clickedType])
+
+  useEffect(() => {
+    setClickedType(null)
+    setClickedKeyword(null)
+    const path = isJob ? 'employment' : 'group'
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/${path}`,
+      )
+      const resData = await response.json()
+      setBoardData(resData.result.boardListInfo)
+    }
+    fetchData()
+  }, [isJob])
 
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
@@ -83,13 +99,13 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
               <div key={index} onClick={() => handleClick(str)}>
                 <Keyword
                   keyword={str}
-                  clickKeyword={clickedKeyword || 'BACKEND'}
+                  clickKeyword={clickedKeyword || ''}
                 />
               </div>
             ))
           : GROUP_TYPE.map((str, index) => (
               <div key={index} onClick={() => handleClickG(str)}>
-                <Keyword keyword={str} clickKeyword={clickedType || '스터디'} />
+                <Keyword keyword={str} clickKeyword={clickedType || ''} />
               </div>
             ))}
       </div>

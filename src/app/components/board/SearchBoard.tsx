@@ -8,13 +8,15 @@ const SearchBoard = () => {
   const [title, setTitle] = useState('')
 
   return (
-    <div className="flex w-[250px] gap-x-2 pl-2 h-8 rounded-[18px] items-center bg-white">
-      <Icons name={search} />
+    <div className="flex w-[260px] gap-x-2 pr-2 pl-3 h-8 rounded-[18px] items-center bg-white">
       <Input
         type={'search'}
         onChange={(e) => setTitle(e.target.value)}
-        className="w-[180px] text-base"
+        className="w-[170px] text-base"
       />
+      <div className="cursor-pointer">
+        <Icons name={search} />
+      </div>
     </div>
   )
 }
