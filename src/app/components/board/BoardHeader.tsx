@@ -77,7 +77,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
       <div
         className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[38.5px] z-50`}
       />
-      <div className="flex gap-x-[54px] my-6">
+      <div className={`${isJob ? 'gap-x-[54px]' : 'gap-x-[33px]'} flex  my-6`}>
         {isJob
           ? JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>

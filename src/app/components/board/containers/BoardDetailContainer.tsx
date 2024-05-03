@@ -69,7 +69,15 @@ const BoardDetailContainer = () => {
                 className="bg-white border-black border-2 text-[#000000]"
               />
             </div>
-            <div className="flex absolute pr-8 left-7 top-[190px] break-all h-[70%] overflow-y-auto">
+            <div className="absolute top-[160px] left-9 flex gap-x-4 items-center">
+              <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
+                {data?.peopleNumber}명
+              </div>
+              <div className="text-[15px] font-medium text-[#486283]">
+                {data?.recruitment}
+              </div>
+            </div>
+            <div className="flex absolute pr-8 left-7 top-[220px] break-all h-[70%] overflow-y-auto">
               {data?.content}
             </div>
           </div>
