@@ -12,8 +12,6 @@ export default function JobBoardPage() {
   const [boardData, setBoardData] = useRecoilState(boardDataState)
   const resetId = useResetRecoilState(selectedPostId)
 
-  console.log(boardData, '메인에서 가져온 데이터')
-
   useEffect(() => {
     resetId()
     const fetchData = async () => {

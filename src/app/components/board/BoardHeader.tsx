@@ -97,10 +97,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         {isJob
           ? JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>
-                <Keyword
-                  keyword={str}
-                  clickKeyword={clickedKeyword || ''}
-                />
+                <Keyword keyword={str} clickKeyword={clickedKeyword || ''} />
               </div>
             ))
           : GROUP_TYPE.map((str, index) => (

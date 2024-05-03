@@ -53,7 +53,7 @@ const BoardDetailContainer = () => {
             <div className="absolute gap-x-3 right-8 top-[120px] flex text-[15px] font-semibold">
               <Button
                 buttonText={'수정'}
-                type={'eidtPost'}
+                type={'editPost'}
                 isDisabled={false}
                 onClickHandler={function (): void {
                   throw new Error('Function not implemented.')
@@ -61,7 +61,7 @@ const BoardDetailContainer = () => {
               />
               <Button
                 buttonText={'삭제'}
-                type={'eidtPost'}
+                type={'editPost'}
                 isDisabled={false}
                 onClickHandler={function (): void {
                   throw new Error('Function not implemented.')

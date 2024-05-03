@@ -18,8 +18,10 @@ export const BUTTON_STYLE = {
     `w-[92px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
   authCode: (className: string) =>
     `w-[116px] h-14 text-base text-white bg-[#486283] font-semibold rounded-[20px] ${className} `,
-  eidtPost: (className: string) =>
+  editPost: (className: string) =>
     `w-20 h-[30px]text-sm font-bold bg-black text-white rounded-[25px] ${className} `,
+  boardPost: (className: string) =>
+    `w-[280px] h-[50px] text-[24px] font-semibold bg-[#D9D9D9] text-black rounded-[20px] ${className} `,
 } as const
 
 export const INPUT_STYLE = {
@@ -38,6 +40,8 @@ export const INPUT_STYLE = {
     `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
   password: (className: string) =>
     `w-[300px] text-lg font-medium pl-6 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
+  board: (className: string) =>
+    `w-full text-[20px] font-bold pl-7 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {
