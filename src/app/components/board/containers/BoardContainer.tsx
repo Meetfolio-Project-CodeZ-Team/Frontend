@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 const BoardContainer = () => {
   const [isJob, setIsJob] = useState(true)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  const path = isJob ? 'employment' : 'group'
   const router = useRouter()
 
   return (
@@ -27,7 +28,7 @@ const BoardContainer = () => {
           buttonText={'글쓰기'}
           type={'addBoardBtn'}
           isDisabled={false}
-          onClickHandler={() => router.push('/board/post')}
+          onClickHandler={() => router.push(`/board/post/${path}`)}
         />
       </div>
     </div>

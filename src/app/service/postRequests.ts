@@ -90,3 +90,11 @@ export const postBoardDetail = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/boards/${id}`
   return await postRequest(url, null, accessToken)
 }
+
+export const postEmployment = async (
+  accessToken: string,
+  boardData: PostEmployment,
+) => {
+  const url = `${SERVER_URL}/api/boards/employment`
+  return await postRequest(url, boardData, accessToken)
+}

@@ -49,3 +49,9 @@ interface ResponseEmploymentAll {
 }
 
 type GroupBoardTypes = '스터디' | '공모전'
+
+interface PostEmployment {
+  title: string
+  content: string
+  jobKeyword: onlyJobType
+}

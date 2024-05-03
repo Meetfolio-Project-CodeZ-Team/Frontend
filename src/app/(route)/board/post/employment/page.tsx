@@ -2,7 +2,7 @@ import PostContainer from '@/app/components/board/containers/PostContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 
-export default function LoginPage() {
+export default function PostEmploymentPage() {
   return (
     <section className="flex flex-col items-center min-h-screen relative">
       <Header />
