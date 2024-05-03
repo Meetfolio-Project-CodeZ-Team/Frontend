@@ -1,7 +1,7 @@
 'use client'
 
 import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { BOARDTYPE } from '@/app/constants/board'
+import { BOARDTYPE, GROUP_TYPE } from '@/app/constants/board'
 import { boardDataState } from '@/app/recoil/board'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -15,7 +15,21 @@ interface BoardHeaderProps {
 
 const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
+  const [clickedType, setClickedType] = useState<GroupBoardTypes | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+
+  useEffect(() => {
+    if (clickedKeyword !== null) {
+      const fetchData = async () => {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?category=${JOB_ENUM[clickedKeyword]}`,
+        )
+        const resData = await response.json()
+        setBoardData(resData.result.boardListInfo)
+      }
+      fetchData()
+    }
+  }, [clickedKeyword])
 
   useEffect(() => {
     if (clickedKeyword !== null) {
@@ -32,6 +46,10 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
 
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
+  }
+
+  const handleClickG = (keyword: GroupBoardTypes) => {
+    setClickedType(keyword)
   }
 
   return (
@@ -60,11 +78,20 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         className={`w-[120px] ${!isJob && `ml-[140px]`} h-[0px] border-2 border-black absolute top-[38.5px] z-50`}
       />
       <div className="flex gap-x-[54px] my-6">
-        {JOBKEYWORD.map((str, index) => (
-          <div key={index} onClick={() => handleClick(str)}>
-            <Keyword keyword={str} clickKeyword={clickedKeyword || 'BACKEND'} />
-          </div>
-        ))}
+        {isJob
+          ? JOBKEYWORD.map((str, index) => (
+              <div key={index} onClick={() => handleClick(str)}>
+                <Keyword
+                  keyword={str}
+                  clickKeyword={clickedKeyword || 'BACKEND'}
+                />
+              </div>
+            ))
+          : GROUP_TYPE.map((str, index) => (
+              <div key={index} onClick={() => handleClickG(str)}>
+                <Keyword keyword={str} clickKeyword={clickedType || '스터디'} />
+              </div>
+            ))}
       </div>
     </div>
   )

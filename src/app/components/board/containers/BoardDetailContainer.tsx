@@ -16,20 +16,22 @@ const BoardDetailContainer = () => {
   const [data, setData] = useState<BoardInfoTypes | null>(null)
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
+    if (isSelected) {
+      const fetchData = async () => {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
           },
-        },
-      )
-      const resData = await response.json()
-      setData(resData.result.boardInfo)
+        )
+        const resData = await response.json()
+        setData(resData.result.boardInfo)
+      }
+      fetchData()
     }
-    fetchData()
   }, [selectedId])
 
   console.log('디테일 가져온 데이터', data)

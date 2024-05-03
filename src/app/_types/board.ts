@@ -47,3 +47,5 @@ interface ResponseEmploymentAll {
   memberInfo: memberInfo
   boardListInfo: boardListInfo
 }
+
+type GroupBoardTypes = '스터디' | '공모전'
