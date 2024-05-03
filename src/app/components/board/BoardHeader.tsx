@@ -1,7 +1,7 @@
 'use client'
 
 import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { BOARDTYPE, GROUP_TYPE } from '@/app/constants/board'
+import { BOARDTYPE, GROUP_ENUM, GROUP_TYPE } from '@/app/constants/board'
 import { boardDataState } from '@/app/recoil/board'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -32,17 +32,17 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
   }, [clickedKeyword])
 
   useEffect(() => {
-    if (clickedKeyword !== null) {
+    if (clickedType !== null) {
       const fetchData = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?category=${JOB_ENUM[clickedKeyword]}`,
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group?category=${GROUP_ENUM[clickedType]}`,
         )
         const resData = await response.json()
         setBoardData(resData.result.boardListInfo)
       }
       fetchData()
     }
-  }, [clickedKeyword])
+  }, [clickedType])
 
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)

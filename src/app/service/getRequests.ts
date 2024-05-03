@@ -96,3 +96,17 @@ export const getEmployment = async (
   const url = `${SERVER_URL}/api/boards/employment?page=0&category=${jobKeyword}`
   return await getRequest(url, accessToken)
 }
+
+export const getGroup = async (
+  accessToken: string,
+  jobKeyword?: string,
+  page?: number,
+) => {
+  const url = `${SERVER_URL}/api/boards/group?page=0&category=${jobKeyword}`
+  return await getRequest(url, accessToken)
+}
+
+export const getGroupAll = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/boards/group?page=0`
+  return await getRequest(url, accessToken)
+}
