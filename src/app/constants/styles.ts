@@ -4,6 +4,8 @@ export const BUTTON_STYLE = {
     `w-[500px] h-16 text-[26px] text-[#486283] bg-white font-semibold rounded-[30px] ${className}`,
   loginB: (className: string) =>
     `w-[500px] ${className} h-16 text-[26px] text-[#787878] bg-[#486283] font-semibold rounded-[30px]`,
+  loginC: (className: string) =>
+    `w-[700px] ${className} h-[55px] text-[22px] text-[#787878] bg-[#486283] font-semibold rounded-[20px]`,
   auth: (className: string) =>
     `w-[220px] h-[70px] text-[22px] text-white bg-[#486283] font-semibold rounded-[30px] ${className} `,
   complete: (className: string) =>
