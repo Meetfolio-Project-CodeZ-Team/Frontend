@@ -13,10 +13,6 @@ interface BoardCardDetailProps {
   peopleNumber?: number
   // closeModal: () => void
 }
-interface BoardCardDetail {
-  data: GroupBoardInfoTypes
-}
-
 const BoardCardDetail = () => {
 
   const selectedId = useRecoilValue(selectedPostId)

@@ -52,7 +52,7 @@ const addTrainData = () => {
 }
 
 const failLogin = () => {
-  toast.success('올바르지 않은 id 혹은 pw입니다.', {
+  toast.error('잘못된 이메일 또는 비밀번호입니다.', {
     icon: () => '🔒',
     ...commonOptions,
   })
@@ -72,6 +72,13 @@ const successCopy = () => {
   })
 }
 
+const deletePostAlert = () => {
+  toast.error('해당 게시물이 삭제 되었습니다.', {
+    icon: () => '🗑️',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -82,4 +89,5 @@ export {
   failLogin,
   updateUserInfo,
   successCopy,
+  deletePostAlert,
 }

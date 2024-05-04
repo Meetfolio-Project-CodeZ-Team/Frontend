@@ -22,7 +22,7 @@ export default function MyPointPage() {
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'points'}  nickname={userInfo?.memberName}/>
+        <UserNavContainer selected={'points'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <PointCharge />
         </div>

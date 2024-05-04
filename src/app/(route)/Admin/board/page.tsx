@@ -5,9 +5,9 @@ import Header from '@/app/components/layout/Header'
 
 const boardPage = () => {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen relative">
       <Header isAdmin={true} />
-      <div className="flex w-[full] h-[auto] mt-8">
+      <div className="flex w-[full] h-[auto] mt-8 mb-[132px]">
         <AdminNavContainer selected={'board'} />
         <div className="flex-grow">
           <BoardContainer />

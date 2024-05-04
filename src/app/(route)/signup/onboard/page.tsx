@@ -4,9 +4,9 @@ import OnBoardContainer from '@/app/components/signup/containers/OnBoardContaine
 
 export default function OnBoardPage() {
   return (
-    <section className="flex flex-col items-center min-h-screen">
+    <section className="flex flex-col items-center min-h-screen relative">
       <Header />
-      <div className="w-[1440px] mx-auto mb-10">
+      <div className="w-[1440px] min-h-screen mb-[120px]">
         <OnBoardContainer />
       </div>
       <Footer />

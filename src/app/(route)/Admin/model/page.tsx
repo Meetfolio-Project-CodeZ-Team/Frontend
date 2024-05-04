@@ -5,7 +5,7 @@ import Header from '@/app/components/layout/Header'
 
 const page = () => {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen relative">
       <Header isAdmin={true} />
       <div className="flex w-[full] h-[auto]">
         <AdminNavContainer selected={'model'} />

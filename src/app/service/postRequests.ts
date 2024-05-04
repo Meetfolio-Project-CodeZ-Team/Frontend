@@ -85,3 +85,24 @@ export const postUsingPoint = async (
   const url = `${SERVER_URL}/api/coverLetters/${id}/points`
   return await postRequest(url, point, accessToken)
 }
+
+export const postBoardDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await postRequest(url, null, accessToken)
+}
+
+export const postEmployment = async (
+  accessToken: string,
+  boardData: PostEmployment,
+) => {
+  const url = `${SERVER_URL}/api/boards/employment`
+  return await postRequest(url, boardData, accessToken)
+}
+
+export const postGroup = async (
+  accessToken: string,
+  boardData: GroupEmployment,
+) => {
+  const url = `${SERVER_URL}/api/boards/group`
+  return await postRequest(url, boardData, accessToken)
+}

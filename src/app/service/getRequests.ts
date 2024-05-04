@@ -12,6 +12,8 @@ const getRequest = async (url: string, accessToken?: string) => {
     const response = await fetch(url, {
       headers: headers,
     }).then((res) => res.json())
+    console.log(response, '서버에서 받아온 res')
+
     return response
   } catch (error) {
     console.log('Error:', error)
@@ -78,5 +80,33 @@ export const getUserHeader = async (accessToken: string) => {
 
 export const getPointInfo = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/points`
+  return await getRequest(url, accessToken)
+}
+
+export const getEmploymentAll = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/boards/employment?page=0`
+  return await getRequest(url, accessToken)
+}
+
+export const getEmployment = async (
+  accessToken: string,
+  jobKeyword?: string,
+  page?: number,
+) => {
+  const url = `${SERVER_URL}/api/boards/employment?page=0&category=${jobKeyword}`
+  return await getRequest(url, accessToken)
+}
+
+export const getGroup = async (
+  accessToken: string,
+  jobKeyword?: string,
+  page?: number,
+) => {
+  const url = `${SERVER_URL}/api/boards/group?page=0&category=${jobKeyword}`
+  return await getRequest(url, accessToken)
+}
+
+export const getGroupAll = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/boards/group?page=0`
   return await getRequest(url, accessToken)
 }

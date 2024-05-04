@@ -40,7 +40,7 @@ interface memberInfoTypes {
   major: string
   jobKeyword: string
   point: number
-  status:string
+  status: string
 }
 interface ResponseUser {
   memberList: memberInfoTypes[]

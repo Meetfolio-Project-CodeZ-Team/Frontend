@@ -22,10 +22,7 @@ export default function MyBoardPage() {
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer
-          selected={'board'}
-          nickname={userInfo?.memberName}
-        />
+        <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <MyLike />
         </div>

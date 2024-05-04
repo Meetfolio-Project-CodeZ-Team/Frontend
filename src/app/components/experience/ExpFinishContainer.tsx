@@ -11,12 +11,18 @@ const ExpFinishContainer = () => {
 
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
-      case 'BACKEND': return '백엔드';
-      case 'AI': return 'AI';
-      case 'WEB': return '웹개발';
-      case 'APP': return '앱개발';
-      case 'DESIGN': return '디자인';
-      default: return keyword;
+      case 'BACKEND':
+        return '백엔드'
+      case 'AI':
+        return 'AI'
+      case 'WEB':
+        return '웹개발'
+      case 'APP':
+        return '앱개발'
+      case 'DESIGN':
+        return '디자인'
+      default:
+        return keyword
     }
   }
 
@@ -44,8 +50,8 @@ const ExpFinishContainer = () => {
       stack: '',
       detail: '',
       advance: '',
-      expStacks: []
-    });
+      expStacks: [],
+    })
     router.push('/mypage/myexperience') // '/main'으로 경로 이동
   }
 
@@ -70,7 +76,6 @@ const ExpFinishContainer = () => {
     }
   }
 
-  
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">
@@ -187,7 +192,7 @@ const ExpFinishContainer = () => {
             <div className="w-[350px] h-9 left-[35.77px] top-[121.55px] absolute">
               <div className="w-24 h-9 px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
                 <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                {displayKeyword(experienceData.jobKeyword)}
+                  {displayKeyword(experienceData.jobKeyword)}
                 </div>
               </div>
               <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
