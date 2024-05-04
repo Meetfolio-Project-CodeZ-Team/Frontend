@@ -8,3 +8,14 @@ export const GROUP_ENUM = {
   스터디: 'STUDY',
   공모전: 'CONTEST',
 }
+
+export const RECRUIT_KEYWORD: RecruitType[] = [
+  '백엔드',
+  '웹',
+  '모바일',
+  '디자인',
+  'AI',
+  'PM',
+] as const
+
+export const RECRUIT_CATEGORY: GroupBoardTypes[] = ['스터디', '공모전'] as const

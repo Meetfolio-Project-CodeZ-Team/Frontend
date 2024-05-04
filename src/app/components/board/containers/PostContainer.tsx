@@ -7,7 +7,7 @@ import Input from '../../common/Input'
 import Button from '../../common/Button'
 import { useRouter } from 'next/navigation'
 
-const PostContainer = () => {
+const PostEmploymentContainer = () => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -62,7 +62,7 @@ const PostContainer = () => {
       </div>
       <textarea
         placeholder="게시물의 내용을 입력해주세요"
-        className="w-full h-[440px] px-7 py-2 text-xl font-bold rounded-[6px] border-[2px] border-[#C4C4C4]"
+        className="w-full h-[440px] px-7 py-2 text-xl font-medium rounded-[6px] border-[2px] border-[#C4C4C4]"
         onChange={(e) => setContent(e.target.value)}
         value={content}
       />
@@ -82,4 +82,4 @@ const PostContainer = () => {
   )
 }
 
-export default PostContainer
+export default PostEmploymentContainer

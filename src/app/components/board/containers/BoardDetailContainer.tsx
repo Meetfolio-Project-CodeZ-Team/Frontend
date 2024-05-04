@@ -7,7 +7,7 @@ import Button from '../../common/Button'
 import { useEffect, useState } from 'react'
 
 interface BoardDetailContainer {
-  data: GroupBoardInfoTypes
+  data: BoardInfoTypes
 }
 
 const BoardDetailContainer = () => {

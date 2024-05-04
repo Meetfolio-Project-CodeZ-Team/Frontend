@@ -13,21 +13,6 @@ interface BoardInfoTypes {
   peopleNumber: number
   registrationDate: string
 }
-interface GroupBoardInfoTypes {
-  boardId: number
-  boardType: 'EMPLOYMENT'
-  memberName: string
-  title: string
-  content: string
-  likeCount: number
-  likeStatus: 'ACTIVE' | 'INACTIVE'
-  commentCount: number
-  jobCategory: string
-  groupCategory: string
-  recruitment: string
-  peopleNumber: number
-  registrationDate: string
-}
 
 interface CommentTypes {
   commentId: number
@@ -55,3 +40,5 @@ interface PostEmployment {
   content: string
   jobKeyword: onlyJobType
 }
+
+type RecruitType = '웹' | '모바일' | '디자인' | 'AI' | '백엔드' | 'PM'
