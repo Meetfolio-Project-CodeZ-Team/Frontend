@@ -7,7 +7,7 @@ interface BoardInfoTypes {
   likeCount: number
   likeStatus: 'ACTIVE' | 'INACTIVE'
   commentCount: number
-  jobCategory: string
+  jobCategory: onlyJobType
   groupCategory: string
   recruitment: string
   peopleNumber: number
@@ -46,7 +46,16 @@ type RecruitType = '웹' | '모바일' | '디자인' | 'AI' | '백엔드' | 'PM'
 interface GroupEmployment {
   title: string
   content: string
-  groupCategory: GroupBoardTypes
+  groupCategory: string
   recruitment: string
   peopleNumber: number
+}
+
+interface PatchBody {
+  title: string
+  content: string
+  groupCategory: string
+  recruitment:string
+  peopleNumber: 5
+  jobKeyword: string
 }

@@ -1,13 +1,21 @@
 'use client'
 
 import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Keyword from '../../signup/onboard/Keyword'
 import Input from '../../common/Input'
 import Button from '../../common/Button'
 import { useRouter } from 'next/navigation'
 
-const PostEmploymentContainer = () => {
+interface PostEmploymentContainerProps {
+  isEdit?: boolean
+  data?: BoardInfoTypes
+}
+
+const PostEmploymentContainer = ({
+  isEdit,
+  data,
+}: PostEmploymentContainerProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -16,22 +24,35 @@ const PostEmploymentContainer = () => {
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
+  const method = isEdit ? 'PATCH' : 'POST'
+  const path = isEdit ? `patch?id=${data?.boardId}` : 'post'
+
+  useEffect(() => {
+    const fillData = () => {
+      setClickedKeyword(data?.jobCategory || '백엔드')
+      setTitle(data?.title || '')
+      setContent(data?.content || '')
+    }
+    if (isEdit) fillData()
+  }, [])
 
   const postEmployment = async () => {
+    console.log('수정시도');
+    
     const requestBody = {
       title: title,
       content: content,
       jobKeyword: JOB_ENUM[clickedKeyword || '백엔드'],
     }
     const requestOptions = {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment/post`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment/${path}`,
       requestOptions,
     )
     router.push('/board')

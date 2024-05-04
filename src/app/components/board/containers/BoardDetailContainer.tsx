@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useModal } from '@/app/hooks/useModal'
 import DeleteModal from '../../admin/common/DeleteModal'
+import { useRouter } from 'next/navigation'
 
 interface BoardDetailContainer {
   nickname: string
@@ -20,10 +21,13 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-  console.log(selectedId, '아이디 변경')
+  const path =
+    data?.boardType === 'GROUP'
+      ? '/board/update/group'
+      : '/board/update/employment'
+  const router = useRouter()
 
   const deletePost = async (id: number) => {
-    console.log('삭제')
     deletePostAlert()
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail/delete?postId=${id}`,
@@ -76,9 +80,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                   buttonText={'수정'}
                   type={'editPost'}
                   isDisabled={false}
-                  onClickHandler={function (): void {
-                    throw new Error('Function not implemented.')
-                  }}
+                  onClickHandler={() => router.push(`${path}?id=${selectedId}`)}
                 />
                 <Button
                   buttonText={'삭제'}
