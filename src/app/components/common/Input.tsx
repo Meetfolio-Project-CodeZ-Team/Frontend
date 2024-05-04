@@ -11,6 +11,8 @@ interface InputProps {
     | 'search'
     | 'train'
     | 'password'
+    | 'board'
+    | 'member'
   textValue?: string
   inputType?: string
   name?: string

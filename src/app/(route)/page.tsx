@@ -26,7 +26,7 @@ export default function MainPage() {
   if (data) {
     const { memberInfo, recommendCardInfo } = data
     return (
-      <section className="flex flex-col items-center min-h-screen">
+      <section className="flex flex-col items-center min-h-screen relative">
         <Header
           nickname={memberInfo?.memberName}
           profile={memberInfo?.profile}

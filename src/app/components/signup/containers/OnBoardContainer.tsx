@@ -70,10 +70,10 @@ const OnBoardContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-[95px]">
+    <div className="flex flex-col items-center mt-16 mb-4 min-h-screen">
       <ToastContainer style={{ width: 400, height: 180 }} />
-      <div className="text-5xl font-semibold leading-[75px] mb-6">회원가입</div>
-      <div className="text-3xl font-medium leading-[45px] mb-7">
+      <div className="text-5xl font-semibold leading-[64px] mb-6">회원가입</div>
+      <div className="text-2xl font-medium leading-[45px] mb-7">
         {SIGNUP.OnBoard}
       </div>
       <div className="flex flex-col gap-y-1.5 mb-8">
@@ -94,6 +94,7 @@ const OnBoardContainer = () => {
               비밀번호 확인
             </div>
           </div>
+
           <div className="flex gap-x-3 items-center">
             <Input
               inputType="password"

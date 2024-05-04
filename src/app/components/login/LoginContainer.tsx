@@ -9,7 +9,8 @@ import { failLogin } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
-import { eye } from '@/app/ui/IconsPath'
+import { eye } from '@/app/ui/eye'
+import Link from 'next/link'
 
 const LoginContainer = () => {
   const router = useRouter()
@@ -28,6 +29,7 @@ const LoginContainer = () => {
       },
       body: JSON.stringify({ email: isAdmin, password: pw }),
     }
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/login`,
       requestOptions,
@@ -47,10 +49,10 @@ const LoginContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-[150px] gap-y-12">
+    <div className="flex flex-col items-center justify-center mt-[50px] mb-10 gap-y-12">
       <ToastContainer />
-      <div className="text-6xl font-semibold leading-[90px]">로그인</div>
-      <div className="flex flex-col gap-y-5 ml-9">
+      <div className="text-5xl font-semibold">로그인</div>
+      <div className="flex flex-col gap-y-5">
         <Input
           type={'login'}
           onChange={(e) => setId(e.target.value)}
@@ -72,7 +74,7 @@ const LoginContainer = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-5">
+      <div className="flex flex-col items-center gap-x-10">
         <Button
           buttonText={'로그인'}
           type={'loginB'}
@@ -80,12 +82,9 @@ const LoginContainer = () => {
           onClickHandler={() => postLogin()}
           className={isInserted ? ' bg-white' : 'text-white'}
         />
-        <Button
-          buttonText={'회원가입'}
-          type={'loginW'}
-          isDisabled={false}
-          onClickHandler={() => router.push('/signup')}
-        />
+        <Link href={'/signup'}>
+          <div className="pt-4 text-lg font-semibold underline">회원가입</div>
+        </Link>
       </div>
     </div>
   )

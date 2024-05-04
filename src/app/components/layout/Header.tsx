@@ -34,12 +34,12 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
             <Link href={`${nickname ? '/coverletter' : '/login'}`}>
               AI자기소개서솔루션
             </Link>
-            <Link href={`${nickname ? '/comunity' : '/login'}`}>커뮤니티</Link>
+            <Link href={`${nickname ? '/board' : '/login'}`}>커뮤니티</Link>
             <div className="flex gap">
               <div className="w-[22px] h-[2px] origin-top-left rotate-90 opacity-80 border border-[#486284]"></div>
               {!nickname ? (
                 <Link
-                  href="signup"
+                  href="/signup"
                   className="underline underline-offset-1 text-base"
                 >
                   회원가입

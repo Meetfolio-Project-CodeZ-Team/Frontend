@@ -10,12 +10,11 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const isEntered =
-    experienceData.detail !== '' &&
-    experienceData.advance !== ''
+    experienceData.detail !== '' && experienceData.advance !== ''
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }
 
   const handleTextareaChange = (

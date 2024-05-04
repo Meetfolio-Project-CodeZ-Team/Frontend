@@ -22,7 +22,7 @@ export default function WithDrawPage() {
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
-        <UserNavContainer selected={'user'}  nickname={userInfo?.memberName}/>
+        <UserNavContainer selected={'user'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <WithDrawContainer />
         </div>

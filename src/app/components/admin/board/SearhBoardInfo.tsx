@@ -4,7 +4,7 @@ import Input from '../../common/Input'
 import Icons from '../../common/Icons'
 import { search } from '@/app/ui/IconsPath'
 
-const SearhBoard = () => {
+const SearhBoardInfo = () => {
   const [title, setTitle] = useState('')
 
   return (
@@ -15,4 +15,4 @@ const SearhBoard = () => {
   )
 }
 
-export default SearhBoard
+export default SearhBoardInfo

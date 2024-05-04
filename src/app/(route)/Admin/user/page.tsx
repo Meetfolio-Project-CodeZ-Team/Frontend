@@ -14,14 +14,13 @@ const userPage = () => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user`,
       )
       const resData = await response.json()
-      console.log('가져온 resData', resData)
       setData(resData.result)
     }
     fetchData()
   }, [])
   if (data) {
     return (
-      <section className="flex flex-col min-h-screen">
+      <section className="flex flex-col min-h-screen relative">
         <Header isAdmin={true} />
         <div className="flex w-[full] h-[auto]">
           <AdminNavContainer selected={'user'} />

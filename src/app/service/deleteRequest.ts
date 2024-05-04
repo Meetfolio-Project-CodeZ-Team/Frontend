@@ -37,3 +37,8 @@ export const logoutRequest = async (
   const url = `${SERVER_URL}/api/logout`
   return await deleteRequest(url, accessToken, refreshToken)
 }
+
+export const deletePost = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await deleteRequest(url, accessToken)
+}

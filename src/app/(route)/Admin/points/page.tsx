@@ -5,9 +5,9 @@ import Header from '@/app/components/layout/Header'
 
 const pointPage = () => {
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen relative">
       <Header isAdmin={true} />
-      <div className="flex w-[full] h-[auto]">
+      <div className="flex w-[full] mb-[108px]">
         <AdminNavContainer selected={'points'} />
         <div className="flex-grow">
           <PointsContainer />

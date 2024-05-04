@@ -7,26 +7,19 @@ const Complete = () => {
   const router = useRouter()
 
   return (
-    <div className="flex flex-col items-center mt-[193px]">
-      <Image
-        width={120}
-        height={100}
-        src="/Images/check.png"
-        alt="checkImage"
-      />
-      <div className="text-5xl font-semibold leading-[75px] mt-10">
-        '회원가입 완료'
-      </div>
-      <div className="text-center  text-3xl font-medium leading-[45px]">
+    <div className="flex flex-col items-center mt-[120px] mb-[80px]">
+      <Image width={80} height={60} src="/Images/check.png" alt="checkImage" />
+      <div className="text-4xl font-semibold m-8">'회원가입 완료'</div>
+      <div className="text-center text-2xl font-medium">
         <span className="text-gray-900">
           {COMPLETE[0]}
           <br />
           {COMPLETE[1]}
         </span>
-        <span className="text-slate-600">{COMPLETE[2]}</span>
+        <span className="text-slate-600 font-semibold">{COMPLETE[2]}</span>
         <span className="text-gray-900">{COMPLETE[3]}</span>
       </div>
-      <div className="w-[692px] h-5 text-center text-zinc-600 text-xl font-medium leading-[30px] my-9">
+      <div className="w-[692px] h-4 text-center text-zinc-600 text-xl font-medium my-9 ">
         {COMPLETE[4]}
       </div>
       <Button
