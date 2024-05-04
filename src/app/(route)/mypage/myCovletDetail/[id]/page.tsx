@@ -1,15 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { useRouter } from 'next/navigation'
 import Header from '@/app/components/layout/Header'
-import { JOB_ENUM } from '@/app/constants/auth'
-import { covletData, covletNum } from '@/app/recoil/coverletter'
-import CovletMain from '@/app/components/coverletter/CovletMain'
-import CovletSave from '@/app/components/coverletter/CovletSave'
 import MyCovletCardDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
+import { covletData, covletNum } from '@/app/recoil/coverletter'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)

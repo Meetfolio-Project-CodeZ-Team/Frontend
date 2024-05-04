@@ -1,6 +1,53 @@
+import { selectedPostId } from '@/app/recoil/board'
+import Like from '@/app/ui/svg/main/Like'
+import { useState, useEffect } from 'react'
+import { useRecoilValue } from 'recoil'
+interface BoardCardDetailProps {
+  title?: string
+  content?: string
+  boardId?: number
+  groupCategory?: string
+  recruitment?: string
+  registrationDate?: string
+  memberName?: string
+  peopleNumber?: number
+  // closeModal: () => void
+}
+interface BoardCardDetail {
+  data: GroupBoardInfoTypes
+}
+
 const BoardCardDetail = () => {
+
+  const selectedId = useRecoilValue(selectedPostId)
+  const isSelected = selectedId !== 999
+  const [data, setData] = useState<BoardInfoTypes | null>(null)
+
+  useEffect(() => {
+    if (isSelected) {
+      const fetchData = async () => {
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          },
+        )
+        const resData = await response.json()
+        setData(resData.result.boardInfo)
+      }
+      fetchData()
+    }
+  }, [selectedId])
+
+  console.log('디테일 가져온 데이터', data)
+
+
   return (
     <div className="w-full h-[982px] relative">
+      
       <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-[1014.23px] h-[747px] left-[71.39px] top-[64px] absolute">
         <div className="w-[962px] h-[0px] left-0 top-[747px] absolute border border-stone-300"></div>
@@ -8,23 +55,16 @@ const BoardCardDetail = () => {
           댓글
         </div>
         <div className="w-[964px] h-[511px] left-[10px] top-[198px] absolute text-gray-900 text-xl font-medium leading-[30px]">
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
-          내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용 내용
+          {data?.content}
         </div>
         <div className="w-[1004.23px] h-[45px] left-[10px] top-0 absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="flex-col justify-start items-start gap-2.5 flex">
             <div className="justify-start items-end gap-[626px] inline-flex">
               <div className="w-[267.34px] text-gray-900 text-3xl font-semibold leading-[45px]">
-                제목입니다
+                {data?.title}
               </div>
               <div className="w-[110.90px] h-[18px] text-gray-900 text-sm font-normal font-['Rubik'] leading-[30px]">
-                24/01/01
+                {data?.registrationDate}
               </div>
             </div>
           </div>
@@ -51,11 +91,11 @@ const BoardCardDetail = () => {
       <div className="w-[322px] h-[37px] left-[82px] top-[190px] absolute justify-start items-center gap-[19px] inline-flex">
         <div className="w-[70px] h-[25px] px-5 bg-blue-400 rounded-[15px] justify-center items-center gap-2 flex">
           <div className="w-[76px] h-6 text-center text-white text-base font-semibold leading-normal">
-            5명
+            {data?.peopleNumber}명
           </div>
         </div>
         <div className="w-[233px] h-6 text-slate-600 text-[15px] font-medium leading-normal">
-          웹 / 모바일 / 백엔드 / 디자인 / PM/AI
+          {data?.recruitment}
         </div>
       </div>
       <div className="w-[946px] h-[29px] left-[84px] top-[141px] absolute">
@@ -72,15 +112,18 @@ const BoardCardDetail = () => {
           </div>
         </div>
         <div className="w-[106.40px] h-5 left-0 top-[4px] absolute text-gray-900 text-[15px] font-semibold font-['Rubik'] leading-[30px]">
-          아이디
+          {data?.memberName}
         </div>
       </div>
       <div className="w-[97px] h-[33px] left-[84px] top-[713px] absolute">
         <div className="left-[37px] top-0 absolute text-gray-900 text-[22px] font-semibold leading-[33px]">
           좋아요
         </div>
-        <div className="w-[25px] h-[23.53px] left-0 top-[4px] absolute"></div>
+        <div className="w-[30px] h-[28px] left-0 top-[4px] absolute">
+          <Like color={'black'} size={28} />
+        </div>
       </div>
+   
     </div>
   )
 }

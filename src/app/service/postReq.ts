@@ -34,3 +34,8 @@ export const postCoverLetter = async (
   console.log(coverletterContent, '로 요청')
   return await postRequest(url, coverletterContent, accessToken)
 }
+
+export const postBoardDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await postRequest(url, null, accessToken)
+}

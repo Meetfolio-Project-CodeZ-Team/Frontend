@@ -65,6 +65,13 @@ const updateUserInfo = () => {
   })
 }
 
+const successCopy = () => {
+  toast.success('클립보드에 복사되었습니다!', {
+    icon: () => '✏️',
+    ...commonOptions,
+  })
+}
+
 const deletePostAlert = () => {
   toast.error('해당 게시물이 삭제 되었습니다.', {
     icon: () => '🗑️',
@@ -81,5 +88,6 @@ export {
   addTrainData,
   failLogin,
   updateUserInfo,
+  successCopy,
   deletePostAlert,
 }

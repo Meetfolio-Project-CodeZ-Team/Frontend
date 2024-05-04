@@ -47,3 +47,23 @@ export const getUserPoint = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/my-points`
   return await getRequest(url, accessToken)
 }
+
+export const getUserPayment = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/my-payments`
+  return await getRequest(url, accessToken)
+}
+
+export const getMyBoard = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/my-boards?page=0`
+  return await getRequest(url, accessToken)
+}
+
+export const getMyLike = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/my-likes?page=0`
+  return await getRequest(url, accessToken)
+}
+
+export const getMyComment = async (accessToken: string, page?: number) => {
+  const url = `${SERVER_URL}/api/my-comments?page=0`
+  return await getRequest(url, accessToken)
+}

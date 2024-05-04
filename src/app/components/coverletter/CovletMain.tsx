@@ -1,7 +1,10 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { covletNum, covletData } from '../../recoil/coverletter'
-import MyExpCard from '../mypage/MyExpCard'
+import { successCopy } from '@/app/utils/toast'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useRecoilState } from 'recoil'
+import { covletData, covletNum } from '../../recoil/coverletter'
+import MyExpCard from '../mypage/MyExpCard'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
@@ -80,7 +83,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
         console.log('Copy text command was ' + msg)
-        alert('Copied to clipboard!')
+        successCopy()
       } catch (err) {
         console.error('Unable to copy text: ', err)
         alert('Failed to copy text.')
@@ -153,7 +156,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       <div className="w-[941px] h-[740px] left-[10px] top-[18px] absolute">
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
-          <div className="w-[856.53px] h-[500px] left-[37.64px] top-[170px] absolute">
+          <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
             <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[450px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               1000자 이내
             </div>
@@ -170,14 +173,29 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             </div>
             <button
               onClick={handleCopyText}
-              className="absolute top-[480px] right-2 mt-2 mr-2 p-2 bg-blue-400 text-white rounded-[10px]"
+              className="absolute w-[120px] top-[480px] right-0 mt-1 mr-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
             >
-              복사하기
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+                />
+              </svg>
+              Copy Text
             </button>
+            <ToastContainer />
           </div>
         </div>
-        <div className="w-[856.48px] h-[131.21px] left-[26.89px] top-[15px] absolute">
-          <div className="w-[842.50px] h-[75.90px] left-[10px] top-[55.31px] absolute">
+        <div className="w-[856.48px] h-[131.21px] left-[48px] top-[15px] absolute">
+          <div className="w-[842.50px] h-[75.90px] left-0 top-[55.31px] absolute">
             <div className="w-[87.11px] h-[6.58px] left-[754.95px] top-[69.32px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               100자 이내
             </div>
@@ -194,7 +212,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
               />
             </div>
           </div>
-          <div className="w-[194.65px] h-[48.86px] left-0 top-[10px] absolute text-center text-black text-2xl font-bold  leading-9">
+          <div className="w-[194.65px] h-[48.86px] left-[8px] top-[10px] absolute text-start text-black text-2xl font-bold  leading-9">
             새 자기소개서
           </div>
         </div>
