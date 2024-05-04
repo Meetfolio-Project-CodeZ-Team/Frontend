@@ -59,8 +59,7 @@ const MyPointContainer = () => {
       }
     }
 
->>>>>>> 9a3ee160f4b4ece7231e624f1abd1840a6e279d2
-    fetchUserInfos()
+      fetchUserInfos()
     fetchPointCard()
   }, [])
 
