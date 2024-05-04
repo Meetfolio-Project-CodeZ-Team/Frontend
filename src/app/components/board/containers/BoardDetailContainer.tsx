@@ -1,20 +1,40 @@
 'use client'
 import { NULLPOST } from '@/app/constants/board'
 import { selectedPostId } from '@/app/recoil/board'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import CommentContainer from './CommentContainer'
 import Button from '../../common/Button'
 import { useEffect, useState } from 'react'
+import { deletePostAlert } from '@/app/utils/toast'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useModal } from '@/app/hooks/useModal'
+import DeleteModal from '../../admin/common/DeleteModal'
 
 interface BoardDetailContainer {
   nickname: string
 }
 
 const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
-  const selectedId = useRecoilValue(selectedPostId)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
-  
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  console.log(selectedId, '아이디 변경')
+
+  const deletePost = async (id: number) => {
+    console.log('삭제')
+    deletePostAlert()
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail/delete?postId=${id}`,
+      {
+        method: 'DELETE',
+      },
+    )
+    setSelectedId(999)
+    window.location.reload()
+  }
+
   useEffect(() => {
     if (isSelected) {
       const fetchData = async () => {
@@ -36,6 +56,8 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
 
   return (
     <div className="w-full h-full relative border-white border-b-2">
+      <ToastContainer />
+
       {isSelected ? (
         <div className="w-full h-full relative">
           <div className="">
@@ -62,13 +84,20 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                   buttonText={'삭제'}
                   type={'deletePost'}
                   isDisabled={false}
-                  onClickHandler={function (): void {
-                    throw new Error('Function not implemented.')
-                  }}
+                  onClickHandler={openModal}
                   className="text-[#000000] bg-white border-black border-2"
                 />
+                <div onClick={handleModalClick}>
+                  {isOpen && (
+                    <DeleteModal
+                      closeModal={closeModal}
+                      deleteUser={() => deletePost(data?.boardId || 0)}
+                    />
+                  )}
+                </div>
               </div>
             )}
+
             {data?.peopleNumber && (
               <div className="absolute top-[160px] left-9 flex gap-x-4 items-center">
                 <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">

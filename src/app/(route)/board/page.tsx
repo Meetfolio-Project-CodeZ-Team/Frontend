@@ -10,6 +10,7 @@ import { useRecoilState, useResetRecoilState } from 'recoil'
 export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const resetId = useResetRecoilState(selectedPostId)
 
   useEffect(() => {

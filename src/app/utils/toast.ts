@@ -65,6 +65,13 @@ const updateUserInfo = () => {
   })
 }
 
+const deletePostAlert = () => {
+  toast.error('해당 게시물이 삭제 되었습니다.', {
+    icon: () => '🗑️',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -74,4 +81,5 @@ export {
   addTrainData,
   failLogin,
   updateUserInfo,
+  deletePostAlert,
 }

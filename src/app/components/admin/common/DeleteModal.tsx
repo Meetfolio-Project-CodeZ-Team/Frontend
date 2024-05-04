@@ -18,7 +18,7 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[548px] h-[234px] rounded-[15px] bg-[#D3DCE7] relative">
         <div
           className=" right-[18px] top-[16px] absolute cursor-pointer"
@@ -31,10 +31,12 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
           {!isDeleted ? '정말 삭제하시겠습니까?' : '삭제되었습니다. '}
         </div>
         <div
-          className=" flex items-center justify-center w-[100px] h-[38px] left-[411px] top-[179px] absolute  cursor-pointer bg-slate-600 rounded-[15px]"
+          className=" flex items-center justify-center w-[100px] h-[38px] left-[411px] top-[179px] absolute cursor-pointer bg-slate-600 rounded-[15px]"
           onClick={!isDeleted ? handleDelete : closeModal}
         >
-          <div className=" text-white text-lg font-bold">확인</div>
+          <div className=" text-white text-lg font-bold">
+            {!isDeleted ? '삭제' : '닫기'}
+          </div>
         </div>
       </div>
     </div>

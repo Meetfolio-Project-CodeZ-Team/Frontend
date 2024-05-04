@@ -6,7 +6,7 @@ interface KeywordProps {
 
 const Keyword = ({ keyword, clickKeyword, bg }: KeywordProps) => {
   const normal = bg || 'bg-white'
-  
+
   const textStyle =
     keyword === clickKeyword
       ? 'text-white bg-[#486283]'

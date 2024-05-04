@@ -33,7 +33,9 @@ const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
           buttonText={'글쓰기'}
           type={'addBoardBtn'}
           isDisabled={false}
-          onClickHandler={() => router.push(`/board/post/${path}?nickname=${nickname}`)}
+          onClickHandler={() =>
+            router.push(`/board/post/${path}?nickname=${nickname}`)
+          }
         />
       </div>
     </div>
