@@ -7,14 +7,14 @@ import Button from '../../common/Button'
 import { useEffect, useState } from 'react'
 
 interface BoardDetailContainer {
-  data: BoardInfoTypes
+  nickname: string
 }
 
-const BoardDetailContainer = () => {
+const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
   const selectedId = useRecoilValue(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
-
+  
   useEffect(() => {
     if (isSelected) {
       const fetchData = async () => {
@@ -34,8 +34,6 @@ const BoardDetailContainer = () => {
     }
   }, [selectedId])
 
-  console.log('디테일 가져온 데이터', data)
-
   return (
     <div className="w-full h-full relative border-white border-b-2">
       {isSelected ? (
@@ -50,33 +48,37 @@ const BoardDetailContainer = () => {
             <div className="absolute left-9 top-[120px] flex text-[15px] font-semibold">
               {data?.memberName}
             </div>
-            <div className="absolute gap-x-3 right-8 top-[120px] flex text-[15px] font-semibold">
-              <Button
-                buttonText={'수정'}
-                type={'editPost'}
-                isDisabled={false}
-                onClickHandler={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
-              />
-              <Button
-                buttonText={'삭제'}
-                type={'editPost'}
-                isDisabled={false}
-                onClickHandler={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
-                className="bg-white border-black border-2 text-[#000000]"
-              />
-            </div>
-            <div className="absolute top-[160px] left-9 flex gap-x-4 items-center">
-              <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
-                {data?.peopleNumber}명
+            {data?.memberName === nickname && (
+              <div className="absolute gap-x-3 right-8 top-[120px] flex text-[15px] font-semibold">
+                <Button
+                  buttonText={'수정'}
+                  type={'editPost'}
+                  isDisabled={false}
+                  onClickHandler={function (): void {
+                    throw new Error('Function not implemented.')
+                  }}
+                />
+                <Button
+                  buttonText={'삭제'}
+                  type={'deletePost'}
+                  isDisabled={false}
+                  onClickHandler={function (): void {
+                    throw new Error('Function not implemented.')
+                  }}
+                  className="text-[#000000] bg-white border-black border-2"
+                />
               </div>
-              <div className="text-[15px] font-medium text-[#486283]">
-                {data?.recruitment}
+            )}
+            {data?.peopleNumber && (
+              <div className="absolute top-[160px] left-9 flex gap-x-4 items-center">
+                <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
+                  {data?.peopleNumber}명
+                </div>
+                <div className="text-[15px] font-medium text-[#486283]">
+                  {data?.recruitment}
+                </div>
               </div>
-            </div>
+            )}
             <div className="flex absolute pr-8 left-7 top-[220px] break-all h-[70%] overflow-y-auto">
               {data?.content}
             </div>

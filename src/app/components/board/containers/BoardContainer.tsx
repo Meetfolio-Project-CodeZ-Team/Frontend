@@ -8,7 +8,12 @@ import { boardDataState } from '@/app/recoil/board'
 import { useRecoilState } from 'recoil'
 import { useRouter } from 'next/navigation'
 
-const BoardContainer = () => {
+interface BoardContainerProps {
+  nickname?: string
+  profile?: string
+}
+
+const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
   const [isJob, setIsJob] = useState(true)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
   const path = isJob ? 'employment' : 'group'
@@ -28,7 +33,7 @@ const BoardContainer = () => {
           buttonText={'글쓰기'}
           type={'addBoardBtn'}
           isDisabled={false}
-          onClickHandler={() => router.push(`/board/post/${path}`)}
+          onClickHandler={() => router.push(`/board/post/${path}?nickname=${nickname}`)}
         />
       </div>
     </div>

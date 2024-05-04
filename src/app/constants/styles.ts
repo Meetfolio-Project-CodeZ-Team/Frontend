@@ -20,6 +20,8 @@ export const BUTTON_STYLE = {
     `w-[116px] h-14 text-base text-white bg-[#486283] font-semibold rounded-[20px] ${className} `,
   editPost: (className: string) =>
     `w-20 h-[30px]text-sm font-bold bg-black text-white rounded-[25px] ${className} `,
+  deletePost: (className: string) =>
+    `w-20 h-[30px]text-sm font-bold bg-white text-black rounded-[25px] ${className} `,
   boardPost: (className: string) =>
     `w-[280px] h-[50px] text-[24px] font-semibold bg-[#D9D9D9] text-black rounded-[20px] ${className} `,
 } as const
