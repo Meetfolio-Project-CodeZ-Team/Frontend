@@ -51,7 +51,7 @@ const PostGroupContainer = () => {
       body: JSON.stringify(requestBody),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment/post`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group/post`,
       requestOptions,
     )
     router.push('/board')

@@ -42,3 +42,11 @@ interface PostEmployment {
 }
 
 type RecruitType = '웹' | '모바일' | '디자인' | 'AI' | '백엔드' | 'PM'
+
+interface GroupEmployment {
+  title: string
+  content: string
+  groupCategory: GroupBoardTypes
+  recruitment: string
+  peopleNumber: number
+}

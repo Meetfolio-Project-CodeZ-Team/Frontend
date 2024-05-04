@@ -98,3 +98,11 @@ export const postEmployment = async (
   const url = `${SERVER_URL}/api/boards/employment`
   return await postRequest(url, boardData, accessToken)
 }
+
+export const postGroup = async (
+  accessToken: string,
+  boardData: GroupEmployment,
+) => {
+  const url = `${SERVER_URL}/api/boards/group`
+  return await postRequest(url, boardData, accessToken)
+}
