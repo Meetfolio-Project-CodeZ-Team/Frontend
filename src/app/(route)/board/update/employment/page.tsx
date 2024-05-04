@@ -5,11 +5,10 @@ import Header from '@/app/components/layout/Header'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-export default function PostEmploymentPage() {
+export default function PatchEmploymentPage() {
   const params = useSearchParams()
   const id = params.get('id')
   const [data, setData] = useState<BoardInfoTypes | null>(null)
-  console.log('수정 처음 가져온 데이터', data)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +22,6 @@ export default function PostEmploymentPage() {
         },
       )
       const resData = await response.json()
-      console.log('수정 useEffect통해 가져온 데이터', resData)
       setData(resData.result.boardInfo)
     }
     fetchData()

@@ -1,7 +1,7 @@
 'use client'
 
 import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Keyword from '../../signup/onboard/Keyword'
 import Input from '../../common/Input'
 import Button from '../../common/Button'
@@ -12,7 +12,12 @@ import {
   RECRUIT_KEYWORD,
 } from '@/app/constants/board'
 
-const PostGroupContainer = () => {
+interface PostGroupContainerProps {
+  isEdit?: boolean
+  data?: BoardInfoTypes
+}
+
+const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<RecruitType | null>(null)
   const [clickedCategory, setClickedCategory] =
     useState<GroupBoardTypes | null>(null)
@@ -26,6 +31,20 @@ const PostGroupContainer = () => {
     member !== '' &&
     clickedCategory != null
   const router = useRouter()
+
+  const method = isEdit ? 'PATCH' : 'POST'
+  const path = isEdit ? `patch?id=${data?.boardId}` : 'post'
+
+  useEffect(() => {
+    const fillData = () => {
+      setClickedKeyword(data?.recruitment || '백엔드')
+      setTitle(data?.title || '')
+      setContent(data?.content || '')
+      setClickedCategory(data?.groupCategory || '스터디')
+      setMember(String(data?.peopleNumber) || '0')
+    }
+    if (isEdit) fillData()
+  }, [])
 
   const handleClick = (keyword: RecruitType) => {
     setClickedKeyword(keyword)
@@ -44,14 +63,14 @@ const PostGroupContainer = () => {
       peopleNumber: Number(member),
     }
     const requestOptions = {
-      method: 'POST',
+      method: method,
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
     }
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group/post`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group/${path}`,
       requestOptions,
     )
     router.push('/board')

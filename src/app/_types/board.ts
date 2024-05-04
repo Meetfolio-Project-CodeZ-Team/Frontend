@@ -8,8 +8,8 @@ interface BoardInfoTypes {
   likeStatus: 'ACTIVE' | 'INACTIVE'
   commentCount: number
   jobCategory: onlyJobType
-  groupCategory: string
-  recruitment: string
+  groupCategory: GroupBoardTypes
+  recruitment: RecruitType
   peopleNumber: number
   registrationDate: string
 }
@@ -54,8 +54,8 @@ interface GroupEmployment {
 interface PatchBody {
   title: string
   content: string
-  groupCategory: string
-  recruitment:string
-  peopleNumber: 5
+  groupCategory: GroupBoardTypes
+  recruitment:RecruitType
+  peopleNumber: string
   jobKeyword: string
 }

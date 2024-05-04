@@ -37,8 +37,6 @@ const PostEmploymentContainer = ({
   }, [])
 
   const postEmployment = async () => {
-    console.log('수정시도');
-    
     const requestBody = {
       title: title,
       content: content,
