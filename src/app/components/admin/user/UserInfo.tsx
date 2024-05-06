@@ -1,12 +1,9 @@
 'use client'
-import React from 'react'
-import Icons from '../../common/Icons'
-import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from '../common/DeleteModal'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import DeleteModal from '../common/DeleteModal'
 
 interface UserInfoProps {
   registrationDate: string
