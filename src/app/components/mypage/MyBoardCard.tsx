@@ -7,12 +7,7 @@ interface MyBoardCardProps {
   title?: string
   content?: string
   boardId?: number
-  groupCategory?: string
-  recruitment?: string
   registrationDate?: string
-  memberName?: string
-  likeCount?: number
-  commentCount?: number
 }
 
 interface BoardCardDetail {
@@ -31,12 +26,8 @@ const MyBoardCard = ({
   title,
   content,
   boardId,
-  groupCategory,
-  recruitment,
+
   registrationDate,
-  memberName,
-  likeCount,
-  commentCount,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
@@ -48,55 +39,27 @@ const MyBoardCard = ({
 
   return (
     <div
-      className="w-[1085px] h-60 relative mt-[20px] cursor-pointer"
+      className="w-[1085px] h-[220px] relative mb-[10px] cursor-pointer"
       onClick={fetchBoardCards}
     >
-      <div className="w-[1085px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
-      <div className="w-[72px] h-[30px] px-3 left-[990px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
-        <div className="w-[100px] h-6 text-center text-slate-600 text-sm font-semibold leading-[22px]">
-          {groupCategory}
-        </div>
-      </div>
-      <div className="w-[47.21px] h-[50px] left-[28.33px] top-[30px] absolute rounded-full" />
-      <div className="w-[800px] h-[18px] left-[28.33px] top-[78px] absolute text-gray-900 text-[22px] font-bold leading-[30px]">
-        {title}
-      </div>
-      <div className="w-[152.96px] h-[41px] left-[28.33px] top-[18px] absolute">
-        <div className="w-[105.75px] h-[18px] left-[52px] top-[5px] absolute text-slate-600 text-[15px] font-semibold leading-[30px]">
-          {memberName}
-        </div>
-        <div className="w-[105.75px] h-[18px] left-[52px] top-[24px] absolute text-slate-600 text-xs font-normal leading-[30px]">
+      <div className="w-[1085px] h-[200px] left-0 top-0 absolute">
+        <div className="left-[1000px] top-[155px] absolute text-gray-900 text-sm font-normal leading-[30px]">
           {registrationDate}
         </div>
-        <div className="w-[37.77px] h-10 left-0 top-[7px] absolute bg-slate-600 rounded-full" />
+        <div className="w-[1085px] h-[200px] left-0 top-0 absolute border-b border-slate-600" />
+        <div className="w-[1080px] h-[39px] left-[25px] top-[15px] absolute  gap-[20px] inline-flex">
+          <div className="w-[70px] h-[35px] px-0 py-0 bg-blue-400 rounded-[30px] justify-center items-center flex">
+            <div className="w-[60px] text-center text-white text-xl font-semibold leading-[20px]">
+              # {boardId}
+            </div>
+          </div>
+          <div className="text-gray-900 text-[24px] font-semibold leading-[35px] ">
+            {title}
+          </div>
+        </div>
       </div>
-      <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug">
+      <div className="w-[1040px] h-[72px] left-[30px] top-[80px] absolute text-gray-900 text-[15px] font-medium leading-snug">
         {content}
-        <br />
-        <br />{' '}
-      </div>
-      <div className="w-[1040px] h-[37px] left-[29px] top-[200px] justify-center items-center gap-[680px] inline-flex absolute">
-        <div className="w-[250px] h-[37px] text-slate-600 text-[15px] font-medium  leading-snug">
-          {recruitment}
-        </div>
-        <div className="h-[37px] justify-start items-center gap-[18px] flex">
-          <div className="h-[37px] justify-between items-center flex">
-            <div className="w-4 h-4 relative mr-3 mb-[22px] ">
-              <Like color={'black'} size={24} />
-            </div>
-            <div className="w-[20px]  text-gray-900 text-lg font-normal mb-3  leading-[30px]">
-              {likeCount}
-            </div>
-          </div>
-          <div className="h-[37px] justify-start items-center  flex">
-            <div className="w-4 h-4 relative mr-3 mb-[18px] ">
-              <Comment color={'black'} size={24} />
-            </div>
-            <div className="w-5 text-gray-900 text-lg font-normal mb-3 mr-3 leading-[30px]">
-              {commentCount}
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

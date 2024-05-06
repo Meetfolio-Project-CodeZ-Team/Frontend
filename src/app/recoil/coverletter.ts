@@ -20,7 +20,7 @@ export const covletData = atom<CoverLetterDataTypes>({
   default: {
     question: '',
     answer: '',
-    shareType: '',
+    shareType: 'PRIVATE',
     keyword1: '',
     keyword2: '',
     jobKeyword: '',

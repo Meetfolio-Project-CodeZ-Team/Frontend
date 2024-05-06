@@ -4,7 +4,9 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import { covletData, covletNum } from '../../recoil/coverletter'
-import MyExpCard from '../mypage/MyExpCard'
+import ExpCard from './ExpCard'
+import { Switch } from '@headlessui/react'
+import ExpCardDetail from './ExpCardDetail'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
@@ -18,12 +20,50 @@ interface ExperienceCard {
   experienceType: string
   jobKeyword: onlyJobType
   stack: string
+  task:string
+  motivation:string
+  detail:string
+  advance:string
+  closeModal:() => void
+}
+
+interface ExperienceCardDetail {
+  experienceId: number
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  jobKeyword: onlyJobType
+  stack: string
+  task: string
+  motivation: string
+  detail: string
+  advance: string
+  closeModal: () => void
 }
 
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+  const [enabled, setEnabled] = useState(false)
+  const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null);
+
+  const handleCardSelect = (card: ExperienceCard) => {
+    setSelectedCard(card); // 선택된 카드 정보 설정
+  };
+
+  // 경험카드 상세 정보 닫기 핸들러
+  const handleCloseDetail = () => {
+    setSelectedCard(null); // 선택된 카드 정보 초기화
+  };
+
+  const handleToggle = () => {
+    setEnabled(!enabled)
+    const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
+    setCoverLetterData({ ...coverletterData, shareType: newShareType })
+    console.log(coverletterData, '자소서 데이터')
+  }
 
   useEffect(() => {
     console.log('카드 데이터 가져옴')
@@ -125,34 +165,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   return (
     <div className="w-[1440px] h-[1319px] relative">
-      <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[179px] left-[10px] top-[750px] absolute">
-          <div className="w-[941px] h-[179px] left-0 top-0 absolute bg-white rounded-[30px] shadow" />
-          <div className="left-[223px] top-[24px] absolute text-center text-black text-2xl font-bold  leading-9">
-            작성한 자기소개서를 다른 사용자에게 공개하시겠어요?
-          </div>
-          <div className="w-[428px] h-[60px] left-[240px] top-[89px] absolute justify-start items-start gap-[98px] inline-flex">
-            <div className="w-[180px] h-[60px] relative">
-              <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PUBLIC' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('PUBLIC', event)}
-                type="button"
-              >
-                공개
-              </button>
-            </div>
-            <div className="w-[180px] h-[60px] relative">
-              <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PRIVATE' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('PRIVATE', event)}
-                type="button"
-              >
-                비공개
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="w-[1440px] h-[1187px] left-0 top-0 absolute"></div>
       <div className="w-[941px] h-[740px] left-[10px] top-[18px] absolute">
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
@@ -165,7 +178,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                stroke-width="1.8"
                 stroke="currentColor"
                 className="w-6 h-6"
               >
@@ -215,9 +228,25 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           <div className="w-[194.65px] h-[48.86px] left-[8px] top-[10px] absolute text-start text-black text-2xl font-bold  leading-9">
             새 자기소개서
           </div>
+          <div className="flex items-center justify-center absolute left-[750px] top-[18px]">
+            <Switch
+              checked={enabled}
+              onChange={handleToggle}
+              className={`${enabled ? 'bg-blue-400' : 'bg-gray-200'}
+          relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none`}
+            >
+              <span
+                className={`${enabled ? 'translate-x-6' : 'translate-x-1'}
+            inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+              />
+            </Switch>
+            <span className="ml-3 text-sm font-medium">
+              {enabled ? '공개' : '비공개'}
+            </span>
+          </div>
         </div>
       </div>
-      <div className="w-[870px] h-[60px] left-[59px] top-[950px] absolute">
+      <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
         </div> */}
@@ -247,11 +276,13 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         </div>
         <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] ">
-            {expCards.map((card) => (
-              <div className="mb-[20px]">
-                <MyExpCard key={card.experienceId} {...card} />
-              </div>
-            ))}
+          {selectedCard ? (
+          <ExpCardDetail {...selectedCard} closeModal={handleCloseDetail} />
+        ) : (
+          expCards.map((card) => (
+            <ExpCard key={card.experienceId} {...card} onClick={() => handleCardSelect(card)} />
+          ))
+        )}
           </div>
         </div>
         {/* //자소서 작성 중 경험카드 세부조회
