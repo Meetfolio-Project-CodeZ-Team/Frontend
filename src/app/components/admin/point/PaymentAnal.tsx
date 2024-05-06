@@ -1,4 +1,5 @@
 import { PAYMENT_H } from '@/app/constants/admin'
+import { Dispatch, SetStateAction } from 'react'
 import PointInfo from './PointInfo'
 
 interface PaymentAnalProps {
@@ -6,13 +7,41 @@ interface PaymentAnalProps {
   month: string
   totalSales: number
   paymentList: PaymentListTypes[]
+  setYear: Dispatch<SetStateAction<string>>
+  setMonth: Dispatch<SetStateAction<string>>
 }
 const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
-  const { year, month, totalSales, paymentList } = paymentAnal
+  const { year, month, totalSales, paymentList, setYear, setMonth } =
+    paymentAnal
+  const handleMonthChange = (increment: number) => {
+    if (month === '12' && increment === +1) {
+      let newMonth = 1
+      let newYear = parseInt(year) + increment
+      setMonth(newMonth.toString())
+      setYear(newYear.toString())
+    } else if (month === '1' && increment === -1) {
+      let newMonth = 12
+      let newYear = parseInt(year) + increment
+      setMonth(newMonth.toString())
+      setYear(newYear.toString())
+    } else {
+      let newMonth = parseInt(month) + increment
+      setMonth(newMonth.toString())
+    }
+  }
+
   return (
-    <div className="flex flex-col items-center gap-y-6 mt-[62px]">
-      <div className="text-[32px] font-bold">
-        {year}년 {month}월
+    <div className="flex flex-col items-center gap-y-6 mt-[36px]">
+      <div className=" flex text-[32px] font-bold gap-x-8">
+        <div onClick={() => handleMonthChange(-1)} className="cursor-pointer">
+          {'<'}
+        </div>
+        <div>
+          {year}년 {month}월
+        </div>
+        <div onClick={() => handleMonthChange(+1)} className="cursor-pointer">
+          {'>'}
+        </div>
       </div>
       <div className="flex items-center w-[949px] justify-center text-white text-[20px] font-bold h-[auto] rounded-[5px] bg-black py-[10px]">
         총 월 매출 {totalSales} 원

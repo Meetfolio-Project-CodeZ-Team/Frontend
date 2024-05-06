@@ -73,6 +73,8 @@ const PointsContainer = () => {
             month={month}
             totalSales={paymentData?.totalSales || 0}
             paymentList={paymentData?.paymentInfo.paymentList || []}
+            setYear={setYear}
+            setMonth={setMonth}
           />
         )}
       </div>
