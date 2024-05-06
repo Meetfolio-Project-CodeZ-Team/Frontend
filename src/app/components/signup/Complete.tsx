@@ -1,11 +1,10 @@
-import Image from 'next/image'
-import Button from '../common/Button'
 import { COMPLETE } from '@/app/constants/auth'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import Button from '../common/Button'
 
 const Complete = () => {
   const router = useRouter()
-
   return (
     <div className="flex flex-col items-center mt-[120px] mb-[80px]">
       <Image width={80} height={60} src="/Images/check.png" alt="checkImage" />
@@ -28,6 +27,7 @@ const Complete = () => {
         isDisabled={false}
         onClickHandler={() => router.push('/login')}
       />
+      
     </div>
   )
 }

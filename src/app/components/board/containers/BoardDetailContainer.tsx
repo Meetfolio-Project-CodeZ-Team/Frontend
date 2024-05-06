@@ -1,16 +1,16 @@
 'use client'
 import { NULLPOST } from '@/app/constants/board'
+import { useModal } from '@/app/hooks/useModal'
 import { selectedPostId } from '@/app/recoil/board'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import CommentContainer from './CommentContainer'
-import Button from '../../common/Button'
-import { useEffect, useState } from 'react'
 import { deletePostAlert } from '@/app/utils/toast'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useModal } from '@/app/hooks/useModal'
+import { useRecoilState } from 'recoil'
 import DeleteModal from '../../admin/common/DeleteModal'
-import { useRouter } from 'next/navigation'
+import Button from '../../common/Button'
+import CommentContainer from './CommentContainer'
 
 interface BoardDetailContainer {
   nickname: string
@@ -63,19 +63,19 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
       <ToastContainer />
 
       {isSelected ? (
-        <div className="w-full h-full relative">
+        <div className="w-full h-full relative ">
           <div className="">
-            <div className="absolute left-6 top-6 text-3xl font-semibold">
+            <div className="absolute left-6 top-12 text-3xl font-semibold ">
               {data?.title}
             </div>
-            <div className="absolute right-8 top-[52px] text-sm font-normal">
+            <div className="absolute right-10 top-[68px] text-sm font-normal">
               {data?.registrationDate}
             </div>
-            <div className="absolute left-9 top-[120px] flex text-[15px] font-semibold">
+            <div className="absolute left-7 top-[136px] flex text-[15px] font-semibold">
               {data?.memberName}
             </div>
             {data?.memberName === nickname && (
-              <div className="absolute gap-x-3 right-8 top-[120px] flex text-[15px] font-semibold">
+              <div className="absolute gap-x-3 right-6 top-[136px] flex text-[15px] font-semibold">
                 <Button
                   buttonText={'수정'}
                   type={'editPost'}
@@ -101,7 +101,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
             )}
 
             {data?.peopleNumber && (
-              <div className="absolute top-[160px] left-9 flex gap-x-4 items-center">
+              <div className="absolute top-[168px] left-9 flex gap-x-4 items-center">
                 <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
                   {data?.peopleNumber}명
                 </div>
