@@ -101,7 +101,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
             )}
 
             {data?.peopleNumber && (
-              <div className="absolute top-[168px] left-9 flex gap-x-4 items-center">
+              <div className="absolute top-[168px] left-[26px] flex gap-x-4 items-center">
                 <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
                   {data?.peopleNumber}명
                 </div>

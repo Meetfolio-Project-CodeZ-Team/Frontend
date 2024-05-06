@@ -1,11 +1,11 @@
 'use client'
 
 import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { useEffect, useState } from 'react'
-import Keyword from '../../signup/onboard/Keyword'
-import Input from '../../common/Input'
-import Button from '../../common/Button'
 import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import Button from '../../common/Button'
+import Input from '../../common/Input'
+import Keyword from '../../signup/onboard/Keyword'
 
 interface PostEmploymentContainerProps {
   isEdit?: boolean
@@ -94,7 +94,9 @@ const PostEmploymentContainer = ({
           type={'boardPost'}
           isDisabled={false}
           onClickHandler={postEmployment}
-          className={contentment ? 'bg-[#4b6689] text-white' : ''}
+          className={
+            contentment ? 'bg-[#4b6689] text-white' : 'bg-[#CECECE] text-black'
+          }
         />
       </div>
     </div>
