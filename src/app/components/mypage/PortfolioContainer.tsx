@@ -37,26 +37,55 @@ const PortfolioContainer = () => {
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />
-      <div className="w-[963px] h-[970px] left-[75px] top-[42px] absolute ">
-        <div className="w-[248px] h-[30px] left-[14px] top-0 absolute justify-start items-center gap-[60px] inline-flex">
+      <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
+        <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
+        <div className="w-[145px] h-[0px] left-0 top-[-0.5px] absolute border-2 border-gray-800" />
+      </div>
+      <div className="w-[1060px] h-[30px] left-[82px] top-[129px] absolute flex justify-between items-center">
+        <div className="flex gap-[60px]">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
             <Link href="/mypage">내 자기소개서</Link>
           </div>
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/mypage/myexperience">경험 카드</Link>
+            <Link href="/mypage/myexperience">내 경험카드</Link>
           </div>
         </div>
-        <div className="w-[963px] h-[830px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[0px] gap-[20px]">
-            {covletCards.map((a) => (
-              <MyCovletCard key={a.coverLetterId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
-            ))}
-          </div>
+        <div className="flex items-center justify-start gap-2 bg-blue-100 p-2 rounded-[10px]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-5 h-5"
+          >
+            <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
+            <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
+          </svg>
+
+          <span className="text-black text-sm font-semibold">
+            <Link href="/coverletter">자기소개서 작성하러 가기</Link>
+          </span>
         </div>
-        <div className="w-[1100px] h-[1.42px] relative mt-[35px] justify-center items-center mx-auto ">
-          <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-          <div className="w-[140px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
+      </div>
+      <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+        <div className="w-[500px] h-full ml-[60px] gap-[20px]">
+        {covletCards.length > 0 ? (
+            covletCards.map((a) => (
+              <MyCovletCard key={a.coverLetterId} {...a} />
+            ))
+          ) : (
+            <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
+              <div className="text-center">
+                <p className="text-xl font-semibold">아직 작성한 자기소개서가 없네요!</p>
+                <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
+                  <Link href="/coverletter">자기소개서 작성하러 가기</Link>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
+      </div>
+      <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
+        포트폴리오
       </div>
     </div>
   )

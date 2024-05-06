@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 
 import Link from 'next/link'
 import { userData } from '@/app/recoil/mypage'
@@ -111,6 +111,9 @@ const EditUserInfo = () => {
         const data = await response.json()
         console.log('유저 정보 데이터', data.result) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result)
+        setMajor(data.result.major)
+      setGrade(data.result.grade)
+      setClickedKeyword(data.result.jobKeyword)
       } catch (error) {
         console.error(error)
       }
@@ -192,7 +195,7 @@ const EditUserInfo = () => {
               />
               <DropDownMajor
                 options={CLASS_ENUM[college]}
-                title={'학과를 선택'}
+                title={major}
                 onSelect={(option) => setMajor(option)}
               />
             </div>
@@ -204,7 +207,7 @@ const EditUserInfo = () => {
           </div>
           <DropDownOB
             options={GRADE}
-            title="본인 학년 선택"
+            title={grade}
             onSelect={(option) => setGrade(option)}
           />
         </div>
