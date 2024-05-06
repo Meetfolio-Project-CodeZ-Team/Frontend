@@ -75,7 +75,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               type={'auth'}
               isDisabled={false}
               onClickHandler={() =>
-                usingPoint(cost, 'USE_COVER_LETTER  ', coverLetterId)
+                usingPoint(cost, 'USE_COVER_LETTER', coverLetterId)
               }
               className="bg-[black] text-white"
             />
