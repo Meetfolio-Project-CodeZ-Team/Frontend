@@ -19,7 +19,7 @@ export const BUTTON_STYLE = {
   addBoardBtn: (className: string) =>
     `w-[92px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
   authCode: (className: string) =>
-    `w-[116px] h-14 text-base text-white bg-[#486283] font-semibold rounded-[20px] ${className} `,
+    `w-[116px] h-14 text-base font-semibold rounded-[20px] ${className} `,
   editPost: (className: string) =>
     `w-20 h-[30px]text-sm font-bold bg-black text-white rounded-[25px] ${className} `,
   deletePost: (className: string) =>

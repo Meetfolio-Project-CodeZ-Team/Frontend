@@ -9,7 +9,7 @@ const Keyword = ({ keyword, clickKeyword, bg }: KeywordProps) => {
 
   const textStyle =
     keyword === clickKeyword
-      ? 'text-white bg-[#486283]'
+      ? 'text-white bg-[#7AAAE8]'
       : `${normal} text-black`
   return (
     <div
