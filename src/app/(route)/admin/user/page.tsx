@@ -1,16 +1,17 @@
 'use client'
+
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
-import DashboardContainer from '@/app/components/admin/containers/DashboardContainer'
+import UserContainer from '@/app/components/admin/containers/UserContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 
-export default function AdminPage() {
-  const [data, setData] = useState<ResponseDashBoard | null>(null)
+const userPage = () => {
+  const [data, setData] = useState<ResponseUser | null>(null)
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/dashboard`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user`,
       )
       const resData = await response.json()
       setData(resData.result)
@@ -18,15 +19,13 @@ export default function AdminPage() {
     fetchData()
   }, [])
   if (data) {
-    const { aiServiceInfo, membersInfo, pointInfo, paymentInfo } = data
-
     return (
       <section className="flex flex-col min-h-screen relative">
         <Header isAdmin={true} />
-        <div className="flex w-[full] mb-[200px]">
-          <AdminNavContainer selected={'dashboard'} />
+        <div className="flex w-[full] h-[auto]">
+          <AdminNavContainer selected={'user'} />
           <div className="flex-grow">
-            <DashboardContainer DashboardInfo={data} />
+            <UserContainer userInfoData={data} />
           </div>
         </div>
         <Footer />
@@ -34,3 +33,5 @@ export default function AdminPage() {
     )
   }
 }
+
+export default userPage
