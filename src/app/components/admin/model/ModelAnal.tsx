@@ -1,16 +1,15 @@
-import React from 'react'
-import Icons from '../../common/Icons'
-import { model, point } from '@/app/ui/IconsPath'
+import { model } from '@/app/ui/IconsPath'
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
   BarElement,
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
   Title,
   Tooltip,
-  Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import Icons from '../../common/Icons'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -70,20 +69,20 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
       },
     }
     const labels = [
-      modelEvaluation[0].modelName || '',
-      modelEvaluation[1].modelName || '',
-      modelEvaluation[2].modelName || '',
+      modelEvaluation[0].modelName || 'example1',
+      modelEvaluation[1].modelName || 'example2',
+      modelEvaluation[2].modelName || 'example3',
     ]
     const value = [
       [
-        modelEvaluation[0].accuracy || 0,
-        modelEvaluation[1].accuracy || 0,
-        modelEvaluation[2].accuracy || 0,
+        modelEvaluation[0].accuracy || 91,
+        modelEvaluation[1].accuracy || 80,
+        modelEvaluation[2].accuracy || 76,
       ],
       [
-        modelEvaluation[0].loss || 0,
-        modelEvaluation[1].loss || 0,
-        modelEvaluation[2].loss || 0,
+        modelEvaluation[0].loss || 2,
+        modelEvaluation[1].loss || 3,
+        modelEvaluation[2].loss || 0.7,
       ],
     ]
     const acc = {

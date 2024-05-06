@@ -2,6 +2,7 @@
   "name": "meetfolio",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://kapi.kakao.com/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

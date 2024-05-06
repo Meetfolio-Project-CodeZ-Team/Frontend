@@ -1,7 +1,6 @@
-import React from 'react'
-import Icons from '../../common/Icons'
-import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
+import { boardDelete } from '@/app/ui/IconsPath'
+import Icons from '../../common/Icons'
 import DeleteModal from '../common/DeleteModal'
 
 interface ModelManageInfoProps {
@@ -47,7 +46,12 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
           <Icons name={boardDelete} />
         </div>
         <div onClick={handleModalClick}>
-          {isOpen && <DeleteModal closeModal={closeModal} />}
+          {isOpen && (
+            <DeleteModal
+              closeModal={closeModal}
+              text="해당 데이터를 삭제하시겠습니까?"
+            />
+          )}
         </div>
       </div>
     </div>

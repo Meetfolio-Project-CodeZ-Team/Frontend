@@ -59,24 +59,6 @@ export const PAYMENT_H = ['결제 일시', '이메일', '결제 금액', '충전
 
 export const MODEL_NAV = ['AI 서비스 통계', '학습  관리', '버전 관리']
 
-export const MODEL_NAME = ['model_ver_1', 'model_ver_2', 'model_ver_3']
-export const MODEL_EVALUATION = [
-  {
-    modelName: 'model_ver_1',
-    accuracy: 80,
-    loss: 20.01,
-  },
-  {
-    modelName: 'model_ver_2',
-    accuracy: 90,
-    loss: 10.01,
-  },
-  {
-    modelName: 'model_ver_3',
-    accuracy: 30,
-    loss: 80.01,
-  },
-]
 export const MODEL_MANAGE_H = [
   '모델 생성일',
   '모델명',
@@ -101,3 +83,8 @@ export const ADD_TRAIN_H = [
   '지원 직무',
   '자기소개서 답변',
 ]
+
+export const BOARD_ENUM = {
+  '그룹원 모집': 'GROUP',
+  '취업 정보': 'EMPLOYMENT',
+}

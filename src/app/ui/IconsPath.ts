@@ -120,3 +120,14 @@ export const comment = {
     strokeWidth: 2,
   },
 }
+
+export const pointW = {
+  path: 'M7.75 2.352C4.42479 3.39695 2 6.64947 2 10.5C2 14.3505 4.42479 17.6031 7.75 18.648M25 10.5C25 15.1944 21.3959 19 16.95 19C12.5041 19 8.9 15.1944 8.9 10.5C8.9 5.80558 12.5041 2 16.95 2C21.3959 2 25 5.80558 25 10.5Z',
+  width: 28,
+  height: 28,
+  fill: 'none',
+  options: {
+    stroke: 'white',
+    strokeWidth: 3,
+  },
+}

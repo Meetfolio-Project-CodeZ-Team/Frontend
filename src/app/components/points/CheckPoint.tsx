@@ -16,7 +16,6 @@ interface CheckPointProps {
 const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [myPoint, setMyPoint] = useState(0)
-  console.log(coverLetterId, '자소서 번호')
 
   useEffect(() => {
     const fetchData = async () => {

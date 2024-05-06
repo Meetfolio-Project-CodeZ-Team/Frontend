@@ -15,18 +15,18 @@ export const JOBKEYWORD: onlyJobType[] = [
 ] as const
 
 export const COMPLETE = [
-  '모든 회원가입 절차가 완료되었습니다.',
+  '모든 회원가입 절차가 완료되었어요.',
   '로그인 후 ',
   'Meetfolio',
   '의 다양한 서비스를 이용해보세요!',
-  '*회원 가입 내역 확인 및 수정은 마이페이지 - 개인정보 수정에서 가능합니다.',
+  '*회원 가입 내역 확인 및 수정은 마이페이지 - 개인정보 수정에서 가능해요.',
 ]
 
 export const GRADE: GradeEnum[] = ['1학년', '2학년', '3학년', '4학년', '졸업생']
 
 export const JOBKEYWORD_USER: JobType[] = [...JOBKEYWORD, '전체']
 
-export const Board = ['그룹원 모집', '취업정보']
+export const Board: BoardTypes[] = ['그룹원 모집', '취업 정보']
 
 export const GRADE_ENUM = {
   '1학년': 'FRESHMAN',

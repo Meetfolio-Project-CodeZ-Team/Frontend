@@ -1,9 +1,22 @@
 'use client'
 
-import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
-export default function MainPage() {
+export default function ErrorPage({
+  error,
+}: {
+  error: Error & { digest?: string }
+}) {
+  const router = useRouter()
+  // useEffect(() => {
+  //   document.cookie =
+  //     'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  //   document.cookie =
+  //     'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  //   router.push('/login')
+  // }, [error])
   return (
     <section className="flex flex-col items-center min-h-screen">
       <Header />

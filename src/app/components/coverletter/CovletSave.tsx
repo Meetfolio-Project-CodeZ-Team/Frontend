@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import MyExpCard from '../mypage/MyExpCard'
 import { successCopy } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
+import CheckPoint2 from '../points/CheckPoint2'
 
 interface ExperienceCard {
   experienceId: number
@@ -244,7 +245,7 @@ const CovletSave = () => {
               AI 직무 역량 분석
             </button>
             {isOpen && (
-              <CheckPoint
+              <CheckPoint2
                 closeCheck={closeModal}
                 cost={300}
                 coverLetterId={coverletterData.coverLetterId || 0}

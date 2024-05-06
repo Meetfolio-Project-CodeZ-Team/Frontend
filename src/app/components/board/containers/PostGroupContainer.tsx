@@ -1,16 +1,15 @@
 'use client'
 
-import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
-import { useEffect, useState } from 'react'
-import Keyword from '../../signup/onboard/Keyword'
-import Input from '../../common/Input'
-import Button from '../../common/Button'
-import { useRouter } from 'next/navigation'
 import {
   GROUP_ENUM,
   RECRUIT_CATEGORY,
   RECRUIT_KEYWORD,
 } from '@/app/constants/board'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import Button from '../../common/Button'
+import Input from '../../common/Input'
+import Keyword from '../../signup/onboard/Keyword'
 
 interface PostGroupContainerProps {
   isEdit?: boolean
@@ -146,7 +145,9 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
           type={'boardPost'}
           isDisabled={false}
           onClickHandler={postGroup}
-          className={contentment ? 'bg-[#4b6689] text-white' : ''}
+          className={
+            contentment ? 'bg-[#4b6689] text-white' : 'bg-[#CECECE] text-black'
+          }
         />
       </div>
     </div>
