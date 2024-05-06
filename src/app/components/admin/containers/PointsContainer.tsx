@@ -1,9 +1,9 @@
 'use client'
 import { MONTH, POINT_ANAL, YEAR } from '@/app/constants/admin'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import CalendarDropDown from '../point/CalendarDropDown'
 import PaymentAnal from '../point/PaymentAnal'
 import PointAnalDetail from '../point/PointAnalDetail'
-import CalendarDropDown from '../point/CalendarDropDown'
 
 const PointsContainer = () => {
   const [isPoint, setIsPoint] = useState(true)
@@ -39,7 +39,7 @@ const PointsContainer = () => {
             {POINT_ANAL[1]}
           </div>
         </div>
-        <div className="flex gap-x-0.5 mt-4">
+        <div className="flex gap-x-0.5 mt-4 text-2xl">
           <CalendarDropDown
             options={YEAR}
             title={'년'}
@@ -64,6 +64,8 @@ const PointsContainer = () => {
             total={pointData?.totalPoint || 0}
             year={year}
             month={month}
+            setYear={setYear}
+            setMonth={setMonth}
           />
         ) : (
           <PaymentAnal
@@ -71,6 +73,8 @@ const PointsContainer = () => {
             month={month}
             totalSales={paymentData?.totalSales || 0}
             paymentList={paymentData?.paymentInfo.paymentList || []}
+            setYear={setYear}
+            setMonth={setMonth}
           />
         )}
       </div>

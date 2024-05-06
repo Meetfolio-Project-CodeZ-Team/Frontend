@@ -1,12 +1,9 @@
 'use client'
-import React from 'react'
-import Icons from '../../common/Icons'
-import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from '../common/DeleteModal'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import DeleteModal from '../common/DeleteModal'
 
 interface UserInfoProps {
   registrationDate: string
@@ -57,8 +54,8 @@ const UserInfo = (userInfo: UserInfoProps) => {
         <div className="w-[107px] text-center">{jobKeyword}</div>
         <div className="w-[152px] text-center">{point}</div>
         <div
-          className={`ml-[26px] flex items-center justify-center cursor-pointer w-[68px] h-10 ${isActive ? 'bg-[#7AAAE8] text-white' : 'bg-[#CED7E4] text-[#486284]'}  text-base p-2 font-semibold rounded-[10px]`}
-          onClick={openModal}
+          className={`ml-[26px] flex items-center justify-center w-[68px] h-10 ${isActive ? 'cursor-pointer bg-[#7AAAE8] text-white' : 'bg-[#CED7E4] text-[#486284]'}  text-base p-2 font-semibold rounded-[10px]`}
+          onClick={isActive ? openModal : () => console.log('휴면중')}
         >
           {isActive ? '활성' : '비활성'}
         </div>
@@ -68,6 +65,7 @@ const UserInfo = (userInfo: UserInfoProps) => {
             <DeleteModal
               closeModal={closeModal}
               deleteUser={() => deleteUser(userId)}
+              text="해당 회원을 비활성화 하겠습니까?"
             />
           )}
         </div>

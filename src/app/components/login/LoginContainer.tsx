@@ -1,16 +1,16 @@
 'use client'
 
-import { useState } from 'react'
-import Button from '../common/Button'
-import Input from '../common/Input'
-import { useRouter } from 'next/navigation'
 import { SIGNUP } from '@/app/constants/auth'
+import { eye } from '@/app/ui/eye'
 import { failLogin } from '@/app/utils/toast'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Button from '../common/Button'
 import Icons from '../common/Icons'
-import { eye } from '@/app/ui/eye'
-import Link from 'next/link'
+import Input from '../common/Input'
 
 const LoginContainer = () => {
   const router = useRouter()
@@ -49,7 +49,7 @@ const LoginContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-[50px] mb-10 gap-y-12">
+    <div className="flex flex-col items-center justify-center mt-[50px] mb-[16%] gap-y-12">
       <ToastContainer />
       <div className="text-5xl font-semibold">로그인</div>
       <div className="flex flex-col gap-y-5">

@@ -1,8 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import Button from '../../common/Button'
-import Input from '../../common/Input'
 import {
   CLASS_ENUM,
   COLLEGE,
@@ -12,15 +9,18 @@ import {
   JOBKEYWORD,
   SIGNUP,
 } from '@/app/constants/auth'
-import Keyword from '../onboard/Keyword'
-import DropDownOB from '../onboard/dropdown/DropDownOB'
-import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
+import { pwAlert } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { pwAlert } from '@/app/utils/toast'
+import { useRecoilState } from 'recoil'
+import Button from '../../common/Button'
+import Input from '../../common/Input'
+import Keyword from '../onboard/Keyword'
 import DropDownMajor from '../onboard/dropdown/DropDownMajor'
+import DropDownOB from '../onboard/dropdown/DropDownOB'
 
 const OnBoardContainer = () => {
   const router = useRouter()
@@ -70,7 +70,7 @@ const OnBoardContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-16 mb-4 min-h-screen">
+    <div className="flex flex-col items-center mt-16 mb-[9%]">
       <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[64px] mb-6">회원가입</div>
       <div className="text-2xl font-medium leading-[45px] mb-7">

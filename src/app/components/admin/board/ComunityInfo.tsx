@@ -1,7 +1,6 @@
-import React from 'react'
-import Icons from '../../common/Icons'
-import { boardDelete } from '@/app/ui/IconsPath'
 import { useModal } from '@/app/hooks/useModal'
+import { boardDelete } from '@/app/ui/IconsPath'
+import Icons from '../../common/Icons'
 import DeleteModal from '../common/DeleteModal'
 
 interface ComunityInfoProps {
@@ -31,7 +30,12 @@ const ComunityInfo = (userInfo: ComunityInfoProps) => {
           <Icons name={boardDelete} />
         </div>
         <div onClick={handleModalClick}>
-          {isOpen && <DeleteModal closeModal={closeModal} />}
+          {isOpen && (
+            <DeleteModal
+              closeModal={closeModal}
+              text={'정말 삭제하시겠습니까?'}
+            />
+          )}
         </div>
       </div>
     </div>
