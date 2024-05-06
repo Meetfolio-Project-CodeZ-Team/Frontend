@@ -84,15 +84,9 @@ const MyPointContainer = () => {
           <div className="w-[100px] h-[0px] left-0 top-[-0.5px] absolute border-2 border-gray-800" />
         </div>
         <div className="h-[39px] relative">
-          <div className="w-[1060px] h-[27px] left-0 top-0 absolute gap-[220px] items-center inline-flex">
-            <div className="w-[115px] ">
-              <span className="text-black text-lg font-semibold leading-[27px]">
-                {' '}
-                사용일{' '}
-              </span>
-              <span className="text-black text-lg font-medium leading-[27px]">
-                {' '}
-              </span>
+          <div className="w-[1000px] h-[27px] left-[50px] top-0 absolute gap-[218px] items-center inline-flex">
+            <div className="text-black text-lg font-semibold leading-[27px]">
+              사용 일시
             </div>
             <div className="text-black text-lg font-normal leading-[27px]">
               사용 포인트
@@ -107,7 +101,7 @@ const MyPointContainer = () => {
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1060px] h-[750px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1065px] h-[750px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-full h-full ml-[0px] gap-[10px] flex flex-col">
           {pointCards.map((a) => (
             <PointCard key={a.createdAt} {...a} />
