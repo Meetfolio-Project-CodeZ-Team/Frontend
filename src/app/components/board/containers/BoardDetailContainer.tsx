@@ -94,6 +94,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                     <DeleteModal
                       closeModal={closeModal}
                       deleteUser={() => deletePost(data?.boardId || 0)}
+                      text='해당 게시물을 삭제하시겠습니까?'
                     />
                   )}
                 </div>
