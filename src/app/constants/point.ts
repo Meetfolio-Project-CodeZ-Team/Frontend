@@ -3,9 +3,11 @@ export const CHECK_POINT = [
   '내 포인트',
   '사용할 포인트',
   '사용 후 잔여 포인트',
+  '포인트를 사용하여 AI 솔루션을 받아보세요.',
 ]
 
 export const CHECK_BUTTON = ['충전하기', '사용하기']
+export const CHECK_BUTTON2 = ['돌아가기', '사용하기']
 
 export const CHARGE_POINT = [
   '포인트 충전',
