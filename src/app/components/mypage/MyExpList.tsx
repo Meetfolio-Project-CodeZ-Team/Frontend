@@ -71,18 +71,24 @@ const MyExpList = () => {
       </div>
       <div className='w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide'>
       <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
-        {expCards.map((card) => (
-          <MyExpCard key={card.experienceId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
-        ))}
+        
+        {expCards.length > 0 ? (
+            expCards.map((a) => (
+              <MyExpCard key={a.experienceId} {...a} />
+            ))
+          ) : (
+            <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
+              <div className="text-center">
+                <p className="text-xl font-semibold">아직 생성된 경험카드가 없습니다.</p>
+                <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
+                  <Link href="/experience">경험카드 만들러 가기</Link>
+                </button>
+              </div>
+            </div>
+          )}
       </div>
       </div>
-      {/* <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-        <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-        {expCards.map((card) => (
-          <MyExpCard key={card.experienceId} {...card} /> // 데이터를 MyExpCard 컴포넌트에 전달
-        ))}
-        </div>
-      </div> */}
+      
       <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포트폴리오
       </div>
