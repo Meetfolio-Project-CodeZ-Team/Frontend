@@ -64,6 +64,7 @@ interface MemberInfoPoint {
   profile: string
   major: string
 }
+
 interface PaymentListTypes {
   createdAt: string
   payment: number
@@ -114,4 +115,14 @@ interface datasetInfoTypes {
   job: string
   domain: string
   url: string
+}
+
+type BoardTypes ='그룹원 모집' | '취업 정보'
+
+interface ResponseBoardData {
+  boardId: number
+  createdAt: string
+  boardType: 'EMPLOYMENT' | 'GROUP'
+  memberName: string
+  title: string
 }
