@@ -83,6 +83,8 @@ export const postUsingPoint = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}/points`
+  console.log(id, '로 포인트', point, '사용')
+
   return await postRequest(url, point, accessToken)
 }
 
@@ -115,7 +117,7 @@ export const kakaoRequest = async (body: any = null) => {
     const response = await fetch('https://kapi.kakao.com/v1/payment/ready', {
       method: 'POST',
       headers: {
-        "Content-type": `application/x-www-form-urlencoded;charset=utf-8`,
+        'Content-type': `application/x-www-form-urlencoded;charset=utf-8`,
         Authorization: `KakaoAK 11bda90090848727d27f3975448c2036`,
       },
       body: JSON.stringify(body),
