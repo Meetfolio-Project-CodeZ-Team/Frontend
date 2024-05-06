@@ -79,7 +79,8 @@ const MyExpList = () => {
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">
-                <p className="text-xl font-semibold">아직 생성된 경험카드가 없습니다.</p>
+                <p className="text-xl font-semibold">아직 생성한 경험카드가 없네요!</p>
+                
                 <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
                   <Link href="/experience">경험카드 만들러 가기</Link>
                 </button>

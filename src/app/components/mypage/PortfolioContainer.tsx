@@ -75,7 +75,7 @@ const PortfolioContainer = () => {
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">
-                <p className="text-xl font-semibold">아직 작성된 자기소개서가 없습니다.</p>
+                <p className="text-xl font-semibold">아직 작성한 자기소개서가 없네요!</p>
                 <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
                   <Link href="/coverletter">자기소개서 작성하러 가기</Link>
                 </button>
