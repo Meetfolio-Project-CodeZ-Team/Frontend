@@ -20,11 +20,11 @@ interface ExperienceCard {
   experienceType: string
   jobKeyword: onlyJobType
   stack: string
-  task:string
-  motivation:string
-  detail:string
-  advance:string
-  closeModal:() => void
+  task: string
+  motivation: string
+  detail: string
+  advance: string
+  closeModal: () => void
 }
 
 interface ExperienceCardDetail {
@@ -47,16 +47,16 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [enabled, setEnabled] = useState(false)
-  const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null);
+  const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null)
 
   const handleCardSelect = (card: ExperienceCard) => {
-    setSelectedCard(card); // 선택된 카드 정보 설정
-  };
+    setSelectedCard(card) // 선택된 카드 정보 설정
+  }
 
   // 경험카드 상세 정보 닫기 핸들러
   const handleCloseDetail = () => {
-    setSelectedCard(null); // 선택된 카드 정보 초기화
-  };
+    setSelectedCard(null) // 선택된 카드 정보 초기화
+  }
 
   const handleToggle = () => {
     setEnabled(!enabled)
@@ -185,7 +185,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+                  d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
                 />
               </svg>
             </button>
@@ -276,13 +276,17 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         </div>
         <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] ">
-          {selectedCard ? (
-          <ExpCardDetail {...selectedCard} closeModal={handleCloseDetail} />
-        ) : (
-          expCards.map((card) => (
-            <ExpCard key={card.experienceId} {...card} onClick={() => handleCardSelect(card)} />
-          ))
-        )}
+            {selectedCard ? (
+              <ExpCardDetail {...selectedCard} closeModal={handleCloseDetail} />
+            ) : (
+              expCards.map((card) => (
+                <ExpCard
+                  key={card.experienceId}
+                  {...card}
+                  onClick={() => handleCardSelect(card)}
+                />
+              ))
+            )}
           </div>
         </div>
         {/* //자소서 작성 중 경험카드 세부조회
