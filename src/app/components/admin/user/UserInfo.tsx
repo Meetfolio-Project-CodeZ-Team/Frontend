@@ -54,7 +54,7 @@ const UserInfo = (userInfo: UserInfoProps) => {
         <div className="w-[107px] text-center">{jobKeyword}</div>
         <div className="w-[152px] text-center">{point}</div>
         <div
-          className={`ml-[26px] flex items-center justify-center cursor-pointer w-[68px] h-10 ${isActive ? 'bg-[#7AAAE8] text-white' : 'bg-[#CED7E4] text-[#486284]'}  text-base p-2 font-semibold rounded-[10px]`}
+          className={`ml-[26px] flex items-center justify-center w-[68px] h-10 ${isActive ? 'cursor-pointer bg-[#7AAAE8] text-white' : 'bg-[#CED7E4] text-[#486284]'}  text-base p-2 font-semibold rounded-[10px]`}
           onClick={isActive ? openModal : () => console.log('휴면중')}
         >
           {isActive ? '활성' : '비활성'}
