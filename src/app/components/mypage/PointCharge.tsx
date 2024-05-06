@@ -22,7 +22,7 @@ interface UserPoint {
 
 interface UserPaymentProps {
   createdAt: string
-  payment:number
+  payment: number
   point: number
   totalPoint: number
 }
@@ -54,7 +54,10 @@ const PointCharge = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 충전 내역 데이터', data.result.paymentInfo.paymentList) // 타입 에러가 발생하지 않아야 함
+        console.log(
+          '유저 충전 내역 데이터',
+          data.result.paymentInfo.paymentList,
+        ) // 타입 에러가 발생하지 않아야 함
 
         setUserPayments(data.result.paymentInfo.paymentList)
       } catch (error) {
@@ -87,15 +90,9 @@ const PointCharge = () => {
           <div className="w-[100px] h-[0px] left-[110px] top-[-0.5px] absolute border-2 border-gray-800" />
         </div>
         <div className="h-[39px] relative">
-          <div className="w-[1060px] h-[27px] left-0 top-0 absolute gap-[220px] items-center inline-flex">
-            <div className="w-[115px] ">
-              <span className="text-black text-lg font-semibold leading-[27px]">
-                {' '}
-                충전일{' '}
-              </span>
-              <span className="text-black text-lg font-medium leading-[27px]">
-                {' '}
-              </span>
+          <div className="w-[1000px] h-[27px] left-[50px] top-0 absolute gap-[218px] items-center inline-flex">
+            <div className="text-black text-lg font-semibold leading-[27px]">
+              충전 일시
             </div>
             <div className="text-black text-lg font-normal leading-[27px]">
               충전 포인트

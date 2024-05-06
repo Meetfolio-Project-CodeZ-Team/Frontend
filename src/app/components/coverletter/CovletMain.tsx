@@ -4,7 +4,9 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import { covletData, covletNum } from '../../recoil/coverletter'
-import MyExpCard from '../mypage/MyExpCard'
+import ExpCard from './ExpCard'
+import { Switch } from '@headlessui/react'
+import ExpCardDetail from './ExpCardDetail'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
@@ -18,12 +20,50 @@ interface ExperienceCard {
   experienceType: string
   jobKeyword: onlyJobType
   stack: string
+  task: string
+  motivation: string
+  detail: string
+  advance: string
+  closeModal: () => void
+}
+
+interface ExperienceCardDetail {
+  experienceId: number
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  jobKeyword: onlyJobType
+  stack: string
+  task: string
+  motivation: string
+  detail: string
+  advance: string
+  closeModal: () => void
 }
 
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+  const [enabled, setEnabled] = useState(false)
+  const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null)
+
+  const handleCardSelect = (card: ExperienceCard) => {
+    setSelectedCard(card) // 선택된 카드 정보 설정
+  }
+
+  // 경험카드 상세 정보 닫기 핸들러
+  const handleCloseDetail = () => {
+    setSelectedCard(null) // 선택된 카드 정보 초기화
+  }
+
+  const handleToggle = () => {
+    setEnabled(!enabled)
+    const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
+    setCoverLetterData({ ...coverletterData, shareType: newShareType })
+    console.log(coverletterData, '자소서 데이터')
+  }
 
   useEffect(() => {
     console.log('카드 데이터 가져옴')
@@ -125,39 +165,31 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   return (
     <div className="w-[1440px] h-[1319px] relative">
-      <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[179px] left-[10px] top-[750px] absolute">
-          <div className="w-[941px] h-[179px] left-0 top-0 absolute bg-white rounded-[30px] shadow" />
-          <div className="left-[223px] top-[24px] absolute text-center text-black text-2xl font-bold  leading-9">
-            작성한 자기소개서를 다른 사용자에게 공개하시겠어요?
-          </div>
-          <div className="w-[428px] h-[60px] left-[240px] top-[89px] absolute justify-start items-start gap-[98px] inline-flex">
-            <div className="w-[180px] h-[60px] relative">
-              <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PUBLIC' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('PUBLIC', event)}
-                type="button"
-              >
-                공개
-              </button>
-            </div>
-            <div className="w-[180px] h-[60px] relative">
-              <button
-                className={`w-[180px] h-[60px] relative text-slate-600 ${coverletterData.shareType === 'PRIVATE' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-                onClick={(event) => handleButtonClick('PRIVATE', event)}
-                type="button"
-              >
-                비공개
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div className="w-[1440px] h-[1187px] left-0 top-0 absolute"></div>
       <div className="w-[941px] h-[740px] left-[10px] top-[18px] absolute">
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
-            <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[450px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
+            <button
+              onClick={handleCopyText}
+              className="absolute  top-[438px] left-[808px] right-0 mt-1 ml-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.8"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
+                />
+              </svg>
+            </button>
+            <div className="w-[113.41px] h-[35.32px] left-[710.12px] top-[450px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
               1000자 이내
             </div>
             <div className="w-[842.50px] h-[450px] left-0 top-0 absolute">
@@ -171,26 +203,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
                 className="w-full h-[440px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
-            <button
-              onClick={handleCopyText}
-              className="absolute w-[120px] top-[480px] right-0 mt-1 mr-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
-                />
-              </svg>
-              Copy Text
-            </button>
+
             <ToastContainer />
           </div>
         </div>
@@ -215,9 +228,25 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           <div className="w-[194.65px] h-[48.86px] left-[8px] top-[10px] absolute text-start text-black text-2xl font-bold  leading-9">
             새 자기소개서
           </div>
+          <div className="flex items-center justify-center absolute left-[750px] top-[18px]">
+            <Switch
+              checked={enabled}
+              onChange={handleToggle}
+              className={`${enabled ? 'bg-blue-400' : 'bg-gray-200'}
+          relative inline-flex items-center h-6 rounded-full w-11 transition-colors focus:outline-none`}
+            >
+              <span
+                className={`${enabled ? 'translate-x-6' : 'translate-x-1'}
+            inline-block w-4 h-4 transform bg-white rounded-full transition-transform`}
+              />
+            </Switch>
+            <span className="ml-3 text-sm font-medium">
+              {enabled ? '공개' : '비공개'}
+            </span>
+          </div>
         </div>
       </div>
-      <div className="w-[870px] h-[60px] left-[59px] top-[950px] absolute">
+      <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
         </div> */}
@@ -247,11 +276,17 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         </div>
         <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] ">
-            {expCards.map((card) => (
-              <div className="mb-[20px]">
-                <MyExpCard key={card.experienceId} {...card} />
-              </div>
-            ))}
+            {selectedCard ? (
+              <ExpCardDetail {...selectedCard} closeModal={handleCloseDetail} />
+            ) : (
+              expCards.map((card) => (
+                <ExpCard
+                  key={card.experienceId}
+                  {...card}
+                  onClick={() => handleCardSelect(card)}
+                />
+              ))
+            )}
           </div>
         </div>
         {/* //자소서 작성 중 경험카드 세부조회
