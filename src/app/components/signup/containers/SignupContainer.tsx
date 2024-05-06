@@ -1,15 +1,15 @@
 'use client'
 
-import { useState } from 'react'
-import Button from '../../common/Button'
-import Input from '../../common/Input'
 import { SIGNUP } from '@/app/constants/auth'
-import { useRouter } from 'next/navigation'
-import { useRecoilState } from 'recoil'
 import { emailState } from '@/app/recoil/signUp'
+import { authCodeAlert, mismatchAlert } from '@/app/utils/toast'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { authCodeAlert, mismatchAlert } from '@/app/utils/toast'
+import { useRecoilState } from 'recoil'
+import Button from '../../common/Button'
+import Input from '../../common/Input'
 
 const SignupContainer = () => {
   const [email, setEmail] = useRecoilState(emailState)
@@ -54,7 +54,7 @@ const SignupContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-[80px] mb-12">
+    <div className="flex flex-col items-center mt-[80px] mb-[18%]">
       <ToastContainer style={{ width: 400, height: 180 }} />
       <div className="text-5xl font-semibold leading-[75px] mb-7">회원가입</div>
       <div className="text-2xl font-semibold leading-[75px] mb-12">

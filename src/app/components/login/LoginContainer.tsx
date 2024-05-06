@@ -49,7 +49,7 @@ const LoginContainer = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center mt-[50px] mb-10 gap-y-12">
+    <div className="flex flex-col items-center justify-center mt-[50px] mb-[16%] gap-y-12">
       <ToastContainer />
       <div className="text-5xl font-semibold">로그인</div>
       <div className="flex flex-col gap-y-5">

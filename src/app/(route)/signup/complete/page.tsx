@@ -8,7 +8,7 @@ export default function OnBoardPage() {
   return (
     <section className="flex flex-col items-center min-h-screen relative">
       <Header />
-      <div className="w-[1440px] mx-auto min-h-screen mb-10">
+      <div className="w-[1440px] mx-auto min-h-screen mb-[52px]">
         <Completed />
       </div>
       <Footer />

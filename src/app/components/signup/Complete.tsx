@@ -6,7 +6,7 @@ import Button from '../common/Button'
 const Complete = () => {
   const router = useRouter()
   return (
-    <div className="flex flex-col items-center mt-[120px] mb-[80px]">
+    <div className="flex flex-col items-center mt-[120px]">
       <Image width={80} height={60} src="/Images/check.png" alt="checkImage" />
       <div className="text-4xl font-semibold m-8">'회원가입 완료'</div>
       <div className="text-center text-2xl font-medium">
