@@ -17,8 +17,6 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType | null>(null)
   const [clickedType, setClickedType] = useState<GroupBoardTypes | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
-  console.log(clickedType, '선택된 타입')
-  console.log(clickedKeyword, '선택된 키워드')
 
   useEffect(() => {
     if (clickedKeyword !== null) {

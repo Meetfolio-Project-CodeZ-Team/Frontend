@@ -38,7 +38,6 @@ const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
       <div className="text-black text-lg font-normal leading-snug  text-center absolute left-[912px] w-[100px]">
         {totalPoint}
       </div>
-     
     </div>
   )
 }

@@ -11,3 +11,13 @@ interface ExperienceDataTypes {
   advance: string
   expStacks: string[]
 }
+
+interface ExpCard {
+  experienceId: number
+  title: string
+  startDate: string
+  endDate: string
+  experienceType: string
+  jobKeyword: onlyJobType
+  stack: string
+}

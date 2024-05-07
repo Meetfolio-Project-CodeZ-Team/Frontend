@@ -26,3 +26,8 @@ export const covletData = atom<CoverLetterDataTypes>({
     jobKeyword: '',
   },
 })
+
+export const tidState = atom<string>({
+  key: 'tidState',
+  default: '',
+})

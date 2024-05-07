@@ -39,17 +39,13 @@ export default function BoardDetailPage({
     fetchData()
   }, [])
 
-  
-
   return (
     <section className="flex flex-col min-h-screen">
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-[full] h-[980px]">
         <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
-          <BoardCardDetail
-            
-          />
+          <BoardCardDetail />
         </div>
       </div>
       <Footer />

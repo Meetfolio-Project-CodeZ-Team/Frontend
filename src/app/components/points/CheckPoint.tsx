@@ -1,10 +1,10 @@
 'use client'
-import { close } from '@/app/ui/IconsPath'
-import Icons from '../common/Icons'
 import { CHECK_BUTTON, CHECK_POINT } from '@/app/constants/point'
-import Button from '../common/Button'
-import { useEffect, useState } from 'react'
 import { useModal } from '@/app/hooks/useModal'
+import { close } from '@/app/ui/IconsPath'
+import { useEffect, useState } from 'react'
+import Button from '../common/Button'
+import Icons from '../common/Icons'
 import ChargePoint from './ChargePoint'
 
 interface CheckPointProps {
@@ -27,6 +27,33 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
+
+  const usingPoint = async (
+    cost: number,
+    usingType: string,
+    coverLetterId: number,
+  ) => {
+    console.log('사용 완료')
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: usingType,
+          point: cost,
+        }),
+      },
+    )
+
+    ;() => closeCheck
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
+    }
+    const responseData = await response.json()
+  }
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -77,27 +104,3 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
 }
 
 export default CheckPoint
-
-const usingPoint = async (
-  cost: number,
-  usingType: string,
-  coverLetterId: number,
-) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        type: usingType,
-        point: cost,
-      }),
-    },
-  )
-  if (!response.ok) {
-    console.error('데이터 저장에 실패했습니다.')
-  }
-  const responseData = await response.json()
-}

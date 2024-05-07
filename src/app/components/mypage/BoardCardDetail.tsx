@@ -14,7 +14,6 @@ interface BoardCardDetailProps {
   // closeModal: () => void
 }
 const BoardCardDetail = () => {
-
   const selectedId = useRecoilValue(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
@@ -40,10 +39,8 @@ const BoardCardDetail = () => {
 
   console.log('디테일 가져온 데이터', data)
 
-
   return (
     <div className="w-full h-[982px] relative">
-      
       <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
       <div className="w-[1014.23px] h-[747px] left-[71.39px] top-[64px] absolute">
         <div className="w-[962px] h-[0px] left-0 top-[747px] absolute border border-stone-300"></div>
@@ -119,7 +116,6 @@ const BoardCardDetail = () => {
           <Like color={'black'} size={28} />
         </div>
       </div>
-   
     </div>
   )
 }

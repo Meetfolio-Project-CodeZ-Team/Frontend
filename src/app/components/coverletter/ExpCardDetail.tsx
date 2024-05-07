@@ -1,4 +1,3 @@
-
 'use client'
 
 import { useRecoilState, useRecoilValue } from 'recoil'
@@ -20,7 +19,8 @@ interface ExperienceCardDetail {
   closeModal: () => void
 }
 
-const ExpCardDetail = ({experienceId,
+const ExpCardDetail = ({
+  experienceId,
   title,
   startDate,
   endDate,
@@ -36,8 +36,10 @@ const ExpCardDetail = ({experienceId,
   return (
     <div className="w-[360px] h-[830px] relative bg-slate-200 rounded-[20px]">
       <div className="w-[120px] h-[50px] px-5 left-[288px] top-[760px] absolute bg-blue-400 rounded-[15px] justify-center items-center gap-2 inline-flex">
-        <div className="w-[91px] h-6 text-center text-gray-900 text-lg font-semibold leading-[27px]"
-        onClick={closeModal}>
+        <div
+          className="w-[91px] h-6 text-center text-gray-900 text-lg font-semibold leading-[27px]"
+          onClick={closeModal}
+        >
           돌아가기
         </div>
       </div>
