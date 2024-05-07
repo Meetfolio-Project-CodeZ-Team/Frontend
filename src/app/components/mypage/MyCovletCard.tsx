@@ -55,13 +55,11 @@ const MyCovletCard = ({
           <div className="text-gray-900 text-[24px] font-semibold leading-[35px] ">
             {question}
           </div>
-
         </div>
       </div>
       <div className="w-[1040px] h-[72px] left-[30px] top-[80px] absolute text-gray-900 text-[15px] font-medium leading-snug">
         {answer}
       </div>
-      
     </div>
   )
 }
