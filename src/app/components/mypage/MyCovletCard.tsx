@@ -1,11 +1,14 @@
-import { useState } from 'react'
+import { selectedPostId } from '@/app/recoil/board'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 interface MyCovletCardProps {
   question: string
   answer: string
   coverLetterId?: number
   createdAt: string
+  index:number
 }
 
 interface CovletCardDetail {
@@ -24,9 +27,11 @@ const MyCovletCard = ({
   answer,
   coverLetterId,
   createdAt,
+  index,
 }: MyCovletCardProps) => {
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
+ 
   const router = useRouter()
   console.log(coverLetterId, '자소서 정보 id')
   const fetchCovletCards = () => {
@@ -47,7 +52,7 @@ const MyCovletCard = ({
       <div className="w-[1080px] h-[39px] left-[25px] top-[15px] absolute  gap-[20px] inline-flex">
         <div className="w-[70px] h-[35px] px-0 py-0 bg-blue-400 rounded-[30px] justify-center items-center flex">
           <div className="w-[60px] text-center text-white text-xl font-semibold leading-[20px]">
-            # {coverLetterId}
+            # {index}
           </div>
         </div>
         <div className="text-gray-900 text-[24px] font-semibold leading-[35px] ">

@@ -19,9 +19,9 @@ export default function MyUserPage() {
     fetchData()
   }, [])
   return (
-    <section className="flex flex-col min-h-screen">
+    <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
-      <div className="flex w-[full] h-[980px]">
+      <div className="flex w-[full] h-[980px] mb-[200px]">
         <UserNavContainer selected={'user'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <EditUserInfo />

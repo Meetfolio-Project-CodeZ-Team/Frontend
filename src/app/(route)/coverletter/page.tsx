@@ -12,6 +12,7 @@ import ExpContentContainer from '@/app/components/experience/ExpContentContainer
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
+import Footer from '@/app/components/layout/Footer'
 
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
@@ -36,13 +37,14 @@ export default function CovletMainPage() {
   console.log(userInfo?.memberName)
 
   return (
-    <section className="flex flex-col items-center min-h-screen ">
+    <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-10">
         {covletNumber === 0 && <CovletMain isEdit={false} />}
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
+      
     </section>
   )
 }
