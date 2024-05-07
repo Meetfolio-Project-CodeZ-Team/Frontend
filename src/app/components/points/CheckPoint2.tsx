@@ -27,7 +27,30 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
-
+  const usingPoint = async (
+    cost: number,
+    usingType: string,
+    coverLetterId: number,
+  ) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: usingType,
+          point: cost,
+        }),
+      },
+    )
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
+    }
+    const responseData = await response.json()
+    closeCheck()
+  }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[574px] rounded-[20px] bg-white relative flex justify-center">
@@ -95,27 +118,3 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
 }
 
 export default CheckPoint
-
-const usingPoint = async (
-  cost: number,
-  usingType: string,
-  coverLetterId: number,
-) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        type: usingType,
-        point: cost,
-      }),
-    },
-  )
-  if (!response.ok) {
-    console.error('데이터 저장에 실패했습니다.')
-  }
-  const responseData = await response.json()
-}
