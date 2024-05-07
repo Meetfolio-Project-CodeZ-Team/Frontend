@@ -32,7 +32,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     cost: number,
     usingType: string,
     coverLetterId: number,
-    ) => {
+  ) => {
     console.log('사용 완료')
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
