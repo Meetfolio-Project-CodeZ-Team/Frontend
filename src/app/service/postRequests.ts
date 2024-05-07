@@ -108,20 +108,21 @@ export const postGroup = async (
   const url = `${SERVER_URL}/api/boards/group`
   return await postRequest(url, boardData, accessToken)
 }
-const SECRET_KEY = '11bda90090848727d27f3975448c2036'
+const SECRET_KEY = 'PRD15F9F429F55327310B427185189B9741AC192'
 
-export const kakaoRequest = async (body: any = null) => {
-  console.log('카카오 서버로 보내는 바디 값', body)
-
+export const kakaoRequest = async (body: any) => {
   try {
-    const response = await fetch('https://kapi.kakao.com/v1/payment/ready', {
-      method: 'POST',
-      headers: {
-        'Content-type': `application/x-www-form-urlencoded;charset=utf-8`,
-        Authorization: `KakaoAK 11bda90090848727d27f3975448c2036`,
+    const response = await fetch(
+      'https://open-api.kakaopay.com/online/v1/payment/ready',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': `application/json`,
+          Authorization: `DEV_SECRET_KEY ${SECRET_KEY}`,
+        },
+        body: JSON.stringify(body),
       },
-      body: JSON.stringify(body),
-    })
+    )
 
     return response.json()
   } catch (error) {

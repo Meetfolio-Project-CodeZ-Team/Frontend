@@ -121,7 +121,7 @@ const usingPoint = async (
 }
 
 const connectPay = async () => {
-  const SECRET_KEY = '11bda90090848727d27f3975448c2036'
+  const SECRET_KEY = 'PRD15F9F429F55327310B427185189B9741AC192'
 
   const requestData = {
     cid: 'TC0ONETIME',
@@ -140,7 +140,7 @@ const connectPay = async () => {
     method: 'POST',
     headers: {
       Authorization: `SECRET_KEY ${SECRET_KEY}`,
-      'Content-Type': 'application/json',
+      'Content-type': 'application/json',
     },
     body: JSON.stringify(requestData),
   }
@@ -149,6 +149,7 @@ const connectPay = async () => {
     `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
     requestConfig,
   )
+
   const responseData = await response.json()
   console.log(responseData, '카카오 페이 요청 응답')
 }
