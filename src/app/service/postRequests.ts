@@ -108,7 +108,7 @@ export const postGroup = async (
   const url = `${SERVER_URL}/api/boards/group`
   return await postRequest(url, boardData, accessToken)
 }
-const SECRET_KEY = 'PRD15F9F429F55327310B427185189B9741AC192'
+const SECRET_KEY = 'DEV10A0B458B5722F1B69711962179A4703E2A72'
 
 export const kakaoRequest = async (body: any) => {
   try {

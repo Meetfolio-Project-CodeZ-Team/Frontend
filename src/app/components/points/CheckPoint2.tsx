@@ -121,7 +121,7 @@ const usingPoint = async (
 }
 
 const connectPay = async () => {
-  const SECRET_KEY = 'PRD15F9F429F55327310B427185189B9741AC192'
+  const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
 
   const requestData = {
     cid: 'TC0ONETIME',
