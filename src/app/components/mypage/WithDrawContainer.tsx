@@ -54,8 +54,7 @@ const WithDrawContainer = () => {
 
       if (res.ok) {
         console.log('회원탈퇴 성공적으로 되었습니다.')
-        logout()
-        router.push(`/main`)
+        
       } else {
         const errorData = await res.json()
         console.error('Error details:', errorData)

@@ -1,15 +1,28 @@
 'use client'
 
 import { close } from '@/app/ui/IconsPath'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Icons from '../../common/Icons'
-import { useState } from 'react'
+import { logout } from '@/app/utils/cookies'
 
 interface DeleteModalProps {
   closeModal: () => void
   deleteUser?: () => void
 }
 const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
+  const router = useRouter()
   const [isDeleted, setIsDeleted] = useState(false)
+
+  useEffect(() => {
+    if (isDeleted) {
+      setTimeout(() => {
+        logout();
+        router.push(`/main`);
+      }, 8000); // 1.5초 후에 로그아웃과 페이지 이동
+    }
+  }, [isDeleted, router]);
+
   const handleDelete = () => {
     setIsDeleted(true)
     if (deleteUser) {
