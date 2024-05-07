@@ -117,7 +117,7 @@ interface datasetInfoTypes {
   url: string
 }
 
-type BoardTypes ='그룹원 모집' | '취업 정보'
+type BoardTypes = '그룹원 모집' | '취업 정보'
 
 interface ResponseBoardData {
   boardId: number

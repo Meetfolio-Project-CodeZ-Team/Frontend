@@ -8,7 +8,7 @@ interface ModelUsageProps {
 const ModelUsage = ({ modelData }: ModelUsageProps) => {
   const aiInfo = modelData.aiserviceInfo
   const evInfo = modelData.modelEvaluation
-  
+
   return (
     <div className="flex flex-col">
       <ServiceUsage

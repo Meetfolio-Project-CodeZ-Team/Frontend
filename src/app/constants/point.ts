@@ -19,3 +19,16 @@ export const CHARGE_POINT = [
 ]
 
 export const CHARGE_BUTTON = ['충전하기']
+
+export const KAKAO_VALUE = {
+  cid: 'TC0ONETIME',
+  partner_order_id: 'meetfolio',
+  partner_user_id: 'meetfolio',
+  item_name: 'Meetfolio 포인트 충전',
+  quantity: 1,
+  total_amount: 600,
+  tax_free_amount: 0,
+  approval_url: 'http://www.meetfolio.kro.kr:60005/coverletter',
+  cancel_url: 'http://localhost:3000/login',
+  fail_url: 'http://localhost:3000/signup',
+}

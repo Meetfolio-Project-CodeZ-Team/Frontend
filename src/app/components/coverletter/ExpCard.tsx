@@ -10,7 +10,7 @@ interface MyExpCardProps {
   stack: string
   title: string
   experienceId?: number
-  onClick?: () => void; 
+  onClick?: () => void
 }
 
 interface ExperienceCardDetail {
@@ -26,7 +26,6 @@ interface ExperienceCardDetail {
   detail: string
   advance: string
   closeModal: () => void
-  
 }
 
 const ExpCard = ({
@@ -42,7 +41,7 @@ const ExpCard = ({
   console.log(stackArr)
 
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
-  const [expCardDetail, setExpCardDetail] = useState(null);
+  const [expCardDetail, setExpCardDetail] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
 
   console.log(experienceId, '카드 정보 id')
@@ -106,7 +105,6 @@ const ExpCard = ({
           detail={expCards.detail}
           advance={expCards.advance}
           closeModal={() => setIsOpen(false)}
-          
         />
       )}
     </div>

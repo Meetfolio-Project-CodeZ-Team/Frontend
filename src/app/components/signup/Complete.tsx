@@ -27,7 +27,6 @@ const Complete = () => {
         isDisabled={false}
         onClickHandler={() => router.push('/login')}
       />
-      
     </div>
   )
 }
