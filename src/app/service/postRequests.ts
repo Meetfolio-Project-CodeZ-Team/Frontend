@@ -109,7 +109,7 @@ export const postGroup = async (
   return await postRequest(url, boardData, accessToken)
 }
 
-const SECRET_KEY = 'DEV10A0B458B5722F1B69711962179A4703E2A72'
+const SECRET_KEY = 'DEVA594C4619B9D06386280410A8D3B20FC08197'
 
 export const kakaoRequest = async (body: any) => {
   try {
@@ -138,4 +138,9 @@ export const postUserExpCard = async (accessToken: string, id: string) => {
 export const postUserCovelet = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/coverLetters/members?memberName=${id}`
   return await postRequest(url, null, accessToken)
+}
+
+export const postTid = async (data: any, accessToken: string) => {
+  const url = `${SERVER_URL}/api/payments/ready `
+  return await postRequest(url, data, accessToken)
 }
