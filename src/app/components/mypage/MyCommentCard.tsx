@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Like from '@/app/ui/svg/main/Like'
 import Comment from '@/app/ui/svg/main/Comment'
+import { useRecoilState } from 'recoil'
+import { selectedPostId } from '@/app/recoil/board'
 
 interface MyBoardCardProps {
   commentId?: number
@@ -28,11 +30,20 @@ const MyCommentCard = ({
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const router = useRouter()
   console.log(commentId, '게시글 정보 id')
+  const fetchBoardCards = () => {
+    setSelectedId(boardId || 999)
+
+    router.push(`/mypage/boardDetail/${boardId}`)
+  }
 
   return (
-    <div className="w-[1085px] h-[119px] flex-col justify-start items-start gap-[30px] inline-flex mb-[33px]">
+    <div
+      className="w-[1085px] h-[119px] flex-col justify-start items-start gap-[30px] inline-flex mb-[33px] cursor-pointer"
+      onClick={fetchBoardCards}
+    >
       <div className="w-[1085px] h-[119px] relative border-2 border-gray-500 rounded-[10px]">
         <div className="w-6 h-[19.76px] left-[918px] top-[16.47px] absolute rounded-[10px]" />
         <div className="w-[252px] h-[25.53px] left-[34px] top-[61.41px] absolute">
