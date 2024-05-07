@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import MyExpCard from './MyExpCard'
-import { useState, useEffect } from 'react'
 
 interface ExperienceCard {
   experienceId: number
@@ -54,7 +54,7 @@ const MyExpList = () => {
           </div>
         </div>
         <div className="flex items-center justify-start gap-2 bg-blue-100 p-2 rounded-[10px]">
-        <svg
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             fill="currentColor"
@@ -69,27 +69,26 @@ const MyExpList = () => {
           </span>
         </div>
       </div>
-      <div className='w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide'>
-      <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
-        
-        {expCards.length > 0 ? (
-            expCards.map((a) => (
-              <MyExpCard key={a.experienceId} {...a} />
-            ))
+      <div className="w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide">
+        <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
+          {expCards.length > 0 ? (
+            expCards.map((a) => <MyExpCard key={a.experienceId} {...a} />)
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">
-                <p className="text-xl font-semibold">아직 생성한 경험카드가 없네요!</p>
-                
+                <p className="text-xl font-semibold">
+                  아직 생성한 경험카드가 없네요!
+                </p>
+
                 <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
                   <Link href="/experience">경험카드 만들러 가기</Link>
                 </button>
               </div>
             </div>
           )}
+        </div>
       </div>
-      </div>
-      
+
       <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포트폴리오
       </div>

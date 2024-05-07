@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation'
 
 interface PaymentCardProps {
   createdAt: string
-  payment:number
+  payment: number
   point: number
   totalPoint: number
 }
@@ -19,7 +19,12 @@ interface CovletCardDetail {
   // closeModal: () => void
 }
 
-const PaymentCard = ({ createdAt, payment, point, totalPoint }: PaymentCardProps) => {
+const PaymentCard = ({
+  createdAt,
+  payment,
+  point,
+  totalPoint,
+}: PaymentCardProps) => {
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
@@ -38,7 +43,6 @@ const PaymentCard = ({ createdAt, payment, point, totalPoint }: PaymentCardProps
       <div className="text-black text-lg font-normal leading-snug absolute left-[912px] text-center w-[100px]">
         {totalPoint}
       </div>
-     
     </div>
   )
 }

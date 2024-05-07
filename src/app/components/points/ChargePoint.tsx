@@ -1,12 +1,14 @@
 'use client'
 
+import { CHARGE_BUTTON, CHARGE_POINT, KAKAO_VALUE } from '@/app/constants/point'
+import { tidState } from '@/app/recoil/coverletter'
 import { close } from '@/app/ui/IconsPath'
-import Icons from '../common/Icons'
-import { CHARGE_BUTTON, CHARGE_POINT } from '@/app/constants/point'
-import Input from '../common/Input'
-import { useState } from 'react'
-import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Button from '../common/Button'
+import Icons from '../common/Icons'
+import Input from '../common/Input'
 
 interface ChargePointProps {
   closeCharge: () => void
@@ -16,7 +18,66 @@ interface ChargePointProps {
 const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
+  const [tid, setTid] = useRecoilState(tidState)
 
+  const connectPay = async () => {
+    const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
+    const requestData = KAKAO_VALUE
+    const requestConfig = {
+      method: 'POST',
+      headers: {
+        Authorization: `SECRET_KEY ${SECRET_KEY}`,
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(requestData),
+    }
+
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
+      requestConfig,
+    )
+
+    const data = await response.json()
+    console.log(data, '카카오 페이 요청 응답')
+    setTid(data.tid)
+
+    const requestTid = {
+      point: 500,
+      payment: 500,
+      tid: data?.tid || '',
+    }
+    const saveTid = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(requestTid),
+    }
+
+    const resTid = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/tid`,
+      saveTid,
+    )
+
+    const lastReq = {
+      method: 'POST',
+      headers: {
+        Authorization: `SECRET_KEY ${SECRET_KEY}`,
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...requestData,
+        approval_url: `http://localhost:3000/coverletter?memberName=yng1404?pg_token249124jdkjqnk`,
+      }),
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
+      requestConfig,
+    )
+
+    const resData = await res.json()
+  }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[648px] rounded-[20px] bg-white relative flex justify-center">
@@ -62,7 +123,7 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
             buttonText={CHARGE_BUTTON[0]}
             type={'default'}
             isDisabled={false}
-            onClickHandler={() => chargeKakao(chargeP)}
+            onClickHandler={() => connectPay()}
             className="bg-[#7AAAE8] text-white w-[440px] h-[70px] text-2xl font-semibold rounded-[20px]"
           />
         </div>
@@ -73,7 +134,7 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
 
 export default ChargePoint
 
-const chargeKakao = async (chargeP: string) => {
+const chargeKakaos = async (chargeP: string) => {
   const point = Number(chargeP)
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point/charge`,

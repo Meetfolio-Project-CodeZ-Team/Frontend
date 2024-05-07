@@ -55,7 +55,7 @@ interface PatchBody {
   title: string
   content: string
   groupCategory: GroupBoardTypes
-  recruitment:RecruitType
+  recruitment: RecruitType
   peopleNumber: string
   jobKeyword: string
 }

@@ -258,9 +258,7 @@ const CovletAiFeed = () => {
           </span>
         </div>
         <div className="w-[450px] h-[2250px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] gap-[20px]">
-            
-          </div>
+          <div className="w-[350px] h-full ml-[80px] gap-[20px]"></div>
         </div>
       </div>
     </div>

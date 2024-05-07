@@ -68,14 +68,16 @@ const PortfolioContainer = () => {
       </div>
       <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-        {covletCards.length > 0 ? (
+          {covletCards.length > 0 ? (
             covletCards.map((a) => (
               <MyCovletCard key={a.coverLetterId} {...a} />
             ))
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">
-                <p className="text-xl font-semibold">아직 작성한 자기소개서가 없네요!</p>
+                <p className="text-xl font-semibold">
+                  아직 작성한 자기소개서가 없네요!
+                </p>
                 <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
                   <Link href="/coverletter">자기소개서 작성하러 가기</Link>
                 </button>
