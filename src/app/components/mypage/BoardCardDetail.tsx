@@ -21,10 +21,6 @@ interface BoardDetailContainer {
 const BoardCardDetail = ({nickname}:BoardDetailContainer) => {
 
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
-
-
-
-
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
 

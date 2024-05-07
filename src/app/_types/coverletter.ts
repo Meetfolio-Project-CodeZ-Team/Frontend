@@ -8,6 +8,7 @@ interface CoverLetterDataTypes {
 }
 
 interface CovletCard {
+  index:number
   question: string
   answer: string
   coverLetterId: number
