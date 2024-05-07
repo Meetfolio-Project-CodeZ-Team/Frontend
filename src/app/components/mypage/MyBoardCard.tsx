@@ -1,7 +1,9 @@
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Like from '@/app/ui/svg/main/Like'
+import { selectedPostId } from '@/app/recoil/board'
 import Comment from '@/app/ui/svg/main/Comment'
+import Like from '@/app/ui/svg/main/Like'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 interface MyBoardCardProps {
   title?: string
@@ -40,9 +42,12 @@ const MyBoardCard = ({
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const router = useRouter()
   console.log(boardId, '게시글 정보 id')
   const fetchBoardCards = () => {
+  setSelectedId(boardId||999)
+
     router.push(`/mypage/boardDetail/${boardId}`)
   }
 

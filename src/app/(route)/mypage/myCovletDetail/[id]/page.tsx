@@ -51,9 +51,9 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   }, [params.id])
 
   return (
-    <section className="flex flex-col min-h-screen ">
+    <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
-      <div className="flex w-[full] h-[980px]">
+      <div className="flex w-[full] h-[980px] mb-[200px]">
         <UserNavContainer
           selected={'portfolio'}
           nickname={userInfo?.memberName}
