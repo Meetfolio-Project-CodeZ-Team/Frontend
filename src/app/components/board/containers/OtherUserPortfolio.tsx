@@ -1,9 +1,8 @@
 'use client'
 
-import Pencil from '@/app/ui/svg/pencil'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyCovletCard from '../../mypage/MyCovletCard'
+import MyExpCard from '../../mypage/MyExpCard'
 
 interface OtherUserPortfolioProps {
   username: string
@@ -11,7 +10,7 @@ interface OtherUserPortfolioProps {
 
 const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
   const [covletCards, setCovletCards] = useState<CovletCard[]>([])
-  const [expCard, setExpCards] = useState<ExpCard[]>([])
+  const [expCards, setExpCards] = useState<ExpCard[]>([])
   const [isExp, setIsExp] = useState(false)
   const path = isExp ? 'expcard' : 'coverletter'
 
@@ -24,12 +23,12 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
         },
       })
       const data = await response.json()
-      console.log(data)
-
-      //   setCovletCards(data.result.list)
+      isExp
+        ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
+        : setCovletCards(data.result.list)
     }
     getData()
-  }, [])
+  }, [isExp])
 
   return (
     <div className="w-full h-[1090px] relative">
@@ -55,33 +54,43 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
             내 경험카드
           </div>
         </div>
-        <div className="flex items-center justify-start gap-2 bg-blue-100 p-2 rounded-[10px]">
-          <Pencil />
-          <span className="text-black text-sm font-semibold">
-            <Link href="/coverletter">자기소개서 작성하러 가기</Link>
-          </span>
-        </div>
       </div>
-      <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-        <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-          {covletCards.length > 0 ? (
-            covletCards.map((a) => (
-              <MyCovletCard key={a.coverLetterId} {...a} />
-            ))
-          ) : (
-            <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
-              <div className="text-center">
-                <p className="text-xl font-semibold">
-                  아직 작성한 자기소개서가 없네요!
-                </p>
-                <button className="mt-4 p-3 bg-blue-300 text-black rounded-[10px] font-semibold">
-                  <Link href="/coverletter">자기소개서 작성하러 가기</Link>
-                </button>
+      {isExp ? (
+        <div className="w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide">
+          <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
+            {expCards.length > 0 ? (
+              expCards.map((a) => <MyExpCard key={a.experienceId} {...a} />)
+            ) : (
+              <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
+                <div className="text-center">
+                  <p className="text-xl font-semibold">
+                    아직 생성한 경험카드가 없네요!
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+          <div className="w-[500px] h-full ml-[60px] gap-[20px]">
+            {covletCards.length > 0 ? (
+              covletCards.map((a) => (
+                <MyCovletCard key={a.coverLetterId} {...a} />
+              ))
+            ) : (
+              <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
+                <div className="text-center">
+                  <p className="text-xl font-semibold">
+                    아직 작성한 자기소개서가 없네요!
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포트폴리오
       </div>

@@ -108,6 +108,7 @@ export const postGroup = async (
   const url = `${SERVER_URL}/api/boards/group`
   return await postRequest(url, boardData, accessToken)
 }
+
 const SECRET_KEY = 'DEV10A0B458B5722F1B69711962179A4703E2A72'
 
 export const kakaoRequest = async (body: any) => {
@@ -123,9 +124,18 @@ export const kakaoRequest = async (body: any) => {
         body: JSON.stringify(body),
       },
     )
-
     return response.json()
   } catch (error) {
     console.log('Error:', error)
   }
+}
+
+export const postUserExpCard = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/members?memberName=${id}`
+  return await postRequest(url, null, accessToken)
+}
+
+export const postUserCovelet = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/coverLetters/members?memberName=${id}`
+  return await postRequest(url, null, accessToken)
 }

@@ -18,6 +18,6 @@ interface ExpCard {
   startDate: string
   endDate: string
   experienceType: string
-  jobKeyword: string
+  jobKeyword: onlyJobType
   stack: string
 }
