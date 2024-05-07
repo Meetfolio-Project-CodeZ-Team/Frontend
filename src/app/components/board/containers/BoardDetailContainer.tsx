@@ -3,6 +3,7 @@ import { NULLPOST } from '@/app/constants/board'
 import { useModal } from '@/app/hooks/useModal'
 import { selectedPostId } from '@/app/recoil/board'
 import { deletePostAlert } from '@/app/utils/toast'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
@@ -68,14 +69,17 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
             <div className="absolute left-6 top-12 text-3xl font-semibold ">
               {data?.title}
             </div>
-            <div className="absolute right-10 top-[68px] text-sm font-normal">
+            <div className="absolute right-10 top-[84px] text-sm font-normal">
               {data?.registrationDate}
             </div>
-            <div className="absolute left-7 top-[136px] flex text-[15px] font-semibold">
-              {data?.memberName}
-            </div>
+            <Link href={`/userpage/${data?.memberName}`}>
+              <div className="absolute left-7 top-[144px] flex text-[18px] font-semibold gap-x-1 items-center">
+                <div className="w-5 h-5 rounded-[100px] bg-[#7AA9E7]"></div>
+                <div className="">{data?.memberName}</div>
+              </div>
+            </Link>
             {data?.memberName === nickname && (
-              <div className="absolute gap-x-3 right-6 top-[136px] flex text-[15px] font-semibold">
+              <div className="absolute gap-x-3 right-6 top-[144px] flex text-[15px] font-semibold">
                 <Button
                   buttonText={'수정'}
                   type={'editPost'}
@@ -94,7 +98,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                     <DeleteModal
                       closeModal={closeModal}
                       deleteUser={() => deletePost(data?.boardId || 0)}
-                      text='해당 게시물을 삭제하시겠습니까?'
+                      text="해당 게시물을 삭제하시겠습니까?"
                     />
                   )}
                 </div>
@@ -102,7 +106,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
             )}
 
             {data?.peopleNumber && (
-              <div className="absolute top-[168px] left-[26px] flex gap-x-4 items-center">
+              <div className="absolute top-[178px] left-[26px] flex gap-x-4 items-center">
                 <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
                   {data?.peopleNumber}명
                 </div>
@@ -111,7 +115,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                 </div>
               </div>
             )}
-            <div className="flex absolute pr-8 left-7 top-[220px] break-all h-[70%] overflow-y-auto">
+            <div className="flex absolute pr-8 left-7 top-[240px] break-all h-[70%] overflow-y-auto">
               {data?.content}
             </div>
           </div>

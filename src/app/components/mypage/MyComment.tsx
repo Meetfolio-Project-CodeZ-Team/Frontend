@@ -4,10 +4,10 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyCommentCard from './MyCommentCard'
 interface BoardCard {
-  commentId?:number
-  content:string
-  boardId?:number
-  boardTitle:string
+  commentId?: number
+  content: string
+  boardId?: number
+  boardTitle: string
   boardCreatedAt: string
 }
 

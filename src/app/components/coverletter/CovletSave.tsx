@@ -1,13 +1,11 @@
-import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
-import { covletData } from '@/app/recoil/coverletter'
-import ExpCard from '@/app/components/coverletter/ExpCard'
 import { useModal } from '@/app/hooks/useModal'
-import CheckPoint from '../points/CheckPoint'
-import { useEffect, useState } from 'react'
-import MyExpCard from '../mypage/MyExpCard'
+import { covletData } from '@/app/recoil/coverletter'
 import { successCopy } from '@/app/utils/toast'
+import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import { useRecoilState } from 'recoil'
+import { expData, expNum } from '../../recoil/experience'
+import MyExpCard from '../mypage/MyExpCard'
 import CheckPoint2 from '../points/CheckPoint2'
 
 interface ExperienceCard {
@@ -26,7 +24,7 @@ const CovletSave = () => {
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
-  const [showInputs, setShowInputs] = useState(false);
+  const [showInputs, setShowInputs] = useState(false)
   console.log(coverletterData, '자소서 데이터 현황')
 
   useEffect(() => {
@@ -71,10 +69,10 @@ const CovletSave = () => {
     event.preventDefault()
     setCoverLetterData({ ...coverletterData, shareType: type })
   }
- 
+
   const handleShowClick = () => {
-    setShowInputs(true);  // 입력창을 보이게 설정
-  };
+    setShowInputs(true) // 입력창을 보이게 설정
+  }
 
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
@@ -150,7 +148,9 @@ const CovletSave = () => {
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
         <div className="w-[941px] h-[488px] left-[10px] top-[750px] relative">
-          <div className={`w-[941px] ${showInputs ? 'h-[488px]' : 'h-[320px]'} left-0 top-0 absolute bg-white rounded-[30px] shadow`} />
+          <div
+            className={`w-[941px] ${showInputs ? 'h-[488px]' : 'h-[320px]'} left-0 top-0 absolute bg-white rounded-[30px] shadow`}
+          />
           <div className="left-[257px] top-[23px] absolute text-center text-black text-2xl font-bold leading-9">
             AI 솔루션 기능을 선택하고,
             <br />
@@ -158,76 +158,76 @@ const CovletSave = () => {
             <br />내 자소서 분석 결과를 얻어보세요!
           </div>
           {showInputs && (
-          <div className="w-[845px] h-[118.08px] left-[53px] top-[340px] absolute inline-flex gap-[20px]">
-            <div className="w-[255px] h-[118.08px] left-0 top-0 absolute">
-              {' '}
-              <div className="w-[255px] h-[86.65px] left-0 top-0 absolute">
+            <div className="w-[845px] h-[118.08px] left-[53px] top-[340px] absolute inline-flex gap-[20px]">
+              <div className="w-[255px] h-[118.08px] left-0 top-0 absolute">
+                {' '}
+                <div className="w-[255px] h-[86.65px] left-0 top-0 absolute">
+                  <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
+                    <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
+                    <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
+                      키워드1
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={coverletterData.keyword1}
+                    onChange={handleInputChange}
+                    id="keyword1"
+                    name="keyword1"
+                    placeholder="ex) 문제 해결 능력"
+                    maxLength={12}
+                    className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
+                  />
+                </div>
+                <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
+                  12자 이내
+                </div>
+              </div>
+              <div className="w-[258px] h-[117.68px] left-[292px] top-0 absolute">
+                {' '}
                 <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                   <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                   <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                    키워드1
+                    키워드2
                   </div>
                 </div>
                 <input
                   type="text"
-                  value={coverletterData.keyword1}
+                  value={coverletterData.keyword2}
                   onChange={handleInputChange}
-                  id="keyword1"
-                  name="keyword1"
-                  placeholder="ex) 문제 해결 능력"
+                  id="keyword2"
+                  name="keyword2"
+                  placeholder="ex) 도전 정신"
                   maxLength={12}
                   className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
                 />
-              </div>
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
-              </div>
-            </div>
-            <div className="w-[258px] h-[117.68px] left-[292px] top-0 absolute">
-              {' '}
-              <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
-                <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
-                <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                  키워드2
+                <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
+                  12자 이내
                 </div>
               </div>
-              <input
-                type="text"
-                value={coverletterData.keyword2}
-                onChange={handleInputChange}
-                id="keyword2"
-                name="keyword2"
-                placeholder="ex) 도전 정신"
-                maxLength={12}
-                className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
-              </div>
-            </div>
-            <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
-              {' '}
-              <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
-                <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
-                <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                  지원직무
+              <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
+                {' '}
+                <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
+                  <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
+                  <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
+                    지원직무
+                  </div>
+                </div>
+                <input
+                  type="text"
+                  value={coverletterData.jobKeyword}
+                  onChange={handleInputChange}
+                  id="jobKeyword"
+                  name="jobKeyword"
+                  placeholder="ex) AI"
+                  maxLength={12}
+                  className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
+                />
+                <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
+                  12자 이내
                 </div>
               </div>
-              <input
-                type="text"
-                value={coverletterData.jobKeyword}
-                onChange={handleInputChange}
-                id="jobKeyword"
-                name="jobKeyword"
-                placeholder="ex) AI"
-                maxLength={12}
-                className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
-              </div>
             </div>
-          </div>
           )}
           <div className="w-[315px] h-[64.07px] left-[120px] top-[150px] absolute">
             <button
@@ -290,7 +290,7 @@ const CovletSave = () => {
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
-          <button
+            <button
               onClick={handleCopyText}
               className="absolute  top-[438px] left-[808px] right-0 mt-1 ml-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
             >
@@ -350,7 +350,9 @@ const CovletSave = () => {
           </div>
         </div>
       </div>
-      <div className={`w-[1000px] h-[60px] left-[45px] ${showInputs ? 'top-[1260px]' : 'top-[1090px]'} absolute pb-[150px]`}>
+      <div
+        className={`w-[1000px] h-[60px] left-[45px] ${showInputs ? 'top-[1260px]' : 'top-[1090px]'} absolute pb-[150px]`}
+      >
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
         </div> */}

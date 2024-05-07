@@ -27,7 +27,30 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
-
+  const usingPoint = async (
+    cost: number,
+    usingType: string,
+    coverLetterId: number,
+  ) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: usingType,
+          point: cost,
+        }),
+      },
+    )
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
+    }
+    const responseData = await response.json()
+    closeCheck()
+  }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[574px] rounded-[20px] bg-white relative flex justify-center">
@@ -79,13 +102,13 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               }
               className="bg-[black] text-white"
             />
-            <Button
+            {/* <Button
               buttonText={'카카오페이'}
               type={'addBoardBtn'}
               isDisabled={false}
               onClickHandler={() => connectPay()}
               className="bg-[black] text-white"
-            />
+            /> */}
             {isOpen && <ChargePoint closeCharge={closeModal} cost={cost} />}
           </div>
         </div>
@@ -95,60 +118,3 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
 }
 
 export default CheckPoint
-
-const usingPoint = async (
-  cost: number,
-  usingType: string,
-  coverLetterId: number,
-) => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point?id=${coverLetterId}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        type: usingType,
-        point: cost,
-      }),
-    },
-  )
-  if (!response.ok) {
-    console.error('데이터 저장에 실패했습니다.')
-  }
-  const responseData = await response.json()
-}
-
-const connectPay = async () => {
-  const SECRET_KEY = '11bda90090848727d27f3975448c2036'
-
-  const requestData = {
-    cid: 'TC0ONETIME',
-    partner_order_id: 'meetfolio',
-    partner_user_id: 'meetfolio',
-    item_name: 'Meetfolio 포인트 충전',
-    quantity: 1,
-    total_amount: 600,
-    tax_free_amount: 0,
-    approval_url: 'http://localhost:3000/main',
-    cancel_url: 'http://localhost:3000/login',
-    fail_url: 'http://localhost:3000/signup',
-  }
-
-  const requestConfig = {
-    method: 'POST',
-    headers: {
-      Authorization: `SECRET_KEY ${SECRET_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestData),
-  }
-
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
-    requestConfig,
-  )
-  const responseData = await response.json()
-  console.log(responseData, '카카오 페이 요청 응답')
-}
