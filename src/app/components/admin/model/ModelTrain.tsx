@@ -1,26 +1,33 @@
 'use client'
 import { MODEL_TRAIN_H } from '@/app/constants/admin'
-import ModelTrainInfo from './ModelTrainInfo'
-import Button from '../../common/Button'
+import { modelNum } from '@/app/recoil/admin'
+import { addTrainData } from '@/app/utils/toast'
 import { useState } from 'react'
-import AddTrainData from './AddTrainData'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { addTrainData } from '@/app/utils/toast'
-
+import { SetterOrUpdater, useRecoilState } from 'recoil'
+import Button from '../../common/Button'
+import AddTrainData from './AddTrainData'
+import ModelTrainInfo from './ModelTrainInfo'
 interface ModelTrainProps {
   trainData: datasetInfoTypes[]
+  goNext: SetterOrUpdater<number>
 }
-const ModelTrain = ({ trainData }: ModelTrainProps) => {
+const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
   const [isAdd, setIsAdd] = useState(false)
+  const [titleNum, setTitleNum] = useRecoilState(modelNum)
 
   const succeedAdd = () => {
     addTrainData()
     setIsAdd(false)
+    setTimeout(() => {
+      window.location.reload()
+      setTitleNum(1)
+    }, 1000)
   }
 
   return isAdd ? (
-    <AddTrainData addComplete={() => succeedAdd()} />
+    <AddTrainData addComplete={succeedAdd} />
   ) : (
     <div className="flex flex-col w-[1010px] h-[720px] items-center">
       <ToastContainer />

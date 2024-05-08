@@ -14,7 +14,6 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, '요청 후 응답')
 
     return response.json()
   } catch (error) {
@@ -56,7 +55,6 @@ export const postExperience = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/experiences`
-  console.log(experienceContent, '로 요청')
   return await postRequest(url, experienceContent, accessToken)
 }
 
@@ -65,7 +63,6 @@ export const postTrainData = async (
   trainData: datasetInfoTypes,
 ) => {
   const url = `${SERVER_URL}/api/admins/data-management`
-  console.log(trainData, '로 요청')
   return await postRequest(url, trainData, accessToken)
 }
 
