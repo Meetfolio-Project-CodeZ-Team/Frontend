@@ -1,3 +1,4 @@
+import React from 'react';
 const Application2 = () => {
   return (
     <svg

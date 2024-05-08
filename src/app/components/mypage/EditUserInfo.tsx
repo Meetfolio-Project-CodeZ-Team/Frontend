@@ -44,11 +44,13 @@ const EditUserInfo = () => {
   const [pw, setPw] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
-  const [college, setCollege] = useState<collegeType>('IT융합대학')
+  
   const [major, setMajor] = useState('')
   const isEntered = password !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
+
+  
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
@@ -121,10 +123,25 @@ const EditUserInfo = () => {
     fetchUserInfos()
   }, [])
 
+  const [college, setCollege] = useState<collegeType>(findCollegeByMajor(major))
+  function findCollegeByMajor(major: string): collegeType {
+    for (const [college, majors] of Object.entries(CLASS_ENUM)) {
+      if (majors.includes(major)) {
+        return college as collegeType;
+      }
+    }
+    return 'IT융합대학'; // 찾지 못했을 경우 기본값으로 설정
+  }
+
+  useEffect(() => {
+    // 전공이 변경되었을 때 단과대학도 업데이트
+    setCollege(findCollegeByMajor(major));
+  }, [major]);
+
   return (
-    <div className="w-full h-[982px] relative">
-      <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
-      <div className="w-[962px] h-[0px] left-[79px] top-[172px] absolute">
+    <div className="w-full h-[1090px] relative">
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
+      <div className="w-full h-[0px] left-[79px] top-[172px] absolute">
         <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
       </div>
@@ -190,7 +207,7 @@ const EditUserInfo = () => {
             <div className="flex gap-x-5 ">
               <DropDownMajor
                 options={COLLEGE}
-                title={'단과대를 선택'}
+                title={college}
                 onSelect={(option) => setCollege(option)}
               />
               <DropDownMajor

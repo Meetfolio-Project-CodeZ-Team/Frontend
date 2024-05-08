@@ -1,3 +1,4 @@
+import React from 'react';
 const Design1 = () => {
   return (
     <svg

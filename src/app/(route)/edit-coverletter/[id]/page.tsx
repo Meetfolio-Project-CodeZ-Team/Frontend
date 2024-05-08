@@ -8,6 +8,7 @@ import { JOB_ENUM } from '@/app/constants/auth'
 import { covletData, covletNum } from '@/app/recoil/coverletter'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
+import Footer from '@/app/components/layout/Footer'
 
 const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
@@ -57,13 +58,14 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   }, [params.id])
 
   return (
-    <section className="flex flex-col items-center min-h-screen ">
+    <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
-      <div className="w-[1440px] mb-10">
+      <div className="w-[1440px] mb-[250px]">
         {covletNumber === 0 && <CovletMain isEdit={true} id={params.id} />}
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
+      <Footer/>
     </section>
   )
 }
