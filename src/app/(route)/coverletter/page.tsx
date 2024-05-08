@@ -75,12 +75,12 @@ export default function CovletMainPage() {
   return (
     <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
-      <div className="w-[1440px] mb-10">
+      <div className="w-[1440px] mb-[250px]">
         {covletNumber === 0 && <CovletMain isEdit={false} />}
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
-      
+      <Footer/>
     </section>
   )
 }

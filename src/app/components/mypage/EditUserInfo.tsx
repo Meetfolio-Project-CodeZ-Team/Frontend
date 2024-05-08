@@ -122,7 +122,7 @@ const EditUserInfo = () => {
     }
     fetchUserInfos()
   }, [])
-  
+
   const [college, setCollege] = useState<collegeType>(findCollegeByMajor(major))
   function findCollegeByMajor(major: string): collegeType {
     for (const [college, majors] of Object.entries(CLASS_ENUM)) {
@@ -139,9 +139,9 @@ const EditUserInfo = () => {
   }, [major]);
 
   return (
-    <div className="w-full h-[982px] relative">
-      <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
-      <div className="w-[962px] h-[0px] left-[79px] top-[172px] absolute">
+    <div className="w-full h-[1090px] relative">
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
+      <div className="w-full h-[0px] left-[79px] top-[172px] absolute">
         <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
       </div>

@@ -39,7 +39,7 @@ const MyExpList = () => {
   console.log(expCards, '카드 목록 정보')
   return (
     <div className="w-full h-[1090px] relative">
-      <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50 " />
       <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
         <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[130px] h-[0px] left-[165px] top-[-0.5px] absolute border-2 border-gray-800" />
@@ -69,7 +69,7 @@ const MyExpList = () => {
           </span>
         </div>
       </div>
-      <div className="w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1150px] h-[850px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide">
         <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
           {expCards.length > 0 ? (
             expCards.map((a) => <MyExpCard key={a.experienceId} {...a} />)

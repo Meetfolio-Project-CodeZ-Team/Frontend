@@ -66,8 +66,8 @@ const MyPointContainer = () => {
   }, [])
 
   return (
-    <div className="w-full h-[990px] relative">
-      <div className="w-full h-[981px] left-0 top-0 absolute bg-gray-50" />
+    <div className="w-full h-[1090px] relative">
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
       <div className="w-[1070px] h-32 left-[70px] top-[130px] absolute">
         <div className="w-[1070px] h-32 left-0 top-0 absolute bg-slate-600 rounded-[5px]" />
         <div className="w-[300px] h-[75px] left-[42px] top-[26px] absolute">
@@ -103,7 +103,7 @@ const MyPointContainer = () => {
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1065px] h-[750px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1065px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-full h-full ml-[0px] gap-[10px] flex flex-col">
           {pointCards.map((a) => (
             <PointCard key={a.createdAt} {...a} />
