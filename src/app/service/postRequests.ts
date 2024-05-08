@@ -14,7 +14,6 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, '요청 후 응답')
 
     return response.json()
   } catch (error) {
@@ -56,7 +55,6 @@ export const postExperience = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/experiences`
-  console.log(experienceContent, '로 요청')
   return await postRequest(url, experienceContent, accessToken)
 }
 
@@ -65,7 +63,6 @@ export const postTrainData = async (
   trainData: datasetInfoTypes,
 ) => {
   const url = `${SERVER_URL}/api/admins/data-management`
-  console.log(trainData, '로 요청')
   return await postRequest(url, trainData, accessToken)
 }
 
@@ -143,4 +140,23 @@ export const postUserCovelet = async (accessToken: string, id: string) => {
 export const postTid = async (data: any, accessToken: string) => {
   const url = `${SERVER_URL}/api/payments/ready `
   return await postRequest(url, data, accessToken)
+}
+
+export const kakaoApprove = async (body: any) => {
+  try {
+    const response = await fetch(
+      'https://open-api.kakaopay.com/online/v1/payment/approve',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': `application/json`,
+          Authorization: `DEV_SECRET_KEY ${SECRET_KEY}`,
+        },
+        body: JSON.stringify(body),
+      },
+    )
+    return response.json()
+  } catch (error) {
+    console.log('Error:', error)
+  }
 }

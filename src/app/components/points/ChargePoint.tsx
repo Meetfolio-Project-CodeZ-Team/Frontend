@@ -13,16 +13,24 @@ import Input from '../common/Input'
 interface ChargePointProps {
   closeCharge: () => void
   cost: number
+  coverLetterId: number
 }
 
-const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
+const ChargePoint = ({
+  closeCharge,
+  cost,
+  coverLetterId,
+}: ChargePointProps) => {
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
   const [tid, setTid] = useRecoilState(tidState)
 
   const connectPay = async () => {
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
-    const requestData = KAKAO_VALUE
+    const requestData = {
+      ...KAKAO_VALUE,
+      approval_url: `http://localhost:3000/coverletter?id=${coverLetterId}`,
+    }
     const requestConfig = {
       method: 'POST',
       headers: {
@@ -38,7 +46,6 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
     )
 
     const data = await response.json()
-    console.log(data, '카카오 페이 요청 응답')
     setTid(data.tid)
 
     const requestTid = {
@@ -58,25 +65,10 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/tid`,
       saveTid,
     )
+    const resData = await resTid.json()
+    console.log(data.next_redirect_pc_url, '로 이동')
 
-    const lastReq = {
-      method: 'POST',
-      headers: {
-        Authorization: `SECRET_KEY ${SECRET_KEY}`,
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...requestData,
-        approval_url: `http://localhost:3000/coverletter?memberName=yng1404?pg_token249124jdkjqnk`,
-      }),
-    }
-
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
-      requestConfig,
-    )
-
-    const resData = await res.json()
+    router.push(data.next_redirect_pc_url)
   }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">

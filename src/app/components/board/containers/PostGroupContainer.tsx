@@ -112,13 +112,29 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
         </div>
         <div className="flex flex-col">
           <div className="text-xl font-bold pl-2">{'모집인원'}</div>
-          <Input
-            type={'member'}
-            placeholder="0"
-            onChange={(e) => setMember(e.target.value)}
-            textValue={member}
-            inputType="number"
-          />
+          <div className="flex gap-x-1 items-center">
+            <Input
+              type={'member'}
+              placeholder="0"
+              onChange={(e) => setMember(e.target.value)}
+              textValue={member}
+              inputType="number"
+            />
+            <div className="flex flex-col gap-y-1 cursor-pointer">
+              <div
+                className="flex items-center justify-center w-[30px] h-[30px] border-2 border-[#C4C4C4] rounded-xl"
+                onClick={() => setMember(Number(member) + 1 + '')}
+              >
+                ↑
+              </div>
+              <div
+                className="w-[30px] flex items-center justify-center h-[30px] border-2 border-[#C4C4C4] rounded-xl"
+                onClick={() => setMember(Number(member) -1 + '')}
+              >
+                ↓
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <Input

@@ -1,18 +1,22 @@
 'use client'
 import { MODEL_NAV, MODEL_PATH } from '@/app/constants/admin'
+import { modelNum } from '@/app/recoil/admin'
 import { useEffect, useState } from 'react'
-import ModelUsage from '../model/ModelUsage'
+import { useRecoilState } from 'recoil'
 import ModelManage from '../model/ModelManage'
 import ModelTrain from '../model/ModelTrain'
+import ModelUsage from '../model/ModelUsage'
 
 const ModelContainer = () => {
-  const [titleNum, setTitleNum] = useState(0)
+  const [titleNum, setTitleNum] = useRecoilState(modelNum)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const marginBorder =
     titleNum === 1 ? 'ml-[160px]' : titleNum === 2 ? 'ml-[300px]' : ''
+  console.log('타이틀 넘버 변화', titleNum)
 
   useEffect(() => {
+    console.log(titleNum, '으로 재요청')
     const fetchData = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
@@ -23,7 +27,7 @@ const ModelContainer = () => {
       else setModelData(resData.result)
     }
     fetchData()
-  }, [titleNum])
+  }, [titleNum, setTitleNum])
 
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
@@ -48,7 +52,7 @@ const ModelContainer = () => {
       <div className="flex w-[1013px]">
         {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
         {titleNum === 1 && trainData && (
-          <ModelTrain trainData={trainData.datasetInfo} />
+          <ModelTrain trainData={trainData.datasetInfo} goNext={setTitleNum} />
         )}
         {titleNum === 2 && <ModelManage />}
       </div>

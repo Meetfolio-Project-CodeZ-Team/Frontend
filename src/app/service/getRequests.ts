@@ -110,3 +110,8 @@ export const getGroupAll = async (accessToken: string, page?: number) => {
   const url = `${SERVER_URL}/api/boards/group?page=0`
   return await getRequest(url, accessToken)
 }
+
+export const getTid = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/payments/ready`
+  return await getRequest(url, accessToken)
+}
