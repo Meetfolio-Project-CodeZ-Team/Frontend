@@ -28,7 +28,7 @@ export const KAKAO_VALUE = {
   quantity: 1,
   total_amount: 600,
   tax_free_amount: 0,
-  approval_url: 'http://www.meetfolio.kro.kr:60005/coverletter',
+  approval_url: 'http://localhost:3000/coverletter',
   cancel_url: 'http://localhost:3000/login',
   fail_url: 'http://localhost:3000/signup',
 }

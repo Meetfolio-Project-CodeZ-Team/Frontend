@@ -1,11 +1,11 @@
 import { successCopy } from '@/app/utils/toast'
+import { Switch } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import { covletData, covletNum } from '../../recoil/coverletter'
 import ExpCard from './ExpCard'
-import { Switch } from '@headlessui/react'
 import ExpCardDetail from './ExpCardDetail'
 
 interface CovletFinishContainerProps {
@@ -45,9 +45,11 @@ interface ExperienceCardDetail {
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [enabled, setEnabled] = useState(false)
   const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null)
+  const [tid, setTid] = useState('')
 
   const handleCardSelect = (card: ExperienceCard) => {
     setSelectedCard(card) // 선택된 카드 정보 설정
@@ -57,7 +59,21 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const handleCloseDetail = () => {
     setSelectedCard(null) // 선택된 카드 정보 초기화
   }
-
+  useEffect(() => {
+    const getTid = async () => {
+      try {
+        const response = await fetch('/api/kakaopay/tid/approve')
+        const data = await response.json()
+        console.log('tid 가져옴', data.result)
+        setTid(data.result.tid)
+        setCovletNumber(1)
+      } catch (error) {
+        console.error(error)
+      }
+      
+    }
+    getTid()
+  })
   const handleToggle = () => {
     setEnabled(!enabled)
     const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'

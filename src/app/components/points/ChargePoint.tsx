@@ -58,25 +58,10 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/tid`,
       saveTid,
     )
-
-    const lastReq = {
-      method: 'POST',
-      headers: {
-        Authorization: `SECRET_KEY ${SECRET_KEY}`,
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...requestData,
-        approval_url: `http://localhost:3000/coverletter?memberName=yng1404?pg_token249124jdkjqnk`,
-      }),
-    }
-
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay`,
-      requestConfig,
-    )
-
-    const resData = await res.json()
+    const resData = await resTid.json()
+    console.log(data.next_redirect_pc_url, '로 이동');
+    
+    router.push(data.next_redirect_pc_url)
   }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
