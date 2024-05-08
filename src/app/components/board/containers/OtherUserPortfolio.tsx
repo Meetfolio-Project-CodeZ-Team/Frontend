@@ -64,7 +64,7 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
                 <div className="text-center">
                   <p className="text-xl font-semibold">
-                    아직 생성한 경험카드가 없네요!
+                    조회 가능한 경험카드가 없어요!
                   </p>
                 </div>
               </div>
@@ -82,7 +82,7 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
                 <div className="text-center">
                   <p className="text-xl font-semibold">
-                    아직 작성한 자기소개서가 없네요!
+                    조회 가능한 자기소개서가 없어요!
                   </p>
                 </div>
               </div>
