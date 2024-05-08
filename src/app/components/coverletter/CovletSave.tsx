@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
 import MyExpCard from '../mypage/MyExpCard'
-import CheckPoint2 from '../points/CheckPoint2'
+import CheckPoint2 from '../points/CheckPoint'
 
 interface ExperienceCard {
   experienceId: number

@@ -13,16 +13,24 @@ import Input from '../common/Input'
 interface ChargePointProps {
   closeCharge: () => void
   cost: number
+  coverLetterId: number
 }
 
-const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
+const ChargePoint = ({
+  closeCharge,
+  cost,
+  coverLetterId,
+}: ChargePointProps) => {
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
   const [tid, setTid] = useRecoilState(tidState)
 
   const connectPay = async () => {
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
-    const requestData = KAKAO_VALUE
+    const requestData = {
+      ...KAKAO_VALUE,
+      approval_url: `http://localhost:3000/coverletter?id=${coverLetterId}`,
+    }
     const requestConfig = {
       method: 'POST',
       headers: {
@@ -58,8 +66,8 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
       saveTid,
     )
     const resData = await resTid.json()
-    console.log(data.next_redirect_pc_url, '로 이동');
-    
+    console.log(data.next_redirect_pc_url, '로 이동')
+
     router.push(data.next_redirect_pc_url)
   }
   return (

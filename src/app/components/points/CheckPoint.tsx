@@ -102,14 +102,13 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               }
               className="bg-[black] text-white"
             />
-            {/* <Button
-              buttonText={'카카오페이'}
-              type={'addBoardBtn'}
-              isDisabled={false}
-              onClickHandler={() => connectPay()}
-              className="bg-[black] text-white"
-            /> */}
-            {isOpen && <ChargePoint closeCharge={closeModal} cost={cost} />}
+            {isOpen && (
+              <ChargePoint
+                closeCharge={closeModal}
+                cost={cost}
+                coverLetterId={coverLetterId}
+              />
+            )}
           </div>
         </div>
       </div>

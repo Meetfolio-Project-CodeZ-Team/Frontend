@@ -53,16 +53,17 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [tid, setTid] = useRecoilState(tidState)
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
+  const coverletterId = params.get('id')
   console.log(tid, '현재 tid 정보')
   console.log('가져온 피지토큰', pg_token)
   setTid(tid)
   console.log('가져온 tid', tid)
+  console.log('id', coverletterId)
 
   const handleCardSelect = (card: ExperienceCard) => {
     setSelectedCard(card) // 선택된 카드 정보 설정
   }
 
-  // 경험카드 상세 정보 닫기 핸들러
   const handleCloseDetail = () => {
     setSelectedCard(null) // 선택된 카드 정보 초기화
   }
@@ -97,14 +98,28 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         )
         const resdata = await res.json()
         console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
-
-        setCovletNumber(1)
+        await fetch(
+          `/api/mypage/myCovletDetail?coverLetterId=${Number(coverletterId)}`,
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.result && data.result.coverLetterInfo) {
+              setCoverLetterData({
+                ...data.result.coverLetterInfo,
+              })
+            }
+          })
       } catch (error) {
         console.error(error)
       }
     }
+
     getTid()
+    if (pg_token) {
+      setCovletNumber(1)
+    }
   }, [pg_token])
+
   const handleToggle = () => {
     setEnabled(!enabled)
     const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
