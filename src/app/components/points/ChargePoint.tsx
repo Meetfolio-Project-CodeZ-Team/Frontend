@@ -38,7 +38,6 @@ const ChargePoint = ({ closeCharge, cost }: ChargePointProps) => {
     )
 
     const data = await response.json()
-    console.log(data, '카카오 페이 요청 응답')
     setTid(data.tid)
 
     const requestTid = {

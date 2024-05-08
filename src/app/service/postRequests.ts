@@ -144,3 +144,22 @@ export const postTid = async (data: any, accessToken: string) => {
   const url = `${SERVER_URL}/api/payments/ready `
   return await postRequest(url, data, accessToken)
 }
+
+export const kakaoApprove = async (body: any) => {
+  try {
+    const response = await fetch(
+      'https://open-api.kakaopay.com/online/v1/payment/approve',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': `application/json`,
+          Authorization: `DEV_SECRET_KEY ${SECRET_KEY}`,
+        },
+        body: JSON.stringify(body),
+      },
+    )
+    return response.json()
+  } catch (error) {
+    console.log('Error:', error)
+  }
+}
