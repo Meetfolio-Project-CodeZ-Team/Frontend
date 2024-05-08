@@ -8,25 +8,24 @@ import { logout } from '@/app/utils/cookies'
 
 interface DeleteModalProps {
   closeModal: () => void
-  deleteUser?: () => void
+  deleteCov?: () => void
 }
-const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
+const CovletDeleteModal = ({ closeModal, deleteCov }: DeleteModalProps) => {
   const router = useRouter()
   const [isDeleted, setIsDeleted] = useState(false)
 
   useEffect(() => {
     if (isDeleted) {
       setTimeout(() => {
-        logout();
-        router.push(`/main`);
-      }, 10000); // 1.5초 후에 로그아웃과 페이지 이동
+        router.push(`/mypage`)
+      }, 8000) 
     }
-  }, [isDeleted, router]);
+  }, [isDeleted, router])
 
   const handleDelete = () => {
     setIsDeleted(true)
-    if (deleteUser) {
-      deleteUser()
+    if (deleteCov) {
+      deleteCov()
     }
   }
 
@@ -41,7 +40,7 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
         </div>
 
         <div className="w-[427px] h-[52px] left-[64px] top-[90px] absolute text-center text-gray-900 text-[28px] font-bold font-['Plus Jakarta Sans'] leading-[42px]">
-          {!isDeleted ? '정말 탈퇴하시겠습니까?' : '탈퇴되었습니다. '}
+          {!isDeleted ? '정말 삭제하시겠습니까?' : '삭제되었습니다. '}
         </div>
         <div
           className=" flex items-center justify-center w-[100px] h-[38px] left-[411px] top-[179px] absolute  cursor-pointer bg-slate-600 rounded-[15px]"
@@ -54,4 +53,4 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
   )
 }
 
-export default DeleteModal
+export default CovletDeleteModal

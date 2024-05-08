@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import PointCard from './PointCard'
+import Icons from '../common/Icons'
+import { pointW } from '@/app/ui/IconsPath'
 
 interface UserInfoProps {
   email: string
@@ -64,8 +66,8 @@ const MyPointContainer = () => {
   }, [])
 
   return (
-    <div className="w-full h-[990px] relative">
-      <div className="w-full h-[981px] left-0 top-0 absolute bg-gray-50" />
+    <div className="w-full h-[1090px] relative">
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
       <div className="w-[1070px] h-32 left-[70px] top-[130px] absolute">
         <div className="w-[1070px] h-32 left-0 top-0 absolute bg-slate-600 rounded-[5px]" />
         <div className="w-[300px] h-[75px] left-[42px] top-[26px] absolute">
@@ -84,24 +86,24 @@ const MyPointContainer = () => {
           <div className="w-[100px] h-[0px] left-0 top-[-0.5px] absolute border-2 border-gray-800" />
         </div>
         <div className="h-[39px] relative">
-          <div className="w-[1000px] h-[27px] left-[50px] top-0 absolute gap-[218px] items-center inline-flex">
-            <div className="text-black text-lg font-semibold leading-[27px]">
+          <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
+            <div className="text-black text-lg font-semibold leading-[27px] absolute left-[8px] w-[170px] text-center">
               사용 일시
             </div>
-            <div className="text-black text-lg font-normal leading-[27px]">
+            <div className="text-black text-lg font-normal leading-[27px] absolute left-[300px] w-[150px] text-center">
               사용 포인트
             </div>
-            <div className="text-black text-lg font-normal leading-[27px]">
+            <div className="text-black text-lg font-normal leading-[27px]  text-center absolute left-[618px] w-[100px]">
               사용 유형
             </div>
-            <div className="text-black text-lg font-normal leading-[27px]">
+            <div className="text-black text-lg font-normal leading-[27px] text-center absolute left-[914px] w-[100px]">
               보유 포인트
             </div>
           </div>
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1065px] h-[750px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1065px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-full h-full ml-[0px] gap-[10px] flex flex-col">
           {pointCards.map((a) => (
             <PointCard key={a.createdAt} {...a} />
@@ -114,9 +116,9 @@ const MyPointContainer = () => {
       <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px]">
         <Link href="/mypage/pointcharge">충전 내역</Link>
       </div>
-      <div className="w-52 h-[54.45px] left-[960px] top-[165px] absolute">
-        <div className="left-[71.16px] top-[10.93px] absolute text-white text-xl font-semibold leading-[30px]">
-          충전하기
+      <div className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center">
+        <div className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex">
+        <Icons className="mt-2" name={pointW} />충전하기
         </div>
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">

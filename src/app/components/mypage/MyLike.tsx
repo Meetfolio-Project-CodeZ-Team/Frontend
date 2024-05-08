@@ -41,7 +41,7 @@ const MyLike = () => {
 
   return (
     <div className="w-full h-[1090px] relative">
-      <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50" />
+      <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
       <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
         <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[130px] h-[0px] left-[95px] top-[-0.5px] absolute border-2 border-gray-800" />
@@ -57,7 +57,7 @@ const MyLike = () => {
           <Link href="/mypage/mycomment">내 댓글</Link>
         </div>
       </div>
-      <div className="w-[1150px] h-[750px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {boardCards.map((a) => (
             <MyLikeCard key={a.boardId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달

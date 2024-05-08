@@ -1,3 +1,5 @@
+'use client'
+
 import AI1 from '@/app/ui/svg/ai/AI1'
 import AI2 from '@/app/ui/svg/ai/AI2'
 import AI3 from '@/app/ui/svg/ai/AI3'
@@ -13,6 +15,7 @@ import Design3 from '@/app/ui/svg/design/Design3'
 import Web1 from '@/app/ui/svg/web/Web1'
 import Web2 from '@/app/ui/svg/web/Web2'
 import Web3 from '@/app/ui/svg/web/Web3'
+import { useEffect, useState } from 'react'
 
 interface ShowCardProps {
   JOBKEYWORD: onlyJobType
@@ -26,11 +29,18 @@ const ShowCard = ({ JOBKEYWORD }: ShowCardProps) => {
     디자인: [Design1, Design2, Design3],
     백엔드: [Back1, Back2, Back3],
   }
-  const components = componentsMap[JOBKEYWORD]
-  const randomIndex = Math.floor(Math.random() * components.length)
-  const RandomComponent = components[randomIndex]
+  const [SelectedComponent, setSelectedComponent] = useState<React.ComponentType | null>(null);
 
-  return <RandomComponent />
+  useEffect(() => {
+    const ComponentArray = componentsMap[JOBKEYWORD];
+    const randomIndex = Math.floor(Math.random() * ComponentArray.length);
+    const RandomComponent = ComponentArray[randomIndex];
+    setSelectedComponent(() => RandomComponent);
+  }, [JOBKEYWORD]);
+
+  if (!SelectedComponent) return null;
+
+  return <SelectedComponent />;
 }
 
 export default ShowCard

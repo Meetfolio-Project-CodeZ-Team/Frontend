@@ -6,50 +6,20 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import { covletData, covletNum, tidState } from '../../recoil/coverletter'
-import ExpCard from './ExpCard'
-import ExpCardDetail from './ExpCardDetail'
+import ExpCardList from './ExpCardList'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
   id?: string
-}
-interface ExperienceCard {
-  experienceId: number
-  title: string
-  startDate: string
-  endDate: string
-  experienceType: string
-  jobKeyword: onlyJobType
-  stack: string
-  task: string
-  motivation: string
-  detail: string
-  advance: string
-  closeModal: () => void
-}
-
-interface ExperienceCardDetail {
-  experienceId: number
-  title: string
-  startDate: string
-  endDate: string
-  experienceType: string
-  jobKeyword: onlyJobType
-  stack: string
-  task: string
-  motivation: string
-  detail: string
-  advance: string
-  closeModal: () => void
 }
 
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
-  const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+  
   const [enabled, setEnabled] = useState(false)
-  const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null)
+  
   const [tid, setTid] = useRecoilState(tidState)
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
@@ -60,13 +30,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   console.log('가져온 tid', tid)
   console.log('id', coverletterId)
 
-  const handleCardSelect = (card: ExperienceCard) => {
-    setSelectedCard(card) // 선택된 카드 정보 설정
-  }
-
-  const handleCloseDetail = () => {
-    setSelectedCard(null) // 선택된 카드 정보 초기화
-  }
+  
   useEffect(() => {
     const getTid = async () => {
       try {
@@ -128,26 +92,19 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   }
 
   useEffect(() => {
-    console.log('카드 데이터 가져옴')
-
-    const fetchExpCards = async () => {
-      try {
-        const response = await fetch('/api/mypage/myExp')
-        if (!response.ok) {
-          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
-        }
-        const data = await response.json()
-        setExpCards(data.result.experienceCardInfo.experienceCardItems)
-      } catch (error) {
-        console.error(error)
-      }
+    if (coverletterData.shareType) {
+      setEnabled(coverletterData.shareType === 'PUBLIC');
     }
-    fetchExpCards()
-  }, [])
+  }, [coverletterData.shareType]); // coverletterData의 shareType이 바뀔 때마다 enabled를 업데이트
+  
 
-  // const goToPreviousPage = () => {
-  //   setExperienceNumber(experienceNumber - 1)
-  // }
+  useEffect(() => {
+    const newShareType = enabled ? 'PUBLIC' : 'PRIVATE';
+    setCoverLetterData({ ...coverletterData, shareType: newShareType });
+  }, [enabled]);
+  
+  
+
   const goToNextPage = () => {
     setCovletNumber(covletNumber + 1)
   }
@@ -166,11 +123,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       ...coverletterData,
       [event.target.name]: event.target.value,
     })
-  }
-
-  const handleButtonClick = (type: string, event: React.MouseEvent) => {
-    event.preventDefault()
-    setCoverLetterData({ ...coverletterData, shareType: type })
   }
 
   const handleCopyText = () => {
@@ -320,44 +272,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           저장하기
         </button>
       </div>
-      <div className="w-[463px] h-[1233px] left-[977px] top-[18px] absolute items-center justify-center">
-        <div className="w-[463px] h-[1233px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow " />
-        <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-[22px] font-bold  leading-[33px]">
-            경험카드 조회
-          </span>
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-sm font-medium  leading-[21px]">
-            경험카드를 참고해 자소서를 작성해보세요
-          </span>
-        </div>
-        <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] ">
-            {selectedCard ? (
-              <ExpCardDetail {...selectedCard} closeModal={handleCloseDetail} />
-            ) : (
-              expCards.map((card) => (
-                <ExpCard
-                  key={card.experienceId}
-                  {...card}
-                  onClick={() => handleCardSelect(card)}
-                />
-              ))
-            )}
-          </div>
-        </div>
-        {/* //자소서 작성 중 경험카드 세부조회
-        {/* <div className='w-[450px] h-[1100px] mt-[80px] '>
-          <div className="w-[350px] h-full ml-[16px] gap-[20px]">
-            <ExpCardDetail />
-          </div>
-        </div>  */}
-      </div>
+      <ExpCardList />
     </div>
   )
 }

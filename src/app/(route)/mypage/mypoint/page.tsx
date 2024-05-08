@@ -21,7 +21,7 @@ export default function MyPointPage() {
   return (
     <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
-      <div className="flex w-[full] h-[980px] mb-[200px]">
+      <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer selected={'points'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
           <MyPointContainer />
