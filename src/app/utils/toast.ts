@@ -31,7 +31,7 @@ const mismatchAlert = () => {
 }
 
 const deleteUserAlert = () => {
-  toast.error('해당 회원이 탈퇴 되었습니다.', {
+  toast.error('해당 회원이 비활성화 되었습니다.', {
     icon: () => '🗑️',
     ...commonOptions,
   })

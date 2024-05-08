@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
 import MyExpCard from '../mypage/MyExpCard'
-import CheckPoint2 from '../points/CheckPoint2'
+import CheckPoint2 from '../points/CheckPoint'
 
 interface ExperienceCard {
   experienceId: number
@@ -28,8 +28,6 @@ const CovletSave = () => {
   console.log(coverletterData, '자소서 데이터 현황')
 
   useEffect(() => {
-    console.log('카드 데이터 가져옴')
-
     const fetchExpCards = async () => {
       try {
         const response = await fetch('/api/mypage/myExp')
@@ -44,6 +42,8 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
+
+  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
