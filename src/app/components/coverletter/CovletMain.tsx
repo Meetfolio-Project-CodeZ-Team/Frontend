@@ -20,12 +20,21 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   const [enabled, setEnabled] = useState(false)
 
+  useEffect(() => {
+    if (coverletterData.shareType) {
+      setEnabled(coverletterData.shareType === 'PUBLIC');
+    }
+  }, [coverletterData.shareType]); // coverletterData의 shareType이 바뀔 때마다 enabled를 업데이트
+  
+
+  useEffect(() => {
+    const newShareType = enabled ? 'PUBLIC' : 'PRIVATE';
+    setCoverLetterData({ ...coverletterData, shareType: newShareType });
+  }, [enabled]);
+  
   const handleToggle = () => {
-    setEnabled(!enabled)
-    const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
-    setCoverLetterData({ ...coverletterData, shareType: newShareType })
-    console.log(coverletterData, '자소서 데이터')
-  }
+    setEnabled(!enabled);
+  };
 
   const goToNextPage = () => {
     setCovletNumber(covletNumber + 1)
