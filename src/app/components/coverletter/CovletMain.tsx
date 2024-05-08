@@ -1,11 +1,12 @@
 import { successCopy } from '@/app/utils/toast'
+import { Switch } from '@headlessui/react'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
-import { covletData, covletNum } from '../../recoil/coverletter'
+import { covletData, covletNum, tidState } from '../../recoil/coverletter'
 import ExpCard from './ExpCard'
-import { Switch } from '@headlessui/react'
 import ExpCardDetail from './ExpCardDetail'
 
 interface CovletFinishContainerProps {
@@ -45,18 +46,79 @@ interface ExperienceCardDetail {
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [enabled, setEnabled] = useState(false)
   const [selectedCard, setSelectedCard] = useState<ExperienceCard | null>(null)
+  const [tid, setTid] = useRecoilState(tidState)
+  const params = useSearchParams()
+  const pg_token = params.get('pg_token')
+  const coverletterId = params.get('id')
+  console.log(tid, '현재 tid 정보')
+  console.log('가져온 피지토큰', pg_token)
+  setTid(tid)
+  console.log('가져온 tid', tid)
+  console.log('id', coverletterId)
 
   const handleCardSelect = (card: ExperienceCard) => {
     setSelectedCard(card) // 선택된 카드 정보 설정
   }
 
-  // 경험카드 상세 정보 닫기 핸들러
   const handleCloseDetail = () => {
     setSelectedCard(null) // 선택된 카드 정보 초기화
   }
+  useEffect(() => {
+    const getTid = async () => {
+      try {
+        const response = await fetch('/api/kakaopay/tid/approve')
+        const data = await response.json()
+        console.log('tid 가져옴', data.result)
+        setTid(data.result.tid)
+
+        const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
+        const requestData = {
+          cid: 'TC0ONETIME',
+          tid: data.result.tid,
+          partner_order_id: 'meetfolio',
+          partner_user_id: 'meetfolio',
+          pg_token: pg_token,
+        }
+        const requestConfig = {
+          method: 'POST',
+          headers: {
+            Authorization: `SECRET_KEY ${SECRET_KEY}`,
+            'Content-type': 'application/json',
+          },
+          body: JSON.stringify(requestData),
+        }
+
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/approve`,
+          requestConfig,
+        )
+        const resdata = await res.json()
+        console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
+        await fetch(
+          `/api/mypage/myCovletDetail?coverLetterId=${Number(coverletterId)}`,
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.result && data.result.coverLetterInfo) {
+              setCoverLetterData({
+                ...data.result.coverLetterInfo,
+              })
+            }
+          })
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    getTid()
+    if (pg_token) {
+      setCovletNumber(1)
+    }
+  }, [pg_token])
 
   const handleToggle = () => {
     setEnabled(!enabled)

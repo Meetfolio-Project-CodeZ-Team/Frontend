@@ -31,17 +31,14 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   useEffect(() => {
     // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
     if (params.id && typeof params.id === 'string') {
-      // id의 존재성과 문자열 타입 확인
-      fetch(`/api/mypage/myCovletDetail?coverLetterId=${Number(params.id)}`) // 쿼리 파라미터로 id 사용
+      fetch(`/api/mypage/myCovletDetail?coverLetterId=${Number(params.id)}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.result && data.result.coverLetterInfo) {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
-
               jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
             })
-            // experienceNumber는 서버 응답에 따라 조정되어야 합니다. 현재 API 응답에 이 값이 포함되어 있지 않다면 다른 로직이 필요합니다.
           }
         })
         .catch((error) => {

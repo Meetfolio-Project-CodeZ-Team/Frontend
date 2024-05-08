@@ -1,11 +1,11 @@
 'use client'
 
 import { ADD_TRAIN_H } from '@/app/constants/admin'
-import Input from '../../common/Input'
+import { JOB_ENUM, JOBKEYWORD } from '@/app/constants/auth'
 import { useState } from 'react'
 import Button from '../../common/Button'
+import Input from '../../common/Input'
 import DropDownModel from './DropDownModel'
-import { JOBKEYWORD } from '@/app/constants/auth'
 
 interface AddTrainDataProps {
   addComplete: () => void
@@ -14,9 +14,8 @@ interface AddTrainDataProps {
 const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
   const [domain, setDomain] = useState('')
   const [url, setUrl] = useState('')
-  const [job, setJob] = useState('')
+  const [job, setJob] = useState<JobType>('전체')
   const [data, setData] = useState('')
-  console.log(data.length)
 
   const postTrainData = async () => {
     const requestOptions = {
@@ -24,17 +23,21 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ domain: domain, url: url, data: data, job: job }),
+      body: JSON.stringify({
+        domain: domain,
+        url: url,
+        data: data,
+        job: JOB_ENUM[job],
+      }),
     }
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train`,
       requestOptions,
     )
-    window.location.reload()
     addComplete()
   }
 
-  console.log(job)
+  console.log(job, '현재 선택 직무')
 
   return (
     <div className="flex flex-col w-[1010px] h-[780px] gap-y-10 mb-12">

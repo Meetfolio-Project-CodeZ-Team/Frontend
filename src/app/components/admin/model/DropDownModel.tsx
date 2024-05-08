@@ -7,7 +7,7 @@ import { JOB_ENUM } from '@/app/constants/auth'
 interface DropDownModelProps {
   options: readonly onlyJobType[]
   title: string
-  onSelect: (selectedTag: string) => void
+  onSelect: (selectedTag: JobType) => void
 }
 
 const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
@@ -33,7 +33,7 @@ const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
 
   const handleOptionClick = (option: JobType) => {
     setSelectedOption(option)
-    onSelect(JOB_ENUM[option])
+    onSelect(option)
     setIsOpen(false)
   }
 

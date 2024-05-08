@@ -112,7 +112,7 @@ interface ResponseTrainData {
 }
 interface datasetInfoTypes {
   createdAt: string
-  job: string
+  job: onlyJobType
   domain: string
   url: string
 }
