@@ -1,3 +1,4 @@
+import React from 'react';
 const AI3 = () => {
   return (
     <svg

@@ -1,3 +1,4 @@
+import React from 'react';
 const Web3 = () => {
   return (
     <svg

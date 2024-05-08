@@ -19,7 +19,7 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
       setTimeout(() => {
         logout();
         router.push(`/main`);
-      }, 8000); // 1.5초 후에 로그아웃과 페이지 이동
+      }, 10000); // 1.5초 후에 로그아웃과 페이지 이동
     }
   }, [isDeleted, router]);
 

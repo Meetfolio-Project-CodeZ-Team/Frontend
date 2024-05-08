@@ -26,7 +26,7 @@ const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
 
   return (
     <div className="flex gap-[218px] items-center w-full h-[39px] py-[2px] border-b border-stone-400">
-      <div className="text-black text-lg font-semibold leading-snug ">
+      <div className="text-black text-lg font-semibold leading-snug absolute left-[10px] w-[170px] text-center">
         {createdAt}
       </div>
       <div className="text-black text-lg font-normal leading-snug absolute left-[300px] w-[150px] text-center">
