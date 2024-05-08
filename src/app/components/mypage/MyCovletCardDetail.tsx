@@ -3,6 +3,8 @@
 import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
 import { covletData } from '@/app/recoil/coverletter'
+import { useModal } from '@/app/hooks/useModal'
+import CovletDeleteModal from './common/CovletDeleteModal'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -27,6 +29,7 @@ const MyCovletCardDetail = ({
 
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const handleCopyAnswer = () => {
     // 동적으로 textarea를 생성
@@ -96,22 +99,35 @@ const MyCovletCardDetail = ({
   return (
     <div className="w-full h-[1725px] relative">
       <div className="w-full h-[1725px] left-0 top-0 absolute">
-        <div className="w-[1124px] h-[1725px] left-0 top-0 absolute bg-white" />
-        <div className="w-[1029px] h-[603.47px] left-[49px] top-[222px] absolute">
-          <div className="w-[936.64px] h-[440px] left-[34px] top-[29px] absolute text-black text-xl font-medium leading-[30px]">
+        <div className="w-full h-full left-0 top-0 absolute bg-white " />
+        <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] ">
+          <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px]">
             {answer}
           </div>
         </div>
         <button
           onClick={handleCopyAnswer}
-          className="p-2 bg-blue-400 text-white rounded absolute right-[550px] top-[690px] mt-2 mr-2"
+          className=" bg-white text-black rounded absolute left-[1110px] top-[670px] "
         >
-          복사하기
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.8"
+            stroke="currentColor"
+            className="w-7 h-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
+            />
+          </svg>
         </button>
       </div>
-      <div className="w-[1029px] h-[808px] left-[49px] top-[765px] absolute">
-        <div className="w-[1029px] h-[808px] left-0 top-0 absolute">
-          <div className="w-[943.89px] h-[450px] left-[46.42px] top-[81px] absolute text-black text-xl font-medium leading-[30px]">
+      <div className="w-[1090px] h-[800px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
+        <div className="w-[1090px] h-[800px] left-0 top-0 absolute">
+          <div className="w-[1000px] h-[405px] left-[46.42px] top-[100px] absolute text-black text-xl font-medium leading-[30px]">
             저의 졸업 인증을 졸업 프로젝트를 통해 받게 된 이유는 실무에서의
             경험과 협업에 가까운 환경에서 다양한 경험을 쌓고, 문제를
             해결해보고자 했습니다.  주요한 이유 중 하나는 실무에서의 경험을 쌓기
@@ -134,54 +150,56 @@ const MyCovletCardDetail = ({
             협업 능력을 향상시킬 수 있었습니다.
           </div>
         </div>
-        <div className="w-[202.26px] h-[49px] left-[404.53px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
+        <div className="w-[202.26px] h-[49px] left-[425px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
           AI 피드백
         </div>
-        <div className="w-[903px] h-[158px] left-[29.84px] top-[612px] absolute">
+        <div className="w-[903px] h-[158px] left-[29.84px] top-[585px] absolute">
           <div className="w-[15.47px] h-3.5 left-0 top-[15px] absolute bg-slate-600 rounded-full" />
           <div className="w-[15.47px] h-3.5 left-0 top-[72px] absolute bg-slate-600 rounded-full" />
           <div className="w-[15.47px] h-3.5 left-0 top-[129px] absolute bg-slate-600 rounded-full" />
           <div className="w-[875.37px] h-[158px] left-[27.63px] top-0 absolute">
-            <div className="w-[756px] h-11 left-0 top-0 absolute bg-blue-300 rounded-[10px]" />
-            <div className="w-[872.05px] h-11 left-0 top-[114px] absolute bg-blue-300 rounded-[10px]" />
-            <div className="w-[814.58px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
-            <div className="w-[859.89px] h-11 left-[15.47px] top-0 absolute text-black text-base font-medium leading-normal">
+            <div className="w-[756px] h-11 left-0 top-0 absolute bg-blue-200 rounded-[10px]" />
+            <div className="w-[872.05px] h-11 left-0 top-[114px] absolute bg-blue-200 rounded-[10px]" />
+            <div className="w-[814.58px] h-11 left-0 top-[57px] absolute bg-blue-200 rounded-[10px]" />
+            <div className="w-[859.89px] h-11 left-[15.47px] top-0 absolute text-black text-base font-medium leading-normal py-2 ">
               졸업 프로젝트를 통해 실무 경험과 협업 능력을 함양한 지원자입니다.
             </div>
-            <div className="w-[859.89px] h-11 left-[15.47px] top-[57px] absolute text-black text-base font-medium leading-normal">
+            <div className="w-[859.89px] h-11 left-[15.47px] top-[57px] absolute text-black text-base font-medium leading-normal py-2">
               새로운 기술 및 도구를 습득하고 적용하는 능력을 보여준
               지원자입니다.
             </div>
-            <div className="w-[859.89px] h-11 left-[15.47px] top-[114px] absolute text-black text-base font-medium leading-normal">
+            <div className="w-[859.89px] h-11 left-[15.47px] top-[114px] absolute text-black text-base font-medium leading-normal py-2">
               문제 해결에 대한 창의적이고 유연한 접근 방식을 갖춘 지원자입니다.
             </div>
           </div>
         </div>
-        <div className="w-[252px] h-[49px] left-[376.89px] top-[555px] absolute text-center text-black text-2xl font-bold leading-9">
+        <div className="w-[252px] h-[49px] left-[376.89px] top-[505px] absolute text-center text-black text-2xl font-bold leading-9">
           추천 자기소개서 문항
         </div>
       </div>
-      <div className="w-[334px] h-[58px] left-[731px] top-[1606px] absolute flex justify-between items-center">
-        <div
-          className="w-[140px] h-[58px] left-0 top-0 absolute bg-blue-400  rounded-[10px] cursor-pointer"
+      <div className="w-[334px] h-[58px] left-[840px] top-[1606px] absolute flex justify-between items-center">
+        <button
+          className="w-[120px] h-[50px] left-0 top-0 absolute select-none rounded-[15px] bg-blue-400  py-2 px-6 text-center align-middle  text-xl font-bold uppercase text-white transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
           onClick={onEditClick}
         >
-          <div
-            className={`w-[140px] h-[58px] left-0 top-0 flex justify-center items-center   text-white text-center border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-          >
-            수정
-          </div>
-        </div>
-        <div
-          className="w-[140px] h-[58px] left-[194px] top-0 absolute border-[2px] border-gray-600 justify-center items-center bg-white rounded-[10px] cursor-pointer"
-          onClick={() => deleteCov(coverLetterId)}
+          수정
+        </button>
+        <button
+          className="w-[120px] h-[50px] left-[160px] top-0 absolute select-none rounded-[15px] border border-gray-900 py-2 px-6 text-center align-middle  text-xl font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+          onClick={openModal}
         >
-          <div
-            className={`w-[140px] h-[58px] left-0 top-0 flex justify-center items-center text-slate-600  border-0 py-0 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-          >
-            삭제
-          </div>
-        </div>
+          삭제
+        </button>
+      </div>
+      <div onClick={handleModalClick}>
+        {isOpen && (
+          <CovletDeleteModal
+            closeModal={closeModal}
+            deleteCov={() => deleteCov(coverLetterId)}
+          />
+        )}
       </div>
       <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
         <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
@@ -193,7 +211,7 @@ const MyCovletCardDetail = ({
           {question}
         </div>
       </div>
-      <div className="w-[670px] h-[50px] left-[226px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
+      <div className="w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
         <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
           <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
             {keyword1}

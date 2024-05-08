@@ -58,7 +58,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   }, [params.id])
 
   return (
-    <section className="flex flex-col items-center min-h-screen ">
+    <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-[250px]">
         {covletNumber === 0 && <CovletMain isEdit={true} id={params.id} />}
