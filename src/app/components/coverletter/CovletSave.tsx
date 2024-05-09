@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
 import MyExpCard from '../mypage/MyExpCard'
-import CheckPoint2 from '../points/CheckPoint'
+import CheckPoint from '../points/CheckPoint'
 
 interface ExperienceCard {
   experienceId: number
@@ -25,7 +25,6 @@ const CovletSave = () => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [showInputs, setShowInputs] = useState(false)
-  console.log(coverletterData, '자소서 데이터 현황')
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -42,8 +41,6 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
-
-  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -245,9 +242,9 @@ const CovletSave = () => {
               AI 직무 역량 분석
             </button>
             {isOpen && (
-              <CheckPoint2
+              <CheckPoint
                 closeCheck={closeModal}
-                cost={300}
+                cost={500}
                 coverLetterId={coverletterData.coverLetterId || 0}
               />
             )}
