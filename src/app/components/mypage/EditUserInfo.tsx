@@ -44,13 +44,11 @@ const EditUserInfo = () => {
   const [pw, setPw] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
-  
+
   const [major, setMajor] = useState('')
   const isEntered = password !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
-
-  
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
@@ -127,16 +125,16 @@ const EditUserInfo = () => {
   function findCollegeByMajor(major: string): collegeType {
     for (const [college, majors] of Object.entries(CLASS_ENUM)) {
       if (majors.includes(major)) {
-        return college as collegeType;
+        return college as collegeType
       }
     }
-    return 'IT융합대학'; // 찾지 못했을 경우 기본값으로 설정
+    return 'IT융합대학' // 찾지 못했을 경우 기본값으로 설정
   }
 
   useEffect(() => {
     // 전공이 변경되었을 때 단과대학도 업데이트
-    setCollege(findCollegeByMajor(major));
-  }, [major]);
+    setCollege(findCollegeByMajor(major))
+  }, [major])
 
   return (
     <div className="w-full h-[1090px] relative">

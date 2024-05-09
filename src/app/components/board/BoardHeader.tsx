@@ -84,7 +84,7 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
           </div>
         </div>
         <div className="flex gap-x-3 pb-2 items-center">
-          <SearchBoard isJob={isJob}/>
+          <SearchBoard isJob={isJob} />
         </div>
       </div>
       <div className="w-[93%] h-[0px] border border-[#616161]" />

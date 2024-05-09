@@ -12,10 +12,8 @@ import Footer from '@/app/components/layout/Footer'
 
 import { useSearchParams } from 'next/navigation'
 
-
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
-
 
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
@@ -42,7 +40,7 @@ export default function CovletMainPage() {
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
-      <Footer/>
+      <Footer />
     </section>
   )
 }

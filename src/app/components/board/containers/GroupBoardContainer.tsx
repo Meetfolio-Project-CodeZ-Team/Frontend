@@ -7,17 +7,19 @@ interface GroupBoardContainerProps {
 const GroupBoardContainer = ({ boardData }: GroupBoardContainerProps) => {
   return (
     <div>
-    {boardData.list.length > 0 ? (
-      <div className="flex w-[783px] flex-wrap gap-x-[23px] gap-y-[30px]">
-        {boardData.list.map((post) => <GroupPost data={post} />)}
-      </div>
-    ) : (
-      <div className="text-2xl font-bold pt-[200px] w-full h-full flex items-center justify-center text-slate-700">
-        <div className="text-4xl">😵</div>
-        해당 검색어와 관련된 게시물이 존재하지 않습니다
-      </div>
-    )}
-  </div>
+      {boardData.list.length > 0 ? (
+        <div className="flex w-[783px] flex-wrap gap-x-[23px] gap-y-[30px]">
+          {boardData.list.map((post) => (
+            <GroupPost data={post} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-2xl font-bold pt-[200px] w-full h-full flex items-center justify-center text-slate-700">
+          <div className="text-4xl">😵</div>
+          해당 검색어와 관련된 게시물이 존재하지 않습니다
+        </div>
+      )}
+    </div>
   )
 }
 
