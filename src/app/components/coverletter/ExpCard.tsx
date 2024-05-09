@@ -44,7 +44,6 @@ const ExpCard = ({
   const [expCardDetail, setExpCardDetail] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
 
-  console.log(experienceId, '카드 정보 id')
   const fetchExpCards = async () => {
     try {
       const response = await fetch(
