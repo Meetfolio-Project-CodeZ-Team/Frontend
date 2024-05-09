@@ -1,3 +1,4 @@
+'use client'
 import { MODEL_MODAL } from '@/app/constants/admin'
 import Button from '../../common/Button'
 
@@ -6,6 +7,24 @@ interface AddTrainModalProps {
 }
 
 const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
+  const additionalTrain = async () => {
+    const requestBody = {
+      model_id: 0,
+      created_at: '2024',
+    }
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/additional`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+      },
+    )
+    const resData = await response.json()
+  }
+
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[480px] rounded-[20px] bg-[#FFFFFF] relative flex flex-col items-center gap-y-[48px]">
@@ -40,7 +59,7 @@ const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
             buttonText={'예'}
             type={'modelYes'}
             isDisabled={false}
-            onClickHandler={closeModal}
+            onClickHandler={additionalTrain}
           ></Button>
           <Button
             buttonText={'아니오'}

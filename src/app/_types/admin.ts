@@ -126,3 +126,8 @@ interface ResponseBoardData {
   memberName: string
   title: string
 }
+
+interface AdditionalTrainTypes {
+  model_id: number
+  created_at: string
+}
