@@ -1,4 +1,4 @@
-import { kakaoApprove, postTid } from '@/app/service/postRequests'
+import { kakaoApprove } from '@/app/service/postRequests'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {

@@ -38,7 +38,6 @@ const MyExpCardDetail = ({
   ) => {
     event.stopPropagation()
   }
-  console.log(experienceId, 'id  수정 삭제에서 가져오기')
 
   const router = useRouter()
   const [experienceData, setExperienceData] = useRecoilState(expData)

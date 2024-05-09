@@ -31,7 +31,6 @@ const MyCovletCard = ({
   const [isOpen, setIsOpen] = useState(false)
 
   const router = useRouter()
-  console.log(coverLetterId, '자소서 정보 id')
   const fetchCovletCards = () => {
     router.push(`/mypage/myCovletDetail/${coverLetterId}`)
   }

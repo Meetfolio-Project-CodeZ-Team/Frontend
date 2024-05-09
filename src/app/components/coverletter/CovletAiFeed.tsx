@@ -1,9 +1,6 @@
-import Button from '../common/Button'
-import Input from '../common/Input'
-import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
 import { covletData } from '@/app/recoil/coverletter'
-import ExpCard from '@/app/components/coverletter/ExpCard'
+import { useRecoilState } from 'recoil'
+import { expData, expNum } from '../../recoil/experience'
 import AiFeedContainer from './AiFeedContainer'
 
 const CovletAiFeed = () => {

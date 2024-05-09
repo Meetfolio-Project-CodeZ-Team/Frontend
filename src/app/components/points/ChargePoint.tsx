@@ -29,7 +29,7 @@ const ChargePoint = ({
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
     const requestData = {
       ...KAKAO_VALUE,
-      total_amount: chargeP,
+      total_amount: Number(chargeP),
       approval_url: `http://localhost:3000/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
@@ -50,8 +50,8 @@ const ChargePoint = ({
     setTid(data.tid)
 
     const requestTid = {
-      point: 500,
-      payment: 500,
+      point: Number(chargeP),
+      payment: Number(chargeP),
       tid: data?.tid || '',
     }
     const saveTid = {
@@ -67,7 +67,7 @@ const ChargePoint = ({
       saveTid,
     )
     const resData = await resTid.json()
-      
+
     router.push(data.next_redirect_pc_url)
   }
   return (
