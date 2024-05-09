@@ -26,6 +26,10 @@ export const BUTTON_STYLE = {
     `w-20 h-[30px]text-sm font-bold bg-white text-black rounded-[25px] ${className} `,
   boardPost: (className: string) =>
     `w-[280px] h-[50px] text-[24px] font-semibold rounded-[20px] ${className} `,
+  modelYes: (className: string) =>
+    `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#7AAAE8] text-white`,
+  modelNo: (className: string) =>
+    `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#DEE5ED] text-black`,
 } as const
 
 export const INPUT_STYLE = {

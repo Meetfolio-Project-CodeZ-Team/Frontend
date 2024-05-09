@@ -88,3 +88,12 @@ export const BOARD_ENUM = {
   '그룹원 모집': 'GROUP',
   '취업 정보': 'EMPLOYMENT',
 }
+
+export const MODEL_MODAL = [
+  '최근 추가된',
+  '개의 학습 데이터를 추가 학습시키겠습니까?',
+  '모델명',
+  '최근 학습일',
+  '최근 배포일',
+  '성능',
+]

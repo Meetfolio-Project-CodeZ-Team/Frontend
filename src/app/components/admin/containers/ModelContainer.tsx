@@ -13,10 +13,8 @@ const ModelContainer = () => {
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const marginBorder =
     titleNum === 1 ? 'ml-[160px]' : titleNum === 2 ? 'ml-[300px]' : ''
-  console.log('타이틀 넘버 변화', titleNum)
 
   useEffect(() => {
-    console.log(titleNum, '으로 재요청')
     const fetchData = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
