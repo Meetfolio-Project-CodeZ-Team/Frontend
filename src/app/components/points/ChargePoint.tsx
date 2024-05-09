@@ -30,7 +30,10 @@ const ChargePoint = ({
     const requestData = {
       ...KAKAO_VALUE,
       total_amount: Number(chargeP),
-      approval_url: `http://localhost:3000/coverletter?id=${coverLetterId}`,
+      approval_url:
+        coverLetterId === 0
+          ? `http://localhost:3000/mypage/mypoint`
+          : `http://localhost:3000/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',

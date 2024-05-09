@@ -1,10 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import PointCard from './PointCard'
-import Icons from '../common/Icons'
+import { useModal } from '@/app/hooks/useModal'
 import { pointW } from '@/app/ui/IconsPath'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import Icons from '../common/Icons'
+import ChargePoint from '../points/ChargePoint'
+import PointCard from './PointCard'
 
 interface UserInfoProps {
   email: string
@@ -29,6 +31,7 @@ interface PointCardProps {
 const MyPointContainer = () => {
   const [userInfos, setUserInfos] = useState<UserPoint>()
   const [pointCards, setPointCards] = useState<PointCardProps[]>([])
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   useEffect(() => {
     // 서버에서 자소서카드 데이터를 가져오는 함수
@@ -116,10 +119,20 @@ const MyPointContainer = () => {
       <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px]">
         <Link href="/mypage/pointcharge">충전 내역</Link>
       </div>
-      <div className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center">
-        <div className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex">
-        <Icons className="mt-2" name={pointW} />충전하기
+      <div
+        className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center"
+        onClick={handleModalClick}
+      >
+        <div
+          className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex cursor-pointer"
+          onClick={openModal}
+        >
+          <Icons className="mt-2" name={pointW} />
+          충전하기
         </div>
+          {isOpen && (
+            <ChargePoint closeCharge={closeModal} cost={0} coverLetterId={0} />
+          )}
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트

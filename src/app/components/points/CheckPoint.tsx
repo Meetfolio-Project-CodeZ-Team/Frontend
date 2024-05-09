@@ -27,6 +27,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
+  
   const usingPoint = async (
     cost: number,
     usingType: string,
