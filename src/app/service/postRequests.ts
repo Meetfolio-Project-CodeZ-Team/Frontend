@@ -160,3 +160,8 @@ export const kakaoApprove = async (body: any) => {
     console.log('Error:', error)
   }
 }
+
+export const sendApprove = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/payments/approve `
+  return await postRequest(url, null, accessToken)
+}

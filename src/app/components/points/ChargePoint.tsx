@@ -29,6 +29,7 @@ const ChargePoint = ({
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
     const requestData = {
       ...KAKAO_VALUE,
+      total_amount: chargeP,
       approval_url: `http://localhost:3000/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
@@ -66,8 +67,7 @@ const ChargePoint = ({
       saveTid,
     )
     const resData = await resTid.json()
-    console.log(data.next_redirect_pc_url, '로 이동')
-
+      
     router.push(data.next_redirect_pc_url)
   }
   return (
