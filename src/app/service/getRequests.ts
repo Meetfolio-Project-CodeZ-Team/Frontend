@@ -124,3 +124,12 @@ export const successComplete = async (
   const url = `${SERVER_URL}/api/payments/success?paymentId=${paymentId}&pg_token=${pgToken}`
   return await getRequest(url, accessToken)
 }
+
+export const searchPost = async (
+  accessToken: string,
+  keyword: string,
+  type: string,
+) => {
+  const url = `${SERVER_URL}/api/boards?page=0&keyword=${keyword}&type=${type}`
+  return await getRequest(url, accessToken)
+}

@@ -1,11 +1,26 @@
 'use client'
-import { useState } from 'react'
+import { boardDataState } from '@/app/recoil/board'
 import { search } from '@/app/ui/IconsPath'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import Input from '../common/Input'
 
-const SearchBoard = () => {
+interface SearchBoardProps {
+  isJob: boolean
+}
+
+const SearchBoard = ({ isJob }: SearchBoardProps) => {
   const [title, setTitle] = useState('')
+  const [boardData, setBoardData] = useRecoilState(boardDataState)
+
+  const searchPost = async () => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/search?keyword=${title}&type=${isJob ? 'EMPLOYMENT' : 'GROUP'}`,
+    )
+    const resData = await res.json()
+    setBoardData(resData.result.boardListInfo)
+  }
 
   return (
     <div className="flex w-[260px] gap-x-2 pr-2 pl-3 h-8 rounded-[18px] items-center bg-white">
@@ -14,7 +29,7 @@ const SearchBoard = () => {
         onChange={(e) => setTitle(e.target.value)}
         className="w-[170px] text-base"
       />
-      <div className="cursor-pointer">
+      <div className="cursor-pointer" onClick={searchPost}>
         <Icons name={search} />
       </div>
     </div>
