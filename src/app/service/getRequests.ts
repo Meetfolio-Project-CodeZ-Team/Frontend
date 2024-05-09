@@ -13,6 +13,7 @@ const getRequest = async (url: string, accessToken?: string) => {
       headers: headers,
     }).then((res) => res.json())
     console.log(response, '서버에서 받아온 res')
+    console.log(headers, '서버에 요청하는 헤더')
 
     return response
   } catch (error) {
@@ -133,3 +134,4 @@ export const searchPost = async (
   const url = `${SERVER_URL}/api/boards?page=0&keyword=${keyword}&type=${type}`
   return await getRequest(url, accessToken)
 }
+

@@ -131,3 +131,23 @@ interface AdditionalTrainTypes {
   model_id: number
   created_at: string
 }
+
+interface ModelData {
+  modelId: number
+  version: number
+  modelName: string
+  fileName: string
+  filePath: string
+  status: 'ACTIVE' | 'INACTIVE'
+  createdDate: string
+  activatedDate: string
+}
+
+interface ResponseModelList {
+  modelInfo: ModelData[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}

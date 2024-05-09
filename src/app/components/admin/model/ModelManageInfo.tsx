@@ -11,7 +11,6 @@ interface ModelManageInfoProps {
   filePath: string
   status: string
   createdDate: string
-  learnedDate: string
   activatedDate: string
 }
 
@@ -24,20 +23,19 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
     filePath,
     status,
     createdDate,
-    learnedDate,
     activatedDate,
   } = trainInfo
 
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   return (
-    <div className="flex flex-col w-[1034px] h-[50px]">
+    <div className="flex flex-col w-[1034px] h-[50px]" key={modelId}>
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
         <div className="w-[121px] text-center">{createdDate}</div>
         <div className="w-[228px] text-center">{modelName}</div>
         <div className="w-[278px] text-center">{version}</div>
         <div className="w-[145px] text-center">{status}</div>
-        <div className="w-[145px] text-center">{learnedDate}</div>
+        <div className="w-[145px] text-center">{activatedDate}</div>
         <div className="w-[145px] text-center">{status}</div>
         <div
           className="ml-[168px] flex text-center cursor-pointer"

@@ -23,10 +23,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
   const succeedAdd = () => {
     addTrainData()
     setIsAdd(false)
-    setTimeout(() => {
-      window.location.reload()
-      setTitleNum(1)
-    }, 1000)
+    setTitleNum(1)
   }
 
   return isAdd ? (

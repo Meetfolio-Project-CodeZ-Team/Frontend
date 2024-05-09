@@ -66,6 +66,7 @@ export const MODEL_MANAGE_H = [
   '성능',
   '학습일',
   '배포 상태',
+  '학습 모델 리스트'
 ]
 export const MODEL_TRAIN_H = [
   '학습 데이터 리스트',

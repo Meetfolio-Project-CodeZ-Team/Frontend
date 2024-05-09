@@ -165,10 +165,16 @@ export const sendApprove = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/payments/approve `
   return await postRequest(url, null, accessToken)
 }
+
 export const postAdditionalTrain = async (
   accessToken: string,
   trainData: AdditionalTrainTypes,
 ) => {
   const url = `${SERVER_URL}/api/admins/data-management`
   return await postRequest(url, trainData, accessToken)
+}
+
+export const getModelList = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management/version`
+  return await postRequest(url, null, accessToken)
 }
