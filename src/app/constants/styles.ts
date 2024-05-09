@@ -45,9 +45,9 @@ export const INPUT_STYLE = {
   password: (className: string) =>
     `w-[300px] text-lg font-medium pl-6 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   board: (className: string) =>
-    `w-full text-[20px] font-medium pl-7 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
+    `w-full text-[18px] font-medium pl-6 h-[52px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   member: (className: string) =>
-    `w-[90px] text-[20px] text-[#1A202C] font-bold px-6 h-[67px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
+    `w-[64px] text-[16px] text-[#1A202C] font-bold px-3 h-[52px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {

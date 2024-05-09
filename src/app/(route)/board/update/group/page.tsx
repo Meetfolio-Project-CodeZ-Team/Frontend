@@ -31,7 +31,7 @@ export default function PatchGroupPage() {
     return (
       <section className="flex flex-col items-center min-h-screen relative">
         <Header nickname={data?.memberName || ''} />
-        <div className="w-[94%] h-full py-9 mb-[200px]  flex items-center justify-center">
+        <div className="w-[88%] h-full py-10 mb-[200px] flex items-center justify-center">
           <PostGroupContainer isEdit={true} data={data} />
         </div>
         <Footer />
