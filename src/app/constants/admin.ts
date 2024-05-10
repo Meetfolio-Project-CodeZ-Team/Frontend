@@ -60,13 +60,14 @@ export const PAYMENT_H = ['결제 일시', '이메일', '결제 금액', '충전
 export const MODEL_NAV = ['AI 서비스 통계', '학습  관리', '버전 관리']
 
 export const MODEL_MANAGE_H = [
-  '모델 생성일',
+  '모델 학습일',
   '모델명',
   '버전 정보',
   '성능',
-  '학습일',
   '배포 상태',
   '학습 모델 리스트',
+  '삭제하기',
+  '배포하기',
 ]
 export const MODEL_TRAIN_H = [
   '학습 데이터 리스트',

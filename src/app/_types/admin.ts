@@ -136,11 +136,9 @@ interface ModelData {
   modelId: number
   version: number
   modelName: string
-  fileName: string
-  filePath: string
   status: 'ACTIVE' | 'INACTIVE'
-  createdDate: string
-  activatedDate: string
+  learnedDate: string
+  accuracy: number
 }
 
 interface ResponseModelList {
