@@ -1,12 +1,12 @@
 'use client'
-import React, { useState } from 'react'
+import { boardDataState } from '@/app/recoil/board'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Button from '../../common/Button'
 import BoardHeader from '../BoardHeader'
 import GroupBoardContainer from './GroupBoardContainer'
-import Button from '../../common/Button'
 import JobBoardContainer from './JobBoardContainer'
-import { boardDataState } from '@/app/recoil/board'
-import { useRecoilState } from 'recoil'
-import { useRouter } from 'next/navigation'
 
 interface BoardContainerProps {
   nickname?: string

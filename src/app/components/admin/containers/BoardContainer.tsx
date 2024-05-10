@@ -11,32 +11,25 @@ interface BoardContainerProps {
 
 const BoardContainer = ({ boardList }: BoardContainerProps) => {
   const [boardData, setBoardData] = useState<ResponseBoardData[]>([])
-console.log(boardData, '가져온 게시판 데이터');
+  console.log(boardData, '가져온 게시판 데이터')
 
   useEffect(() => {
     setBoardData(boardList)
   }, [boardList])
 
   const getKeywordBoard = async (selectedBoard: string) => {
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?jobKeyword=${selectedBoard}`,
-      )
-      if (!response.ok) {
-        throw new Error('Failed to fetch user data')
-      }
-      const boardData = await response.json()
-      setBoardData(boardData.result)
-    } catch (error) {
-      console.error('Error fetching user data:', error)
-    }
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?keyword=${selectedBoard}`,
+    )
+    const boardData = await response.json()
+    setBoardData(boardData.result)
   }
 
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[60px]">
       <div className="text-[32px] font-bold leading-[48px]">커뮤니티 관리</div>
       <div className="flex items-center w-[1013px] justify-between">
-        <SearhBoard />
+        <SearhBoard searchBoard={setBoardData} />
         <DropDownB
           options={Board}
           title={'전체'}

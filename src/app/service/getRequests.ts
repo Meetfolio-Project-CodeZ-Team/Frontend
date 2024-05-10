@@ -135,7 +135,9 @@ export const searchPost = async (
   return await getRequest(url, accessToken)
 }
 
-export const getBoard = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/admins/board-management`
+export const getBoard = async (accessToken: string, keyword: string) => {
+  const url = keyword
+    ? `${SERVER_URL}/api/admins/board-management?keyword=${keyword}`
+    : `${SERVER_URL}/api/admins/board-management`
   return await getRequest(url, accessToken)
 }
