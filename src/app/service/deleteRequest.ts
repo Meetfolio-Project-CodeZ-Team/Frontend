@@ -42,3 +42,8 @@ export const deletePost = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/boards/${id}`
   return await deleteRequest(url, accessToken)
 }
+
+export const deletePostAdmin = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/admins/board-management/${id}`
+  return await deleteRequest(url, accessToken)
+}

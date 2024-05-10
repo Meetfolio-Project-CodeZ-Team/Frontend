@@ -63,7 +63,7 @@ export const boardDelete = {
   fill: 'none',
   options: {
     stroke: 'black',
-    strokeWidth: 2,
+    strokeWidth: 3,
   },
 }
 export const search = {
