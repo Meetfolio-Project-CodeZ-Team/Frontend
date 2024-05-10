@@ -1,4 +1,5 @@
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
+const G_SERVER_URL = process.env.NEXT_PUBLIC_GAHCON_SERVER
 const commonHeaders = {
   'Content-Type': 'application/json',
 }
@@ -167,7 +168,7 @@ export const sendApprove = async (accessToken: string) => {
 }
 
 export const postAdditionalTrain = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/admins/model-management/train`
+  const url = `${G_SERVER_URL}/api/admins/model-management/train`
   return await postRequest(url, null, accessToken)
 }
 
