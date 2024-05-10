@@ -8,10 +8,6 @@ interface AddTrainModalProps {
 
 const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
   const additionalTrain = async () => {
-    const requestBody = {
-      model_id: 0,
-      created_at: '2024',
-    }
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/additional`,
       {
@@ -19,10 +15,11 @@ const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestBody),
       },
     )
     const resData = await response.json()
+    console.log(resData, '추가 학습 요청 후 응답');
+    
   }
 
   return (
