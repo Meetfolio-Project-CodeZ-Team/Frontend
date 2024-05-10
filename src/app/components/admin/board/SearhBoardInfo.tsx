@@ -21,7 +21,11 @@ const SearhBoardInfo = ({ searchBoard }: SearchBoardInfoProps) => {
 
   return (
     <div className="flex w-[300px] px-4 gap-x-3 rounded-[18px] border-[1px] border-solid border-black items-center">
-      <Input className='w-[200px]' type={'search'} onChange={(e) => setTitle(e.target.value)}  />
+      <Input
+        className="w-[200px]"
+        type={'search'}
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <div className="cursor-pointer">
         <Icons name={search} onClick={() => getKeywordBoard(title)} />
       </div>
