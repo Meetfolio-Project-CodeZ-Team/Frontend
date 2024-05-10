@@ -58,12 +58,12 @@ export const point = {
 
 export const boardDelete = {
   path: 'M24 24L16 16M16 16L8 8M16 16L24 8M16 16L8 24',
-  width: 32,
-  height: 32,
+  width: 28,
+  height: 28,
   fill: 'none',
   options: {
     stroke: 'black',
-    strokeWidth: 3,
+    strokeWidth: 2,
   },
 }
 export const search = {

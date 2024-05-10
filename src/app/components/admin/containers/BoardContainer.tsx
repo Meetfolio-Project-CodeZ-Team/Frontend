@@ -5,20 +5,32 @@ import { useEffect, useState } from 'react'
 import SearhBoard from '../board/SearhBoardInfo'
 import DropDownB from '../common/DropDownB'
 
-const BoardContainer = () => {
-  const [boardData, setBoardData] = useState<ResponseBoardData | null>(null)
-  console.log(boardData)
+interface BoardContainerProps {
+  boardList: ResponseBoardData[]
+}
+
+const BoardContainer = ({ boardList }: BoardContainerProps) => {
+  const [boardData, setBoardData] = useState<ResponseBoardData[]>([])
+console.log(boardData, '가져온 게시판 데이터');
 
   useEffect(() => {
-    const fetchData = async () => {
+    setBoardData(boardList)
+  }, [boardList])
+
+  const getKeywordBoard = async (selectedBoard: string) => {
+    try {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?jobKeyword=${selectedBoard}`,
       )
-      const resData = await response.json()
-      setBoardData(resData.result)
+      if (!response.ok) {
+        throw new Error('Failed to fetch user data')
+      }
+      const boardData = await response.json()
+      setBoardData(boardData.result)
+    } catch (error) {
+      console.error('Error fetching user data:', error)
     }
-    fetchData()
-  }, [])
+  }
 
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[60px]">
@@ -31,7 +43,7 @@ const BoardContainer = () => {
           onSelect={() => console.log('클릭')}
         />
       </div>
-      <ComunityBoard />
+      <ComunityBoard boardList={boardData} />
     </div>
   )
 }

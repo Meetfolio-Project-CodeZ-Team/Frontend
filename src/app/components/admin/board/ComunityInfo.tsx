@@ -18,13 +18,13 @@ const ComunityInfo = (userInfo: ComunityInfoProps) => {
 
   return (
     <div className="flex flex-col w-[1034px] h-[50px]">
-      <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
+      <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-[16px]">
         <div className="w-[121px] text-center">{createdAt}</div>
-        <div className="w-[228px] text-center">{memberName}</div>
-        <div className="w-[278px] text-center">{type}</div>
-        <div className="w-[145px] text-center">{title}</div>
+        <div className="w-[240px] text-center">{memberName}</div>
+        <div className="w-[268px] text-center">{type}</div>
+        <div className="w-[195px] text-center text-[14px]">{title}</div>
         <div
-          className="ml-[168px] flex text-center cursor-pointer"
+          className="ml-[124px] flex text-center cursor-pointer"
           onClick={openModal}
         >
           <Icons name={boardDelete} />

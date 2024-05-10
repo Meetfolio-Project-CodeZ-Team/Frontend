@@ -135,3 +135,7 @@ export const searchPost = async (
   return await getRequest(url, accessToken)
 }
 
+export const getBoard = async (accessToken: string) => {
+  const url = `${SERVER_URL}/api/admins/board-management`
+  return await getRequest(url, accessToken)
+}
