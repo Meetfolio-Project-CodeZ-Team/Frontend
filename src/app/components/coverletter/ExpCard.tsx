@@ -36,6 +36,7 @@ const ExpCard = ({
   stack,
   title,
   experienceId,
+  onClick,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
   console.log(stackArr)
@@ -65,7 +66,7 @@ const ExpCard = ({
   return (
     <div
       className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] mb-[20px] bg-[#DEE5ED] rounded-[10px] cursor-pointer"
-      onClick={fetchExpCards}
+      onClick={onClick}
     >
       <div className="top-3 right-4 absolute">
         <div className="flex items-center justify-center w-[95px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px] overflow-x-auto whitespace-nowrap scrollbar-hide">

@@ -28,7 +28,7 @@ const MyBoard = () => {
         }
         const data = await response.json()
         console.log('유저 게시글 데이터', data) // 타입 에러가 발생하지 않아야
-        setBoardCards(data.result.boardListInfo.list)
+        setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
         console.error(error)
       }

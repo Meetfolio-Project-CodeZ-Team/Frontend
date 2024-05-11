@@ -166,6 +166,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     setCoverLetterData({
       ...coverletterData,
       coverLetterId: resData.result.coverLetterId,
+      
     })
     console.log(coverletterData, '자소서 데이터 현황')
 
@@ -240,7 +241,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             </div>
           </div>
           <div className="w-[194.65px] h-[48.86px] left-[8px] top-[10px] absolute text-start text-black text-2xl font-bold  leading-9">
-            새 자기소개서
+          {isEdit ? '내 자기소개서' : '새 자기소개서'}
           </div>
           <div className="flex items-center justify-center absolute left-[750px] top-[18px]">
             <Switch

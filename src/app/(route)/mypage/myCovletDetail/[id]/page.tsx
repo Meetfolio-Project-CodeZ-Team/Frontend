@@ -39,6 +39,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
               jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
+              
             })
           }
         })
@@ -87,3 +88,4 @@ const transKeyword = (keyword: string) => {
       return 'DESIGN'
   }
 }
+

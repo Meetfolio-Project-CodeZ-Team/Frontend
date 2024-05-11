@@ -3,20 +3,16 @@
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { covletNum, tidState } from '../../recoil/coverletter'
+import { covletData, covletNum } from '../../recoil/coverletter'
 // import LoginContainer from '@/app/components/login/LoginContainer'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
-
 import Footer from '@/app/components/layout/Footer'
-
-import { useSearchParams } from 'next/navigation'
 
 
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
-
-
+  const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
@@ -32,6 +28,19 @@ export default function CovletMainPage() {
     fetchData()
   }, [covletNumber])
 
+  useEffect(() => {
+    // 첫 로드시에만 experienceNumber를 0으로 설정
+    setCoverLetterData({
+      question: '',
+    answer: '',
+    shareType: 'PRIVATE',
+    keyword1: '',
+    keyword2: '',
+    jobKeyword: '',
+    })
+    setCovletNumber(0)
+  }, [])
+
   console.log(userInfo?.memberName)
 
   return (
@@ -42,7 +51,7 @@ export default function CovletMainPage() {
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
-      <Footer/>
+      <Footer />
     </section>
   )
 }
