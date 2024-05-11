@@ -26,7 +26,7 @@ const PortfolioContainer = () => {
         }
         const data = await response.json()
         console.log('자소서 데이터', data) // 타입 에러가 발생하지 않아야 함
-        setCovletCards(data.result.list)
+        setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
       } catch (error) {
         console.error(error)
       }
@@ -53,7 +53,7 @@ const PortfolioContainer = () => {
             <Link href="/mypage/myexperience">내 경험카드</Link>
           </div>
         </div>
-        {covletCards.length > 0 && (
+        {covletCards?.length > 0 && (
           <div className="flex items-center justify-start gap-2 bg-blue-100 p-2 rounded-[10px]">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -72,7 +72,7 @@ const PortfolioContainer = () => {
       </div>
       <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-          {covletCards.length > 0 ? (
+          {covletCards?.length > 0 ? (
             covletCards.map((a) => <MyCovletCard key={a.index} {...a} />)
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[80px] ">

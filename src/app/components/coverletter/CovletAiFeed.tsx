@@ -50,7 +50,7 @@ const CovletAiFeed = () => {
           <div className="w-[569px] h-[202px] left-0 top-0 absolute">
             <div className="w-[120px] h-[120px] left-0 top-[67px] absolute bg-slate-200 rounded-full" />
             <div className="w-[88px] h-[58px] left-[16px] top-[104px] absolute text-center text-black text-lg font-bold  leading-[27px]">
-              프로젝트   계획 및 관리
+              프로젝트 계획 및 관리
             </div>
             <div className="w-[386px] h-[202px] left-[183px] top-0 absolute">
               <div className="w-[180px] h-[180px] left-0 top-0 absolute bg-slate-600 rounded-full" />
@@ -68,7 +68,7 @@ const CovletAiFeed = () => {
         </div>
         <div className="w-[265px] h-[117px] left-[350px] top-[954px] absolute">
           <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold  leading-[30px]">
-            AI 직무역량분석에 대한   나의 만족도는?
+            AI 직무역량분석에 대한 나의 만족도는?
           </div>
           <div className="w-[170px] h-[49px] left-[48px] top-[68px] absolute">
             <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-0 top-0 absolute rounded-xl justify-center items-center inline-flex">

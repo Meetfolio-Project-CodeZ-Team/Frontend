@@ -39,6 +39,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
               jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
+              
             })
           }
         })
@@ -61,9 +62,9 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             coverLetterId={Number(params.id)}
             question={coverletterData.question}
             answer={coverletterData.answer}
-            keyword1={'#문제 해결 능력'}
-            keyword2={'#도전 정신'}
-            jobKeyword={'#빅데이터'}
+            keyword1={coverletterData.keyword1}
+            keyword2={coverletterData.keyword2}
+            jobKeyword={coverletterData.jobKeyword}
             shareType={coverletterData.shareType}
           />
         </div>
@@ -87,3 +88,4 @@ const transKeyword = (keyword: string) => {
       return 'DESIGN'
   }
 }
+
