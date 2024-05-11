@@ -17,69 +17,82 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
 
-  
   const [enabled, setEnabled] = useState(false)
-  
+
   const [tid, setTid] = useRecoilState(tidState)
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
   const coverletterId = params.get('id')
-  console.log(tid, '현재 tid 정보')
-  console.log('가져온 피지토큰', pg_token)
   setTid(tid)
-  console.log('가져온 tid', tid)
-  console.log('id', coverletterId)
 
-  
   useEffect(() => {
-    const getTid = async () => {
-      try {
-        const response = await fetch('/api/kakaopay/tid/approve')
-        const data = await response.json()
-        console.log('tid 가져옴', data.result)
-        setTid(data.result.tid)
-
-        const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
-        const requestData = {
-          cid: 'TC0ONETIME',
-          tid: data.result.tid,
-          partner_order_id: 'meetfolio',
-          partner_user_id: 'meetfolio',
-          pg_token: pg_token,
-        }
-        const requestConfig = {
-          method: 'POST',
-          headers: {
-            Authorization: `SECRET_KEY ${SECRET_KEY}`,
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify(requestData),
-        }
-
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/approve`,
-          requestConfig,
-        )
-        const resdata = await res.json()
-        console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
-        await fetch(
-          `/api/mypage/myCovletDetail?coverLetterId=${Number(coverletterId)}`,
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            if (data && data.result && data.result.coverLetterInfo) {
-              setCoverLetterData({
-                ...data.result.coverLetterInfo,
-              })
-            }
-          })
-      } catch (error) {
-        console.error(error)
-      }
-    }
-
-    getTid()
     if (pg_token) {
+      const getTid = async () => {
+        try {
+          const response = await fetch('/api/kakaopay/tid/approve')
+          const data = await response.json()
+          setTid(data.result.tid)
+
+          const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
+          const requestData = {
+            cid: 'TC0ONETIME',
+            tid: data.result.tid,
+            partner_order_id: 'meetfolio',
+            partner_user_id: 'meetfolio',
+            pg_token: pg_token,
+          }
+          const requestConfig = {
+            method: 'POST',
+            headers: {
+              Authorization: `SECRET_KEY ${SECRET_KEY}`,
+              'Content-type': 'application/json',
+            },
+            body: JSON.stringify(requestData),
+          }
+
+          const res = await fetch(
+            `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/approve`,
+            requestConfig,
+          )
+          const resdata = await res.json()
+          console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
+          await fetch(
+            `/api/mypage/myCovletDetail?coverLetterId=${Number(coverletterId)}`,
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              if (data && data.result && data.result.coverLetterInfo) {
+                setCoverLetterData({
+                  ...data.result.coverLetterInfo,
+                })
+              }
+            })
+
+          const req = {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json',
+            },
+          }
+
+          const sendApprove = await fetch(
+            `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/payments/approve`,
+            req,
+          )
+          const approveRes = await sendApprove.json()
+          console.log('서버로 승인 정보 보내고 응답', approveRes)
+          const paymentId = approveRes.result.paymentId
+
+          const resComplete = await fetch(
+            `/api/kakaopay/complete?id=${paymentId}&pgToken=${pg_token}`,
+          )
+          const completeData = await resComplete.json()
+          console.log('완료 요청 보내고 응답', completeData)
+        } catch (error) {
+          console.error(error)
+        }
+      }
+      getTid()
       setCovletNumber(1)
     }
   }, [pg_token])
@@ -93,17 +106,14 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   useEffect(() => {
     if (coverletterData.shareType) {
-      setEnabled(coverletterData.shareType === 'PUBLIC');
+      setEnabled(coverletterData.shareType === 'PUBLIC')
     }
-  }, [coverletterData.shareType]); // coverletterData의 shareType이 바뀔 때마다 enabled를 업데이트
-  
+  }, [coverletterData.shareType]) // coverletterData의 shareType이 바뀔 때마다 enabled를 업데이트
 
   useEffect(() => {
-    const newShareType = enabled ? 'PUBLIC' : 'PRIVATE';
-    setCoverLetterData({ ...coverletterData, shareType: newShareType });
-  }, [enabled]);
-  
-  
+    const newShareType = enabled ? 'PUBLIC' : 'PRIVATE'
+    setCoverLetterData({ ...coverletterData, shareType: newShareType })
+  }, [enabled])
 
   const goToNextPage = () => {
     setCovletNumber(covletNumber + 1)

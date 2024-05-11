@@ -26,12 +26,9 @@ const CovletSave = () => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [showInputs, setShowInputs] = useState(false)
-  const [feedbackClicked, setFeedbackClicked] = useState(false);
+  const [feedbackClicked, setFeedbackClicked] = useState(false)
   const router = useRouter()
   console.log(coverletterData, '자소서 데이터 현황')
-
-  
-  
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -48,8 +45,6 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
-
-  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -77,8 +72,8 @@ const CovletSave = () => {
   }
 
   const handleShowClick = () => {
-    setShowInputs(true);  // 입력창을 보이게 설정
-    setFeedbackClicked(true);  // 피드백 버튼이 클릭되었음을 설정
+    setShowInputs(true) // 입력창을 보이게 설정
+    setFeedbackClicked(true) // 피드백 버튼이 클릭되었음을 설정
   }
 
   const handleCopyText = () => {
@@ -240,7 +235,6 @@ const CovletSave = () => {
           <div className="w-[315px] h-[64.07px] left-[120px] top-[150px] absolute">
             <button
               className={`w-[280px] h-[60px] relative hover:bg-blue-300 text-slate-600 ${feedbackClicked ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-
               onClick={handleShowClick}
             >
               AI 피드백
@@ -256,7 +250,7 @@ const CovletSave = () => {
             {isOpen && (
               <CheckPoint2
                 closeCheck={closeModal}
-                cost={300}
+                cost={500}
                 coverLetterId={coverletterData.coverLetterId || 0}
               />
             )}

@@ -13,6 +13,7 @@ const getRequest = async (url: string, accessToken?: string) => {
       headers: headers,
     }).then((res) => res.json())
     console.log(response, '서버에서 받아온 res')
+    console.log(headers, '서버에 요청하는 헤더')
 
     return response
   } catch (error) {
@@ -113,5 +114,30 @@ export const getGroupAll = async (accessToken: string, page?: number) => {
 
 export const getTid = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/payments/ready`
+  return await getRequest(url, accessToken)
+}
+
+export const successComplete = async (
+  accessToken: string,
+  paymentId: number,
+  pgToken: string,
+) => {
+  const url = `${SERVER_URL}/api/payments/success?paymentId=${paymentId}&pg_token=${pgToken}`
+  return await getRequest(url, accessToken)
+}
+
+export const searchPost = async (
+  accessToken: string,
+  keyword: string,
+  type: string,
+) => {
+  const url = `${SERVER_URL}/api/boards?page=0&keyword=${keyword}&type=${type}`
+  return await getRequest(url, accessToken)
+}
+
+export const getBoard = async (accessToken: string, keyword: string) => {
+  const url = keyword
+    ? `${SERVER_URL}/api/admins/board-management?keyword=${keyword}`
+    : `${SERVER_URL}/api/admins/board-management`
   return await getRequest(url, accessToken)
 }

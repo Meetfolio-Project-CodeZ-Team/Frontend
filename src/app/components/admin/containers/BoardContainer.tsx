@@ -5,33 +5,27 @@ import { useEffect, useState } from 'react'
 import SearhBoard from '../board/SearhBoardInfo'
 import DropDownB from '../common/DropDownB'
 
-const BoardContainer = () => {
-  const [boardData, setBoardData] = useState<ResponseBoardData | null>(null)
-  console.log(boardData)
+interface BoardContainerProps {
+  boardList: ResponseBoardData[]
+}
+
+const BoardContainer = ({ boardList }: BoardContainerProps) => {
+  const [boardData, setBoardData] = useState<ResponseBoardData[]>([])
+  const [boardType, setBoardType] = useState('')
+  console.log(boardType, '선택한 게시판 타입')
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board`,
-      )
-      const resData = await response.json()
-      setBoardData(resData.result)
-    }
-    fetchData()
-  }, [])
+    setBoardData(boardList)
+  }, [boardList])
 
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[60px]">
       <div className="text-[32px] font-bold leading-[48px]">커뮤니티 관리</div>
       <div className="flex items-center w-[1013px] justify-between">
-        <SearhBoard />
-        <DropDownB
-          options={Board}
-          title={'전체'}
-          onSelect={() => console.log('클릭')}
-        />
+        <SearhBoard searchBoard={setBoardData} />
+        <DropDownB options={Board} title={'전체'} setBoardType={setBoardType} />
       </div>
-      <ComunityBoard />
+      <ComunityBoard boardList={boardData} boardType={boardType} />
     </div>
   )
 }

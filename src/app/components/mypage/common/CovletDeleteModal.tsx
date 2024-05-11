@@ -18,7 +18,7 @@ const CovletDeleteModal = ({ closeModal, deleteCov }: DeleteModalProps) => {
     if (isDeleted) {
       setTimeout(() => {
         router.push(`/mypage`)
-      }, 8000) 
+      }, 8000)
     }
   }, [isDeleted, router])
 

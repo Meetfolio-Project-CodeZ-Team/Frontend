@@ -26,6 +26,12 @@ export const BUTTON_STYLE = {
     `w-20 h-[30px]text-sm font-bold bg-white text-black rounded-[25px] ${className} `,
   boardPost: (className: string) =>
     `w-[280px] h-[50px] text-[24px] font-semibold rounded-[20px] ${className} `,
+  modelYes: (className: string) =>
+    `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#7AAAE8] text-white`,
+  modelNo: (className: string) =>
+    `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#DEE5ED] text-black`,
+  modelInfo: (className: string) =>
+    `w-[207px] h-[66px] text-2xl font-semibold rounded-[20px] ${className}`,
 } as const
 
 export const INPUT_STYLE = {
@@ -45,9 +51,9 @@ export const INPUT_STYLE = {
   password: (className: string) =>
     `w-[300px] text-lg font-medium pl-6 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   board: (className: string) =>
-    `w-full text-[20px] font-medium pl-7 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
+    `w-full text-[18px] font-medium pl-6 h-[52px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   member: (className: string) =>
-    `w-[90px] text-[20px] text-[#1A202C] font-bold px-6 h-[67px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
+    `w-[64px] text-[16px] text-[#1A202C] font-bold px-3 h-[52px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {

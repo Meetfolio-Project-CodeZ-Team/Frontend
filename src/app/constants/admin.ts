@@ -60,12 +60,14 @@ export const PAYMENT_H = ['결제 일시', '이메일', '결제 금액', '충전
 export const MODEL_NAV = ['AI 서비스 통계', '학습  관리', '버전 관리']
 
 export const MODEL_MANAGE_H = [
-  '모델 생성일',
+  '모델 학습일',
   '모델명',
   '버전 정보',
   '성능',
-  '학습일',
   '배포 상태',
+  '학습 모델 리스트',
+  '삭제하기',
+  '배포하기',
 ]
 export const MODEL_TRAIN_H = [
   '학습 데이터 리스트',
@@ -88,3 +90,22 @@ export const BOARD_ENUM = {
   '그룹원 모집': 'GROUP',
   '취업 정보': 'EMPLOYMENT',
 }
+
+export const MODEL_MODAL = [
+  '최근 추가된',
+  '개의 학습 데이터를 추가 학습시키겠습니까?',
+  '모델명',
+  '최근 학습일',
+  '최근 배포일',
+  '성능',
+]
+
+export const MODEL_INFO = [
+  '버전',
+  '모델명',
+  '파일명',
+  '파일 경로',
+  '배포상태',
+  '생성일',
+  '배포일',
+]

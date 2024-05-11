@@ -92,7 +92,7 @@ const PointCharge = () => {
           <div className="w-[100px] h-[0px] left-[110px] top-[-0.5px] absolute border-2 border-gray-800" />
         </div>
         <div className="h-[39px] relative">
-        <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
+          <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
             <div className="text-black text-lg font-semibold leading-[27px] absolute left-[8px] w-[170px] text-center">
               충전 일시
             </div>
@@ -124,7 +124,8 @@ const PointCharge = () => {
       </div>
       <div className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center">
         <div className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex">
-        <Icons className="mt-2" name={pointW} />충전하기
+          <Icons className="mt-2" name={pointW} />
+          충전하기
         </div>
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">

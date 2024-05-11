@@ -6,28 +6,43 @@ import { useRecoilState } from 'recoil'
 import ModelManage from '../model/ModelManage'
 import ModelTrain from '../model/ModelTrain'
 import ModelUsage from '../model/ModelUsage'
+import { headers } from 'next/headers'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
-  const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
+  const [modelData, setModelData] = useState<ResponseModelData | null>(null)
+  const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
+  console.log(versionData, '가져온 버전 데이터')
+
   const marginBorder =
     titleNum === 1 ? 'ml-[160px]' : titleNum === 2 ? 'ml-[300px]' : ''
-  console.log('타이틀 넘버 변화', titleNum)
 
   useEffect(() => {
-    console.log(titleNum, '으로 재요청')
     const fetchData = async () => {
+      const requestOptions = {
+        method: 'GET',
+        headers: {},
+      }
+
+      if (titleNum === 2) {
+        requestOptions.method = 'POST'
+        requestOptions.headers = {
+          'Content-Type': 'application/json',
+        }
+      }
+
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
+        requestOptions,
       )
       const resData = await response.json()
       if (titleNum === 0) setModelData(resData.result)
       else if (titleNum === 1) setTrainData(resData.result)
-      else setModelData(resData.result)
+      else setVersionData(resData.result)
     }
     fetchData()
-  }, [titleNum, setTitleNum])
+  }, [titleNum])
 
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
@@ -54,7 +69,9 @@ const ModelContainer = () => {
         {titleNum === 1 && trainData && (
           <ModelTrain trainData={trainData.datasetInfo} goNext={setTitleNum} />
         )}
-        {titleNum === 2 && <ModelManage />}
+        {titleNum === 2 && versionData && (
+          <ModelManage modelData={versionData.modelInfo} />
+        )}
       </div>
     </div>
   )

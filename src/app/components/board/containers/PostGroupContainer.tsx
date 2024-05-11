@@ -77,7 +77,7 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
 
   return (
     <div className="flex flex-col w-full bg-white h-[786px] rounded-3xl px-[58px] py-9">
-      <div className="flex gap-x-6 mb-4 items-center">
+      <div className="flex gap-x-5 mb-4 items-center">
         <div className="flex flex-col">
           <div className="text-xl font-bold pl-4">{'모집 카테고리'}</div>
           <div className="w-[250px] h-[67px]  border-2 border-[#C4C4C4] flex items-center justify-center px-4 py-4 rounded-[10px]">
@@ -110,9 +110,9 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="text-xl font-bold pl-2">{'모집인원'}</div>
-          <div className="flex gap-x-1 items-center">
+        <div className="flex gap-x-2 items-center mt-3">
+          <div className="flex flex-col">
+            <div className="text-[16px] font-bold pl-1">{'모집인원'}</div>
             <Input
               type={'member'}
               placeholder="0"
@@ -120,19 +120,23 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
               textValue={member}
               inputType="number"
             />
-            <div className="flex flex-col gap-y-1 cursor-pointer">
-              <div
-                className="flex items-center justify-center w-[30px] h-[30px] border-2 border-[#C4C4C4] rounded-xl"
-                onClick={() => setMember(Number(member) + 1 + '')}
-              >
-                ↑
-              </div>
-              <div
-                className="w-[30px] flex items-center justify-center h-[30px] border-2 border-[#C4C4C4] rounded-xl"
-                onClick={() => setMember(Number(member) -1 + '')}
-              >
-                ↓
-              </div>
+          </div>
+          <div className="flex flex-col gap-y-1 cursor-pointer mt-6">
+            <div
+              className="flex items-center justify-center w-[24px] h-[24px] border-2 border-[#C4C4C4] rounded-lg"
+              onClick={() => setMember(Number(member) + 1 + '')}
+            >
+              ↑
+            </div>
+            <div
+              className="w-[24px] flex items-center justify-center h-[24px] border-2 border-[#C4C4C4] rounded-lg"
+              onClick={() =>
+                member === '0'
+                  ? setMember(member)
+                  : setMember(Number(member) - 1 + '')
+              }
+            >
+              ↓
             </div>
           </div>
         </div>
@@ -148,7 +152,7 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
       </div>
       <textarea
         placeholder="게시물의 내용을 입력해주세요"
-        className="w-full h-[440px] px-7 py-2 text-xl font-medium rounded-[6px] border-[2px] border-[#C4C4C4]"
+        className="w-full h-[440px] px-7 py-2 text-[18px] font-medium rounded-[6px] border-[2px] border-[#C4C4C4]"
         onChange={(e) => setContent(e.target.value)}
         value={content}
       />
