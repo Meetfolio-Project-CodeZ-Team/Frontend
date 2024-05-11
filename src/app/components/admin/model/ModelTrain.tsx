@@ -57,6 +57,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
         <AddTrainModal
           closeModal={closeModal}
           modalData={trainData.modelResult}
+          trainableNumber={trainData.trainableNumber}
         />
       )}
       <div className=" w-[1010px] flex flex-row-reverse gap-x-5">
