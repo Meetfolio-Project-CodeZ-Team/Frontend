@@ -10,6 +10,7 @@ interface MyExpCardProps {
   stack: string
   title: string
   experienceId?: number
+  isGuest?: boolean
 }
 
 interface ExperienceCardDetail {
@@ -35,6 +36,7 @@ const MyExpCard = ({
   stack,
   title,
   experienceId,
+  isGuest,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
 
@@ -88,6 +90,7 @@ const MyExpCard = ({
       </div>
       {isOpen && expCards && (
         <MyExpCardDetail
+          isGuest={isGuest}
           experienceId={experienceId || 0}
           title={expCards.title}
           startDate={expCards.startDate}
