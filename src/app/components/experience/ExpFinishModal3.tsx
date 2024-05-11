@@ -7,7 +7,7 @@ import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import { useState } from 'react'
 
-const ExpFinishModal2 = () => {
+const ExpFinishModal3 = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
@@ -137,11 +137,11 @@ const ExpFinishModal2 = () => {
           {experienceData.title}
         </div>
         <div className="left-[30px] top-[230px] absolute text-black text-lg font-semibold leading-[27px]">
-          나의 활동 & 경험 내용{' '}
+          결과 및 성과
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
         <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
-          {experienceData.detail}
+          {experienceData.advance}
         </div>
         <div className="px-10  left-[195px] top-[595px] absolute bg-black rounded-[30px] cursor-pointer">
           <div
@@ -151,11 +151,12 @@ const ExpFinishModal2 = () => {
             확인
           </div>
         </div>
+        
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
           <div className="w-[80px] h-4 relative">
-            <div className="w-[14px] h-[14px] left-[16px] top-0 absolute bg-blue-400 rounded-full" />
-            <div className="w-[28px] h-[14px] left-[36px] top-0 absolute bg-blue-600 rounded-[50px]" />
-            <div className="w-[14px] h-[14px] left-[70px] top-0 absolute bg-blue-400 rounded-full" />
+            <div className="w-[14px] h-[14px] left-[20px] top-0 absolute bg-blue-400 rounded-full" />
+            <div className="w-[14px] h-[14px] left-[40px] top-0 absolute bg-blue-400 rounded-full" />
+            <div className="w-[28px] h-[14px] left-[62px] top-0 absolute bg-blue-600 rounded-[50px]" />
           </div>
         </div>
       </div>
@@ -177,7 +178,7 @@ const ExpFinishModal2 = () => {
   )
 }
 
-export default ExpFinishModal2
+export default ExpFinishModal3
 
 const transKeyword = (keyword: string) => {
   switch (keyword) {
