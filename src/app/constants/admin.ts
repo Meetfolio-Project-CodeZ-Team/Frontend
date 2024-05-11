@@ -75,6 +75,7 @@ export const MODEL_TRAIN_H = [
   '지원 직무',
   '사이트',
   '사이트 URL',
+  '학습 가능 데이터 수',
 ]
 
 export const MODEL_PATH = ['service', 'train/data', 'version']

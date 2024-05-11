@@ -4,9 +4,10 @@ import Button from '../../common/Button'
 
 interface AddTrainModalProps {
   closeModal: () => void
+  modalData: modelResultTypes
 }
 
-const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
+const AddTrainModal = ({ closeModal,modalData }: AddTrainModalProps) => {
   const additionalTrain = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/additional`,
@@ -18,8 +19,7 @@ const AddTrainModal = ({ closeModal }: AddTrainModalProps) => {
       },
     )
     const resData = await response.json()
-    console.log(resData, '추가 학습 요청 후 응답');
-    
+    console.log(resData, '추가 학습 요청 후 응답')
   }
 
   return (
