@@ -10,8 +10,8 @@ import { headers } from 'next/headers'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
-  const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
+  const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
   console.log(versionData, '가져온 버전 데이터')
 
@@ -67,7 +67,7 @@ const ModelContainer = () => {
       <div className="flex w-[1013px]">
         {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
         {titleNum === 1 && trainData && (
-          <ModelTrain trainData={trainData.datasetInfo} goNext={setTitleNum} />
+          <ModelTrain trainData={trainData} goNext={setTitleNum} />
         )}
         {titleNum === 2 && versionData && (
           <ModelManage modelData={versionData.modelInfo} />

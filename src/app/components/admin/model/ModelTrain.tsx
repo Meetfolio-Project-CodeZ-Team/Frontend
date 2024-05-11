@@ -12,7 +12,7 @@ import AddTrainData from './AddTrainData'
 import AddTrainModal from './AddTrainModal'
 import ModelTrainInfo from './ModelTrainInfo'
 interface ModelTrainProps {
-  trainData: datasetInfoTypes[]
+  trainData: ResponseTrainData
   goNext: SetterOrUpdater<number>
 }
 const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
@@ -39,7 +39,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
         <div className="ml-[300px]">{MODEL_TRAIN_H[4]}</div>
       </div>
       <div className="h-[520px] overflow-y-auto scrollbar-hide">
-        {trainData.map((data, i) => (
+        {trainData.datasetInfo.datasetInfo.map((data, i) => (
           <div key={i}>
             <ModelTrainInfo
               createdAt={data.createdAt}
