@@ -78,10 +78,12 @@ const PortfolioContainer = () => {
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[80px] ">
               <div className="text-center ">
                 <p className="text-xl font-semibold">
-                아직 작성한 자기소개서가 없네요.<br/>자기소개서를 써보고, AI 첨삭을 받아보세요!
+                  아직 작성한 자기소개서가 없네요.
+                  <br />
+                  자기소개서를 써보고, AI 첨삭을 받아보세요!
                 </p>
-                <div className='flex justify-center mt-[35px]'>
-                <CovIcon />
+                <div className="flex justify-center mt-[35px]">
+                  <CovIcon />
                 </div>
                 <button className="mt-[35px] px-8 py-2 bg-black text-white rounded-[30px] font-semibold">
                   <Link href="/coverletter">자기소개서 첨삭 받아보기</Link>

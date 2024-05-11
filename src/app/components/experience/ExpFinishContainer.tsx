@@ -1,13 +1,23 @@
 'use client'
 
 import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
+import { expNum, expData, modalNum } from '../../recoil/experience'
 import { useRouter } from 'next/navigation'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import NextArrow from '@/app/ui/svg/arrow/NextArrow'
+import ExpFinishModal1 from './ExpFinishModal1'
+import ExpFinishModal2 from './ExpFinishModal2'
+import { useState } from 'react'
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
+  const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const router = useRouter()
+
+  const totalPages = 2;
+
+ 
 
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
@@ -184,85 +194,13 @@ const ExpFinishContainer = () => {
           저장하기
         </button>
       </div>
-      <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center">
-        <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
-        <div className="w-[550px] h-[700px] flex flex-col justify-center items-center absolute">
-          <div className="w-[550px] h-[650px] relative  bg-white rounded-[20px]" />
-          <div className="w-[500px] h-[500px] left-[30px] top-[55px] overflow-y-auto scrollbar-hide absolute bg-slate-200 rounded-[20px] shadow">
-            <div className="w-[350px] h-9 left-[35.77px] top-[121.55px] absolute">
-              <div className="w-24 h-9 px-5 left-0 top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
-                <div className="w-[76px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                  {displayKeyword(experienceData.jobKeyword)}
-                </div>
-              </div>
-              <div className="w-[300px] h-9 px-5 left-[117px] top-0 absolute bg-white rounded justify-center items-center gap-2 inline-flex">
-                <div className="w-[240px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                  {experienceData.expStacks.join(' / ')}
-                </div>
-              </div>
-            </div>
-            <div className="w-[110px] h-[30px] px-5 left-[359px] top-[34px] absolute bg-blue-400 rounded-[30px] justify-center items-center gap-2 inline-flex">
-              <div className="w-[90px] h-6 text-center text-gray-900 text-base font-semibold leading-normal">
-                {experienceData.experienceType}
-              </div>
-            </div>
-            <div className="w-[400px] h-6 left-[30px] top-[68px] absolute text-start text-gray-900 text-2xl font-semibold leading-[45px]">
-              {experienceData.title}
-            </div>
-            <div className="w-[300px] h-6 left-[31px] top-[34px] absolute text-gray-900 text-lg font-bold font-['Plus Jakarta Sans']">
-              {experienceData.startDate}~{experienceData.endDate}
-            </div>
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[189.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                업무 사항
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                {experienceData.task}
-              </div>
-            </div>
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[384.55px] absolute">
-              <div className="w-[118px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                경험 동기
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                {experienceData.motivation}
-              </div>
-            </div>
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[584.55px] absolute">
-              <div className="w-[250px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                나의 활동 & 경험 내용
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                {experienceData.detail}
-              </div>
-            </div>
+      <div className="justify-center items-center">
+      {/* 페이지에 따라 다른 모달 컴포넌트 렌더링 */}
+      {pageNumber === 0 && <ExpFinishModal1 />}
+      {pageNumber === 1 && <ExpFinishModal2 />}
 
-            <div className="w-[416px] h-[172px] left-[28.77px] top-[784.55px] absolute">
-              <div className="w-[140px] h-6 left-0 top-0 absolute text-center text-gray-900 text-[25px] font-semibold leading-[37.50px]">
-                결과 및 성과
-              </div>
-              <div className="w-[409px] h-[124px] left-[7px] top-[48px] absolute bg-white rounded-[15px]" />
-              <div className="w-[361px] h-[92px] left-[30px] top-[59px] absolute text-black text-base font-medium leading-normal">
-                {experienceData.advance}
-              </div>
-            </div>
-          </div>
-          <div className="w-[150.05px] h-[61.46px] left-[200px] top-[585px] absolute bg-black justify-center items-center rounded-[10px]">
-            {/* <div className="w-[60.02px] h-[25.43px] left-[44.95px] top-[18.02px] absolute text-center text-white text-[25px] font-semibold leading-[37.50px]">
-              확인
-            </div> */}
-            <button
-              className={`w-[60.02px] h-[25.43px] left-[44.95px] top-[8px] absolute text-white  border-0 py-2 px-0 focus:outline-none rounded-[10px] text-2xl font-semibold `}
-              onClick={handleButtonClick}
-            >
-              확인
-            </button>
-          </div>
-        </div>
-      </div>
+      
+    </div>
     </div>
   )
 }
