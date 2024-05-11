@@ -88,7 +88,7 @@ const ChargePoint = ({
             {CHARGE_POINT[1]}
             <Input
               inputType="number"
-              type={'train'}
+              type={'charge'}
               onChange={(e) => setChargeP(e.target.value)}
               textValue={chargeP}
             />

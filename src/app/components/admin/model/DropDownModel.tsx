@@ -40,7 +40,7 @@ const DropDownModel = ({ options, title, onSelect }: DropDownModelProps) => {
   return (
     <div className="flex flex-col text-base font-bold">
       <div
-        className="flex relative w-[400px] h-[60px] rounded-[10px] bg-white border-2 border-[#486284] cursor-pointer"
+        className="flex relative w-[400px] h-[52px] rounded-[10px] bg-white border-2 border-[#486284] cursor-pointer"
         onClick={() => setIsOpen((prevState) => !prevState)}
       >
         <p className="m-auto text-[#486284]">
