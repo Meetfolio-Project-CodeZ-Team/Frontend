@@ -37,12 +37,10 @@ const MyExpCard = ({
   experienceId,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
-  console.log(stackArr)
 
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
 
-  console.log(experienceId, '카드 정보 id')
   const fetchExpCards = async () => {
     try {
       const response = await fetch(
@@ -52,7 +50,6 @@ const MyExpCard = ({
         throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
       }
       const data = await response.json()
-      console.log(data.result.experienceInfo, '상세 조회') // 타입 에러가 발생하지 않아야 함
       setExpCards(data.result.experienceInfo)
     } catch (error) {
       console.error(error)

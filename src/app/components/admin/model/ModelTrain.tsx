@@ -1,5 +1,6 @@
 'use client'
 import { MODEL_TRAIN_H } from '@/app/constants/admin'
+import { useModal } from '@/app/hooks/useModal'
 import { modelNum } from '@/app/recoil/admin'
 import { addTrainData } from '@/app/utils/toast'
 import { useState } from 'react'
@@ -8,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { SetterOrUpdater, useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import AddTrainData from './AddTrainData'
+import AddTrainModal from './AddTrainModal'
 import ModelTrainInfo from './ModelTrainInfo'
 interface ModelTrainProps {
   trainData: datasetInfoTypes[]
@@ -16,14 +18,12 @@ interface ModelTrainProps {
 const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
   const [isAdd, setIsAdd] = useState(false)
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const succeedAdd = () => {
     addTrainData()
     setIsAdd(false)
-    setTimeout(() => {
-      window.location.reload()
-      setTitleNum(1)
-    }, 1000)
+    setTitleNum(1)
   }
 
   return isAdd ? (
@@ -50,13 +50,14 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
           </div>
         ))}
       </div>
+      {isOpen && <AddTrainModal closeModal={closeModal} />}
       <div className=" w-[1010px] flex flex-row-reverse gap-x-5">
         <Button
           buttonText={'추가학습'}
           type={'modelBtn'}
           className="bg-white border-2 border-[#486283] text-[#486283]"
           isDisabled={false}
-          onClickHandler={() => setIsAdd(true)}
+          onClickHandler={openModal}
         />
         <Button
           buttonText={'데이터 추가'}

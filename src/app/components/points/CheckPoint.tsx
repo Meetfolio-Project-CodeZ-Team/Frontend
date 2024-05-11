@@ -1,10 +1,8 @@
 'use client'
 import { CHECK_BUTTON, CHECK_BUTTON2, CHECK_POINT } from '@/app/constants/point'
 import { useModal } from '@/app/hooks/useModal'
-import { pointW } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
 import Button from '../common/Button'
-import Icons from '../common/Icons'
 import ChargePoint from './ChargePoint'
 
 interface CheckPointProps {
@@ -16,7 +14,7 @@ interface CheckPointProps {
 const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [myPoint, setMyPoint] = useState(0)
-
+  const isEnough = myPoint - cost >= 0
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -27,6 +25,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
+
   const usingPoint = async (
     cost: number,
     usingType: string,
@@ -75,15 +74,6 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               {CHECK_POINT[3]}
               <div className="text-[25px] font-medium">{myPoint - cost}P</div>
             </div>
-            <div
-              className="w-[104px] h-[58px] bg-[#7AAAE8] text-white flex gap-x-2 items-center justify-center rounded-[30px] cursor-pointer"
-              onClick={openModal}
-            >
-              <div>
-                <Icons className="mt-2" name={pointW} />
-              </div>
-              <div className="text-[22px] font-bold">충전</div>
-            </div>
           </div>
           <div className="flex gap-x-4 absolute left-[48px] top-[460px]">
             <Button
@@ -93,13 +83,16 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               onClickHandler={closeCheck}
               className="bg-blue-400 text-white"
             />
+
             <Button
-              buttonText={CHECK_BUTTON[1]}
+              buttonText={isEnough ? CHECK_BUTTON[1] : CHECK_BUTTON[0]}
               type={'auth'}
               isDisabled={false}
-              onClickHandler={() =>
-                usingPoint(cost, 'USE_COVER_LETTER', coverLetterId)
-              }
+              onClickHandler={() => {
+                isEnough
+                  ? usingPoint(cost, 'USE_COVER_LETTER', coverLetterId)
+                  : openModal
+              }}
               className="bg-[black] text-white"
             />
             {isOpen && (

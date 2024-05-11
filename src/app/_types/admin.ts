@@ -126,3 +126,26 @@ interface ResponseBoardData {
   memberName: string
   title: string
 }
+
+interface AdditionalTrainTypes {
+  model_id: number
+  created_at: string
+}
+
+interface ModelData {
+  modelId: number
+  version: number
+  modelName: string
+  status: 'ACTIVE' | 'INACTIVE'
+  learnedDate: string
+  accuracy: number
+}
+
+interface ResponseModelList {
+  modelInfo: ModelData[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}

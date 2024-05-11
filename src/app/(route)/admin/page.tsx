@@ -18,8 +18,6 @@ export default function AdminPage() {
     fetchData()
   }, [])
   if (data) {
-    const { aiServiceInfo, membersInfo, pointInfo, paymentInfo } = data
-
     return (
       <section className="flex flex-col min-h-screen relative">
         <Header isAdmin={true} />

@@ -8,7 +8,7 @@ interface CoverLetterDataTypes {
 }
 
 interface CovletCard {
-  index:number
+  index: number
   question: string
   answer: string
   coverLetterId: number

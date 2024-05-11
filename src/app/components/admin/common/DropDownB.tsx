@@ -7,10 +7,16 @@ import Icons from '../../common/Icons'
 interface DropDownBProps {
   options: readonly BoardTypes[]
   title: string
-  onSelect: (selectedTag: string) => void
+  onSelect?: (selectedTag: string) => void
+  setBoardType?: React.Dispatch<React.SetStateAction<string>>
 }
 
-const DropDownB = ({ options, title, onSelect }: DropDownBProps) => {
+const DropDownB = ({
+  options,
+  title,
+  onSelect,
+  setBoardType,
+}: DropDownBProps) => {
   const [selectedOption, setSelectedOption] = useState<string>('')
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
@@ -33,7 +39,8 @@ const DropDownB = ({ options, title, onSelect }: DropDownBProps) => {
 
   const handleOptionClick = (option: BoardTypes) => {
     setSelectedOption(option)
-    onSelect(BOARD_ENUM[option])
+    onSelect && onSelect(BOARD_ENUM[option])
+    setBoardType && setBoardType(BOARD_ENUM[option])
     setIsOpen(false)
   }
 
