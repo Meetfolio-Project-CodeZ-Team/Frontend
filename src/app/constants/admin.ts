@@ -99,3 +99,13 @@ export const MODEL_MODAL = [
   '최근 배포일',
   '성능',
 ]
+
+export const MODEL_INFO = [
+  '버전',
+  '모델명',
+  '파일명',
+  '파일 경로',
+  '배포상태',
+  '생성일',
+  '배포일',
+]

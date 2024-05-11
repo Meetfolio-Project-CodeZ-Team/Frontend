@@ -1,6 +1,7 @@
 import { useModal } from '@/app/hooks/useModal'
 import { deleteUserAlert } from '@/app/utils/toast'
 import DeleteModal from '../common/DeleteModal'
+import ModelInfoModal from './ModelInfoModal'
 
 interface ModelManageInfoProps {
   modelId: number
@@ -34,7 +35,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
     <div className="flex flex-col w-[1034px] h-[50px]" key={modelId}>
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
         <div className="w-[121px] text-center">{learnedDate}</div>
-        <div className="w-[348px] text-center">{modelName}</div>
+        <div className="w-[348px] text-center" onClick={openModal}>{modelName}</div>
         <div className="w-[50px] text-center">{version}</div>
         <div className="w-[302px] text-center">{accuracy}%</div>
         <div className="w-[118px] flex items-center justify-center">
@@ -46,7 +47,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         </div>
         <div onClick={handleModalClick}>
           {isOpen && (
-            <DeleteModal
+            <ModelInfoModal
               closeModal={closeModal}
               deleteUser={() => deleteModel(modelId)}
               text="해당 데이터를 삭제하시겠습니까?"

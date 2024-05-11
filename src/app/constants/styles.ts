@@ -30,6 +30,8 @@ export const BUTTON_STYLE = {
     `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#7AAAE8] text-white`,
   modelNo: (className: string) =>
     `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#DEE5ED] text-black`,
+  modelInfo: (className: string) =>
+    `w-[207px] h-[66px] text-2xl font-semibold rounded-[20px] ${className}`,
 } as const
 
 export const INPUT_STYLE = {
