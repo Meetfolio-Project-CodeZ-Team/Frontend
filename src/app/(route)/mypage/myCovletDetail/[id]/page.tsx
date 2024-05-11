@@ -69,7 +69,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </section>
   )
 }

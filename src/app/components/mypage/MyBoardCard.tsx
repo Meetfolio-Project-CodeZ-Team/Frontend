@@ -46,7 +46,7 @@ const MyBoardCard = ({
   const router = useRouter()
   console.log(boardId, '게시글 정보 id')
   const fetchBoardCards = () => {
-  setSelectedId(boardId||999)
+    setSelectedId(boardId || 999)
 
     router.push(`/mypage/boardDetail/${boardId}`)
   }

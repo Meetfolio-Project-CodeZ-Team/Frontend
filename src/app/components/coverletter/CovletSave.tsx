@@ -254,7 +254,7 @@ const CovletSave = () => {
             {isOpen && (
               <CheckPoint2
                 closeCheck={closeModal}
-                cost={300}
+                cost={500}
                 coverLetterId={coverletterData.coverLetterId || 0}
               />
             )}

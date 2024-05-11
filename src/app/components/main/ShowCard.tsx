@@ -29,18 +29,19 @@ const ShowCard = ({ JOBKEYWORD }: ShowCardProps) => {
     디자인: [Design1, Design2, Design3],
     백엔드: [Back1, Back2, Back3],
   }
-  const [SelectedComponent, setSelectedComponent] = useState<React.ComponentType | null>(null);
+  const [SelectedComponent, setSelectedComponent] =
+    useState<React.ComponentType | null>(null)
 
   useEffect(() => {
-    const ComponentArray = componentsMap[JOBKEYWORD];
-    const randomIndex = Math.floor(Math.random() * ComponentArray.length);
-    const RandomComponent = ComponentArray[randomIndex];
-    setSelectedComponent(() => RandomComponent);
-  }, [JOBKEYWORD]);
+    const ComponentArray = componentsMap[JOBKEYWORD]
+    const randomIndex = Math.floor(Math.random() * ComponentArray.length)
+    const RandomComponent = ComponentArray[randomIndex]
+    setSelectedComponent(() => RandomComponent)
+  }, [JOBKEYWORD])
 
-  if (!SelectedComponent) return null;
+  if (!SelectedComponent) return null
 
-  return <SelectedComponent />;
+  return <SelectedComponent />
 }
 
 export default ShowCard

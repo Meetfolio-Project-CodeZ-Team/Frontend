@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from 'react'
 const Design3 = () => {
   return (
     <svg

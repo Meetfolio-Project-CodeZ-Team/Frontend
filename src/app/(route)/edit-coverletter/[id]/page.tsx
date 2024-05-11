@@ -65,7 +65,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
         {covletNumber === 1 && <CovletSave />}
         {/* {covletNumber === 2 && <ExpContentContainer />} */}
       </div>
-      <Footer/>
+      <Footer />
     </section>
   )
 }

@@ -1,9 +1,5 @@
 'use client'
 
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { expData } from '../../recoil/experience'
-import { useRouter } from 'next/navigation'
-
 interface ExperienceCardDetail {
   experienceId: number
   title: string
