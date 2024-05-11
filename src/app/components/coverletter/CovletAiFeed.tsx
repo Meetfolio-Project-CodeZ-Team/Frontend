@@ -64,9 +64,6 @@ const CovletAiFeed = () => {
                 </div>
               </div>
             </div>
-        <div className="w-[265px] h-[117px] left-[350px] top-[954px] absolute">
-          <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold  leading-[30px]">
-            AI 직무역량분석에 대한   나의 만족도는?
           </div>
         </div>
         <div className="w-[265px] h-[117px] left-[350px] top-[954px] absolute">
