@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ExpCard from './ExpCard'
+import Link from 'next/link'
 
 interface ExperienceCard {
   experienceId: number
@@ -50,17 +51,20 @@ const ExpCardList = () => {
       </div>
       <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
         <div className="w-[350px] h-full ml-[80px] ">
-          {expCards.map((card) => (
-            <ExpCard key={card.experienceId} {...card} />
-          ))}
+          {expCards.length > 0 ? (
+            expCards.map((card) => (
+              <ExpCard key={card.experienceId} {...card} />
+            ))
+          ) : (
+            <div className="text-center mt-[450px]">
+              <p className="text-gray-500 font-semibold">작성한 경험카드가 없습니다.</p>
+              <button className="mt-[35px] px-8 py-2 bg-black text-white rounded-[30px] font-semibold">
+                <Link href="/experience">경험카드 생성하기</Link>
+              </button>
+            </div>
+          )}
         </div>
       </div>
-      {/* //자소서 작성 중 경험카드 세부조회
-        {/* <div className='w-[450px] h-[1100px] mt-[80px] '>
-          <div className="w-[350px] h-full ml-[16px] gap-[20px]">
-            <ExpCardDetail />
-          </div>
-        </div>  */}
     </div>
   )
 }

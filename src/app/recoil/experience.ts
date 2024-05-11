@@ -5,6 +5,11 @@ export const expNum = atom<number>({
   default: 0,
 })
 
+export const modalNum = atom<number>({
+  key: 'modalNum',
+  default: 0,
+})
+
 export interface ExperienceDataTypes {
   experienceId?: number // 선택적 필드로 추가
   title: string

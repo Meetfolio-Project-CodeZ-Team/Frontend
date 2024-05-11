@@ -177,16 +177,16 @@ const MyCovletCardDetail = ({
           추천 자기소개서 문항
         </div>
       </div>
-      <div className="w-[334px] h-[58px] left-[840px] top-[1606px] absolute flex justify-between items-center">
+      <div className="w-[334px] h-[58px] left-[900px] top-[1606px] absolute flex justify-between items-center">
         <button
-          className="w-[120px] h-[50px] left-0 top-0 absolute select-none rounded-[15px] bg-blue-400  py-2 px-6 text-center align-middle  text-xl font-bold uppercase text-white transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="w-[100px] h-[40px] left-0 top-0 absolute select-none rounded-[15px] bg-blue-400  py-1 px-6 text-center align-middle  text-xl font-bold uppercase text-white transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           onClick={onEditClick}
         >
           수정
         </button>
         <button
-          className="w-[120px] h-[50px] left-[160px] top-0 absolute select-none rounded-[15px] border border-gray-900 py-2 px-6 text-center align-middle  text-xl font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          className="w-[100px] h-[40px] left-[130px] top-0 absolute select-none rounded-[15px] border border-gray-900 py-1 px-6 text-center align-middle  text-xl font-bold uppercase text-gray-900 transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           onClick={openModal}
         >

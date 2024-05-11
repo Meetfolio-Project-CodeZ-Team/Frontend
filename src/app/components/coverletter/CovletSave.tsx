@@ -6,7 +6,8 @@ import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
 import MyExpCard from '../mypage/MyExpCard'
-import CheckPoint from '../points/CheckPoint'
+import CheckPoint2 from '../points/CheckPoint'
+import { useRouter } from 'next/navigation'
 
 interface ExperienceCard {
   experienceId: number
@@ -25,6 +26,12 @@ const CovletSave = () => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [showInputs, setShowInputs] = useState(false)
+  const [feedbackClicked, setFeedbackClicked] = useState(false);
+  const router = useRouter()
+  console.log(coverletterData, '자소서 데이터 현황')
+
+  
+  
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -68,7 +75,8 @@ const CovletSave = () => {
   }
 
   const handleShowClick = () => {
-    setShowInputs(true) // 입력창을 보이게 설정
+    setShowInputs(true);  // 입력창을 보이게 설정
+    setFeedbackClicked(true);  // 피드백 버튼이 클릭되었음을 설정
   }
 
   const handleCopyText = () => {
@@ -101,6 +109,7 @@ const CovletSave = () => {
       jobKeyword,
       coverLetterId,
     } = coverletterData
+    router.push('/coverletter/feedback')
 
     if (!coverLetterId) {
       console.error('coverLetterId가 없습니다.')
@@ -228,7 +237,8 @@ const CovletSave = () => {
           )}
           <div className="w-[315px] h-[64.07px] left-[120px] top-[150px] absolute">
             <button
-              className={`w-[280px] h-[60px] relative hover:bg-blue-300 text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
+              className={`w-[280px] h-[60px] relative hover:bg-blue-300 text-slate-600 ${feedbackClicked ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
+
               onClick={handleShowClick}
             >
               AI 피드백
@@ -357,7 +367,7 @@ const CovletSave = () => {
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveCovData}
         >
-          자기소개서 작성 완료
+          {feedbackClicked ? 'AI 피드백 결과 보러가기' : '자기소개서 작성 완료'}
         </button>
       </div>
       <div className="w-[463px] h-[1218px] left-[977px] top-[18px] absolute items-center justify-center">

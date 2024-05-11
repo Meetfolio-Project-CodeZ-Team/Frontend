@@ -1,261 +1,123 @@
-import { covletData } from '@/app/recoil/coverletter'
-import { useRecoilState } from 'recoil'
-import { expData, expNum } from '../../recoil/experience'
-import AiFeedContainer from './AiFeedContainer'
+import { successCopy } from '@/app/utils/toast'
 
 const CovletAiFeed = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [experienceData, setExperienceData] = useRecoilState(expData)
-  const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const handleCopyText = () => {
+    const textArea = document.getElementById('answer') as HTMLTextAreaElement
+    if (textArea) {
+      // 텍스트 영역을 선택합니다.
+      textArea.select()
+      textArea.setSelectionRange(0, 99999) // 모바일 기기를 위해
 
-  const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1)
-  }
-
-  const handleTextareaChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    setCoverLetterData({
-      ...coverletterData,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCoverLetterData({
-      ...coverletterData,
-      [event.target.name]: event.target.value,
-    })
-  }
-
-  const handleButtonClick = (type: string, event: React.MouseEvent) => {
-    event.preventDefault()
-    setCoverLetterData({ ...coverletterData, shareType: type })
-  }
-
-  const saveData = async () => {
-    // 서버로 데이터를 보내는 코드를 여기에 작성해주세요.
-    // 예를 들어, fetch API를 사용할 수 있습니다.
-    const response = await fetch('/api/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(experienceData),
-    })
-
-    if (!response.ok) {
-      // 에러 처리를 여기에 작성해주세요.
-      console.error('데이터 저장에 실패했습니다.')
+      // 복사 명령을 실행합니다.
+      try {
+        const successful = document.execCommand('copy')
+        const msg = successful ? 'successful' : 'unsuccessful'
+        console.log('Copy text command was ' + msg)
+        successCopy()
+      } catch (err) {
+        console.error('Unable to copy text: ', err)
+        alert('Failed to copy text.')
+      }
     }
   }
+
   return (
-    <div className="w-[1440px] h-[1319px] relative">
-      <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[488px] left-[10px] top-[900px] relative">
-          <div className="w-[941px] h-[488px] left-0 top-0 absolute bg-white rounded-[30px] shadow" />
-          <div className="left-[257px] top-[23px] absolute text-center text-black text-2xl font-bold leading-9">
-            강조하고 싶은 키워드와 지원 직무를 입력하고 ,<br />
-            자기소개서 AI 솔루션을 받아보세요!
-          </div>
-          <div className="w-[845px] h-[118.08px] left-[53px] top-[144.67px] absolute inline-flex gap-[20px]">
-            <div className="w-[255px] h-[118.08px] left-0 top-0 absolute">
-              {' '}
-              // 키워드1
-              <div className="w-[255px] h-[86.65px] left-0 top-0 absolute">
-                <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
-                  <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
-                  <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                    키워드1
-                  </div>
-                </div>
-                <input
-                  type="text"
-                  value={coverletterData.keyword1}
-                  onChange={handleInputChange}
-                  id="keyword1"
-                  name="keyword1"
-                  placeholder="ex) 문제 해결 능력"
-                  maxLength={12}
-                  className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-                />
-              </div>
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
-              </div>
+    <div className="w-[1000px] h-[1100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
+      <div className="w-[981px] h-[1100px] left-0 top-0 flex items-center justify-center mx-auto relative ">
+        <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
+          meetfolio님과 빅데이터의 직무 적합도는 60%입니다.
+        </div>
+        <div className="left-[280px] top-[603px] absolute text-black text-2xl font-bold  leading-9">
+          meetfolio 님은 이런 역량이 두드러져요!
+        </div>
+        <div className="w-[547px] h-[29px] left-[200px] top-[150px] absolute text-black text-2xl font-medium  leading-9">
+          👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
+        </div>
+        <div className="w-[180px] h-[124px] left-[511px] top-[320px] absolute text-black text-7xl font-bold  leading-[108px]">
+          60%
+        </div>
+        <div className="w-[360px] h-[360px] left-[135px] top-[198px] absolute bg-white justify-center items-center inline-flex">
+          <div className="w-[360px] h-[360px] relative">
+            <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
+            <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-blue-400 rounded-full shadow" />
+            <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" />
+            <div className="w-[85px] h-7 left-[229px] top-[190px] absolute text-black text-xl font-bold  leading-[30px]">
+              빅데이터
             </div>
-            <div className="w-[258px] h-[117.68px] left-[292px] top-0 absolute">
-              {' '}
-              // 키워드2
-              <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
-                <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
-                <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                  키워드2
+          </div>
+        </div>
+        <div className="w-[569px] h-[202px] left-[200px] top-[663px] absolute">
+          <div className="w-[569px] h-[202px] left-0 top-0 absolute">
+            <div className="w-[120px] h-[120px] left-0 top-[67px] absolute bg-slate-200 rounded-full" />
+            <div className="w-[88px] h-[58px] left-[16px] top-[104px] absolute text-center text-black text-lg font-bold  leading-[27px]">
+              프로젝트   계획 및 관리
+            </div>
+            <div className="w-[386px] h-[202px] left-[183px] top-0 absolute">
+              <div className="w-[180px] h-[180px] left-0 top-0 absolute bg-slate-600 rounded-full" />
+              <div className="w-[131px] h-[58px] left-[26px] top-[70px] absolute text-center text-white text-2xl font-bold  leading-9">
+                커뮤니케이션 및 협업
+              </div>
+              <div className="w-[150px] h-[150px] left-[236px] top-[52px] absolute">
+                <div className="w-[150px] h-[150px] left-0 top-0 absolute bg-blue-400 rounded-full" />
+                <div className="w-[83px] h-[58px] left-[36px] top-[47px] absolute text-black text-[21px] font-bold  leading-loose">
+                  문제 해결 및 결정력
                 </div>
               </div>
-              <input
-                type="text"
-                value={coverletterData.keyword2}
-                onChange={handleInputChange}
-                id="keyword2"
-                name="keyword2"
-                placeholder="ex) 도전 정신"
-                maxLength={12}
-                className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
+            </div>
+        <div className="w-[265px] h-[117px] left-[350px] top-[954px] absolute">
+          <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold  leading-[30px]">
+            AI 직무역량분석에 대한   나의 만족도는?
+          </div>
+        </div>
+        <div className="w-[265px] h-[117px] left-[350px] top-[954px] absolute">
+          <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold  leading-[30px]">
+            AI 직무역량분석에 대한   나의 만족도는?
+          </div>
+          <div className="w-[170px] h-[49px] left-[48px] top-[68px] absolute">
+            <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-0 top-0 absolute rounded-xl justify-center items-center inline-flex">
+              <div className="w-5 h-5 relative rounded-[10px] border-2 border-blue-600 flex-col justify-start items-start flex">
+                <div className="w-2.5 h-2.5 bg-blue-600 rounded-[5px]" />
               </div>
             </div>
-            <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
-              {' '}
-              // 지원직무
-              <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
-                <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
-                <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
-                  지원직무
-                </div>
-              </div>
-              <input
-                type="text"
-                value={''}
-                onChange={handleInputChange}
-                id="job"
-                name="job"
-                placeholder="ex) 웹퍼블리셔"
-                maxLength={12}
-                className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-              <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                12자 이내
+            <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[35.32px] top-0 absolute rounded-xl justify-center items-center inline-flex">
+              <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
+                <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
               </div>
             </div>
-          </div>
-          <div className="w-[315px] h-[64.07px] left-[120px] top-[314.01px] absolute">
-            <button
-              className={`w-[280px] h-[60px] relative text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-              // onClick={(event) => handleButtonClick('공개', event)}
-            >
-              AI 피드백
-            </button>
-          </div>
-          <div className="w-[315px] h-[64.07px] left-[560px] top-[315.01px] absolute">
-            <button
-              className={`w-[280px] h-[60px] relative text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
-              // onClick={(event) => handleButtonClick('공개', event)}
-            >
-              AI 직무 역량 분석
-            </button>
-          </div>
-          <div className="w-[785px] h-[54px] left-[80px] top-[395.17px] absolute justify-start items-start gap-[95px] inline-flex">
-            <div className="text-center">
-              <span className="text-black text-opacity-70 text-lg font-semibold leading-[27px]">
-                첨삭 및 맞춤법 검사
-              </span>
-              <span className="text-black text-opacity-45 text-lg font-medium leading-[27px]">
-                {' '}
-                결과를 제공하고
-                <br />
-                AI가 사용자에 맞는
-              </span>
-              <span className="text-black text-opacity-70 text-lg font-semibold leading-[27px]">
-                {' '}
-                자기소개서 문항
-              </span>
-              <span className="text-black text-opacity-45 text-lg font-medium leading-[27px]">
-                을 추천합니다.
-              </span>
+            <div className="w-[26.49px] h-6 pl-0.5 pr-[4.49px] py-0.5 left-[71.75px] top-0 absolute rounded-xl justify-center items-center inline-flex">
+              <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
+                <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
+              </div>
             </div>
-            <div className="text-center">
-              <span className="text-black text-opacity-45 text-lg font-medium leading-[27px]">
-                Meetfolio만의 AI 분석 기능으로
-                <br />
-              </span>
-              <span className="text-black text-opacity-70 text-lg font-semibold leading-[27px]">
-                내 직무 역량 및 적합도{' '}
-              </span>
-              <span className="text-black text-opacity-45 text-lg font-medium leading-[27px]">
-                분석 결과를 제공합니다.
-              </span>
+            <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[107.08px] top-0 absolute rounded-xl justify-center items-center inline-flex">
+              <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
+                <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
+              </div>
+            </div>
+            <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[142.40px] top-0 absolute rounded-xl justify-center items-center inline-flex">
+              <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
+                <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
+              </div>
+            </div>
+            <div className="w-[26.49px] h-[22px] left-0 top-[27px] absolute text-center text-black text-xs font-bold  leading-[18px]">
+              1점
+            </div>
+            <div className="w-[26.49px] h-[22px] left-[35.32px] top-[27px] absolute text-center text-black text-xs font-bold  leading-[18px]">
+              2점
+            </div>
+            <div className="w-[26.49px] h-[22px] left-[71.75px] top-[27px] absolute text-center text-black text-xs font-bold  leading-[18px]">
+              3점
+            </div>
+            <div className="w-[26.49px] h-[22px] left-[107.08px] top-[27px] absolute text-center text-black text-xs font-bold  leading-[18px]">
+              4점
+            </div>
+            <div className="w-[26.49px] h-[22px] left-[142.40px] top-[27px] absolute text-center text-black text-xs font-bold  leading-[18px]">
+              5점
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-[941px] h-[857px] left-[10px] top-[18px] absolute">
-        <div className="w-[941px] h-[857px] left-0 top-0 absolute">
-          <div className="w-[941px] h-[857px] left-0 top-0 absolute bg-white rounded-[30px]" />
-          <div className="w-[856.53px] h-[682.16px] left-[37.64px] top-[155.84px] absolute">
-            <div className="w-[113.41px] h-[35.32px] left-[743.12px] top-[646.84px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
-              1000자 이내
-            </div>
-            <div className="w-[842.50px] h-[647.41px] left-0 top-0 absolute">
-              <textarea
-                value={coverletterData.answer}
-                onChange={handleTextareaChange}
-                id="answer"
-                name="answer"
-                placeholder="질문에 대한 답변을 적어보세요."
-                maxLength={1000}
-                className="w-full h-[640px] text-lg bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="w-[856.48px] h-[131.21px] left-[26.89px] top-[3.74px] absolute">
-          <div className="w-[842.50px] h-[75.90px] left-[13.98px] top-[55.31px] absolute">
-            <div className="w-[87.11px] h-[6.58px] left-[754.95px] top-[69.32px] absolute text-center text-black text-opacity-20 text-base font-bold  leading-normal">
-              100자 이내
-            </div>
-            <div className="w-[842.50px] h-[60.48px] left-0 top-0 absolute">
-              <input
-                type="text"
-                value={coverletterData.question}
-                onChange={handleInputChange}
-                id="question"
-                name="question"
-                placeholder="문항 질문을 적어보세요"
-                maxLength={100}
-                className="w-full h-[60px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  text-xl outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-              />
-            </div>
-          </div>
-          <div className="w-[194.65px] h-[48.86px] left-0 top-[7px] absolute text-center text-black text-2xl font-bold  leading-9">
-            새 자기소개서
-          </div>
-        </div>
-      </div>
-      <div className="w-[941px] h-[943px] left-[10px] top-[1420px] absolute bg-white rounded-[20px]">
-        <AiFeedContainer />
-      </div>
-      <div className="w-[1000px] h-[60px] left-[42px] top-[2390px] absolute pb-[150px]">
-        {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
-          저장하기
-        </div> */}
-        <button
-          className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveData}
-        >
-          솔루션 결과 저장하기
-        </button>
-      </div>
-      <div className="w-[463px] h-[2330px] left-[977px] top-[18px] absolute items-center justify-center">
-        <div className="w-[463px] h-[2330px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow" />
-        <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-[22px] font-bold  leading-[33px]">
-            경험카드 조회
-          </span>
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-sm font-medium  leading-[21px]">
-            경험카드를 참고해 자소서를 작성해보세요
-          </span>
-        </div>
-        <div className="w-[450px] h-[2250px] mt-[80px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] gap-[20px]"></div>
+        <div className="left-[320px] top-[12px] absolute text-center text-blue-400 text-[35px] font-bold  leading-[52.50px]">
+          AI 직무 역량 분석 결과
         </div>
       </div>
     </div>

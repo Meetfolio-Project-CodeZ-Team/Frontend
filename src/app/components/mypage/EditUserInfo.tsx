@@ -22,6 +22,8 @@ import { useRouter } from 'next/navigation'
 import { pwAlert, updateUserInfo } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Icons from '../common/Icons'
+import { eye } from '@/app/ui/eye'
 
 interface UserInfoProps {
   memberId?: number
@@ -46,9 +48,10 @@ const EditUserInfo = () => {
   const [grade, setGrade] = useState<GradeEnum>('1학년')
 
   const [major, setMajor] = useState('')
-  const isEntered = password !== '' && major !== ''
+  const isEntered = pw !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
+  const [isOpen, setIsOpen] = useState(false)
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
@@ -164,12 +167,33 @@ const EditUserInfo = () => {
           </div>
         </div>
         <div className="w-[700px] h-[90px] relative">
-          <div className="flex gap-x-[232px]">
+          <div className="flex ">
             <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
-              비밀번호
+              현재 비밀번호
+            </div>
+          </div>
+          <div className="flex gap-x-3 items-center">
+          <Input
+            inputType={isOpen ? '' : 'password'}
+            type={'login'}
+            onChange={(e) => setPw(e.target.value)}
+            placeholder="현재 비밀번호"
+          />
+          <div
+            className="cursor-pointer absolute right-2"
+            onMouseDown={() => setIsOpen(true)}
+            onMouseUp={() => setIsOpen(false)}
+          >
+            <Icons name={eye} />
+          </div>
+        </div>
+        <div className="w-[700px] h-[90px] mt-[20px] relative">
+          <div className="flex gap-x-[175px]">
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              변경할 비밀번호
             </div>
             <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
-              비밀번호 확인
+              변경할 비밀번호 확인
             </div>
           </div>
           <div className="flex gap-x-3 items-center">
@@ -194,7 +218,7 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[700px] h-[90px] relative z-20">
+        <div className="w-[700px] h-[90px] relative mt-[20px] z-20">
           <div className="w-[138px] left-[6px] top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
             학과
           </div>
@@ -216,7 +240,7 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[700px] h-[90px] relative z-10">
+        <div className="w-[700px] h-[90px] mt-[20px] relative z-10">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학년 및 학적
           </div>
@@ -226,7 +250,7 @@ const EditUserInfo = () => {
             onSelect={(option) => setGrade(option)}
           />
         </div>
-        <div className="w-[700px] h-[89px] relative z-0">
+        <div className="w-[700px] h-[89px] mt-[20px] relative z-0">
           <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
             희망직무
           </div>
@@ -239,7 +263,7 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[700px] h-[80px] left-[79px] top-[738px] absolute">
+      <div className="w-[700px] h-[80px] left-[0px] top-[668px] absolute">
         <Button
           buttonText="수정하기"
           type={'loginC'}
@@ -253,6 +277,7 @@ const EditUserInfo = () => {
         />
         <ToastContainer />
       </div>
+    </div>
     </div>
   )
 }
