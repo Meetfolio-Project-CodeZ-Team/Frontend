@@ -25,6 +25,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
     setIsAdd(false)
     setTitleNum(1)
   }
+console.log('현재 페이지, trainData',trainData);
 
   return isAdd ? (
     <AddTrainData addComplete={succeedAdd} />

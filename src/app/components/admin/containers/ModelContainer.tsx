@@ -6,14 +6,15 @@ import { useRecoilState } from 'recoil'
 import ModelManage from '../model/ModelManage'
 import ModelTrain from '../model/ModelTrain'
 import ModelUsage from '../model/ModelUsage'
-import { headers } from 'next/headers'
 
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
-  console.log(versionData, '가져온 버전 데이터')
+  console.log(modelData, '가져온 1번 섹션 데이터')
+  console.log(trainData, '가져온 2번 섹션 데이터')
+  console.log(versionData, '가져온 3번 섹션 버전 데이터')
 
   const marginBorder =
     titleNum === 1 ? 'ml-[160px]' : titleNum === 2 ? 'ml-[300px]' : ''
