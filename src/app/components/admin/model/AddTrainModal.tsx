@@ -30,9 +30,9 @@ const AddTrainModal = ({
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[542px] h-[480px] rounded-[20px] bg-[#FFFFFF] relative flex flex-col items-center gap-y-[48px]">
-        <div className="flex w-[400px] text-center text-gray-900 text-3xl font-bold mt-[50px]">
+        <div className="flex w-[320px] text-center text-gray-900 text-2xl font-bold mt-[50px]">
           {MODEL_MODAL[0]}
-          {''}
+          {' '}
           {trainableNumber}
           {MODEL_MODAL[1]}
         </div>

@@ -175,3 +175,8 @@ export const getModelList = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/data-management/version`
   return await postRequest(url, null, accessToken)
 }
+
+export const postmodelDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
+  return await postRequest(url, null, accessToken)
+}

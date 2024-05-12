@@ -6,7 +6,6 @@ interface ModelManageProps {
 }
 
 const ModelManage = ({ modelData }: ModelManageProps) => {
-  console.log(modelData)
 
   return (
     <div className="flex flex-col w-[1010px] h-[720px] items-center">
