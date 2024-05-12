@@ -45,7 +45,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
           if (data && data.result && data.result.coverLetterInfo) {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
-
+              shareType: transShareType(data.result.coverLetterInfo.shareType),
               jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
             })
             // experienceNumber는 서버 응답에 따라 조정되어야 합니다. 현재 API 응답에 이 값이 포함되어 있지 않다면 다른 로직이 필요합니다.
@@ -85,3 +85,6 @@ const transKeyword = (keyword: string) => {
       return 'DESIGN'
   }
 }
+const transShareType = (shareType: string) => {
+  return shareType === '공개' ? 'PUBLIC' : 'PRIVATE';
+};

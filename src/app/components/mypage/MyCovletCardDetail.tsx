@@ -10,9 +10,9 @@ interface CovletCardDetail {
   coverLetterId: number
   question: string
   answer: string
-  keyword1: string
-  keyword2: string
-  jobKeyword: string
+  keyword1?: string
+  keyword2?: string
+  jobKeyword?: string
   shareType: string
   isGuest: string
 }
@@ -42,26 +42,7 @@ const MyCovletCardDetail = ({
     document.body.appendChild(textArea)
     textArea.focus()
     textArea.select()
-    var mookData = `저의 졸업 인증을 졸업 프로젝트를 통해 받게 된 이유는 실무에서의
-    경험과 협업에 가까운 환경에서 다양한 경험을 쌓고, 문제를
-    해결해보고자 했습니다. 주요한 이유 중 하나는 실무에서의 경험을 쌓기
-    위해서였습니다. 이러한 프로젝트를 통해 실제 업무에서 직면할 수 있는
-    문제들을 직접 경험하고, 이를 해결하는 과정에서 필요한 기술과
-    노하우를 습득할 수 있었습니다. 또한, 프로젝트를 통해 새로운 기술이나
-    도구들을 사용해보며, 이를 익히고 적용해볼 기회가 있었습니다. 또한,
-    협업에 중점을 두고 프로젝트를 진행하고 싶었습니다. 현업에서는 혼자서
-    일을 하는 경우보다 팀으로 일을 진행하는 경우가 많기 때문에,
-    팀원들과의 협업 능력은 매우 중요합니다. 프로젝트를 통해 팀원들과의
-    의사소통과 협업 능력을 키워가며, 함께 문제를 해결해나가는 과정에서
-    더 많은 것을 배울 수 있었습니다. 또한, 프로젝트를 통해 다양한
-    경험을 쌓고 싶었습니다. 졸업 프로젝트를 통해 다양한 도메인에서의
-    문제들을 다루며, 이를 해결하는 방법에 대해 고민하고 실험할 수 있는
-    기회를 가졌습니다. 이를 통해 제가 어떤 분야에서 능력을 발휘할 수
-    있는지에 대한 통찰력을 얻을 수 있었습니다. 종합하면, 졸업
-    프로젝트를 선택한 이유는 실무에서의 경험과 협업을 통해 다양한 경험을
-    쌓고 문제를 해결하고자 했기 때문입니다. 이를 통해 제가 실제 업무에서
-    어떻게 활용될 수 있는지에 대한 경험을 쌓을 수 있었고, 팀원들과의
-    협업 능력을 향상시킬 수 있었습니다.`
+
     try {
       // 텍스트를 클립보드에 복사
       const successful = document.execCommand('copy')
@@ -145,7 +126,26 @@ const MyCovletCardDetail = ({
       <div className="w-[1090px] h-[800px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
         <div className="w-[1090px] h-[800px] left-0 top-0 absolute">
           <div className="w-[1000px] h-[405px] left-[46.42px] top-[100px] absolute text-black text-xl font-medium leading-[30px]">
-            {mookData}
+            저의 졸업 인증을 졸업 프로젝트를 통해 받게 된 이유는 실무에서의
+            경험과 협업에 가까운 환경에서 다양한 경험을 쌓고, 문제를
+            해결해보고자 했습니다. 주요한 이유 중 하나는 실무에서의 경험을 쌓기
+            위해서였습니다. 이러한 프로젝트를 통해 실제 업무에서 직면할 수 있는
+            문제들을 직접 경험하고, 이를 해결하는 과정에서 필요한 기술과
+            노하우를 습득할 수 있었습니다. 또한, 프로젝트를 통해 새로운 기술이나
+            도구들을 사용해보며, 이를 익히고 적용해볼 기회가 있었습니다. 또한,
+            협업에 중점을 두고 프로젝트를 진행하고 싶었습니다. 현업에서는 혼자서
+            일을 하는 경우보다 팀으로 일을 진행하는 경우가 많기 때문에,
+            팀원들과의 협업 능력은 매우 중요합니다. 프로젝트를 통해 팀원들과의
+            의사소통과 협업 능력을 키워가며, 함께 문제를 해결해나가는 과정에서
+            더 많은 것을 배울 수 있었습니다. 또한, 프로젝트를 통해 다양한 경험을
+            쌓고 싶었습니다. 졸업 프로젝트를 통해 다양한 도메인에서의 문제들을
+            다루며, 이를 해결하는 방법에 대해 고민하고 실험할 수 있는 기회를
+            가졌습니다. 이를 통해 제가 어떤 분야에서 능력을 발휘할 수 있는지에
+            대한 통찰력을 얻을 수 있었습니다. 종합하면, 졸업 프로젝트를 선택한
+            이유는 실무에서의 경험과 협업을 통해 다양한 경험을 쌓고 문제를
+            해결하고자 했기 때문입니다. 이를 통해 제가 실제 업무에서 어떻게
+            활용될 수 있는지에 대한 경험을 쌓을 수 있었고, 팀원들과의 협업
+            능력을 향상시킬 수 있었습니다.
           </div>
         </div>
         <div className="w-[202.26px] h-[49px] left-[425px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
@@ -214,17 +214,17 @@ const MyCovletCardDetail = ({
       <div className="w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
         <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
           <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
-            {keyword1}
+            #{keyword1}
           </div>
         </div>
         <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
           <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
-            {keyword2}
+            #{keyword2}
           </div>
         </div>
         <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
           <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
-            {jobKeyword}
+            #{jobKeyword}
           </div>
         </div>
       </div>

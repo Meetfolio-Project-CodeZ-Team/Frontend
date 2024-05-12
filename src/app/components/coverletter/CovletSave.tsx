@@ -8,6 +8,7 @@ import { expData, expNum } from '../../recoil/experience'
 import MyExpCard from '../mypage/MyExpCard'
 import CheckPoint2 from '../points/CheckPoint'
 import { useRouter } from 'next/navigation'
+import ExpCardList from './ExpCardList'
 
 interface ExperienceCard {
   experienceId: number
@@ -59,12 +60,13 @@ const CovletSave = () => {
     })
   }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setCoverLetterData({
       ...coverletterData,
       [event.target.name]: event.target.value,
-    })
+    });
   }
+  
 
   const handleButtonClick = (type: string, event: React.MouseEvent) => {
     event.preventDefault()
@@ -150,7 +152,7 @@ const CovletSave = () => {
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
-        <div className="w-[941px] h-[488px] left-[10px] top-[750px] relative">
+        <div className="w-[941px] h-[488px] left-[10px] top-[700px] relative">
           <div
             className={`w-[941px] ${showInputs ? 'h-[488px]' : 'h-[320px]'} left-0 top-0 absolute bg-white rounded-[30px] shadow`}
           />
@@ -209,26 +211,28 @@ const CovletSave = () => {
                 </div>
               </div>
               <div className="w-[258px] h-[117.68px] left-[587px] top-0 absolute">
-                {' '}
                 <div className="w-[91.33px] h-[31.50px] left-0 top-0 absolute">
                   <div className="w-[91.33px] h-[28.55px] left-0 top-[2.95px] absolute bg-zinc-300 rounded-[20px]" />
                   <div className="w-[79.30px] h-[31.50px] left-[5.37px] top-[5px] absolute text-center text-black text-base font-bold leading-normal">
                     지원직무
                   </div>
                 </div>
-                <input
-                  type="text"
+                <select
                   value={coverletterData.jobKeyword}
                   onChange={handleInputChange}
                   id="jobKeyword"
                   name="jobKeyword"
-                  placeholder="ex) AI"
-                  maxLength={12}
-                  className="w-[245px] h-[45px] left-0 top-[40px] absolute  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
-                />
-                <div className="w-[85.71px] h-[22.64px] left-[165px] top-[85px] absolute text-center text-black text-opacity-20 text-base font-bold leading-normal">
-                  12자 이내
-                </div>
+                  title='직무를 선택해주세요'
+                  className="w-[245px] h-[45px] left-0 top-[40px] absolute bg-white border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
+                >
+                  <option value="" disabled hidden>지원직무 선택</option>
+                  <option value="BACKEND">백엔드</option>
+                  <option value="WEB">웹개발</option>
+                  <option value="APP">앱개발</option>
+                  <option value="DESIGN">디자인</option>
+                  <option value="AI">AI</option>
+                </select>
+                
               </div>
             </div>
           )}
@@ -291,7 +295,7 @@ const CovletSave = () => {
       </div>
       <div className="w-[941px] h-[740px] left-[10px] top-[18px] absolute">
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
-          <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
+          <div className="w-[941px] h-[670px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
             <button
               onClick={handleCopyText}
@@ -354,7 +358,7 @@ const CovletSave = () => {
         </div>
       </div>
       <div
-        className={`w-[1000px] h-[60px] left-[45px] ${showInputs ? 'top-[1260px]' : 'top-[1090px]'} absolute pb-[150px]`}
+        className={`w-[1000px] h-[60px]  ${showInputs ? 'top-[1220px] left-[30px]' : 'top-[1050px] left-[45px]'} absolute pb-[150px]`}
       >
         {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
           저장하기
@@ -366,32 +370,7 @@ const CovletSave = () => {
           {feedbackClicked ? 'AI 피드백 결과 보러가기' : '자기소개서 작성 완료'}
         </button>
       </div>
-      <div className="w-[463px] h-[1218px] left-[977px] top-[18px] absolute items-center justify-center">
-        <div className="w-[463px] h-[1218px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow" />
-        <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-[22px] font-bold  leading-[33px]">
-            경험카드 조회
-          </span>
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
-            {' '}
-          </span>
-          <span className="text-black text-sm font-medium  leading-[21px]">
-            경험카드를 참고해 자소서를 작성해보세요
-          </span>
-        </div>
-        <div className="w-[450px] h-[1100px] mt-[80px]  flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide ">
-          <div className="w-[350px] h-full ml-[80px] ">
-            {expCards.map((card) => (
-              <div className="mb-[20px]">
-                <MyExpCard key={card.experienceId} {...card} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <ExpCardList />
     </div>
   )
 }

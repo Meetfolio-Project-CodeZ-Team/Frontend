@@ -8,6 +8,7 @@ import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import ExpFinishModal1 from './ExpFinishModal1'
 import ExpFinishModal2 from './ExpFinishModal2'
 import { useState } from 'react'
+import ExpFinishModal3 from './ExpFinishModal3'
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -15,7 +16,7 @@ const ExpFinishContainer = () => {
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const router = useRouter()
 
-  const totalPages = 2;
+  const totalPages = 3;
 
  
 
@@ -35,6 +36,19 @@ const ExpFinishContainer = () => {
         return keyword
     }
   }
+
+  const getCurrentModal = () => {
+    switch (pageNumber) {
+      case 0:
+        return <ExpFinishModal1 />;
+      case 1:
+        return <ExpFinishModal2 />;
+      case 2:
+        return <ExpFinishModal3 />;
+      default:
+        return null;  // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+    }
+  };
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -196,9 +210,7 @@ const ExpFinishContainer = () => {
       </div>
       <div className="justify-center items-center">
       {/* 페이지에 따라 다른 모달 컴포넌트 렌더링 */}
-      {pageNumber === 0 && <ExpFinishModal1 />}
-      {pageNumber === 1 && <ExpFinishModal2 />}
-
+      {getCurrentModal()}
       
     </div>
     </div>
