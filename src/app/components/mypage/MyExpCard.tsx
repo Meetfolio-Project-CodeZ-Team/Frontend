@@ -15,6 +15,7 @@ interface MyExpCardProps {
   stack: string
   title: string
   experienceId?: number
+  isGuest?: boolean
 }
 
 interface ExperienceCardDetail {
@@ -40,6 +41,7 @@ const MyExpCard = ({
   stack,
   title,
   experienceId,
+  isGuest,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
 

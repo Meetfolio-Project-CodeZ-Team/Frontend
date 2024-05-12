@@ -1,6 +1,6 @@
 import { useModal } from '@/app/hooks/useModal'
 import { deleteUserAlert } from '@/app/utils/toast'
-import DeleteModal from '../common/DeleteModal'
+import { useState } from 'react'
 import ModelInfoModal from './ModelInfoModal'
 
 interface ModelManageInfoProps {
@@ -15,8 +15,23 @@ interface ModelManageInfoProps {
 const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
   const { modelId, version, modelName, status, learnedDate, accuracy } =
     trainInfo
-
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  const [detailData, setDetailData] = useState<modelResultTypes | null>(null)
+  const postModelDetail = async () => {
+    openModal()
+    const requestOpt = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/detail?id=${modelId}`,
+      requestOpt,
+    )
+    const resData = await res.json()
+    setDetailData(resData.result)
+  }
 
   const deleteModel = async (modelId: number) => {
     deleteUserAlert()
@@ -34,24 +49,29 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
   return (
     <div className="flex flex-col w-[1034px] h-[50px]" key={modelId}>
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
-        <div className="w-[121px] text-center">{learnedDate}</div>
-        <div className="w-[348px] text-center" onClick={openModal}>{modelName}</div>
-        <div className="w-[50px] text-center">{version}</div>
-        <div className="w-[302px] text-center">{accuracy}%</div>
-        <div className="w-[118px] flex items-center justify-center">
+        <div className="w-[120px] text-center">{learnedDate}</div>
+        <div className="w-[268px] text-center">{modelName}</div>
+        <div className="w-[80px] text-center">{version}</div>
+        <div className="w-[260px] text-center">{accuracy}%</div>
+        <div className="w-[72px] flex items-center justify-center">
           <div
-            className={`w-20 h-9 ${status === 'ACTIVE' ? 'bg-[#486283]' : 'bg-[#C4C4C4]'} rounded-[15px] text-white text-medium font-bold flex items-center justify-center shadow-md cursor-pointer`}
+            onClick={postModelDetail}
+            className={`w-16 h-9 ${status === 'ACTIVE' ? 'bg-[#486283]' : 'bg-[#C4C4C4]'} rounded-[15px] text-white text-[16px] font-semibold flex items-center justify-center shadow-md cursor-pointer`}
           >
             {'배포'}
           </div>
         </div>
+        <div className="w-[200px] flex items-center justify-center">
+          <div
+            className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold"
+            onClick={() => deleteModel(modelId)}
+          >
+            X
+          </div>
+        </div>
         <div onClick={handleModalClick}>
-          {isOpen && (
-            <ModelInfoModal
-              closeModal={closeModal}
-              deleteUser={() => deleteModel(modelId)}
-              text="해당 데이터를 삭제하시겠습니까?"
-            />
+          {isOpen && detailData && (
+            <ModelInfoModal data={detailData} closeModal={closeModal} />
           )}
         </div>
       </div>

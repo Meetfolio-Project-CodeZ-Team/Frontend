@@ -117,15 +117,6 @@ export const getTid = async (accessToken: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const successComplete = async (
-  accessToken: string,
-  paymentId: number,
-  pgToken: string,
-) => {
-  const url = `${SERVER_URL}/api/payments/success?paymentId=${paymentId}&pg_token=${pgToken}`
-  return await getRequest(url, accessToken)
-}
-
 export const searchPost = async (
   accessToken: string,
   keyword: string,

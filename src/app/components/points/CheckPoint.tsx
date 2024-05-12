@@ -1,5 +1,5 @@
 'use client'
-import { CHECK_BUTTON, CHECK_BUTTON2, CHECK_POINT } from '@/app/constants/point'
+import { CHECK_BUTTON, CHECK_POINT } from '@/app/constants/point'
 import { useModal } from '@/app/hooks/useModal'
 import { useEffect, useState } from 'react'
 import Button from '../common/Button'
@@ -25,6 +25,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
     }
     fetchData()
   }, [])
+  console.log(isOpen, '값')
 
   const usingPoint = async (
     cost: number,
@@ -75,9 +76,12 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               <div className="text-[25px] font-medium">{myPoint - cost}P</div>
             </div>
           </div>
-          <div className="flex gap-x-4 absolute left-[48px] top-[460px]">
+          <div
+            className="flex gap-x-4 absolute left-[48px] top-[460px]"
+            onClick={handleModalClick}
+          >
             <Button
-              buttonText={CHECK_BUTTON2[0]}
+              buttonText={CHECK_BUTTON[2]}
               type={'auth'}
               isDisabled={false}
               onClickHandler={closeCheck}
@@ -88,11 +92,11 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
               buttonText={isEnough ? CHECK_BUTTON[1] : CHECK_BUTTON[0]}
               type={'auth'}
               isDisabled={false}
-              onClickHandler={() => {
+              onClickHandler={
                 isEnough
-                  ? usingPoint(cost, 'USE_COVER_LETTER', coverLetterId)
+                  ? () => usingPoint(cost, 'USE_COVER_LETTER', coverLetterId)
                   : openModal
-              }}
+              }
               className="bg-[black] text-white"
             />
             {isOpen && (

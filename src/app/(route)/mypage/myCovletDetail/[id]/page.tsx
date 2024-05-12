@@ -5,7 +5,7 @@ import Header from '@/app/components/layout/Header'
 import MyCovletCardDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { covletData, covletNum } from '@/app/recoil/coverletter'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
@@ -13,8 +13,8 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  console.log(coverletterData)
-  console.log(covletNumber, '현재 페이지 번호')
+  const paramsData = useSearchParams()
+  const isGuest = paramsData.get('isGuest')
 
   const router = useRouter()
 
@@ -54,6 +54,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
       <Header nickname={userInfo?.memberName} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer
+          isGuest={isGuest || ''}
           selected={'portfolio'}
           nickname={userInfo?.memberName}
         />
@@ -66,6 +67,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             keyword2={coverletterData.keyword2}
             jobKeyword={coverletterData.jobKeyword}
             shareType={coverletterData.shareType}
+            isGuest={isGuest || ''}
           />
         </div>
       </div>

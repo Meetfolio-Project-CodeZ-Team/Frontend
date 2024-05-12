@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import localFont from 'next/font/local'
 import RecoilProvider from '../context/RecoilProvider'
+
 import '../ui/globals.css'
 
 export const metadata: Metadata = {
@@ -10,6 +12,12 @@ export const metadata: Metadata = {
   },
 }
 
+const pretendard = localFont({
+  src: '../fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -17,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="bg-[#DEE5ED] h-screen min-w-[850px] mx-auto">
+      <body
+        className={`bg-[#DEE5ED] h-screen min-w-[850px] mx-auto ${pretendard.className}`}
+      >
         <RecoilProvider>{children}</RecoilProvider>
       </body>
     </html>
