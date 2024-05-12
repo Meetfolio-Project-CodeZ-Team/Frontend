@@ -10,14 +10,8 @@ interface ModelInfoModalProps {
 }
 const ModelInfoModal = ({
   closeModal,
-  deleteUser,
   data,
 }: ModelInfoModalProps) => {
-  const handleDelete = () => {
-    if (deleteUser) {
-      deleteUser()
-    }
-  }
 
   console.log(data)
 

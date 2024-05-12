@@ -62,17 +62,16 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
           </div>
         </div>
         <div className="w-[200px] flex items-center justify-center">
-          <div className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold">
+          <div
+            className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold"
+            onClick={() => deleteModel(modelId)}
+          >
             X
           </div>
         </div>
         <div onClick={handleModalClick}>
           {isOpen && detailData && (
-            <ModelInfoModal
-              data={detailData}
-              closeModal={closeModal}
-              deleteUser={() => deleteModel(modelId)}
-            />
+            <ModelInfoModal data={detailData} closeModal={closeModal} />
           )}
         </div>
       </div>
