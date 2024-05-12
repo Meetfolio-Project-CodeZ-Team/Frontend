@@ -20,7 +20,7 @@ const BoardContainer = ({ boardList }: BoardContainerProps) => {
 
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[60px]">
-      <div className="text-[32px] font-bold leading-[48px]">커뮤니티 관리</div>
+      <div className="text-[28px] font-bold">커뮤니티 관리</div>
       <div className="flex items-center w-[1013px] justify-between">
         <SearhBoard searchBoard={setBoardData} />
         <DropDownB options={Board} title={'전체'} setBoardType={setBoardType} />

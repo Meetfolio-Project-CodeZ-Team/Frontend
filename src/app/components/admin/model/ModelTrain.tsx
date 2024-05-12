@@ -25,7 +25,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
     setIsAdd(false)
     setTitleNum(1)
   }
-console.log('현재 페이지, trainData',trainData);
+  console.log('현재 페이지, trainData', trainData)
 
   return isAdd ? (
     <AddTrainData addComplete={succeedAdd} />
@@ -34,7 +34,9 @@ console.log('현재 페이지, trainData',trainData);
       <ToastContainer />
       <div className="flex w-full relative justify-center">
         <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
-        <div className=" absolute right-3 bottom-2 text-base font-bold ml-10">{MODEL_TRAIN_H[5] + ' : ' + trainData.trainableNumber}</div>
+        <div className=" absolute right-3 bottom-2 text-base font-bold ml-10">
+          {MODEL_TRAIN_H[5] + ' : ' + trainData.trainableNumber}
+        </div>
       </div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-y border-[#616161] items-center text-black text-lg">
         <div className="font-bold">{MODEL_TRAIN_H[1]}</div>

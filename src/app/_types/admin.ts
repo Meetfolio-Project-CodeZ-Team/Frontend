@@ -132,6 +132,7 @@ interface modelResultTypes {
   status: 'ACTIVE' | 'INACTIVE'
   createdDate: string
   activatedDate: string
+  accuracy:number
 }
 
 type BoardTypes = '그룹원 모집' | '취업 정보'
