@@ -8,12 +8,22 @@ interface ModelInfoModalProps {
   deleteUser?: () => void
   data: modelResultTypes
 }
-const ModelInfoModal = ({
-  closeModal,
-  data,
-}: ModelInfoModalProps) => {
 
-  console.log(data)
+const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
+  const activateModel = async () => {
+    const requestOpt = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/active?id=${data.modelId}`,
+      requestOpt,
+    )
+    const resData = await res.json()
+    console.log(resData, '활성화 후 응답')
+  }
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -61,12 +71,10 @@ const ModelInfoModal = ({
             className="text-white bg-[#7AAAE8]"
           />
           <Button
-            buttonText={data.status==='ACTIVE' ? '배포 됨':'배포하기'}
+            buttonText={data.status === 'ACTIVE' ? '배포 됨' : '배포하기'}
             type={'modelInfo'}
-            isDisabled={data.status==='ACTIVE'}
-            onClickHandler={function (): void {
-              throw new Error('Function not implemented.')
-            }}
+            isDisabled={data.status === 'ACTIVE'}
+            onClickHandler={activateModel}
             className="text-black bg-[#DEE5ED]"
           />
         </div>
