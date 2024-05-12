@@ -40,10 +40,10 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
   console.log(job, '현재 선택 직무')
 
   return (
-    <div className="flex flex-col w-[1010px] h-[780px] gap-y-10 mb-12">
+    <div className="flex flex-col w-[1010px] h-[780px] gap-y-8">
       <div className="flex gap-x-5">
         <div className="flex flex-col gap-y-1.5">
-          <div className="text-2xl font-bold">{ADD_TRAIN_H[0]}</div>
+          <div className="text-xl font-bold pl-2">{ADD_TRAIN_H[0]}</div>
           <Input
             type={'train'}
             onChange={(e) => setDomain(e.target.value)}
@@ -51,7 +51,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
           />
         </div>
         <div className="flex flex-col gap-y-1.5">
-          <div className="text-2xl font-bold">{ADD_TRAIN_H[1]}</div>
+          <div className="text-xl font-bold pl-2">{ADD_TRAIN_H[1]}</div>
           <Input
             type={'train'}
             onChange={(e) => setUrl(e.target.value)}
@@ -60,7 +60,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
         </div>
       </div>
       <div className="flex flex-col gap-y-1.5">
-        <div className="text-2xl font-bold">{ADD_TRAIN_H[2]}</div>
+        <div className="text-xl font-bold pl-2">{ADD_TRAIN_H[2]}</div>
         <DropDownModel
           options={JOBKEYWORD}
           title={'직무를 선택'}
@@ -68,9 +68,9 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
         />
       </div>
       <div className="flex flex-col gap-y-1.5">
-        <div className="text-2xl font-bold">{ADD_TRAIN_H[3]}</div>
+        <div className="text-xl font-bold pl-2">{ADD_TRAIN_H[3]}</div>
         <textarea
-          className="w-[820px] h-[430px] p-[30px] rounded-[10px] border-2 border-[#C4C4C4] text-xl font-medium"
+          className="w-[820px] h-[380px] p-[20px] rounded-[10px] border-2 border-[#C4C4C4] text-lg font-medium"
           onChange={(e) => setData(e.target.value)}
           placeholder="합격 자기소개서 내용을 입력해주세요"
         />

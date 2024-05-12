@@ -82,7 +82,6 @@ export const postUsingPoint = async (
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}/points`
   console.log(id, '로 포인트', point, '사용')
-
   return await postRequest(url, point, accessToken)
 }
 
@@ -162,9 +161,9 @@ export const kakaoApprove = async (body: any) => {
   }
 }
 
-export const sendApprove = async (accessToken: string) => {
+export const sendApprove = async (accessToken: string, data: any) => {
   const url = `${SERVER_URL}/api/payments/approve `
-  return await postRequest(url, null, accessToken)
+  return await postRequest(url, data, accessToken)
 }
 
 export const postAdditionalTrain = async (accessToken: string) => {
@@ -174,5 +173,10 @@ export const postAdditionalTrain = async (accessToken: string) => {
 
 export const getModelList = async (accessToken: string) => {
   const url = `${SERVER_URL}/api/admins/data-management/version`
+  return await postRequest(url, null, accessToken)
+}
+
+export const postmodelDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
   return await postRequest(url, null, accessToken)
 }

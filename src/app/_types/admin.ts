@@ -103,6 +103,18 @@ interface aiServiceInfoTypes {
 }
 
 interface ResponseTrainData {
+  datasetInfo: trainDataTypes
+  modelResult:modelResultTypes
+  trainableNumber:number
+}
+interface datasetInfoTypes {
+  createdAt: string
+  job: onlyJobType
+  domain: string
+  url: string
+}
+
+interface trainDataTypes {
   datasetInfo: datasetInfoTypes[]
   listSize: number
   totalPage: number
@@ -110,11 +122,16 @@ interface ResponseTrainData {
   isFirst: boolean
   isLast: boolean
 }
-interface datasetInfoTypes {
-  createdAt: string
-  job: onlyJobType
-  domain: string
-  url: string
+
+interface modelResultTypes {
+  modelId: number
+  version: number
+  modelName: string
+  fileName: string
+  filePath: string
+  status: 'ACTIVE' | 'INACTIVE'
+  createdDate: string
+  activatedDate: string
 }
 
 type BoardTypes = '그룹원 모집' | '취업 정보'

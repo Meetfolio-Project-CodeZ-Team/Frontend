@@ -12,7 +12,7 @@ import AddTrainData from './AddTrainData'
 import AddTrainModal from './AddTrainModal'
 import ModelTrainInfo from './ModelTrainInfo'
 interface ModelTrainProps {
-  trainData: datasetInfoTypes[]
+  trainData: ResponseTrainData
   goNext: SetterOrUpdater<number>
 }
 const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
@@ -25,21 +25,25 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
     setIsAdd(false)
     setTitleNum(1)
   }
+console.log('현재 페이지, trainData',trainData);
 
   return isAdd ? (
     <AddTrainData addComplete={succeedAdd} />
   ) : (
     <div className="flex flex-col w-[1010px] h-[720px] items-center">
       <ToastContainer />
-      <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
+      <div className="flex w-full relative justify-center">
+        <div className="text-2xl font-bold mb-6">{MODEL_TRAIN_H[0]}</div>
+        <div className=" absolute right-3 bottom-2 text-base font-bold ml-10">{MODEL_TRAIN_H[5] + ' : ' + trainData.trainableNumber}</div>
+      </div>
       <div className="flex w-[1010px] h-[50px] pl-[13px] border-y border-[#616161] items-center text-black text-lg">
         <div className="font-bold">{MODEL_TRAIN_H[1]}</div>
-        <div className="ml-[105px] ">{MODEL_TRAIN_H[2]}</div>
-        <div className="ml-[125px]">{MODEL_TRAIN_H[3]}</div>
-        <div className="ml-[300px]">{MODEL_TRAIN_H[4]}</div>
+        <div className="ml-[140px] ">{MODEL_TRAIN_H[2]}</div>
+        <div className="ml-[180px]">{MODEL_TRAIN_H[3]}</div>
+        <div className="ml-[260px]">{MODEL_TRAIN_H[4]}</div>
       </div>
       <div className="h-[520px] overflow-y-auto scrollbar-hide">
-        {trainData.map((data, i) => (
+        {trainData.datasetInfo.datasetInfo.map((data, i) => (
           <div key={i}>
             <ModelTrainInfo
               createdAt={data.createdAt}
@@ -50,7 +54,13 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
           </div>
         ))}
       </div>
-      {isOpen && <AddTrainModal closeModal={closeModal} />}
+      {isOpen && (
+        <AddTrainModal
+          closeModal={closeModal}
+          modalData={trainData.modelResult}
+          trainableNumber={trainData.trainableNumber}
+        />
+      )}
       <div className=" w-[1010px] flex flex-row-reverse gap-x-5">
         <Button
           buttonText={'추가학습'}
