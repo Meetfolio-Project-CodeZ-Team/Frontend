@@ -13,7 +13,6 @@ interface InputProps {
     | 'password'
     | 'board'
     | 'member'
-    | 'charge'
   textValue?: string
   inputType?: string
   name?: string

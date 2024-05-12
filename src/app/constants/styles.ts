@@ -15,7 +15,7 @@ export const BUTTON_STYLE = {
   modelBtn: (className: string) =>
     `w-[120px] h-[48px] text-lg font-semibold bg-[#7AA9E7] rounded-[20px] ${className} `,
   addDataBtn: (className: string) =>
-    `w-[820px] h-[54px] text-[20px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
+    `w-[820px] h-[60px] text-[26px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
   addBoardBtn: (className: string) =>
     `w-[92px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
   authCode: (className: string) =>
@@ -47,15 +47,13 @@ export const INPUT_STYLE = {
   exp1: (className: string) =>
     `w-[900px] text-xl font-medium pl-7 h-15 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
   train: (className: string) =>
-    `w-[400px] text-lg font-medium pl-5 h-[52px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
+    `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
   password: (className: string) =>
     `w-[300px] text-lg font-medium pl-6 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   board: (className: string) =>
     `w-full text-[18px] font-medium pl-6 h-[52px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   member: (className: string) =>
     `w-[64px] text-[16px] text-[#1A202C] font-bold px-3 h-[52px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
-  charge: (className: string) =>
-    `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {

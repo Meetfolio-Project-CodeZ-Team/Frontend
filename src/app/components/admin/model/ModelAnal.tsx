@@ -122,23 +122,6 @@ const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
         </div>
       </div>
     )
-  } else {
-    return (
-      <div className="flex flex-col w-[1018px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 py-8 px-4 my-7 gap-y-4">
-        <div className="flex items-center gap-x-3">
-          <div className="text-2xl font-bold ">AI 모델 성능 지표</div>
-          <Icons name={model} />
-        </div>
-        <div className="flex w-full flex-col h-[300px] items-center justify-center text-3xl text-[#486284] font-bold">
-          <div className="flex w-[500px] items-center justify-center">
-            {'😵현재는 모델 데이터가 존재하지 않아요'}
-          </div>
-          <div className="flex w-[500px] items-center justify-center">
-            {'재접속 혹은 잠시 기다려주세요'}
-          </div>
-        </div>
-      </div>
-    )
   }
 }
 

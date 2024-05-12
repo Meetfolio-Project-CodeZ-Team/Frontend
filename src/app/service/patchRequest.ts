@@ -32,9 +32,3 @@ export const updatePost = async (
 
   return await patchRequest(url, postContent, accessToken)
 }
-
-export const activeModel = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
-
-  return await patchRequest(url, null, accessToken)
-}

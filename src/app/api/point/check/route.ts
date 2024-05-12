@@ -1,3 +1,4 @@
+import { getMyCovlet } from '@/app/service/getReq'
 import { getPointInfo } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'

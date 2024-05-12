@@ -73,7 +73,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             headers: {
               'Content-type': 'application/json',
             },
-            body: JSON.stringify({ tid: data.result.tid }),
           }
 
           const sendApprove = await fetch(
@@ -81,6 +80,14 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             req,
           )
           const approveRes = await sendApprove.json()
+          console.log('서버로 승인 정보 보내고 응답', approveRes)
+          const paymentId = approveRes.result.paymentId
+
+          const resComplete = await fetch(
+            `/api/kakaopay/complete?id=${paymentId}&pgToken=${pg_token}`,
+          )
+          const completeData = await resComplete.json()
+          console.log('완료 요청 보내고 응답', completeData)
         } catch (error) {
           console.error(error)
         }

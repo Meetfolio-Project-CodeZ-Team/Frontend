@@ -29,7 +29,6 @@ const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
       setMonth(newMonth.toString())
     }
   }
-  console.log(paymentAnal, '결제 내역')
 
   return (
     <div className="flex flex-col items-center gap-y-6 mt-[36px]">
