@@ -55,7 +55,7 @@ const ExpCardList = () => {
   }, [])
   return (
     <div className="w-[463px] h-[1000px] left-[977px] top-[18px] absolute items-center justify-center">
-      <div className="w-[463px] h-[1000px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow ">
+      <div className="w-[463px] h-[1000px] left-0 top-0 absolute bg-white rounded-[30px] shadow ">
         <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
           <span className="text-black text-[25px] font-medium  leading-[37.50px]">
             {' '}
@@ -82,7 +82,7 @@ const ExpCardList = () => {
         />
       ) : (
         <div className="w-[450px] h-[900px] mt-[80px] flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
-          <div className="w-[350px] h-full ml-[80px] ">
+          <div className="w-[350px] h-full ml-[60px] ">
             {expCards.length > 0 ? (
               expCards.map((card) => (
                 <ExpCard
@@ -92,11 +92,11 @@ const ExpCardList = () => {
                 />
               ))
             ) : (
-              <div className="text-center mt-[450px]">
+              <div className="text-center mt-[150px] ">
                 <p className="text-gray-500 font-semibold">
                   작성한 경험카드가 없습니다.
                 </p>
-                <button className="mt-[35px] px-8 py-2 bg-black text-white rounded-[30px] font-semibold">
+                <button className="mt-[35px] px-8 py-2 bg-[#486284] text-white rounded-[30px] font-semibold">
                   <Link href="/experience">경험카드 생성하기</Link>
                 </button>
               </div>
