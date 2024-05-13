@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+/* body {
   font-family: 'Pretendard', sans-serif;
-}
+} */
 .swiper {
   width: 100%;
 }
@@ -20,6 +20,10 @@ body {
 
 .swiper .swiper-pagination-bullet {
   background-color: #000;
+}
+
+.pagination-page {
+  cursor: pointer;
 }
 
 @layer base {

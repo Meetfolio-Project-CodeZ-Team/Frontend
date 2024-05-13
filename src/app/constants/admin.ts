@@ -68,6 +68,7 @@ export const MODEL_MANAGE_H = [
   '학습 모델 리스트',
   '삭제하기',
   '배포하기',
+  '삭제',
 ]
 export const MODEL_TRAIN_H = [
   '학습 데이터 리스트',
@@ -75,6 +76,7 @@ export const MODEL_TRAIN_H = [
   '지원 직무',
   '사이트',
   '사이트 URL',
+  '학습 가능 데이터 수',
 ]
 
 export const MODEL_PATH = ['service', 'train/data', 'version']

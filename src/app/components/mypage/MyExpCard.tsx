@@ -15,6 +15,7 @@ interface MyExpCardProps {
   stack: string
   title: string
   experienceId: number
+  isGuest?: boolean
 }
 
 interface ExperienceCardDetail {
@@ -40,6 +41,7 @@ const MyExpCard = ({
   stack,
   title,
   experienceId,
+  isGuest,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
 
@@ -66,11 +68,10 @@ const MyExpCard = ({
     }
     setIsOpen(true)
   }
-  
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => setIsOpen(false)
 
   const renderModal = () => {
-    if (!expCards) return null;
+    if (!expCards) return null
     const modalProps = {
       ...expCards,
     experienceId: experienceId,  // 명시적으로 experienceId 추가
@@ -78,15 +79,15 @@ const MyExpCard = ({
     };
     switch (pageNumber) {
       case 0:
-        return <MyExpDetailModal1 {...modalProps} />;
+        return <MyExpDetailModal1 {...modalProps} />
       case 1:
-        return <MyExpDetailModal2 {...modalProps} />;
+        return <MyExpDetailModal2 {...modalProps} />
       case 2:
-        return <MyExpDetailModal3 {...modalProps} />;
+        return <MyExpDetailModal3 {...modalProps} />
       default:
-        return null;  // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
     }
-  };
+  }
 
   return (
     <div

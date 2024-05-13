@@ -76,7 +76,7 @@ const JobAnal = (jobAnal: JobAnalProps) => {
   return (
     <div className="flex flex-col w-[447px] h-[423px] rounded-[10px] shadow border-2 border-stone-300 p-[17px]">
       <div className="flex items-center gap-x-2.5 mb-1">
-        <div className="text-[26px] font-bold ">희망 직무 회원 통계 </div>
+        <div className="text-[24px] font-bold ">희망 직무 회원 통계 </div>
         <Icons name={doughnut} />
       </div>
       <div className="flex items-center justify-center ">

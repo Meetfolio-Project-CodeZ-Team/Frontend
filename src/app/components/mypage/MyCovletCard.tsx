@@ -7,6 +7,7 @@ interface MyCovletCardProps {
   coverLetterId?: number
   createdAt: string
   index: number
+  isGuest?: boolean
 }
 
 interface CovletCardDetail {
@@ -26,13 +27,13 @@ const MyCovletCard = ({
   coverLetterId,
   createdAt,
   index,
+  isGuest,
 }: MyCovletCardProps) => {
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
-
   const router = useRouter()
   const fetchCovletCards = () => {
-    router.push(`/mypage/myCovletDetail/${coverLetterId}`)
+    router.push(`/mypage/myCovletDetail/${coverLetterId}?isGuest=${isGuest}`)
   }
 
   return (

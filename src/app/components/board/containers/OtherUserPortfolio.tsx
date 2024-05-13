@@ -59,7 +59,9 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
         <div className="w-[1150px] h-[750px] flex flex-col mt-[200px] absolute overflow-y-auto scrollbar-hide">
           <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
             {expCards.length > 0 ? (
-              expCards.map((a) => <MyExpCard key={a.experienceId} {...a} />)
+              expCards.map((a) => (
+                <MyExpCard key={a.experienceId} {...a} isGuest={true} />
+              ))
             ) : (
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
                 <div className="text-center">
@@ -76,7 +78,7 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
           <div className="w-[500px] h-full ml-[60px] gap-[20px]">
             {covletCards.length > 0 ? (
               covletCards.map((a) => (
-                <MyCovletCard key={a.coverLetterId} {...a} />
+                <MyCovletCard key={a.coverLetterId} {...a} isGuest={true} />
               ))
             ) : (
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">

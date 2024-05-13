@@ -239,23 +239,17 @@ const EditUserInfo = () => {
           </div>
           <div className="flex gap-x-3 items-center">
             <Input
-              inputType="password"
-              type={'password'}
-              onChange={(e) => setPassWord(e.target.value)}
-              placeholder={SIGNUP.Password}
-              textValue={password}
-            />
-            <Input
-              inputType="password"
-              type={'password'}
-              onChange={(e) => setCheckPW(e.target.value)}
-              placeholder={SIGNUP.Password}
-              textValue={checkPW}
+              inputType={isOpen ? '' : 'password'}
+              type={'login'}
+              onChange={(e) => setPw(e.target.value)}
+              placeholder="현재 비밀번호"
             />
             <div
-              className={`flex items-center justify-center w-[72px] p-2 text-lg font-semibold rounded-[10px]  ${isSame ? 'bg-[#486283] text-white' : 'bg-white text-[#6D727C]'}`}
+              className="cursor-pointer absolute right-2"
+              onMouseDown={() => setIsOpen(true)}
+              onMouseUp={() => setIsOpen(false)}
             >
-              {isSame ? '일치' : '불일치'}
+              <Icons name={eye} />
             </div>
           </div>
         </div>
@@ -263,21 +257,48 @@ const EditUserInfo = () => {
           <div className="w-[138px] left-[6px] top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
             학과
           </div>
-          <div className="w-[700px] h-[60px] left-0 top-[30px] absolute">
-            {/* <div className="w-[513.17px] h-[22.50px] left-[39.63px] top-[18.75px] absolute text-gray-900 text-xl font-medium leading-[30px]">
+          <div className="w-[700px] h-[90px] relative mt-[20px] z-20">
+            <div className="w-[138px] left-[6px] top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
+              학과
+            </div>
+            <div className="w-[700px] h-[60px] left-0 top-[30px] absolute">
+              {/* <div className="w-[513.17px] h-[22.50px] left-[39.63px] top-[18.75px] absolute text-gray-900 text-xl font-medium leading-[30px]">
               {userInfos.major}
             </div> */}
-            <div className="flex gap-x-5 ">
-              <DropDownMajor
-                options={COLLEGE}
-                title={college}
-                onSelect={(option) => setCollege(option)}
-              />
-              <DropDownMajor
-                options={CLASS_ENUM[college]}
-                title={major}
-                onSelect={(option) => setMajor(option)}
-              />
+              <div className="flex gap-x-5 ">
+                <DropDownMajor
+                  options={COLLEGE}
+                  title={college}
+                  onSelect={(option) => setCollege(option)}
+                />
+                <DropDownMajor
+                  options={CLASS_ENUM[college]}
+                  title={major}
+                  onSelect={(option) => setMajor(option)}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="w-[700px] h-[90px] mt-[20px] relative z-10">
+            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
+              학년 및 학적
+            </div>
+            <DropDownOB
+              options={GRADE}
+              title={grade}
+              onSelect={(option) => setGrade(option)}
+            />
+          </div>
+          <div className="w-[700px] h-[89px] mt-[20px] relative z-0">
+            <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
+              희망직무
+            </div>
+            <div className="flex gap-x-[35px]">
+              {JOBKEYWORD.map((str, index) => (
+                <div key={index} onClick={() => handleClick(str)}>
+                  <Keyword keyword={str} clickKeyword={clickedKeyword} />
+                </div>
+              ))}
             </div>
           </div>
         </div>

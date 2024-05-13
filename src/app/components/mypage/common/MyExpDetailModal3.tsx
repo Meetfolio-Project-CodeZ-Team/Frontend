@@ -127,7 +127,10 @@ const MyExpDetailModal3 = ({
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
       <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
-      <div className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px]" onClick={handleModalClick}>
+      <div
+        className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px]"
+        onClick={handleModalClick}
+      >
         <div className="w-[436.91px] h-[73px] left-[30px] top-[120px] absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="justify-start items-start gap-3 inline-flex">
             <div className="text-center text-gray-900 text-[16px] font-bold">
