@@ -17,6 +17,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
     trainInfo
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [detailData, setDetailData] = useState<modelResultTypes | null>(null)
+  
   const postModelDetail = async () => {
     openModal()
     const requestOpt = {

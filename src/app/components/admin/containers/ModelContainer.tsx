@@ -12,9 +12,6 @@ const ModelContainer = () => {
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
   const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
-  console.log(modelData, '가져온 1번 섹션 데이터')
-  console.log(trainData, '가져온 2번 섹션 데이터')
-  console.log(versionData, '가져온 3번 섹션 버전 데이터')
 
   const marginBorder =
     titleNum === 1 ? 'ml-[154px]' : titleNum === 2 ? 'ml-[290px]' : ''

@@ -10,6 +10,7 @@ interface ModelInfoModalProps {
 }
 
 const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
+  
   const activateModel = async () => {
     const requestOpt = {
       method: 'PATCH',
