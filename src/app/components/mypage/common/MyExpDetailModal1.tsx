@@ -5,7 +5,7 @@ import { expNum, expData, modalNum } from '../../../recoil/experience'
 import { useRouter } from 'next/navigation'
 import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -36,6 +36,7 @@ const MyExpDetailModal1 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
+  console.log(experienceId, 'id 수정 삭제에서 가져오기')
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
@@ -180,7 +181,7 @@ const MyExpDetailModal1 = ({
         <div className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600  rounded-[15px] cursor-pointer">
           <button
             className={` text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]`}
-            onClick={() => deleteExp(experienceId)}
+            onClick={() => deleteExp(experienceId || 0)}
           >
             삭제
           </button>
