@@ -29,7 +29,7 @@ const CovletSave = () => {
   const [showInputs, setShowInputs] = useState(false)
   const [feedbackClicked, setFeedbackClicked] = useState(false)
   const router = useRouter()
-  console.log(coverletterData, '자소서 데이터 현황')
+  
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -46,6 +46,8 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
+
+  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -99,57 +101,96 @@ const CovletSave = () => {
     }
   }
 
-  const saveCovData = async () => {
-    const {
-      answer,
-      question,
-      shareType,
+  // const saveCovData = async () => {
+  //   const {
+  //     answer,
+  //     question,
+  //     shareType,
+  //     keyword1,
+  //     keyword2,
+  //     jobKeyword,
+  //     coverLetterId,
+  //   } = coverletterData
+
+  //   if (!coverLetterId) {
+  //     console.error('coverLetterId가 없습니다.')
+  //     return
+  //   }
+
+  //   if (
+  //     !answer ||
+  //     !question ||
+  //     !shareType ||
+  //     !keyword1 ||
+  //     !keyword2 ||
+  //     !jobKeyword
+  //   ) {
+  //     console.error('모든 필드를 채워주세요.')
+  //     return
+  //   }
+
+  //   const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       answer,
+  //       question,
+  //       shareType,
+  //       keyword1,
+  //       keyword2,
+  //       jobKeyword,
+  //     }),
+  //   })
+     
+  //   const resData = await response.json()
+  //   setCoverLetterData({
+  //     ...coverletterData,
+  //     coverLetterId: resData.result.coverLetterId
+  //   })
+  //   if (!response.ok) {
+  //     console.error('데이터 저장에 실패했습니다.')
+  //   } else {
+  //     // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
+  //     console.log('데이터가 성공적으로 저장되었습니다.', resData)
+  //     console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
+  //     // AI 피드백 요청 함수 호출
+  //   }
+  // }
+
+  // AI 피드백 요청 함수
+const requestAIFeedback = async () => {
+  const { keyword1, keyword2, jobKeyword,coverLetterId } = coverletterData;
+  console.log('자소서 데이터',coverletterData.keyword1)
+  console.log('자소서 데이터',coverletterData.keyword2)
+  console.log('자소서 데이터',coverletterData.jobKeyword)
+
+  const feedbackResponse = await fetch(`/api/coverletters/feedback?id=${coverLetterId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
       keyword1,
       keyword2,
-      jobKeyword,
-      coverLetterId,
-    } = coverletterData
-    router.push('/coverletter/feedback')
-
-    if (!coverLetterId) {
-      console.error('coverLetterId가 없습니다.')
-      return
-    }
-
-    if (
-      !answer ||
-      !question ||
-      !shareType ||
-      !keyword1 ||
-      !keyword2 ||
-      !jobKeyword
-    ) {
-      console.error('모든 필드를 채워주세요.')
-      return
-    }
-
-    const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        answer,
-        question,
-        shareType,
-        keyword1,
-        keyword2,
-        jobKeyword,
-      }),
-    })
-
-    if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
-    } else {
-      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
-      console.log('데이터가 성공적으로 저장되었습니다.')
-    }
+      job_keyword: jobKeyword,
+    }),
+  });
+  const feedbackData = await feedbackResponse.json();
+  setCoverLetterData({
+        ...coverletterData,
+        
+      })
+  if (!feedbackResponse.ok) {
+    console.error('AI 피드백 요청에 실패했습니다.',feedbackData);
+  } else {
+    console.log('AI 피드백 요청이 성공적으로 처리되었습니다.',feedbackData);
+    console.log('자소서 아이디',coverLetterId)
+    router.push('/coverletter/feedback');  // 피드백 결과 페이지로 이동
   }
+};
+
   return (
     <div className="w-[1440px] h-[1319px] relative">
       <div className="w-[1440px] h-[1187px] left-0 top-0 absolute">
@@ -367,7 +408,7 @@ const CovletSave = () => {
         </div> */}
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveCovData}
+          onClick={requestAIFeedback}
         >
           {feedbackClicked ? 'AI 피드백 결과 보러가기' : '자기소개서 작성 완료'}
         </button>

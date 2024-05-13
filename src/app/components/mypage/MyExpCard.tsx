@@ -14,7 +14,7 @@ interface MyExpCardProps {
   jobKeyword: onlyJobType
   stack: string
   title: string
-  experienceId?: number
+  experienceId: number
   isGuest?: boolean
 }
 
@@ -58,8 +58,11 @@ const MyExpCard = ({
         throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
       }
       const data = await response.json()
-      console.log('자소서 세부정보 조회', data.result.experienceInfo)
-      setExpCards(data.result.experienceInfo)
+      console.log('경험분해 세부정보 조회', data.result.experienceInfo);
+      setExpCards({
+        ...data.result.experienceInfo,
+        experienceId: experienceId  // experienceId 명시적으로 추가
+      })
     } catch (error) {
       console.error(error)
     }
@@ -71,8 +74,9 @@ const MyExpCard = ({
     if (!expCards) return null
     const modalProps = {
       ...expCards,
-      closeModal,
-    }
+    experienceId: experienceId,  // 명시적으로 experienceId 추가
+    closeModal,
+    };
     switch (pageNumber) {
       case 0:
         return <MyExpDetailModal1 {...modalProps} />
@@ -114,7 +118,7 @@ const MyExpCard = ({
           </div>
         </div>
       </div>
-      {isOpen && renderModal()}
+      {isOpen && expCards && renderModal()}
     </div>
   )
 }

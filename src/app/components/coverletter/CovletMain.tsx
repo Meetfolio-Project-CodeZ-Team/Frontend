@@ -1,6 +1,6 @@
 import { successCopy } from '@/app/utils/toast'
 import { Switch } from '@headlessui/react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -16,7 +16,7 @@ interface CovletFinishContainerProps {
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
-
+  const router = useRouter()
   const [enabled, setEnabled] = useState(false)
 
   const [tid, setTid] = useRecoilState(tidState)
