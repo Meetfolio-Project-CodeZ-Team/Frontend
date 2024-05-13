@@ -23,10 +23,12 @@ interface CommentTypes {
 }
 
 interface boardListInfo {
-  list: BoardInfoTypes[]
-  hasNext: boolean
-  first: boolean
-  last: boolean
+  boardInfo: BoardInfoTypes[]
+  isFirst: boolean
+  isLast: boolean
+  totalPage: number
+  listSize: number
+  totalElements: number
 }
 interface ResponseEmploymentAll {
   memberInfo: memberInfo

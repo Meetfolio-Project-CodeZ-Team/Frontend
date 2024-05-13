@@ -7,9 +7,9 @@ interface JobBoardContainerProps {
 const JobBoardContainer = ({ boardData }: JobBoardContainerProps) => {
   return (
     <div>
-      {boardData.list.length > 0 ? (
+      {boardData.boardInfo.length > 0 ? (
         <div className="flex w-[783px] flex-wrap gap-x-[23px] gap-y-[30px]">
-          {boardData.list.map((post) => (
+          {boardData.boardInfo.map((post) => (
             <JobPost data={post} />
           ))}
         </div>
