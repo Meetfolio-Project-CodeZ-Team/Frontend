@@ -92,8 +92,8 @@ const PointAnal = (pointAnal: PointAnalProps) => {
   }
 
   return (
-    <div className="flex flex-col items-center gap-y-8 mt-[36px]">
-      <div className=" flex text-[32px] font-bold gap-x-8">
+    <div className="flex flex-col items-center gap-y-8 mt-[28px]">
+      <div className=" flex text-[28px] font-bold gap-x-8">
         <div onClick={() => handleMonthChange(-1)} className="cursor-pointer">
           {'<'}
         </div>
@@ -104,7 +104,7 @@ const PointAnal = (pointAnal: PointAnalProps) => {
           {'>'}
         </div>
       </div>
-      <div className="flex flex-col w-[949px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 p-[17px] mb-[108px]">
+      <div className="flex flex-col w-[962px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 p-[17px] mb-[108px]">
         <div className="flex items-center justify-center">
           <div className="w-[949px] h-[auto] mt-4 px-6">
             <Bar options={options} data={data} />

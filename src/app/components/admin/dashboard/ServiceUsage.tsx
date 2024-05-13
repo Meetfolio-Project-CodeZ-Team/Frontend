@@ -9,11 +9,11 @@ interface ServiceUsageProps {
 const ServiceUsage = (serviceUsage: ServiceUsageProps) => {
   const { feedbackCount, analysisCount, totalCount } = serviceUsage
   return (
-    <div className="w-[1018px] h-[160px] relative rounded-[10px] shadow border-2 border-stone-300">
-      <div className="absolute flex items-center gap-x-[15px] left-[20px] top-[24px] text-[21px] font-bold leading-[37.50px]">
+    <div className="w-[1018px] h-[140px] relative rounded-[10px] shadow border-2 border-stone-300">
+      <div className="absolute flex items-center gap-x-[15px] left-[20px] top-[20px] text-[21px] font-bold leading-[37.50px]">
         {DASHBOARD.Service} <ServiceIcon />
       </div>
-      <div className="absolute flex items-center gap-x-[70px] right-[80px] top-[92px]">
+      <div className="absolute flex items-center gap-x-[70px] right-[80px] top-[82px]">
         <div className="flex justify-center items-end gap-x-10 font-bold">
           <div className="text-zinc-600 pb-2 text-[20px]">{SERVICE[0]}</div>
           <div className="text-black text-[28px]">{feedbackCount}건</div>

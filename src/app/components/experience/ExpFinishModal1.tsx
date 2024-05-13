@@ -17,21 +17,21 @@ const ExpFinishModal1 = () => {
 
   const handleNextClick = () => {
     if (pageNumber < totalPages - 1) {
-      setPageNumber(pageNumber + 1);
+      setPageNumber(pageNumber + 1)
     } else {
       // 마지막 페이지에서 'Next' 클릭 시 첫 페이지로 이동
-      setPageNumber(0);
+      setPageNumber(0)
     }
-  };
-  
+  }
+
   const handlePrevClick = () => {
     if (pageNumber > 0) {
-      setPageNumber(pageNumber - 1);
+      setPageNumber(pageNumber - 1)
     } else {
       // 첫 페이지에서 'Prev' 클릭 시 마지막 페이지로 이동
-      setPageNumber(totalPages - 1);
+      setPageNumber(totalPages - 1)
     }
-  };
+  }
 
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
@@ -241,12 +241,16 @@ const ExpFinishModal1 = () => {
         </div>
       </div>
       <div className="w-[640px] h-[52px] left-[515px] top-[340px] absolute justify-start items-start gap-[580px] inline-flex">
-        <div className="w-[26px] h-[52px] relative cursor-pointer"
-        onClick={handlePrevClick}>
+        <div
+          className="w-[26px] h-[52px] relative cursor-pointer"
+          onClick={handlePrevClick}
+        >
           <PrevArrow />
         </div>
-        <div className="w-[26px] h-[52px] relative cursor-pointer"
-        onClick={handleNextClick}>
+        <div
+          className="w-[26px] h-[52px] relative cursor-pointer"
+          onClick={handleNextClick}
+        >
           <NextArrow />
         </div>
       </div>

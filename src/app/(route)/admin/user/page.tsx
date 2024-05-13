@@ -15,6 +15,7 @@ const userPage = () => {
       )
       const resData = await response.json()
       setData(resData.result)
+      console.log(resData.result)
     }
     fetchData()
   }, [])

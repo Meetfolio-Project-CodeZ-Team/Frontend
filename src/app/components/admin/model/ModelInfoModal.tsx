@@ -43,9 +43,9 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
             <div className="">{MODEL_INFO[2]}</div>
             <div className="font-normal">{data.fileName}</div>
           </div>
-          <div className="flex flex-col gap-y-1">
+          <div className="flex flex-col gap-y-1 ">
             <div className="">{MODEL_INFO[3]}</div>
-            <div className="font-normal">{data.filePath}</div>
+            <div className="font-normal text-[16px]">{data.filePath}</div>
           </div>
           <div className="flex flex-col gap-y-1">
             <div className="">{MODEL_INFO[4]}</div>

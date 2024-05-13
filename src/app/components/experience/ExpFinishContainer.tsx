@@ -16,9 +16,7 @@ const ExpFinishContainer = () => {
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const router = useRouter()
 
-  const totalPages = 3;
-
- 
+  const totalPages = 3
 
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
@@ -40,15 +38,15 @@ const ExpFinishContainer = () => {
   const getCurrentModal = () => {
     switch (pageNumber) {
       case 0:
-        return <ExpFinishModal1 />;
+        return <ExpFinishModal1 />
       case 1:
-        return <ExpFinishModal2 />;
+        return <ExpFinishModal2 />
       case 2:
-        return <ExpFinishModal3 />;
+        return <ExpFinishModal3 />
       default:
-        return null;  // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
     }
-  };
+  }
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -209,10 +207,9 @@ const ExpFinishContainer = () => {
         </button>
       </div>
       <div className="justify-center items-center">
-      {/* 페이지에 따라 다른 모달 컴포넌트 렌더링 */}
-      {getCurrentModal()}
-      
-    </div>
+        {/* 페이지에 따라 다른 모달 컴포넌트 렌더링 */}
+        {getCurrentModal()}
+      </div>
     </div>
   )
 }
