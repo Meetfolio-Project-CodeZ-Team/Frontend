@@ -13,6 +13,7 @@ ARG NEXT_PUBLIC_SERVER
 ARG NEXT_PUBLIC_NEXT_SERVER
 RUN echo "NEXT_PUBLIC_SERVER=${NEXT_PUBLIC_SERVER}" > .env.local
 RUN echo "NEXT_PUBLIC_NEXT_SERVER=${NEXT_PUBLIC_NEXT_SERVER}" >> .env.local
+RUN echo "NEXT_PUBLIC_GAHCON_SERVER=${NEXT_PUBLIC_GAHCON_SERVER}" >> .env.local
 
 # Dependancy 설치 (새로운 lock 파일 수정 또는 생성 방지)
 RUN yarn --frozen-lockfile 
