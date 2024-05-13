@@ -40,6 +40,31 @@ interface UserInfo {
 const EditUserInfo = () => {
   const [userInfoData, setUserInfoData] = useState(userData)
   const router = useRouter()
+  const [passwordVerified, setPasswordVerified] = useState(false)
+  const [verifyPw, setVerifyPw] = useState('')
+
+  const verifyPassword = async () => {
+    try {
+      const response = await fetch('/api/mypage/user/checkPw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ password: verifyPw }),
+      })
+
+      const result = await response.json()
+      if (response.ok && result.isSuccess && result.code === 'COMMON200') {
+        setPasswordVerified(true)
+        alert('비밀번호 검증 성공!')
+      } else {
+        alert('비밀번호가 일치하지 않습니다.')
+      }
+    } catch (error) {
+      console.error('비밀번호 검증 중 오류 발생:', error)
+      alert('서버 오류 발생')
+    }
+  }
 
   const [password, setPassWord] = useState('')
   const [checkPW, setCheckPW] = useState('')
@@ -139,6 +164,43 @@ const EditUserInfo = () => {
     setCollege(findCollegeByMajor(major))
   }, [major])
 
+  if (!passwordVerified) {
+    return (
+      <div className="w-full h-[1090px] relative">
+        <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
+        <div className="w-full h-[0px] left-[79px] top-[172px] absolute">
+          <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600" />
+          <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
+        </div>
+        <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
+          <div className="text-gray-900 text-xl font-bold leading-[30px]">
+            <Link href="/mypage/userinfo">개인 정보 수정</Link>
+          </div>
+          <div className="text-gray-900 text-xl font-bold leading-[30px]">
+            <Link href="/mypage/withdraw">회원 탈퇴</Link>
+          </div>
+        </div>
+        <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
+          개인 정보 설정
+        </div>
+        <div className="w-[200px] h-[20px] py-2 left-[500px] top-[500px] inline-flex items-center absolute p-2 ">
+          <input
+            type="password"
+            value={verifyPw}
+            onChange={(e) => setVerifyPw(e.target.value)}
+            placeholder="비밀번호 입력"
+            className="py-2 border border-gray-300 rounded-lg"
+          />
+          <button type="button"
+          className={`w-[60.02px] h-[25.43px] ml-[240px] absolute text-white bg-blue-300  border-0  focus:outline-none rounded-[10px] text-sm font-semibold `}
+          onClick={verifyPassword}>
+            확인
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
@@ -166,28 +228,7 @@ const EditUserInfo = () => {
             아이디
           </div>
         </div>
-        <div className="w-[700px] h-[90px] relative">
-          <div className="flex ">
-            <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
-              현재 비밀번호
-            </div>
-          </div>
-          <div className="flex gap-x-3 items-center">
-          <Input
-            inputType={isOpen ? '' : 'password'}
-            type={'login'}
-            onChange={(e) => setPw(e.target.value)}
-            placeholder="현재 비밀번호"
-          />
-          <div
-            className="cursor-pointer absolute right-2"
-            onMouseDown={() => setIsOpen(true)}
-            onMouseUp={() => setIsOpen(false)}
-          >
-            <Icons name={eye} />
-          </div>
-        </div>
-        <div className="w-[700px] h-[90px] mt-[20px] relative">
+        <div className="w-[700px] h-[90px] mt-[40px] relative">
           <div className="flex gap-x-[175px]">
             <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
               변경할 비밀번호
@@ -218,7 +259,7 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[700px] h-[90px] relative mt-[20px] z-20">
+        <div className="w-[700px] h-[90px] relative  z-20">
           <div className="w-[138px] left-[6px] top-0 absolute text-gray-900 text-xl font-semibold leading-[30px]">
             학과
           </div>
@@ -240,7 +281,7 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-        <div className="w-[700px] h-[90px] mt-[20px] relative z-10">
+        <div className="w-[700px] h-[90px] mt-[60px] relative z-10">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             학년 및 학적
           </div>
@@ -250,7 +291,7 @@ const EditUserInfo = () => {
             onSelect={(option) => setGrade(option)}
           />
         </div>
-        <div className="w-[700px] h-[89px] mt-[20px] relative z-0">
+        <div className="w-[700px] h-[89px] relative z-0">
           <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5 pb-[10px]">
             희망직무
           </div>
@@ -263,7 +304,7 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[700px] h-[80px] left-[0px] top-[668px] absolute">
+      <div className="w-[700px] h-[80px] left-[80px] top-[750px] absolute">
         <Button
           buttonText="수정하기"
           type={'loginC'}
@@ -277,7 +318,6 @@ const EditUserInfo = () => {
         />
         <ToastContainer />
       </div>
-    </div>
     </div>
   )
 }

@@ -33,7 +33,7 @@ export default function CovletFeedbackPage() {
     fetchData()
   }, [covletNumber])
 
-  console.log(userInfo?.memberName)
+  
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">

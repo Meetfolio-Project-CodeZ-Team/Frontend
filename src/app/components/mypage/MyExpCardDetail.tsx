@@ -33,6 +33,8 @@ const MyExpCardDetail = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
+  console.log(experienceId, 'id 수정 삭제에서 가져오기')
+
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {

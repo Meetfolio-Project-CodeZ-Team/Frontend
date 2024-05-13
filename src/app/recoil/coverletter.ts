@@ -31,3 +31,16 @@ export const tidState = atom<string>({
   key: 'tidState',
   default: '',
 })
+
+export interface FeedbackData {
+  feedback: string;
+  recommend: string[];
+}
+
+export const feedbackDataState = atom<FeedbackData>({
+  key: 'feedbackDataState',
+  default: {
+    feedback:'',
+    recommend: [],
+  },
+});
