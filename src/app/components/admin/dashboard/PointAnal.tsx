@@ -77,7 +77,7 @@ const PointAnal = (pointAnal: PointAnalProps) => {
   return (
     <div className="flex flex-col w-[569px] h-[auto] rounded-[10px] shadow border-2 border-stone-300 p-[17px]">
       <div className="flex items-center gap-x-2.5 mb-1">
-        <div className="text-[26px] font-bold ">포인트 통계</div>
+        <div className="text-[24px] font-bold ">포인트 통계</div>
         <Icons className="mt-2" name={point} />
       </div>
       <div className="flex items-center justify-center">

@@ -58,32 +58,32 @@ const MyExpCard = ({
         throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
       }
       const data = await response.json()
-      console.log('자소서 세부정보 조회', data.result.experienceInfo);
+      console.log('자소서 세부정보 조회', data.result.experienceInfo)
       setExpCards(data.result.experienceInfo)
     } catch (error) {
       console.error(error)
     }
     setIsOpen(true)
   }
-  const closeModal = () => setIsOpen(false);
+  const closeModal = () => setIsOpen(false)
 
   const renderModal = () => {
-    if (!expCards) return null;
+    if (!expCards) return null
     const modalProps = {
       ...expCards,
       closeModal,
-    };
+    }
     switch (pageNumber) {
       case 0:
-        return <MyExpDetailModal1 {...modalProps} />;
+        return <MyExpDetailModal1 {...modalProps} />
       case 1:
-        return <MyExpDetailModal2 {...modalProps} />;
+        return <MyExpDetailModal2 {...modalProps} />
       case 2:
-        return <MyExpDetailModal3 {...modalProps} />;
+        return <MyExpDetailModal3 {...modalProps} />
       default:
-        return null;  // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
     }
-  };
+  }
 
   return (
     <div

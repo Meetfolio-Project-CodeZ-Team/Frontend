@@ -9,7 +9,6 @@ import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import Footer from '@/app/components/layout/Footer'
 
-
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
@@ -32,11 +31,11 @@ export default function CovletMainPage() {
     // 첫 로드시에만 experienceNumber를 0으로 설정
     setCoverLetterData({
       question: '',
-    answer: '',
-    shareType: 'PRIVATE',
-    keyword1: '',
-    keyword2: '',
-    jobKeyword: '',
+      answer: '',
+      shareType: 'PRIVATE',
+      keyword1: '',
+      keyword2: '',
+      jobKeyword: '',
     })
     setCovletNumber(0)
   }, [])

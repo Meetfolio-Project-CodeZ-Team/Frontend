@@ -12,7 +12,7 @@ const DashboardContainer = ({ DashboardInfo }: DashboardContainerProps) => {
     aiServiceInfo
   const { analysisPoint, coverLetterPoint, totalPoint, yearMonth } = pointInfo
   return (
-    <div className="flex flex-col gap-y-8 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
+    <div className="flex flex-col gap-y-7 bg-white w-[full] pl-[54px] pt-[20px] pb-[44px]">
       <div className="text-[28px] font-bold">대시보드</div>
       <ServiceUsage
         feedbackCount={feedbackCount}

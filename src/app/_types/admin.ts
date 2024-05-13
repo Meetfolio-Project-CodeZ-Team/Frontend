@@ -104,8 +104,8 @@ interface aiServiceInfoTypes {
 
 interface ResponseTrainData {
   datasetInfo: trainDataTypes
-  modelResult:modelResultTypes
-  trainableNumber:number
+  modelResult: modelResultTypes
+  trainableNumber: number
 }
 interface datasetInfoTypes {
   createdAt: string
@@ -132,6 +132,7 @@ interface modelResultTypes {
   status: 'ACTIVE' | 'INACTIVE'
   createdDate: string
   activatedDate: string
+  accuracy: number
 }
 
 type BoardTypes = '그룹원 모집' | '취업 정보'

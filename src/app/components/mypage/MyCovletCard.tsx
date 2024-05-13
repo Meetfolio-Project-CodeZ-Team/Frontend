@@ -7,7 +7,7 @@ interface MyCovletCardProps {
   coverLetterId?: number
   createdAt: string
   index: number
-  isGuest?:boolean
+  isGuest?: boolean
 }
 
 interface CovletCardDetail {
@@ -27,7 +27,7 @@ const MyCovletCard = ({
   coverLetterId,
   createdAt,
   index,
-  isGuest
+  isGuest,
 }: MyCovletCardProps) => {
   const [covletCards, setCovletCards] = useState<CovletCardDetail>()
   const [isOpen, setIsOpen] = useState(false)

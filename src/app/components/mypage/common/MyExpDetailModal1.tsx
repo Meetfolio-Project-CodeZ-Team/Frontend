@@ -84,7 +84,6 @@ const MyExpDetailModal1 = ({
     }
   }
   const onEditClick = () => {
-    
     setExperienceData({
       title,
       startDate,
@@ -103,7 +102,6 @@ const MyExpDetailModal1 = ({
   }
 
   const deleteExp = async (experienceId: number) => {
-    
     console.log('경험카드 삭제 요청이에요', experienceId)
     try {
       const res = await fetch(
@@ -174,13 +172,12 @@ const MyExpDetailModal1 = ({
         <div className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer">
           <button
             className=" text-center text-white text-[20px] font-semibold leading-[37.50px]"
-            onClick={ onEditClick}
+            onClick={onEditClick}
           >
             수정
           </button>
         </div>
         <div className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600  rounded-[15px] cursor-pointer">
-        
           <button
             className={` text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]`}
             onClick={() => deleteExp(experienceId)}

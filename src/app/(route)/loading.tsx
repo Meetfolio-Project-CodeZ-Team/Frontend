@@ -1,13 +1,8 @@
-
 export default function Loading() {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div className="text-3xl text-black font-bold">로딩중</div>
-      <svg
-        height="100%"
-        viewBox="0 0 32 32"
-        width={40}
-      >
+      <svg height="100%" viewBox="0 0 32 32" width={40}>
         <circle
           cx="16"
           cy="16"

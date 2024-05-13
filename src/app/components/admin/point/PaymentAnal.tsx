@@ -32,8 +32,8 @@ const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
   console.log(paymentAnal, '결제 내역')
 
   return (
-    <div className="flex flex-col items-center gap-y-6 mt-[36px]">
-      <div className=" flex text-[32px] font-bold gap-x-8">
+    <div className="flex flex-col items-center gap-y-6 mt-[28px]">
+      <div className=" flex text-[28px] font-bold gap-x-8">
         <div onClick={() => handleMonthChange(-1)} className="cursor-pointer">
           {'<'}
         </div>
