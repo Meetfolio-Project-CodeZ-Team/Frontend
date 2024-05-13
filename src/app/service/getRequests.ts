@@ -69,8 +69,11 @@ export const getModelData = async (accessToken: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const getTrainData = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/admins/data-management`
+export const getTrainData = async (accessToken: string, page: string) => {
+  const url =
+    page !== ''
+      ? `${SERVER_URL}/api/admins/data-management?page=${Number(page)-1}`
+      : `${SERVER_URL}/api/admins/data-management`
   return await getRequest(url, accessToken)
 }
 

@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface ModelTrainInfoProps {
   createdAt: string
   job: string
@@ -20,7 +18,9 @@ const ModelTrainInfo = ({
         <div className="w-[330px] text-center">{job}</div>
         <div className="w-[148px] text-center">{domain}</div>
         <div className="ml-[160px]">
-          <div className="w-[180px] text-center text-sm break-all">{url}</div>
+          <div className="w-[180px] text-center text-sm break-all">
+            {url.length > 20 ? `${url.slice(0, 52)}...` : url}
+          </div>
         </div>
       </div>
     </div>

@@ -22,6 +22,10 @@
   background-color: #000;
 }
 
+.pagination-page {
+  cursor: pointer;
+}
+
 @layer base {
   input[type='number']::-webkit-inner-spin-button,
   input[type='number']::-webkit-outer-spin-button {
