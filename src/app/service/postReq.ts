@@ -43,6 +43,7 @@ export const postBoardDetail = async (accessToken: string, id: string) => {
 
 export const postAiFeedback = async (accessToken: string, id: string) => {
   const url = `${G_SERVER_URL}/api/coverLetter-feedbacks/${id}`
+  console.log()
   return await postRequest(url, null, accessToken)
 }
 
