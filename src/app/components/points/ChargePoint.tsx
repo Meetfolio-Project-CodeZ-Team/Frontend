@@ -32,8 +32,8 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `http://localhost:3000/mypage/mypoint`
-          : `http://localhost:3000/coverletter?id=${coverLetterId}`,
+          ? `http://34.64.177.41:9090/mypage/mypoint`
+          : `http://34.64.177.41:9090/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
