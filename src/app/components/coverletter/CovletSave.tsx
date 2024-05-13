@@ -60,13 +60,14 @@ const CovletSave = () => {
     })
   }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setCoverLetterData({
       ...coverletterData,
       [event.target.name]: event.target.value,
-    });
+    })
   }
-  
 
   const handleButtonClick = (type: string, event: React.MouseEvent) => {
     event.preventDefault()
@@ -222,17 +223,18 @@ const CovletSave = () => {
                   onChange={handleInputChange}
                   id="jobKeyword"
                   name="jobKeyword"
-                  title='직무를 선택해주세요'
+                  title="직무를 선택해주세요"
                   className="w-[245px] h-[45px] left-0 top-[40px] absolute bg-white border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
                 >
-                  <option value="" disabled hidden>지원직무 선택</option>
+                  <option value="" disabled hidden>
+                    지원직무 선택
+                  </option>
                   <option value="BACKEND">백엔드</option>
                   <option value="WEB">웹개발</option>
                   <option value="APP">앱개발</option>
                   <option value="DESIGN">디자인</option>
                   <option value="AI">AI</option>
                 </select>
-                
               </div>
             </div>
           )}

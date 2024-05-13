@@ -86,5 +86,5 @@ const transKeyword = (keyword: string) => {
   }
 }
 const transShareType = (shareType: string) => {
-  return shareType === '공개' ? 'PUBLIC' : 'PRIVATE';
-};
+  return shareType === '공개' ? 'PUBLIC' : 'PRIVATE'
+}

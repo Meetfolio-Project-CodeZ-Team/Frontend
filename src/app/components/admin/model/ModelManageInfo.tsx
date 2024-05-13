@@ -17,7 +17,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
     trainInfo
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [detailData, setDetailData] = useState<modelResultTypes | null>(null)
-  
+
   const postModelDetail = async () => {
     openModal()
     const requestOpt = {
@@ -53,7 +53,9 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         <div className="w-[120px] text-center">{learnedDate}</div>
         <div className="w-[268px] text-center">{modelName}</div>
         <div className="w-[80px] text-center">{version}</div>
-        <div className="w-[260px] text-center">{accuracy.toFixed(2).toString().slice(0, 4)} %</div>
+        <div className="w-[260px] text-center">
+          {accuracy.toFixed(2).toString().slice(0, 4)} %
+        </div>
         <div className="w-[72px] flex items-center justify-center">
           <div
             onClick={postModelDetail}

@@ -18,7 +18,7 @@ const UserNavContainer = ({
         <div className="text-[25px] font-semibold">{nickname}</div>
       </div>
 
-      {isGuest==='true' ? (
+      {isGuest === 'true' ? (
         <div className="flex flex-col gap-y-8 text-[22px] font-normal leading-[33px]">
           <div>포트폴리오</div>
         </div>

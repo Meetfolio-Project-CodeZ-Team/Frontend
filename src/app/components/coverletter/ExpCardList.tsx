@@ -57,18 +57,29 @@ const ExpCardList = () => {
     <div className="w-[463px] h-[1000px] left-[977px] top-[18px] absolute items-center justify-center">
       <div className="w-[463px] h-[1000px] left-0 top-0 absolute bg-white rounded-tl-[30px] rounded-bl-[30px] shadow ">
         <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]"> </span>
+          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
+            {' '}
+          </span>
           <span className="text-black text-[22px] font-bold  leading-[33px]">
             경험카드 조회
           </span>
-          <span className="text-black text-[25px] font-medium  leading-[37.50px]"> </span>
+          <span className="text-black text-[25px] font-medium  leading-[37.50px]">
+            {' '}
+          </span>
           <span className="text-black text-sm font-medium  leading-[21px]">
             경험카드를 참고해 자소서를 작성해보세요
           </span>
         </div>
       </div>
       {selectedCard ? (
-        <ExpCardDetail task={''} motivation={''} detail={''} advance={''} {...selectedCard} closeModal={handleClose} />
+        <ExpCardDetail
+          task={''}
+          motivation={''}
+          detail={''}
+          advance={''}
+          {...selectedCard}
+          closeModal={handleClose}
+        />
       ) : (
         <div className="w-[450px] h-[900px] mt-[80px] flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[80px] ">
