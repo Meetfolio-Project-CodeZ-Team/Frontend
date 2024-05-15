@@ -4,19 +4,23 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import Icons from '../../common/Icons'
 import Input from '../../common/Input'
 
-interface SearchBoardInfoProps {
-  searchBoard: Dispatch<SetStateAction<ResponseBoardData[]>>
+interface SearchInputProps {
+  searchBoard?: Dispatch<SetStateAction<ResponseBoardData[]>>
+  searchUser?: Dispatch<SetStateAction<ResponseUser | null>>
 }
 
-const SearhBoardInfo = ({ searchBoard }: SearchBoardInfoProps) => {
+const SearchInput = ({ searchBoard, searchUser }: SearchInputProps) => {
   const [title, setTitle] = useState('')
 
   const getKeywordBoard = async (title: string) => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?keyword=${title}`,
+      searchBoard
+        ? `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?keyword=${title}`
+        : `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user/search?keyword=${title}`,
     )
-    const boardData = await response.json()
-    searchBoard(boardData.result)
+    const resData = await response.json()
+    searchBoard && searchBoard(resData.result)
+    searchUser && searchUser(resData.result)
   }
 
   return (
@@ -33,4 +37,4 @@ const SearhBoardInfo = ({ searchBoard }: SearchBoardInfoProps) => {
   )
 }
 
-export default SearhBoardInfo
+export default SearchInput

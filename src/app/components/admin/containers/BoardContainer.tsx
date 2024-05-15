@@ -2,7 +2,7 @@
 import ComunityBoard from '@/app/components/admin/board/ComunityBoard'
 import { Board } from '@/app/constants/auth'
 import { useEffect, useState } from 'react'
-import SearhBoard from '../board/SearhBoardInfo'
+import SearhBoard from '../board/SearchInput'
 import DropDownB from '../common/DropDownB'
 
 interface BoardContainerProps {

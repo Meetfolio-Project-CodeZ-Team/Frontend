@@ -46,10 +46,10 @@ const ModelContainer = () => {
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[28px] font-bold mb-7">AI 관리</div>
       <div className="flex w-[1021px] justify-between relative">
-        <div className=" flex w-[auto] gap-x-[60px] text-xl font-bold pl-4 pb-2">
+        <div className=" flex w-[auto] gap-x-[60px] text-xl font-semibold pl-4 pb-2">
           {MODEL_NAV.map((title, index) => (
             <div
-              className=" cursor-pointer"
+              className={`cursor-pointer ${index === titleNum && 'font-extrabold'}`}
               onClick={() => setTitleNum(index)}
               key={index}
             >

@@ -136,3 +136,8 @@ export const getBoard = async (accessToken: string, keyword: string) => {
     : `${SERVER_URL}/api/admins/board-management`
   return await getRequest(url, accessToken)
 }
+
+export const searchUser = async (accessToken: string, keyword?: string) => {
+  const url = `${SERVER_URL}/api/admins/members-management/search?keyword=${keyword}`
+  return await getRequest(url, accessToken)
+}
