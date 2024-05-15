@@ -1,6 +1,7 @@
 import { selectedPostId } from '@/app/recoil/board'
 import { comment } from '@/app/ui/IconsPath'
 import Like from '@/app/ui/svg/main/Like'
+import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
 
@@ -10,7 +11,21 @@ interface JobPostProps {
 
 const JobPost = ({ data }: JobPostProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  const [isLiked, setIsliked] = useState(false)
+  const [likeCnt, setLikeCnt] = useState(0)
+
   console.log(selectedId, '번 게시물 선택 됨')
+
+  const like = async (id: number) => {
+    const res = await fetch(`/api/board/like?id=${id}`, {
+      method: 'POST',
+    })
+    const resData = await res.json()
+    setIsliked(true)
+    setLikeCnt(resData.result.likeCount)
+
+    console.log(resData, '조아요 응답')
+  }
 
   return (
     <div
@@ -42,16 +57,20 @@ const JobPost = ({ data }: JobPostProps) => {
       </div>
       <div className="absolute top-[174px] right-[26px] flex gap-x-2 text-base font-semibold">
         <div className="flex items-center gap-x-1">
-          <div>
-            <Like color={'black'} size={24} />
+          <div onClick={() => like(data.boardId)}>
+            <Like
+              color={'black'}
+              size={24}
+              isLiked={isLiked || data.likeStatus === 'ACTIVE'}
+            />
           </div>
-          <div>{data.likeCount}</div>
+          <div>{likeCnt === 0 ? data.likeCount : likeCnt}</div>
         </div>
         <div className="flex items-center gap-x-1">
           <div>
             <Icons name={comment} />
           </div>
-          <div>{data.likeCount}</div>
+          <div>{data.commentCount}</div>
         </div>
       </div>
     </div>

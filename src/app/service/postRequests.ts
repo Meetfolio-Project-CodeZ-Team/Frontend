@@ -183,3 +183,8 @@ export const postmodelDetail = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
   return await postRequest(url, null, accessToken)
 }
+
+export const postLike = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/board-likes/${id}`
+  return await postRequest(url, null, accessToken)
+}

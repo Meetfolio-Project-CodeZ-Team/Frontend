@@ -1,16 +1,17 @@
 interface LikeProps {
   color: string
   size: number
+  isLiked?: boolean
 }
 
-const Like = ({ color, size }: LikeProps) => {
+const Like = ({ color, size, isLiked }: LikeProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      fill="none"
+      fill={isLiked ? 'black' : 'none'}
       className="pb-0.5"
     >
       <path
