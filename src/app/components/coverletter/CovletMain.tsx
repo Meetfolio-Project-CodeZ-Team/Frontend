@@ -76,6 +76,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             body: JSON.stringify({ tid: data.result.tid }),
           }
 
+          setCovletNumber(1)
           const sendApprove = await fetch(
             `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/kakaopay/payments/approve`,
             req,
@@ -86,7 +87,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         }
       }
       getTid()
-      setCovletNumber(1)
     }
   }, [pg_token])
 
