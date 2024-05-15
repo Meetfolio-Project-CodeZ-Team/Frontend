@@ -39,6 +39,7 @@ const MyExpDetailModal2 = ({
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
+  const [isHovered, setIsHovered] = useState(false)
   const router = useRouter()
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -160,6 +161,26 @@ const MyExpDetailModal2 = ({
             </div>
           </div>
         </div>
+        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
+          <div
+            className="w-[26px] h-[52px] relative cursor-pointer "
+            onClick={(event) => {
+              event.stopPropagation(); // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              handlePrevClick();
+            }}
+          >
+            <PrevArrow />
+          </div>
+          <div
+            className="w-[26px] h-[52px] relative cursor-pointer"
+            onClick={(event) => {
+              event.stopPropagation(); // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              handleNextClick();
+            }}
+          >
+            <NextArrow />
+          </div>
+        </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
           {title}
         </div>
@@ -170,59 +191,51 @@ const MyExpDetailModal2 = ({
         <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
           {detail}
         </div>
-        <div className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer">
-          <div
-            className=" text-center text-white text-[20px] font-semibold leading-[37.50px]"
-            onClick={onEditClick}
-          >
+        <div
+          className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer"
+          onClick={onEditClick}
+        >
+          <button className=" text-center text-white text-[20px] font-semibold leading-[37.50px]">
             수정
-          </div>
+          </button>
         </div>
-        <div className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600  rounded-[15px] cursor-pointer">
-          <div
-            className=" text-center text-slate-600 text-[20px] font-semibold leading-[37.50px] "
-            onClick={() => deleteExp(experienceId)}
+        <div
+          className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600  rounded-[15px] cursor-pointer"
+          onClick={() => deleteExp(experienceId || 0)}
+        >
+          <button
+            className={` text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]`}
           >
             삭제
-          </div>
+          </button>
         </div>
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
           <div className="w-[80px] h-4 relative">
-            <div className="w-[14px] h-[14px] left-[16px] top-0 absolute bg-blue-400 rounded-full" />
-            <div className="w-[28px] h-[14px] left-[36px] top-0 absolute bg-blue-600 rounded-[50px]" />
-            <div className="w-[14px] h-[14px] left-[70px] top-0 absolute bg-blue-400 rounded-full" />
+            <div className="w-[14px] h-[14px] left-[16px] top-0 absolute bg-[#7AAAE8] rounded-full" />
+            <div className="w-[28px] h-[14px] left-[36px] top-0 absolute bg-[#0A7AFF] rounded-[50px]" />
+            <div className="w-[14px] h-[14px] left-[70px] top-0 absolute bg-[#7AAAE8] rounded-full" />
           </div>
         </div>
         <div
-          className="w-[20px] h-6 left-[20px] top-[15px] absolute text-gray-900 text-lg font-bold cursor-pointer"
+          className="absolute top-[18px] left-[18px] w-4 h-4 rounded-full flex items-center justify-center cursor-pointer bg-[#FF5252]"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={closeModal}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
+            fill="none"
             viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-6 h-6"
+            stroke="white"
+            className={`w-4 h-4 transition-opacity ${isHovered ? 'opacity-100 ' : 'opacity-0'}`}
           >
             <path
-              fill-rule="evenodd"
-              d="M9.53 2.47a.75.75 0 0 1 0 1.06L4.81 8.25H15a6.75 6.75 0 0 1 0 13.5h-3a.75.75 0 0 1 0-1.5h3a5.25 5.25 0 1 0 0-10.5H4.81l4.72 4.72a.75.75 0 1 1-1.06 1.06l-6-6a.75.75 0 0 1 0-1.06l6-6a.75.75 0 0 1 1.06 0Z"
-              clip-rule="evenodd"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
             />
           </svg>
-        </div>
-      </div>
-      <div className="w-[640px] h-[52px] left-[515px] top-[340px] absolute justify-start items-start gap-[580px] inline-flex">
-        <div
-          className="w-[26px] h-[52px] relative cursor-pointer"
-          onClick={handlePrevClick}
-        >
-          <PrevArrow />
-        </div>
-        <div
-          className="w-[26px] h-[52px] relative cursor-pointer"
-          onClick={handleNextClick}
-        >
-          <NextArrow />
         </div>
       </div>
     </div>
