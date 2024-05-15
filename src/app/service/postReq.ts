@@ -47,7 +47,7 @@ export const postAiFeedback = async (accessToken: string, id: string) => {
   return await postRequest(url, null, accessToken)
 }
 
-export const postCheckPw = async (accessToken: string,password: string) => {
+export const postCheckPw = async (accessToken: string, password: string) => {
   const url = `${SERVER_URL}/api/mypage/check-password`
   return await postRequest(url, password, accessToken)
 }

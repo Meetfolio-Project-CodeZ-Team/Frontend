@@ -191,9 +191,11 @@ const EditUserInfo = () => {
             placeholder="비밀번호 입력"
             className="py-2 border border-gray-300 rounded-lg"
           />
-          <button type="button"
-          className={`w-[60.02px] h-[25.43px] ml-[240px] absolute text-white bg-blue-300  border-0  focus:outline-none rounded-[10px] text-sm font-semibold `}
-          onClick={verifyPassword}>
+          <button
+            type="button"
+            className={`w-[60.02px] h-[25.43px] ml-[240px] absolute text-white bg-blue-300  border-0  focus:outline-none rounded-[10px] text-sm font-semibold `}
+            onClick={verifyPassword}
+          >
             확인
           </button>
         </div>
@@ -305,7 +307,6 @@ const EditUserInfo = () => {
             </div>
           </div>
         </div>
-
       </div>
       <div className="w-[700px] h-[80px] left-[80px] top-[750px] absolute">
         <Button

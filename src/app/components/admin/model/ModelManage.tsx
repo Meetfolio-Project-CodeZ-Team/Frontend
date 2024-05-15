@@ -68,7 +68,6 @@ const ModelManage = ({ modelData }: ModelManageProps) => {
         pageCount={modelData.totalPage}
         onPageChange={handlePageChange}
         activeClassName={'active text-[#486284]'}
-
       />
     </div>
   )
