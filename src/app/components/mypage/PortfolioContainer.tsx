@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
 import AI3 from '@/app/ui/svg/ai/AI3'
-import CovIcon from '@/app/ui/svg/CovIcon'
+import CovIcon from '@/app/ui/svg/common/CovIcon'
 interface CovletCard {
   question: string
   answer: string

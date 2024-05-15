@@ -51,8 +51,9 @@ export const getPayment = async (
   accessToken: string,
   year: string,
   month: string,
+  page: string,
 ) => {
-  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}&page=${page}`
   return await getRequest(url, accessToken)
 }
 
@@ -129,9 +130,20 @@ export const searchPost = async (
   return await getRequest(url, accessToken)
 }
 
-export const getBoard = async (accessToken: string, keyword: string) => {
+export const getBoard = async (
+  accessToken: string,
+  keyword: string,
+  page: string,
+) => {
   const url = keyword
-    ? `${SERVER_URL}/api/admins/board-management?keyword=${keyword}`
-    : `${SERVER_URL}/api/admins/board-management`
+    ? `${SERVER_URL}/api/admins/board-management?keyword=${keyword}&page=${page}`
+    : `${SERVER_URL}/api/admins/board-management?page=${page}`
+  console.log('요청 url', url)
+
+  return await getRequest(url, accessToken)
+}
+
+export const searchUser = async (accessToken: string, keyword?: string) => {
+  const url = `${SERVER_URL}/api/admins/members-management/search?keyword=${keyword}`
   return await getRequest(url, accessToken)
 }

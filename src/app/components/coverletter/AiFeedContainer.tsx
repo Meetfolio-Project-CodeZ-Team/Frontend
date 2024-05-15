@@ -1,29 +1,28 @@
-import { successCopy } from "@/app/utils/toast"
-import { useEffect, useState } from "react";
+import { successCopy } from '@/app/utils/toast'
+import { useEffect, useState } from 'react'
 
 interface FeedbackData {
-  feedback: string;
-  recommend: string[];
+  feedback: string
+  recommend: string[]
 }
 
 const AiFeedContainer = () => {
-
-  const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null);
+  const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null)
 
   useEffect(() => {
     const fetchFeedback = async () => {
-      const response = await fetch('/api/coverletters/feedback');  // 가정된 API 경로
+      const response = await fetch('/api/coverletters/feedback') // 가정된 API 경로
       if (!response.ok) {
-        console.error('Failed to fetch feedback');
-        return;
+        console.error('Failed to fetch feedback')
+        return
       }
-      const data = await response.json();
-      setFeedbackData(data);
-    };
+      const data = await response.json()
+      setFeedbackData(data)
+    }
 
-    fetchFeedback();
-  }, []);
-  
+    fetchFeedback()
+  }, [])
+
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
@@ -63,10 +62,12 @@ const AiFeedContainer = () => {
           <div className="w-[789px] h-11 left-0 top-[114px] absolute bg-blue-300 rounded-[10px]" />
           <div className="w-[737px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
           <ul>
-          {feedbackData?.recommend.map((item, index) => (
-            <li key={index} className="text-base">{item}</li>
-          ))}
-        </ul>
+            {feedbackData?.recommend.map((item, index) => (
+              <li key={index} className="text-base">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="w-[228px] h-[49px] left-[366px] top-[579px] absolute text-center text-black text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">

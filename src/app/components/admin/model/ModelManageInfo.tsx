@@ -1,4 +1,5 @@
 import { useModal } from '@/app/hooks/useModal'
+import TrashBin from '@/app/ui/svg/common/TrashBin'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { useState } from 'react'
 import ModelInfoModal from './ModelInfoModal'
@@ -53,7 +54,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         <div className="w-[120px] text-center">{learnedDate}</div>
         <div className="w-[268px] text-center">{modelName}</div>
         <div className="w-[80px] text-center">{version}</div>
-        <div className="w-[260px] text-center">
+        <div className="w-[320px] text-center">
           {accuracy.toFixed(2).toString().slice(0, 4)} %
         </div>
         <div className="w-[72px] flex items-center justify-center">
@@ -64,12 +65,12 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
             {'배포'}
           </div>
         </div>
-        <div className="w-[200px] flex items-center justify-center">
+        <div className="w-[130px] flex items-center justify-end">
           <div
-            className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold"
+            className=" cursor-pointer flex w-8 h-8 items-center justify-center pt-1 font-semibold pr-1 pb-1 hover:border-red-600"
             onClick={() => deleteModel(modelId)}
           >
-            X
+            <TrashBin size={23} color={'black'} />
           </div>
         </div>
         <div onClick={handleModalClick}>

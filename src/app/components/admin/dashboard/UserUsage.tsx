@@ -2,7 +2,7 @@ import React from 'react'
 import Icons from '../../common/Icons'
 import { activeUser, star } from '@/app/ui/IconsPath'
 import { DASHBOARD } from '@/app/constants/admin'
-import Profit from '@/app/ui/svg/Profit'
+import Profit from '@/app/ui/svg/common/Profit'
 
 interface UserUsageProps {
   totalCount: number

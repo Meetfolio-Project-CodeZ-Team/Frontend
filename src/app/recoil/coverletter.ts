@@ -33,14 +33,14 @@ export const tidState = atom<string>({
 })
 
 export interface FeedbackData {
-  feedback: string;
-  recommend: string[];
+  feedback: string
+  recommend: string[]
 }
 
 export const feedbackDataState = atom<FeedbackData>({
   key: 'feedbackDataState',
   default: {
-    feedback:'',
+    feedback: '',
     recommend: [],
   },
-});
+})
