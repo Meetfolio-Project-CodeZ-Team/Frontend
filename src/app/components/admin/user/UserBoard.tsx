@@ -13,7 +13,6 @@ const UserBoard = (userInfoData: UserBoardProps) => {
   const userList = userInfoData.userInfoData.memberList
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
-    window.scrollTo(0, 320)
   }
 
   return (

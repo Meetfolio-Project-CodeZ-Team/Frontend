@@ -1,16 +1,14 @@
 'use client'
 import ComunityBoard from '@/app/components/admin/board/ComunityBoard'
 import { Board } from '@/app/constants/auth'
-import { useEffect, useState } from 'react'
+import { boardState } from '@/app/recoil/admin'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 import SearhBoard from '../board/SearchInput'
 import DropDownB from '../common/DropDownB'
 
-interface BoardContainerProps {
-  boardList: ResponseBoardData[]
-}
-
-const BoardContainer = ({ boardList }: BoardContainerProps) => {
-  const [boardData, setBoardData] = useState<ResponseBoardData[]>([])
+const BoardContainer = () => {
+  const [boardData, setBoardData] = useRecoilState(boardState)
   const [boardType, setBoardType] = useState('')
 
   const initBoard = async () => {
@@ -18,12 +16,8 @@ const BoardContainer = ({ boardList }: BoardContainerProps) => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board`,
     )
     const resData = await response.json()
-    setBoardData(resData?.result?.boardInfo)
+    setBoardData(resData?.result)
   }
-
-  useEffect(() => {
-    setBoardData(boardList)
-  }, [boardList])
 
   return (
     <div className="flex flex-col gap-y-9 bg-white w-[full] pl-[54px] pt-[27px] pb-[60px]">
@@ -34,7 +28,7 @@ const BoardContainer = ({ boardList }: BoardContainerProps) => {
         <SearhBoard searchBoard={setBoardData} />
         <DropDownB options={Board} title={'전체'} setBoardType={setBoardType} />
       </div>
-      <ComunityBoard boardList={boardData} boardType={boardType} />
+      {boardData && <ComunityBoard boardType={boardType} />}
     </div>
   )
 }

@@ -67,9 +67,8 @@ const ModelManage = ({ modelData }: ModelManageProps) => {
         }
         pageCount={modelData.totalPage}
         onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        pageLinkClassName={'pagination__link'}
-        activeLinkClassName={'pagination__link__active'}
+        activeClassName={'active text-[#486284]'}
+
       />
     </div>
   )
