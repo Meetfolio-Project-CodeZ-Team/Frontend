@@ -1,7 +1,7 @@
 'use client'
 
 import { SIGNUP } from '@/app/constants/auth'
-import { eye } from '@/app/ui/eye'
+import { eye } from '@/app/ui/svg/common/eye'
 import { failLogin } from '@/app/utils/toast'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'

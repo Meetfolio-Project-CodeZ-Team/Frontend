@@ -1,6 +1,6 @@
 'use client'
 import { boardDataState } from '@/app/recoil/board'
-import Pencil from '@/app/ui/svg/Pencil'
+import Pencil from '@/app/ui/svg/common/Pencil'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'

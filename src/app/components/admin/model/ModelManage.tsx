@@ -16,7 +16,6 @@ const ModelManage = ({ modelData }: ModelManageProps) => {
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
-    window.scrollTo(0, 320)
   }
 
   useEffect(() => {
@@ -35,13 +34,13 @@ const ModelManage = ({ modelData }: ModelManageProps) => {
   return (
     <div className="flex flex-col w-[1010px] h-[720px] items-center">
       <div className="text-2xl font-bold mb-6">{MODEL_MANAGE_H[5]}</div>
-      <div className="flex w-[1010px] h-[50px] pl-[16px] border-y border-[#616161] items-center text-black text-lg">
-        <div className="font-bold">{MODEL_MANAGE_H[0]}</div>
+      <div className="flex font-bold w-[1010px] h-[50px] pl-[16px] border-y border-[#616161] items-center text-black text-lg">
+        <div className="">{MODEL_MANAGE_H[0]}</div>
         <div className="ml-[128px] ">{MODEL_MANAGE_H[1]}</div>
         <div className="ml-[120px]">{MODEL_MANAGE_H[2]}</div>
-        <div className="ml-[118px]">{MODEL_MANAGE_H[3]}</div>
-        <div className="ml-[118px]">{MODEL_MANAGE_H[4]}</div>
-        <div className="ml-[88px]">{MODEL_MANAGE_H[8]}</div>
+        <div className="ml-[146px]">{MODEL_MANAGE_H[3]}</div>
+        <div className="ml-[150px]">{MODEL_MANAGE_H[4]}</div>
+        <div className="ml-[28px]">{}</div>
       </div>
       {modelData.modelInfo.map((modelInfo, i) => (
         <ModelManageInfo
