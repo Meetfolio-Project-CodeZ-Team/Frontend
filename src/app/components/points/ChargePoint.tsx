@@ -32,7 +32,7 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `http://localhost:3000/mypage/mypoint`
+          ? `http://www.meetfolio.kro.kr:60005/mypage/mypoint`
           : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
