@@ -37,7 +37,7 @@ export default function CovletFeedbackPage() {
     <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-[300px]">
-        <AiFeedContainer />
+        <AiFeedContainer feedbackData={null} />
       </div>
       <Footer />
     </section>

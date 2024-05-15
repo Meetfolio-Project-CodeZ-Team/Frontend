@@ -4,7 +4,7 @@ import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import MyCovletCardDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import { covletData, covletNum } from '@/app/recoil/coverletter'
+import { covletData, covletNum, feedbackData } from '@/app/recoil/coverletter'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -14,6 +14,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const paramsData = useSearchParams()
+  const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const isGuest = paramsData.get('isGuest')
 
   const router = useRouter()
@@ -28,25 +29,30 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
     }
     fetchData()
   }, [])
+  
 
   useEffect(() => {
-    // ID가 정의되어 있고 유효한 경우에만 데이터를 가져옵니다.
+    console.log(`Fetching details for ID: ${params.id}`);
     if (params.id && typeof params.id === 'string') {
       fetch(`/api/mypage/myCovletDetail?coverLetterId=${Number(params.id)}`)
-        .then((response) => response.json())
-        .then((data) => {
+        .then(response => response.json())
+        .then(data => {
           if (data && data.result && data.result.coverLetterInfo) {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
-              jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
+              
             })
           }
+          if (data && data.result && data.result.feedbackInfo) {
+            setFeedBackData(data.result.feedbackInfo)
+          }
+          console.log(data)
         })
-        .catch((error) => {
-          console.error('Failed to fetch coverletter details:', error)
-        })
+        .catch(error => {
+          console.error('Failed to fetch cover letter details:', error);
+        });
     }
-  }, [params.id])
+  }, [params.id]);
 
   return (
     <section className="flex flex-col min-h-screen relative">
@@ -58,16 +64,22 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           nickname={userInfo?.memberName}
         />
         <div className="flex-grow">
+          
           <MyCovletCardDetail
             coverLetterId={Number(params.id)}
             question={coverletterData.question}
             answer={coverletterData.answer}
-            keyword1={coverletterData.keyword1}
-            keyword2={coverletterData.keyword2}
-            jobKeyword={coverletterData.jobKeyword}
+            keyword1={coverletterData?.keyword1}
+            keyword2={coverletterData?.keyword2}
+            jobKeyword={coverletterData?.jobKeyword}
             shareType={coverletterData.shareType}
             isGuest={isGuest || ''}
+            correction={feedBackData?.correction}
+            recommendQuestion1={feedBackData?.recommendQuestion1}
+            recommendQuestion2={feedBackData?.recommendQuestion2}
+            recommendQuestion3={feedBackData?.recommendQuestion3}
           />
+          
         </div>
       </div>
       <Footer />

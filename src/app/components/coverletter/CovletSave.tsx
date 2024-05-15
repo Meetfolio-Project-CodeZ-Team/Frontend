@@ -9,6 +9,7 @@ import MyExpCard from '../mypage/MyExpCard'
 import CheckPoint2 from '../points/CheckPoint'
 import { useRouter } from 'next/navigation'
 import ExpCardList from './ExpCardList'
+import AiFeedContainer from './AiFeedContainer'
 
 interface ExperienceCard {
   experienceId: number
@@ -28,8 +29,9 @@ const CovletSave = () => {
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [showInputs, setShowInputs] = useState(false)
   const [feedbackClicked, setFeedbackClicked] = useState(false)
+  const [feedbackReceived, setFeedbackReceived] = useState(false);
+  const [feedbackData, setFeedbackData] = useState(null);
   const router = useRouter()
-  
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -46,8 +48,6 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
-
-  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -143,11 +143,11 @@ const CovletSave = () => {
         jobKeyword,
       }),
     })
-     
+
     const resData = await response.json()
     setCoverLetterData({
       ...coverletterData,
-      coverLetterId: resData.result.coverLetterId
+      coverLetterId: resData.result.coverLetterId,
     })
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
@@ -155,41 +155,47 @@ const CovletSave = () => {
       // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
       console.log('데이터가 성공적으로 저장되었습니다.', resData)
       console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
-      requestAIFeedback();
+      requestAIFeedback()
       // AI 피드백 요청 함수 호출
     }
   }
 
   // AI 피드백 요청 함수
-const requestAIFeedback = async () => {
-  const { keyword1, keyword2, jobKeyword,coverLetterId } = coverletterData;
-  
+  const requestAIFeedback = async () => {
+    const { coverLetterId } = coverletterData
 
-  const feedbackResponse = await fetch(`/api/coverletters/feedback?id=${coverLetterId}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      
-    }),
-  });
-  const feedbackData = await feedbackResponse.json();
-  setCoverLetterData({
-        ...coverletterData,
-        
-      })
-  if (!feedbackResponse.ok) {
-    console.error('AI 피드백 요청에 실패했습니다.',feedbackData);
-  } else {
-    console.log('AI 피드백 요청이 성공적으로 처리되었습니다.',feedbackData);
-    console.log('자소서 아이디',coverLetterId)
-    console.log('자소서 데이터',coverletterData.keyword1)
-  console.log('자소서 데이터',coverletterData.keyword2)
-  console.log('자소서 데이터',coverletterData.jobKeyword)
-    router.push('/coverletter/feedback');  // 피드백 결과 페이지로 이동
+    const response = await fetch(
+      `/api/coverletters/feedback?id=${coverLetterId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      },
+    )
+    const data = await response.json();
+    if (response.ok) {
+      setFeedbackData(data);
+      setFeedbackReceived(true); 
+      console.log(data, '피드백 데이터')
+      console.log(response, 'POST 응답') // Trigger to show AI feedback
+    } else {
+      console.error('AI 피드백 요청에 실패했습니다.');
+    }
   }
-};
+
+  const handleSaveWithoutFeedback = async () => {
+     const {
+       coverLetterId,
+     } = coverletterData
+    router.push(`/mypage/myCovletDetail/${coverLetterId}`);
+    
+  }
+
+  if (feedbackReceived) {
+    return <AiFeedContainer feedbackData={feedbackData} />;
+  }
 
   return (
     <div className="w-[1440px] h-[1319px] relative">
@@ -408,7 +414,7 @@ const requestAIFeedback = async () => {
         </div> */}
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveCovData}
+          onClick={feedbackClicked ? saveCovData : handleSaveWithoutFeedback}
         >
           {feedbackClicked ? 'AI 피드백 결과 보러가기' : '자기소개서 작성 완료'}
         </button>

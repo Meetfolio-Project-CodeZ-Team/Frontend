@@ -1,29 +1,20 @@
-import { successCopy } from "@/app/utils/toast"
-import { useEffect, useState } from "react";
+import { successCopy } from '@/app/utils/toast'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 interface FeedbackData {
-  feedback: string;
-  recommend: string[];
+  feedback: string
+  recommend: string[]
 }
 
-const AiFeedContainer = () => {
+interface AiFeedContainerProps {
+  feedbackData: FeedbackData | null // Expecting this data as a prop
+}
 
-  const [feedbackData, setFeedbackData] = useState<FeedbackData | null>(null);
+const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
 
-  useEffect(() => {
-    const fetchFeedback = async () => {
-      const response = await fetch('/api/coverletters/feedback');  // 가정된 API 경로
-      if (!response.ok) {
-        console.error('Failed to fetch feedback');
-        return;
-      }
-      const data = await response.json();
-      setFeedbackData(data);
-    };
+  const router = useRouter()
 
-    fetchFeedback();
-  }, []);
-  
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
@@ -44,8 +35,12 @@ const AiFeedContainer = () => {
     }
   }
 
+  const saveSolution = () => {
+    router.push('/mypage')
+  }
+
   return (
-    <div className="w-[931px] h-[958px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
+    <div className="w-[931px] h-[1000px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
       <div className="w-[931px] h-[958px] left-0 top-0 flex">
         <div className="w-[854px] h-[420px] left-[42px] top-[81px] absolute text-black text-xl font-medium font-['Plus Jakarta Sans'] leading-[30px]">
           {feedbackData?.feedback}
@@ -54,7 +49,7 @@ const AiFeedContainer = () => {
       <div className="w-[183px] h-[49px] left-[373px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold font-['Plus Jakarta Sans'] leading-[45px]">
         AI 피드백
       </div>
-      <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
+      {/* <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
         <div className="w-3.5 h-3.5 left-0 top-[15px] absolute bg-slate-600 rounded-full" />
         <div className="w-3.5 h-3.5 left-0 top-[72px] absolute bg-slate-600 rounded-full" />
         <div className="w-3.5 h-3.5 left-0 top-[129px] absolute bg-slate-600 rounded-full" />
@@ -64,15 +59,28 @@ const AiFeedContainer = () => {
           <div className="w-[737px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
           <ul>
           {feedbackData?.recommend.map((item, index) => (
-            <li key={index} className="text-base">{item}</li>
+            <li key={index} className="text-base z-10">{item}</li>
           ))}
         </ul>
         </div>
+      </div> */}
+      <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
+        <ul className="list-none space-y-2">
+          {feedbackData?.recommend.map((item, index) => (
+            <li
+              key={index}
+              className="relative pl-4 bg-blue-200 text-base px-3 py-2 rounded-[10px]"
+            >
+              <div className="absolute w-3.5 h-3.5 bg-slate-600 rounded-full left-[-1.75rem] top-1/2 transform -translate-y-1/2"></div>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
       <div className="w-[228px] h-[49px] left-[366px] top-[579px] absolute text-center text-black text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">
         추천 자기소개서 문항
       </div>
-      <div className="w-[265px] h-[104px] left-[347px] top-[821px] absolute">
+      <div className="w-[265px] h-[104px] left-[347px] top-[881px] absolute">
         <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold font-['Plus Jakarta Sans'] leading-[30px]">
           AI 피드백에 대한 나의 만족도는?
         </div>
@@ -139,6 +147,18 @@ const AiFeedContainer = () => {
         </svg>
       </button>
       <div className="w-[845.03px] h-[0px] left-[50.99px] top-[515.50px] absolute border-2 border-black"></div>
+      <div className="w-[870px] h-[40px] left-[82px] top-[1020px] absolute">
+        {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
+          저장하기
+        </div> */}
+        <button
+          className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={saveSolution}
+          type="button"
+        >
+          솔루션 결과 저장하기
+        </button>
+      </div>
     </div>
   )
 }
