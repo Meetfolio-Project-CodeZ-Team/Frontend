@@ -55,11 +55,11 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
         </div>
         <div className="w-[1004.23px] h-[45px] left-[10px] top-0 absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="flex-col justify-start items-start gap-2.5 flex">
-            <div className="justify-start items-end gap-[626px] inline-flex">
+            <div className="justify-start items-end gap-[350px] inline-flex">
               <div className="w-[600px] text-gray-900 text-3xl font-semibold leading-[45px]">
                 {data?.title}
               </div>
-              <div className="w-[110.90px] h-[18px] text-gray-900 text-sm font-normal font-['Rubik'] leading-[30px]">
+              <div className="w-[110.90px] h-[18px] text-gray-900 text-sm font-normal  leading-[30px]">
                 {data?.registrationDate}
               </div>
             </div>
@@ -85,23 +85,28 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
         </div>
       </div>
       <div className="w-[322px] h-[37px] left-[82px] top-[190px] absolute justify-start items-center gap-[19px] inline-flex">
-        <div className="w-[70px] h-[25px] px-5 bg-blue-400 rounded-[15px] justify-center items-center gap-2 flex">
-          <div className="w-[76px] h-6 text-center text-white text-base font-semibold leading-normal">
-            {data?.peopleNumber}명
+        {data?.peopleNumber && (
+          <div className="w-[70px] h-[25px] px-5 bg-blue-400 rounded-[15px] justify-center items-center gap-2 flex">
+            <div className="w-[76px] h-6 text-center text-white text-base font-semibold leading-normal">
+              {data?.peopleNumber}명
+            </div>
           </div>
-        </div>
-        <div className="w-[233px] h-6 text-slate-600 text-[15px] font-medium leading-normal">
-          {data?.recruitment}
-        </div>
+        )}
+        {data?.recruitment && (
+          <div className="w-[233px] h-6 text-slate-600 text-[15px] font-medium leading-normal">
+            {data?.recruitment}
+          </div>
+        )}
       </div>
+
       <div className="w-[946px] h-[29px] left-[84px] top-[141px] absolute">
-        <div className="w-20 h-[29px] left-[866px] top-0 absolute">
+        <div className="w-20 h-[29px] left-[926px] top-0 absolute">
           <div className="w-20 h-[29px] left-0 top-0 absolute rounded-[25px] border border-gray-900" />
           <div className="left-[26.60px] top-[4px] absolute text-center text-black text-sm font-bold leading-[21px]">
             삭제
           </div>
         </div>
-        <div className="w-20 h-[29px] left-[773px] top-0 absolute">
+        <div className="w-20 h-[29px] left-[833px] top-0 absolute">
           <div className="w-20 h-[29px] left-0 top-0 absolute bg-gray-900 rounded-[25px]" />
           <div className="left-[26.60px] top-[4px] absolute text-center text-white text-sm font-bold leading-[21px]">
             수정

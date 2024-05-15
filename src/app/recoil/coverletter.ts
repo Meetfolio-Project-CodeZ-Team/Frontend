@@ -18,6 +18,7 @@ export interface CoverLetterDataTypes {
 export const covletData = atom<CoverLetterDataTypes>({
   key: 'covletData',
   default: {
+    
     question: '',
     answer: '',
     shareType: 'PRIVATE',
@@ -42,5 +43,22 @@ export const feedbackDataState = atom<FeedbackData>({
   default: {
     feedback: '',
     recommend: [],
+  },
+});
+
+export interface FeedbackInfo {
+  correction?: string
+  recommendQuestion1?: string
+  recommendQuestion2?: string
+  recommendQuestion3?: string
+}
+
+export const feedbackData = atom<FeedbackInfo>({
+  key: 'feedbackData',
+  default: {
+    correction: '',
+    recommendQuestion1: '',
+    recommendQuestion2: '',
+    recommendQuestion3: '',
   },
 })

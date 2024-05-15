@@ -8,10 +8,12 @@ import { covletData, covletNum } from '../../recoil/coverletter'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import Footer from '@/app/components/layout/Footer'
+import AiFeedContainer from '@/app/components/coverletter/AiFeedContainer'
 
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+  const [feedbackData, setFeedbackData] = useState(null)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {
@@ -48,7 +50,7 @@ export default function CovletMainPage() {
       <div className="w-[1440px] mb-[250px]">
         {covletNumber === 0 && <CovletMain isEdit={false} />}
         {covletNumber === 1 && <CovletSave />}
-        {/* {covletNumber === 2 && <ExpContentContainer />} */}
+        
       </div>
       <Footer />
     </section>

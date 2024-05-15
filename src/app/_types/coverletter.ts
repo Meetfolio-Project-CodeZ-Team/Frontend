@@ -14,3 +14,10 @@ interface CovletCard {
   coverLetterId: number
   createdAt: string
 }
+
+interface FeedbackInfo {
+  correction?: string
+  recommendQuestion1?: string
+  recommendQuestion2?: string
+  recommendQuestion3?: string
+}

@@ -2,11 +2,11 @@ import { postAiFeedback } from '@/app/service/postReq'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 
-export async function POST(request: Request) {
-  let accessToken = getCookie(request, 'accessToken')
+export async function POST(request: Request): Promise<NextResponse> {
+  const accessToken = getCookie(request, 'accessToken')
   const { searchParams } = new URL(request.url)
   const id = searchParams.get('id') || ''
-  const data = await postAiFeedback(accessToken, id)
+  const data = await postAiFeedback(accessToken, id).then((data) => data)
 
   console.log(data, accessToken, id, '디테일 요청')
 

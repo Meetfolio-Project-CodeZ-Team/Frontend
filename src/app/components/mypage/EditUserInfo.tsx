@@ -19,7 +19,7 @@ import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 import Keyword from '../signup/onboard/Keyword'
 import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
-import { pwAlert, updateUserInfo } from '@/app/utils/toast'
+import { failVerifyPw, pwAlert, successVerifyPw, updateUserInfo } from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
@@ -55,14 +55,14 @@ const EditUserInfo = () => {
 
       const result = await response.json()
       if (response.ok && result.isSuccess && result.code === 'COMMON200') {
+        successVerifyPw()
         setPasswordVerified(true)
-        alert('비밀번호 검증 성공!')
       } else {
-        alert('비밀번호가 일치하지 않습니다.')
+        failVerifyPw()
       }
     } catch (error) {
       console.error('비밀번호 검증 중 오류 발생:', error)
-      alert('서버 오류 발생')
+      
     }
   }
 
@@ -73,7 +73,7 @@ const EditUserInfo = () => {
   const [grade, setGrade] = useState<GradeEnum>('1학년')
 
   const [major, setMajor] = useState('')
-  const isEntered = pw !== '' && major !== ''
+  const isEntered = major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
   const [isOpen, setIsOpen] = useState(false)
@@ -142,6 +142,7 @@ const EditUserInfo = () => {
         setMajor(data.result.major)
         setGrade(data.result.grade)
         setClickedKeyword(data.result.jobKeyword)
+        
       } catch (error) {
         console.error(error)
       }
@@ -168,11 +169,11 @@ const EditUserInfo = () => {
     return (
       <div className="w-full h-[1090px] relative">
         <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
-        <div className="w-full h-[0px] left-[79px] top-[172px] absolute">
+        <div className="w-full h-[0px] left-[69px] top-[172px] absolute">
           <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600" />
           <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
         </div>
-        <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
+        <div className="w-[280px] h-[30px] left-[90px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
             <Link href="/mypage/userinfo">개인 정보 수정</Link>
           </div>
@@ -180,25 +181,59 @@ const EditUserInfo = () => {
             <Link href="/mypage/withdraw">회원 탈퇴</Link>
           </div>
         </div>
-        <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
+        <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold leading-[30px]">
           개인 정보 설정
         </div>
-        <div className="w-[200px] h-[20px] py-2 left-[500px] top-[500px] inline-flex items-center absolute p-2 ">
+        <div className='text-xl font-semibold absolute left-[340px] top-[400px]'>
+        본인 확인을 위해 비밀번호를 입력해 주시기 바랍니다.
+        </div>
+        <div className="w-[400px] h-[50px] py-2 left-[350px] top-[480px] inline-flex items-center absolute p-2 ">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className='mr-[10px]'
+          >
+            <rect
+              x="4"
+              y="9"
+              width="16"
+              height="12"
+              rx="4"
+              stroke="black"
+              stroke-width="1"
+            />
+            <path
+              d="M10 15L11.5 16.5L14.5 13.5"
+              stroke="black"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M16 9V7C16 4.79086 14.2091 3 12 3V3C9.79086 3 8 4.79086 8 7L8 9"
+              stroke="black"
+              stroke-width="1"
+            />
+          </svg>
           <input
             type="password"
             value={verifyPw}
             onChange={(e) => setVerifyPw(e.target.value)}
-            placeholder="비밀번호 입력"
-            className="py-2 border border-gray-300 rounded-lg"
+            placeholder="현재 비밀번호 입력"
+            className="py-3 px-3 border border-gray-300 rounded-lg"
           />
           <button
             type="button"
-            className={`w-[60.02px] h-[25.43px] ml-[240px] absolute text-white bg-blue-300  border-0  focus:outline-none rounded-[10px] text-sm font-semibold `}
+            className={`w-[70.02px] h-[49.6px] ml-[295px] absolute text-white bg-blue-300  border-0  focus:outline-none rounded-[10px] text-lg font-semibold `}
             onClick={verifyPassword}
           >
             확인
           </button>
         </div>
+        <ToastContainer />
       </div>
     )
   }
@@ -206,11 +241,11 @@ const EditUserInfo = () => {
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
-      <div className="w-full h-[0px] left-[79px] top-[172px] absolute">
+      <div className="w-full h-[0px] left-[69px] top-[172px] absolute">
         <div className="w-[950px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
         <div className="w-[160px] h-[0px] left-0 top-[-1px] absolute border-2 border-gray-800" />
       </div>
-      <div className="w-[280px] h-[30px] left-[100px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
+      <div className="w-[280px] h-[30px] left-[90px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
         <div className="text-gray-900 text-xl font-bold leading-[30px]">
           <Link href="/mypage/userinfo">개인 정보 수정</Link>
         </div>
@@ -218,7 +253,7 @@ const EditUserInfo = () => {
           <Link href="/mypage/withdraw">회원 탈퇴</Link>
         </div>
       </div>
-      <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
+      <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold leading-[30px]">
         개인 정보 설정
       </div>
       <div className="w-[680px] h-[501.88px] left-[81px] top-[196px] absolute flex-col justify-start items-start gap-5 inline-flex">
@@ -230,7 +265,7 @@ const EditUserInfo = () => {
             아이디
           </div>
         </div>
-        <div className="w-[700px] h-[90px] mt-[20px] relative">
+        <div className="w-[700px] h-[90px] mt-[10px] relative">
           <div className="flex gap-x-[175px]">
             <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
               변경할 비밀번호
@@ -312,16 +347,16 @@ const EditUserInfo = () => {
         <Button
           buttonText="수정하기"
           type={'loginC'}
-          isDisabled={!isEntered}
+          isDisabled={!isEntered && !isSame}
           onClickHandler={() => updateUser()}
           className={
-            !isEntered
+            !isEntered && !isSame
               ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 '
               : 'text-white bg-black'
           }
         />
-        <ToastContainer />
       </div>
+      <ToastContainer/>
     </div>
   )
 }
