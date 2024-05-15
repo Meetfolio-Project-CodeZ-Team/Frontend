@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyExpCard from './MyExpCard'
-import ExpIcon from '@/app/ui/svg/ExpIcon'
+import ExpIcon from '@/app/ui/svg/common/ExpIcon'
 
 interface ExperienceCard {
   experienceId: number
