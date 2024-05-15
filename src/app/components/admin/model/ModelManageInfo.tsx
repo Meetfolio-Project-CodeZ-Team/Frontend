@@ -1,6 +1,8 @@
 import { useModal } from '@/app/hooks/useModal'
+import { boardDelete } from '@/app/ui/IconsPath'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { useState } from 'react'
+import Icons from '../../common/Icons'
 import ModelInfoModal from './ModelInfoModal'
 
 interface ModelManageInfoProps {
@@ -66,10 +68,10 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         </div>
         <div className="w-[200px] flex items-center justify-center">
           <div
-            className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold"
+            className=" cursor-pointer flex w-8 h-8 border-2 border-black rounded-xl items-center justify-center font-semibold pr-1 pb-1 hover:border-red-600"
             onClick={() => deleteModel(modelId)}
           >
-            X
+            <Icons name={boardDelete} className="hover:fill-cyan-700" />
           </div>
         </div>
         <div onClick={handleModalClick}>

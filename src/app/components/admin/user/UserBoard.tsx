@@ -13,7 +13,7 @@ const UserBoard = (userInfoData: UserBoardProps) => {
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
-    window.scrollTo(0, 320) // 페이지 변경 시 스크롤을 맨 위로 이동
+    window.scrollTo(0, 320)
   }
   console.log(userInfoData)
 

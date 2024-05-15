@@ -68,7 +68,7 @@ const ModelContainer = () => {
           <ModelTrain trainData={trainData} goNext={setTitleNum} />
         )}
         {titleNum === 2 && versionData && (
-          <ModelManage modelData={versionData.modelInfo} />
+          <ModelManage modelData={versionData} />
         )}
       </div>
     </div>
