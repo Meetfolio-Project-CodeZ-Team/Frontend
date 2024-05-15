@@ -1,5 +1,5 @@
 import { DASHBOARD, SERVICE } from '@/app/constants/admin'
-import ServiceIcon from '@/app/ui/svg/ServiceIcon'
+import ServiceIcon from '@/app/ui/svg/common/ServiceIcon'
 interface ServiceUsageProps {
   feedbackCount: number
   analysisCount: number

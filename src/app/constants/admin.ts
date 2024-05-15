@@ -91,6 +91,7 @@ export const ADD_TRAIN_H = [
 export const BOARD_ENUM = {
   '그룹원 모집': 'GROUP',
   '취업 정보': 'EMPLOYMENT',
+  전체: '',
 }
 
 export const MODEL_MODAL = [

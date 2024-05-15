@@ -17,7 +17,7 @@ export const BUTTON_STYLE = {
   addDataBtn: (className: string) =>
     `w-[820px] h-[54px] text-[20px] py-1.5 text-white font-semibold bg-[#1A202C] rounded-[10px] ${className} `,
   addBoardBtn: (className: string) =>
-    `w-[92px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
+    `w-[80px] h-[40px] text-base py-1.5 text-white font-semibold bg-[#486283] rounded-[10px] ${className} `,
   authCode: (className: string) =>
     `w-[116px] h-14 text-base font-semibold rounded-[20px] ${className} `,
   editPost: (className: string) =>

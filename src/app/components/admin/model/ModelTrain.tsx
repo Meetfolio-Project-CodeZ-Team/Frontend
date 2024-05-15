@@ -35,7 +35,6 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train/data?page=${page}`,
       )
       const resData = await res.json()
-      console.log(resData, '변경')
 
       setPageData(resData.result.datasetInfo.datasetInfo)
     }

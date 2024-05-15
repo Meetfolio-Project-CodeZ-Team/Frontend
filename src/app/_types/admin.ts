@@ -135,9 +135,18 @@ interface modelResultTypes {
   accuracy: number
 }
 
-type BoardTypes = '그룹원 모집' | '취업 정보'
+type BoardTypes = '그룹원 모집' | '취업 정보' | '전체'
 
 interface ResponseBoardData {
+  boardInfo: BoardInfo[]
+  listSize: number
+  totalPage: number
+  totalElements: number
+  isFirst: boolean
+  isLast: boolean
+}
+
+interface BoardInfo {
   boardId: number
   createdAt: string
   boardType: 'EMPLOYMENT' | 'GROUP'

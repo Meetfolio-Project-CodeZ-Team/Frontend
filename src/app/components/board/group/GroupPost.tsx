@@ -1,9 +1,9 @@
-import Like from '@/app/ui/svg/main/Like'
-import React from 'react'
-import Icons from '../../common/Icons'
-import { comment } from '@/app/ui/IconsPath'
-import { useRecoilState } from 'recoil'
 import { selectedPostId } from '@/app/recoil/board'
+import { comment } from '@/app/ui/IconsPath'
+import Like from '@/app/ui/svg/main/Like'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Icons from '../../common/Icons'
 
 interface GroupPostProps {
   data: BoardInfoTypes
@@ -13,6 +13,19 @@ const GroupPost = ({ data }: GroupPostProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   console.log(selectedId, '번 게시물 선택 됨')
 
+  const [isLiked, setIsliked] = useState(false)
+  const [likeCnt, setLikeCnt] = useState(0)
+  console.log(selectedId, '번 게시물 선택 됨')
+
+  const like = async (id: number) => {
+    const res = await fetch(`/api/board/like?id=${id}`, {
+      method: 'POST',
+    })
+    const resData = await res.json()
+    setIsliked(true)
+    setLikeCnt(resData.result.likeCount)
+    console.log(resData, '조아요 응답')
+  }
   return (
     <div
       className="w-[380px] h-[220px] relative bg-white rounded-[10px] cursor-pointer"
@@ -46,13 +59,19 @@ const GroupPost = ({ data }: GroupPostProps) => {
           {data.recruitment}
         </div>
         <div className="flex gap-x-2">
-          <div className="flex gap-x-[3px]">
-            <Like color={'black'} size={24} />
-            <div>{data.likeCount}</div>
+          <div className="flex items-center gap-x-1">
+            <div onClick={() => like(data.boardId)}>
+              <Like
+                color={'black'}
+                size={24}
+                isLiked={isLiked || data.likeStatus === 'ACTIVE'}
+              />
+            </div>
+            <div>{likeCnt === 0 ? data.likeCount : likeCnt}</div>
           </div>
           <div className="flex items-center gap-x-1 font-normal">
             <Icons name={comment} />
-            <div>{data.likeCount}</div>
+            <div>{data.commentCount}</div>
           </div>
         </div>
       </div>

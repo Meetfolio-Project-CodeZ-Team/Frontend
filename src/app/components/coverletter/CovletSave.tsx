@@ -29,7 +29,6 @@ const CovletSave = () => {
   const [showInputs, setShowInputs] = useState(false)
   const [feedbackClicked, setFeedbackClicked] = useState(false)
   const router = useRouter()
-  
 
   useEffect(() => {
     const fetchExpCards = async () => {
@@ -46,8 +45,6 @@ const CovletSave = () => {
     }
     fetchExpCards()
   }, [])
-
-  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -143,11 +140,11 @@ const CovletSave = () => {
         jobKeyword,
       }),
     })
-     
+
     const resData = await response.json()
     setCoverLetterData({
       ...coverletterData,
-      coverLetterId: resData.result.coverLetterId
+      coverLetterId: resData.result.coverLetterId,
     })
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
@@ -155,41 +152,40 @@ const CovletSave = () => {
       // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
       console.log('데이터가 성공적으로 저장되었습니다.', resData)
       console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
-      requestAIFeedback();
+      requestAIFeedback()
       // AI 피드백 요청 함수 호출
     }
   }
 
   // AI 피드백 요청 함수
-const requestAIFeedback = async () => {
-  const { keyword1, keyword2, jobKeyword,coverLetterId } = coverletterData;
-  
+  const requestAIFeedback = async () => {
+    const { keyword1, keyword2, jobKeyword, coverLetterId } = coverletterData
 
-  const feedbackResponse = await fetch(`/api/coverletters/feedback?id=${coverLetterId}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      
-    }),
-  });
-  const feedbackData = await feedbackResponse.json();
-  setCoverLetterData({
-        ...coverletterData,
-        
-      })
-  if (!feedbackResponse.ok) {
-    console.error('AI 피드백 요청에 실패했습니다.',feedbackData);
-  } else {
-    console.log('AI 피드백 요청이 성공적으로 처리되었습니다.',feedbackData);
-    console.log('자소서 아이디',coverLetterId)
-    console.log('자소서 데이터',coverletterData.keyword1)
-  console.log('자소서 데이터',coverletterData.keyword2)
-  console.log('자소서 데이터',coverletterData.jobKeyword)
-    router.push('/coverletter/feedback');  // 피드백 결과 페이지로 이동
+    const feedbackResponse = await fetch(
+      `/api/coverletters/feedback?id=${coverLetterId}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({}),
+      },
+    )
+    const feedbackData = await feedbackResponse.json()
+    setCoverLetterData({
+      ...coverletterData,
+    })
+    if (!feedbackResponse.ok) {
+      console.error('AI 피드백 요청에 실패했습니다.', feedbackData)
+    } else {
+      console.log('AI 피드백 요청이 성공적으로 처리되었습니다.', feedbackData)
+      console.log('자소서 아이디', coverLetterId)
+      console.log('자소서 데이터', coverletterData.keyword1)
+      console.log('자소서 데이터', coverletterData.keyword2)
+      console.log('자소서 데이터', coverletterData.jobKeyword)
+      router.push('/coverletter/feedback') // 피드백 결과 페이지로 이동
+    }
   }
-};
 
   return (
     <div className="w-[1440px] h-[1319px] relative">

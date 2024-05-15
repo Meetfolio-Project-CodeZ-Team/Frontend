@@ -31,8 +31,6 @@ export default function CovletFeedbackPage() {
     fetchData()
   }, [covletNumber])
 
-  
-
   return (
     <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
