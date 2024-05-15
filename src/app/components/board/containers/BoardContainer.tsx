@@ -35,8 +35,8 @@ const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
             router.push(`/board/post/${path}?nickname=${nickname}`)
           }
         >
-          글쓰기
           <Pencil />
+          글쓰기
         </div>
       </div>
     </div>

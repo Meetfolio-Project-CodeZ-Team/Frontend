@@ -106,7 +106,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
             )}
 
             {data?.peopleNumber && (
-              <div className="absolute top-[178px] left-[26px] flex gap-x-4 items-center">
+              <div className="absolute top-[205px] left-[26px] flex gap-x-4 items-center">
                 <div className="text-white w-[76px] flex items-center justify-center text-base font-semibold bg-[#7AA9E7] rounded-2xl py-[2px]">
                   {data?.peopleNumber}명
                 </div>
@@ -115,7 +115,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                 </div>
               </div>
             )}
-            <div className="flex absolute pr-8 left-7 top-[240px] break-all h-[70%] overflow-y-auto">
+            <div className={`flex absolute pr-8 left-7 ${data?.peopleNumber ? 'top-[260px] ':'top-[230px]'} break-all h-[70%] overflow-y-auto`}>
               {data?.content}
             </div>
           </div>

@@ -13,6 +13,7 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
   const [expCards, setExpCards] = useState<ExpCard[]>([])
   const [isExp, setIsExp] = useState(false)
   const path = isExp ? 'expcard' : 'coverletter'
+  console.log(covletCards)
 
   useEffect(() => {
     const getData = async () => {
@@ -23,9 +24,11 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
         },
       })
       const data = await response.json()
+      console.log(data, '가져온 자소서 데이터')
+
       isExp
         ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
-        : setCovletCards(data.result.list)
+        : setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
     }
     getData()
   }, [isExp])

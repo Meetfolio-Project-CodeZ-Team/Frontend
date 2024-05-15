@@ -74,7 +74,7 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
             <div className="flex flex-col gap-y-2 font-bold text-[20px]">
               {CHECK_POINT[3]}
               <div className="text-[25px] font-medium">
-                {myPoint - cost < 0 ? '포인트가 부족합니다' : myPoint - cost}P
+                {myPoint - cost < 0 ? '포인트가 부족합니다' : myPoint - cost + 'P'}
               </div>
             </div>
           </div>
