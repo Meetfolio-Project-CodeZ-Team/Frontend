@@ -1,9 +1,8 @@
-import Like from '@/app/ui/svg/main/Like'
-import React from 'react'
-import Icons from '../../common/Icons'
-import { comment } from '@/app/ui/IconsPath'
-import { useRecoilState } from 'recoil'
 import { selectedPostId } from '@/app/recoil/board'
+import { comment } from '@/app/ui/IconsPath'
+import Like from '@/app/ui/svg/main/Like'
+import { useRecoilState } from 'recoil'
+import Icons from '../../common/Icons'
 
 interface JobPostProps {
   data: BoardInfoTypes
@@ -41,13 +40,17 @@ const JobPost = ({ data }: JobPostProps) => {
           data.content
         )}
       </div>
-      <div className="absolute top-[174px] left-[277px] flex gap-x-2 text-[18px]">
-        <div className="flex gap-x-[3px]">
-          <Like color={'black'} size={24} />
+      <div className="absolute top-[174px] right-[26px] flex gap-x-2 text-base font-semibold">
+        <div className="flex items-center gap-x-1">
+          <div>
+            <Like color={'black'} size={24} />
+          </div>
           <div>{data.likeCount}</div>
         </div>
-        <div className="flex items-center gap-x-1 font-normal">
-          <Icons name={comment} />
+        <div className="flex items-center gap-x-1">
+          <div>
+            <Icons name={comment} />
+          </div>
           <div>{data.likeCount}</div>
         </div>
       </div>
