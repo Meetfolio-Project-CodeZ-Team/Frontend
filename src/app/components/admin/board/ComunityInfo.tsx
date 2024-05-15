@@ -35,7 +35,7 @@ const ComunityInfo = (userInfo: ComunityInfoProps) => {
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-[16px]">
         <div className="w-[121px] text-center">{createdAt}</div>
         <div className="w-[240px] text-center">{memberName}</div>
-        <div className="w-[268px] text-center">{type}</div>
+        <div className="w-[268px] text-center">{type==='EMPLOYMENT' ? '취업정보':'그룹원모집'}</div>
         <div className="w-[195px] text-center text-[14px]">{title}</div>
         <div
           className="ml-[116px] flex cursor-pointer w-8 h-8 items-center justify-center rounded-xl"
