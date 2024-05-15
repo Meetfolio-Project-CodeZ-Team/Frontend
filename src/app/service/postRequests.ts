@@ -171,12 +171,20 @@ export const postAdditionalTrain = async (accessToken: string) => {
   return await postRequest(url, null, accessToken)
 }
 
-export const getModelList = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/admins/data-management/version`
+export const getModelList = async (accessToken: string, page: string) => {
+  const url =
+    page !== ''
+      ? `${SERVER_URL}/api/admins/data-management/version?page=${page}`
+      : `${SERVER_URL}/api/admins/data-management/version`
   return await postRequest(url, null, accessToken)
 }
 
 export const postmodelDetail = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
+  return await postRequest(url, null, accessToken)
+}
+
+export const postLike = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/board-likes/${id}`
   return await postRequest(url, null, accessToken)
 }

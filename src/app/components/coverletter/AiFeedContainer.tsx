@@ -58,10 +58,19 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
           <div className="w-[789px] h-11 left-0 top-[114px] absolute bg-blue-300 rounded-[10px]" />
           <div className="w-[737px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
           <ul>
+<<<<<<< HEAD
           {feedbackData?.recommend.map((item, index) => (
             <li key={index} className="text-base z-10">{item}</li>
           ))}
         </ul>
+=======
+            {feedbackData?.recommend.map((item, index) => (
+              <li key={index} className="text-base">
+                {item}
+              </li>
+            ))}
+          </ul>
+>>>>>>> cea4a01ad54e657085654a02d25f3508d8b0a0f0
         </div>
       </div> */}
       <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">

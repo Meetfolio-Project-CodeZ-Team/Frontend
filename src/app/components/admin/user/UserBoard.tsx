@@ -10,12 +10,10 @@ interface UserBoardProps {
 }
 const UserBoard = (userInfoData: UserBoardProps) => {
   const [page, setPage] = useState<number>(1)
-
+  const userList = userInfoData.userInfoData.memberList
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
-    window.scrollTo(0, 320) // 페이지 변경 시 스크롤을 맨 위로 이동
   }
-  console.log(userInfoData)
 
   return (
     <div className="flex flex-col w-[1034px] h-[720px] mt-[22px] items-center">
@@ -28,20 +26,26 @@ const UserBoard = (userInfoData: UserBoardProps) => {
         <div className="ml-[56px]">{USER_BOARD_H[4]}</div>
         <div className="ml-[78px]">{USER_BOARD_H[5]}</div>
       </div>
-      {userInfoData.userInfoData.memberList.map((userInfo, i) => (
-        <div key={i}>
-          <UserInfo
-            registrationDate={'20' + userInfo.registrationDate}
-            email={userInfo.email}
-            grade={userInfo.grade}
-            major={userInfo.major}
-            jobKeyword={userInfo.jobKeyword}
-            point={userInfo.point}
-            userId={userInfo.memberId}
-            status={userInfo.status}
-          />
+      {userList.length === 0 ? (
+        <div className="flex w-full h-full items-center justify-center font-bold text-3xl pb-10">
+          ❌ 검색어와 일치하는 회원이 존재하지않습니다.
         </div>
-      ))}
+      ) : (
+        userList.map((userInfo, i) => (
+          <div key={i}>
+            <UserInfo
+              registrationDate={'20' + userInfo.registrationDate}
+              email={userInfo.email}
+              grade={userInfo.grade}
+              major={userInfo.major}
+              jobKeyword={userInfo.jobKeyword}
+              point={userInfo.point}
+              userId={userInfo.memberId}
+              status={userInfo.status}
+            />
+          </div>
+        ))
+      )}
       <ReactPaginate
         className="flex items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
         previousLabel={

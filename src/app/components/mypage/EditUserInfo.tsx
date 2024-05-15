@@ -23,7 +23,7 @@ import { failVerifyPw, pwAlert, successVerifyPw, updateUserInfo } from '@/app/ut
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
-import { eye } from '@/app/ui/eye'
+import { eye } from '@/app/ui/svg/common/eye'
 
 interface UserInfoProps {
   memberId?: number

@@ -1,6 +1,7 @@
 'use client'
 import { JOBKEYWORD_USER } from '@/app/constants/auth'
 import { useEffect, useState } from 'react'
+import SearchInput from '../board/SearchInput'
 import DropDownU from '../common/DropDownU'
 import UserBoard from '../user/UserBoard'
 
@@ -32,7 +33,8 @@ const UserContainer = ({ userInfoData }: UserContainerProps) => {
   return (
     <div className="flex flex-col gap-y-6 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[28px] font-bold">회원 관리</div>
-      <div className="flex flex-row-reverse w-[1013px]">
+      <div className="flex items-center w-[1013px] justify-between">
+        <SearchInput searchUser={setData} />
         <DropDownU
           options={JOBKEYWORD_USER}
           title={'전체'}
