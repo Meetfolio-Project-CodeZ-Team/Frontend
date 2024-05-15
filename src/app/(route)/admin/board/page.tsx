@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react'
 
 const boardPage = () => {
   const [boardData, setBoardData] = useState<ResponseBoardData[]>([])
-  console.log(boardData, '게시판 데이터')
 
   useEffect(() => {
     const fetchData = async () => {

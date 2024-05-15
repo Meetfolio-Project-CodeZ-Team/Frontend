@@ -1,5 +1,5 @@
 import { useModal } from '@/app/hooks/useModal'
-import TrashBin from '@/app/ui/svg/common/trashBin'
+import TrashBin from '@/app/ui/svg/common/TrashBin'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { useState } from 'react'
 import ModelInfoModal from './ModelInfoModal'

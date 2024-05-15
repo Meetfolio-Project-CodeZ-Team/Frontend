@@ -135,7 +135,7 @@ interface modelResultTypes {
   accuracy: number
 }
 
-type BoardTypes = '그룹원 모집' | '취업 정보'
+type BoardTypes = '그룹원 모집' | '취업 정보' | '전체'
 
 interface ResponseBoardData {
   boardId: number
