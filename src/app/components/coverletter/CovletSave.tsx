@@ -171,7 +171,7 @@ const CovletSave = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({}),
+        body: JSON.stringify({cover_letter_id: coverLetterId}),
       },
     )
     const data = await response.json();
