@@ -42,11 +42,11 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
   return (
     <div className="w-[931px] h-[1000px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
       <div className="w-[931px] h-[958px] left-0 top-0 flex">
-        <div className="w-[854px] h-[420px] left-[42px] top-[81px] absolute text-black text-xl font-medium font-['Plus Jakarta Sans'] leading-[30px]">
+        <div className="w-[854px] h-[420px] left-[42px] top-[81px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
           {feedbackData?.feedback}
         </div>
       </div>
-      <div className="w-[183px] h-[49px] left-[373px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold font-['Plus Jakarta Sans'] leading-[45px]">
+      <div className="w-[183px] h-[49px] left-[373px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
         AI 피드백
       </div>
       {/* <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
@@ -58,19 +58,10 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
           <div className="w-[789px] h-11 left-0 top-[114px] absolute bg-blue-300 rounded-[10px]" />
           <div className="w-[737px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
           <ul>
-<<<<<<< HEAD
           {feedbackData?.recommend.map((item, index) => (
             <li key={index} className="text-base z-10">{item}</li>
           ))}
         </ul>
-=======
-            {feedbackData?.recommend.map((item, index) => (
-              <li key={index} className="text-base">
-                {item}
-              </li>
-            ))}
-          </ul>
->>>>>>> cea4a01ad54e657085654a02d25f3508d8b0a0f0
         </div>
       </div> */}
       <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
@@ -86,11 +77,11 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
           ))}
         </ul>
       </div>
-      <div className="w-[228px] h-[49px] left-[366px] top-[579px] absolute text-center text-black text-2xl font-bold font-['Plus Jakarta Sans'] leading-9">
+      <div className="w-[228px] h-[49px] left-[366px] top-[579px] absolute text-center text-black text-2xl font-bold leading-9">
         추천 자기소개서 문항
       </div>
       <div className="w-[265px] h-[104px] left-[347px] top-[881px] absolute">
-        <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold font-['Plus Jakarta Sans'] leading-[30px]">
+        <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold leading-[30px]">
           AI 피드백에 대한 나의 만족도는?
         </div>
         <div className="w-[170px] h-[49px] left-[37px] top-[55px] absolute">
@@ -119,19 +110,19 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
               <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
             </div>
           </div>
-          <div className="w-[26.49px] h-[22px] left-0 top-[27px] absolute text-center text-black text-xs font-bold font-['Plus Jakarta Sans'] leading-[18px]">
+          <div className="w-[26.49px] h-[22px] left-0 top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
             1점
           </div>
-          <div className="w-[26.49px] h-[22px] left-[35.32px] top-[27px] absolute text-center text-black text-xs font-bold font-['Plus Jakarta Sans'] leading-[18px]">
+          <div className="w-[26.49px] h-[22px] left-[35.32px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
             2점
           </div>
-          <div className="w-[26.49px] h-[22px] left-[71.75px] top-[27px] absolute text-center text-black text-xs font-bold font-['Plus Jakarta Sans'] leading-[18px]">
+          <div className="w-[26.49px] h-[22px] left-[71.75px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
             3점
           </div>
-          <div className="w-[26.49px] h-[22px] left-[107.08px] top-[27px] absolute text-center text-black text-xs font-bold font-['Plus Jakarta Sans'] leading-[18px]">
+          <div className="w-[26.49px] h-[22px] left-[107.08px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
             4점
           </div>
-          <div className="w-[26.49px] h-[22px] left-[142.40px] top-[27px] absolute text-center text-black text-xs font-bold font-['Plus Jakarta Sans'] leading-[18px]">
+          <div className="w-[26.49px] h-[22px] left-[142.40px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
             5점
           </div>
         </div>
