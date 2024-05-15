@@ -15,6 +15,8 @@ interface MyBoardCardProps {
   memberName?: string
   likeCount?: number
   commentCount?: number
+  boardType?: string
+  jobCategory?: string
 }
 
 interface BoardCardDetail {
@@ -26,6 +28,7 @@ interface BoardCardDetail {
   registrationDate: string
   memberName: string
   peopleNumber: number
+  boardType: string
   // closeModal: () => void
 }
 
@@ -39,6 +42,8 @@ const MyBoardCard = ({
   memberName,
   likeCount,
   commentCount,
+  boardType,
+  jobCategory,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
@@ -59,7 +64,7 @@ const MyBoardCard = ({
       <div className="w-[1085px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
       <div className="w-[72px] h-[30px] px-3 left-[990px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
         <div className="w-[100px] h-6 text-center text-slate-600 text-sm font-semibold leading-[22px]">
-          {groupCategory}
+        {boardType === 'EMPLOYMENT' ? jobCategory : groupCategory}
         </div>
       </div>
       <div className="w-[47.21px] h-[50px] left-[28.33px] top-[30px] absolute rounded-full" />

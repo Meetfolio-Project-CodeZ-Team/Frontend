@@ -133,6 +133,20 @@ const ExpFinishModal3 = () => {
             </div>
           </div>
         </div>
+        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
+          <div
+            className="w-[26px] h-[52px] relative cursor-pointer"
+            onClick={handlePrevClick}
+          >
+            <PrevArrow />
+          </div>
+          <div
+            className="w-[26px] h-[52px] relative cursor-pointer"
+            onClick={handleNextClick}
+          >
+            <NextArrow />
+          </div>
+        </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
           {experienceData.title}
         </div>
@@ -143,35 +157,21 @@ const ExpFinishModal3 = () => {
         <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
           {experienceData.advance}
         </div>
-        <div className="px-10  left-[195px] top-[595px] absolute bg-black rounded-[30px] cursor-pointer">
-          <div
-            className=" text-center text-white text-[20px] font-semibold leading-[37.50px]"
-            onClick={handleButtonClick}
-          >
+        <div
+          className="px-10  left-[195px] top-[595px] absolute bg-black rounded-[30px] cursor-pointer"
+          onClick={handleButtonClick}
+        >
+          <div className=" text-center text-white text-[20px] font-semibold leading-[37.50px]">
             확인
           </div>
         </div>
 
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
           <div className="w-[80px] h-4 relative">
-            <div className="w-[14px] h-[14px] left-[20px] top-0 absolute bg-blue-400 rounded-full" />
-            <div className="w-[14px] h-[14px] left-[40px] top-0 absolute bg-blue-400 rounded-full" />
-            <div className="w-[28px] h-[14px] left-[62px] top-0 absolute bg-blue-600 rounded-[50px]" />
+            <div className="w-[14px] h-[14px] left-[20px] top-0 absolute bg-[#7AAAE8] rounded-full" />
+            <div className="w-[14px] h-[14px] left-[40px] top-0 absolute bg-[#7AAAE8] rounded-full" />
+            <div className="w-[28px] h-[14px] left-[62px] top-0 absolute bg-[#0A7AFF] rounded-[50px]" />
           </div>
-        </div>
-      </div>
-      <div className="w-[640px] h-[52px] left-[515px] top-[340px] absolute justify-start items-start gap-[580px] inline-flex">
-        <div
-          className="w-[26px] h-[52px] relative cursor-pointer"
-          onClick={handlePrevClick}
-        >
-          <PrevArrow />
-        </div>
-        <div
-          className="w-[26px] h-[52px] relative cursor-pointer"
-          onClick={handleNextClick}
-        >
-          <NextArrow />
         </div>
       </div>
     </div>

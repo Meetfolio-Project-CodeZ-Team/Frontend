@@ -205,6 +205,11 @@ const ExpKeywordContainer = () => {
               {/* 기술 스택 키워드 목록 */}
             </div>
           </div>
+          {expStacks.length === 0 && (
+          <div className="w-[600px] h-[80px] left-[300px] top-[105px] absolute">
+            <img src="/Images/expstack.png" alt="Placeholder" className="w-[100%] h-auto"/>
+          </div>
+        )}
           <div className="w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]">
             {expStacks &&
               expStacks.map((stack, i) => (
@@ -212,11 +217,18 @@ const ExpKeywordContainer = () => {
                   <div className="inline-flex items-center justify-center w-[135px] h-11 bg-white rounded-[10px] mx-auto">
                     <NameBox stack={stack} />
                     <button
-                      className="flex bg-slate-600 w-28 h-6 text-[16px] justify-center items-center rounded-[100px] text-semibold text-white mb-[30px]"
+                      className="flex bg-slate-600 w-28 h-6 justify-center items-center rounded-[100px] text-semibold text-white mb-[30px] "
                       onClick={(e) => handleDelete(e, i)}
                       type="button"
                     >
-                      X
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        className="w-[20px] h-[20px]"
+                      >
+                        <path d="M6.28 5.22a.75.75 0 0 0-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 1 0 1.06 1.06L10 11.06l3.72 3.72a.75.75 0 1 0 1.06-1.06L11.06 10l3.72-3.72a.75.75 0 0 0-1.06-1.06L10 8.94 6.28 5.22Z" />
+                      </svg>
                     </button>
                   </div>
                 </div>

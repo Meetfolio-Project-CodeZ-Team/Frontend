@@ -4,14 +4,18 @@ const commonHeaders = {
   'Content-Type': 'application/json',
 }
 
-const postRequest = async (url: string, body: any, accessToken?: string) => {
+const postRequest = async (
+  url: string,
+  body: any = null,
+  accessToken?: string,
+) => {
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, '서버로부터 응답')
+
     return response.json()
   } catch (error) {
     console.log('Error:', error)
@@ -43,7 +47,6 @@ export const postBoardDetail = async (accessToken: string, id: string) => {
 
 export const postAiFeedback = async (accessToken: string, id: string) => {
   const url = `${G_SERVER_URL}/api/coverLetter-feedbacks/${id}`
-  console.log()
   return await postRequest(url, null, accessToken)
 }
 

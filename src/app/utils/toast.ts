@@ -79,6 +79,20 @@ const deletePostAlert = () => {
   })
 }
 
+const failVerifyPw = () => {
+  toast.error('비밀번호가 일치하지 않습니다.', {
+    icon: () => '🔒',
+    ...commonOptions,
+  })
+}
+
+const successVerifyPw = () => {
+  toast.error('본인 확인에 성공했습니다!', {
+    icon: () => '🔓',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -90,4 +104,6 @@ export {
   updateUserInfo,
   successCopy,
   deletePostAlert,
+  failVerifyPw,
+  successVerifyPw,
 }

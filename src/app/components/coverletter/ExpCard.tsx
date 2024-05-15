@@ -62,7 +62,7 @@ const ExpCard = ({
 
   return (
     <div
-      className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] mb-[20px] bg-[#DEE5ED] rounded-[10px] cursor-pointer"
+      className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] mb-[20px] bg-[#DEE5ED] rounded-[10px] cursor-pointer ml-[20px]"
       onClick={onClick}
     >
       <div className="top-3 right-4 absolute">
