@@ -51,8 +51,9 @@ export const getPayment = async (
   accessToken: string,
   year: string,
   month: string,
+  page: string,
 ) => {
-  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}`
+  const url = `${SERVER_URL}/api/admins/payment-management?year=${year}&month=${month}&page=${page}`
   return await getRequest(url, accessToken)
 }
 
