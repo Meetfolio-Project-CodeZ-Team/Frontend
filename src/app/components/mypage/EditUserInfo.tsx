@@ -73,7 +73,7 @@ const EditUserInfo = () => {
   const [grade, setGrade] = useState<GradeEnum>('1학년')
 
   const [major, setMajor] = useState('')
-  const isEntered = major !== ''
+  const isEntered = pw!=='' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
   const [isOpen, setIsOpen] = useState(false)
@@ -344,17 +344,9 @@ const EditUserInfo = () => {
         </div>
       </div>
       <div className="w-[700px] h-[80px] left-[80px] top-[750px] absolute">
-        <Button
-          buttonText="수정하기"
-          type={'loginC'}
-          isDisabled={!isEntered && !isSame}
-          onClickHandler={() => updateUser()}
-          className={
-            !isEntered && !isSame
-              ? 'text-slate-600 bg-gray-50 border-2 border-slate-600 '
-              : 'text-white bg-black'
-          }
-        />
+      <button className='text-white bg-black' onClick={()=>updateUser()}>
+        수정하기
+      </button>
       </div>
       <ToastContainer/>
     </div>

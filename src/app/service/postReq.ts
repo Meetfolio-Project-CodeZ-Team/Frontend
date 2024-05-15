@@ -1,5 +1,5 @@
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
-const G_SERVER_URL = process.env.NEXT_PUBLIC_GACHON_SERVER
+const G_SERVER_URL = process.env.NEXT_PUBLIC_GAHCON_SERVER
 const commonHeaders = {
   'Content-Type': 'application/json',
 }
