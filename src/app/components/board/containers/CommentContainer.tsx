@@ -15,10 +15,10 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [likeCnt, setLikeCnt] = useState(0)
-  
+
   useEffect(() => {
     setLikeStatus(isLiked);
-  }, [isLiked]);
+  }, [isLiked, postId]);
 
   console.log(isLiked, '조아요 상태');
   console.log(likeStatus, '조아요 상태, state');

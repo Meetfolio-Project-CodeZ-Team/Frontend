@@ -11,17 +11,18 @@ export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
   const resetId = useResetRecoilState(selectedPostId)
+  console.log(boardData, '가져온 리코일 값')
 
   useEffect(() => {
     resetId()
     const fetchData = async () => {
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment`,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?page=0`,
       )
       const resData = await response.json()
       console.log(resData)
 
-      setBoardData(resData.result.boardListInfo)
+      setBoardData(resData.result)
       setData(resData.result)
     }
     fetchData()
