@@ -11,6 +11,6 @@ export async function PATCH(request: Request): Promise<NextResponse> {
 
   const userData = await request.json()
 
-  const data = await updateUser(userData, accessToken, id)
+  const data = await updateUser(userData, accessToken)
   return NextResponse.json(data)
 }

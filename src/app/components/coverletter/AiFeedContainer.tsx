@@ -49,21 +49,6 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
       <div className="w-[183px] h-[49px] left-[373px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
         AI 피드백
       </div>
-      {/* <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
-        <div className="w-3.5 h-3.5 left-0 top-[15px] absolute bg-slate-600 rounded-full" />
-        <div className="w-3.5 h-3.5 left-0 top-[72px] absolute bg-slate-600 rounded-full" />
-        <div className="w-3.5 h-3.5 left-0 top-[129px] absolute bg-slate-600 rounded-full" />
-        <div className="w-[792px] h-[158px] left-[25px] top-0 absolute">
-          <div className="w-[684px] h-11 left-0 top-0 absolute bg-blue-300 rounded-[10px]" />
-          <div className="w-[789px] h-11 left-0 top-[114px] absolute bg-blue-300 rounded-[10px]" />
-          <div className="w-[737px] h-11 left-0 top-[57px] absolute bg-blue-300 rounded-[10px]" />
-          <ul>
-          {feedbackData?.recommend.map((item, index) => (
-            <li key={index} className="text-base z-10">{item}</li>
-          ))}
-        </ul>
-        </div>
-      </div> */}
       <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
         <ul className="list-none space-y-2">
           {feedbackData?.recommend.map((item, index) => (
