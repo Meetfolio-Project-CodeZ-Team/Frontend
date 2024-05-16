@@ -104,12 +104,12 @@ const ExpCardDetail = ({
     //   </div>
     // </div>
     <div className="w-[435px] h-[857px] relative mt-[80px] ml-[14px] bg-slate-200 rounded-[20px]">
-      <div className="w-[120px] h-[50px] px-5 left-[288px] top-[779px] absolute bg-blue-400 rounded-[15px] justify-center items-center gap-2 inline-flex">
+      <div className="w-[90px]  px-5 py-2 left-[300px] top-[779px] absolute bg-blue-400 rounded-[15px] justify-center items-center gap-2 inline-flex">
         <div
           className="w-[91px] h-6 text-center text-gray-900 text-lg font-semibold leading-[27px] cursor-pointer"
           onClick={closeModal}
         >
-          돌아가기
+          닫기
         </div>
       </div>
       <div className="w-[380px] h-[718.33px] left-[27.89px] top-[31px] flex flex-col absolute overflow-y-auto scrollbar-hide">
