@@ -10,6 +10,8 @@ interface ModelInfoModalProps {
 }
 
 const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
+  console.log(data, '모달 데이터');
+  
   const activateModel = async () => {
     const requestOpt = {
       method: 'PATCH',
@@ -49,7 +51,7 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
           </div>
           <div className="flex flex-col gap-y-1">
             <div className="">{MODEL_INFO[4]}</div>
-            <div className="font-normal">{data.status}</div>
+            <div className="font-normal">{data.accuracy}%</div>
           </div>
           <div className="flex gap-x-[70px]">
             <div className="flex flex-col gap-y-1">
@@ -62,7 +64,7 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
             </div>
           </div>
         </div>
-        <div className="w-[420px] flex gap-x-[42px] mt-9">
+        <div className="w-[420px] flex gap-x-[42px] mt-12">
           <Button
             buttonText={'닫기'}
             type={'modelInfo'}
