@@ -1,19 +1,31 @@
 import { USER_BOARD_H } from '@/app/constants/admin'
+import { userState } from '@/app/recoil/admin'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
 import UserInfo from './UserInfo'
 
-interface UserBoardProps {
-  userInfoData: ResponseUser
-}
-const UserBoard = (userInfoData: UserBoardProps) => {
+const UserBoard = () => {
   const [page, setPage] = useState<number>(1)
-  const userList = userInfoData.userInfoData.memberList
+  const [userData, setUserData] = useRecoilState(userState)
+
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
   }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?page=${page - 1}`,
+      )
+      const resData = await res.json()
+      console.log(resData, '가져온 데이터')
+      setUserData(resData.result)
+    }
+    fetchData()
+  }, [page])
 
   return (
     <div className="flex flex-col w-[1034px] h-[760px] mt-[22px] items-center">
@@ -26,12 +38,12 @@ const UserBoard = (userInfoData: UserBoardProps) => {
         <div className="ml-[56px]">{USER_BOARD_H[4]}</div>
         <div className="ml-[78px]">{USER_BOARD_H[5]}</div>
       </div>
-      {userList.length === 0 ? (
+      {userData.memberList.length === 0 ? (
         <div className="flex w-full h-full items-center justify-center font-bold text-3xl pb-10">
           ❌ 검색어와 일치하는 회원이 존재하지않습니다.
         </div>
       ) : (
-        userList.map((userInfo, i) => (
+        userData.memberList.map((userInfo, i) => (
           <div key={i}>
             <UserInfo
               registrationDate={'20' + userInfo.registrationDate}
@@ -58,11 +70,9 @@ const UserBoard = (userInfoData: UserBoardProps) => {
             <Icons name={rightAngle} />
           </div>
         }
-        pageCount={userInfoData.userInfoData.totalPage}
+        pageCount={userData?.totalPage || 1}
         onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        pageLinkClassName={'pagination__link'}
-        activeLinkClassName={'pagination__link__active'}
+        activeClassName={'active text-[#486284]'}
       />
     </div>
   )

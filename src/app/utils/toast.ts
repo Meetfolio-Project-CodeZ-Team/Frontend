@@ -93,6 +93,20 @@ const successVerifyPw = () => {
   })
 }
 
+const trainData = () => {
+  toast.success('모델의 추가학습이 완료됐습니다.', {
+    icon: () => '✅',
+    ...commonOptions,
+  })
+}
+
+const trainStop = () => {
+  toast.error('30개 이하로는 학습이 불가합니다.', {
+    icon: () => '❌',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -106,4 +120,6 @@ export {
   deletePostAlert,
   failVerifyPw,
   successVerifyPw,
+  trainData,
+  trainStop
 }

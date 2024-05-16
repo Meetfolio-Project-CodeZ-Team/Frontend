@@ -9,7 +9,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   console.log(jobKeyword)
 
   let accessToken = getCookie(request, 'accessToken')
-  const data = await getUser(accessToken, jobKeyword).then((data) => data)
+  const data = await getUser(accessToken, jobKeyword, page).then((data) => data)
 
   return NextResponse.json(data)
 }
