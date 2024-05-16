@@ -5,6 +5,7 @@ import { covletData, feedbackData } from '@/app/recoil/coverletter'
 import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
 import CovletDeleteModal from './common/CovletDeleteModal'
+import DeleteModal from '../admin/common/DeleteModal'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -203,12 +204,13 @@ const MyCovletCardDetail = ({
             </div>
           )}
           <div onClick={handleModalClick}>
-            {isOpen && (
-              <CovletDeleteModal
-                closeModal={closeModal}
-                deleteCov={() => deleteCov(coverLetterId)}
-              />
-            )}
+          {isOpen && (
+                    <DeleteModal
+                      closeModal={closeModal}
+                      deleteUser={() => deleteCov(coverLetterId || 0)}
+                      text="정말 삭제하시겠습니까?"
+                    />
+                  )}
           </div>
           <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
             <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">

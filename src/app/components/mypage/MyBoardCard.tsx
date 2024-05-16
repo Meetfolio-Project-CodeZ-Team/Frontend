@@ -17,6 +17,7 @@ interface MyBoardCardProps {
   commentCount?: number
   boardType?: string
   jobCategory?: string
+  likeStatus: string
 }
 
 interface BoardCardDetail {
@@ -44,10 +45,12 @@ const MyBoardCard = ({
   commentCount,
   boardType,
   jobCategory,
+  likeStatus,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  const [isLiked, setIsliked] = useState(false)
   const router = useRouter()
   console.log(boardId, '게시글 정보 id')
   const fetchBoardCards = () => {
@@ -92,7 +95,7 @@ const MyBoardCard = ({
         <div className="h-[37px] justify-start items-center gap-[18px] flex">
           <div className="h-[37px] justify-between items-center flex">
             <div className="w-4 h-4 relative mr-3 mb-[22px] ">
-              <Like color={'black'} size={24} />
+              <Like color={'black'} size={24} isLiked={isLiked || likeStatus === 'ACTIVE'}/>
             </div>
             <div className="w-[20px]  text-gray-900 text-lg font-normal mb-3  leading-[30px]">
               {likeCount}

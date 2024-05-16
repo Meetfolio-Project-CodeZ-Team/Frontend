@@ -27,6 +27,7 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
+  const [isLiked, setIsliked] = useState(false)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const path =
     data?.boardType === 'GROUP'
@@ -158,7 +159,7 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
               좋아요
             </div>
             <div className="w-[30px] h-[28px] left-0 top-[4px] absolute">
-              <Like color={'black'} size={28} />
+              <Like color={'black'} size={28} isLiked={isLiked || data?.likeStatus === 'ACTIVE'}/>
             </div>
           </div></>
       ) : (

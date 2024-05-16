@@ -55,9 +55,20 @@ const MyComment = () => {
       </div>
       <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
-          {boardCards.map((a) => (
+        {boardCards.length > 0 ? (
+          boardCards.map((a) => (
             <MyCommentCard key={a.commentId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
-          ))}
+          ))
+          ) : (
+            <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
+                <div className="text-center">
+                  <p className="text-xl font-semibold">
+                    조회 가능한 게시글이 없어요!
+                  </p>
+                </div>
+              </div>
+            )}
+          
         </div>
       </div>
       <div className="w-[120px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">

@@ -37,6 +37,14 @@ interface UserInfo {
   memberId?: number
 }
 
+interface UpdateUserInfoRequest {
+  grade: string;
+  jobKeyword: string;
+  major: string;
+  password?: string; // 이제 `password`는 선택적 속성입니다.
+}
+
+
 const EditUserInfo = () => {
   const [userInfoData, setUserInfoData] = useState(userData)
   const router = useRouter()
@@ -80,48 +88,45 @@ const EditUserInfo = () => {
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
-    if (
-      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
-        password,
-      )
-    ) {
-      const requestBody = {
-        password: password,
-        grade: GRADE_ENUM[grade],
-        jobKeyword: JOB_ENUM[clickedKeyword],
-        major: major,
+    const requestBody: UpdateUserInfoRequest = {
+      grade: GRADE_ENUM[grade],
+      jobKeyword: JOB_ENUM[clickedKeyword],
+      major: major,
+    };
+  
+    // 비밀번호가 입력되었는지 확인하고, 유효한 경우에만 추가
+    if (password.length > 0) {
+      if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
+        pwAlert();
+        return;
+      } else if (password !== checkPW) {
+        pwAlert();
+        return;
       }
-
-      const requestOptions = {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
+      requestBody.password = password;
+    }
+  
+    const requestOptions = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    };
+  
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`, requestOptions);
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.message || '서버 오류로 정보 수정에 실패했습니다.');
       }
-
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
-          requestOptions,
-        )
-
-        if (!response.ok) {
-          throw new Error('서버 오류로 정보 수정에 실패했습니다.')
-        }
-
-        console.log('정보가 성공적으로 수정되었습니다.')
-        console.log(requestBody, '수정한 회원정보 데이터')
-        updateUserInfo()
-      } catch (error) {
-        console.error('정보 수정 중 오류가 발생했습니다:', error)
-        // 사용자에게 오류 메시지 표시
-        // 예: toast.error('정보 수정 중 오류가 발생했습니다.');
-      }
-    } else {
-      // 비밀번호가 유효하지 않은 경우
-      setPassWord('')
-      pwAlert()
+      console.log('정보가 성공적으로 수정되었습니다.');
+      console.log(requestBody, '수정한 회원정보 데이터');
+      updateUserInfo();
+    } catch (error) {
+      console.error('정보 수정 중 오류가 발생했습니다:', error);
+      // 사용자에게 오류 메시지 표시
+      // 예: toast.error(error.message || '정보 수정 중 오류가 발생했습니다.');
     }
   }
 
@@ -344,7 +349,7 @@ const EditUserInfo = () => {
         </div>
       </div>
       <div className="w-[700px] h-[80px] left-[80px] top-[750px] absolute">
-      <button className='text-white bg-black' onClick={()=>updateUser()}>
+      <button className='text-white bg-black' onClick={updateUser}>
         수정하기
       </button>
       </div>
