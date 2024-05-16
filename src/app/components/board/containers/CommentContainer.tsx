@@ -2,18 +2,43 @@
 
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '../../common/Button'
 import Comment from '../Comment'
 
-const CommentContainer = () => {
+interface CommentContainerProps {
+  postId: number
+  isLiked: boolean
+}
+
+const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [isClicked, setIsClicked] = useState(false)
+  const [likeStatus, setLikeStatus] = useState(isLiked)
+  const [likeCnt, setLikeCnt] = useState(0)
+  
+  useEffect(() => {
+    setLikeStatus(isLiked);
+  }, [isLiked]);
+
+  console.log(isLiked, '조아요 상태');
+  console.log(likeStatus, '조아요 상태, state');
+  
   const mookComment = {
     commentId: 1,
     content: '우와 정말 대단한걸요? 장난 없네용 히히',
     memberName: 'yng1404',
     profile: 'string',
     sinceCreation: 2022,
+  }
+
+  const like = async (id: number) => {
+    const res = await fetch(`/api/board/like?id=${id}`, {
+      method: 'POST',
+    })
+    const resData = await res.json()
+    setLikeStatus(resData.result.status === 'ACTIVE')
+    setLikeCnt(resData.result.likeCount)
+    console.log(resData, '조아요 응답')
   }
 
   return (
@@ -62,8 +87,11 @@ const CommentContainer = () => {
         </div>
       ) : (
         <div className="bg-[#486283] w-full flex h-16 absolute bottom-0">
-          <div className="absolute top-5 left-[27px] cursor-pointer">
-            <Like color={'white'} size={32} />
+          <div
+            className="absolute top-5 left-[27px] cursor-pointer"
+            onClick={() => like(postId)}
+          >
+            <Like color={'white'} size={32} isLiked={likeStatus} />
           </div>
           <div
             className="absolute top-3 right-[54px] flex items-center gap-x-2 cursor-pointer"
