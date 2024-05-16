@@ -10,6 +10,8 @@ import CheckPoint2 from '../points/CheckPoint'
 import { useRouter } from 'next/navigation'
 import ExpCardList from './ExpCardList'
 import AiFeedContainer from './AiFeedContainer'
+import Loading from '@/app/(route)/loading'; 
+import AiLoading from './AiLoading'
 
 interface ExperienceCard {
   experienceId: number
@@ -31,6 +33,7 @@ const CovletSave = () => {
   const [feedbackClicked, setFeedbackClicked] = useState(false)
   const [feedbackReceived, setFeedbackReceived] = useState(false)
   const [feedbackData, setFeedbackData] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter()
 
   useEffect(() => {
@@ -162,33 +165,43 @@ const CovletSave = () => {
 
   // AI 피드백 요청 함수
   const requestAIFeedback = async () => {
-    const { coverLetterId } = coverletterData
-    console.log(coverLetterId, '자소서 아이디')
-    const response = await fetch(
-      `/api/coverLetter-feedbacks/?id=${coverLetterId}`,
-      {
+    setIsLoading(true);
+    const { coverLetterId } = coverletterData;
+    console.log(coverLetterId, '자소서 아이디');
+  
+    try {
+      const response = await fetch(`/api/coverLetter-feedbacks/?id=${coverLetterId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ cover_letter_id: coverLetterId }),
-      },
-    )
-    console.log(response)
-    const data = await response.json()
-    if (response.ok) {
-      setFeedbackData(data)
-      setFeedbackReceived(true)
-
-      console.log(response, 'POST 응답') // Trigger to show AI feedback
-    } else {
-      console.error('AI 피드백 요청에 실패했습니다.')
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      setFeedbackData(data);
+      setFeedbackReceived(true);
+      console.log('AI 피드백 요청 성공:', data);
+  
+    } catch (error) {
+      console.error('AI 피드백 요청에 실패했습니다.', error);
+      alert('AI 피드백 요청에 실패했습니다. 오류를 확인해주세요.');
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleSaveWithoutFeedback = async () => {
     const { coverLetterId } = coverletterData
     router.push(`/mypage/myCovletDetail/${coverLetterId}`)
+  }
+
+  if (isLoading) {
+    return <AiLoading />; // 로딩 상태일 때 로딩 컴포넌트 표시
   }
 
   if (feedbackReceived) {
