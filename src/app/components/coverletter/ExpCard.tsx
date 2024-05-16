@@ -84,7 +84,7 @@ const ExpCard = ({
           {jobKeyword}
         </div>
         <div className="flex w-[180px] h-9 px-1 bg-white rounded justify-center items-center gap-2 ">
-          <div className="flex w-[170px] h-5  text-[12px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+          <div className="flex w-[170px] h-5  text-[15px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
             {stack}
           </div>
         </div>

@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import ShowCard from '../main/ShowCard'
-import MyExpCardDetail from './MyExpCardDetail'
+import ShowCard from '@/app/components/main/ShowCard'
+
 import { useRecoilState } from 'recoil'
 import { modalNum } from '@/app/recoil/experience'
-import MyExpDetailModal1 from './common/MyExpDetailModal1'
-import MyExpDetailModal2 from './common/MyExpDetailModal2'
-import MyExpDetailModal3 from './common/MyExpDetailModal3'
+import UserExpDetailModal1 from '@/app/components/board/containers/UserExpDetailModal1'
+import UserExpDetailModal2 from './UserExpDetailModal2'
+import UserExpDetailModal3 from './UserExpDetailModal3'
 import { useRouter, usePathname } from 'next/navigation'
 
 interface MyExpCardProps {
@@ -34,7 +34,7 @@ interface ExperienceCardDetail {
   closeModal: () => void
 }
 
-const MyExpCard = ({
+const UserExpCard = ({
   experienceType,
   startDate,
   endDate,
@@ -81,11 +81,11 @@ const MyExpCard = ({
     }
     switch (pageNumber) {
       case 0:
-        return <MyExpDetailModal1 {...modalProps} />
+        return <UserExpDetailModal1 {...modalProps} />
       case 1:
-        return <MyExpDetailModal2 {...modalProps} />
+        return <UserExpDetailModal2 {...modalProps} />
       case 2:
-        return <MyExpDetailModal3 {...modalProps} />
+        return <UserExpDetailModal3 {...modalProps} />
       default:
         return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
     }
@@ -115,7 +115,7 @@ const MyExpCard = ({
           {jobKeyword}
         </div>
         <div className="flex w-[180px] h-9 px-1 bg-white rounded justify-center items-center gap-2 ">
-          <div className="flex w-[170px] h-5  text-[15px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+          <div className="flex w-[170px] h-5  text-[12px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
             {stack}
           </div>
         </div>
@@ -125,4 +125,4 @@ const MyExpCard = ({
   )
 }
 
-export default MyExpCard
+export default UserExpCard
