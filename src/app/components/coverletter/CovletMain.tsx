@@ -14,15 +14,16 @@ interface CovletFinishContainerProps {
 }
 
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
+  const router = useRouter()
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
-  const router = useRouter()
+  const [tid, setTid] = useRecoilState(tidState)
   const [enabled, setEnabled] = useState(false)
 
-  const [tid, setTid] = useRecoilState(tidState)
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
   const coverletterId = params.get('id')
+
   setTid(tid)
 
   useEffect(() => {

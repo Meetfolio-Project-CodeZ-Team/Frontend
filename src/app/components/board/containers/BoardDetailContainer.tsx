@@ -22,16 +22,17 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  const router = useRouter()
+
   const path =
     data?.boardType === 'GROUP'
       ? '/board/update/group'
       : '/board/update/employment'
-  const router = useRouter()
 
   const deletePost = async (id: number) => {
     deletePostAlert()
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail/delete?postId=${id}`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail/delete?postId=${selectedId}`,
       {
         method: 'DELETE',
       },
@@ -115,11 +116,16 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
                 </div>
               </div>
             )}
-            <div className={`flex absolute pr-8 left-7 ${data?.peopleNumber ? 'top-[260px] ':'top-[230px]'} break-all h-[70%] overflow-y-auto`}>
+            <div
+              className={`flex absolute pr-8 left-7 ${data?.peopleNumber ? 'top-[260px] ' : 'top-[230px]'} break-all h-[70%] overflow-y-auto`}
+            >
               {data?.content}
             </div>
           </div>
-          <CommentContainer />
+          <CommentContainer
+            postId={selectedId}
+            isLiked={data?.likeStatus === 'ACTIVE'}
+          />
         </div>
       ) : (
         <div className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium">
