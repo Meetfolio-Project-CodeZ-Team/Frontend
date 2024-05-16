@@ -4,13 +4,14 @@ import Header from '@/app/components/layout/Header'
 import MyPointContainer from '@/app/components/mypage/MyPointContainer'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { tidState } from '@/app/recoil/coverletter'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 export default function MyPointPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const [tid, setTid] = useRecoilState(tidState)
+  const router = useRouter()
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
 
@@ -59,6 +60,7 @@ export default function MyPointPage() {
             req,
           )
           const approveRes = await sendApprove.json()
+          router.push('/mypage/mypoint')
         } catch (error) {
           console.error(error)
         }

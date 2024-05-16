@@ -32,8 +32,8 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `http://ceprj.gachon.ac.kr:60005/mypage/mypoint`
-          : `http://ceprj.gachon.ac.kr:60005/coverletter?id=${coverLetterId}`,
+          ? `http://localhost:3000/mypage/mypoint`
+          : `http://localhost:3000/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
@@ -128,3 +128,32 @@ const ChargePoint = ({
 }
 
 export default ChargePoint
+
+const chargeKakaos = async (chargeP: string) => {
+  const point = Number(chargeP)
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/point/charge`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ point: point, payment: point }),
+    },
+  )
+  if (!response.ok) {
+    console.error('데이터 저장에 실패했습니다.')
+  }
+  const responseData = await response.json()
+  const popup = window.open(
+    responseData.result.nextRedirectPcUrl,
+    '_blank',
+    'width=600,height=600',
+  )
+  if (popup) {
+    popup.focus()
+    const popupURL = popup.location.href
+    console.log('팝업 창의 URL:', popupURL)
+  }
+  console.log(responseData)
+}
