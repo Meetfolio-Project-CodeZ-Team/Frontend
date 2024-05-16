@@ -29,8 +29,8 @@ const CovletSave = () => {
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [showInputs, setShowInputs] = useState(false)
   const [feedbackClicked, setFeedbackClicked] = useState(false)
-  const [feedbackReceived, setFeedbackReceived] = useState(false);
-  const [feedbackData, setFeedbackData] = useState(null);
+  const [feedbackReceived, setFeedbackReceived] = useState(false)
+  const [feedbackData, setFeedbackData] = useState(null)
   const router = useRouter()
 
   useEffect(() => {
@@ -163,7 +163,7 @@ const CovletSave = () => {
   // AI 피드백 요청 함수
   const requestAIFeedback = async () => {
     const { coverLetterId } = coverletterData
-
+    console.log(coverLetterId, '자소서 아이디')
     const response = await fetch(
       `/api/coverletters/feedback?id=${coverLetterId}`,
       {
@@ -171,30 +171,28 @@ const CovletSave = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({cover_letter_id: coverLetterId}),
+        body: JSON.stringify({ cover_letter_id: coverLetterId }),
       },
     )
-    const data = await response.json();
+    console.log(response)
+    const data = await response.json()
     if (response.ok) {
-      setFeedbackData(data);
-      setFeedbackReceived(true); 
-      console.log(data, '피드백 데이터')
+      setFeedbackData(data)
+      setFeedbackReceived(true)
+
       console.log(response, 'POST 응답') // Trigger to show AI feedback
     } else {
-      console.error('AI 피드백 요청에 실패했습니다.');
+      console.error('AI 피드백 요청에 실패했습니다.')
     }
   }
 
   const handleSaveWithoutFeedback = async () => {
-     const {
-       coverLetterId,
-     } = coverletterData
-    router.push(`/mypage/myCovletDetail/${coverLetterId}`);
-    
+    const { coverLetterId } = coverletterData
+    router.push(`/mypage/myCovletDetail/${coverLetterId}`)
   }
 
   if (feedbackReceived) {
-    return <AiFeedContainer feedbackData={feedbackData} />;
+    return <AiFeedContainer feedbackData={feedbackData} />
   }
 
   return (
