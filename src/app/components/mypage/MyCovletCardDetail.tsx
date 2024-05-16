@@ -103,10 +103,7 @@ const MyCovletCardDetail = ({
     }
   }
   const hasFeedback =
-    correction ||
-    recommendQuestion1 ||
-    recommendQuestion2 ||
-    recommendQuestion3 ||
+    
     keyword1 ||
     keyword2 ||
     jobKeyword
@@ -119,8 +116,8 @@ const MyCovletCardDetail = ({
         <div className="w-full h-[1725px] relative">
           <div className="w-full h-[1725px] left-0 top-0 absolute">
             <div className="w-full h-full left-0 top-0 absolute bg-white " />
-            <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] ">
-              <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px]">
+            <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
+              <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
                 {answer}
               </div>
             </div>
@@ -144,12 +141,12 @@ const MyCovletCardDetail = ({
               </svg>
             </button>
           </div>
-          <div className="w-[1090px] h-[820px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
+          <div className="w-[1090px] h-[842px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
             <div className="w-[202.26px] h-[49px] left-[425px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
               AI 피드백
             </div>
             <div className="w-[1090px] h-[800px] left-0 top-0 absolute">
-              <div className="w-[1000px] h-[405px] left-[46.42px] top-[100px] absolute text-black text-xl font-medium leading-[30px]">
+              <div className="w-[1000px] h-[395px] left-[46.42px] top-[100px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
                 {correction}
               </div>
             </div>
@@ -186,7 +183,7 @@ const MyCovletCardDetail = ({
             </div>
           </div>
           {isGuest !== 'true' && (
-            <div className="w-[334px] h-[58px] left-[900px] top-[1606px] absolute flex justify-between items-center">
+            <div className="w-[334px] h-[58px] left-[900px] top-[1646px] absolute flex justify-between items-center">
               <button
                 className="w-[100px] h-[40px] left-0 top-0 absolute select-none rounded-[15px] bg-blue-400  py-1 px-6 text-center align-middle  text-xl font-bold uppercase text-white transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button"

@@ -348,8 +348,8 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[700px] h-[80px] left-[80px] top-[750px] absolute">
-      <button className='text-white bg-black' onClick={updateUser}>
+      <div className="w-[700px] h-[80px] left-[88px] top-[750px] absolute">
+      <button className='w-[680px] text-white bg-black py-3 rounded-[20px] text-lg' onClick={updateUser}>
         수정하기
       </button>
       </div>
