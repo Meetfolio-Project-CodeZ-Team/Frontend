@@ -1,17 +1,19 @@
 'use client'
+import { userState } from '@/app/recoil/admin'
 import { search } from '@/app/ui/IconsPath'
-import { Dispatch, SetStateAction, useState } from 'react'
-import { SetterOrUpdater } from 'recoil'
+import { useState } from 'react'
+import { SetterOrUpdater, useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
 import Input from '../../common/Input'
 
 interface SearchInputProps {
   searchBoard?: SetterOrUpdater<ResponseBoardData>
-  searchUser?: Dispatch<SetStateAction<ResponseUser | null>>
+  searchUser?: boolean
 }
 
 const SearchInput = ({ searchBoard, searchUser }: SearchInputProps) => {
   const [title, setTitle] = useState('')
+  const [userData, setUserData] = useRecoilState(userState)
 
   const getKeywordBoard = async (title: string) => {
     const response = await fetch(
@@ -23,7 +25,7 @@ const SearchInput = ({ searchBoard, searchUser }: SearchInputProps) => {
     console.log(resData, 'res요청 성공')
 
     searchBoard && searchBoard(resData.result)
-    searchUser && searchUser(resData.result)
+    searchUser && setUserData(resData.result)
   }
 
   return (
