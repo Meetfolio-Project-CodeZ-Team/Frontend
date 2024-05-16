@@ -5,6 +5,8 @@ import MyCovletCard from './MyCovletCard'
 import Link from 'next/link'
 import AI3 from '@/app/ui/svg/ai/AI3'
 import CovIcon from '@/app/ui/svg/common/CovIcon'
+import { useRecoilState } from 'recoil'
+import { portNum } from '@/app/recoil/mypage'
 interface CovletCard {
   question: string
   answer: string
@@ -15,6 +17,17 @@ interface CovletCard {
 
 const PortfolioContainer = () => {
   const [covletCards, setCovletCards] = useState<CovletCard[]>([])
+  const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
+
+  const goToPreviousPage = () => {
+    setPortfolioNumber(0)
+    window.scrollTo(0, 0)
+  }
+
+  const goToNextPage = () => {
+    setPortfolioNumber(1)
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
     // 서버에서 자소서카드 데이터를 가져오는 함수
@@ -46,11 +59,13 @@ const PortfolioContainer = () => {
       </div>
       <div className="w-[1060px] h-[30px] left-[82px] top-[129px] absolute flex justify-between items-center">
         <div className="flex gap-[60px]">
-          <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/mypage">내 자기소개서</Link>
+          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+          onClick={goToPreviousPage}>
+            <div>내 자기소개서</div>
           </div>
-          <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/mypage/myexperience">내 경험카드</Link>
+          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+          onClick={goToNextPage}>
+            <div>내 경험카드</div>
           </div>
         </div>
         {covletCards?.length > 0 && (

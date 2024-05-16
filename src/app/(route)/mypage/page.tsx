@@ -4,9 +4,13 @@ import PortfolioContainer from '@/app/components/mypage/PortfolioContainer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
+import { useRecoilState } from 'recoil'
+import { portNum } from '@/app/recoil/mypage'
+import MyExpList from '@/app/components/mypage/MyExpList'
 
 export default function UserMyPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
+  const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +31,8 @@ export default function UserMyPage() {
           nickname={userInfo?.memberName}
         />
         <div className="flex-grow">
-          <PortfolioContainer />
+          {portfolioNumber === 0 && <PortfolioContainer />}
+          {portfolioNumber === 1 && <MyExpList />}
         </div>
       </div>
       <Footer />
