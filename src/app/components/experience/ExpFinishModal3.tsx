@@ -6,11 +6,13 @@ import { useRouter } from 'next/navigation'
 import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import { useState } from 'react'
+import { portNum } from '@/app/recoil/mypage'
 
 const ExpFinishModal3 = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
+  const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
   const router = useRouter()
 
   const totalPages = 3
@@ -76,7 +78,8 @@ const ExpFinishModal3 = () => {
       advance: '',
       expStacks: [],
     })
-    router.push('/mypage/myexperience') // '/main'으로 경로 이동
+    setPortfolioNumber(1)
+    router.push('/mypage')  // '/main'으로 경로 이동
   }
 
   const saveExpData = async () => {

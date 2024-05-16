@@ -32,8 +32,8 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `http://localhost:3000/mypage/mypoint`
-          : `http://localhost:3000/coverletter?id=${coverLetterId}`,
+          ? `http://www.meetfolio.kro.kr:60005/mypage/mypoint`
+          : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
@@ -51,6 +51,7 @@ const ChargePoint = ({
 
     const data = await response.json()
     setTid(data.tid)
+    console.log(data);
 
     const requestTid = {
       point: Number(chargeP),

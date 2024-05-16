@@ -135,9 +135,14 @@ const EditUserInfo = () => {
           responseData.message || '서버 오류로 정보 수정에 실패했습니다.',
         )
       }
-      console.log('정보가 성공적으로 수정되었습니다.')
-      console.log(requestBody, '수정한 회원정보 데이터')
-      updateUserInfo()
+      console.log('정보가 성공적으로 수정되었습니다.');
+      console.log(requestBody, '수정한 회원정보 데이터');
+      updateUserInfo();
+
+      setTimeout(() => {
+        router.push('/mypage');
+      }, 2000); // 2초 후에 메인 페이지로 이동
+
     } catch (error) {
       console.error('정보 수정 중 오류가 발생했습니다:', error)
       // 사용자에게 오류 메시지 표시
