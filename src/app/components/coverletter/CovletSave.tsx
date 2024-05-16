@@ -165,7 +165,7 @@ const CovletSave = () => {
     const { coverLetterId } = coverletterData
     console.log(coverLetterId, '자소서 아이디')
     const response = await fetch(
-      `/api/coverletters/feedback?id=${coverLetterId}`,
+      `/api/coverLetter-feedbacks/?id=${coverLetterId}`,
       {
         method: 'POST',
         headers: {
