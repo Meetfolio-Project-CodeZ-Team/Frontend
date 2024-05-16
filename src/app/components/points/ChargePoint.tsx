@@ -153,7 +153,5 @@ const chargeKakaos = async (chargeP: string) => {
   if (popup) {
     popup.focus()
     const popupURL = popup.location.href
-    console.log('팝업 창의 URL:', popupURL)
   }
-  console.log(responseData)
 }

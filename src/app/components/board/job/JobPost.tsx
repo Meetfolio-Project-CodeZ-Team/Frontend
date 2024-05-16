@@ -14,7 +14,6 @@ const JobPost = ({ data }: JobPostProps) => {
   const [isLiked, setIsliked] = useState(false)
   const [likeCnt, setLikeCnt] = useState(0)
 
-  console.log(selectedId, '번 게시물 선택 됨')
 
   return (
     <div

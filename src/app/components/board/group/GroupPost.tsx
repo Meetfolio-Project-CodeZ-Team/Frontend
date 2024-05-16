@@ -11,11 +11,8 @@ interface GroupPostProps {
 
 const GroupPost = ({ data }: GroupPostProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
-  console.log(selectedId, '번 게시물 선택 됨')
-
   const [isLiked, setIsliked] = useState(false)
   const [likeCnt, setLikeCnt] = useState(0)
-  console.log(selectedId, '번 게시물 선택 됨')
 
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
@@ -24,7 +21,6 @@ const GroupPost = ({ data }: GroupPostProps) => {
     const resData = await res.json()
     setIsliked(true)
     setLikeCnt(resData.result.likeCount)
-    console.log(resData, '조아요 응답')
   }
   return (
     <div

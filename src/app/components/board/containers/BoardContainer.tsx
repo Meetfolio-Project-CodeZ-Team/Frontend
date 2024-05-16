@@ -22,7 +22,6 @@ const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
   const path = isJob ? 'employment' : 'group'
   const router = useRouter()
   const [boardData, setBoardData] = useRecoilState(boardDataState)
-console.log(boardData, '보드 데이터');
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)

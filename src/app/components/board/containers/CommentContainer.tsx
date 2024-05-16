@@ -20,9 +20,6 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
     setLikeStatus(isLiked);
   }, [isLiked, postId]);
 
-  console.log(isLiked, '조아요 상태');
-  console.log(likeStatus, '조아요 상태, state');
-  
   const mookComment = {
     commentId: 1,
     content: '우와 정말 대단한걸요? 장난 없네용 히히',
@@ -38,7 +35,6 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
     const resData = await res.json()
     setLikeStatus(resData.result.status === 'ACTIVE')
     setLikeCnt(resData.result.likeCount)
-    console.log(resData, '조아요 응답')
   }
 
   return (

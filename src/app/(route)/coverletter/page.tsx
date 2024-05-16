@@ -23,7 +23,6 @@ export default function CovletMainPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
 
     fetchData()
@@ -42,7 +41,6 @@ export default function CovletMainPage() {
     setCovletNumber(0)
   }, [])
 
-  console.log(userInfo?.memberName)
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">

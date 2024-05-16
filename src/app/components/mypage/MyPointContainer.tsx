@@ -54,11 +54,8 @@ const MyPointContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result.pointInfo) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result.pointInfo)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     const fetchPointCard = async () => {
@@ -68,12 +65,9 @@ const MyPointContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 포인트 데이터', data.result.pointInfo.pointList) // 타입 에러가 발생하지 않아야 함
 
         setPointCards(data.result.pointInfo.pointList)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     fetchUserInfos()

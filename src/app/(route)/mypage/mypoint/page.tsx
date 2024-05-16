@@ -48,7 +48,6 @@ export default function MyPointPage() {
             requestConfig,
           )
           const resdata = await res.json()
-          console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
 
           const req = {
             method: 'POST',
@@ -65,7 +64,6 @@ export default function MyPointPage() {
           const approveRes = await sendApprove.json()
           router.push('/mypage/mypoint')
         } catch (error) {
-          console.error(error)
         }
       }
       getTid()

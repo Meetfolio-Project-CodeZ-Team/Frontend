@@ -56,10 +56,8 @@ const PointCharge = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result.paymentInfo) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result.paymentInfo)
       } catch (error) {
-        console.error(error)
       }
     }
 
@@ -70,14 +68,8 @@ const PointCharge = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log(
-          '유저 충전 내역 데이터',
-          data.result.paymentInfo.paymentList,
-        ) // 타입 에러가 발생하지 않아야 함
-
         setUserPayments(data.result.paymentInfo.paymentList)
       } catch (error) {
-        console.error(error)
       }
     }
 

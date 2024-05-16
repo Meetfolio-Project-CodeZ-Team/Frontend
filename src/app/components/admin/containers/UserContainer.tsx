@@ -27,7 +27,6 @@ const UserContainer = ({ userInfoData }: UserContainerProps) => {
       const userData = await response.json()
       setData(userData.result)
     } catch (error) {
-      console.error('Error fetching user data:', error)
     }
   }
   return (

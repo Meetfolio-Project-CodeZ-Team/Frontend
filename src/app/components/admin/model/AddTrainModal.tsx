@@ -24,7 +24,6 @@ const AddTrainModal = ({
       },
     )
     const resData = await response.json()
-    console.log(resData, '추가 학습 요청 후 응답')
   }
 
   return (

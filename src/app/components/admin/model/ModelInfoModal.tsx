@@ -10,7 +10,6 @@ interface ModelInfoModalProps {
 }
 
 const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
-  console.log(data, '모달 데이터')
 
   const activateModel = async () => {
     const requestOpt = {
@@ -24,7 +23,6 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
       requestOpt,
     )
     const resData = await res.json()
-    console.log(resData, '활성화 후 응답')
   }
 
   return (

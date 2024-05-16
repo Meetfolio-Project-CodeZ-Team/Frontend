@@ -19,7 +19,6 @@ export default function JobBoardPage() {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?page=0`,
       )
       const resData = await response.json()
-      console.log(resData)
 
       setBoardData(resData.result)
       setData(resData.result)
