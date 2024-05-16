@@ -7,7 +7,7 @@ const GroupBoardContainer = () => {
   if (boardData) {
     return (
       <div>
-        {boardData.boardListInfo ? (
+        {boardData.boardListInfo.boardInfo.length !== 0 ? (
           <div className="flex w-[783px] flex-wrap gap-x-[23px] gap-y-[30px]">
             {boardData.boardListInfo.boardInfo.map((post) => (
               <GroupPost data={post} />

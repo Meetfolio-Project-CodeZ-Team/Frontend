@@ -19,7 +19,7 @@ const SearchBoard = ({ isJob }: SearchBoardProps) => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/search?keyword=${title}&type=${isJob ? 'EMPLOYMENT' : 'GROUP'}`,
     )
     const resData = await res.json()
-    setBoardData(resData.result.boardListInfo)
+    setBoardData(resData.result)
   }
 
   return (

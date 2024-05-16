@@ -12,7 +12,6 @@ interface AiFeedContainerProps {
 }
 
 const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
-
   const router = useRouter()
 
   const handleCopyText = () => {

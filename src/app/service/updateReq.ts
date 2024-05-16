@@ -47,7 +47,6 @@ export const saveCov = async (
 export const updateUser = async (
   userContent: UserInfoTypes,
   accessToken: string,
-  
 ) => {
   const url = `${SERVER_URL}/api/mypage`
   console.log(url, '요청경로')

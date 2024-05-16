@@ -6,13 +6,14 @@ import PointCharge from '@/app/components/mypage/PointCharge'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { tidState } from '@/app/recoil/coverletter'
 import { pointNum } from '@/app/recoil/mypage'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 export default function MyPointPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const [tid, setTid] = useRecoilState(tidState)
+  const router = useRouter()
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
@@ -47,7 +48,6 @@ export default function MyPointPage() {
             requestConfig,
           )
           const resdata = await res.json()
-          console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
 
           const req = {
             method: 'POST',
@@ -62,9 +62,8 @@ export default function MyPointPage() {
             req,
           )
           const approveRes = await sendApprove.json()
-        } catch (error) {
-          console.error(error)
-        }
+          router.push('/mypage/mypoint')
+        } catch (error) {}
       }
       getTid()
     }

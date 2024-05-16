@@ -44,7 +44,7 @@ const MyLikeCard = ({
   commentCount,
   boardType,
   jobCategory,
-  likeStatus
+  likeStatus,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
@@ -66,7 +66,7 @@ const MyLikeCard = ({
       <div className="w-[1085px] h-60 left-0 top-0 absolute bg-slate-200 rounded-[10px]" />
       <div className="w-[72px] h-[30px] px-3 left-[990px] top-[24px] absolute rounded-[30px] border border-slate-600 justify-center items-center  inline-flex">
         <div className="w-[100px] h-6 text-center text-slate-600 text-sm font-semibold leading-[22px]">
-        {boardType === 'EMPLOYMENT' ? jobCategory : groupCategory}
+          {boardType === 'EMPLOYMENT' ? jobCategory : groupCategory}
         </div>
       </div>
       <div className="w-[47.21px] h-[50px] left-[28.33px] top-[30px] absolute rounded-full" />
@@ -94,7 +94,11 @@ const MyLikeCard = ({
         <div className="h-[37px] justify-start items-center gap-[18px] flex">
           <div className="h-[37px] justify-between items-center flex">
             <div className="w-4 h-4 relative mr-3 mb-[22px] ">
-              <Like color={'black'} size={24} isLiked={isLiked || likeStatus === 'ACTIVE'} />
+              <Like
+                color={'black'}
+                size={24}
+                isLiked={isLiked || likeStatus === 'ACTIVE'}
+              />
             </div>
             <div className="w-[20px]  text-gray-900 text-lg font-normal mb-3  leading-[30px]">
               {likeCount}
@@ -102,7 +106,7 @@ const MyLikeCard = ({
           </div>
           <div className="h-[37px] justify-start items-center  flex">
             <div className="w-4 h-4 relative mr-3 mb-[18px] ">
-              <Comment color={'black'} size={24}  />
+              <Comment color={'black'} size={24} />
             </div>
             <div className="w-5 text-gray-900 text-lg font-normal mb-3 mr-3 leading-[30px]">
               {commentCount}

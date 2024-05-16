@@ -60,12 +60,16 @@ const MyExpList = () => {
       </div>
       <div className="w-[1060px] h-[30px] left-[82px] top-[129px] absolute flex justify-between items-center">
         <div className="flex gap-[60px]">
-          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
-          onClick={goToPreviousPage}>
+          <div
+            className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+            onClick={goToPreviousPage}
+          >
             <div>내 자기소개서</div>
           </div>
-          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
-          onClick={goToNextPage}>
+          <div
+            className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+            onClick={goToNextPage}
+          >
             <div>내 경험카드</div>
           </div>
         </div>

@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import PointCard from './PointCard'
-import PaymentCard from './PaymentCard'
-import Icons from '../common/Icons'
-import { pointW } from '@/app/ui/IconsPath'
-import { useRecoilState } from 'recoil'
+import { useModal } from '@/app/hooks/useModal'
 import { pointNum } from '@/app/recoil/mypage'
+import { pointW } from '@/app/ui/IconsPath'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import Icons from '../common/Icons'
+import ChargePoint from '../points/ChargePoint'
+import PaymentCard from './PaymentCard'
 
 interface UserInfoProps {
   email: string
@@ -34,6 +34,7 @@ interface UserPaymentProps {
 const PointCharge = () => {
   const [userInfos, setUserInfos] = useState<UserPoint>()
   const [userPayments, setUserPayments] = useState<UserPaymentProps[]>([])
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
 
   const goToPointPage = () => {
@@ -55,11 +56,8 @@ const PointCharge = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result.paymentInfo) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result.paymentInfo)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     const fetchUserPayment = async () => {
@@ -69,15 +67,8 @@ const PointCharge = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log(
-          '유저 충전 내역 데이터',
-          data.result.paymentInfo.paymentList,
-        ) // 타입 에러가 발생하지 않아야 함
-
         setUserPayments(data.result.paymentInfo.paymentList)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     fetchUserInfos()
@@ -129,19 +120,32 @@ const PointCharge = () => {
           ))}
         </div>
       </div>
-      <div className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
-      onClick={goToPointPage}>
+      <div
+        className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToPointPage}
+      >
         <div> 사용 내역</div>
       </div>
-      <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
-      onClick={goToChargePage}>
-        <div >충전 내역</div>
+      <div
+        className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToChargePage}
+      >
+        <div>충전 내역</div>
       </div>
-      <div className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center">
-        <div className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex">
+      <div
+        className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center"
+        onClick={handleModalClick}
+      >
+        <div
+          className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex cursor-pointer"
+          onClick={openModal}
+        >
           <Icons className="mt-2" name={pointW} />
           충전하기
         </div>
+        {isOpen && (
+          <ChargePoint closeCharge={closeModal} cost={0} coverLetterId={0} />
+        )}
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
