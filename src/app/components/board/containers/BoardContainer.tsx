@@ -62,7 +62,7 @@ console.log(boardData, '보드 데이터');
           activeClassName={'active text-[#486284]'}
         />
         <div
-          className=" absolute right-12 flex items-center w-[90px] px-1 h-10 ml-[200px] text-white font-semibold bg-[#486283] rounded-[10px] justify-center gap-x-2"
+          className=" absolute right-12 flex items-center w-[90px] px-1 h-10 ml-[200px] text-white font-semibold bg-[#486283] rounded-[10px] justify-center gap-x-2 cursor-pointer"
           onClick={() =>
             router.push(`/board/post/${path}?nickname=${nickname}`)
           }

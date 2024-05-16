@@ -16,7 +16,7 @@ const UserBoard = (userInfoData: UserBoardProps) => {
   }
 
   return (
-    <div className="flex flex-col w-[1034px] h-[800px] mt-[22px] items-center">
+    <div className="flex flex-col w-[1034px] h-[760px] mt-[22px] items-center">
       <div className="flex w-[1034px] h-[50px] pl-[37px] border-y border-[#616161] items-center text-black text-lg">
         <div className="font-bold">가입일</div>
         <div className="ml-[134px] justify-center">{USER_BOARD_H[0]}</div>
