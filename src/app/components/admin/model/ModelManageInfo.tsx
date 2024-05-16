@@ -66,12 +66,14 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
           </div>
         </div>
         <div className="w-[130px] flex items-center justify-end">
-          <div
-            className=" cursor-pointer flex w-8 h-8 items-center justify-center pt-1 font-semibold pr-1 pb-1 hover:border-red-600"
-            onClick={() => deleteModel(modelId)}
-          >
-            <TrashBin size={23} color={'black'} />
-          </div>
+          {status === 'INACTIVE' && (
+            <div
+              className=" cursor-pointer flex w-8 h-8 items-center justify-center pt-1 font-semibold pr-1 pb-1 hover:border-red-600"
+              onClick={() => deleteModel(modelId)}
+            >
+              <TrashBin size={23} color={'black'} />
+            </div>
+          )}
         </div>
         <div onClick={handleModalClick}>
           {isOpen && detailData && (
