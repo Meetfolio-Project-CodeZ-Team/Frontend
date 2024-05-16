@@ -6,6 +6,7 @@ import { modalNum } from '@/app/recoil/experience'
 import MyExpDetailModal1 from './common/MyExpDetailModal1'
 import MyExpDetailModal2 from './common/MyExpDetailModal2'
 import MyExpDetailModal3 from './common/MyExpDetailModal3'
+import { useRouter, usePathname } from 'next/navigation'
 
 interface MyExpCardProps {
   experienceType: string
@@ -44,10 +45,11 @@ const MyExpCard = ({
   isGuest,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
-
+  
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
+  
 
   const fetchExpCards = async () => {
     try {
@@ -105,7 +107,7 @@ const MyExpCard = ({
       <div className="absolute top-[258px] text-[15px] font-bold">
         {startDate + '~' + endDate}
       </div>
-      <div className="absolute w-[230px] top-[282px] text-2xl font-bold leading-9 overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <div className="absolute w-[230px] top-[282px] text-2xl font-bold leading-9 overflow-x-auto whitespace-nowrap scrollbar-hide truncate">
         {title}
       </div>
       <div className="flex gap-x-[20px] absolute top-[328px] text-[16px] font-semibold">

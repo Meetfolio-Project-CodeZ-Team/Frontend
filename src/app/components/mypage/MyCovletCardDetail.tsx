@@ -205,7 +205,7 @@ const MyCovletCardDetail = ({
               />
             )}
           </div>
-          <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
+          <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex">
             <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
               <div className="w-[76px] text-center text-white text-[25px] font-semibold leading-[37.50px]">
                 문항
@@ -214,7 +214,12 @@ const MyCovletCardDetail = ({
             <div className="text-black text-[35px] font-semibold leading-[52.50px] truncate">
               {question}
             </div>
-            <div className="text-white rounded-full bg-black px-2">?</div>
+            <div className="ml-1 cursor-pointer text-white bg-black px-3 py-1 rounded-full relative group">
+              ?
+              <div className="absolute w-64 bg-black text-white text-sm rounded-lg p-2 invisible group-hover:visible bottom-full mb-2 left-1/2 transform -translate-x-1/2 z-10">
+                {question}
+              </div>
+            </div>
           </div>
           <div className="w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
             <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
