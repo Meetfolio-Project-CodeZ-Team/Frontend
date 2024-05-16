@@ -10,6 +10,8 @@ const ExpKeywordContainer = () => {
   const isEntered =
     experienceData.jobKeyword !== '' && experienceData.expStacks.length > 0
 
+    
+
   console.log(
     experienceData,
     '리코일 데이터어',
@@ -32,16 +34,22 @@ const ExpKeywordContainer = () => {
     setExperienceData({ ...experienceData, expStacks: newStrings })
   }
 
-  const handleAddKeyword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault()
+  const handleAddKeyword = (event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => {
+    event.preventDefault();
     if (experienceData.expStacks.length < 3) {
       setExperienceData({
         ...experienceData,
         expStacks: [...experienceData.expStacks, expStack],
-      })
-      setExpStack('')
+      });
+      setExpStack('');
     }
-  }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleAddKeyword(event); // 여기서 handleAddKeyword를 호출
+    }
+  };
 
   // const handleRemoveKeyword = (index: number) => {
   //   const newExpStack = [...expStack]
@@ -187,14 +195,10 @@ const ExpKeywordContainer = () => {
                 maxLength={50}
                 className="w-full h-[50px] bg-white border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
                 onChange={(e) => setExpStack(e.target.value)}
+                onKeyDown={handleKeyPress}
               />
             </div>
-
             <div className="w-[104px] h-[55px] left-[669px] top-[39px] absolute">
-              {/* <button className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
-                추가하기
-              </button> */}
-
               <button
                 className="w-[104px] h-[53px] left-0 top-0 absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg"
                 onClick={handleAddKeyword}

@@ -2,8 +2,10 @@
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import MyPointContainer from '@/app/components/mypage/MyPointContainer'
+import PointCharge from '@/app/components/mypage/PointCharge'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { tidState } from '@/app/recoil/coverletter'
+import { pointNum } from '@/app/recoil/mypage'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -13,6 +15,7 @@ export default function MyPointPage() {
   const [tid, setTid] = useRecoilState(tidState)
   const params = useSearchParams()
   const pg_token = params.get('pg_token')
+  const [pointNumber, setPointNumber] = useRecoilState(pointNum)
 
   useEffect(() => {
     if (pg_token) {
@@ -83,7 +86,8 @@ export default function MyPointPage() {
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer selected={'points'} nickname={userInfo?.memberName} />
         <div className="flex-grow">
-          <MyPointContainer />
+          {pointNumber === 0 && <MyPointContainer />}
+          {pointNumber === 1 && <PointCharge />}
         </div>
       </div>
       <Footer />
