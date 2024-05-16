@@ -23,7 +23,6 @@ const ComunityBoard = ({ boardType }: ComunityBoardProps) => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?page=${page - 1}`,
       )
       const resData = await response.json()
-      console.log(resData, '가져온 페이지 데이터 값')
       setBoardData(resData.result)
     }
     fetchData()

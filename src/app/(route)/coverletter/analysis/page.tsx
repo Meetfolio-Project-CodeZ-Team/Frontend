@@ -26,13 +26,10 @@ export default function CovletFeedbackPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
 
     fetchData()
   }, [covletNumber])
-
-  console.log(userInfo?.memberName)
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">

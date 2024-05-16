@@ -22,10 +22,10 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
     if (clickedKeyword !== null) {
       const fetchData = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?category=${JOB_ENUM[clickedKeyword]}`,
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/employment?category=${JOB_ENUM[clickedKeyword]}&page=${0}`,
         )
         const resData = await response.json()
-        setBoardData(resData.result.boardListInfo)
+        setBoardData(resData.result)
       }
       fetchData()
     }
@@ -35,10 +35,10 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
     if (clickedType !== null) {
       const fetchData = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group?category=${GROUP_ENUM[clickedType]}`,
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/group?category=${GROUP_ENUM[clickedType]}&page=${0}`,
         )
         const resData = await response.json()
-        setBoardData(resData.result.boardListInfo)
+        setBoardData(resData.result)
       }
       fetchData()
     }
@@ -53,8 +53,6 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/${path}`,
       )
       const resData = await response.json()
-      console.log(resData, '헤더에 의해 가져온 값');
-      
       setBoardData(resData.result)
     }
     fetchData()

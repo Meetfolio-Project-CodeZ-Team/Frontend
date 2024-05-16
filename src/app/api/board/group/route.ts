@@ -13,7 +13,6 @@ export async function GET(request: Request): Promise<NextResponse> {
       : getGroupAll(accessToken, page).then((data) => data)
 
   const data = await getData()
-  console.log(data, '서버에서 받아온 데이터')
 
   return NextResponse.json(data)
 }

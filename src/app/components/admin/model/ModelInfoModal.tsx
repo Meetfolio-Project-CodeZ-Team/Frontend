@@ -10,8 +10,6 @@ interface ModelInfoModalProps {
 }
 
 const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
-  console.log(data, '모달 데이터');
-  
   const activateModel = async () => {
     const requestOpt = {
       method: 'PATCH',
@@ -24,7 +22,6 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
       requestOpt,
     )
     const resData = await res.json()
-    console.log(resData, '활성화 후 응답')
   }
 
   return (
@@ -37,7 +34,7 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
             <div className="font-normal flex items-center gap-x-2.5">
               {data.modelName}
               <div className="text-white text-base font-medium bg-black rounded-xl w-[50px] h-6 flex items-center justify-center">
-                {data.version}
+                v.{data.version}
               </div>
             </div>
           </div>

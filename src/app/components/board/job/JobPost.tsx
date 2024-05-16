@@ -14,8 +14,6 @@ const JobPost = ({ data }: JobPostProps) => {
   const [isLiked, setIsliked] = useState(false)
   const [likeCnt, setLikeCnt] = useState(0)
 
-  console.log(selectedId, '번 게시물 선택 됨')
-
   return (
     <div
       className="w-[380px] h-[220px] relative bg-white rounded-[10px] cursor-pointer"
@@ -31,7 +29,7 @@ const JobPost = ({ data }: JobPostProps) => {
       <div className="absolute top-[18px] left-[270px] w-[90px] px-5 h-[30px] rounded-[30px] border-2 border-[#486283] text-[#486283] text-sm font-semibold flex items-center justify-center">
         {data.jobCategory}
       </div>
-      <div className="absolute top-[74px] left-[28px] text-xl font-bold">
+      <div className="absolute top-[74px] left-[28px] text-[18px] font-bold">
         {data.title}
       </div>
       <div className="absolute top-[106px] left-[28px] text-base font-normal w-[323px] h-[70px]">

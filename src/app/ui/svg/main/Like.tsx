@@ -11,7 +11,7 @@ const Like = ({ color, size, isLiked }: LikeProps) => {
       width={size}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
-      fill={isLiked ? color  : 'none'}
+      fill={isLiked ? color : 'none'}
       className="pb-0.5"
     >
       <path

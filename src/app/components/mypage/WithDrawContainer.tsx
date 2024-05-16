@@ -46,7 +46,6 @@ const WithDrawContainer = () => {
       }
     } catch (error) {
       console.error('비밀번호 검증 중 오류 발생:', error)
-      
     }
   }
 
@@ -96,7 +95,7 @@ const WithDrawContainer = () => {
         <div className="w-full h-full left-0 top-0 absolute bg-gray-50" />
         <div className="w-full h-[0px] left-[69px] top-[172px] absolute">
           <div className="w-[962px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-        <div className="w-[120px] h-[0px] left-[180px] top-[-1px] absolute border-2 border-gray-800 z-10" />
+          <div className="w-[120px] h-[0px] left-[180px] top-[-1px] absolute border-2 border-gray-800 z-10" />
         </div>
         <div className="w-[280px] h-[30px] left-[90px] top-[131px] absolute justify-start items-center gap-[70px] inline-flex">
           <div className="text-gray-900 text-xl font-bold leading-[30px]">
@@ -109,8 +108,8 @@ const WithDrawContainer = () => {
         <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold leading-[30px]">
           개인 정보 설정
         </div>
-        <div className='text-xl font-semibold absolute left-[340px] top-[400px]'>
-        본인 확인을 위해 비밀번호를 입력해 주시기 바랍니다.
+        <div className="text-xl font-semibold absolute left-[340px] top-[400px]">
+          본인 확인을 위해 비밀번호를 입력해 주시기 바랍니다.
         </div>
         <div className="w-[400px] h-[50px] py-2 left-[350px] top-[480px] inline-flex items-center absolute p-2 ">
           <svg
@@ -119,7 +118,7 @@ const WithDrawContainer = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className='mr-[10px]'
+            className="mr-[10px]"
           >
             <rect
               x="4"
