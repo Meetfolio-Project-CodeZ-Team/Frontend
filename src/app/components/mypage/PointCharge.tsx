@@ -6,6 +6,8 @@ import PointCard from './PointCard'
 import PaymentCard from './PaymentCard'
 import Icons from '../common/Icons'
 import { pointW } from '@/app/ui/IconsPath'
+import { useRecoilState } from 'recoil'
+import { pointNum } from '@/app/recoil/mypage'
 
 interface UserInfoProps {
   email: string
@@ -32,6 +34,17 @@ interface UserPaymentProps {
 const PointCharge = () => {
   const [userInfos, setUserInfos] = useState<UserPoint>()
   const [userPayments, setUserPayments] = useState<UserPaymentProps[]>([])
+  const [pointNumber, setPointNumber] = useRecoilState(pointNum)
+
+  const goToPointPage = () => {
+    setPointNumber(0)
+    window.scrollTo(0, 0)
+  }
+
+  const goToChargePage = () => {
+    setPointNumber(1)
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
     // 서버에서 자소서카드 데이터를 가져오는 함수
@@ -116,11 +129,13 @@ const PointCharge = () => {
           ))}
         </div>
       </div>
-      <div className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px]">
-        <Link href="/mypage/mypoint">사용 내역</Link>
+      <div className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+      onClick={goToPointPage}>
+        <div> 사용 내역</div>
       </div>
-      <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px]">
-        <Link href="/mypage/pointcharge">충전 내역</Link>
+      <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+      onClick={goToChargePage}>
+        <div >충전 내역</div>
       </div>
       <div className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center">
         <div className="w-[200px] left-0 top-[10.93px] absolute h-[50px] items-center justify-center text-white border-2 border-white text-xl font-semibold leading-[30px] rounded-[30px] inline-flex">
