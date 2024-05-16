@@ -11,7 +11,6 @@ export default function JobBoardPage() {
   const [data, setData] = useState<ResponseEmploymentAll | null>(null)
   const [boardData, setBoardData] = useRecoilState(boardDataState)
   const resetId = useResetRecoilState(selectedPostId)
-  console.log(boardData, '가져온 리코일 값')
 
   useEffect(() => {
     resetId()
