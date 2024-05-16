@@ -30,11 +30,15 @@ export const getDashBoard = async (accessToken: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const getUser = async (accessToken: string, jobKeyword?: string) => {
+export const getUser = async (
+  accessToken: string,
+  jobKeyword?: string,
+  page?: string,
+) => {
   jobKeyword
   const url = jobKeyword
     ? `${SERVER_URL}/api/admins/members-management?jobKeyword=${jobKeyword}`
-    : `${SERVER_URL}/api/admins/members-management`
+    : `${SERVER_URL}/api/admins/members-management?page=${page}`
   return await getRequest(url, accessToken)
 }
 

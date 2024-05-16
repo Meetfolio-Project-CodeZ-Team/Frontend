@@ -73,7 +73,11 @@ const PostEmploymentContainer = ({
       <Input
         type={'board'}
         placeholder="게시물의 제목을 입력해주세요"
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={(e) => {
+          if (e.target.value.length <= 25) {
+            setTitle(e.target.value)
+          }
+        }}
         textValue={title}
       />
       <div className="w-full flex flex-row-reverse text-gray-500 mt-1 mb-3 pr-3">

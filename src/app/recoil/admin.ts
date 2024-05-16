@@ -16,3 +16,15 @@ export const boardState = atom<ResponseBoardData>({
     isLast: false,
   },
 })
+
+export const userState = atom<ResponseUser>({
+  key: 'userState',
+  default: {
+    memberList: [],
+    listSize: 0,
+    totalPage: 0,
+    totalElements: 0,
+    isFirst: false,
+    isLast: false,
+  },
+})
