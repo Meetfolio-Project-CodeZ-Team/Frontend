@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import MyCovletCard from '../../mypage/MyCovletCard'
 import MyExpCard from '../../mypage/MyExpCard'
+import UserExpCard from './UserExpCard'
 
 interface OtherUserPortfolioProps {
   username: string
@@ -63,7 +64,7 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
           <div className="w-[1080px] h-full left-[72px]  absolute flex flex-row flex-wrap gap-[55px] overflow-y-auto scrollbar-hide">
             {expCards.length > 0 ? (
               expCards.map((a) => (
-                <MyExpCard key={a.experienceId} {...a} isGuest={true} />
+                <UserExpCard key={a.experienceId} {...a} isGuest={true} />
               ))
             ) : (
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
