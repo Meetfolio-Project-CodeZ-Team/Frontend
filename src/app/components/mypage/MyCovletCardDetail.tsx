@@ -215,9 +215,12 @@ const MyCovletCardDetail = ({
                 문항
               </div>
             </div>
-            <div className="text-black text-[35px] font-semibold leading-[52.50px]">
+            <div className="text-black text-[35px] font-semibold leading-[52.50px] truncate">
               {question}
             </div>
+            <div className='text-white rounded-full bg-black px-2'>
+                  ?
+              </div>
           </div>
           <div className="w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
             <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">

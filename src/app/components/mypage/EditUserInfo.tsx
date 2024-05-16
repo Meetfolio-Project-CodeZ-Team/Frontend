@@ -41,7 +41,7 @@ interface UpdateUserInfoRequest {
   grade: string;
   jobKeyword: string;
   major: string;
-  password?: string; // 이제 `password`는 선택적 속성입니다.
+  password?: string | null; // 이제 `password`는 선택적 속성입니다.
 }
 
 
@@ -92,6 +92,7 @@ const EditUserInfo = () => {
       grade: GRADE_ENUM[grade],
       jobKeyword: JOB_ENUM[clickedKeyword],
       major: major,
+      
     };
   
     // 비밀번호가 입력되었는지 확인하고, 유효한 경우에만 추가
@@ -104,6 +105,9 @@ const EditUserInfo = () => {
         return;
       }
       requestBody.password = password;
+    } else {
+      // 비밀번호 필드가 비어있다면 null을 설정 (API의 요구사항에 따라 선택적)
+      requestBody.password = null;
     }
   
     const requestOptions = {
