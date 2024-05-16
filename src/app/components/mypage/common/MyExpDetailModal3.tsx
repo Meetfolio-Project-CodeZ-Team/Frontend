@@ -172,8 +172,8 @@ const MyExpDetailModal3 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation(); // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
-              handlePrevClick();
+              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              handlePrevClick()
             }}
           >
             <PrevArrow />
@@ -181,8 +181,8 @@ const MyExpDetailModal3 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={(event) => {
-              event.stopPropagation(); // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
-              handleNextClick();
+              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              handleNextClick()
             }}
           >
             <NextArrow />

@@ -1,13 +1,13 @@
 'use client'
 
 import { useModal } from '@/app/hooks/useModal'
+import { pointNum } from '@/app/recoil/mypage'
 import { pointW } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
 import PointCard from './PointCard'
-import { useRecoilState } from 'recoil'
-import { pointNum } from '@/app/recoil/mypage'
 
 interface UserInfoProps {
   email: string
@@ -54,11 +54,8 @@ const MyPointContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result.pointInfo) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result.pointInfo)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     const fetchPointCard = async () => {
@@ -68,12 +65,9 @@ const MyPointContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 포인트 데이터', data.result.pointInfo.pointList) // 타입 에러가 발생하지 않아야 함
 
         setPointCards(data.result.pointInfo.pointList)
-      } catch (error) {
-        console.error(error)
-      }
+      } catch (error) {}
     }
 
     fetchUserInfos()
@@ -125,13 +119,17 @@ const MyPointContainer = () => {
           ))}
         </div>
       </div>
-      <div className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
-      onClick={goToPointPage}>
+      <div
+        className="w-[91px] h-[5px] left-[87px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToPointPage}
+      >
         <div> 사용 내역</div>
       </div>
-      <div className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
-      onClick={goToChargePage}>
-        <div >충전 내역</div>
+      <div
+        className="left-[201px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToChargePage}
+      >
+        <div>충전 내역</div>
       </div>
       <div
         className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center"

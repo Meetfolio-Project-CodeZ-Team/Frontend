@@ -56,7 +56,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             requestConfig,
           )
           const resdata = await res.json()
-          console.log(resdata, '카카오 서버로 요청한 승인정보 응답')
           await fetch(
             `/api/mypage/myCovletDetail?coverLetterId=${Number(coverletterId)}`,
           )
@@ -83,9 +82,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
             req,
           )
           const approveRes = await sendApprove.json()
-        } catch (error) {
-          console.error(error)
-        }
+        } catch (error) {}
       }
       getTid()
     }
@@ -95,7 +92,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     setEnabled(!enabled)
     const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
     setCoverLetterData({ ...coverletterData, shareType: newShareType })
-    console.log(coverletterData, '자소서 데이터')
   }
 
   useEffect(() => {
@@ -140,10 +136,8 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       try {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
-        console.log('Copy text command was ' + msg)
         successCopy()
       } catch (err) {
-        console.error('Unable to copy text: ', err)
         alert('Failed to copy text.')
       }
     }
@@ -151,7 +145,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   const saveCovData = async () => {
     const { ...dataToSend } = coverletterData
-    console.log(coverletterData, isEdit, '로 수정요청')
 
     const urlPath = isEdit
       ? `/api/coverletters/save?id=${id}`
@@ -171,10 +164,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       ...coverletterData,
       coverLetterId: resData.result.coverLetterId,
     })
-    console.log(coverletterData, '자소서 데이터 현황')
-    console.log(resData.result.coverLetterId)
-    console.log(methodType, '현재 메소드 타입')
-    console.log(resData, '포스트 후 응답')
 
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')

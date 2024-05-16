@@ -18,7 +18,6 @@ export interface CoverLetterDataTypes {
 export const covletData = atom<CoverLetterDataTypes>({
   key: 'covletData',
   default: {
-    
     question: '',
     answer: '',
     shareType: 'PRIVATE',
@@ -44,7 +43,7 @@ export const feedbackDataState = atom<FeedbackData>({
     feedback: '',
     recommend: [],
   },
-});
+})
 
 export interface FeedbackInfo {
   correction?: string

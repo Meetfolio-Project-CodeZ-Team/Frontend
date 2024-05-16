@@ -24,7 +24,6 @@ const AddTrainModal = ({
       },
     )
     const resData = await response.json()
-    console.log(resData, '추가 학습 요청 후 응답')
   }
 
   return (
@@ -39,7 +38,7 @@ const AddTrainModal = ({
             <div>{MODEL_MODAL[2]}</div>
             <div className="font-medium">{modalData.modelName}</div>
             <div className="w-[44px] flex items-center justify-center h-6 p2 text-base text-center text-white font-light bg-black rounded-2xl">
-              {modalData.version}
+              v.{modalData.version}
             </div>
           </div>
           <div className="flex gap-x-3 items-center">
