@@ -58,7 +58,7 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
             </div>
             <div className="flex flex-col gap-y-1">
               <div className="">{MODEL_INFO[6]}</div>
-              <div className="font-normal">{data.createdDate}</div>
+              <div className="font-normal">{data.learnedDate}</div>
             </div>
           </div>
         </div>
