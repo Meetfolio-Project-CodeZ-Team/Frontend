@@ -23,3 +23,18 @@ export const userData = atom<UserInfoTypes>({
     jobKeyword: '',
   },
 })
+
+export const portNum = atom<number>({
+  key: 'portNum',
+  default: 0,
+})
+
+export const boardNum = atom<number>({
+  key: 'boardNum',
+  default: 0,
+})
+
+export const pointNum = atom<number>({
+  key: 'pointNum',
+  default: 0,
+})

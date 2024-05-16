@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyLikeCard from './MyLikeCard'
+import { useRecoilState } from 'recoil'
+import { boardNum } from '@/app/recoil/mypage'
 interface BoardCard {
   title?: string
   content?: string
@@ -18,6 +20,22 @@ interface BoardCard {
 
 const MyLike = () => {
   const [boardCards, setBoardCards] = useState<BoardCard[]>([])
+  const [boardNumber, setBoardNumber] = useRecoilState(boardNum)
+
+  const goToBoardPage = () => {
+    setBoardNumber(0)
+    window.scrollTo(0, 0)
+  }
+
+  const goToLikePage = () => {
+    setBoardNumber(1)
+    window.scrollTo(0, 0)
+  }
+
+  const goToCommentPage = () => {
+    setBoardNumber(2)
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
     // 서버에서 게시글 목록 데이터를 가져오는 함수
@@ -48,14 +66,17 @@ const MyLike = () => {
         <div className="w-[130px] h-[0px] left-[95px] top-[-0.5px] absolute border-2 border-gray-800" />
       </div>
       <div className="w-[312px] h-[30px] left-[82px] top-[129px] absolute justify-start items-center gap-[60px] inline-flex">
-        <div className="text-gray-900 text-xl font-bold leading-[30px]">
-          <Link href="/mypage/myboard">내 글</Link>
+      <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToBoardPage}>
+          <div >내 글</div>
         </div>
-        <div className="text-gray-900 text-xl font-bold leading-[30px]">
-          <Link href="/mypage/mylike">좋아요한 글</Link>
+        <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToLikePage}>
+          <div>좋아요한 글</div>
         </div>
-        <div className="text-gray-900 text-xl font-bold leading-[30px]">
-          <Link href="/mypage/mycomment">내 댓글</Link>
+        <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToCommentPage}>
+          <div>내 댓글</div>
         </div>
       </div>
       <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">

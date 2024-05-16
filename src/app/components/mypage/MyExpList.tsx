@@ -4,6 +4,8 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import MyExpCard from './MyExpCard'
 import ExpIcon from '@/app/ui/svg/common/ExpIcon'
+import { useRecoilState } from 'recoil'
+import { portNum } from '@/app/recoil/mypage'
 
 interface ExperienceCard {
   experienceId: number
@@ -17,6 +19,17 @@ interface ExperienceCard {
 
 const MyExpList = () => {
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
+  const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
+
+  const goToPreviousPage = () => {
+    setPortfolioNumber(0)
+    window.scrollTo(0, 0)
+  }
+
+  const goToNextPage = () => {
+    setPortfolioNumber(1)
+    window.scrollTo(0, 0)
+  }
 
   useEffect(() => {
     // 서버에서 경험카드 데이터를 가져오는 함수
@@ -47,11 +60,13 @@ const MyExpList = () => {
       </div>
       <div className="w-[1060px] h-[30px] left-[82px] top-[129px] absolute flex justify-between items-center">
         <div className="flex gap-[60px]">
-          <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/mypage">내 자기소개서</Link>
+          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+          onClick={goToPreviousPage}>
+            <div>내 자기소개서</div>
           </div>
-          <div className="text-gray-900 text-xl font-bold leading-[30px]">
-            <Link href="/mypage/myexperience">내 경험카드</Link>
+          <div className="text-gray-900 text-xl font-bold leading-[30px] cursor-pointer"
+          onClick={goToNextPage}>
+            <div>내 경험카드</div>
           </div>
         </div>
         {expCards.length > 0 && (
