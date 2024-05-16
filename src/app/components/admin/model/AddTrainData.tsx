@@ -6,7 +6,8 @@ import { useState } from 'react'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
 import DropDownModel from './DropDownModel'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface AddTrainDataProps {
   addComplete: () => void
 }
@@ -41,6 +42,7 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
 
   return (
     <div className="flex flex-col w-[1010px] h-[780px] gap-y-8">
+      <ToastContainer />
       <div className="flex gap-x-5">
         <div className="flex flex-col gap-y-1.5">
           <div className="text-xl font-bold pl-2">{ADD_TRAIN_H[0]}</div>
