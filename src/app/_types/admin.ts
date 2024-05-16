@@ -130,7 +130,7 @@ interface modelResultTypes {
   fileName: string
   filePath: string
   status: 'ACTIVE' | 'INACTIVE'
-  createdDate: string
+  learnedDate: string
   activatedDate: string
   accuracy: number
 }

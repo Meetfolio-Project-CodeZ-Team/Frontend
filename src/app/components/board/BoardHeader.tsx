@@ -53,7 +53,9 @@ const BoardHeader = ({ isJob, setIsJob }: BoardHeaderProps) => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/${path}`,
       )
       const resData = await response.json()
-      setBoardData(resData.result.boardListInfo)
+      console.log(resData, '헤더에 의해 가져온 값');
+      
+      setBoardData(resData.result)
     }
     fetchData()
   }, [isJob])

@@ -23,9 +23,9 @@ const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
     <div className="flex flex-col w-[920px] pl-[62px] pr-6 pt-6 relative">
       <BoardHeader isJob={isJob} setIsJob={setIsJob} />
       {isJob ? (
-        <JobBoardContainer boardData={boardData} />
+        <JobBoardContainer />
       ) : (
-        <GroupBoardContainer boardData={boardData} />
+        <GroupBoardContainer />
       )}
 
       <div className="flex w-full flex-row-reverse pt-6 pr-12 absolute top-[880px] right-6 cursor-pointer">

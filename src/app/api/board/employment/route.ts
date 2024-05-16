@@ -6,10 +6,11 @@ export async function GET(request: Request): Promise<NextResponse> {
   let accessToken = getCookie(request, 'accessToken')
   const { searchParams } = new URL(request.url)
   const category = searchParams.get('category') || ''
+  const page = searchParams.get('page') || '0'
   const getData = () =>
     category !== ''
-      ? getEmployment(accessToken, category).then((data) => data)
-      : getEmploymentAll(accessToken).then((data) => data)
+      ? getEmployment(accessToken, category, page).then((data) => data)
+      : getEmploymentAll(accessToken, page).then((data) => data)
 
   const data = await getData()
   console.log(data, '서버에서 받아온 데이터')
