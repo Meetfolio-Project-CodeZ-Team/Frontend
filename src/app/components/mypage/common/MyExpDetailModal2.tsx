@@ -6,6 +6,10 @@ import { useRouter } from 'next/navigation'
 import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import { useState } from 'react'
+import { useModal } from '@/app/hooks/useModal'
+import DeleteModal from '../../admin/common/DeleteModal'
+import { useModal2 } from '@/app/hooks/useModal2'
+import DeleteModal2 from '../../admin/common/DeleteModal2'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -20,6 +24,7 @@ interface ExperienceCardDetail {
   detail: string
   advance: string
   closeModal: () => void
+  
 }
 
 const MyExpDetailModal2 = ({
@@ -35,11 +40,13 @@ const MyExpDetailModal2 = ({
   detail,
   advance,
   closeModal,
-}: ExperienceCardDetail) => {
+  
+}: ExperienceCardDetail & { isGuest?: boolean }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
+  const { isOpen, openmodal, closemodal, handlemodalClick } = useModal2(false)
   const router = useRouter()
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -191,24 +198,35 @@ const MyExpDetailModal2 = ({
         <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
           {detail}
         </div>
-        <div
-          className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer"
-          onClick={onEditClick}
-        >
-          <button className=" text-center text-white text-[20px] font-semibold leading-[37.50px]">
-            수정
-          </button>
-        </div>
-        <div
-          className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600  rounded-[15px] cursor-pointer"
-          onClick={() => deleteExp(experienceId || 0)}
-        >
-          <button
-            className={` text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]`}
-          >
-            삭제
-          </button>
-        </div>
+        
+          <>
+            <div
+              className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer"
+              onClick={onEditClick}
+            >
+              <button className="text-center text-white text-[20px] font-semibold leading-[37.50px]">
+                수정
+              </button>
+            </div>
+            <div
+              className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600 rounded-[15px] cursor-pointer"
+              onClick={openmodal}
+            >
+              <button className="text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]">
+                삭제
+              </button>
+            </div>
+            <div onClick={handlemodalClick}>
+              {isOpen && (
+                <DeleteModal
+                  closeModal={closemodal}
+                  deleteUser={() => deleteExp(experienceId)}
+                  text="정말 삭제하시겠습니까?"
+                />
+              )}
+            </div>
+          </>
+        
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
           <div className="w-[80px] h-4 relative">
             <div className="w-[14px] h-[14px] left-[16px] top-0 absolute bg-[#7AAAE8] rounded-full" />
