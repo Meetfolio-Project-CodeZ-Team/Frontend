@@ -2,13 +2,14 @@
 
 import Header from '@/app/components/layout/Header'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export default function ErrorPage({
   error,
 }: {
   error: Error & { digest?: string }
 }) {
+  const [userInfo, setUser] = useState<memberInfo | null>(null)
   const router = useRouter()
   // useEffect(() => {
   //   document.cookie =
@@ -17,9 +18,21 @@ export default function ErrorPage({
   //     'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
   //   router.push('/login')
   // }, [error])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main/user`,
+      )
+      const resData = await response.json()
+      setUser(resData.result)
+    }
+    fetchData()
+  }, [])
+
   return (
     <section className="flex flex-col items-center min-h-screen">
-      <Header />
+      <Header nickname={userInfo?.memberName} />
       <div className="flex flex-col items-center justify-center w-[1440px] h-screen gap-y-10">
         <div className="text-slate-600 text-5xl font-bold">
           SomeThing is Wrong....

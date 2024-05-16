@@ -1,15 +1,15 @@
+import { boardDataState } from '@/app/recoil/board'
+import { useRecoilState } from 'recoil'
 import JobPost from '../job/JobPost'
 
-interface JobBoardContainerProps {
-  boardData: boardListInfo
-}
+const JobBoardContainer = () => {
+  const [boardData, setBoardData] = useRecoilState(boardDataState)
 
-const JobBoardContainer = ({ boardData }: JobBoardContainerProps) => {
   return (
     <div>
-      {boardData.boardInfo.length > 0 ? (
+      {boardData ? (
         <div className="flex w-[783px] flex-wrap gap-x-[23px] gap-y-[30px]">
-          {boardData.boardInfo.map((post, i) => (
+          {boardData.boardListInfo.boardInfo.map((post, i) => (
             <JobPost data={post} key={i} />
           ))}
         </div>

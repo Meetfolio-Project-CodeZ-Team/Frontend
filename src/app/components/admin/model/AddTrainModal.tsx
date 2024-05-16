@@ -44,7 +44,7 @@ const AddTrainModal = ({
           </div>
           <div className="flex gap-x-3 items-center">
             <div>{MODEL_MODAL[3]}</div>
-            <div className="font-medium">{modalData.createdDate}</div>
+            <div className="font-medium">{modalData.learnedDate}</div>
           </div>
           <div className="flex gap-x-3 items-center">
             <div>{MODEL_MODAL[4]}</div>
@@ -52,7 +52,7 @@ const AddTrainModal = ({
           </div>
           <div className="flex gap-x-3 items-center">
             <div>{MODEL_MODAL[5]}</div>
-            <div className="font-medium">{modalData.status}</div>
+            <div className="font-medium">{modalData.accuracy}%</div>
           </div>
         </div>
         <div className="flex w-[360px] gap-x-[60px] mt-[200px]">

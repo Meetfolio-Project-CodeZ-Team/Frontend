@@ -16,17 +16,6 @@ const JobPost = ({ data }: JobPostProps) => {
 
   console.log(selectedId, '번 게시물 선택 됨')
 
-  const like = async (id: number) => {
-    const res = await fetch(`/api/board/like?id=${id}`, {
-      method: 'POST',
-    })
-    const resData = await res.json()
-    setIsliked(true)
-    setLikeCnt(resData.result.likeCount)
-
-    console.log(resData, '조아요 응답')
-  }
-
   return (
     <div
       className="w-[380px] h-[220px] relative bg-white rounded-[10px] cursor-pointer"
@@ -57,7 +46,7 @@ const JobPost = ({ data }: JobPostProps) => {
       </div>
       <div className="absolute top-[174px] right-[26px] flex gap-x-2 text-base font-semibold">
         <div className="flex items-center gap-x-1">
-          <div onClick={() => like(data.boardId)}>
+          <div>
             <Like
               color={'black'}
               size={24}
