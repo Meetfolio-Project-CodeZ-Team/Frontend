@@ -14,7 +14,6 @@ const JobPost = ({ data }: JobPostProps) => {
   const [isLiked, setIsliked] = useState(false)
   const [likeCnt, setLikeCnt] = useState(0)
 
-
   return (
     <div
       className="w-[380px] h-[220px] relative bg-white rounded-[10px] cursor-pointer"

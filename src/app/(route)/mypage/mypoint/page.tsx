@@ -63,8 +63,7 @@ export default function MyPointPage() {
           )
           const approveRes = await sendApprove.json()
           router.push('/mypage/mypoint')
-        } catch (error) {
-        }
+        } catch (error) {}
       }
       getTid()
     }

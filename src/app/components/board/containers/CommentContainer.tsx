@@ -17,8 +17,8 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [likeCnt, setLikeCnt] = useState(0)
 
   useEffect(() => {
-    setLikeStatus(isLiked);
-  }, [isLiked, postId]);
+    setLikeStatus(isLiked)
+  }, [isLiked, postId])
 
   const mookComment = {
     commentId: 1,

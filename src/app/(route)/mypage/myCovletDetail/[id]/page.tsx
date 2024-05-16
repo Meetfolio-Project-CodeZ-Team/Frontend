@@ -29,18 +29,16 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
     }
     fetchData()
   }, [])
-  
 
   useEffect(() => {
-    console.log(`Fetching details for ID: ${params.id}`);
+    console.log(`Fetching details for ID: ${params.id}`)
     if (params.id && typeof params.id === 'string') {
       fetch(`/api/mypage/myCovletDetail?coverLetterId=${Number(params.id)}`)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           if (data && data.result && data.result.coverLetterInfo) {
             setCoverLetterData({
               ...data.result.coverLetterInfo,
-              
             })
           }
           if (data && data.result && data.result.feedbackInfo) {
@@ -48,11 +46,11 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           }
           console.log(data)
         })
-        .catch(error => {
-          console.error('Failed to fetch cover letter details:', error);
-        });
+        .catch((error) => {
+          console.error('Failed to fetch cover letter details:', error)
+        })
     }
-  }, [params.id]);
+  }, [params.id])
 
   return (
     <section className="flex flex-col min-h-screen relative">
@@ -64,7 +62,6 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           nickname={userInfo?.memberName}
         />
         <div className="flex-grow">
-          
           <MyCovletCardDetail
             coverLetterId={Number(params.id)}
             question={coverletterData.question}
@@ -79,7 +76,6 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             recommendQuestion2={feedBackData?.recommendQuestion2}
             recommendQuestion3={feedBackData?.recommendQuestion3}
           />
-          
         </div>
       </div>
       <Footer />

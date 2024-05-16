@@ -57,8 +57,7 @@ const PointCharge = () => {
         }
         const data = await response.json()
         setUserInfos(data.result.paymentInfo)
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     const fetchUserPayment = async () => {
@@ -69,8 +68,7 @@ const PointCharge = () => {
         }
         const data = await response.json()
         setUserPayments(data.result.paymentInfo.paymentList)
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     fetchUserInfos()

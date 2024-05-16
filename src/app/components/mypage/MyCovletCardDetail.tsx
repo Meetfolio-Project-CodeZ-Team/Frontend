@@ -41,7 +41,7 @@ const MyCovletCardDetail = ({
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-  
+
   const handleCopyAnswer = () => {
     const textArea = document.createElement('textarea')
     textArea.value = answer
@@ -102,14 +102,10 @@ const MyCovletCardDetail = ({
       console.error('Network or other error:', error)
     }
   }
-  const hasFeedback =
-    
-    keyword1 ||
-    keyword2 ||
-    jobKeyword
+  const hasFeedback = keyword1 || keyword2 || jobKeyword
 
-    console.log(coverletterData, '자소서 상세정보 조회')
-    console.log(feedbackData)
+  console.log(coverletterData, '자소서 상세정보 조회')
+  console.log(feedbackData)
   return (
     <div>
       {hasFeedback ? (
@@ -201,13 +197,13 @@ const MyCovletCardDetail = ({
             </div>
           )}
           <div onClick={handleModalClick}>
-          {isOpen && (
-                    <DeleteModal
-                      closeModal={closeModal}
-                      deleteUser={() => deleteCov(coverLetterId || 0)}
-                      text="정말 삭제하시겠습니까?"
-                    />
-                  )}
+            {isOpen && (
+              <DeleteModal
+                closeModal={closeModal}
+                deleteUser={() => deleteCov(coverLetterId || 0)}
+                text="정말 삭제하시겠습니까?"
+              />
+            )}
           </div>
           <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
             <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
@@ -218,9 +214,7 @@ const MyCovletCardDetail = ({
             <div className="text-black text-[35px] font-semibold leading-[52.50px] truncate">
               {question}
             </div>
-            <div className='text-white rounded-full bg-black px-2'>
-                  ?
-              </div>
+            <div className="text-white rounded-full bg-black px-2">?</div>
           </div>
           <div className="w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex">
             <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">

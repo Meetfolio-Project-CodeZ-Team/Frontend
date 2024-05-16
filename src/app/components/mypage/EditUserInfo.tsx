@@ -19,7 +19,12 @@ import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 import Keyword from '../signup/onboard/Keyword'
 import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
-import { failVerifyPw, pwAlert, successVerifyPw, updateUserInfo } from '@/app/utils/toast'
+import {
+  failVerifyPw,
+  pwAlert,
+  successVerifyPw,
+  updateUserInfo,
+} from '@/app/utils/toast'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
@@ -38,12 +43,11 @@ interface UserInfo {
 }
 
 interface UpdateUserInfoRequest {
-  grade: string;
-  jobKeyword: string;
-  major: string;
-  password?: string | null; // 이제 `password`는 선택적 속성입니다.
+  grade: string
+  jobKeyword: string
+  major: string
+  password?: string | null // 이제 `password`는 선택적 속성입니다.
 }
-
 
 const EditUserInfo = () => {
   const [userInfoData, setUserInfoData] = useState(userData)
@@ -70,7 +74,6 @@ const EditUserInfo = () => {
       }
     } catch (error) {
       console.error('비밀번호 검증 중 오류 발생:', error)
-      
     }
   }
 
@@ -81,7 +84,7 @@ const EditUserInfo = () => {
   const [grade, setGrade] = useState<GradeEnum>('1학년')
 
   const [major, setMajor] = useState('')
-  const isEntered = pw!=='' && major !== ''
+  const isEntered = pw !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
   const [isOpen, setIsOpen] = useState(false)
@@ -92,43 +95,51 @@ const EditUserInfo = () => {
       grade: GRADE_ENUM[grade],
       jobKeyword: JOB_ENUM[clickedKeyword],
       major: major,
-      
-    };
-  
+    }
+
     // 비밀번호가 입력되었는지 확인하고, 유효한 경우에만 추가
     if (password.length > 0) {
-      if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(password)) {
-        pwAlert();
-        return;
+      if (
+        !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
+          password,
+        )
+      ) {
+        pwAlert()
+        return
       } else if (password !== checkPW) {
-        pwAlert();
-        return;
+        pwAlert()
+        return
       }
-      requestBody.password = password;
+      requestBody.password = password
     } else {
       // 비밀번호 필드가 비어있다면 null을 설정 (API의 요구사항에 따라 선택적)
-      requestBody.password = null;
+      requestBody.password = null
     }
-  
+
     const requestOptions = {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(requestBody),
-    };
-  
+    }
+
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`, requestOptions);
-      const responseData = await response.json();
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/update`,
+        requestOptions,
+      )
+      const responseData = await response.json()
       if (!response.ok) {
-        throw new Error(responseData.message || '서버 오류로 정보 수정에 실패했습니다.');
+        throw new Error(
+          responseData.message || '서버 오류로 정보 수정에 실패했습니다.',
+        )
       }
-      console.log('정보가 성공적으로 수정되었습니다.');
-      console.log(requestBody, '수정한 회원정보 데이터');
-      updateUserInfo();
+      console.log('정보가 성공적으로 수정되었습니다.')
+      console.log(requestBody, '수정한 회원정보 데이터')
+      updateUserInfo()
     } catch (error) {
-      console.error('정보 수정 중 오류가 발생했습니다:', error);
+      console.error('정보 수정 중 오류가 발생했습니다:', error)
       // 사용자에게 오류 메시지 표시
       // 예: toast.error(error.message || '정보 수정 중 오류가 발생했습니다.');
     }
@@ -151,7 +162,6 @@ const EditUserInfo = () => {
         setMajor(data.result.major)
         setGrade(data.result.grade)
         setClickedKeyword(data.result.jobKeyword)
-        
       } catch (error) {
         console.error(error)
       }
@@ -193,8 +203,8 @@ const EditUserInfo = () => {
         <div className="w-[214px] h-[18px] left-[66px] top-[64px] absolute text-gray-900 text-[28px] font-bold leading-[30px]">
           개인 정보 설정
         </div>
-        <div className='text-xl font-semibold absolute left-[340px] top-[400px]'>
-        본인 확인을 위해 비밀번호를 입력해 주시기 바랍니다.
+        <div className="text-xl font-semibold absolute left-[340px] top-[400px]">
+          본인 확인을 위해 비밀번호를 입력해 주시기 바랍니다.
         </div>
         <div className="w-[400px] h-[50px] py-2 left-[350px] top-[480px] inline-flex items-center absolute p-2 ">
           <svg
@@ -203,7 +213,7 @@ const EditUserInfo = () => {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className='mr-[10px]'
+            className="mr-[10px]"
           >
             <rect
               x="4"
@@ -353,11 +363,14 @@ const EditUserInfo = () => {
         </div>
       </div>
       <div className="w-[700px] h-[80px] left-[88px] top-[750px] absolute">
-      <button className='w-[680px] text-white bg-black py-3 rounded-[20px] text-lg' onClick={updateUser}>
-        수정하기
-      </button>
+        <button
+          className="w-[680px] text-white bg-black py-3 rounded-[20px] text-lg"
+          onClick={updateUser}
+        >
+          수정하기
+        </button>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   )
 }

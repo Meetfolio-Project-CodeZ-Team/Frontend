@@ -10,8 +10,6 @@ const ExpKeywordContainer = () => {
   const isEntered =
     experienceData.jobKeyword !== '' && experienceData.expStacks.length > 0
 
-    
-
   console.log(
     experienceData,
     '리코일 데이터어',
@@ -34,22 +32,26 @@ const ExpKeywordContainer = () => {
     setExperienceData({ ...experienceData, expStacks: newStrings })
   }
 
-  const handleAddKeyword = (event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLInputElement>) => {
-    event.preventDefault();
+  const handleAddKeyword = (
+    event:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLInputElement>,
+  ) => {
+    event.preventDefault()
     if (experienceData.expStacks.length < 3) {
       setExperienceData({
         ...experienceData,
         expStacks: [...experienceData.expStacks, expStack],
-      });
-      setExpStack('');
+      })
+      setExpStack('')
     }
-  };
+  }
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleAddKeyword(event); // 여기서 handleAddKeyword를 호출
+      handleAddKeyword(event) // 여기서 handleAddKeyword를 호출
     }
-  };
+  }
 
   // const handleRemoveKeyword = (index: number) => {
   //   const newExpStack = [...expStack]
@@ -210,10 +212,14 @@ const ExpKeywordContainer = () => {
             </div>
           </div>
           {expStacks.length === 0 && (
-          <div className="w-[600px] h-[80px] left-[300px] top-[105px] absolute">
-            <img src="/Images/expstack.png" alt="Placeholder" className="w-[100%] h-auto"/>
-          </div>
-        )}
+            <div className="w-[600px] h-[80px] left-[300px] top-[105px] absolute">
+              <img
+                src="/Images/expstack.png"
+                alt="Placeholder"
+                className="w-[100%] h-auto"
+              />
+            </div>
+          )}
           <div className="w-[863px] h-[97px] left-[168px] top-[90px] absolute text-center justify-center items-center inline-flex gap-[100px]">
             {expStacks &&
               expStacks.map((stack, i) => (

@@ -26,8 +26,7 @@ const UserContainer = ({ userInfoData }: UserContainerProps) => {
       }
       const userData = await response.json()
       setData(userData.result)
-    } catch (error) {
-    }
+    } catch (error) {}
   }
   return (
     <div className="flex flex-col gap-y-6 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
