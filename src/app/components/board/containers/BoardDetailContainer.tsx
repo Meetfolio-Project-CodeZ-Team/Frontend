@@ -13,11 +13,11 @@ import DeleteModal from '../../admin/common/DeleteModal'
 import Button from '../../common/Button'
 import CommentContainer from './CommentContainer'
 
-interface BoardDetailContainer {
+interface BoardDetailContainerProps {
   nickname: string
 }
 
-const BoardDetailContainer = ({ nickname }: BoardDetailContainer) => {
+const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)

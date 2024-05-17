@@ -1,8 +1,10 @@
 'use client'
 
+import { selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import Comment from '../Comment'
 
@@ -15,18 +17,24 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [likeCnt, setLikeCnt] = useState(0)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  const [comment, setComment] = useState<CommentDataTypes[]>([])
+  console.log(selectedId, '선택된 id')
 
   useEffect(() => {
     setLikeStatus(isLiked)
   }, [isLiked, postId])
 
-  const mookComment = {
-    commentId: 1,
-    content: '우와 정말 대단한걸요? 장난 없네용 히히',
-    memberName: 'yng1404',
-    profile: 'string',
-    sinceCreation: 2022,
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `/api/board/comment?id=${postId}`,
+      )
+      const resData = await response.json()
+      setComment(resData.result.commentItems)
+    }
+    fetchData()
+  }, [postId])
 
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
@@ -69,16 +77,9 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
             </div>
           </div>
           <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
-            <Comment data={mookComment} />
+            {comment.map((data) => (
+              <Comment data={data} />
+            ))}
           </div>
         </div>
       ) : (

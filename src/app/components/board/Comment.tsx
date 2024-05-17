@@ -1,5 +1,5 @@
 interface CommentProps {
-  data: CommentTypes
+  data: CommentDataTypes
 }
 
 const Comment = ({ data }: CommentProps) => {
