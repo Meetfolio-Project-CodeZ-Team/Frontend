@@ -18,23 +18,9 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [likeCnt, setLikeCnt] = useState(0)
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  const [content, setContent] = useState('')
   const [comment, setComment] = useState<CommentDataTypes[]>([])
   console.log(selectedId, '선택된 id')
-
-  useEffect(() => {
-    setLikeStatus(isLiked)
-  }, [isLiked, postId])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `/api/board/comment?id=${postId}`,
-      )
-      const resData = await response.json()
-      setComment(resData.result.commentItems)
-    }
-    fetchData()
-  }, [postId])
 
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
@@ -44,6 +30,37 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
     setLikeStatus(resData.result.status === 'ACTIVE')
     setLikeCnt(resData.result.likeCount)
   }
+
+  const LeaveComment = async () => {
+    const reqBody = {
+      content: content,
+      parentId: null,
+    }
+
+    const res = await fetch(`/api/board/comment/leave?id=${postId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reqBody),
+    })
+    const resData = await res.json()
+    console.log(resData, '댓글응 답')
+  }
+
+  useEffect(() => {
+    setLikeStatus(isLiked)
+  }, [isLiked, postId])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(`/api/board/comment?id=${postId}`)
+      const resData = await response.json()
+      setComment(resData.result.commentItems)
+      console.log('가져온 댓글 데이터', resData.result)
+    }
+    fetchData()
+  }, [postId])
 
   return (
     <div className="flex w-full h-full">
@@ -63,6 +80,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
               <textarea
                 className="text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none"
                 placeholder="댓글을 입력해보세요..."
+                onChange={(e) => setContent(e.target.value)}
               ></textarea>
             </div>
             <div className="absolute top-[97px] right-[18px] cursor-pointer">
@@ -70,15 +88,13 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
                 buttonText={'입력'}
                 type={'addBoardBtn'}
                 isDisabled={false}
-                onClickHandler={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
+                onClickHandler={() => LeaveComment()}
               />
             </div>
           </div>
           <div className="absolute top-[280px] left-8 flex flex-col gap-y-8 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
-            {comment.map((data) => (
-              <Comment data={data} />
+            {comment.map((data, i) => (
+              <Comment data={data} key={i} />
             ))}
           </div>
         </div>
