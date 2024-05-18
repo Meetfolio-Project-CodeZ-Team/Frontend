@@ -151,3 +151,8 @@ export const searchUser = async (accessToken: string, keyword?: string) => {
   const url = `${SERVER_URL}/api/admins/members-management/search?keyword=${keyword}`
   return await getRequest(url, accessToken)
 }
+
+export const getComments = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/board-comments/${id}?page=0`
+  return await getRequest(url, accessToken)
+}

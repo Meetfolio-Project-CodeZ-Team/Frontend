@@ -61,3 +61,12 @@ interface PatchBody {
   peopleNumber: string
   jobKeyword: string
 }
+
+interface CommentDataTypes {
+  commentId: number
+  content: string
+  memberName: string
+  profile: string
+  sinceCreation: number
+  childComments: []
+}

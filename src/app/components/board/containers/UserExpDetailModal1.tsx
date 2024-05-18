@@ -23,7 +23,6 @@ interface ExperienceCardDetail {
   detail: string
   advance: string
   closeModal: () => void
-  
 }
 
 const UserExpDetailModal1 = ({
@@ -39,8 +38,7 @@ const UserExpDetailModal1 = ({
   detail,
   advance,
   closeModal,
-  
-}: ExperienceCardDetail ) => {
+}: ExperienceCardDetail) => {
   console.log(experienceId, 'id 수정 삭제에서 가져오기')
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
