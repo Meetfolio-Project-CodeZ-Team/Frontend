@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   const id = searchParams.get('id') || ''
   const content = await request.json()
   try {
-    const data = await postComment(accessToken, content,id)
+    const data = await postComment(accessToken, content, id)
     return NextResponse.json(data)
   } catch (error) {
     throw new Error('Error submitting recruiter data')

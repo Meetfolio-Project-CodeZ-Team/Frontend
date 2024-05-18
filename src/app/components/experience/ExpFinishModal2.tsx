@@ -79,7 +79,7 @@ const ExpFinishModal2 = () => {
       expStacks: [],
     })
     setPortfolioNumber(1)
-    router.push('/mypage')  // '/main'으로 경로 이동
+    router.push('/mypage') // '/main'으로 경로 이동
   }
 
   const saveExpData = async () => {

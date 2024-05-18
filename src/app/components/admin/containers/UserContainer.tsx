@@ -6,8 +6,6 @@ import SearchInput from '../board/SearchInput'
 import DropDownU from '../common/DropDownU'
 import UserBoard from '../user/UserBoard'
 
-
-
 const UserContainer = () => {
   const [userData, setUserData] = useRecoilState(userState)
 

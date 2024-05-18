@@ -121,5 +121,5 @@ export {
   failVerifyPw,
   successVerifyPw,
   trainData,
-  trainStop
+  trainStop,
 }
