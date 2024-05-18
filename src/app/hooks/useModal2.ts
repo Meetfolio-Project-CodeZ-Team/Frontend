@@ -3,9 +3,9 @@ import { useState } from 'react'
 export const useModal2 = (initialState: boolean) => {
   const [isOpen, setIsOpen] = useState(initialState)
 
-  const openmodal = (event: { stopPropagation: () => void; }) => {
-    event.stopPropagation();
-    setIsOpen(true);
+  const openmodal = (event: { stopPropagation: () => void }) => {
+    event.stopPropagation()
+    setIsOpen(true)
   }
 
   const closemodal = () => {

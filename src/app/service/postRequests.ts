@@ -188,3 +188,12 @@ export const postLike = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/board-likes/${id}`
   return await postRequest(url, null, accessToken)
 }
+
+export const postComment = async (
+  accessToken: string,
+  data: any,
+  id: string,
+) => {
+  const url = `${SERVER_URL}/api/board-comments/${id}`
+  return await postRequest(url, data, accessToken)
+}
