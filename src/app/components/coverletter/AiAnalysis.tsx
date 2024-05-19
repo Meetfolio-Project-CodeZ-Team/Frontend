@@ -1,6 +1,6 @@
 import { successCopy } from '@/app/utils/toast'
 
-const CovletAiFeed = () => {
+const AiAnalysis = () => {
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
@@ -121,4 +121,4 @@ const CovletAiFeed = () => {
   )
 }
 
-export default CovletAiFeed
+export default AiAnalysis
