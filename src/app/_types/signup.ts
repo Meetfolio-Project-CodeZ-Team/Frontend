@@ -29,3 +29,17 @@ type collegeType =
   | 'IT융합대학'
   | '예술체육대학'
   | '반도체대학'
+
+type profileImage =
+  | 'BACKEND'
+  | 'WEB'
+  | 'APP'
+  | 'DESIGN'
+  | 'AI'
+  | 'TOOL'
+  | 'MAN'
+  | 'WOMAN'
+  | 'MOUSE'
+  | 'KEYBOARD'
+  | 'FIRE'
+  | 'SPARKLE'
