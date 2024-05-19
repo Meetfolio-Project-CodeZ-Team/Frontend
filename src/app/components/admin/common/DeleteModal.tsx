@@ -7,7 +7,9 @@ interface DeleteModalProps {
 const DeleteModal = ({ closeModal, deleteUser, text }: DeleteModalProps) => {
   const handleDelete = () => {
     if (deleteUser) {
+      console.log('삭제 완료')
       deleteUser()
+      closeModal()
     }
   }
 

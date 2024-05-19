@@ -32,6 +32,8 @@ export const BUTTON_STYLE = {
     `w-[150px] h-[66px] text-2xl font-semibold rounded-[20px] ${className} bg-[#DEE5ED] text-black`,
   modelInfo: (className: string) =>
     `w-[207px] h-[66px] text-2xl font-semibold rounded-[20px] ${className}`,
+  cancelEditBtn: (className: string) =>
+    `w-[80px] h-[40px] text-base py-1.5 text-[#486283] font-semibold bg-[#white] rounded-[10px] ${className} border-2 border-[#486283]`,
 } as const
 
 export const INPUT_STYLE = {
