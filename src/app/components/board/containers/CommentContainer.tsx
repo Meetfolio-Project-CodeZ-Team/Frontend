@@ -45,10 +45,11 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
       body: JSON.stringify(reqBody),
     })
     const resData = await res.json()
-    console.log(resData, '댓글응 답')
+    console.log(resData, '댓글응답')
     const response = await fetch(`/api/board/comment?id=${postId}`)
     const getRes = await response.json()
     setComment(getRes.result.commentItems)
+    setContent('')
   }
 
   useEffect(() => {
@@ -60,6 +61,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
       const response = await fetch(`/api/board/comment?id=${postId}`)
       const resData = await response.json()
       setComment(resData.result.commentItems)
+      setIsClicked(false)
       console.log('가져온 댓글 데이터', resData.result)
     }
     fetchData()
@@ -84,11 +86,12 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
                 className="text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none"
                 placeholder="댓글을 입력해보세요..."
                 onChange={(e) => setContent(e.target.value)}
+                value={content}
               ></textarea>
             </div>
             <div className="absolute top-[97px] right-[18px] cursor-pointer">
               <Button
-                buttonText={'입력'}
+                buttonText={'작성'}
                 type={'addBoardBtn'}
                 isDisabled={false}
                 onClickHandler={() => LeaveComment()}
