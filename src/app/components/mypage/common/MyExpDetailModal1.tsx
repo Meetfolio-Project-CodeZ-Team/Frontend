@@ -23,7 +23,6 @@ interface ExperienceCardDetail {
   detail: string
   advance: string
   closeModal: () => void
-  
 }
 
 const MyExpDetailModal1 = ({
@@ -39,8 +38,7 @@ const MyExpDetailModal1 = ({
   detail,
   advance,
   closeModal,
-  
-}: ExperienceCardDetail ) => {
+}: ExperienceCardDetail) => {
   console.log(experienceId, 'id 수정 삭제에서 가져오기')
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
@@ -197,35 +195,34 @@ const MyExpDetailModal1 = ({
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
           {title}
         </div>
-        
-          <>
-            <div
-              className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer"
-              onClick={onEditClick}
-            >
-              <button className="text-center text-white text-[20px] font-semibold leading-[37.50px]">
-                수정
-              </button>
-            </div>
-            <div
-              className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600 rounded-[15px] cursor-pointer"
-              onClick={openmodal}
-            >
-              <button className="text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]">
-                삭제
-              </button>
-            </div>
-            <div onClick={handlemodalClick}>
-              {isOpen && (
-                <DeleteModal
-                  closeModal={closemodal}
-                  deleteUser={() => deleteExp(experienceId)}
-                  text="정말 삭제하시겠습니까?"
-                />
-              )}
-            </div>
-          </>
-        
+
+        <>
+          <div
+            className="px-8  left-[130px] top-[595px] absolute border-[2px] border-blue-400 bg-blue-400 rounded-[15px] cursor-pointer"
+            onClick={onEditClick}
+          >
+            <button className="text-center text-white text-[20px] font-semibold leading-[37.50px]">
+              수정
+            </button>
+          </div>
+          <div
+            className="px-8  left-[265px] top-[595px] absolute border-[2px] border-gray-600 rounded-[15px] cursor-pointer"
+            onClick={openmodal}
+          >
+            <button className="text-center text-slate-600 text-[20px] font-semibold leading-[37.50px]">
+              삭제
+            </button>
+          </div>
+          <div onClick={handlemodalClick}>
+            {isOpen && (
+              <DeleteModal
+                closeModal={closemodal}
+                deleteUser={() => deleteExp(experienceId)}
+                text="정말 삭제하시겠습니까?"
+              />
+            )}
+          </div>
+        </>
 
         <div className="left-[30px] top-[400px] absolute text-black text-lg font-semibold leading-[27px]">
           경험 동기

@@ -1,24 +1,14 @@
-export const formatUploadTime = (uploadTime: string): string => {
-  const now = new Date()
-  const uploadedDate = new Date(uploadTime)
+export const timeCalculate = (minutes: number) => {
+  const MINUTES_IN_HOUR = 60
+  const MINUTES_IN_DAY = 1440
 
-  const koreanTimeOffset = 9 * 60 * 60 * 1000
-  const utcUploadedDate = new Date(uploadedDate.getTime() + koreanTimeOffset)
-
-  const timeDifference = now.getTime() - utcUploadedDate.getTime()
-  const hoursDifference = Math.floor(timeDifference / (1000 * 60 * 60))
-
-  if (hoursDifference < 24) {
-    if (hoursDifference === 0) {
-      const minutesDifference = Math.floor(timeDifference / (1000 * 60))
-      return `약 ${minutesDifference}분 전 업로드`
-    } else {
-      return `약 ${hoursDifference}시간 전 업로드`
-    }
+  if (minutes < MINUTES_IN_HOUR) {
+    return `${minutes}분 전`
+  } else if (minutes < MINUTES_IN_DAY) {
+    const hours = Math.floor(minutes / MINUTES_IN_HOUR)
+    return `${hours}시간 전`
   } else {
-    const year = utcUploadedDate.getFullYear()
-    const month = String(utcUploadedDate.getMonth() + 1)
-    const day = utcUploadedDate.getDate()
-    return `${year}.${month}.${day}`
+    const days = Math.floor(minutes / MINUTES_IN_DAY)
+    return `${days}일 전`
   }
 }

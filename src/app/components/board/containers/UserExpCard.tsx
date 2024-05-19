@@ -45,11 +45,10 @@ const UserExpCard = ({
   isGuest,
 }: MyExpCardProps) => {
   const stackArr = stack.split(',')
-  
+
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
-  
 
   const fetchExpCards = async () => {
     try {

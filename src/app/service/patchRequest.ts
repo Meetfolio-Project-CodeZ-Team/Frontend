@@ -38,3 +38,13 @@ export const activeModel = async (accessToken: string, id: string) => {
 
   return await patchRequest(url, null, accessToken)
 }
+
+export const updateComment = async (
+  accessToken: string,
+  content: any,
+  id: string,
+) => {
+  const url = `${SERVER_URL}/api/board-comments/${id}`
+
+  return await patchRequest(url, content, accessToken)
+}

@@ -24,7 +24,6 @@ interface ExperienceCardDetail {
   detail: string
   advance: string
   closeModal: () => void
-  
 }
 
 const UserExpDetailModal3 = ({
@@ -40,7 +39,6 @@ const UserExpDetailModal3 = ({
   detail,
   advance,
   closeModal,
-  
 }: ExperienceCardDetail & { isGuest?: boolean }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
@@ -206,7 +204,7 @@ const UserExpDetailModal3 = ({
             닫기
           </div>
         </div>
-      
+
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
           <div className="w-[80px] h-4 relative">
             <div className="w-[14px] h-[14px] left-[16px] top-0 absolute bg-[#7AAAE8] rounded-full" />
