@@ -52,3 +52,8 @@ export const deleteModel = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
   return await deleteRequest(url, accessToken)
 }
+
+export const deleteComment = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/board-comments/${id}`
+  return await deleteRequest(url, accessToken)
+}
