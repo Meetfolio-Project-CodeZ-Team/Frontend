@@ -15,6 +15,7 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
+    console.log(response, url, '조회하기')
 
     return response.json()
   } catch (error) {
@@ -196,4 +197,10 @@ export const postComment = async (
 ) => {
   const url = `${SERVER_URL}/api/board-comments/${id}`
   return await postRequest(url, data, accessToken)
+}
+
+export const activeModel = async (accessToken: string, id: string) => {
+  console.log(G_SERVER_URL, ' 서버주소')
+  const url = `${G_SERVER_URL}/api/admins/model-management/version/${id}`
+  return await postRequest(url, null, accessToken)
 }

@@ -44,7 +44,7 @@ const OnBoardContainer = () => {
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
-console.log('현재 이모지 상태', PROFILE_EMOJI[profile]);
+  console.log('현재 이모지 상태', PROFILE_EMOJI[profile])
 
   const signUp = async () => {
     if (

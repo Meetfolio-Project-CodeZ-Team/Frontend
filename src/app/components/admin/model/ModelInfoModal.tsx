@@ -1,6 +1,7 @@
 'use client'
 
 import { MODEL_INFO } from '@/app/constants/admin'
+import { changeVersion } from '@/app/utils/toast'
 import Button from '../../common/Button'
 
 interface ModelInfoModalProps {
@@ -12,7 +13,7 @@ interface ModelInfoModalProps {
 const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
   const activateModel = async () => {
     const requestOpt = {
-      method: 'PATCH',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,6 +23,8 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
       requestOpt,
     )
     const resData = await res.json()
+    changeVersion()
+    closeModal()
   }
 
   return (
