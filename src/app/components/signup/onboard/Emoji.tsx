@@ -6,8 +6,6 @@ interface EmojiProps {
 }
 
 const Emoji = ({ emojiIndex, clickedEmoji }: EmojiProps) => {
-    console.log(emojiIndex, clickedEmoji, '이모지 번호와 선택된 이모지');
-    
   const borderStyle =
     emojiIndex == clickedEmoji
       ? 'border-4 border-[#0A7AFF]'

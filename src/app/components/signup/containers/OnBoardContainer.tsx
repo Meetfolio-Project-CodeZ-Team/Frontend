@@ -9,7 +9,11 @@ import {
   JOBKEYWORD,
   SIGNUP,
 } from '@/app/constants/auth'
-import { PROFILE_EMOJI_PT1, PROFILE_EMOJI_PT2 } from '@/app/constants/signup'
+import {
+  PROFILE_EMOJI,
+  PROFILE_EMOJI_PT1,
+  PROFILE_EMOJI_PT2,
+} from '@/app/constants/signup'
 import { emailState } from '@/app/recoil/signUp'
 import { pwAlert } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
@@ -40,6 +44,7 @@ const OnBoardContainer = () => {
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
+console.log('현재 이모지 상태', PROFILE_EMOJI[profile]);
 
   const signUp = async () => {
     if (
@@ -53,6 +58,7 @@ const OnBoardContainer = () => {
         grade: GRADE_ENUM[grade],
         jobKeyword: JOB_ENUM[clickedKeyword],
         major: major,
+        profile: PROFILE_EMOJI[profile],
       }
       console.log(requestBody)
       const requestOptions = {

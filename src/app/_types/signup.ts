@@ -9,6 +9,7 @@ interface signupTypes {
   major: string
   grade: string
   jobKeyword: string
+  profile:profileImage
 }
 
 type GradeEnum = '1학년' | '2학년' | '3학년' | '4학년' | '졸업생'
