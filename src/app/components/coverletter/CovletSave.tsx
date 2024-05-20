@@ -12,6 +12,8 @@ import ExpCardList from './ExpCardList'
 import AiFeedContainer from './AiFeedContainer'
 import Loading from '@/app/(route)/loading'
 import AiLoading from './AiLoading'
+import CheckPoint from '../points/CheckPoint'
+import AiAnalysis from './AiAnalysis'
 
 interface ExperienceCard {
   experienceId: number
@@ -33,6 +35,9 @@ const CovletSave = () => {
   const [feedbackClicked, setFeedbackClicked] = useState(false)
   const [feedbackReceived, setFeedbackReceived] = useState(false)
   const [feedbackData, setFeedbackData] = useState(null)
+  const [analysisClicked, setAnalysisClicked] = useState(false);
+  const [analysisData, setAnalysisData] = useState(null)
+  const [analysisReceived, setAnalysisReceived] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -82,6 +87,12 @@ const CovletSave = () => {
   const handleShowClick = () => {
     setShowInputs(true) // 입력창을 보이게 설정
     setFeedbackClicked(true) // 피드백 버튼이 클릭되었음을 설정
+  }
+
+  const handleShowClick2 = () => {
+    openModal() // 피드백 버튼이 클릭되었음을 설정
+    setShowInputs(true) // 입력창을 보이게 설정
+    setAnalysisClicked(true)
   }
 
   const handleCopyText = () => {
@@ -161,6 +172,65 @@ const CovletSave = () => {
       requestAIFeedback()
       // AI 피드백 요청 함수 호출
     }
+  } 
+
+    const saveCovData2 = async () => {
+      const {
+        answer,
+        question,
+        shareType,
+        keyword1,
+        keyword2,
+        jobKeyword,
+        coverLetterId,
+      } = coverletterData
+  
+      if (!coverLetterId) {
+        console.error('coverLetterId가 없습니다.')
+        return
+      }
+  
+      if (
+        !answer ||
+        !question ||
+        !shareType ||
+        !keyword1 ||
+        !keyword2 ||
+        !jobKeyword
+      ) {
+        console.error('모든 필드를 채워주세요.')
+        return
+      }
+  
+      const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          answer,
+          question,
+          shareType,
+          keyword1,
+          keyword2,
+          jobKeyword,
+        }),
+      })
+
+    const resData = await response.json()
+    setCoverLetterData({
+      ...coverletterData,
+      coverLetterId: resData.result.coverLetterId,
+    })
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
+    } else {
+      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
+      console.log('데이터가 성공적으로 저장되었습니다.', resData)
+      console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
+      requestAIAnalysis()
+      // AI 피드백 요청 함수 호출
+    }
   }
 
   // AI 피드백 요청 함수
@@ -197,6 +267,41 @@ const CovletSave = () => {
     }
   }
 
+  //직무 역량 분석 요청 함수
+  const requestAIAnalysis = async () => {
+    setIsLoading(true)
+    const { coverLetterId } = coverletterData
+    console.log(coverLetterId, '자소서 아이디')
+
+    try {
+      const response = await fetch(
+        `/api/coverLetter-analysis/?id=${coverLetterId}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cover_letter_id: coverLetterId }),
+        },
+      )
+
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`)
+      }
+
+      const data = await response.json()
+      setAnalysisData(data)
+      setAnalysisReceived(true)
+      console.log('직무 역량 분석 성공:', data)
+    } catch (error) {
+      console.error('직무 역량 분석 요청에 실패했습니다.', error)
+      alert('직무 역량 분석 요청에 실패했습니다. 오류를 확인해주세요.')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+  
+
   const handleSaveWithoutFeedback = async () => {
     const { coverLetterId } = coverletterData
     router.push(`/mypage/myCovletDetail/${coverLetterId}`)
@@ -208,6 +313,10 @@ const CovletSave = () => {
 
   if (feedbackReceived) {
     return <AiFeedContainer feedbackData={feedbackData} />
+  }
+
+  if (analysisReceived) {
+    return <AiAnalysis analysisData={analysisData} />
   }
 
   return (
@@ -308,16 +417,18 @@ const CovletSave = () => {
           </div>
           <div className="w-[315px] h-[64.07px] left-[560px] top-[150px] absolute">
             <button
-              className={`w-[280px] h-[60px] relative hover:bg-blue-300 text-slate-600 bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
+              className={`w-[280px] h-[60px] relative hover:bg-blue-300 text-slate-600 ${analysisClicked ? 'bg-blue-300' : 'bg-gray-200'} bg-gray-200 border-0 py-2 px-0 focus:outline-none rounded-[30px] text-2xl font-semibold`}
               onClick={openModal}
             >
               AI 직무 역량 분석
             </button>
             {isOpen && (
-              <CheckPoint2
+              <CheckPoint
                 closeCheck={closeModal}
                 cost={200}
                 coverLetterId={coverletterData.coverLetterId || 0}
+                setShowInputs={setShowInputs}
+                setAnalysisClicked={setAnalysisClicked}
               />
             )}
           </div>
@@ -427,9 +538,17 @@ const CovletSave = () => {
         </div> */}
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={feedbackClicked ? saveCovData : handleSaveWithoutFeedback}
+          onClick={() => {
+            if (feedbackClicked) {
+              saveCovData();
+            } else if (analysisClicked) {
+              saveCovData2();
+            } else {
+              handleSaveWithoutFeedback();
+            }
+          }}
         >
-          {feedbackClicked ? 'AI 피드백 결과 보러가기' : '자기소개서 작성 완료'}
+          {feedbackClicked ? 'AI 피드백 결과 보러가기' : analysisClicked ? '직무 역량 분석 결과 보기' : '자기소개서 작성 완료'}
         </button>
       </div>
       <ExpCardList />
