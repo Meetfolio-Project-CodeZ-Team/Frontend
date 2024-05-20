@@ -94,12 +94,12 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
             </div>
             <div className="w-[386px] h-[202px] left-[183px] top-0 absolute">
               <div className="w-[180px] h-[180px] left-0 top-0 absolute bg-slate-600 rounded-full" />
-              <div className="w-[131px] h-[58px] left-[26px] top-[70px] absolute text-center text-white text-2xl font-bold  leading-9">
+              <div className="w-[131px] h-[58px] left-[26px] top-[50px] absolute text-center text-white text-2xl font-bold  leading-9">
                 {analysisData?.skill_keywords?.[1]}
               </div>
               <div className="w-[150px] h-[150px] left-[236px] top-[52px] absolute">
                 <div className="w-[150px] h-[150px] left-0 top-0 absolute bg-blue-400 rounded-full" />
-                <div className="w-[83px] h-[58px] left-[36px] top-[47px] absolute text-black text-[21px] font-bold  leading-loose">
+                <div className="w-[83px] h-[58px] left-[36px] top-[37px] absolute text-black text-[21px] font-bold  leading-loose">
                   {analysisData?.skill_keywords?.[2]}
                 </div>
               </div>

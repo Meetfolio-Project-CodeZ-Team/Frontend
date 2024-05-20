@@ -76,3 +76,22 @@ export const satisfactionData = atom<SatisfactionData>({
     satisfaction:0
   }
 })
+
+export interface AnalysisInfo {
+  
+  jobSuitability?: number
+  keyword1?: string
+  keyword2?: string
+  keyword3?: string
+}
+
+export const analysisData = atom<AnalysisInfo>({
+  key: 'analysisData',
+  default: {
+    jobSuitability: 0,
+    keyword1: '',
+    keyword2: '',
+    keyword3: '',
+    
+  },
+})
