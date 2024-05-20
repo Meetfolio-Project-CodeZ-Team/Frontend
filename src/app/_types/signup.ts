@@ -9,6 +9,7 @@ interface signupTypes {
   major: string
   grade: string
   jobKeyword: string
+  profile: profileImage
 }
 
 type GradeEnum = '1학년' | '2학년' | '3학년' | '4학년' | '졸업생'
@@ -29,3 +30,17 @@ type collegeType =
   | 'IT융합대학'
   | '예술체육대학'
   | '반도체대학'
+
+type profileImage =
+  | 'BACKEND'
+  | 'WEB'
+  | 'APP'
+  | 'DESIGN'
+  | 'AI'
+  | 'TOOL'
+  | 'MAN'
+  | 'WOMAN'
+  | 'MOUSE'
+  | 'KEYBOARD'
+  | 'FIRE'
+  | 'SPARKLE'

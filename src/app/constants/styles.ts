@@ -33,7 +33,9 @@ export const BUTTON_STYLE = {
   modelInfo: (className: string) =>
     `w-[207px] h-[66px] text-2xl font-semibold rounded-[20px] ${className}`,
   cancelEditBtn: (className: string) =>
-    `w-[80px] h-[40px] text-base py-1.5 text-[#486283] font-semibold bg-[#white] rounded-[10px] ${className} border-2 border-[#486283]`,
+    `w-[60px] h-[30px] text-sm py-1 text-[#486283] font-semibold bg-[#white] rounded-[10px] ${className} border-2 border-[#486283]`,
+  editCommentBtn: (className: string) =>
+    `w-[60px] h-[30px] text-sm py-1 text-white font-semibold bg-[#486283] rounded-[10px] ${className} border-2 border-[#486283]`,
 } as const
 
 export const INPUT_STYLE = {
@@ -58,6 +60,8 @@ export const INPUT_STYLE = {
     `w-[64px] text-[16px] text-[#1A202C] font-bold px-3 h-[52px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
   charge: (className: string) =>
     `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
+  reply: (className: string) =>
+    `w-[80%] text-sm font-medium pl-3 h-[36px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {
