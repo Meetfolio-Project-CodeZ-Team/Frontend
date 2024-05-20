@@ -73,7 +73,7 @@ const Comment = ({ data }: CommentProps) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
-          <div className="absolute flex gap-x-2 top-[60px] right-[18px] cursor-pointer">
+          <div className="absolute flex gap-x-2 top-[72px] right-[18px] cursor-pointer">
             <Button
               buttonText={'취소'}
               type={'cancelEditBtn'}
@@ -82,7 +82,7 @@ const Comment = ({ data }: CommentProps) => {
             />
             <Button
               buttonText={'수정'}
-              type={'addBoardBtn'}
+              type={'editCommentBtn'}
               isDisabled={false}
               onClickHandler={() => updateComment()}
             />
