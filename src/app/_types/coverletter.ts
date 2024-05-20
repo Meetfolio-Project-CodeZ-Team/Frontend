@@ -21,3 +21,7 @@ interface FeedbackInfo {
   recommendQuestion2?: string
   recommendQuestion3?: string
 }
+
+interface SatisfactionData {
+  satisfaction?: number
+}

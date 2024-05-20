@@ -4,7 +4,7 @@ import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import MyCovletCardDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import { covletData, covletNum, feedbackData } from '@/app/recoil/coverletter'
+import { covletData, covletNum, feedbackData, analysisData } from '@/app/recoil/coverletter'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -15,6 +15,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const paramsData = useSearchParams()
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
+  const [analySisData, setAnalySisData] = useRecoilState(analysisData)
   const isGuest = paramsData.get('isGuest')
 
   const router = useRouter()
@@ -43,6 +44,9 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           }
           if (data && data.result && data.result.feedbackInfo) {
             setFeedBackData(data.result.feedbackInfo)
+          }
+          if (data && data.result && data.result.analysisInfo) {
+            setAnalySisData(data.result.analysisInfo)
           }
           console.log(data)
         })
@@ -75,6 +79,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             recommendQuestion1={feedBackData?.recommendQuestion1}
             recommendQuestion2={feedBackData?.recommendQuestion2}
             recommendQuestion3={feedBackData?.recommendQuestion3}
+            jobSuitability={analySisData?.jobSuitability}
           />
         </div>
       </div>

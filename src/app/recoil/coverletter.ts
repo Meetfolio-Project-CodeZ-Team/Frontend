@@ -33,6 +33,7 @@ export const tidState = atom<string>({
 })
 
 export interface FeedbackData {
+  feedback_id: number
   feedback: string
   recommend: string[]
 }
@@ -42,10 +43,12 @@ export const feedbackDataState = atom<FeedbackData>({
   default: {
     feedback: '',
     recommend: [],
+    feedback_id: 0
   },
 })
 
 export interface FeedbackInfo {
+  
   correction?: string
   recommendQuestion1?: string
   recommendQuestion2?: string
@@ -59,5 +62,36 @@ export const feedbackData = atom<FeedbackInfo>({
     recommendQuestion1: '',
     recommendQuestion2: '',
     recommendQuestion3: '',
+    
+  },
+})
+
+export interface SatisfactionData {
+  satisfaction?: number
+}
+
+export const satisfactionData = atom<SatisfactionData>({
+  key: 'satisfactionData',
+  default: {
+    satisfaction:0
+  }
+})
+
+export interface AnalysisInfo {
+  
+  jobSuitability?: number
+  keyword1?: string
+  keyword2?: string
+  keyword3?: string
+}
+
+export const analysisData = atom<AnalysisInfo>({
+  key: 'analysisData',
+  default: {
+    jobSuitability: 0,
+    keyword1: '',
+    keyword2: '',
+    keyword3: '',
+    
   },
 })

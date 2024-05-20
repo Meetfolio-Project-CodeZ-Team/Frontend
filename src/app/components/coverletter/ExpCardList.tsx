@@ -55,7 +55,7 @@ const ExpCardList = () => {
   }, [])
   return (
     <div className="w-[463px] h-[1000px] left-[977px] top-[18px] absolute items-center justify-center">
-      <div className="w-[463px] h-[1000px] left-0 top-0 absolute bg-white rounded-[30px] shadow ">
+      <div className="w-[463px] h-[950px] left-0 top-0 absolute bg-white rounded-[30px] shadow ">
         <div className="w-[361px] h-[37.12px] left-[51px] top-[23.08px] absolute text-center">
           <span className="text-black text-[25px] font-medium  leading-[37.50px]">
             {' '}
@@ -81,7 +81,7 @@ const ExpCardList = () => {
           closeModal={handleClose}
         />
       ) : (
-        <div className="w-[450px] h-[900px] mt-[80px] flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
+        <div className="w-[450px] h-[810px] mt-[80px] flex flex-col flex-wrap absolute overflow-y-auto scrollbar-hide">
           <div className="w-[350px] h-full ml-[60px] ">
             {expCards.length > 0 ? (
               expCards.map((card) => (
