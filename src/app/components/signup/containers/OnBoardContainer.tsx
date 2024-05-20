@@ -9,6 +9,11 @@ import {
   JOBKEYWORD,
   SIGNUP,
 } from '@/app/constants/auth'
+import {
+  PROFILE_EMOJI,
+  PROFILE_EMOJI_PT1,
+  PROFILE_EMOJI_PT2,
+} from '@/app/constants/signup'
 import { emailState } from '@/app/recoil/signUp'
 import { pwAlert } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
@@ -18,6 +23,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
+import Emoji from '../onboard/Emoji'
 import Keyword from '../onboard/Keyword'
 import DropDownMajor from '../onboard/dropdown/DropDownMajor'
 import DropDownOB from '../onboard/dropdown/DropDownOB'
@@ -31,11 +37,14 @@ const OnBoardContainer = () => {
   const [college, setCollege] = useState<collegeType>('IT융합대학')
   const [major, setMajor] = useState('')
   const [email, setEmail] = useRecoilState(emailState)
+  const [profile, setProfile] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
   const isEntered = password !== '' && major !== ''
   const isSame = checkPW === password
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
+  console.log('현재 이모지 상태', PROFILE_EMOJI[profile])
 
   const signUp = async () => {
     if (
@@ -49,6 +58,7 @@ const OnBoardContainer = () => {
         grade: GRADE_ENUM[grade],
         jobKeyword: JOB_ENUM[clickedKeyword],
         major: major,
+        profile: PROFILE_EMOJI[profile],
       }
       console.log(requestBody)
       const requestOptions = {
@@ -72,10 +82,8 @@ const OnBoardContainer = () => {
   return (
     <div className="flex flex-col items-center mt-16 mb-[9%]">
       <ToastContainer style={{ width: 400, height: 180 }} />
-      <div className="text-5xl font-semibold leading-[64px] mb-6">회원가입</div>
-      <div className="text-2xl font-medium leading-[45px] mb-7">
-        {SIGNUP.OnBoard}
-      </div>
+      <div className="text-5xl font-semibold mb-6">회원가입</div>
+      <div className="text-2xl font-medium mb-7">{SIGNUP.OnBoard}</div>
       <div className="flex flex-col gap-y-1.5 mb-8">
         <div className="flex flex-col">
           <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
@@ -144,14 +152,47 @@ const OnBoardContainer = () => {
             onSelect={(option) => setGrade(option)}
           />
         </div>
-        <div className="flex flex-col">
-          <div className="w-auto  text-xl font-semibold leading-[30px] pl-1.5">
+        <div className="flex flex-col gap-y-2">
+          <div className="w-auto text-xl font-semibold leading-[30px] pl-1.5">
             희망직무
           </div>
           <div className="flex gap-x-8">
             {JOBKEYWORD.map((str, index) => (
               <div key={index} onClick={() => handleClick(str)}>
                 <Keyword keyword={str} clickKeyword={clickedKeyword} />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col mt-5 gap-y-4">
+          <div className="flex items-center gap-x-1">
+            <div className="w-auto text-xl font-semibold pl-1.5">
+              프로필 아이콘
+            </div>
+            <div
+              className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-white font-semibold"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseOut={() => setIsHovered(false)}
+            >
+              ?
+            </div>
+            {isHovered && (
+              <div className="invisi hover:visible  flex text-sm">
+                나를 표현할 수 있는 아이콘을 선택해 보세요
+              </div>
+            )}
+          </div>
+          <div className="flex gap-x-10 ml-[69px]">
+            {PROFILE_EMOJI_PT1.map((emoji, index) => (
+              <div key={index} onClick={() => setProfile(index)}>
+                <Emoji emojiIndex={index} clickedEmoji={profile} />
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-x-[30px] ml-[94px]">
+            {PROFILE_EMOJI_PT2.map((emoji, index) => (
+              <div key={index} onClick={() => setProfile(index + 6)}>
+                <Emoji emojiIndex={index + 6} clickedEmoji={profile} />
               </div>
             ))}
           </div>

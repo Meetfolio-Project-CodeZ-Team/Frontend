@@ -1,8 +1,7 @@
-import React from 'react'
-import Icons from '../../common/Icons'
-import { activeUser, star } from '@/app/ui/IconsPath'
 import { DASHBOARD } from '@/app/constants/admin'
+import { activeUser, star } from '@/app/ui/IconsPath'
 import Profit from '@/app/ui/svg/common/Profit'
+import Icons from '../../common/Icons'
 
 interface UserUsageProps {
   totalCount: number
@@ -33,7 +32,7 @@ const UserUsage = (userUsage: UserUsageProps) => {
           <Icons name={star} />
         </div>
         <div className="absolute font-bold  right-[28px] top-[64px] text-[28px]">
-          {satisfaction} 점
+          {satisfaction.toFixed(1)} 점
         </div>
       </div>
       <div className=" relative w-[400px] h-[120px] rounded-[10px] border-2 border-stone-300 shadow">

@@ -14,6 +14,7 @@ interface InputProps {
     | 'board'
     | 'member'
     | 'charge'
+    | 'reply'
   textValue?: string
   inputType?: string
   name?: string
