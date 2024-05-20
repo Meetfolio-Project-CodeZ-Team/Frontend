@@ -377,7 +377,7 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
           <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
             <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
               {userInfo?.memberName}님과 빅데이터의 직무 적합도는{' '}
-              {roundedPercentage}%입니다.
+              {AnalysisData?.jobSuitability}%입니다.
             </div>
             <div className="left-[280px] top-[643px] absolute text-black text-2xl font-bold  leading-9">
               {userInfo?.memberName} 님은 이런 역량이 두드러져요!
@@ -386,7 +386,7 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
               👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
             </div>
             <div className="w-[180px] h-[124px] left-[511px] top-[320px] absolute text-black text-7xl font-bold  leading-[108px]">
-              {roundedPercentage}%
+              {AnalysisData?.jobSuitability}%
             </div>
             <div className="w-[360px] h-[360px] left-[135px] top-[198px] absolute bg-white justify-center items-center inline-flex">
               <div className="w-[360px] h-[360px] relative">
