@@ -98,7 +98,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] flex flex-col items-center gap-y-8 w-full h-[70%] overflow-y-auto scrollbar-hide z-50">
+          <div className="absolute top-[280px] left-10 flex flex-col gap-y-12 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
             {comment.map((data, i) => (
               <Comment data={data} key={i} />
             ))}

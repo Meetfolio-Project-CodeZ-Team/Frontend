@@ -60,6 +60,8 @@ export const INPUT_STYLE = {
     `w-[64px] text-[16px] text-[#1A202C] font-bold px-3 h-[52px] bg-white rounded-[10px] border-[2px] border-[#C4C4C4] ${className}`,
   charge: (className: string) =>
     `w-[400px] text-xl font-medium pl-6 h-[60px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
+  reply: (className: string) =>
+    `w-[80%] text-sm font-medium pl-3 h-[36px] bg-white rounded-[10px] border-2 border-[#C4C4C4] ${className}`,
 } as const
 
 export const DROPDOWN_STYLE = {
