@@ -2,8 +2,9 @@ import { useModal } from '@/app/hooks/useModal'
 import TrashBin from '@/app/ui/svg/common/TrashBin'
 import { deleteUserAlert } from '@/app/utils/toast'
 import { useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import ModelInfoModal from './ModelInfoModal'
-
 interface ModelManageInfoProps {
   modelId: number
   version: number
@@ -50,6 +51,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
 
   return (
     <div className="flex flex-col w-[1034px] h-[50px]" key={modelId}>
+      <ToastContainer />
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-lg">
         <div className="w-[120px] text-center">{learnedDate}</div>
         <div className="w-[268px] text-center">{modelName}</div>

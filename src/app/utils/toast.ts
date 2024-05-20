@@ -107,6 +107,13 @@ const trainStop = () => {
   })
 }
 
+const changeVersion = () => {
+  toast.success('해당 버전의 모델이 활성화되었습니다.', {
+    icon: () => '✅',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -122,4 +129,5 @@ export {
   successVerifyPw,
   trainData,
   trainStop,
+  changeVersion,
 }

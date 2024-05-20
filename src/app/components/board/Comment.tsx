@@ -5,6 +5,7 @@ import { timeCalculate } from '@/app/utils/date'
 import { useEffect, useState } from 'react'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
+import Input from '../common/Input'
 
 interface CommentProps {
   data: CommentDataTypes
@@ -14,7 +15,9 @@ const Comment = ({ data }: CommentProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
+  const [isReply, setIsReply] = useState(false)
   const [content, setContent] = useState(data.content)
+  const [reComment, setReComment] = useState('')
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const cancelEdit = () => {
@@ -58,7 +61,7 @@ const Comment = ({ data }: CommentProps) => {
   }, [data, isEdit])
 
   return (
-    <div className="w-[100%] h-[127px] border-[1.5px] border-[#486284] pl-4 py-2 rounded-[8px]">
+    <div className="w-[90%] h-[127px] border-[1.5px] border-[#486284] pl-4 py-2 rounded-[8px]">
       {isOpen && (
         <DeleteModal
           closeModal={closeModal}
@@ -67,13 +70,13 @@ const Comment = ({ data }: CommentProps) => {
         />
       )}
       {isEdit ? (
-        <div className="flex h-full relative font-semibold">
+        <div className="w-[100%] flex h-full relative font-semibold">
           <textarea
-            className="w-[80%] h-[100%] p-3 text focus:outline-none"
+            className="w-[75%] h-[100%] p-3 text focus:outline-none"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           ></textarea>
-          <div className="absolute flex gap-x-2 top-[60px] right-[18px] cursor-pointer">
+          <div className="absolute flex gap-x-2 top-[72px] right-[18px] cursor-pointer">
             <Button
               buttonText={'취소'}
               type={'cancelEditBtn'}
@@ -82,14 +85,14 @@ const Comment = ({ data }: CommentProps) => {
             />
             <Button
               buttonText={'수정'}
-              type={'addBoardBtn'}
+              type={'editCommentBtn'}
               isDisabled={false}
               onClickHandler={() => updateComment()}
             />
           </div>
         </div>
       ) : (
-        <div>
+        <div className="relative">
           <div className="flex h-[42px] text-sm font-bold gap-x-3 items-center relative">
             <div className="w-6 h-6 bg-[#486284] rounded-[100px]"></div>
             <div>{data.memberName}</div>
@@ -115,6 +118,32 @@ const Comment = ({ data }: CommentProps) => {
             onClick={() => setIsClicked(false)}
           >
             {data.content}
+          </div>
+          {isReply && (
+            <div className="flex gap-x-2">
+              <Input
+                type={'reply'}
+                onChange={(e) => setReComment(e.target.value)}
+              />
+              <Button
+                buttonText={'작성'}
+                type={'cancelEditBtn'}
+                isDisabled={false}
+                onClickHandler={() => setIsReply(true)}
+              />
+              <Button
+                buttonText={'취소'}
+                type={'editCommentBtn'}
+                isDisabled={false}
+                onClickHandler={() => setIsReply(false)}
+              />
+            </div>
+          )}
+          <div
+            className="absolute top-[84px] right-[-68px] font-medium cursor-pointer"
+            onClick={() => setIsReply(true)}
+          >
+            답글달기
           </div>
         </div>
       )}
