@@ -1,8 +1,13 @@
+import { useModal } from '@/app/hooks/useModal'
 import { successCopy } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import FeedSatisfaction from './FeedSatisfaction'
+import { useRecoilState } from 'recoil'
+import { covletData } from '@/app/recoil/coverletter'
 
 interface FeedbackData {
+  feedback_id: number
   feedback: string
   recommend: string[]
 }
@@ -13,6 +18,12 @@ interface AiFeedContainerProps {
 
 const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
   const router = useRouter()
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
+
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  })
 
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
@@ -64,53 +75,6 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
       <div className="w-[228px] h-[49px] left-[366px] top-[579px] absolute text-center text-black text-2xl font-bold leading-9">
         추천 자기소개서 문항
       </div>
-      <div className="w-[265px] h-[104px] left-[347px] top-[881px] absolute">
-        <div className="w-[265px] h-[49px] left-0 top-0 absolute text-center text-black text-xl font-bold leading-[30px]">
-          AI 피드백에 대한 나의 만족도는?
-        </div>
-        <div className="w-[170px] h-[49px] left-[37px] top-[55px] absolute">
-          <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-0 top-0 absolute rounded-xl justify-center items-center inline-flex">
-            <div className="w-5 h-5 relative rounded-[10px] border-2 border-blue-600 flex-col justify-start items-start flex">
-              <div className="w-2.5 h-2.5 bg-blue-600 rounded-[5px]" />
-            </div>
-          </div>
-          <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[35.32px] top-0 absolute rounded-xl justify-center items-center inline-flex">
-            <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
-              <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
-            </div>
-          </div>
-          <div className="w-[26.49px] h-6 pl-0.5 pr-[4.49px] py-0.5 left-[71.75px] top-0 absolute rounded-xl justify-center items-center inline-flex">
-            <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
-              <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
-            </div>
-          </div>
-          <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[107.08px] top-0 absolute rounded-xl justify-center items-center inline-flex">
-            <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
-              <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
-            </div>
-          </div>
-          <div className="w-[27.60px] h-6 pl-0.5 pr-[5.60px] py-0.5 left-[142.40px] top-0 absolute rounded-xl justify-center items-center inline-flex">
-            <div className="w-5 h-5 relative rounded-[10px] border-2 border-slate-400 flex-col justify-start items-start flex">
-              <div className="w-2.5 h-2.5 bg-slate-400 rounded-[5px]" />
-            </div>
-          </div>
-          <div className="w-[26.49px] h-[22px] left-0 top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
-            1점
-          </div>
-          <div className="w-[26.49px] h-[22px] left-[35.32px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
-            2점
-          </div>
-          <div className="w-[26.49px] h-[22px] left-[71.75px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
-            3점
-          </div>
-          <div className="w-[26.49px] h-[22px] left-[107.08px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
-            4점
-          </div>
-          <div className="w-[26.49px] h-[22px] left-[142.40px] top-[27px] absolute text-center text-black text-xs font-bold leading-[18px]">
-            5점
-          </div>
-        </div>
-      </div>
       <button
         onClick={handleCopyText}
         className="absolute  top-[518px] left-[838px] right-0 mt-1 ml-0 p-2 bg-gray-50 text-black rounded-[10px] text-sm inline-flex gap-[4px]"
@@ -137,11 +101,14 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
         </div> */}
         <button
           className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveSolution}
+          onClick={openModal}
           type="button"
         >
           솔루션 결과 저장하기
         </button>
+        {feedbackData && isOpen && (
+        <FeedSatisfaction feedback_id={feedbackData.feedback_id} />
+      )}
       </div>
     </div>
   )

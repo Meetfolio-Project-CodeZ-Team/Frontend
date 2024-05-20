@@ -12,6 +12,7 @@ import Footer from '@/app/components/layout/Footer'
 
 import { useSearchParams } from 'next/navigation'
 import AiFeedContainer from '@/app/components/coverletter/AiFeedContainer'
+import FeedSatisfaction from '@/app/components/coverletter/FeedSatisfaction'
 
 export default function CovletFeedbackPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
@@ -35,7 +36,7 @@ export default function CovletFeedbackPage() {
     <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} />
       <div className="w-[1440px] mb-[300px]">
-        <AiFeedContainer feedbackData={null} />
+        <FeedSatisfaction feedback_id={0}/>
       </div>
       <Footer />
     </section>

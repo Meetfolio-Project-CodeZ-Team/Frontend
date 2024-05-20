@@ -9,9 +9,11 @@ interface CheckPointProps {
   closeCheck: () => void
   cost: number
   coverLetterId: number
+  setShowInputs: React.Dispatch<React.SetStateAction<boolean>>;
+  setAnalysisClicked: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
+const CheckPoint = ({ closeCheck, cost, coverLetterId, setShowInputs, setAnalysisClicked }: CheckPointProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [myPoint, setMyPoint] = useState(0)
   const isEnough = myPoint - cost >= 0
@@ -48,6 +50,8 @@ const CheckPoint = ({ closeCheck, cost, coverLetterId }: CheckPointProps) => {
       console.error('데이터 저장에 실패했습니다.')
     }
     const responseData = await response.json()
+    setShowInputs(true)
+    setAnalysisClicked(true)
     closeCheck()
   }
   return (

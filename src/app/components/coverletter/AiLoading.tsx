@@ -1,8 +1,13 @@
+import { useEffect } from "react"
+
 interface AiLoadingProps {
   text?: string
 }
 
 const AiLoading = ({ text }: AiLoadingProps) => {
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  })
   return (
     <div className="mt-[200px] mb-[200px]">
       <div className="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
