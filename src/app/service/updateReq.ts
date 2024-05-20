@@ -1,3 +1,5 @@
+import { FeedbackData } from "../recoil/coverletter"
+
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
 
 const patchRequest = async (
@@ -52,4 +54,15 @@ export const updateUser = async (
   console.log(url, '요청경로')
 
   return await patchRequest(url, userContent, accessToken)
+}
+
+export const updateSatisfaction = async (
+  Content: SatisfactionData,
+  accessToken: string,
+  id: string
+) => {
+  const url = `${SERVER_URL}/api/coverLetters/satisfaction?feedbackId=${id}`
+  console.log(url, '요청경로')
+
+  return await patchRequest(url, Content, accessToken)
 }

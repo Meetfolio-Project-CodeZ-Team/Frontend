@@ -7,7 +7,7 @@ import { covletNum, tidState } from '../../../recoil/coverletter'
 // import LoginContainer from '@/app/components/login/LoginContainer'
 import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
-import CovletAiFeed from '@/app/components/coverletter/CovletAiFeed'
+import CovletAiFeed from '@/app/components/coverletter/AiAnalysis'
 
 import Footer from '@/app/components/layout/Footer'
 
