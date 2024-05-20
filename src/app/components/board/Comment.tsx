@@ -58,7 +58,7 @@ const Comment = ({ data }: CommentProps) => {
   }, [data, isEdit])
 
   return (
-    <div className="w-[100%] h-[127px] border-[1.5px] border-[#486284] pl-4 py-2 rounded-[8px]">
+    <div className="w-[90%] h-[127px] border-[1.5px] border-[#486284] pl-4 py-2 rounded-[8px]">
       {isOpen && (
         <DeleteModal
           closeModal={closeModal}

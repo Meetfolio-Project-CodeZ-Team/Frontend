@@ -47,8 +47,8 @@ const SignupContainer = () => {
       requestOptions,
     )
     if (!res.ok) {
-      mismatchAlert()
       setAuthCode('')
+      mismatchAlert()
     }
     router.push('/signup/onboard')
   }
