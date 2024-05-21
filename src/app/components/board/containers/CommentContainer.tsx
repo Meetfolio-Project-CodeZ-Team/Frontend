@@ -3,7 +3,10 @@
 import { selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
+import { replyAlert } from '@/app/utils/toast'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import Comment from '../Comment'
@@ -56,7 +59,12 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
 
   useEffect(() => {
     setLikeStatus(isLiked)
+    setIsReply(false)
   }, [isLiked, postId])
+
+  useEffect(() => {
+    isReply && replyAlert()
+  }, [isReply])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,6 +79,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
 
   return (
     <div className="flex w-full h-full">
+      <ToastContainer />
       {isClicked ? (
         <div className="w-full h-full relative bg-white">
           <div
@@ -102,7 +111,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] left-10 flex flex-col gap-y-12 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
+          <div className="absolute top-[280px] left-10 flex flex-col gap-y-9 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
             {comment.map((data, i) => (
               <Comment
                 data={data}
