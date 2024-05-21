@@ -17,3 +17,11 @@ interface UserInfoTypes {
   point?: number
   password?: string
 }
+
+interface pageInfo {
+  isFirst: boolean
+  isLast: boolean
+  totalPage: number
+  listSize: number
+  totalElements: number
+}

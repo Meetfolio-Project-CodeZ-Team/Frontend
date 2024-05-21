@@ -58,6 +58,10 @@ const EditUserInfo = () => {
   const [passwordVerified, setPasswordVerified] = useState(false)
   const [verifyPw, setVerifyPw] = useState('')
 
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  })
+
   const verifyPassword = async () => {
     try {
       const response = await fetch('/api/mypage/user/checkPw', {
