@@ -1,21 +1,22 @@
 'use client'
 import { useModal } from '@/app/hooks/useModal'
 import NavBar from '@/app/ui/svg/common/NavBar'
+import Reply from '@/app/ui/svg/common/reply'
 import { timeCalculate } from '@/app/utils/date'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
-import Input from '../common/Input'
 
 interface CommentProps {
   data: CommentDataTypes
+  setReply: Dispatch<SetStateAction<boolean>>
+  setCommentId: Dispatch<SetStateAction<number>>
 }
 
-const Comment = ({ data }: CommentProps) => {
+const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
-  const [isReply, setIsReply] = useState(false)
   const [content, setContent] = useState(data.content)
   const [reComment, setReComment] = useState('')
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
@@ -23,6 +24,11 @@ const Comment = ({ data }: CommentProps) => {
   const cancelEdit = () => {
     setIsEdit(false)
     setContent('')
+  }
+
+  const startReply = () => {
+    setReply((prev) => !prev)
+    setCommentId(data.commentId)
   }
 
   const updateComment = async () => {
@@ -112,38 +118,20 @@ const Comment = ({ data }: CommentProps) => {
                   <NavBar />
                 </div>
               ))}
+            {!isAuthor && (
+              <div
+                className="absolute right-4 cursor-pointer"
+                onClick={startReply}
+              >
+                <Reply />
+              </div>
+            )}
           </div>
           <div
             className="flex w-[80%] h-[75px] mt-2"
             onClick={() => setIsClicked(false)}
           >
             {data.content}
-          </div>
-          {isReply && (
-            <div className="flex gap-x-2">
-              <Input
-                type={'reply'}
-                onChange={(e) => setReComment(e.target.value)}
-              />
-              <Button
-                buttonText={'작성'}
-                type={'cancelEditBtn'}
-                isDisabled={false}
-                onClickHandler={() => setIsReply(true)}
-              />
-              <Button
-                buttonText={'취소'}
-                type={'editCommentBtn'}
-                isDisabled={false}
-                onClickHandler={() => setIsReply(false)}
-              />
-            </div>
-          )}
-          <div
-            className="absolute top-[84px] right-[-68px] font-medium cursor-pointer"
-            onClick={() => setIsReply(true)}
-          >
-            답글달기
           </div>
         </div>
       )}
