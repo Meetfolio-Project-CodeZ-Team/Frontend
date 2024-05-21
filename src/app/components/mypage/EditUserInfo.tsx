@@ -29,6 +29,8 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
 import { eye } from '@/app/ui/svg/common/eye'
+import { EMOJI_VALUE, PROFILE_EMOJI,PROFILE_EMOJI_PT1, PROFILE_EMOJI_PT2 } from '@/app/constants/signup'
+import Emoji from '../signup/onboard/Emoji'
 
 interface UserInfoProps {
   memberId?: number
@@ -46,7 +48,8 @@ interface UpdateUserInfoRequest {
   grade: string
   jobKeyword: string
   major: string
-  password?: string | null // 이제 `password`는 선택적 속성입니다.
+  password?: string | null
+  profile: string,
 }
 
 const EditUserInfo = () => {
@@ -54,6 +57,10 @@ const EditUserInfo = () => {
   const router = useRouter()
   const [passwordVerified, setPasswordVerified] = useState(false)
   const [verifyPw, setVerifyPw] = useState('')
+
+  useEffect(()=>{
+    window.scrollTo(0, 0)
+  })
 
   const verifyPassword = async () => {
     try {
@@ -82,12 +89,14 @@ const EditUserInfo = () => {
   const [pw, setPw] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
-
+  const [profile, setProfile] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
   const [major, setMajor] = useState('')
   const isEntered = pw !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
   const [isOpen, setIsOpen] = useState(false)
+  const [profileIndex, setProfileIndex] = useState<number>();
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
@@ -95,6 +104,7 @@ const EditUserInfo = () => {
       grade: GRADE_ENUM[grade],
       jobKeyword: JOB_ENUM[clickedKeyword],
       major: major,
+      profile: PROFILE_EMOJI[profile],
     }
 
     // 비밀번호가 입력되었는지 확인하고, 유효한 경우에만 추가
@@ -161,11 +171,13 @@ const EditUserInfo = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result) // 타입 에러가 발생하지 않아야 함
+        console.log('유저 정보 데이터', data.result)
         setUserInfos(data.result)
         setMajor(data.result.major)
         setGrade(data.result.grade)
         setClickedKeyword(data.result.jobKeyword)
+        const profileIndex = [...PROFILE_EMOJI_PT1, ...PROFILE_EMOJI_PT2].findIndex(emoji => emoji === data.result.profile);
+        setProfile(profileIndex >= 0 ? profileIndex : 0);
       } catch (error) {
         console.error(error)
       }
@@ -366,7 +378,43 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className="w-[700px] h-[80px] left-[88px] top-[750px] absolute">
+      <div className='w-[700px] h-[80px] left-[88px] top-[750px] absolute'>
+      <div className="flex flex-col gap-y-4 ">
+        <div className="flex items-center gap-x-1">
+          <div className="w-auto text-xl font-semibold pl-1.5">
+            프로필 아이콘
+          </div>
+          <div
+            className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-white font-semibold"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseOut={() => setIsHovered(false)}
+          >
+            ?
+          </div>
+          {isHovered && (
+            <div className="invisi hover:visible  flex text-sm">
+              나를 표현할 수 있는 아이콘을 선택해 보세요
+            </div>
+          )}
+        </div>
+        
+        <div className="flex gap-x-10 ml-[69px]">
+          {PROFILE_EMOJI_PT1.map((emoji, index) => (
+            <div key={index} onClick={() => setProfile(index)}>
+              <Emoji emojiIndex={index} clickedEmoji={profile} />
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-x-[30px] ml-[94px]">
+          {PROFILE_EMOJI_PT2.map((emoji, index) => (
+            <div key={index} onClick={() => setProfile(index + 6)}>
+              <Emoji emojiIndex={index + 6} clickedEmoji={profile} />
+            </div>
+          ))}
+        </div>
+      </div>
+      </div>
+      <div className="w-[700px] h-[80px] left-[88px] top-[950px] absolute">
         <button
           className="w-[680px] text-white bg-black py-3 rounded-[20px] text-lg"
           onClick={updateUser}
