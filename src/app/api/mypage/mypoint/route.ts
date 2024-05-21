@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server'
 
 export async function GET(request: Request): Promise<NextResponse> {
   let accessToken = getCookie(request, 'accessToken')
-  const data = await getUserPoint(accessToken).then((data) => data)
+  const { searchParams } = new URL(request.url)
+  const page = searchParams.get('page') || '0'
+  const data = await getUserPoint(accessToken, page).then((data) => data)
   return NextResponse.json(data)
 }
