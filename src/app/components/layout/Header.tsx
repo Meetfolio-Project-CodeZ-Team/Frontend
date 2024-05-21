@@ -1,6 +1,8 @@
 'use client'
 
+import { EMOJI_VALUE, PROFILE_EMOJI } from '@/app/constants/signup'
 import { logout } from '@/app/utils/cookies'
+import Image from 'next/image'
 import Link from 'next/link'
 interface HeaderProps {
   nickname?: string
@@ -14,9 +16,14 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
       <header className=" relative w-full h-[80px] flex items-center content-between min-w-[800px] gap-x-[470px] px-[60px]">
         <Link
           href="/"
-          className="absolute flex items-center justify-center gap-x-2.5 h-9"
+          className="absolute flex items-center justify-center gap-x-2 h-9"
         >
-          <div className="w-9 h-9 bg-[#486284] rounded-[100px]"></div>
+          <Image
+            width={36}
+            height={36}
+            src="/Images/mfLogo.png"
+            alt="logoIcon"
+          />
           <div className="flex w-[150x] h-[auto] text-[32px] font-semibold leading-[48px]">
             Meetfolio
             {isAdmin && (
@@ -46,7 +53,9 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
                 </Link>
               ) : (
                 <div className="flex items-center gap-x-2">
-                  <div className="w-6 h-6 bg-[#486284] rounded-[100px]"></div>
+                  <div className="w-6 h-6">
+                    {EMOJI_VALUE[PROFILE_EMOJI.indexOf(profile || '')]}
+                  </div>
                   <Link href="/mypage" className="text-base">
                     {nickname}
                   </Link>
@@ -80,7 +89,8 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
                 로그아웃
               </button>
             </Link>
-            <div className=" text-[#486284] text-lg cursor-pointer items-center ">
+            <div className=" text-[#486284] text-lg cursor-pointer items-center flex gap-x-2">
+              <div>👨‍💻</div>
               <Link href="/admin">관리자</Link>
             </div>
           </div>

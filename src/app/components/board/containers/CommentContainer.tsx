@@ -4,6 +4,8 @@ import { selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import Comment from '../Comment'
@@ -19,7 +21,10 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [likeCnt, setLikeCnt] = useState(0)
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [content, setContent] = useState('')
+  const [commentId, setCommentId] = useState(0)
   const [comment, setComment] = useState<CommentDataTypes[]>([])
+  const [isReply, setIsReply] = useState(false)
+
   console.log(selectedId, '선택된 id')
 
   const like = async (id: number) => {
@@ -34,9 +39,8 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const LeaveComment = async () => {
     const reqBody = {
       content: content,
-      parentId: null,
+      parentId: isReply ? commentId : null,
     }
-
     const res = await fetch(`/api/board/comment/leave?id=${postId}`, {
       method: 'POST',
       headers: {
@@ -54,7 +58,12 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
 
   useEffect(() => {
     setLikeStatus(isLiked)
+    setIsReply(false)
   }, [isLiked, postId])
+
+  useEffect(() => {
+    if (!isReply) setContent('')
+  }, [isReply])
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +78,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
 
   return (
     <div className="flex w-full h-full">
+      <ToastContainer />
       {isClicked ? (
         <div className="w-full h-full relative bg-white">
           <div
@@ -83,8 +93,10 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
           <div className="absolute top-16 w-full h-[170px] pl-6 pt-[21px] bg-[#EDEDED]">
             <div className="absolute">
               <textarea
-                className="text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none"
-                placeholder="댓글을 입력해보세요..."
+                className={`text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none ${isReply && 'placeholder:text-[#486283] placeholder:font-bold'}`}
+                placeholder={
+                  isReply ? '대댓글을 입력하세요...' : '댓글을 입력하세요...'
+                }
                 onChange={(e) => setContent(e.target.value)}
                 value={content}
               ></textarea>
@@ -98,9 +110,14 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] left-10 flex flex-col gap-y-12 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
+          <div className="absolute top-[280px] left-10 flex flex-col gap-y-9 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
             {comment.map((data, i) => (
-              <Comment data={data} key={i} />
+              <Comment
+                data={data}
+                key={i}
+                setReply={setIsReply}
+                setCommentId={setCommentId}
+              />
             ))}
           </div>
         </div>

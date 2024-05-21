@@ -68,5 +68,5 @@ interface CommentDataTypes {
   memberName: string
   profile: string
   sinceCreation: number
-  childComments: []
+  childComments: CommentDataTypes[]
 }

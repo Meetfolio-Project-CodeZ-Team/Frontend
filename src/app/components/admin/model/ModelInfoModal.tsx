@@ -8,9 +8,10 @@ interface ModelInfoModalProps {
   closeModal: () => void
   deleteUser?: () => void
   data: modelResultTypes
+  status: string
 }
 
-const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
+const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
   const activateModel = async () => {
     const requestOpt = {
       method: 'POST',
@@ -26,6 +27,7 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
     changeVersion()
     closeModal()
   }
+  console.log(data, '모델 데이터')
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -73,9 +75,9 @@ const ModelInfoModal = ({ closeModal, data }: ModelInfoModalProps) => {
             className="text-white bg-[#7AAAE8]"
           />
           <Button
-            buttonText={data.status === 'ACTIVE' ? '배포 됨' : '배포하기'}
+            buttonText={status === 'ACTIVE' ? '배포 됨' : '배포하기'}
             type={'modelInfo'}
-            isDisabled={data.status === 'ACTIVE'}
+            isDisabled={status === 'ACTIVE'}
             onClickHandler={activateModel}
             className="text-black bg-[#DEE5ED]"
           />

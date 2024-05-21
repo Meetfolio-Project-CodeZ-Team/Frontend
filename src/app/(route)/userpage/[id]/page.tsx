@@ -21,7 +21,7 @@ export default function UserPage({ params }: { params: { id: string } }) {
 
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-[full] h-[980px] mb-[200px]">
         <OtherUserNav nickname={params.id} />
         <div className="flex-grow">
