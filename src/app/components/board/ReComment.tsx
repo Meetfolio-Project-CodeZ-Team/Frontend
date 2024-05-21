@@ -7,15 +7,20 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
-import ReComment from './ReComment'
 
-interface CommentProps {
+interface ReCommentProps {
   data: CommentDataTypes
   setReply: Dispatch<SetStateAction<boolean>>
   setCommentId: Dispatch<SetStateAction<number>>
+  parentId: number
 }
 
-const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
+const ReComment = ({
+  data,
+  setReply,
+  setCommentId,
+  parentId,
+}: ReCommentProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
@@ -29,7 +34,7 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
 
   const startReply = () => {
     setReply((prev) => !prev)
-    setCommentId(data.commentId)
+    setCommentId(parentId)
   }
 
   const updateComment = async () => {
@@ -68,8 +73,8 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
   }, [data, isEdit])
 
   return (
-    <div>
-      <div className="w-[90%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
+    <div className='w-full'>
+      <div className="w-[100%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
         <ToastContainer />
         {isOpen && (
           <DeleteModal
@@ -139,19 +144,15 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
           </div>
         )}
       </div>
-      <div className="absolute right-0 mt-8 gap-y-8 flex flex-col w-[90%]">
+      <div className="absolute right-0 mt-8 gap-y-8">
         {data.childComments.map((comment, i) => (
-          <ReComment
-            data={comment}
-            setReply={setReply}
-            setCommentId={setCommentId}
-            parentId={data.commentId}
-            key={i}
-          />
+          <div className="w-[90%] border-[1.5px] h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
+            {comment.content}
+          </div>
         ))}
       </div>
     </div>
   )
 }
 
-export default Comment
+export default ReComment

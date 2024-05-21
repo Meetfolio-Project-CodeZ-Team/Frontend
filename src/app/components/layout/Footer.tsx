@@ -14,8 +14,13 @@ const Footer = () => {
             <div className="px-2">회원정보 고객센터</div>
           </div>
           <div className="flex items-center gap-x-1  mb-2">
-            <div className="w-3 h-3 bg-white rounded-[100px]"></div>
-            <div className="font-bold text-[24px]">MeetFolio</div>
+          <Image
+              width={24}
+              height={24}
+              src="/Images/mfLogo.png"
+              alt="logoIcon"
+            />
+            <div className="font-bold text-[20px]">MeetFolio</div>
             <div className="font-light text-[14px]">Copyright</div>
             <div className="font-bold text-[14px]">©MeetFolio Corp.</div>
             <div className="font-light text-[14px]">All Rights Reserved</div>

@@ -114,6 +114,13 @@ const changeVersion = () => {
   })
 }
 
+const replyAlert = () => {
+  toast.success('입력창을 통해 대댓글을 입력해보세요!', {
+    icon: () => '🗨️',
+    ...commonOptions,
+  })
+}
+
 export {
   authCodeAlert,
   pwAlert,
@@ -130,4 +137,5 @@ export {
   trainData,
   trainStop,
   changeVersion,
+  replyAlert,
 }

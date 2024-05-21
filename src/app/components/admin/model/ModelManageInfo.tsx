@@ -79,7 +79,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         </div>
         <div onClick={handleModalClick}>
           {isOpen && detailData && (
-            <ModelInfoModal data={detailData} closeModal={closeModal} />
+            <ModelInfoModal data={detailData} closeModal={closeModal} status={status} />
           )}
         </div>
       </div>
