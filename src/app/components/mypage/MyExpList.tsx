@@ -6,6 +6,9 @@ import MyExpCard from './MyExpCard'
 import ExpIcon from '@/app/ui/svg/common/ExpIcon'
 import { useRecoilState } from 'recoil'
 import { portNum } from '@/app/recoil/mypage'
+import ReactPaginate from 'react-paginate'
+import Icons from '../common/Icons'
+import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
 
 interface ExperienceCard {
   experienceId: number
@@ -17,9 +20,29 @@ interface ExperienceCard {
   stack: string
 }
 
+interface pageInfo {
+  isFirst: boolean
+  isLast: boolean
+  totalPage: number
+  listSize: number
+  totalElements: number
+}
+
 const MyExpList = () => {
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
   const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
+  const [page, setPage] = useState<number>(1)
+  const [pageinfo, setPageInfo] = useState<pageInfo>({
+    isFirst: true,
+    isLast: false,
+    totalPage: 0,
+    listSize: 0,
+    totalElements: 0,
+  });
+
+  const handlePageChange = ({ selected }: { selected: number }) => {
+    setPage(() => selected + 1)
+  }
 
   const goToPreviousPage = () => {
     setPortfolioNumber(0)
@@ -35,24 +58,25 @@ const MyExpList = () => {
     // 서버에서 경험카드 데이터를 가져오는 함수
     const fetchExpCards = async () => {
       try {
-        const response = await fetch('/api/mypage/myExp')
+        const response = await fetch(`/api/mypage/myExp?page=${page - 1}`)
         if (!response.ok) {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
         console.log(data) // 타입 에러가 발생하지 않아야 함
         setExpCards(data.result.experienceCardInfo.experienceCardItems)
+        setPageInfo(data.result.experienceCardInfo)
       } catch (error) {
         console.error(error)
       }
     }
 
     fetchExpCards()
-  }, [])
+  }, [page])
 
   console.log(expCards, '카드 목록 정보')
   return (
-    <div className="w-full h-[1090px] relative">
+    <div className="w-full h-[1150px] relative">
       <div className="w-full h-full left-0 top-0 absolute bg-gray-50 " />
       <div className="w-full h-[0px] left-[65px] top-[170px] absolute">
         <div className="w-[1080px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
@@ -117,6 +141,24 @@ const MyExpList = () => {
       <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포트폴리오
       </div>
+      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[1060px] right-6'>
+      <ReactPaginate
+          className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
+          previousLabel={
+            <div className="pt-0.5">
+              <Icons name={leftAngle} />
+            </div>
+          }
+          nextLabel={
+            <div className="pt-0.5">
+              <Icons name={rightAngle} />
+            </div>
+          }
+          pageCount={pageinfo.totalPage}
+          onPageChange={handlePageChange}
+          activeClassName={'active text-[#486284]'}
+        />
+        </div>
     </div>
   )
 }

@@ -50,6 +50,7 @@ const MyCovletCardDetail = ({
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const [AnalysisData, setAnalySisData] = useRecoilState(analysisData)
+  const [initialLoad, setInitialLoad] = useState(true)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,11 +88,10 @@ const MyCovletCardDetail = ({
     document.body.removeChild(textArea)
   }
 
-  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100;
+  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100
 
-// 결과를 반올림합니다 (예: 0.25%)
-const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
-
+  // 결과를 반올림합니다 (예: 0.25%)
+  const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
   const onEditClick = () => {
     setCoverLetterData({
@@ -129,22 +129,34 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
     }
   }
   const hasFeedback =
-    correction 
+    correction || recommendQuestion1 || recommendQuestion2 || recommendQuestion3
 
-  const hasAnalysis =
-    AnalysisData?.jobSuitability ||
-    
+  const hasAnalysis = AnalysisData?.jobSuitability
 
-  console.log(coverletterData, '자소서 상세정보 조회')
-  console.log(AnalysisData)
+  // useEffect(() => {
+  //   // 컴포넌트가 마운트 되었을 때, initialLoad가 true인 경우에만 새로고침
+  //   if (initialLoad) {
+  //     window.location.reload()
+  //     setInitialLoad(false) // 새로고침 후에는 더 이상 새로고침 하지 않도록 상태를 false로 설정
+  //   }
+  // }, [initialLoad])
 
-  console.log('자소서 피드백 결과', correction)
-  console.log('직무 적합도', jobSuitability)
+  useEffect(() => {
+    // 페이지가 처음 로드될 때만 새로고침을 수행합니다.
+    const shouldReload = localStorage.getItem('reloaded') !== 'true';
+
+    if (shouldReload) {
+      localStorage.setItem('reloaded', 'true'); // 새로고침 플래그를 설정합니다.
+      window.location.reload();
+    } else {
+      localStorage.removeItem('reloaded'); // 다음 새로고침을 위해 플래그를 제거합니다.
+    }
+  }, [coverLetterId]);
 
   if (hasFeedback && !hasAnalysis) {
     return (
-      <div className="w-full h-[1725px] relative">
-        <div className="w-full h-[1725px] left-0 top-0 absolute">
+      <div className="w-full h-[1825px] relative">
+        <div className="w-full h-[1825px] left-0 top-0 absolute">
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
@@ -171,19 +183,31 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
             </svg>
           </button>
         </div>
-        <div className="w-[1090px] h-[842px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
-          <div className="w-[202.26px] h-[49px] left-[425px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
-            AI 피드백
+        <div className="w-[1090px] h-[965px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
+          <div className="w-[260.26px] h-[49px] left-[415px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
+            AI 자기소개서 피드백
+          </div>
+          <div className="w-[1040px] h-[0px] border mt-[75px] ml-[22px] border-zinc-300"></div>
+          <div className="w-[1040px] h-[50px] mt-[30px] relative">
+            <div className="w-[1040px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
+            <div className="w-[228px] h-[49px] left-[432px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
+              자기소개서 첨삭 결과
+            </div>
           </div>
           <div className="w-[1090px] h-[800px] left-0 top-0 absolute">
-            <div className="w-[1000px] h-[395px] left-[46.42px] top-[100px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
+            <div className="w-[1000px] h-[395px] left-[46.42px] top-[190px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
               {correction}
             </div>
           </div>
-          <div className="w-[1003px] left-[37px] top-[545px] absolute">
+          <div className="w-[1003px] left-[37px] top-[655px] absolute">
             <div className="space-y-6 py-4">
               <div className="flex items-center space-x-4">
-                <div className="w-3.5 h-3.5 bg-slate-600 rounded-full" />
+                <div className="w-[25px] h-[25px] relative">
+                  <div className="w-[25px] h-[25px] left-0 top-0 absolute bg-[#486283] rounded-full" />
+                  <div className="w-[25px] h-[25px] left-[0px] top-[0px] absolute text-center text-white text-base font-bold font-['Plus Jakarta Sans'] leading-normal">
+                    1
+                  </div>
+                </div>
                 <div className="bg-blue-200 rounded-lg px-4 py-2 w-full">
                   <p className="text-black text-base font-medium whitespace-pre-wrap">
                     {recommendQuestion1}
@@ -191,7 +215,12 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-3.5 h-3.5 bg-slate-600 rounded-full" />
+                <div className="w-[25px] h-[25px] relative">
+                  <div className="w-[25px] h-[25px] left-0 top-0 absolute bg-[#486283] rounded-full" />
+                  <div className="w-[25px] h-[25px] left-[0px] top-[0px] absolute text-center text-white text-base font-bold font-['Plus Jakarta Sans'] leading-normal">
+                    2
+                  </div>
+                </div>
                 <div className="bg-blue-200 rounded-lg px-4 py-2 w-full">
                   <p className="text-black text-base font-medium whitespace-pre-wrap">
                     {recommendQuestion2}
@@ -199,7 +228,12 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
                 </div>
               </div>
               <div className="flex items-center space-x-4">
-                <div className="w-3.5 h-3.5 bg-slate-600 rounded-full" />
+                <div className="w-[25px] h-[25px] relative">
+                  <div className="w-[25px] h-[25px] left-0 top-0 absolute bg-[#486283] rounded-full" />
+                  <div className="w-[25px] h-[25px] left-[0px] top-[0px] absolute text-center text-white text-base font-bold font-['Plus Jakarta Sans'] leading-normal">
+                    3
+                  </div>
+                </div>
                 <div className="bg-blue-200 rounded-lg px-4 py-2 w-full">
                   <p className="text-black text-base font-medium whitespace-pre-wrap">
                     {recommendQuestion3}
@@ -208,12 +242,15 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
               </div>
             </div>
           </div>
-          <div className="w-[252px] h-[49px] left-[400px] top-[505px] absolute text-center text-black text-2xl font-bold leading-9">
-            추천 자기소개서 문항
+          <div className="w-[252px] h-[49px] left-[0px] top-[595px] absolute text-center text-black text-2xl font-bold leading-9">
+            <div className="w-[1040px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
+            <div className="w-[228px] h-[49px] left-[432px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
+              추천 자기소개서 문항
+            </div>
           </div>
         </div>
         {isGuest !== 'true' && (
-          <div className="w-[334px] h-[58px] left-[900px] top-[1646px] absolute flex justify-between items-center">
+          <div className="w-[334px] h-[58px] left-[900px] top-[1746px] absolute flex justify-between items-center">
             <button
               className="w-[100px] h-[40px] left-0 top-0 absolute select-none rounded-[15px] bg-blue-400  py-1 px-6 text-center align-middle  text-xl font-bold uppercase text-white transition-all hover:opacity-75 focus:ring focus:ring-gray-300 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
@@ -337,8 +374,14 @@ const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100;
               문항
             </div>
           </div>
-          <div className="text-black text-[35px] font-semibold leading-[52.50px]">
+          <div className="text-black text-[35px] font-semibold leading-[52.50px] truncate">
             {question}
+          </div>
+          <div className="ml-1 cursor-pointer text-white bg-black px-3 py-1 rounded-full relative group">
+            ?
+            <div className="absolute w-64 bg-black text-white text-sm rounded-lg p-2 invisible group-hover:visible bottom-full mb-2 left-1/2 transform -translate-x-1/2 z-10">
+              {question}
+            </div>
           </div>
         </div>
       </div>

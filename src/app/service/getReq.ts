@@ -18,8 +18,8 @@ const getRequest = async (url: string, accessToken?: string) => {
   }
 }
 
-export const getMyExp = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/experience-cards`
+export const getMyExp = async (accessToken: string, page: string) => {
+  const url = `${SERVER_URL}/api/experience-cards?page=${page}`
   return await getRequest(url, accessToken)
 }
 
@@ -28,8 +28,8 @@ export const getMyExpDetail = async (accessToken: string, id: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const getMyCovlet = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/coverLetters`
+export const getMyCovlet = async (accessToken: string, page: string) => {
+  const url = `${SERVER_URL}/api/coverLetters?page=${page}`
   return await getRequest(url, accessToken)
 }
 
@@ -43,8 +43,8 @@ export const getUserInfo = async (accessToken: string) => {
   return await getRequest(url, accessToken)
 }
 
-export const getUserPoint = async (accessToken: string) => {
-  const url = `${SERVER_URL}/api/my-points`
+export const getUserPoint = async (accessToken: string, page: string) => {
+  const url = `${SERVER_URL}/api/my-points?page=${page}`
   return await getRequest(url, accessToken)
 }
 
