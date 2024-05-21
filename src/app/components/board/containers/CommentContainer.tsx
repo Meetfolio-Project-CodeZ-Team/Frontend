@@ -84,7 +84,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
             <div className="absolute">
               <textarea
                 className="text-lg font-medium w-[380px] h-[120px] bg-[#EDEDED] focus:outline-none"
-                placeholder="댓글을 입력해보세요..."
+                placeholder="댓글을 입력하세요..."
                 onChange={(e) => setContent(e.target.value)}
                 value={content}
               ></textarea>
