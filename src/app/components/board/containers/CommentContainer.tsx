@@ -3,7 +3,6 @@
 import { selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
-import { replyAlert } from '@/app/utils/toast'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -63,7 +62,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   }, [isLiked, postId])
 
   useEffect(() => {
-    isReply && replyAlert()
+    if (!isReply) setContent('')
   }, [isReply])
 
   useEffect(() => {
