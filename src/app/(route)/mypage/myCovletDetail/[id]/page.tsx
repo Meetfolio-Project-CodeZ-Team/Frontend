@@ -4,7 +4,12 @@ import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import MyCovletCardDetail from '@/app/components/mypage/MyCovletCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import { covletData, covletNum, feedbackData, analysisData } from '@/app/recoil/coverletter'
+import {
+  analysisData,
+  covletData,
+  covletNum,
+  feedbackData,
+} from '@/app/recoil/coverletter'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -58,7 +63,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer
           isGuest={isGuest || ''}
@@ -75,6 +80,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             jobKeyword={coverletterData?.jobKeyword}
             shareType={coverletterData.shareType}
             isGuest={isGuest || ''}
+            isPaid={coverletterData?.isPaid||false}
             correction={feedBackData?.correction}
             recommendQuestion1={feedBackData?.recommendQuestion1}
             recommendQuestion2={feedBackData?.recommendQuestion2}

@@ -1,3 +1,4 @@
+import { EMOJI_VALUE, PROFILE_EMOJI } from '@/app/constants/signup'
 import { selectedPostId } from '@/app/recoil/board'
 import { comment } from '@/app/ui/IconsPath'
 import Like from '@/app/ui/svg/main/Like'
@@ -28,7 +29,9 @@ const GroupPost = ({ data }: GroupPostProps) => {
       onClick={() => setSelectedId(data.boardId)}
     >
       <div className="absolute left-7 top-5">
-        <div className="w-9 h-9 bg-[#486284] rounded-[100px]" />
+        <div className="w-9 h-9">
+          {EMOJI_VALUE[PROFILE_EMOJI.indexOf(data.profile || '')]}
+        </div>
       </div>
       <div className="flex flex-col text-[#486283] absolute top-[18px] left-[76px]">
         <div className="text-basefont-semibold">{data.memberName}</div>

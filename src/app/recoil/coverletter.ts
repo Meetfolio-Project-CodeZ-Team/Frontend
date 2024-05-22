@@ -13,6 +13,7 @@ export interface CoverLetterDataTypes {
   keyword1?: string
   keyword2?: string
   jobKeyword?: string
+  isPaid?:false
 }
 
 export const covletData = atom<CoverLetterDataTypes>({
@@ -24,6 +25,7 @@ export const covletData = atom<CoverLetterDataTypes>({
     keyword1: '',
     keyword2: '',
     jobKeyword: '',
+    isPaid:false,
   },
 })
 

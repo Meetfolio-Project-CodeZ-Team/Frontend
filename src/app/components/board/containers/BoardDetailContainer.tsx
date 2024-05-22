@@ -1,5 +1,6 @@
 'use client'
 import { NULLPOST } from '@/app/constants/board'
+import { EMOJI_VALUE, PROFILE_EMOJI } from '@/app/constants/signup'
 import { useModal } from '@/app/hooks/useModal'
 import { selectedPostId } from '@/app/recoil/board'
 import { deletePostAlert } from '@/app/utils/toast'
@@ -75,7 +76,9 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
             </div>
             <Link href={`/userpage/${data?.memberName}`}>
               <div className="absolute left-7 top-[144px] flex text-[18px] font-semibold gap-x-1 items-center">
-                <div className="w-5 h-5 rounded-[100px] bg-[#7AA9E7]"></div>
+                <div className="w-5 h-5">
+                  {EMOJI_VALUE[PROFILE_EMOJI.indexOf(data?.profile || '')]}
+                </div>
                 <div className="">{data?.memberName}</div>
               </div>
             </Link>

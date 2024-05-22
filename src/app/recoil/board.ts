@@ -25,6 +25,7 @@ export const boardDataState = atom<ResponseEmploymentAll>({
           recruitment: '웹',
           peopleNumber: 0,
           registrationDate: 'string',
+          profile:'BACKEND'
         },
       ],
       isFirst: false,
