@@ -75,7 +75,13 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
             <div className="absolute right-10 top-[84px] text-sm font-normal">
               {data?.registrationDate}
             </div>
-            <Link href={`/userpage/${data?.memberName}`}>
+            <Link
+              href={
+                nickname === data?.memberName
+                  ? `/mypage`
+                  : `/userpage/${data?.memberName}`
+              }
+            >
               <div className="absolute left-7 top-[144px] flex text-[18px] font-semibold gap-x-3 items-center">
                 <div className="w-6 h-6">
                   <Image

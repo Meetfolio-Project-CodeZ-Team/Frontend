@@ -33,7 +33,7 @@ const JobPost = ({ data }: JobPostProps) => {
         </div>
       </div>
       <div className="flex flex-col text-[#486283] absolute top-[18px] left-[76px]">
-        <div className="text-basefont-semibold">{data.memberName}</div>
+        <div className="text-base font-semibold">{data.memberName}</div>
         <div className="text-xs font-normal">{data.registrationDate}</div>
       </div>
       <div className="absolute top-[18px] left-[270px] w-[90px] px-5 h-[30px] rounded-[30px] border-2 border-[#486283] text-[#486283] text-sm font-semibold flex items-center justify-center">
