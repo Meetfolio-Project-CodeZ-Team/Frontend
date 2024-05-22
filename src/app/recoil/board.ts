@@ -36,3 +36,8 @@ export const boardDataState = atom<ResponseEmploymentAll>({
     },
   },
 })
+
+export const commentArrState = atom<CommentDataTypes[]>({
+  key: 'commentArrState',
+  default: [],
+})

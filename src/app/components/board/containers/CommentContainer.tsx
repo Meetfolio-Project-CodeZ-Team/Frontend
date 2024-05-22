@@ -1,6 +1,6 @@
 'use client'
 
-import { selectedPostId } from '@/app/recoil/board'
+import { commentArrState, selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useEffect, useState } from 'react'
@@ -16,16 +16,17 @@ interface CommentContainerProps {
 }
 
 const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
-  const [isClicked, setIsClicked] = useState(false)
-  const [likeStatus, setLikeStatus] = useState(isLiked)
-  const [likeCnt, setLikeCnt] = useState(0)
+  const [comment, setComment] = useRecoilState(commentArrState)
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
-  const [content, setContent] = useState('')
-  const [commentId, setCommentId] = useState(0)
-  const [comment, setComment] = useState<CommentDataTypes[]>([])
+  const [likeStatus, setLikeStatus] = useState(isLiked)
+  const [isClicked, setIsClicked] = useState(false)
   const [isReply, setIsReply] = useState(false)
+  const [likeCnt, setLikeCnt] = useState(0)
+  const [commentId, setCommentId] = useState(0)
+  const [content, setContent] = useState('')
 
   console.log(selectedId, '선택된 id')
+  console.log(comment, '선택된 댓글 데이터')
 
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
