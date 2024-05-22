@@ -22,6 +22,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const [analySisData, setAnalySisData] = useRecoilState(analysisData)
   const isGuest = paramsData.get('isGuest')
+console.log(userInfo, '사용자 정보 가져ㅇ기');
 
   const router = useRouter()
 

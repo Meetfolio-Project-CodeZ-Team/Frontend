@@ -1,15 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { useRouter } from 'next/navigation'
-import { expData, expNum } from '../../recoil/experience'
-import Header from '@/app/components/layout/Header'
-import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
-import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
+import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
+import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import Footer from '@/app/components/layout/Footer'
+import Header from '@/app/components/layout/Header'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { expData, expNum } from '../../recoil/experience'
 
 export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -31,7 +31,6 @@ export default function ExperiencePage() {
   }, [])
 
   useEffect(() => {
-    // 첫 로드시에만 experienceNumber를 0으로 설정
     setExperienceData({
       title: '',
       startDate: '',
@@ -48,13 +47,9 @@ export default function ExperiencePage() {
     setExperienceNumber(0)
   }, [])
 
-  // useEffect(() => {
-  //   router.push('../../experience')
-  // }, [experienceNumber, router])
-
   return (
     <section className="flex flex-col items-center min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
       <div className="w-[1440px] mb-[250px]">
         {experienceNumber === 0 && <ExpInfoContainer isEdit={false} />}
         {experienceNumber === 1 && <ExpKeywordContainer />}

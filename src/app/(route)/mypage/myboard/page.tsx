@@ -1,13 +1,13 @@
 'use client'
-import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import Header from '@/app/components/layout/Header'
-import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
+import Header from '@/app/components/layout/Header'
 import MyBoard from '@/app/components/mypage/MyBoard'
-import { useRecoilState } from 'recoil'
-import { boardNum } from '@/app/recoil/mypage'
 import MyComment from '@/app/components/mypage/MyComment'
 import MyLike from '@/app/components/mypage/MyLike'
+import UserNavContainer from '@/app/components/mypage/UserNavContainer'
+import { boardNum } from '@/app/recoil/mypage'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 export default function MyBoardPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
@@ -25,7 +25,7 @@ export default function MyBoardPage() {
   }, [])
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
         <div className="flex-grow ">
@@ -38,5 +38,3 @@ export default function MyBoardPage() {
     </section>
   )
 }
-
-//폴더명 테스트
