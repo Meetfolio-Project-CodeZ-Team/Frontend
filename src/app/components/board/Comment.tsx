@@ -1,8 +1,10 @@
 'use client'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { useModal } from '@/app/hooks/useModal'
 import NavBar from '@/app/ui/svg/common/NavBar'
 import Reply from '@/app/ui/svg/common/Reply'
 import { timeCalculate } from '@/app/utils/date'
+import Image from 'next/image'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import DeleteModal from '../admin/common/DeleteModal'
@@ -103,7 +105,14 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
         ) : (
           <div className="relative">
             <div className="flex h-[42px] text-sm font-bold gap-x-3 items-center relative">
-              <div className="w-6 h-6 bg-[#486284] rounded-[100px]"></div>
+              <div className="w-6 h-6">
+                <Image
+                  width={24}
+                  height={24}
+                  src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data.profile || '')]}.png`}
+                  alt="logoIcon"
+                />
+              </div>
               <div>{data.memberName}</div>
               <div>{timeCalculate(data.sinceCreation)}</div>
               {isAuthor &&

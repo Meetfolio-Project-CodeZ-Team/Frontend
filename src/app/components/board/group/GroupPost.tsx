@@ -5,6 +5,7 @@ import Like from '@/app/ui/svg/main/Like'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
+import Image from 'next/image'
 
 interface GroupPostProps {
   data: BoardInfoTypes
@@ -29,8 +30,13 @@ const GroupPost = ({ data }: GroupPostProps) => {
       onClick={() => setSelectedId(data.boardId)}
     >
       <div className="absolute left-7 top-5">
-        <div className="w-9 h-9">
-          {EMOJI_VALUE[PROFILE_EMOJI.indexOf(data.profile || '')]}
+      <div className="w-7 h-7">
+          <Image
+            width={28}
+            height={28}
+            src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data.profile || '')]}.png`}
+            alt="logoIcon"
+          />
         </div>
       </div>
       <div className="flex flex-col text-[#486283] absolute top-[18px] left-[76px]">

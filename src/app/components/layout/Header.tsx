@@ -1,6 +1,6 @@
 'use client'
 
-import { EMOJI_VALUE, PROFILE_EMOJI } from '@/app/constants/signup'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { logout } from '@/app/utils/cookies'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -54,7 +54,12 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
               ) : (
                 <div className="flex items-center gap-x-2">
                   <div className="w-6 h-6">
-                    {EMOJI_VALUE[PROFILE_EMOJI.indexOf(profile || '')]}
+                    <Image
+                      width={24}
+                      height={24}
+                      src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(profile || '')]}.png`}
+                      alt="logoIcon"
+                    />
                   </div>
                   <Link href="/mypage" className="text-base">
                     {nickname}
