@@ -40,7 +40,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const LeaveComment = async () => {
     const reqBody = {
       content: content,
-      parentId: isReply ? commentId : null,
+      ...(isReply ? { parentId: commentId } : {}),
     }
     const res = await fetch(`/api/board/comment/leave?id=${postId}`, {
       method: 'POST',

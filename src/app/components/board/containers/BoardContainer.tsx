@@ -1,5 +1,5 @@
 'use client'
-import { boardDataState } from '@/app/recoil/board'
+import { boardDataState, boardTypeState } from '@/app/recoil/board'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
 import Pencil from '@/app/ui/svg/common/Pencil'
 import { useRouter } from 'next/navigation'
@@ -17,7 +17,7 @@ interface BoardContainerProps {
 }
 
 const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
-  const [isJob, setIsJob] = useState(true)
+  const [isJob, setIsJob] = useRecoilState(boardTypeState)
   const [page, setPage] = useState<number>(1)
   const path = isJob ? 'employment' : 'group'
   const router = useRouter()
