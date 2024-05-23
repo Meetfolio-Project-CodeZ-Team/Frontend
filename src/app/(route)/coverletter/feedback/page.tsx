@@ -3,15 +3,10 @@
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { covletNum, tidState } from '../../../recoil/coverletter'
-// import LoginContainer from '@/app/components/login/LoginContainer'
-import CovletMain from '@/app/components/coverletter/CovletMain'
-import CovletSave from '@/app/components/coverletter/CovletSave'
+import { covletNum } from '../../../recoil/coverletter'
 
 import Footer from '@/app/components/layout/Footer'
 
-import { useSearchParams } from 'next/navigation'
-import AiFeedContainer from '@/app/components/coverletter/AiFeedContainer'
 import FeedSatisfaction from '@/app/components/coverletter/FeedSatisfaction'
 
 export default function CovletFeedbackPage() {
@@ -34,9 +29,9 @@ export default function CovletFeedbackPage() {
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="w-[1440px] mb-[300px]">
-        <FeedSatisfaction feedback_id={0}/>
+        <FeedSatisfaction feedback_id={0} />
       </div>
       <Footer />
     </section>

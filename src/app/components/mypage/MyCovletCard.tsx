@@ -34,7 +34,6 @@ const MyCovletCard = ({
   const router = useRouter()
   const fetchCovletCards = () => {
     router.push(`/mypage/myCovletDetail/${coverLetterId}?isGuest=${isGuest}`)
-    
   }
 
   return (

@@ -24,6 +24,7 @@ const ChargePoint = ({
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
   const [tid, setTid] = useRecoilState(tidState)
+  const isHundred = Number(chargeP) % 100 === 0 && Number(chargeP) > 100
 
   const connectPay = async () => {
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
@@ -32,8 +33,8 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `http://www.meetfolio.kro.kr:60005/mypage/mypoint`
-          : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
+          ? `${process.env.NEXT_PUBLIC_GAHCON_SERVER}/mypage/mypoint`
+          : `${process.env.NEXT_PUBLIC_GAHCON_SERVER}/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
@@ -72,7 +73,9 @@ const ChargePoint = ({
     )
     const resData = await resTid.json()
 
-    router.push(data.next_redirect_pc_url)
+    setTimeout(() => {
+      router.push(data.next_redirect_pc_url)
+    }, 2000)
   }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -93,7 +96,9 @@ const ChargePoint = ({
               onChange={(e) => setChargeP(e.target.value)}
               textValue={chargeP}
             />
-            <div className="text-zinc-600 text-base font-medium mt-2">
+            <div
+              className={`${!isHundred ? 'text-red-600' : 'text-zinc-600'} text-base font-medium mt-2 `}
+            >
               {CHARGE_POINT[2]}
             </div>
           </div>
@@ -118,7 +123,7 @@ const ChargePoint = ({
           <Button
             buttonText={CHARGE_BUTTON[0]}
             type={'default'}
-            isDisabled={false}
+            isDisabled={!isHundred}
             onClickHandler={() => connectPay()}
             className="bg-[#7AAAE8] text-white w-[440px] h-[70px] text-2xl font-semibold rounded-[20px]"
           />

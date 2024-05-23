@@ -1,9 +1,9 @@
 'use client'
-import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import Header from '@/app/components/layout/Header'
-import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
+import Header from '@/app/components/layout/Header'
+import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import WithDrawContainer from '@/app/components/mypage/WithDrawContainer'
+import { useEffect, useState } from 'react'
 
 export default function WithDrawPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
@@ -20,7 +20,7 @@ export default function WithDrawPage() {
   }, [])
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer selected={'user'} nickname={userInfo?.memberName} />
         <div className="flex-grow">

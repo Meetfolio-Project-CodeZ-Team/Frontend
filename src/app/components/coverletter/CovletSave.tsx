@@ -1,19 +1,16 @@
 import { useModal } from '@/app/hooks/useModal'
 import { covletData } from '@/app/recoil/coverletter'
 import { successCopy } from '@/app/utils/toast'
+import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
-import MyExpCard from '../mypage/MyExpCard'
-import CheckPoint2 from '../points/CheckPoint'
-import { useRouter } from 'next/navigation'
-import ExpCardList from './ExpCardList'
-import AiFeedContainer from './AiFeedContainer'
-import Loading from '@/app/(route)/loading'
-import AiLoading from './AiLoading'
 import CheckPoint from '../points/CheckPoint'
 import AiAnalysis from './AiAnalysis'
+import AiFeedContainer from './AiFeedContainer'
+import AiLoading from './AiLoading'
+import ExpCardList from './ExpCardList'
 
 interface ExperienceCard {
   experienceId: number
@@ -35,7 +32,7 @@ const CovletSave = () => {
   const [feedbackClicked, setFeedbackClicked] = useState(false)
   const [feedbackReceived, setFeedbackReceived] = useState(false)
   const [feedbackData, setFeedbackData] = useState(null)
-  const [analysisClicked, setAnalysisClicked] = useState(false);
+  const [analysisClicked, setAnalysisClicked] = useState(false)
   const [analysisData, setAnalysisData] = useState(null)
   const [analysisReceived, setAnalysisReceived] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -172,50 +169,50 @@ const CovletSave = () => {
       requestAIFeedback()
       // AI 피드백 요청 함수 호출
     }
-  } 
+  }
 
-    const saveCovData2 = async () => {
-      const {
+  const saveCovData2 = async () => {
+    const {
+      answer,
+      question,
+      shareType,
+      keyword1,
+      keyword2,
+      jobKeyword,
+      coverLetterId,
+    } = coverletterData
+
+    if (!coverLetterId) {
+      console.error('coverLetterId가 없습니다.')
+      return
+    }
+
+    if (
+      !answer ||
+      !question ||
+      !shareType ||
+      !keyword1 ||
+      !keyword2 ||
+      !jobKeyword
+    ) {
+      console.error('모든 필드를 채워주세요.')
+      return
+    }
+
+    const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
         answer,
         question,
         shareType,
         keyword1,
         keyword2,
         jobKeyword,
-        coverLetterId,
-      } = coverletterData
-  
-      if (!coverLetterId) {
-        console.error('coverLetterId가 없습니다.')
-        return
-      }
-  
-      if (
-        !answer ||
-        !question ||
-        !shareType ||
-        !keyword1 ||
-        !keyword2 ||
-        !jobKeyword
-      ) {
-        console.error('모든 필드를 채워주세요.')
-        return
-      }
-  
-      const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          answer,
-          question,
-          shareType,
-          keyword1,
-          keyword2,
-          jobKeyword,
-        }),
-      })
+      }),
+    })
 
     const resData = await response.json()
     setCoverLetterData({
@@ -300,7 +297,6 @@ const CovletSave = () => {
       setIsLoading(false)
     }
   }
-  
 
   const handleSaveWithoutFeedback = async () => {
     const { coverLetterId } = coverletterData
@@ -540,15 +536,19 @@ const CovletSave = () => {
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={() => {
             if (feedbackClicked) {
-              saveCovData();
+              saveCovData()
             } else if (analysisClicked) {
-              saveCovData2();
+              saveCovData2()
             } else {
-              handleSaveWithoutFeedback();
+              handleSaveWithoutFeedback()
             }
           }}
         >
-          {feedbackClicked ? 'AI 피드백 결과 보러가기' : analysisClicked ? '직무 역량 분석 결과 보기' : '자기소개서 작성 완료'}
+          {feedbackClicked
+            ? 'AI 피드백 결과 보러가기'
+            : analysisClicked
+              ? '직무 역량 분석 결과 보기'
+              : '자기소개서 작성 완료'}
         </button>
       </div>
       <ExpCardList />

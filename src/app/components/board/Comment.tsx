@@ -1,10 +1,14 @@
 'use client'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { useModal } from '@/app/hooks/useModal'
+import { commentArrState, selectedPostId } from '@/app/recoil/board'
 import NavBar from '@/app/ui/svg/common/NavBar'
 import Reply from '@/app/ui/svg/common/Reply'
 import { timeCalculate } from '@/app/utils/date'
+import Image from 'next/image'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import { useRecoilState } from 'recoil'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
 import ReComment from './ReComment'
@@ -16,10 +20,12 @@ interface CommentProps {
 }
 
 const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
+  const [comment, setComment] = useRecoilState(commentArrState)
+  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  const [content, setContent] = useState(data.content)
   const [isClicked, setIsClicked] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const [isAuthor, setIsAuthor] = useState(false)
-  const [content, setContent] = useState(data.content)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const cancelEdit = () => {
@@ -43,6 +49,10 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
       }),
     })
     const resData = await res.json()
+
+    const response = await fetch(`/api/board/comment?id=${selectedId}`)
+    const comData = await response.json()
+    setComment(comData.result.commentItems)
     cancelEdit()
   }
 
@@ -53,6 +63,9 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
         method: 'DELETE',
       },
     )
+    const response = await fetch(`/api/board/comment?id=${selectedId}`)
+    const comData = await response.json()
+    setComment(comData.result.commentItems)
   }
 
   useEffect(() => {
@@ -103,7 +116,14 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
         ) : (
           <div className="relative">
             <div className="flex h-[42px] text-sm font-bold gap-x-3 items-center relative">
-              <div className="w-6 h-6 bg-[#486284] rounded-[100px]"></div>
+              <div className="w-6 h-6">
+                <Image
+                  width={24}
+                  height={24}
+                  src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data.profile || '')]}.png`}
+                  alt="logoIcon"
+                />
+              </div>
               <div>{data.memberName}</div>
               <div>{timeCalculate(data.sinceCreation)}</div>
               {isAuthor &&

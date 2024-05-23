@@ -1,16 +1,14 @@
 'use client'
 
 import { useModal } from '@/app/hooks/useModal'
-import {
-  analysisData,
-  covletData
-} from '@/app/recoil/coverletter'
+import { analysisData, covletData } from '@/app/recoil/coverletter'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import DeleteModal from '../admin/common/DeleteModal'
 import CovletDeleteModal from './common/CovletDeleteModal'
 import JobAnal2 from './common/JobAnal2'
+import CheckPoint from '../points/CheckPoint'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -26,6 +24,7 @@ interface CovletCardDetail {
   recommendQuestion2?: string
   recommendQuestion3?: string
   jobSuitability?: number
+  isPaid?: boolean
 }
 
 const MyCovletCardDetail = ({
@@ -42,8 +41,10 @@ const MyCovletCardDetail = ({
   recommendQuestion2,
   recommendQuestion3,
   jobSuitability,
+  isPaid,
 }: CovletCardDetail) => {
   console.log(coverLetterId, 'id 수정 삭제에서 가져오기')
+  console.log(isPaid)
 
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
@@ -51,6 +52,7 @@ const MyCovletCardDetail = ({
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const [AnalysisData, setAnalySisData] = useRecoilState(analysisData)
   const [initialLoad, setInitialLoad] = useState(true)
+  const paid = isPaid || isGuest !== 'true'
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +76,6 @@ const MyCovletCardDetail = ({
     textArea.select()
 
     try {
-      // 텍스트를 클립보드에 복사
       const successful = document.execCommand('copy')
       const msg = successful ? 'successful' : 'unsuccessful'
       console.log('Copying text command was ' + msg)
@@ -84,15 +85,12 @@ const MyCovletCardDetail = ({
       alert('Failed to copy text.')
     }
 
-    // 생성된 textarea 요소를 제거
     document.body.removeChild(textArea)
   }
 
   const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100;
 
-// 결과를 소수점 아래 없이 정수로 반환합니다
-const roundedPercentage = Math.floor(jobSuitabilityPercentage);
-
+  const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
   const onEditClick = () => {
     setCoverLetterData({
@@ -144,15 +142,14 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
 
   useEffect(() => {
     // 페이지가 처음 로드될 때만 새로고침을 수행합니다.
-    const shouldReload = localStorage.getItem('reloaded') !== 'true';
-
+    const shouldReload = localStorage.getItem('reloaded') !== 'true'
     if (shouldReload) {
-      localStorage.setItem('reloaded', 'true'); // 새로고침 플래그를 설정합니다.
-      window.location.reload();
+      localStorage.setItem('reloaded', 'true') // 새로고침 플래그를 설정합니다.
+      window.location.reload()
     } else {
-      localStorage.removeItem('reloaded'); // 다음 새로고침을 위해 플래그를 제거합니다.
+      localStorage.removeItem('reloaded') // 다음 새로고침을 위해 플래그를 제거합니다.
     }
-  }, [coverLetterId]);
+  }, [coverLetterId])
 
   if (hasFeedback && !hasAnalysis) {
     return (
@@ -160,7 +157,9 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
         <div className="w-full h-[1825px] left-0 top-0 absolute">
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
-            <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
+            <div
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'}`}
+            >
               {answer}
             </div>
           </div>
@@ -269,13 +268,23 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
           </div>
         )}
         <div onClick={handleModalClick}>
-          {isOpen && (
-            <DeleteModal
-              closeModal={closeModal}
-              deleteUser={() => deleteCov(coverLetterId || 0)}
-              text="정말 삭제하시겠습니까?"
-            />
-          )}
+          {isOpen ? (
+            isGuest !== 'true' ? (
+              <DeleteModal
+                closeModal={closeModal}
+                deleteUser={() => deleteCov(coverLetterId || 0)}
+                text="정말 삭제하시겠습니까?"
+              />
+            ) : isGuest === 'true' ? (
+              <CheckPoint
+                closeCheck={closeModal}
+                cost={200}
+                coverLetterId={coverLetterId}
+                setShowInputs={closeModal}
+                setAnalysisClicked={closeModal}
+              />
+            ) : null
+          ) : null}
         </div>
         <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex">
           <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
@@ -310,15 +319,31 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
             </div>
           </div>
         </div>
+        {!paid && (
+          <div className="relative h-full">
+            <div className="absolute bottom-[80px] left-[400px]">
+              <Button
+                buttonText={'전체 내용 확인하기'}
+                type={'boardPost'}
+                isDisabled={false}
+                className="bg-[#7AAAE8] text-white text-xl font-semibold"
+                onClickHandler={openModal}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
+    //----------------------------------------------------2--------------------------------------------------------
   } else if (!hasFeedback && !hasAnalysis) {
     return (
       <div className="w-full h-[1000px] relative">
         <div className="w-full h-[1000px] left-0 top-0 absolute">
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[180px] absolute border-2 border-gray-300 rounded-[15px] ">
-            <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px]">
+            <div
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'}`}
+            >
               {answer}
             </div>
           </div>
@@ -362,13 +387,23 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
           </div>
         )}
         <div onClick={handleModalClick}>
-        {isOpen && (
-            <DeleteModal
-              closeModal={closeModal}
-              deleteUser={() => deleteCov(coverLetterId || 0)}
-              text="정말 삭제하시겠습니까?"
-            />
-          )}
+          {isOpen ? (
+            isGuest !== 'true' ? (
+              <DeleteModal
+                closeModal={closeModal}
+                deleteUser={() => deleteCov(coverLetterId || 0)}
+                text="정말 삭제하시겠습니까?"
+              />
+            ) : isGuest === 'true' ? (
+              <CheckPoint
+                closeCheck={closeModal}
+                cost={200}
+                coverLetterId={coverLetterId}
+                setShowInputs={closeModal}
+                setAnalysisClicked={closeModal}
+              />
+            ) : null
+          ) : null}
         </div>
         <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-5 inline-flex">
           <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
@@ -386,7 +421,21 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
             </div>
           </div>
         </div>
+        {!paid && (
+          <div className="relative h-full">
+            <div className="absolute bottom-[80px] left-[400px]">
+              <Button
+                buttonText={'전체 내용 확인하기'}
+                type={'boardPost'}
+                isDisabled={false}
+                className="bg-[#7AAAE8] text-white text-xl font-semibold"
+                onClickHandler={openModal}
+              />
+            </div>
+          </div>
+        )}
       </div>
+      //----------------------------------------------------------3------------------------------------------------
     )
   } else if (!hasFeedback && hasAnalysis) {
     return (
@@ -394,7 +443,9 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
         <div className="w-full h-[1850px] left-0 top-0 absolute">
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
-            <div className="w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
+            <div
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'}`}
+            >
               {answer}
             </div>
           </div>
@@ -489,13 +540,23 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
           </div>
         )}
         <div onClick={handleModalClick}>
-          {isOpen && (
-            <DeleteModal
-              closeModal={closeModal}
-              deleteUser={() => deleteCov(coverLetterId || 0)}
-              text="정말 삭제하시겠습니까?"
-            />
-          )}
+          {isOpen ? (
+            isGuest !== 'true' ? (
+              <DeleteModal
+                closeModal={closeModal}
+                deleteUser={() => deleteCov(coverLetterId || 0)}
+                text="정말 삭제하시겠습니까?"
+              />
+            ) : isGuest === 'true' ? (
+              <CheckPoint
+                closeCheck={closeModal}
+                cost={200}
+                coverLetterId={coverLetterId}
+                setShowInputs={closeModal}
+                setAnalysisClicked={closeModal}
+              />
+            ) : null
+          ) : null}
         </div>
         <div className="w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex">
           <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
@@ -530,6 +591,21 @@ const roundedPercentage = Math.floor(jobSuitabilityPercentage);
             </div>
           </div>
         </div>
+        {!paid && (
+          <div className="relative h-full">
+            <div className="absolute bottom-[80px] left-[400px]">
+              <Button
+                buttonText={'전체 내용 확인하기'}
+                type={'boardPost'}
+                isDisabled={false}
+                className="bg-[#7AAAE8] text-white text-xl font-semibold"
+                onClickHandler={function (): void {
+                  throw new Error('Function not implemented.')
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
     )
   }

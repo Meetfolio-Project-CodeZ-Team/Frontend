@@ -1,4 +1,5 @@
-import { EMOJI_VALUE } from '@/app/constants/signup'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
+import Image from 'next/image'
 
 interface EmojiProps {
   emojiIndex: number
@@ -14,7 +15,12 @@ const Emoji = ({ emojiIndex, clickedEmoji }: EmojiProps) => {
     <div
       className={` ${borderStyle} flex w-[64px] border h-[36px] items-center justify-center rounded-[40px] text-[15px] shadow-md cursor-pointer bg-white`}
     >
-      {EMOJI_VALUE[emojiIndex]}
+      <Image
+        width={20}
+        height={20}
+        src={`/Images/Emoji/${PROFILE_EMOJI[emojiIndex]}.png`}
+        alt="logoIcon"
+      />
     </div>
   )
 }

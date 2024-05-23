@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../../recoil/experience'
-import Header from '@/app/components/layout/Header'
-import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
-import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import ExpContentContainer from '@/app/components/experience/ExpContentContainer'
 import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
+import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
+import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
+import Header from '@/app/components/layout/Header'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { expData, expNum } from '../../../recoil/experience'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -28,13 +28,12 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   }, [])
 
   useEffect(() => {
-    // 첫 로드시에만 experienceNumber를 0으로 설정
     setExperienceNumber(0)
   }, [])
 
   useEffect(() => {
     if (params.id && typeof params.id === 'string') {
-      fetch(`/api/mypage/myExpDetail?experienceId=${params.id}`) // 쿼리 파라미터로 id 사용
+      fetch(`/api/mypage/myExpDetail?experienceId=${params.id}`)
         .then((response) => response.json())
         .then((data) => {
           if (data && data.result && data.result.experienceInfo) {
@@ -43,7 +42,6 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
               expStacks: data.result.experienceInfo.stack.split('/'),
               jobKeyword: transKeyword(data.result.experienceInfo.jobKeyword),
             })
-            // experienceNumber는 서버 응답에 따라 조정되어야 합니다. 현재 API 응답에 이 값이 포함되어 있지 않다면 다른 로직이 필요합니다.
           }
         })
         .catch((error) => {
@@ -54,7 +52,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">
-      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="w-[1440px] mb-[250px]">
         {experienceNumber === 0 && (
           <ExpInfoContainer isEdit={true} id={params.id} />

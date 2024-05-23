@@ -38,7 +38,7 @@ const MyExpList = () => {
     totalPage: 0,
     listSize: 0,
     totalElements: 0,
-  });
+  })
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
@@ -141,8 +141,8 @@ const MyExpList = () => {
       <div className="w-[200px] h-[18px] left-[68px] top-[65px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포트폴리오
       </div>
-      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[1060px] right-6'>
-      <ReactPaginate
+      <div className="flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[1060px] right-6">
+        <ReactPaginate
           className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
           previousLabel={
             <div className="pt-0.5">
@@ -158,7 +158,7 @@ const MyExpList = () => {
           onPageChange={handlePageChange}
           activeClassName={'active text-[#486284]'}
         />
-        </div>
+      </div>
     </div>
   )
 }
