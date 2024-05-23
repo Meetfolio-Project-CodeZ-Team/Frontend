@@ -2,12 +2,13 @@
 
 import { useModal } from '@/app/hooks/useModal'
 import { pointNum } from '@/app/recoil/mypage'
-import { pointW } from '@/app/ui/IconsPath'
+import { leftAngle, pointW, rightAngle } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
 import PaymentCard from './PaymentCard'
+import ReactPaginate from 'react-paginate'
 
 interface UserInfoProps {
   email: string
@@ -22,6 +23,11 @@ interface UserInfoProps {
 
 interface UserPoint {
   myPoint: number
+  isFirst: boolean
+  isLast: boolean
+  totalPage: number
+  listSize: number
+  totalElements: number
 }
 
 interface UserPaymentProps {
@@ -36,6 +42,7 @@ const PointCharge = () => {
   const [userPayments, setUserPayments] = useState<UserPaymentProps[]>([])
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
+  const [page, setPage] = useState<number>(1)
 
   const goToPointPage = () => {
     setPointNumber(0)
@@ -47,33 +54,26 @@ const PointCharge = () => {
     window.scrollTo(0, 0)
   }
 
+  const handlePageChange = ({ selected }: { selected: number }) => {
+    setPage(() => selected + 1)
+  }
+
   useEffect(() => {
     // 서버에서 자소서카드 데이터를 가져오는 함수
     const fetchUserInfos = async () => {
       try {
-        const response = await fetch('/api/mypage/mypayment')
-        if (!response.ok) {
-          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
-        }
-        const data = await response.json()
-        setUserInfos(data.result.paymentInfo)
-      } catch (error) {}
-    }
-
-    const fetchUserPayment = async () => {
-      try {
-        const response = await fetch('/api/mypage/mypayment')
+        const response = await fetch(`/api/mypage/mypayment?page=${page - 1}`)
         if (!response.ok) {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
         setUserPayments(data.result.paymentInfo.paymentList)
+        setUserInfos(data.result.paymentInfo)
       } catch (error) {}
     }
-
     fetchUserInfos()
-    fetchUserPayment()
-  }, [])
+    
+  }, [page])
 
   return (
     <div className="w-full h-[1090px] relative">
@@ -97,7 +97,7 @@ const PointCharge = () => {
         </div>
         <div className="h-[39px] relative">
           <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
-            <div className="text-black text-lg font-semibold leading-[27px] absolute left-[8px] w-[170px] text-center">
+            <div className="text-black text-lg font-semibold leading-[27px] absolute left-[6px] w-[170px] text-center">
               충전 일시
             </div>
             <div className="text-black text-lg font-normal leading-[27px] absolute left-[300px] w-[150px] text-center">
@@ -113,10 +113,10 @@ const PointCharge = () => {
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1060px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-        <div className="w-full h-full ml-[0px] gap-[10px] flex flex-col">
-          {userPayments.map((a) => (
-            <PaymentCard key={a.createdAt} {...a} />
+      <div className="w-[1060px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute ">
+        <div className="w-full h-full ml-[0px] gap-[0px] flex flex-col">
+          {userPayments.map((a,index) => (
+            <PaymentCard key={index} {...a} />
           ))}
         </div>
       </div>
@@ -150,6 +150,24 @@ const PointCharge = () => {
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
       </div>
+      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6'>
+      <ReactPaginate
+          className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
+          previousLabel={
+            <div className="pt-0.5">
+              <Icons name={leftAngle} />
+            </div>
+          }
+          nextLabel={
+            <div className="pt-0.5">
+              <Icons name={rightAngle} />
+            </div>
+          }
+          pageCount={Number(userInfos?.totalPage)}
+          onPageChange={handlePageChange}
+          activeClassName={'active text-[#486284]'}
+        />
+        </div>
     </div>
   )
 }

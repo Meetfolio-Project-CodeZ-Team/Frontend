@@ -36,12 +36,7 @@ interface PointCardProps {
 }
 
 const MyPointContainer = () => {
-  const [userInfos, setUserInfos] = useState<UserPoint>({isFirst: true,
-    isLast: false,
-    totalPage: 0,
-    listSize: 0,
-    totalElements: 0,
-  myPoint:0})
+  const [userInfos, setUserInfos] = useState<UserPoint>()
   const [pointCards, setPointCards] = useState<PointCardProps[]>([])
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
@@ -100,7 +95,7 @@ const MyPointContainer = () => {
         </div>
         <div className="h-[39px] relative">
           <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
-            <div className="text-black text-lg font-semibold leading-[27px] absolute left-[8px] w-[170px] text-center">
+            <div className="text-black text-lg font-semibold leading-[27px] absolute left-[6px] w-[170px] text-center">
               사용 일시
             </div>
             <div className="text-black text-lg font-normal leading-[27px] absolute left-[300px] w-[150px] text-center">
@@ -116,10 +111,10 @@ const MyPointContainer = () => {
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1065px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute overflow-y-auto scrollbar-hide">
-        <div className="w-full h-full ml-[0px] gap-[10px] flex flex-col">
-          {pointCards.map((a) => (
-            <PointCard key={a.createdAt} {...a} />
+      <div className="w-[1065px] h-[600px] left-[76px] mt-[394px] flex flex-col absolute ">
+        <div className="w-full h-full ml-[0px] gap-[0px] flex flex-col">
+          {pointCards.map((a, index) => (
+            <PointCard key={index} {...a} />
           ))}
         </div>
       </div>
@@ -153,7 +148,7 @@ const MyPointContainer = () => {
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
       </div>
-      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[900px] right-6'>
+      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6'>
       <ReactPaginate
           className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
           previousLabel={
@@ -166,7 +161,7 @@ const MyPointContainer = () => {
               <Icons name={rightAngle} />
             </div>
           }
-          pageCount={userInfos.totalPage}
+          pageCount={Number(userInfos?.totalPage)}
           onPageChange={handlePageChange}
           activeClassName={'active text-[#486284]'}
         />

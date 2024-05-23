@@ -3,14 +3,14 @@
 import { useModal } from '@/app/hooks/useModal'
 import {
   analysisData,
-  covletData,
-  feedbackData,
+  covletData
 } from '@/app/recoil/coverletter'
 import { useRouter } from 'next/navigation'
-import { useRecoilState } from 'recoil'
-import CovletDeleteModal from './common/CovletDeleteModal'
-import DeleteModal from '../admin/common/DeleteModal'
 import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import DeleteModal from '../admin/common/DeleteModal'
+import CovletDeleteModal from './common/CovletDeleteModal'
+import JobAnal2 from './common/JobAnal2'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -88,10 +88,11 @@ const MyCovletCardDetail = ({
     document.body.removeChild(textArea)
   }
 
-  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100
+  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100;
 
-  // 결과를 반올림합니다 (예: 0.25%)
-  const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
+// 결과를 소수점 아래 없이 정수로 반환합니다
+const roundedPercentage = Math.floor(jobSuitabilityPercentage);
+
 
   const onEditClick = () => {
     setCoverLetterData({
@@ -361,10 +362,11 @@ const MyCovletCardDetail = ({
           </div>
         )}
         <div onClick={handleModalClick}>
-          {isOpen && (
-            <CovletDeleteModal
+        {isOpen && (
+            <DeleteModal
               closeModal={closeModal}
-              deleteCov={() => deleteCov(coverLetterId)}
+              deleteUser={() => deleteCov(coverLetterId || 0)}
+              text="정말 삭제하시겠습니까?"
             />
           )}
         </div>
@@ -419,8 +421,8 @@ const MyCovletCardDetail = ({
         <div className="w-[1090px] h-[972px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
           <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
             <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
-              {userInfo?.memberName}님과 빅데이터의 직무 적합도는{' '}
-              {AnalysisData?.jobSuitability}%입니다.
+              {userInfo?.memberName}님과 {jobKeyword}{' '}분야의 직무 적합도는{' '}
+              {roundedPercentage}%입니다.
             </div>
             <div className="left-[280px] top-[643px] absolute text-black text-2xl font-bold  leading-9">
               {userInfo?.memberName} 님은 이런 역량이 두드러져요!
@@ -428,17 +430,18 @@ const MyCovletCardDetail = ({
             <div className="w-[547px] h-[29px] left-[200px] top-[150px] absolute text-black text-2xl font-medium  leading-9">
               👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
             </div>
-            <div className="w-[180px] h-[124px] left-[511px] top-[320px] absolute text-black text-7xl font-bold  leading-[108px]">
-              {AnalysisData?.jobSuitability}%
+            <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-6xl font-bold  leading-[108px]">
+              {roundedPercentage}%
             </div>
-            <div className="w-[360px] h-[360px] left-[135px] top-[198px] absolute bg-white justify-center items-center inline-flex">
+            <div className="w-[360px] h-[360px] left-[155px] top-[198px] absolute  justify-center items-center inline-flex">
               <div className="w-[360px] h-[360px] relative">
-                <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
+                {/* <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
                 <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-blue-400 rounded-full shadow" />
-                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" />
-                <div className="w-[85px] h-7 left-[229px] top-[190px] absolute text-black text-xl font-bold  leading-[30px]">
+                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" /> */}
+                <div className="w-[85px] h-7 left-[180px] top-[205px] absolute text-black text-center text-xl font-bold  leading-[30px]">
                   {jobKeyword}
                 </div>
+                <JobAnal2 backend={Number(roundedPercentage)} all={100-Number(roundedPercentage)}  />
               </div>
             </div>
             <div className="w-[569px] h-[202px] left-[200px] top-[713px] absolute">
