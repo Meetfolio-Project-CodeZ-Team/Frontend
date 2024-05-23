@@ -4,6 +4,8 @@ import Like from '@/app/ui/svg/main/Like'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
+import Image from 'next/image'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 
 interface MyBoardCardProps {
   title?: string
@@ -18,6 +20,7 @@ interface MyBoardCardProps {
   boardType?: string
   jobCategory?: string
   likeStatus: string
+  profile?: string
 }
 
 interface BoardCardDetail {
@@ -30,6 +33,7 @@ interface BoardCardDetail {
   memberName: string
   peopleNumber: number
   boardType: string
+  profile?: string
   // closeModal: () => void
 }
 
@@ -46,6 +50,7 @@ const MyBoardCard = ({
   boardType,
   jobCategory,
   likeStatus,
+  profile
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
@@ -81,7 +86,14 @@ const MyBoardCard = ({
         <div className="w-[105.75px] h-[18px] left-[52px] top-[24px] absolute text-slate-600 text-xs font-normal leading-[30px]">
           {registrationDate}
         </div>
-        <div className="w-[37.77px] h-10 left-0 top-[7px] absolute bg-slate-600 rounded-full" />
+        <div className="w-6 h-6 top-[13px] left-[8px] absolute">
+          <Image
+            width={24}
+            height={24}
+            src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(profile || '')]}.png`}
+            alt="logoIcon"
+          />
+        </div>
       </div>
       <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug">
         {content}

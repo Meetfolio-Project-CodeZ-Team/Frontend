@@ -66,3 +66,14 @@ export const updateSatisfaction = async (
 
   return await patchRequest(url, Content, accessToken)
 }
+
+export const updateSatisfaction2 = async (
+  Content: SatisfactionData,
+  accessToken: string,
+  id: string,
+) => {
+  const url = `${SERVER_URL}/api/coverLetters/satisfaction?analysisId=${id}`
+  console.log(url, '요청경로')
+
+  return await patchRequest(url, Content, accessToken)
+}
