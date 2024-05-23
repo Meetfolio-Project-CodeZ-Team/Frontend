@@ -32,10 +32,10 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
       console.error('유효하지 않은 feedback ID입니다.')
       return
     }
-    console.log('피드백 아이디', analysis_id)
+    console.log('분석 아이디', analysis_id)
 
     const response = await fetch(
-      `/api/coverLetter/satisfaction?id=${analysis_id}`,
+      `/api/coverLetter/analysSatis?id=${analysis_id}`,
       {
         method: 'PATCH',
         headers: {

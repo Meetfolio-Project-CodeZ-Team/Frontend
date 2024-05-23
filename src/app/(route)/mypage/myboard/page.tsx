@@ -27,7 +27,7 @@ export default function MyBoardPage() {
     <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
-        <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
+        <UserNavContainer selected={'board'} nickname={userInfo?.memberName} profile={userInfo?.profile}/>
         <div className="flex-grow ">
           {boardNumber === 0 && <MyBoard />}
           {boardNumber === 1 && <MyLike />}
