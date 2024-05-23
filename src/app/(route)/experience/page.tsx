@@ -54,7 +54,7 @@ export default function ExperiencePage() {
 
   return (
     <section className="flex flex-col items-center min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
       <div className="w-[1440px] mb-[250px]">
         {experienceNumber === 0 && <ExpInfoContainer isEdit={false} />}
         {experienceNumber === 1 && <ExpKeywordContainer />}

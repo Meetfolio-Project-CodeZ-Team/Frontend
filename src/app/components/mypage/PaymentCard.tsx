@@ -30,17 +30,17 @@ const PaymentCard = ({
   const router = useRouter()
 
   return (
-    <div className="flex gap-[218px] items-center w-full h-[39px] py-[2px] border-b border-stone-400 mt-[-5px]">
-      <div className="text-black text-lg font-semibold leading-snug absolute left-[10px] w-[170px] text-center">
+    <div className="flex gap-[218px] items-center w-full h-[59px] py-[2px] border-b border-stone-400 mt-[0px]">
+      <div className="text-black text-lg font-semibold leading-snug absolute left-[10px] w-[170px] text-start">
         {createdAt}
       </div>
       <div className="text-black text-lg font-normal leading-snug absolute left-[300px] text-center w-[150px]">
         {point}
       </div>
-      <div className="text-black text-lg font-normal leading-snug absolute text-center left-[603px] w-[130px]">
+      <div className="text-black text-lg font-normal leading-snug absolute text-center left-[605px] w-[130px]">
         {payment}
       </div>
-      <div className="text-black text-lg font-normal leading-snug absolute left-[912px] text-center w-[100px]">
+      <div className="text-black text-lg font-normal leading-snug absolute left-[915px] text-center w-[100px]">
         {totalPoint}
       </div>
     </div>
