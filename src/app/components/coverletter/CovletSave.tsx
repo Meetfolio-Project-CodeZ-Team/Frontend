@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
-import { expData, expNum } from '../../recoil/experience'
+import { expNum } from '../../recoil/experience'
 import CheckPoint from '../points/CheckPoint'
 import AiAnalysis from './AiAnalysis'
 import AiFeedContainer from './AiFeedContainer'
@@ -24,7 +24,6 @@ interface ExperienceCard {
 
 const CovletSave = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [experienceData, setExperienceData] = useRecoilState(expData)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
@@ -54,10 +53,6 @@ const CovletSave = () => {
     fetchExpCards()
   }, [])
 
-  const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1)
-  }
-
   const handleTextareaChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
@@ -76,20 +71,9 @@ const CovletSave = () => {
     })
   }
 
-  const handleButtonClick = (type: string, event: React.MouseEvent) => {
-    event.preventDefault()
-    setCoverLetterData({ ...coverletterData, shareType: type })
-  }
-
   const handleShowClick = () => {
     setShowInputs(true) // 입력창을 보이게 설정
     setFeedbackClicked(true) // 피드백 버튼이 클릭되었음을 설정
-  }
-
-  const handleShowClick2 = () => {
-    openModal() // 피드백 버튼이 클릭되었음을 설정
-    setShowInputs(true) // 입력창을 보이게 설정
-    setAnalysisClicked(true)
   }
 
   const handleCopyText = () => {
@@ -163,11 +147,9 @@ const CovletSave = () => {
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
       console.log('데이터가 성공적으로 저장되었습니다.', resData)
       console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
       requestAIFeedback()
-      // AI 피드백 요청 함수 호출
     }
   }
 
@@ -222,11 +204,9 @@ const CovletSave = () => {
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-      // 성공적으로 데이터가 저장되었을 때 필요한 로직 추가 (예: 페이지 이동)
       console.log('데이터가 성공적으로 저장되었습니다.', resData)
       console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
       requestAIAnalysis()
-      // AI 피드백 요청 함수 호출
     }
   }
 
@@ -421,10 +401,11 @@ const CovletSave = () => {
             {isOpen && (
               <CheckPoint
                 closeCheck={closeModal}
-                cost={200}
+                cost={300}
                 coverLetterId={coverletterData.coverLetterId || 0}
                 setShowInputs={setShowInputs}
                 setAnalysisClicked={setAnalysisClicked}
+                usingType={'USE_AI_ANALYSIS'}
               />
             )}
           </div>

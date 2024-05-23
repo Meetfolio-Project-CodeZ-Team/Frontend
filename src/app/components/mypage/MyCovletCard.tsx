@@ -1,5 +1,4 @@
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 
 interface MyCovletCardProps {
   question: string
@@ -29,8 +28,6 @@ const MyCovletCard = ({
   index,
   isGuest,
 }: MyCovletCardProps) => {
-  const [covletCards, setCovletCards] = useState<CovletCardDetail>()
-  const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const fetchCovletCards = () => {
     router.push(`/mypage/myCovletDetail/${coverLetterId}?isGuest=${isGuest}`)

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import MyCovletCard from '../../mypage/MyCovletCard'
-import MyExpCard from '../../mypage/MyExpCard'
 import UserExpCard from './UserExpCard'
 
 interface OtherUserPortfolioProps {

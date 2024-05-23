@@ -15,16 +15,12 @@ import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
-  const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const paramsData = useSearchParams()
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const [analySisData, setAnalySisData] = useRecoilState(analysisData)
   const isGuest = paramsData.get('isGuest')
-  console.log(userInfo, '사용자 정보 가져ㅇ기')
-
-  const router = useRouter()
 
   useEffect(() => {
     const fetchData = async () => {
