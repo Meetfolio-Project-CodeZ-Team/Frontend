@@ -178,7 +178,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         <div className="w-[941px] h-[730px] left-0 top-0 absolute">
           <div className="w-[941px] h-[710px] left-0 top-0 absolute bg-white rounded-[30px]" />
           <div className="w-[856.53px] h-[500px] left-[48px] top-[170px] absolute">
-          <button
+            <button
               onClick={handleCopyText}
               className="absolute  top-[438px] left-[808px] right-0 mt-1 ml-0 p-2 bg-white text-black rounded-[10px] text-sm inline-flex gap-[4px]"
             >

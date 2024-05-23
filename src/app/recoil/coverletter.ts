@@ -13,7 +13,7 @@ export interface CoverLetterDataTypes {
   keyword1?: string
   keyword2?: string
   jobKeyword?: string
-  isPaid?:false
+  isPaid?: false
 }
 
 export const covletData = atom<CoverLetterDataTypes>({
@@ -25,7 +25,7 @@ export const covletData = atom<CoverLetterDataTypes>({
     keyword1: '',
     keyword2: '',
     jobKeyword: '',
-    isPaid:false,
+    isPaid: false,
   },
 })
 
@@ -45,12 +45,11 @@ export const feedbackDataState = atom<FeedbackData>({
   default: {
     feedback: '',
     recommend: [],
-    feedback_id: 0
+    feedback_id: 0,
   },
 })
 
 export interface FeedbackInfo {
-  
   correction?: string
   recommendQuestion1?: string
   recommendQuestion2?: string
@@ -64,7 +63,6 @@ export const feedbackData = atom<FeedbackInfo>({
     recommendQuestion1: '',
     recommendQuestion2: '',
     recommendQuestion3: '',
-    
   },
 })
 
@@ -75,12 +73,11 @@ export interface SatisfactionData {
 export const satisfactionData = atom<SatisfactionData>({
   key: 'satisfactionData',
   default: {
-    satisfaction:0
-  }
+    satisfaction: 0,
+  },
 })
 
 export interface AnalysisInfo {
-  
   jobSuitability?: number
   keyword1?: string
   keyword2?: string
@@ -94,6 +91,5 @@ export const analysisData = atom<AnalysisInfo>({
     keyword1: '',
     keyword2: '',
     keyword3: '',
-    
   },
 })

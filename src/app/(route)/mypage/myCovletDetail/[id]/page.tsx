@@ -22,7 +22,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const [analySisData, setAnalySisData] = useRecoilState(analysisData)
   const isGuest = paramsData.get('isGuest')
-console.log(userInfo, '사용자 정보 가져ㅇ기');
+  console.log(userInfo, '사용자 정보 가져ㅇ기')
 
   const router = useRouter()
 
@@ -81,7 +81,7 @@ console.log(userInfo, '사용자 정보 가져ㅇ기');
             jobKeyword={coverletterData?.jobKeyword}
             shareType={coverletterData.shareType}
             isGuest={isGuest || ''}
-            isPaid={coverletterData?.isPaid||false}
+            isPaid={coverletterData?.isPaid || false}
             correction={feedBackData?.correction}
             recommendQuestion1={feedBackData?.recommendQuestion1}
             recommendQuestion2={feedBackData?.recommendQuestion2}

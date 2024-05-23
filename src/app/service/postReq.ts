@@ -59,4 +59,3 @@ export const postAiAnalysis = async (accessToken: string, id: string) => {
   const url = `${G_SERVER_URL}/api/coverLetter-analysis/${id}`
   return await postRequest(url, null, accessToken)
 }
-

@@ -4,7 +4,7 @@ interface BoardInfoTypes {
   memberName: string
   title: string
   content: string
-  profile:string
+  profile: string
   likeCount: number
   likeStatus: 'ACTIVE' | 'INACTIVE'
   commentCount: number

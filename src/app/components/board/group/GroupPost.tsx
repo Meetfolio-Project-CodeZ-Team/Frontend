@@ -30,7 +30,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
       onClick={() => setSelectedId(data.boardId)}
     >
       <div className="absolute left-7 top-5">
-      <div className="w-7 h-7">
+        <div className="w-7 h-7">
           <Image
             width={28}
             height={28}

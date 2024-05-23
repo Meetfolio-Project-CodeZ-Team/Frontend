@@ -29,7 +29,10 @@ export default function JobBoardPage() {
   if (data) {
     return (
       <section className="flex flex-col min-h-screen relative">
-        <Header nickname={data?.memberInfo.memberName} profile={data?.memberInfo.profile}/>
+        <Header
+          nickname={data?.memberInfo.memberName}
+          profile={data?.memberInfo.profile}
+        />
         <div className="flex w-[full] h-[980px]">
           <BoardContainer nickname={data?.memberInfo.memberName} />
           <div className="flex-grow bg-white shadow-2xl">

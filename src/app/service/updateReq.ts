@@ -1,4 +1,4 @@
-import { FeedbackData } from "../recoil/coverletter"
+import { FeedbackData } from '../recoil/coverletter'
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
 
@@ -59,7 +59,7 @@ export const updateUser = async (
 export const updateSatisfaction = async (
   Content: SatisfactionData,
   accessToken: string,
-  id: string
+  id: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/satisfaction?feedbackId=${id}`
   console.log(url, '요청경로')

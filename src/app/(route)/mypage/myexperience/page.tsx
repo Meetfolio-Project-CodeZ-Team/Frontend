@@ -20,7 +20,7 @@ export default function MyExperiencePage() {
   }, [])
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer
           selected={'portfolio'}
