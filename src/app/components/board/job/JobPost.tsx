@@ -4,6 +4,8 @@ import Like from '@/app/ui/svg/main/Like'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
+import { EMOJI_VALUE, PROFILE_EMOJI } from '@/app/constants/signup'
+import { profile } from 'console'
 
 interface JobPostProps {
   data: BoardInfoTypes
@@ -20,7 +22,7 @@ const JobPost = ({ data }: JobPostProps) => {
       onClick={() => setSelectedId(data.boardId)}
     >
       <div className="absolute left-7 top-5">
-        <div className="w-9 h-9 bg-[#486284] rounded-[100px]" />
+        <div className="w-9 h-9 bg-[#486284] rounded-[100px]">{EMOJI_VALUE[PROFILE_EMOJI.indexOf(data.content || '')]}</div>
       </div>
       <div className="flex flex-col text-[#486283] absolute top-[18px] left-[76px]">
         <div className="text-basefont-semibold">{data.memberName}</div>
