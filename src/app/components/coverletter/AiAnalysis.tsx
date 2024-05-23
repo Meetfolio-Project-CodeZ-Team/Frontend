@@ -5,6 +5,7 @@ import { Doughnut } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import { useModal } from '@/app/hooks/useModal';
 import AnalysisSatisfaction from './AnalysisSatisfaction';
+import JobAnal2 from '../mypage/common/JobAnal2';
 
 interface AnalysisData {
   analysis_id: number
@@ -64,7 +65,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
     <div className="w-[1000px] h-[1000px] mb-[100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
       <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
         <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
-          {userInfo?.memberName}님과 빅데이터의 직무 적합도는{' '}
+          {userInfo?.memberName}님과 {analysisData?.job_keyword}분야의 직무 적합도는{' '}
           {analysisData?.job_suitability}%입니다.
         </div>
         <div className="left-[280px] top-[643px] absolute text-black text-2xl font-bold  leading-9">
@@ -73,19 +74,20 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         <div className="w-[547px] h-[29px] left-[200px] top-[150px] absolute text-black text-2xl font-medium  leading-9">
           👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
         </div>
-        <div className="w-[180px] h-[124px] left-[511px] top-[320px] absolute text-black text-7xl font-bold  leading-[108px]">
+        <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-7xl font-bold  leading-[108px]">
           {analysisData?.job_suitability}%
         </div>
-        <div className="w-[360px] h-[360px] left-[135px] top-[198px] absolute bg-white justify-center items-center inline-flex">
-          <div className="w-[360px] h-[360px] relative">
-            <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
-            <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-blue-400 rounded-full shadow" />
-            <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" />
-            <div className="w-[85px] h-7 left-[229px] top-[190px] absolute text-black text-xl font-bold  leading-[30px]">
-              {analysisData?.job_keyword}
+        <div className="w-[360px] h-[360px] left-[165px] top-[198px] absolute  justify-center items-center inline-flex">
+              <div className="w-[360px] h-[360px] relative">
+                {/* <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
+                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-blue-400 rounded-full shadow" />
+                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" /> */}
+                <div className="w-[85px] h-7 left-[179px] top-[205px] absolute text-black text-xl text-center font-bold  leading-[30px]">
+                  {transKeyword(String(analysisData?.job_keyword))}
+                </div>
+                <JobAnal2 backend={Number(analysisData?.job_suitability)} all={100-Number(analysisData?.job_suitability)}  />
+              </div>
             </div>
-          </div>
-        </div>
         <div className="w-[569px] h-[202px] left-[200px] top-[713px] absolute">
           <div className="w-[569px] h-[202px] left-0 top-0 absolute">
             <div className="w-[120px] h-[120px] left-0 top-[67px] absolute bg-slate-200 rounded-full" />
@@ -131,3 +133,18 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
 }
 
 export default AiAnalysis
+
+const transKeyword = (keyword: string) => {
+  switch (keyword) {
+    case 'BACKEND':
+      return '백엔드'
+    case 'AI':
+      return 'AI'
+      case 'WEB':
+      return '웹개발'
+    case 'APP':
+      return '앱개발'
+    case 'DESIGN':
+      return '디자인'
+  }
+}
