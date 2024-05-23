@@ -29,6 +29,7 @@ export default function UserMyPage() {
         <UserNavContainer
           selected={'portfolio'}
           nickname={userInfo?.memberName}
+          profile={userInfo?.profile}
         />
         <div className="flex-grow">
           {portfolioNumber === 0 && <PortfolioContainer />}
