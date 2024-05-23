@@ -1,11 +1,8 @@
-import { successCopy } from '@/app/utils/toast'
+import { useModal } from '@/app/hooks/useModal'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
-import { useModal } from '@/app/hooks/useModal';
-import AnalysisSatisfaction from './AnalysisSatisfaction';
-import JobAnal2 from '../mypage/common/JobAnal2';
+import JobAnal2 from '../mypage/common/JobAnal2'
+import AnalysisSatisfaction from './AnalysisSatisfaction'
 
 interface AnalysisData {
   analysis_id: number
@@ -23,6 +20,21 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
+  const transKeyword = (keyword: string) => {
+    switch (keyword) {
+      case 'BACKEND':
+        return '백엔드'
+      case 'AI':
+        return 'AI'
+      case 'WEB':
+        return '웹개발'
+      case 'APP':
+        return '앱개발'
+      case 'DESIGN':
+        return '디자인'
+    }
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
@@ -34,85 +46,299 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
     fetchData()
   }, [])
 
-  const handleCopyText = () => {
-    const textArea = document.getElementById('answer') as HTMLTextAreaElement
-    if (textArea) {
-      // 텍스트 영역을 선택합니다.
-      textArea.select()
-      textArea.setSelectionRange(0, 99999) // 모바일 기기를 위해
-
-      // 복사 명령을 실행합니다.
-      try {
-        const successful = document.execCommand('copy')
-        const msg = successful ? 'successful' : 'unsuccessful'
-        console.log('Copy text command was ' + msg)
-        successCopy()
-      } catch (err) {
-        console.error('Unable to copy text: ', err)
-        alert('Failed to copy text.')
-      }
-    }
-  }
-
-  const saveSolution = () => {
-    router.push('/mypage')
-  }
-
   return (
     <div className="w-[1000px] h-[1000px] mb-[100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
       <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
-        <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
-          {userInfo?.memberName}님과 {analysisData?.job_keyword}분야의 직무 적합도는{' '}
-          {analysisData?.job_suitability}%입니다.
+        <div className="w-[910px] h-[0px] top-[70px] absolute border  border-zinc-300"></div>
+        <div className="w-[773px] h-[52px] top-[101px] absolute text-center">
+          <span className="text-[#0A7AFF] text-3xl font-bold leading-[45px]">
+            {userInfo?.memberName}{' '}
+          </span>
+          <span className="text-black text-3xl font-bold leading-[45px]">
+            님과 {transKeyword(String(analysisData?.job_keyword))}의 직무
+            적합도는
+          </span>
+          <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
+            {analysisData?.job_suitability}%
+          </span>
+          <span className="text-black text-3xl font-bold leading-[45px]">
+            입니다.
+          </span>
         </div>
-        <div className="left-[280px] top-[643px] absolute text-black text-2xl font-bold  leading-9">
-          {userInfo?.memberName} 님은 이런 역량이 두드러져요!
+
+        <div className=" top-[643px] absolute text-black text-2xl font-bold  leading-9">
+          <span className="text-[#0A7AFF]">{userInfo?.memberName} </span>
+          <span>님은 이런 역량이 두드러져요!</span>
         </div>
-        <div className="w-[547px] h-[29px] left-[200px] top-[150px] absolute text-black text-2xl font-medium  leading-9">
+        <div className="w-[547px] h-[29px]  top-[150px] absolute text-black text-2xl font-medium  leading-9">
           👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
         </div>
         <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-7xl font-bold  leading-[108px]">
           {analysisData?.job_suitability}%
         </div>
         <div className="w-[360px] h-[360px] left-[165px] top-[198px] absolute  justify-center items-center inline-flex">
-              <div className="w-[360px] h-[360px] relative">
-                {/* <div className="w-[360px] h-[360px] left-0 top-0 absolute bg-white" />
-                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-blue-400 rounded-full shadow" />
-                <div className="w-[300px] h-[300px] left-[40px] top-[40px] absolute bg-zinc-200 rounded-full" /> */}
-                <div className="w-[85px] h-7 left-[179px] top-[205px] absolute text-black text-xl text-center font-bold  leading-[30px]">
-                  {transKeyword(String(analysisData?.job_keyword))}
+          <div className="w-[360px] h-[360px] relative">
+            <div className="w-[85px] h-7 left-[179px] top-[205px] absolute text-black text-xl text-center font-bold  leading-[30px]">
+              {transKeyword(String(analysisData?.job_keyword))}
+            </div>
+            <JobAnal2
+              backend={Number(analysisData?.job_suitability)}
+              all={100 - Number(analysisData?.job_suitability)}
+            />
+          </div>
+        </div>
+        <div className="w-[618px] h-[241px] top-[713px] absolute">
+          <div className="w-[618px] h-[200px] left-0 top-0 absolute justify-center items-center gap-[59px] inline-flex">
+            <div className="justify-start items-start gap-2.5 flex">
+              <div className="w-[150px] h-[150px] relative items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="134"
+                  height="134"
+                  viewBox="0 0 134 134"
+                  fill="none"
+                  className="absolute z-10 left-[8px] top-[8px]"
+                >
+                  <path
+                    id="Ellipse 2524"
+                    d="M67 130.5C102.07 130.5 130.5 102.07 130.5 67C130.5 31.9299 102.07 3.5 67 3.5C31.9299 3.5 3.5 31.9299 3.5 67C3.5 102.07 31.9299 130.5 67 130.5Z"
+                    fill="white"
+                    stroke="#CFE8FF"
+                    stroke-width="7"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="150"
+                  height="150"
+                  viewBox="0 0 150 150"
+                  fill="none"
+                  className="absolute top-0"
+                >
+                  <path
+                    id="Ellipse 2525"
+                    d="M150 75C150 116.421 116.421 150 75 150C33.5786 150 0 116.421 0 75C0 33.5786 33.5786 0 75 0C116.421 0 150 33.5786 150 75Z"
+                    fill="url(#paint0_linear_1900_258)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_1900_258"
+                      x1="75"
+                      y1="0"
+                      x2="75"
+                      y2="150"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="white" />
+                      <stop offset="1" stop-color="#7AAAE8" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div className="w-[100px] h-[58px] left-[25px] top-[45px] absolute text-center text-black text-lg font-bold leading-[30px] z-20">
+                  {analysisData?.skill_keywords?.[0]}
                 </div>
-                <JobAnal2 backend={Number(analysisData?.job_suitability)} all={100-Number(analysisData?.job_suitability)}  />
               </div>
             </div>
-        <div className="w-[569px] h-[202px] left-[200px] top-[713px] absolute">
-          <div className="w-[569px] h-[202px] left-0 top-0 absolute">
-            <div className="w-[120px] h-[120px] left-0 top-[67px] absolute bg-slate-200 rounded-full" />
-            <div className="w-[88px] h-[58px] left-[16px] top-[104px] absolute text-center text-black text-lg font-bold  leading-[27px]">
-              {analysisData?.skill_keywords?.[0]}
-            </div>
-            <div className="w-[386px] h-[202px] left-[183px] top-0 absolute">
-              <div className="w-[180px] h-[180px] left-0 top-0 absolute bg-slate-600 rounded-full" />
-              <div className="w-[131px] h-[58px] left-[26px] top-[50px] absolute text-center text-white text-2xl font-bold  leading-9">
-                {analysisData?.skill_keywords?.[1]}
-              </div>
-              <div className="w-[150px] h-[150px] left-[236px] top-[52px] absolute">
-                <div className="w-[150px] h-[150px] left-0 top-0 absolute bg-blue-400 rounded-full" />
-                <div className="w-[83px] h-[58px] left-[36px] top-[37px] absolute text-black text-[21px] font-bold  leading-loose">
-                  {analysisData?.skill_keywords?.[2]}
+            <div className="justify-start items-start gap-2.5 flex">
+              <div className="w-[200px] h-[200px] relative flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="180"
+                  height="180"
+                  viewBox="0 0 180 180"
+                  fill="none"
+                  className="absolute z-10 left-[10px] top-[10px]"
+                >
+                  <circle
+                    id="Ellipse 2525"
+                    cx="90"
+                    cy="90"
+                    r="85"
+                    fill="white"
+                    stroke="#529EFF"
+                    stroke-width="10"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="200"
+                  height="200"
+                  viewBox="0 0 200 200"
+                  fill="none"
+                  className="absolute top-0"
+                >
+                  <path
+                    id="Ellipse 2526"
+                    d="M200 100C200 155.228 155.228 200 100 200C44.7715 200 0 155.228 0 100C0 44.7715 44.7715 0 100 0C155.228 0 200 44.7715 200 100Z"
+                    fill="url(#paint0_linear_1900_259)"
+                  />
+                  <defs>
+                    <linearGradient
+                      id="paint0_linear_1900_259"
+                      x1="100"
+                      y1="0"
+                      x2="100"
+                      y2="200"
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      <stop stop-color="white" />
+                      <stop offset="1" stop-color="#0A7AFF" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div className="w-[150px] h-[60px]  left-[25px] top-[75px] absolute text-center text-black text-2xl font-bold leading-[30px] z-20">
+                  커뮤니케이션
                 </div>
+              </div>
+            </div>
+            <div className="w-[150px] h-[150px] relative items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="134"
+                height="134"
+                viewBox="0 0 134 134"
+                fill="none"
+                className="absolute z-10 left-[8px] top-[8px]"
+              >
+                <circle
+                  id="Ellipse 2526"
+                  cx="67"
+                  cy="67"
+                  r="63.5"
+                  fill="white"
+                  stroke="#7AAAE8"
+                  stroke-width="7"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="150"
+                height="150"
+                viewBox="0 0 150 150"
+                fill="none"
+                className="absolute top-0"
+              >
+                <path
+                  id="Ellipse 2527"
+                  d="M150 75C150 116.421 116.421 150 75 150C33.5786 150 0 116.421 0 75C0 33.5786 33.5786 0 75 0C116.421 0 150 33.5786 150 75Z"
+                  fill="url(#paint0_linear_1900_260)"
+                />
+                <defs>
+                  <linearGradient
+                    id="paint0_linear_1900_260"
+                    x1="75"
+                    y1="0"
+                    x2="75"
+                    y2="150"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="white" />
+                    <stop offset="1" stop-color="#558BCF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div className="w-[100px] h-[58px] left-[25px] top-[45px] absolute text-center text-black text-lg font-bold leading-[30px] z-20">
+                {analysisData?.skill_keywords?.[2]}
               </div>
             </div>
           </div>
+          <div className="w-[606px] h-[22px] left-[8px] top-[197px] absolute justify-start items-start gap-[330px] inline-flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="138"
+              height="22"
+              viewBox="0 0 138 22"
+              fill="none"
+            >
+              <ellipse
+                id="Ellipse 2541"
+                cx="69"
+                cy="11"
+                rx="69"
+                ry="11"
+                fill="url(#paint0_angular_1923_252)"
+              />
+              <defs>
+                <radialGradient
+                  id="paint0_angular_1923_252"
+                  cx="0"
+                  cy="0"
+                  r="1"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="translate(69 11) scale(69 11)"
+                >
+                  <stop stop-color="#CCCCCC" />
+                  <stop offset="0.235" stop-color="#B4B4B4" />
+                  <stop offset="1" stop-color="#666666" />
+                </radialGradient>
+              </defs>
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="138"
+              height="22"
+              viewBox="0 0 138 22"
+              fill="none"
+            >
+              <ellipse
+                id="Ellipse 2541"
+                cx="69"
+                cy="11"
+                rx="69"
+                ry="11"
+                fill="url(#paint0_angular_1923_252)"
+              />
+              <defs>
+                <radialGradient
+                  id="paint0_angular_1923_252"
+                  cx="0"
+                  cy="0"
+                  r="1"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="translate(69 11) scale(69 11)"
+                >
+                  <stop stop-color="#CCCCCC" />
+                  <stop offset="0.235" stop-color="#B4B4B4" />
+                  <stop offset="1" stop-color="#666666" />
+                </radialGradient>
+              </defs>
+            </svg>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="180"
+            height="22"
+            viewBox="0 0 180 22"
+            fill="none"
+            className="left-[222px] top-[219px] absolute"
+          >
+            <ellipse
+              id="Ellipse 2542"
+              cx="90"
+              cy="11"
+              rx="90"
+              ry="11"
+              fill="url(#paint0_angular_1923_253)"
+            />
+            <defs>
+              <radialGradient
+                id="paint0_angular_1923_253"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(90 11) scale(90 11)"
+              >
+                <stop stop-color="#D9D9D9" />
+                <stop offset="1" stop-color="#737373" />
+              </radialGradient>
+            </defs>
+          </svg>
         </div>
-
-        <div className="left-[320px] top-[12px] absolute text-center text-blue-400 text-[35px] font-bold  leading-[52.50px]">
-          AI 직무 역량 분석 결과
+        <div className="top-[12px] absolute text-center text-[#7AA9E7] text-[35px] font-bold  leading-[52.50px]">
+          AI 자기소개서 직무 역량 분석
         </div>
-        <div className="w-[870px] h-[40px] left-[82px] top-[1020px] absolute ">
-          {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
-          저장하기
-        </div> */}
+        <div className="w-[870px] h-[40px] ml-[98px] top-[1020px] absolute ">
           <button
             className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
             onClick={openModal}
@@ -130,18 +356,3 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
 }
 
 export default AiAnalysis
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case 'BACKEND':
-      return '백엔드'
-    case 'AI':
-      return 'AI'
-      case 'WEB':
-      return '웹개발'
-    case 'APP':
-      return '앱개발'
-    case 'DESIGN':
-      return '디자인'
-  }
-}

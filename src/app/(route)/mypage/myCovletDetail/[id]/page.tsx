@@ -66,6 +66,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           isGuest={isGuest || ''}
           selected={'portfolio'}
           nickname={userInfo?.memberName}
+          profile={userInfo?.profile}
         />
         <div className="flex-grow">
           <MyCovletCardDetail
