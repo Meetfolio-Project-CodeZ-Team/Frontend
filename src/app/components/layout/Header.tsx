@@ -18,14 +18,14 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           href="/"
           className="absolute flex items-center justify-center gap-x-2 h-9"
         >
-          <Image
-            width={36}
-            height={36}
-            src="/Images/mfLogo.png"
-            alt="logoIcon"
-          />
-          <div className="flex w-[150x] h-[auto] text-[32px] font-semibold leading-[48px]">
-            Meetfolio
+          <div className="flex w-[180x] h-[40px] text-[32px] font-semibold bg-gradient-to-r to-blue-500 from-[#354b68] text-transparent bg-clip-text">
+            <Image
+              width={40}
+              height={28}
+              src="/Images/mfLogo.png"
+              alt="logoIcon"
+            />
+            eetfolio
             {isAdmin && (
               <div className="flex flex-col-reverse w-[150px] h-[auto] mb-[6px] ml-1 text-lg font-semibold leading-[27px]">
                 forAdmin

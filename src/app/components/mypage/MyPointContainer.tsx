@@ -4,11 +4,12 @@ import { useModal } from '@/app/hooks/useModal'
 import { pointNum } from '@/app/recoil/mypage'
 import { leftAngle, pointW, rightAngle } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
 import PointCard from './PointCard'
-import ReactPaginate from 'react-paginate'
+import { tidState } from '@/app/recoil/coverletter'
 
 interface UserInfoProps {
   email: string
@@ -36,12 +37,14 @@ interface PointCardProps {
 }
 
 const MyPointContainer = () => {
-  const [userInfos, setUserInfos] = useState<UserPoint>({isFirst: true,
+  const [userInfos, setUserInfos] = useState<UserPoint>({
+    isFirst: true,
     isLast: false,
     totalPage: 0,
     listSize: 0,
     totalElements: 0,
-  myPoint:0})
+    myPoint: 0,
+  })
   const [pointCards, setPointCards] = useState<PointCardProps[]>([])
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
@@ -62,7 +65,6 @@ const MyPointContainer = () => {
   }
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
     const fetchUserInfos = async () => {
       try {
         const response = await fetch(`/api/mypage/mypoint?page=${page - 1}`)
@@ -75,7 +77,6 @@ const MyPointContainer = () => {
       } catch (error) {}
     }
     fetchUserInfos()
-    
   }, [page])
 
   return (
@@ -153,8 +154,8 @@ const MyPointContainer = () => {
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
       </div>
-      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[900px] right-6'>
-      <ReactPaginate
+      <div className="flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[900px] right-6">
+        <ReactPaginate
           className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
           previousLabel={
             <div className="pt-0.5">
@@ -170,7 +171,7 @@ const MyPointContainer = () => {
           onPageChange={handlePageChange}
           activeClassName={'active text-[#486284]'}
         />
-        </div>
+      </div>
     </div>
   )
 }
