@@ -115,7 +115,7 @@ const PortfolioContainer = () => {
           </div>
         )}
       </div>
-      <div className="w-[1150px] h-[900px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
+      <div className="w-[1150px] h-[900px] mt-[200px] flex flex-col absolute ">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {covletCards?.length > 0 ? (
             covletCards.map((a) => <MyCovletCard key={a.index} {...a} />)
