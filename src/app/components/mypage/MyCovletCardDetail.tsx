@@ -9,6 +9,7 @@ import DeleteModal from '../admin/common/DeleteModal'
 import CovletDeleteModal from './common/CovletDeleteModal'
 import JobAnal2 from './common/JobAnal2'
 import CheckPoint from '../points/CheckPoint'
+import Button from '../common/Button'
 
 interface CovletCardDetail {
   coverLetterId: number
