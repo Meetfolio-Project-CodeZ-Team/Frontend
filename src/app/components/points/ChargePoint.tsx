@@ -33,8 +33,8 @@ const ChargePoint = ({
       total_amount: Number(chargeP),
       approval_url:
         coverLetterId === 0
-          ? `${process.env.NEXT_PUBLIC_GAHCON_SERVER}/mypage/mypoint`
-          : `${process.env.NEXT_PUBLIC_GAHCON_SERVER}/coverletter?id=${coverLetterId}`,
+          ? `http://www.meetfolio.kro.kr:60005/mypage/mypoint`
+          : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
