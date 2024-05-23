@@ -10,7 +10,7 @@ export default function PatchEmploymentPage() {
   const id = params.get('id')
   const [data, setData] = useState<BoardInfoTypes | null>(null)
   const [user, setUser] = useState<memberInfo | null>(null)
-  
+
   useEffect(() => {
     const getUser = async () => {
       const response = await fetch(
@@ -18,8 +18,7 @@ export default function PatchEmploymentPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData);
-      
+      console.log(resData)
     }
     getUser()
   }, [id])
@@ -44,7 +43,7 @@ export default function PatchEmploymentPage() {
   if (data) {
     return (
       <section className="flex flex-col items-center min-h-screen relative">
-        <Header nickname={data?.memberName || ''} profile={user?.profile}/>
+        <Header nickname={data?.memberName || ''} profile={user?.profile} />
         <div className="w-[88%] h-full py-10 mb-[200px] flex items-center justify-center">
           <PostEmploymentContainer isEdit={true} data={data} />
         </div>

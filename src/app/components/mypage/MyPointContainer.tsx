@@ -4,11 +4,12 @@ import { useModal } from '@/app/hooks/useModal'
 import { pointNum } from '@/app/recoil/mypage'
 import { leftAngle, pointW, rightAngle } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
 import PointCard from './PointCard'
-import ReactPaginate from 'react-paginate'
+import { tidState } from '@/app/recoil/coverletter'
 
 interface UserInfoProps {
   email: string
@@ -57,7 +58,6 @@ const MyPointContainer = () => {
   }
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
     const fetchUserInfos = async () => {
       try {
         const response = await fetch(`/api/mypage/mypoint?page=${page - 1}`)
@@ -70,7 +70,6 @@ const MyPointContainer = () => {
       } catch (error) {}
     }
     fetchUserInfos()
-    
   }, [page])
 
   return (
@@ -165,7 +164,7 @@ const MyPointContainer = () => {
           onPageChange={handlePageChange}
           activeClassName={'active text-[#486284]'}
         />
-        </div>
+      </div>
     </div>
   )
 }

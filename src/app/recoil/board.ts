@@ -25,6 +25,7 @@ export const boardDataState = atom<ResponseEmploymentAll>({
           recruitment: '웹',
           peopleNumber: 0,
           registrationDate: 'string',
+          profile: 'BACKEND',
         },
       ],
       isFirst: false,
@@ -34,4 +35,14 @@ export const boardDataState = atom<ResponseEmploymentAll>({
       totalElements: 0,
     },
   },
+})
+
+export const commentArrState = atom<CommentDataTypes[]>({
+  key: 'commentArrState',
+  default: [],
+})
+
+export const boardTypeState = atom<boolean>({
+  key: 'boardTypeState',
+  default: false,
 })

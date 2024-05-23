@@ -80,7 +80,7 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
             </div>
           </div>
           <div className="w-[122px] h-[35px] relative bg-[#7AA9E7] rounded-[20px] cursor-pointer px-[30px] py-1">
-            <button 
+            <button
               className=" text-white text-[16px] font-semibold leading-[30px] justify-center items-center"
               onClick={checkSatisfaction}
             >
@@ -157,7 +157,9 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
                   </svg>
                 )}
               </button>
-              <div className="text-sm text-gray-900 mt-1 font-semibold">{rating}점</div>
+              <div className="text-sm text-gray-900 mt-1 font-semibold">
+                {rating}점
+              </div>
             </div>
           ))}
         </div>

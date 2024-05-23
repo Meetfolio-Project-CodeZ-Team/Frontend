@@ -1,12 +1,12 @@
 'use client'
-import UserNavContainer from '@/app/components/mypage/UserNavContainer'
-import PortfolioContainer from '@/app/components/mypage/PortfolioContainer'
-import Header from '@/app/components/layout/Header'
-import { useEffect, useState } from 'react'
 import Footer from '@/app/components/layout/Footer'
-import { useRecoilState } from 'recoil'
-import { portNum } from '@/app/recoil/mypage'
+import Header from '@/app/components/layout/Header'
 import MyExpList from '@/app/components/mypage/MyExpList'
+import PortfolioContainer from '@/app/components/mypage/PortfolioContainer'
+import UserNavContainer from '@/app/components/mypage/UserNavContainer'
+import { portNum } from '@/app/recoil/mypage'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 export default function UserMyPage() {
   const [userInfo, setUser] = useState<memberInfo | null>(null)

@@ -9,7 +9,7 @@ const IntroduceContainer = ({
   cardData,
 }: IntroduceContainerProps) => {
   return (
-    <div className="w-full mx-auto min-h-screen bg-white mb-16">
+    <div className="w-full mx-auto min-h-screen bg-white mb-20">
       <MainSolution />
       <MainCard nickname={nickname} cardData={cardData} />
     </div>

@@ -9,11 +9,17 @@ interface CheckPointProps {
   closeCheck: () => void
   cost: number
   coverLetterId: number
-  setShowInputs: React.Dispatch<React.SetStateAction<boolean>>;
-  setAnalysisClicked: React.Dispatch<React.SetStateAction<boolean>>;
+  setShowInputs: React.Dispatch<React.SetStateAction<boolean>>
+  setAnalysisClicked: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CheckPoint = ({ closeCheck, cost, coverLetterId, setShowInputs, setAnalysisClicked }: CheckPointProps) => {
+const CheckPoint = ({
+  closeCheck,
+  cost,
+  coverLetterId,
+  setShowInputs,
+  setAnalysisClicked,
+}: CheckPointProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [myPoint, setMyPoint] = useState(0)
   const isEnough = myPoint - cost >= 0

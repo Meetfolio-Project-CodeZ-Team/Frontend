@@ -1,8 +1,10 @@
 'use client'
 import { NULLPOST } from '@/app/constants/board'
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { useModal } from '@/app/hooks/useModal'
 import { selectedPostId } from '@/app/recoil/board'
 import { deletePostAlert } from '@/app/utils/toast'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -66,16 +68,29 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
 
       {isSelected ? (
         <div className="w-full h-full relative ">
-          <div className="">
-            <div className="absolute left-6 top-12 text-3xl font-semibold ">
+          <div>
+            <div className="absolute left-6 top-12 text-2xl font-semibold ">
               {data?.title}
             </div>
             <div className="absolute right-10 top-[84px] text-sm font-normal">
               {data?.registrationDate}
             </div>
-            <Link href={`/userpage/${data?.memberName}`}>
-              <div className="absolute left-7 top-[144px] flex text-[18px] font-semibold gap-x-1 items-center">
-                <div className="w-5 h-5 rounded-[100px] bg-[#7AA9E7]"></div>
+            <Link
+              href={
+                nickname === data?.memberName
+                  ? `/mypage`
+                  : `/userpage/${data?.memberName}`
+              }
+            >
+              <div className="absolute left-7 top-[144px] flex text-[18px] font-semibold gap-x-3 items-center">
+                <div className="w-6 h-6">
+                  <Image
+                    width={24}
+                    height={24}
+                    src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data?.profile || '')]}.png`}
+                    alt="logoIcon"
+                  />
+                </div>
                 <div className="">{data?.memberName}</div>
               </div>
             </Link>

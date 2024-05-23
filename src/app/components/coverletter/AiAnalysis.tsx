@@ -18,13 +18,10 @@ interface AiAnalysisProps {
   analysisData: AnalysisData | null // Expecting this data as a prop
 }
 
-
-
 const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
   const router = useRouter()
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,7 +105,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
             </div>
           </div>
         </div>
-        
+
         <div className="left-[320px] top-[12px] absolute text-center text-blue-400 text-[35px] font-bold  leading-[52.50px]">
           AI 직무 역량 분석 결과
         </div>
@@ -117,16 +114,16 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
           저장하기
         </div> */}
           <button
-          className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={openModal}
-          type="button"
-        >
-          솔루션 결과 저장하기
-        </button>
-        {analysisData && isOpen && (
-        <AnalysisSatisfaction analysis_id={analysisData.analysis_id} />
-      )}
-      </div>
+            className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+            onClick={openModal}
+            type="button"
+          >
+            솔루션 결과 저장하기
+          </button>
+          {analysisData && isOpen && (
+            <AnalysisSatisfaction analysis_id={analysisData.analysis_id} />
+          )}
+        </div>
       </div>
     </div>
   )

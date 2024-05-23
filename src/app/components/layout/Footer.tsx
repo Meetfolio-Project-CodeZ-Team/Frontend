@@ -14,7 +14,7 @@ const Footer = () => {
             <div className="px-2">회원정보 고객센터</div>
           </div>
           <div className="flex items-center gap-x-1  mb-2">
-          <Image
+            <Image
               width={24}
               height={24}
               src="/Images/mfLogo.png"
@@ -26,12 +26,12 @@ const Footer = () => {
             <div className="font-light text-[14px]">All Rights Reserved</div>
           </div>
         </div>
-        <div className="flex-col flex w-auto h-[20px]">
-          <div className="flex items-center gap-x-1  mb-2">
+        <div className="flex-col flex w-auto h-[20px] pb-2">
+          <div className="flex items-center gap-x-2 mb-1">
             <div className="font-bold text-[20px]">Contributors</div>
             <Image
-              width={20}
-              height={20}
+              width={24}
+              height={24}
               src="/Images/githubIcon.png"
               alt="github icon"
             />

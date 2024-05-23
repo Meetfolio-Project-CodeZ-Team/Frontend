@@ -29,7 +29,12 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Icons from '../common/Icons'
 import { eye } from '@/app/ui/svg/common/eye'
-import { EMOJI_VALUE, PROFILE_EMOJI,PROFILE_EMOJI_PT1, PROFILE_EMOJI_PT2 } from '@/app/constants/signup'
+import {
+  EMOJI_VALUE,
+  PROFILE_EMOJI,
+  PROFILE_EMOJI_PT1,
+  PROFILE_EMOJI_PT2,
+} from '@/app/constants/signup'
 import Emoji from '../signup/onboard/Emoji'
 
 interface UserInfoProps {
@@ -49,7 +54,7 @@ interface UpdateUserInfoRequest {
   jobKeyword: string
   major: string
   password?: string | null
-  profile: string,
+  profile: string
 }
 
 const EditUserInfo = () => {
@@ -58,7 +63,7 @@ const EditUserInfo = () => {
   const [passwordVerified, setPasswordVerified] = useState(false)
   const [verifyPw, setVerifyPw] = useState('')
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0)
   })
 
@@ -96,7 +101,7 @@ const EditUserInfo = () => {
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
   const [isOpen, setIsOpen] = useState(false)
-  const [profileIndex, setProfileIndex] = useState<number>();
+  const [profileIndex, setProfileIndex] = useState<number>()
 
   const updateUser = async () => {
     // 비밀번호 패턴 검사
@@ -176,8 +181,11 @@ const EditUserInfo = () => {
         setMajor(data.result.major)
         setGrade(data.result.grade)
         setClickedKeyword(data.result.jobKeyword)
-        const profileIndex = [...PROFILE_EMOJI_PT1, ...PROFILE_EMOJI_PT2].findIndex(emoji => emoji === data.result.profile);
-        setProfile(profileIndex >= 0 ? profileIndex : 0);
+        const profileIndex = [
+          ...PROFILE_EMOJI_PT1,
+          ...PROFILE_EMOJI_PT2,
+        ].findIndex((emoji) => emoji === data.result.profile)
+        setProfile(profileIndex >= 0 ? profileIndex : 0)
       } catch (error) {
         console.error(error)
       }
@@ -378,41 +386,41 @@ const EditUserInfo = () => {
           </div>
         </div>
       </div>
-      <div className='w-[700px] h-[80px] left-[88px] top-[750px] absolute'>
-      <div className="flex flex-col gap-y-4 ">
-        <div className="flex items-center gap-x-1">
-          <div className="w-auto text-xl font-semibold pl-1.5">
-            프로필 아이콘
+      <div className="w-[700px] h-[80px] left-[88px] top-[750px] absolute">
+        <div className="flex flex-col gap-y-4 ">
+          <div className="flex items-center gap-x-1">
+            <div className="w-auto text-xl font-semibold pl-1.5">
+              프로필 아이콘
+            </div>
+            <div
+              className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-white font-semibold"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseOut={() => setIsHovered(false)}
+            >
+              ?
+            </div>
+            {isHovered && (
+              <div className="invisi hover:visible  flex text-sm">
+                나를 표현할 수 있는 아이콘을 선택해 보세요
+              </div>
+            )}
           </div>
-          <div
-            className="flex items-center justify-center w-5 h-5 rounded-full bg-black text-white font-semibold"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseOut={() => setIsHovered(false)}
-          >
-            ?
+
+          <div className="flex gap-x-10 ml-[69px]">
+            {PROFILE_EMOJI_PT1.map((emoji, index) => (
+              <div key={index} onClick={() => setProfile(index)}>
+                <Emoji emojiIndex={index} clickedEmoji={profile} />
+              </div>
+            ))}
           </div>
-          {isHovered && (
-            <div className="invisi hover:visible  flex text-sm">
-              나를 표현할 수 있는 아이콘을 선택해 보세요
-            </div>
-          )}
+          <div className="flex gap-x-[30px] ml-[94px]">
+            {PROFILE_EMOJI_PT2.map((emoji, index) => (
+              <div key={index} onClick={() => setProfile(index + 6)}>
+                <Emoji emojiIndex={index + 6} clickedEmoji={profile} />
+              </div>
+            ))}
+          </div>
         </div>
-        
-        <div className="flex gap-x-10 ml-[69px]">
-          {PROFILE_EMOJI_PT1.map((emoji, index) => (
-            <div key={index} onClick={() => setProfile(index)}>
-              <Emoji emojiIndex={index} clickedEmoji={profile} />
-            </div>
-          ))}
-        </div>
-        <div className="flex gap-x-[30px] ml-[94px]">
-          {PROFILE_EMOJI_PT2.map((emoji, index) => (
-            <div key={index} onClick={() => setProfile(index + 6)}>
-              <Emoji emojiIndex={index + 6} clickedEmoji={profile} />
-            </div>
-          ))}
-        </div>
-      </div>
       </div>
       <div className="w-[700px] h-[80px] left-[88px] top-[950px] absolute">
         <button

@@ -1,11 +1,11 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
 interface AiLoadingProps {
   text?: string
 }
 
 const AiLoading = ({ text }: AiLoadingProps) => {
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0)
   })
   return (
