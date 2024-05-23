@@ -1,13 +1,12 @@
-import { NULLPOST } from '@/app/constants/board'
+import { useModal } from '@/app/hooks/useModal'
 import { selectedPostId } from '@/app/recoil/board'
-import Like from '@/app/ui/svg/main/Like'
 import { deletePostAlert } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import Button from '../common/Button'
-import { useModal } from '@/app/hooks/useModal'
 import DeleteModal from '../admin/common/DeleteModal'
+import Button from '../common/Button'
+import CommentContainer2 from './common/CommentContainer2'
 interface BoardCardDetailProps {
   title?: string
   content?: string
@@ -69,16 +68,17 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
   console.log('디테일 가져온 데이터', data)
   console.log('닉네임', nickname)
 
+  const goBack = () => {
+    router.push('/mypage/myboard')
+  }
+
   return (
     <div className="w-full h-[982px] relative">
       {isSelected ? (
         <>
           <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
-          <div className="w-[1014.23px] h-[747px] left-[71.39px] top-[64px] absolute">
-            <div className="w-[962px] h-[0px] left-0 top-[747px] absolute border border-stone-300"></div>
-            <div className="left-[10px] top-[702px] absolute text-gray-900 text-[22px] font-semibold leading-[33px]">
-              댓글
-            </div>
+          <div className="w-[1014.23px] h-[907px] left-[71.39px] top-[64px] absolute">
+            
             <div className="w-[964px] h-[511px] left-[10px] top-[198px] absolute text-gray-900 text-xl font-medium leading-[30px]">
               {data?.content}
             </div>
@@ -94,25 +94,14 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
                 </div>
               </div>
             </div>
+            <div className="w-[1002px] h-[119px] left-[0px] top-[703px] absolute">
+          <CommentContainer2
+            postId={selectedId}
+            isLiked={data?.likeStatus === 'ACTIVE'}
+          />
           </div>
-          <div className="w-[962px] h-[119px] left-[71px] top-[833px] absolute">
-            <div className="w-6 h-6 left-[918px] top-[20px] absolute rounded-[10px]" />
-            <div className="w-[204px] h-[42px] left-[16px] top-[20px] absolute">
-              <div className="w-[42px] h-[42px] left-0 top-0 absolute bg-zinc-600 rounded-full" />
-              <div className="w-[147px] h-[42px] left-[50px] top-0 absolute">
-                <div className="w-[83.69px] h-[42px] left-0 top-0 absolute text-black text-[15px] font-bold leading-snug">
-                  {data?.memberName}
-                </div>
-                <div className="w-[54.72px] h-[42px] left-[92.28px] top-0 absolute text-black text-[15px] font-bold leading-snug">
-                  {' '}
-                  3분전
-                </div>
-              </div>
-            </div>
-            <div className="w-[114px] h-[35.89px] left-[16px] top-[68px] absolute text-black text-lg font-medium leading-[27px]">
-              훌륭합니다.
-            </div>
           </div>
+          
           <div className="w-[322px] h-[37px] left-[82px] top-[190px] absolute justify-start items-center gap-[19px] inline-flex">
             {data?.peopleNumber && (
               <div className="w-[70px] h-[25px] px-5 bg-blue-400 rounded-[15px] justify-center items-center gap-2 flex">
@@ -162,22 +151,12 @@ const BoardCardDetail = ({ nickname }: BoardDetailContainer) => {
               {data?.memberName}
             </div>
           </div>
-          <div className="w-[97px] h-[33px] left-[84px] top-[713px] absolute">
-            <div className="left-[37px] top-0 absolute text-gray-900 text-[22px] font-semibold leading-[33px]">
-              좋아요
-            </div>
-            <div className="w-[30px] h-[28px] left-0 top-[4px] absolute">
-              <Like
-                color={'black'}
-                size={28}
-                isLiked={isLiked || data?.likeStatus === 'ACTIVE'}
-              />
-            </div>
-          </div>
+          
         </>
       ) : (
-        <div className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium">
-          EMPTY
+        <div className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium"
+        onClick={goBack}>
+          돌아가기
         </div>
       )}
     </div>

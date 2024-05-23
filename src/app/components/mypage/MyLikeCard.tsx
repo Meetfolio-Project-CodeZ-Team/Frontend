@@ -57,6 +57,7 @@ const MyLikeCard = ({
 
     router.push(`/mypage/boardDetail/${boardId}`)
   }
+  console.log(memberName, '멤버 네임')
 
   return (
     <div

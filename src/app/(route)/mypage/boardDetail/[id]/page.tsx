@@ -41,7 +41,7 @@ export default function BoardDetailPage({
 
   return (
     <section className="flex flex-col min-h-screen relative">
-      <Header nickname={userInfo?.memberName} />
+      <Header nickname={userInfo?.memberName} profile={userInfo?.profile}/>
       <div className="flex w-[full] h-[980px] mb-[200px]">
         <UserNavContainer selected={'board'} nickname={userInfo?.memberName} />
         <div className="flex-grow">

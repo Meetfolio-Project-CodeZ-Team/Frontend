@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import Image from 'next/image'
+
 interface UserNavContainerProps {
   selected: SelectedUserOption
   nickname?: string
@@ -14,7 +16,14 @@ const UserNavContainer = ({
   return (
     <div className="flex flex-col w-[320px] pl-[53px] pt-[84px] shadow-lg">
       <div className="flex items-center mb-[60px] gap-x-4">
-        <div className="w-12 h-12 bg-[#486284] rounded-[100px]"></div>
+        <div className="w-12 h-12 bg-[#486284] rounded-[100px]">
+        {/* <Image
+            width={36}
+            height={36}
+            src="/Images/mfLogo.png"
+            alt="logoIcon"
+          /> */}
+        </div>
         <div className="text-[25px] font-semibold">{nickname}</div>
       </div>
 
