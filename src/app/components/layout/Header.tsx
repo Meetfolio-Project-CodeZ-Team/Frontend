@@ -21,7 +21,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           <div className="flex w-[180x] h-[40px] text-[32px] font-semibold bg-gradient-to-r to-blue-500 from-[#354b68] text-transparent bg-clip-text">
             <Image
               width={40}
-              height={28}
+              height={40}
               src="/Images/mfLogo.png"
               alt="logoIcon"
             />

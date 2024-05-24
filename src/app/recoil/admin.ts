@@ -28,3 +28,15 @@ export const userState = atom<ResponseUser>({
     isLast: false,
   },
 })
+
+export const versionState = atom<ResponseModelList>({
+  key: 'versionState',
+  default: {
+    modelInfo: [],
+    listSize: 0,
+    totalPage: 0,
+    totalElements: 0,
+    isFirst: false,
+    isLast: false,
+  },
+})

@@ -11,7 +11,6 @@ const ModelContainer = () => {
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
-  const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
 
   const marginBorder =
     titleNum === 1 ? 'ml-[154px]' : titleNum === 2 ? 'ml-[290px]' : ''
@@ -37,7 +36,6 @@ const ModelContainer = () => {
       const resData = await response.json()
       if (titleNum === 0) setModelData(resData.result)
       else if (titleNum === 1) setTrainData(resData.result)
-      else setVersionData(resData.result)
     }
     fetchData()
   }, [titleNum])
@@ -67,9 +65,7 @@ const ModelContainer = () => {
         {titleNum === 1 && trainData && (
           <ModelTrain trainData={trainData} goNext={setTitleNum} />
         )}
-        {titleNum === 2 && versionData && (
-          <ModelManage modelData={versionData} />
-        )}
+        {titleNum === 2 && <ModelManage />}
       </div>
     </div>
   )

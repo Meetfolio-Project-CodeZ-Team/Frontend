@@ -1,7 +1,9 @@
 'use client'
 
 import { MODEL_INFO } from '@/app/constants/admin'
+import { versionState } from '@/app/recoil/admin'
 import { changeVersion } from '@/app/utils/toast'
+import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 
 interface ModelInfoModalProps {
@@ -12,6 +14,8 @@ interface ModelInfoModalProps {
 }
 
 const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
+  const [modelVersions, setModelVersions] = useRecoilState(versionState)
+
   const activateModel = async () => {
     const requestOpt = {
       method: 'POST',
@@ -24,8 +28,16 @@ const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
       requestOpt,
     )
     const resData = await res.json()
-    changeVersion()
+
+    const verRes = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/version?page=${0}`,
+      { method: 'POST' },
+    )
+    const verData = await verRes.json()
+
+    setModelVersions(verData.result)
     closeModal()
+    changeVersion()
   }
   console.log(data, '모델 데이터')
 
