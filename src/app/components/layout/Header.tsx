@@ -94,7 +94,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
                 로그아웃
               </button>
             </Link>
-            <div className=" text-[#486284] text-lg cursor-pointer items-center flex gap-x-2">
+            <div className=" text-[#486284] text-lg cursor-pointer items-center flex gap-x-2 font-semibold">
               <div>👨‍💻</div>
               <Link href="/admin">관리자</Link>
             </div>
