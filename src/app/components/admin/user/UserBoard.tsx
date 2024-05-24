@@ -58,22 +58,24 @@ const UserBoard = () => {
           </div>
         ))
       )}
-      <ReactPaginate
-        className="flex items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
-        previousLabel={
-          <div className="pt-0.5">
-            <Icons name={leftAngle} />
-          </div>
-        }
-        nextLabel={
-          <div className="pt-0.5">
-            <Icons name={rightAngle} />
-          </div>
-        }
-        pageCount={userData?.totalPage || 1}
-        onPageChange={handlePageChange}
-        activeClassName={'active text-[#486284]'}
-      />
+      <div className='relative h-full'>
+        <ReactPaginate
+          className="flex absolute bottom-[260px] items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
+          previousLabel={
+            <div className="pt-0.5">
+              <Icons name={leftAngle} />
+            </div>
+          }
+          nextLabel={
+            <div className="pt-0.5">
+              <Icons name={rightAngle} />
+            </div>
+          }
+          pageCount={userData?.totalPage || 1}
+          onPageChange={handlePageChange}
+          activeClassName={'active text-[#486284]'}
+        />
+      </div>
     </div>
   )
 }
