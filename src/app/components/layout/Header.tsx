@@ -21,7 +21,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
           <div className="flex w-[180x] h-[40px] text-[32px] font-semibold bg-gradient-to-r to-blue-500 from-[#354b68] text-transparent bg-clip-text">
             <Image
               width={40}
-              height={28}
+              height={40}
               src="/Images/mfLogo.png"
               alt="logoIcon"
             />
@@ -94,7 +94,7 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
                 로그아웃
               </button>
             </Link>
-            <div className=" text-[#486284] text-lg cursor-pointer items-center flex gap-x-2">
+            <div className=" text-[#486284] text-lg cursor-pointer items-center flex gap-x-2 font-semibold">
               <div>👨‍💻</div>
               <Link href="/admin">관리자</Link>
             </div>

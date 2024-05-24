@@ -1,8 +1,8 @@
 import { useModal } from '@/app/hooks/useModal'
+import { boardState } from '@/app/recoil/admin'
 import TrashBin from '@/app/ui/svg/common/TrashBin'
 import { deletePostAlert } from '@/app/utils/toast'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { useRecoilState } from 'recoil'
 import DeleteModal from '../common/DeleteModal'
 
 interface ComunityInfoProps {
@@ -15,6 +15,7 @@ interface ComunityInfoProps {
 
 const ComunityInfo = (userInfo: ComunityInfoProps) => {
   const { createdAt, memberName, title, type, boardId } = userInfo
+  const [boardData, setBoardData] = useRecoilState(boardState)
 
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
@@ -26,12 +27,15 @@ const ComunityInfo = (userInfo: ComunityInfoProps) => {
         method: 'DELETE',
       },
     )
-    window.location.reload()
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?page=${0}`,
+    )
+    const resData = await response.json()
+    setBoardData(resData.result)
   }
 
   return (
     <div className="flex flex-col w-[1034px] h-[50px]">
-      <ToastContainer />
       <div className="flex w-[1034px] h-[50px] pl-2 border-b border-[#BDBDBD] items-center text-black text-[16px]">
         <div className="w-[121px] text-center">{createdAt}</div>
         <div className="w-[240px] text-center">{memberName}</div>

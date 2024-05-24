@@ -13,7 +13,7 @@ interface CardContainerProps {
 export default function CardContainer({ cardData }: CardContainerProps) {
   return (
     <Swiper
-      className="my-6"
+      className="my-5"
       effect={'coverflow'}
       grabCursor={true}
       centeredSlides={true}
