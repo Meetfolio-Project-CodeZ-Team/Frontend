@@ -10,7 +10,7 @@ import Icons from '../../common/Icons'
 import ModelManageInfo from './ModelManageInfo'
 
 const ModelManage = () => {
-  const [page, setPage] = useState<number>(1)
+  const [page, setPage] = useState(1)
   const [pageData, setPageData] = useRecoilState(versionState)
   console.log(pageData, '가져온 페이지 데이터')
 
