@@ -38,7 +38,7 @@ const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
             <div className="">{MODEL_INFO[1]}</div>
             <div className="font-normal flex items-center gap-x-2.5">
               {data.modelName}
-              <div className="text-white text-base font-medium bg-black rounded-xl w-[50px] h-6 flex items-center justify-center">
+              <div className="text-white text-base font-medium bg-black rounded-xl w-[62px] h-6 flex items-center justify-center">
                 v.{data.version}
               </div>
             </div>
