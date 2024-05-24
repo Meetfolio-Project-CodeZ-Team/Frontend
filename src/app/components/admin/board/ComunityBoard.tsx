@@ -4,10 +4,11 @@ import { boardState } from '@/app/recoil/admin'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
 import ComunityInfo from './ComunityInfo'
-
 interface ComunityBoardProps {
   boardType: string
 }
@@ -40,6 +41,7 @@ const ComunityBoard = ({ boardType }: ComunityBoardProps) => {
 
   return (
     <div className="flex flex-col w-[1034px] h-[760px] mt-[18px]">
+      <ToastContainer />
       <div className="flex w-[1034px] h-[50px] pl-[38px] border-y border-[#616161] items-center text-black text-lg">
         <div className="font-bold">{COMUNITY_BOARD_H[0]}</div>
         <div className="ml-[112px] ">{COMUNITY_BOARD_H[1]}</div>
