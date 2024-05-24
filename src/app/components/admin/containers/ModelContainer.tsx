@@ -1,5 +1,5 @@
 'use client'
-import { MODEL_NAV, MODEL_PATH } from '@/app/constants/admin'
+import { MODEL_NAV } from '@/app/constants/admin'
 import { modelNum } from '@/app/recoil/admin'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -10,37 +10,19 @@ import ModelUsage from '../model/ModelUsage'
 const ModelContainer = () => {
   const [titleNum, setTitleNum] = useRecoilState(modelNum)
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
-  const [trainData, setTrainData] = useState<ResponseTrainData | null>(null)
-  const [versionData, setVersionData] = useState<ResponseModelList | null>(null)
-
   const marginBorder =
     titleNum === 1 ? 'ml-[154px]' : titleNum === 2 ? 'ml-[290px]' : ''
 
   useEffect(() => {
     const fetchData = async () => {
-      const requestOptions = {
-        method: 'GET',
-        headers: {},
-      }
-
-      if (titleNum === 2) {
-        requestOptions.method = 'POST'
-        requestOptions.headers = {
-          'Content-Type': 'application/json',
-        }
-      }
-
       const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/${MODEL_PATH[titleNum]}`,
-        requestOptions,
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/service`,
       )
       const resData = await response.json()
-      if (titleNum === 0) setModelData(resData.result)
-      else if (titleNum === 1) setTrainData(resData.result)
-      else setVersionData(resData.result)
+      setModelData(resData.result)
     }
     fetchData()
-  }, [titleNum])
+  }, [])
 
   return (
     <div className="flex flex-col bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
@@ -64,12 +46,8 @@ const ModelContainer = () => {
       <div className="w-[1021px] h-0 border border-[#616161] mb-7"></div>
       <div className="flex w-[1013px]">
         {titleNum === 0 && modelData && <ModelUsage modelData={modelData} />}
-        {titleNum === 1 && trainData && (
-          <ModelTrain trainData={trainData} goNext={setTitleNum} />
-        )}
-        {titleNum === 2 && versionData && (
-          <ModelManage modelData={versionData} />
-        )}
+        {titleNum === 1 && <ModelTrain />}
+        {titleNum === 2 && <ModelManage />}
       </div>
     </div>
   )

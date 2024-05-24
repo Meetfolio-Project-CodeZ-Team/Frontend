@@ -1,29 +1,25 @@
 'use client'
 import { MODEL_TRAIN_H } from '@/app/constants/admin'
 import { useModal } from '@/app/hooks/useModal'
-import { modelNum } from '@/app/recoil/admin'
+import { trainState } from '@/app/recoil/admin'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
 import { addTrainData } from '@/app/utils/toast'
 import { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { SetterOrUpdater, useRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import Button from '../../common/Button'
 import Icons from '../../common/Icons'
 import AddTrainData from './AddTrainData'
 import AddTrainModal from './AddTrainModal'
 import ModelTrainInfo from './ModelTrainInfo'
-interface ModelTrainProps {
-  trainData: ResponseTrainData
-  goNext: SetterOrUpdater<number>
-}
-const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
+
+const ModelTrain = () => {
   const [isAdd, setIsAdd] = useState(false)
-  const [titleNum, setTitleNum] = useRecoilState(modelNum)
-  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [page, setPage] = useState<number>(1)
-  const [pageData, setPageData] = useState<datasetInfoTypes[]>([])
+  const [trainData, setTrainData] = useRecoilState(trainState)
+  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
@@ -36,15 +32,19 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
       )
       const resData = await res.json()
 
-      setPageData(resData.result.datasetInfo.datasetInfo)
+      setTrainData(resData.result)
     }
     fetchData()
   }, [page])
 
-  const succeedAdd = () => {
-    addTrainData()
+  const succeedAdd = async () => {
     setIsAdd(false)
-    setTitleNum(1)
+    addTrainData()
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/train/data?page=${page}`,
+    )
+    const resData = await res.json()
+    setTrainData(resData.result)
   }
 
   return isAdd ? (
@@ -65,7 +65,7 @@ const ModelTrain = ({ trainData, goNext }: ModelTrainProps) => {
         <div className="ml-[260px]">{MODEL_TRAIN_H[4]}</div>
       </div>
       <div className="h-[480px] overflow-y-auto scrollbar-hide">
-        {pageData.map((data, i) => (
+        {trainData.datasetInfo.datasetInfo.map((data, i) => (
           <div key={i}>
             <ModelTrainInfo
               createdAt={data.createdAt}

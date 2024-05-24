@@ -44,5 +44,5 @@ export const commentArrState = atom<CommentDataTypes[]>({
 
 export const boardTypeState = atom<boolean>({
   key: 'boardTypeState',
-  default: false,
+  default: true,
 })
