@@ -6,10 +6,9 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import DeleteModal from '../admin/common/DeleteModal'
-import CovletDeleteModal from './common/CovletDeleteModal'
-import JobAnal2 from './common/JobAnal2'
-import CheckPoint from '../points/CheckPoint'
 import Button from '../common/Button'
+import CheckPoint from '../points/CheckPoint'
+import JobAnal2 from './common/JobAnal2'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -52,7 +51,6 @@ const MyCovletCardDetail = ({
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const [AnalysisData, setAnalySisData] = useRecoilState(analysisData)
-  const [initialLoad, setInitialLoad] = useState(true)
   const paid = isPaid || isGuest !== 'true'
 
   useEffect(() => {
@@ -89,7 +87,7 @@ const MyCovletCardDetail = ({
     document.body.removeChild(textArea)
   }
 
-  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100;
+  const jobSuitabilityPercentage = (AnalysisData?.jobSuitability ?? 0) * 100
 
   const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
@@ -133,16 +131,7 @@ const MyCovletCardDetail = ({
 
   const hasAnalysis = AnalysisData?.jobSuitability
 
-  // useEffect(() => {
-  //   // 컴포넌트가 마운트 되었을 때, initialLoad가 true인 경우에만 새로고침
-  //   if (initialLoad) {
-  //     window.location.reload()
-  //     setInitialLoad(false) // 새로고침 후에는 더 이상 새로고침 하지 않도록 상태를 false로 설정
-  //   }
-  // }, [initialLoad])
-
   useEffect(() => {
-    // 페이지가 처음 로드될 때만 새로고침을 수행합니다.
     const shouldReload = localStorage.getItem('reloaded') !== 'true'
     if (shouldReload) {
       localStorage.setItem('reloaded', 'true') // 새로고침 플래그를 설정합니다.
@@ -283,6 +272,7 @@ const MyCovletCardDetail = ({
                 coverLetterId={coverLetterId}
                 setShowInputs={closeModal}
                 setAnalysisClicked={closeModal}
+                usingType={'USE_COVER_LETTER'}
               />
             ) : null
           ) : null}
@@ -402,6 +392,7 @@ const MyCovletCardDetail = ({
                 coverLetterId={coverLetterId}
                 setShowInputs={closeModal}
                 setAnalysisClicked={closeModal}
+                usingType={'USE_COVER_LETTER'}
               />
             ) : null
           ) : null}
@@ -473,7 +464,7 @@ const MyCovletCardDetail = ({
         <div className="w-[1090px] h-[972px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px]">
           <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
             <div className="w-[773px] h-[52px] left-[160px] top-[101px] absolute text-black text-3xl font-bold  leading-[45px]">
-              {userInfo?.memberName}님과 {jobKeyword}{' '}분야의 직무 적합도는{' '}
+              {userInfo?.memberName}님과 {jobKeyword} 분야의 직무 적합도는{' '}
               {roundedPercentage}%입니다.
             </div>
             <div className="left-[280px] top-[643px] absolute text-black text-2xl font-bold  leading-9">
@@ -493,7 +484,10 @@ const MyCovletCardDetail = ({
                 <div className="w-[85px] h-7 left-[180px] top-[205px] absolute text-black text-center text-xl font-bold  leading-[30px]">
                   {jobKeyword}
                 </div>
-                <JobAnal2 backend={Number(roundedPercentage)} all={100-Number(roundedPercentage)}  />
+                <JobAnal2
+                  backend={Number(roundedPercentage)}
+                  all={100 - Number(roundedPercentage)}
+                />
               </div>
             </div>
             <div className="w-[569px] h-[202px] left-[200px] top-[713px] absolute">
@@ -555,6 +549,7 @@ const MyCovletCardDetail = ({
                 coverLetterId={coverLetterId}
                 setShowInputs={closeModal}
                 setAnalysisClicked={closeModal}
+                usingType={'USE_COVER_LETTER'}
               />
             ) : null
           ) : null}
