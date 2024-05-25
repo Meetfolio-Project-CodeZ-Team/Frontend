@@ -54,7 +54,6 @@ const ChargePoint = ({
 
     const data = await response.json()
     setTid(data.tid)
-    console.log(data)
 
     const requestTid = {
       point: Number(chargeP),

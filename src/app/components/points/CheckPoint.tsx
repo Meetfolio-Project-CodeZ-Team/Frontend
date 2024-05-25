@@ -54,7 +54,6 @@ const CheckPoint = ({
       console.error('데이터 저장에 실패했습니다.')
     }
     const responseData = await response.json()
-    console.log(usingType, coverLetterId, responseData, '포인트 사용 후 응답')
 
     setShowInputs(true)
     setAnalysisClicked(true)

@@ -21,7 +21,6 @@ const UserBoard = () => {
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user?page=${page - 1}`,
       )
       const resData = await res.json()
-      console.log(resData, '가져온 데이터')
       setUserData(resData.result)
     }
     fetchData()
