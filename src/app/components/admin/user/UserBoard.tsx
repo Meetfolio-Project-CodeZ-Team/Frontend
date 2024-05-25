@@ -58,7 +58,7 @@ const UserBoard = () => {
           </div>
         ))
       )}
-      <div className='relative h-full'>
+      <div className="relative h-full">
         <ReactPaginate
           className="flex absolute bottom-[260px] items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
           previousLabel={

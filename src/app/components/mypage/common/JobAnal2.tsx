@@ -13,18 +13,12 @@ interface JobAnalProps {
 const JobAnal = (jobAnal: JobAnalProps) => {
   const { backend, all } = jobAnal
   const data = {
-    labels: [
-      JOBKEYWORD[0],
-      
-    ],
+    labels: [JOBKEYWORD[0]],
     datasets: [
       {
         label: 'test',
         data: [backend, all],
-        backgroundColor: [
-          '#F5CF87',
-          '#DEE5ED',
-        ],
+        backgroundColor: ['#F5CF87', '#DEE5ED'],
         borderWidth: 1,
       },
     ],
@@ -67,8 +61,9 @@ const JobAnal = (jobAnal: JobAnalProps) => {
   return (
     <div className="flex flex-col w-[447px] h-[423px] rounded-[10px]  p-[17px]">
       <div className="flex items-center gap-x-2.5 mb-1">
-        <div className="text-[24px] ml-[230px] font-bold ">나의 직무 적합도 </div>
-        
+        <div className="text-[24px] ml-[230px] font-bold ">
+          나의 직무 적합도{' '}
+        </div>
       </div>
       <div className="flex items-center justify-center ">
         <div className="w-[360px] h[300px]">

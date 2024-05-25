@@ -21,7 +21,7 @@ interface BoardCardDetailProps {
 
 interface BoardDetailContainer {
   nickname?: string
-  profile?:string
+  profile?: string
 }
 const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
@@ -79,7 +79,6 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
         <>
           <div className="w-full h-[982px] left-0 top-0 absolute bg-gray-50" />
           <div className="w-[1014.23px] h-[907px] left-[71.39px] top-[64px] absolute">
-            
             <div className="w-[964px] h-[511px] left-[10px] top-[198px] absolute text-gray-900 text-xl font-medium leading-[30px]">
               {data?.content}
             </div>
@@ -96,13 +95,13 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
               </div>
             </div>
             <div className="w-[1002px] h-[119px] left-[0px] top-[703px] absolute">
-          <CommentContainer2
-            postId={selectedId}
-            isLiked={data?.likeStatus === 'ACTIVE'}
-          />
+              <CommentContainer2
+                postId={selectedId}
+                isLiked={data?.likeStatus === 'ACTIVE'}
+              />
+            </div>
           </div>
-          </div>
-          
+
           <div className="w-[322px] h-[37px] left-[82px] top-[190px] absolute justify-start items-center gap-[19px] inline-flex">
             {data?.peopleNumber && (
               <div className="w-[70px] h-[25px] px-5 bg-blue-400 rounded-[15px] justify-center items-center gap-2 flex">
@@ -152,11 +151,12 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
               {data?.memberName}
             </div>
           </div>
-          
         </>
       ) : (
-        <div className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium"
-        onClick={goBack}>
+        <div
+          className="flex flex-col w-full h-full items-center justify-center text-black text-2xl gap-y-2 font-medium"
+          onClick={goBack}
+        >
           돌아가기
         </div>
       )}

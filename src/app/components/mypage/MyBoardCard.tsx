@@ -50,7 +50,7 @@ const MyBoardCard = ({
   boardType,
   jobCategory,
   likeStatus,
-  profile
+  profile,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)

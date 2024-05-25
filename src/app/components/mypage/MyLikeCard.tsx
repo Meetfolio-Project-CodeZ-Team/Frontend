@@ -20,7 +20,7 @@ interface MyBoardCardProps {
   boardType?: string
   jobCategory?: string
   likeStatus: string
-  profile?:string
+  profile?: string
 }
 
 interface BoardCardDetail {
@@ -32,7 +32,7 @@ interface BoardCardDetail {
   registrationDate: string
   memberName: string
   peopleNumber: number
-  profile?:string
+  profile?: string
   // closeModal: () => void
 }
 
@@ -49,7 +49,7 @@ const MyLikeCard = ({
   boardType,
   jobCategory,
   likeStatus,
-  profile
+  profile,
 }: MyBoardCardProps) => {
   const [boardCards, setBoardCards] = useState<BoardCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
