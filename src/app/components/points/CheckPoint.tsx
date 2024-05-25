@@ -117,8 +117,8 @@ const CheckPoint = ({
             {isOpen && (
               <ChargePoint
                 closeCharge={closeModal}
-                cost={cost}
                 coverLetterId={coverLetterId}
+                isGuest={usingType==='USE_COVER_LETTER'}
               />
             )}
           </div>
