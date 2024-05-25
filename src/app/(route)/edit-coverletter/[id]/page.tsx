@@ -13,8 +13,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  console.log(coverletterData)
-  console.log(covletNumber, '현재 페이지 번호')
+
 
   const router = useRouter()
 

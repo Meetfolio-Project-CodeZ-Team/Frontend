@@ -23,19 +23,6 @@ interface MyBoardCardProps {
   profile?: string
 }
 
-interface BoardCardDetail {
-  title: string
-  content: string
-  boardId: number
-  groupCategory: string
-  recruitment: string
-  registrationDate: string
-  memberName: string
-  peopleNumber: number
-  boardType: string
-  profile?: string
-  // closeModal: () => void
-}
 
 const MyBoardCard = ({
   title,
@@ -52,12 +39,10 @@ const MyBoardCard = ({
   likeStatus,
   profile
 }: MyBoardCardProps) => {
-  const [boardCards, setBoardCards] = useState<BoardCardDetail>()
-  const [isOpen, setIsOpen] = useState(false)
+  
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [isLiked, setIsliked] = useState(false)
   const router = useRouter()
-  console.log(boardId, '게시글 정보 id')
   const fetchBoardCards = () => {
     setSelectedId(boardId || 999)
 

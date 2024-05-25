@@ -9,18 +9,7 @@ import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
 import PointCard from './PointCard'
-import { tidState } from '@/app/recoil/coverletter'
 
-interface UserInfoProps {
-  email: string
-  grade: string
-  major: string
-  jobKeyword: onlyJobType
-  memberId?: number
-  point: number
-  status: string
-  registrationDate: string
-}
 interface UserPoint {
   myPoint: number
   isFirst: boolean

@@ -1,14 +1,14 @@
 'use client'
 
+import { portNum } from '@/app/recoil/mypage'
+import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
+import ExpIcon from '@/app/ui/svg/common/ExpIcon'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import MyExpCard from './MyExpCard'
-import ExpIcon from '@/app/ui/svg/common/ExpIcon'
-import { useRecoilState } from 'recoil'
-import { portNum } from '@/app/recoil/mypage'
 import ReactPaginate from 'react-paginate'
+import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
-import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
+import MyExpCard from './MyExpCard'
 
 interface ExperienceCard {
   experienceId: number
@@ -55,7 +55,7 @@ const MyExpList = () => {
   }
 
   useEffect(() => {
-    // 서버에서 경험카드 데이터를 가져오는 함수
+    
     const fetchExpCards = async () => {
       try {
         const response = await fetch(`/api/mypage/myExp?page=${page - 1}`)
@@ -63,7 +63,6 @@ const MyExpList = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log(data) // 타입 에러가 발생하지 않아야 함
         setExpCards(data.result.experienceCardInfo.experienceCardItems)
         setPageInfo(data.result.experienceCardInfo)
       } catch (error) {
@@ -74,7 +73,6 @@ const MyExpList = () => {
     fetchExpCards()
   }, [page])
 
-  console.log(expCards, '카드 목록 정보')
   return (
     <div className="w-full h-[1150px] relative">
       <div className="w-full h-full left-0 top-0 absolute bg-gray-50 " />

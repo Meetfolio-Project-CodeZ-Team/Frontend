@@ -1,25 +1,15 @@
 'use client'
-import { CHECK_BUTTON, CHECK_POINT } from '@/app/constants/point'
-import { useModal } from '@/app/hooks/useModal'
-import { useEffect, useState } from 'react'
-import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
-import {
-  feedbackData,
-  feedbackDataState,
-  satisfactionData,
-} from '@/app/recoil/coverletter'
-import { useRecoilState } from 'recoil'
+import { useState } from 'react'
 
 interface SatisfactionProps {
   analysis_id: number
 }
 
 const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
-  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-  const [myPoint, setMyPoint] = useState(0)
+  
   const [satisfaction, setSatisfaction] = useState<number>(0)
-  const [FeedBackData, setFeedBackData] = useRecoilState(satisfactionData)
+  
 
   const router = useRouter()
 
@@ -32,7 +22,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
       console.error('유효하지 않은 feedback ID입니다.')
       return
     }
-    console.log('분석 아이디', analysis_id)
+    
 
     const response = await fetch(
       `/api/coverLetter/analysSatis?id=${analysis_id}`,
@@ -50,10 +40,6 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
       console.error('데이터 저장에 실패했습니다.')
     }
     const responseData = await response.json()
-
-    console.log('만족도', satisfaction)
-    console.log('피드백 아이디', analysis_id)
-    console.log('응답 데이터', responseData)
     router.push('/mypage')
   }
 
@@ -96,7 +82,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                 onClick={() => handleSatisfaction(rating)}
               >
                 {satisfaction >= rating ? (
-                  // Selected State SVG
+                 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -126,7 +112,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                     </g>
                   </svg>
                 ) : (
-                  // Unselected State SVG
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"

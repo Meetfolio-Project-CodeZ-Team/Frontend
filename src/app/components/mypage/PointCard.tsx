@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 
 interface PointCardProps {
   createdAt: string
@@ -16,13 +14,11 @@ interface CovletCardDetail {
   keyword1: string
   keyword2: string
   jobKeyword: string
-  // closeModal: () => void
+  
 }
 
 const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
-  const [covletCards, setCovletCards] = useState<CovletCardDetail>()
-  const [isOpen, setIsOpen] = useState(false)
-  const router = useRouter()
+  
 
   return (
     <div className="flex gap-[218px] items-center w-full h-[59px] py-[20px] border-b border-stone-400 mt-[0px]">

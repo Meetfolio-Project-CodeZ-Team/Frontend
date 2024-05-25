@@ -1,25 +1,15 @@
 'use client'
-import { CHECK_BUTTON, CHECK_POINT } from '@/app/constants/point'
-import { useModal } from '@/app/hooks/useModal'
-import { useEffect, useState } from 'react'
-import Button from '../common/Button'
 import { useRouter } from 'next/navigation'
-import {
-  feedbackData,
-  feedbackDataState,
-  satisfactionData,
-} from '@/app/recoil/coverletter'
-import { useRecoilState } from 'recoil'
+import { useState } from 'react'
 
 interface SatisfactionProps {
   feedback_id: number
 }
 
 const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
-  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-  const [myPoint, setMyPoint] = useState(0)
+  
   const [satisfaction, setSatisfaction] = useState<number>(0)
-  const [FeedBackData, setFeedBackData] = useRecoilState(satisfactionData)
+  
 
   const router = useRouter()
 
@@ -32,7 +22,6 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
       console.error('유효하지 않은 feedback ID입니다.')
       return
     }
-    console.log('피드백 아이디', feedback_id)
 
     const response = await fetch(
       `/api/coverLetter/satisfaction?id=${feedback_id}`,
@@ -51,9 +40,6 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
     }
     const responseData = await response.json()
 
-    console.log('만족도', satisfaction)
-    console.log('피드백 아이디', feedback_id)
-    console.log('응답 데이터', responseData)
     router.push('/mypage')
   }
 
@@ -96,7 +82,7 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
                 onClick={() => handleSatisfaction(rating)}
               >
                 {satisfaction >= rating ? (
-                  // Selected State SVG
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -126,7 +112,7 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
                     </g>
                   </svg>
                 ) : (
-                  // Unselected State SVG
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"

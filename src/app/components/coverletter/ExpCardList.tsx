@@ -26,7 +26,7 @@ const ExpCardList = () => {
         throw new Error('상세 정보를 가져오는데 실패했습니다.')
       }
       const detailData = await response.json()
-      setSelectedCard(detailData.result.experienceInfo) // Ensure this matches the data structure
+      setSelectedCard(detailData.result.experienceInfo)
     } catch (error) {
       console.error(error)
     }
@@ -37,7 +37,6 @@ const ExpCardList = () => {
   }
 
   useEffect(() => {
-    console.log('카드 데이터 가져옴')
 
     const fetchExpCards = async () => {
       try {
