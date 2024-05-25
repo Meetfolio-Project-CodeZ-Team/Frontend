@@ -327,8 +327,8 @@ const MyCovletCardDetail = ({
     
   } else if (!hasFeedback && !hasAnalysis) {
     return (
-      <div className="w-full h-[1000px] relative">
-        <div className="w-full h-[1000px] left-0 top-0 absolute">
+      <div className="w-full h-[800px] relative">
+        <div className="w-full h-[800px] left-0 top-0 absolute">
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[180px] absolute border-2 border-gray-300 rounded-[15px] ">
             <div
