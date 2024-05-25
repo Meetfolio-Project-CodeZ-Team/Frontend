@@ -1,5 +1,4 @@
 import { useModal } from '@/app/hooks/useModal'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import JobAnal2 from '../mypage/common/JobAnal2'
 import AnalysisSatisfaction from './AnalysisSatisfaction'
@@ -12,11 +11,11 @@ interface AnalysisData {
 }
 
 interface AiAnalysisProps {
-  analysisData: AnalysisData | null // Expecting this data as a prop
+  analysisData: AnalysisData | null 
 }
 
 const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
-  const router = useRouter()
+  
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
@@ -187,7 +186,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   </defs>
                 </svg>
                 <div className="w-[150px] h-[60px]  left-[25px] top-[75px] absolute text-center text-black text-2xl font-bold leading-[30px] z-20">
-                  커뮤니케이션
+                {analysisData?.skill_keywords?.[1]}
                 </div>
               </div>
             </div>

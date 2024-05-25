@@ -1,13 +1,10 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
-import { expNum, expData, modalNum } from '../../recoil/experience'
 import { useRouter } from 'next/navigation'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
+import { useRecoilState } from 'recoil'
+import { expData, expNum, modalNum } from '../../recoil/experience'
 import ExpFinishModal1 from './ExpFinishModal1'
 import ExpFinishModal2 from './ExpFinishModal2'
-import { useState } from 'react'
 import ExpFinishModal3 from './ExpFinishModal3'
 
 const ExpFinishContainer = () => {
@@ -16,7 +13,6 @@ const ExpFinishContainer = () => {
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const router = useRouter()
 
-  const totalPages = 3
 
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
@@ -44,7 +40,7 @@ const ExpFinishContainer = () => {
       case 2:
         return <ExpFinishModal3 />
       default:
-        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null 
     }
   }
 
@@ -74,12 +70,11 @@ const ExpFinishContainer = () => {
       advance: '',
       expStacks: [],
     })
-    router.push('/mypage/myexperience') // '/main'으로 경로 이동
+    router.push('/mypage/myexperience') 
   }
 
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
-    console.log(experienceData.stack)
 
     const response = await fetch('/api/experiences', {
       method: 'POST',
@@ -92,7 +87,6 @@ const ExpFinishContainer = () => {
         jobKeyword: 'AI',
       }),
     })
-    console.log(experienceData.stack)
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     }
@@ -207,7 +201,7 @@ const ExpFinishContainer = () => {
         </button>
       </div>
       <div className="justify-center items-center">
-        {/* 페이지에 따라 다른 모달 컴포넌트 렌더링 */}
+        
         {getCurrentModal()}
       </div>
     </div>

@@ -1,7 +1,5 @@
 'use client'
 
-import { expData } from '@/app/recoil/experience'
-import { useRecoilState } from 'recoil'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -32,7 +30,7 @@ const ExpCardDetail = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
-  const [experienceData, setExperienceData] = useRecoilState(expData)
+  
   return (
     <div className="w-[385px] h-[820px] relative mt-[80px] ml-[40px] bg-[#DEE5ED] rounded-[20px]">
       <div className="w-[90px]  px-5 py-2 left-[275px] top-[760px] absolute bg-gray-900 rounded-[15px] justify-center items-center gap-2 inline-flex">

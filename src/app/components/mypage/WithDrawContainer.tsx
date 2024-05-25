@@ -50,7 +50,7 @@ const WithDrawContainer = () => {
   }
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
+    
     const fetchUserInfos = async () => {
       try {
         const response = await fetch('/api/mypage/user')
@@ -58,7 +58,6 @@ const WithDrawContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result) // 타입 에러가 발생하지 않아야 함
         setUserInfos(data.result)
       } catch (error) {
         console.error(error)
@@ -69,7 +68,7 @@ const WithDrawContainer = () => {
   }, [])
 
   const deleteUser = async () => {
-    console.log('회원탈퇴 요청이에요')
+  
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/delete`,
@@ -79,7 +78,6 @@ const WithDrawContainer = () => {
       )
 
       if (res.ok) {
-        console.log('회원탈퇴 성공적으로 되었습니다.')
       } else {
         const errorData = await res.json()
         console.error('Error details:', errorData)
@@ -193,10 +191,6 @@ const WithDrawContainer = () => {
           보유하신 포인트가 소멸됩니다.
         </span>
       </div>
-
-      {/* <div className="w-[95.85px] h-[20.69px] left-[22.58px] top-[11.66px] absolute text-center text-slate-600 text-lg font-semibold leading-[27px]">
-          탈퇴하기
-        </div> */}
       <div className="w-[150.05px] h-[50px] left-[895px] top-[504px] absolute bg-slate-300 rounded-[10px] flex items-center justify-center">
         <button
           className="text-slate-600 text-xl font-semibold border-0 focus:outline-none rounded-[10px]"

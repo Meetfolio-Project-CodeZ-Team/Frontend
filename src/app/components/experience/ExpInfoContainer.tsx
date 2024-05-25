@@ -1,6 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
-import { useEffect, useRef, useState } from 'react'
+import { expData, expNum } from '../../recoil/experience'
 
 interface ExpFinishContainerProps {
   isEdit?: boolean

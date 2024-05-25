@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import ShowCard from '../main/ShowCard'
-import MyExpCardDetail from './MyExpCardDetail'
-import { useRecoilState } from 'recoil'
 import { modalNum } from '@/app/recoil/experience'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import ShowCard from '../main/ShowCard'
 import MyExpDetailModal1 from './common/MyExpDetailModal1'
 import MyExpDetailModal2 from './common/MyExpDetailModal2'
 import MyExpDetailModal3 from './common/MyExpDetailModal3'
-import { useRouter, usePathname } from 'next/navigation'
 
 interface MyExpCardProps {
   experienceType: string
@@ -59,10 +57,9 @@ const MyExpCard = ({
         throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
       }
       const data = await response.json()
-      console.log('경험분해 세부정보 조회', data.result.experienceInfo)
       setExpCards({
         ...data.result.experienceInfo,
-        experienceId: experienceId, // experienceId 명시적으로 추가
+        experienceId: experienceId, 
       })
     } catch (error) {
       console.error(error)
@@ -75,7 +72,7 @@ const MyExpCard = ({
     if (!expCards) return null
     const modalProps = {
       ...expCards,
-      experienceId: experienceId, // 명시적으로 experienceId 추가
+      experienceId: experienceId, 
       closeModal,
     }
     switch (pageNumber) {
@@ -86,7 +83,7 @@ const MyExpCard = ({
       case 2:
         return <MyExpDetailModal3 {...modalProps} />
       default:
-        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null 
     }
   }
 

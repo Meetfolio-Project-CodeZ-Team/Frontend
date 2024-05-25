@@ -37,7 +37,6 @@ const MyBoard = () => {
   }
 
   useEffect(() => {
-    // 서버에서 게시글 목록 데이터를 가져오는 함수
     const fetchBoardCards = async () => {
       try {
         const response = await fetch(`/api/mypage/myboard`)
@@ -45,7 +44,6 @@ const MyBoard = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 게시글 데이터', data) // 타입 에러가 발생하지 않아야
         setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
         console.error(error)
@@ -55,7 +53,7 @@ const MyBoard = () => {
     fetchBoardCards()
   }, [])
 
-  console.log(boardCards, '게시글 목록 정보')
+  
 
   return (
     <div className="w-full h-[1090px] relative ">
@@ -88,7 +86,7 @@ const MyBoard = () => {
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {boardCards.length > 0 ? (
             boardCards.map((a) => (
-              <MyBoardCard key={a.boardId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
+              <MyBoardCard key={a.boardId} {...a} /> 
             ))
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">

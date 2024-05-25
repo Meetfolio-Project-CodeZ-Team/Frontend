@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const content = await request.json()
   try {
     const data = await postCoverLetter(content, accessToken)
-    console.log(data, '자기소개서 요청 데이터')
+    
     return NextResponse.json(data)
   } catch (error) {
     throw new Error('Error submitting recruiter data')
