@@ -7,7 +7,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
   const page = searchParams.get('page') || '0'
   const data = await getMyCovlet(accessToken, page).then((data) => data)
-  console.log(data, '자기소개서 목록 조회 요청이에요')
+  
 
   return NextResponse.json(data)
 }

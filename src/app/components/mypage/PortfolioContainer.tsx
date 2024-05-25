@@ -1,15 +1,14 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import MyCovletCard from './MyCovletCard'
-import Link from 'next/link'
-import AI3 from '@/app/ui/svg/ai/AI3'
-import CovIcon from '@/app/ui/svg/common/CovIcon'
-import { useRecoilState } from 'recoil'
 import { portNum } from '@/app/recoil/mypage'
-import ReactPaginate from 'react-paginate'
-import Icons from '../common/Icons'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
+import CovIcon from '@/app/ui/svg/common/CovIcon'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
+import { useRecoilState } from 'recoil'
+import Icons from '../common/Icons'
+import MyCovletCard from './MyCovletCard'
 interface CovletCard {
   question: string
   answer: string
@@ -55,7 +54,7 @@ const PortfolioContainer = () => {
   })
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
+    
     const fetchCovletCards = async () => {
       try {
         const response = await fetch(`/api/mypage/myCovlet?page=${page - 1}`)
@@ -63,7 +62,7 @@ const PortfolioContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('자소서 데이터', data) // 타입 에러가 발생하지 않아야 함
+        
         setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
         setPageInfo(data.result.coverLetterInfo)
       } catch (error) {
@@ -73,8 +72,7 @@ const PortfolioContainer = () => {
     fetchCovletCards()
   }, [page])
 
-  console.log(covletCards, '자소서 목록 정보')
-  console.log(pageinfo, '페이지 정보')
+
 
   return (
     <div className="w-full h-[1200px] relative">

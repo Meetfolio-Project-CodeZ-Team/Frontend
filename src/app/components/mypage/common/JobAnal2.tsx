@@ -1,8 +1,6 @@
 import { JOBKEYWORD } from '@/app/constants/auth'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
+import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2'
-import Icons from '../../common/Icons'
-import { doughnut } from '@/app/ui/IconsPath'
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface JobAnalProps {

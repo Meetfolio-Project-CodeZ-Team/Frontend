@@ -19,13 +19,11 @@ const CommentContainer2 = ({ postId, isLiked }: CommentContainerProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [likeCnt, setLikeCnt] = useState(0)
-  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
+  
   const [content, setContent] = useState('')
   const [commentId, setCommentId] = useState(0)
   const [comment, setComment] = useState<CommentDataTypes[]>([])
   const [isReply, setIsReply] = useState(false)
-
-  console.log(selectedId, '선택된 id')
 
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
@@ -71,7 +69,6 @@ const CommentContainer2 = ({ postId, isLiked }: CommentContainerProps) => {
       const resData = await response.json()
       setComment(resData.result.commentItems)
       setIsClicked(false)
-      console.log('가져온 댓글 데이터', resData.result)
     }
     fetchData()
   }, [postId])

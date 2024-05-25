@@ -9,16 +9,6 @@ interface MyCovletCardProps {
   isGuest?: boolean
 }
 
-interface CovletCardDetail {
-  shareType: string
-  question: string
-  answer: string
-  coverLetterId: number
-  keyword1: string
-  keyword2: string
-  jobKeyword: string
-  // closeModal: () => void
-}
 
 const MyCovletCard = ({
   question,

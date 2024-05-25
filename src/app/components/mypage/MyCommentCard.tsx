@@ -1,9 +1,7 @@
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Like from '@/app/ui/svg/main/Like'
-import Comment from '@/app/ui/svg/main/Comment'
-import { useRecoilState } from 'recoil'
 import { selectedPostId } from '@/app/recoil/board'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
 
 interface MyBoardCardProps {
   commentId?: number
@@ -13,13 +11,7 @@ interface MyBoardCardProps {
   boardCreatedAt: string
 }
 
-interface BoardCardDetail {
-  commentId?: number
-  content: string
-  boardId?: number
-  boardTitle: string
-  boardCreatedAt: string
-}
+
 
 const MyCommentCard = ({
   commentId,
@@ -28,11 +20,9 @@ const MyCommentCard = ({
   boardTitle,
   boardCreatedAt,
 }: MyBoardCardProps) => {
-  const [boardCards, setBoardCards] = useState<BoardCardDetail>()
-  const [isOpen, setIsOpen] = useState(false)
+  
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const router = useRouter()
-  console.log(commentId, '게시글 정보 id')
   const fetchBoardCards = () => {
     setSelectedId(boardId || 999)
 

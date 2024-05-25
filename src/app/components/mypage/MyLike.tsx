@@ -1,10 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import MyLikeCard from './MyLikeCard'
-import { useRecoilState } from 'recoil'
 import { boardNum } from '@/app/recoil/mypage'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import MyLikeCard from './MyLikeCard'
 interface BoardCard {
   title?: string
   content?: string
@@ -38,7 +37,7 @@ const MyLike = () => {
   }
 
   useEffect(() => {
-    // 서버에서 게시글 목록 데이터를 가져오는 함수
+    
     const fetchBoardCards = async () => {
       try {
         const response = await fetch(`/api/mypage/mylike`)
@@ -46,7 +45,7 @@ const MyLike = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('좋아요한 게시글 데이터', data) // 타입 에러가 발생하지 않아야
+        
         setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
         console.error(error)
@@ -56,7 +55,6 @@ const MyLike = () => {
     fetchBoardCards()
   }, [])
 
-  console.log(boardCards, '좋아요 게시물 목록 정보')
 
   return (
     <div className="w-full h-[1090px] relative">
@@ -89,7 +87,7 @@ const MyLike = () => {
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {boardCards.length > 0 ? (
             boardCards.map((a) => (
-              <MyLikeCard key={a.boardId} {...a} /> // 데이터를 MyExpCard 컴포넌트에 전달
+              <MyLikeCard key={a.boardId} {...a} /> 
             ))
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">

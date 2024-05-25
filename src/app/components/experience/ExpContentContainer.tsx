@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
+import { expData, expNum } from '../../recoil/experience'
 
 interface ExpFinishContainerProps {
   isEdit?: boolean
@@ -30,7 +30,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   }
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
-    console.log(experienceData, isEdit, '로 수정요청')
+    
 
     const urlPath = isEdit
       ? `/api/experiences/update?id=${id}`
@@ -52,7 +52,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
     }
     goToNextPage()
   }
-  console.log(experienceData.stack)
+  
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">

@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     const { searchParams } = new URL(request.url)
     const id = searchParams.get('id') || ''
 
-    console.log(id, 'url로 가져온 id')
+    
     const data = await postAiFeedback(accessToken, id)
 
     return NextResponse.json(data)

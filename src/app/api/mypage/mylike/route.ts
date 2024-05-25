@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 export async function GET(request: Request): Promise<NextResponse> {
   let accessToken = getCookie(request, 'accessToken')
   const data = await getMyLike(accessToken).then((data) => data)
-  console.log(data, '게시글 목록 조회 요청이에요')
+  
 
   return NextResponse.json(data)
 }

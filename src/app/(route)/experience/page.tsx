@@ -6,7 +6,6 @@ import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
-import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
@@ -15,9 +14,7 @@ export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  const [initialLoad, setInitialLoad] = useState(true)
-
-  const router = useRouter()
+  
 
   useEffect(() => {
     const fetchData = async () => {

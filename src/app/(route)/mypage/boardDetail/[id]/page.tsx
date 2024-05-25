@@ -5,17 +5,7 @@ import BoardCardDetail from '@/app/components/mypage/BoardCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { useEffect, useState } from 'react'
 
-interface BoardCardDetailProps {
-  title?: string
-  content: string
-  boardId: number
-  groupCategory: string
-  recruitment: string
-  registrationDate: string
-  memberName: string
-  peopleNumber: number
-  // closeModal: () => void
-}
+
 
 export default function BoardDetailPage({
   params,
@@ -23,7 +13,7 @@ export default function BoardDetailPage({
   params: { id: string }
 }) {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  const [boardCards, setBoardCards] = useState<BoardCardDetailProps[]>([])
+  
 
   useEffect(() => {
     const fetchData = async () => {
