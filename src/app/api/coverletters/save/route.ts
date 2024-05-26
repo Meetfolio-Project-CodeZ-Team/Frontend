@@ -8,7 +8,6 @@ export async function PATCH(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const id = searchParams.get('id') || ''
-  
 
   const covletData = await request.json()
 

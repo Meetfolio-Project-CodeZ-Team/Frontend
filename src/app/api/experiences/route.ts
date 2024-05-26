@@ -7,7 +7,7 @@ export async function POST(request: Request) {
   const content = await request.json()
   try {
     const data = await postExperience(content, accessToken)
-   
+
     return NextResponse.json(data)
   } catch (error) {
     throw new Error('Error submitting recruiter data')

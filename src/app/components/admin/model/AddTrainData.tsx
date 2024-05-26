@@ -38,8 +38,6 @@ const AddTrainData = ({ addComplete }: AddTrainDataProps) => {
     addComplete()
   }
 
-  console.log(job, '현재 선택 직무')
-
   return (
     <div className="flex flex-col w-[1010px] h-[780px] gap-y-8">
       <ToastContainer />

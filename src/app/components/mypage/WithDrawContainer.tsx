@@ -50,7 +50,6 @@ const WithDrawContainer = () => {
   }
 
   useEffect(() => {
-    
     const fetchUserInfos = async () => {
       try {
         const response = await fetch('/api/mypage/user')
@@ -68,7 +67,6 @@ const WithDrawContainer = () => {
   }, [])
 
   const deleteUser = async () => {
-  
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/user/delete`,

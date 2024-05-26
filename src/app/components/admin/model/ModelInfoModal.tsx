@@ -39,7 +39,6 @@ const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
     closeModal()
     changeVersion()
   }
-  console.log(data, '모델 데이터')
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">

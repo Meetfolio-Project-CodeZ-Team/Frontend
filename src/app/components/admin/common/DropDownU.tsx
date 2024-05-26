@@ -32,8 +32,6 @@ const DropDownU = ({ options, title, onSelect }: DropDownUProps) => {
   }
 
   const handleOptionClick = (option: JobType) => {
-    console.log('선택완료')
-
     setSelectedOption(option)
     onSelect(JOB_ENUM[option])
     setIsOpen(false)

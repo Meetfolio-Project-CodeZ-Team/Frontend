@@ -22,7 +22,11 @@ export default function MyUserPage() {
     <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
-        <UserNavContainer selected={'user'} nickname={userInfo?.memberName} profile={userInfo?.profile} />
+        <UserNavContainer
+          selected={'user'}
+          nickname={userInfo?.memberName}
+          profile={userInfo?.profile}
+        />
         <div className="flex-grow">
           <EditUserInfo />
         </div>
