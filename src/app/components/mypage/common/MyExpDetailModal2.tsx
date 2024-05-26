@@ -38,7 +38,6 @@ const MyExpDetailModal2 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail & { isGuest?: boolean }) => {
-  
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
@@ -57,7 +56,6 @@ const MyExpDetailModal2 = ({
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
-      
       setPageNumber(0)
     }
   }
@@ -66,7 +64,6 @@ const MyExpDetailModal2 = ({
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
-      
       setPageNumber(totalPages - 1)
     }
   }
@@ -106,7 +103,6 @@ const MyExpDetailModal2 = ({
     router.push(`/edit-experience/${experienceId}`)
   }
   const deleteExp = async (experienceId: number) => {
-    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
@@ -166,7 +162,7 @@ const MyExpDetailModal2 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation() 
+              event.stopPropagation()
               handlePrevClick()
             }}
           >
@@ -175,7 +171,7 @@ const MyExpDetailModal2 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={(event) => {
-              event.stopPropagation() 
+              event.stopPropagation()
               handleNextClick()
             }}
           >

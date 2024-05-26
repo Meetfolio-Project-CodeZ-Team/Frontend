@@ -11,8 +11,6 @@ interface MyBoardCardProps {
   boardCreatedAt: string
 }
 
-
-
 const MyCommentCard = ({
   commentId,
   content,
@@ -20,7 +18,6 @@ const MyCommentCard = ({
   boardTitle,
   boardCreatedAt,
 }: MyBoardCardProps) => {
-  
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const router = useRouter()
   const fetchBoardCards = () => {

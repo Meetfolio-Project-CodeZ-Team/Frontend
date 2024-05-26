@@ -97,7 +97,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     if (coverletterData.shareType) {
       setEnabled(coverletterData.shareType === 'PUBLIC')
     }
-  }, [coverletterData.shareType]) 
+  }, [coverletterData.shareType])
 
   useEffect(() => {
     const newShareType = enabled ? 'PUBLIC' : 'PRIVATE'
@@ -127,11 +127,9 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
-     
       textArea.select()
-      textArea.setSelectionRange(0, 99999) 
+      textArea.setSelectionRange(0, 99999)
 
-     
       try {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
@@ -254,7 +252,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         </div>
       </div>
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
-        
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveCovData}
