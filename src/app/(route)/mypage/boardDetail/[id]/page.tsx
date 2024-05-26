@@ -5,15 +5,12 @@ import BoardCardDetail from '@/app/components/mypage/BoardCardDetail'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { useEffect, useState } from 'react'
 
-
-
 export default function BoardDetailPage({
   params,
 }: {
   params: { id: string }
 }) {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  
 
   useEffect(() => {
     const fetchData = async () => {

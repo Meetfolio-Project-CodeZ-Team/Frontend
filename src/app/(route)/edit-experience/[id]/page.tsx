@@ -14,7 +14,6 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   const [experienceData, setExperienceData] = useRecoilState(expData)
-  
 
   useEffect(() => {
     const fetchData = async () => {
