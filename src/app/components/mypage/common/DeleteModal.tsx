@@ -19,7 +19,7 @@ const DeleteModal = ({ closeModal, deleteUser }: DeleteModalProps) => {
       setTimeout(() => {
         logout()
         router.push(`/main`)
-      }, 3000)
+      }, 3000) 
     }
   }, [isDeleted, router])
 

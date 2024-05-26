@@ -65,24 +65,22 @@ const ComunityBoard = ({ boardType }: ComunityBoardProps) => {
           ❌ 조건과 부합하는 게시물이 존재하지않습니다.
         </div>
       )}
-      <div className="absolute bottom-[230px] left-[840px]">
-        <ReactPaginate
-          className="flex items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
-          previousLabel={
-            <div className="pt-0.5">
-              <Icons name={leftAngle} />
-            </div>
-          }
-          nextLabel={
-            <div className="pt-0.5">
-              <Icons name={rightAngle} />
-            </div>
-          }
-          pageCount={boardData.totalPage}
-          onPageChange={handlePageChange}
-          activeClassName={'active text-[#486284]'}
-        />
-      </div>
+      <ReactPaginate
+        className="flex items-center justify-center mt-8 h-[40px] w-full gap-[20px] text-[17px]  text-[#868686] font-semibold"
+        previousLabel={
+          <div className="pt-0.5">
+            <Icons name={leftAngle} />
+          </div>
+        }
+        nextLabel={
+          <div className="pt-0.5">
+            <Icons name={rightAngle} />
+          </div>
+        }
+        pageCount={boardData.totalPage}
+        onPageChange={handlePageChange}
+        activeClassName={'active text-[#486284]'}
+      />
     </div>
   )
 }

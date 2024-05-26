@@ -1,5 +1,6 @@
 'use client'
 
+
 interface ExperienceCardDetail {
   experienceId: number
   title: string
@@ -29,6 +30,7 @@ const ExpCardDetail = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
+  
   return (
     <div className="w-[385px] h-[820px] relative mt-[80px] ml-[40px] bg-[#DEE5ED] rounded-[20px]">
       <div className="w-[90px]  px-5 py-2 left-[275px] top-[760px] absolute bg-gray-900 rounded-[15px] justify-center items-center gap-2 inline-flex">

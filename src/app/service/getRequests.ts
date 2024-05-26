@@ -12,6 +12,8 @@ const getRequest = async (url: string, accessToken?: string) => {
     const response = await fetch(url, {
       headers: headers,
     }).then((res) => res.json())
+    console.log(response, '서버에서 받아온 res')
+    console.log(headers, '서버에 요청하는 헤더')
 
     return response
   } catch (error) {
@@ -140,6 +142,7 @@ export const getBoard = async (
   const url = keyword
     ? `${SERVER_URL}/api/admins/board-management?keyword=${keyword}&page=${page}`
     : `${SERVER_URL}/api/admins/board-management?page=${page}`
+  console.log('요청 url', url)
 
   return await getRequest(url, accessToken)
 }

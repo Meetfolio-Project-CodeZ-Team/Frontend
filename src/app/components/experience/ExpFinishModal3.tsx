@@ -19,6 +19,7 @@ const ExpFinishModal3 = () => {
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
+      
       setPageNumber(0)
     }
   }
@@ -27,6 +28,7 @@ const ExpFinishModal3 = () => {
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
+      
       setPageNumber(totalPages - 1)
     }
   }
@@ -48,6 +50,7 @@ const ExpFinishModal3 = () => {
     }
   }
 
+ 
   const handleButtonClick = () => {
     setExperienceData({
       title: '',
@@ -63,8 +66,9 @@ const ExpFinishModal3 = () => {
       expStacks: [],
     })
     setPortfolioNumber(1)
-    router.push('/mypage')
+    router.push('/mypage') 
   }
+
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">

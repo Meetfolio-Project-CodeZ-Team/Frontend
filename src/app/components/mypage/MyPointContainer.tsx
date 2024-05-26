@@ -136,8 +136,8 @@ const MyPointContainer = () => {
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
       </div>
-      <div className="flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6">
-        <ReactPaginate
+      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6'>
+      <ReactPaginate
           className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
           previousLabel={
             <div className="pt-0.5">

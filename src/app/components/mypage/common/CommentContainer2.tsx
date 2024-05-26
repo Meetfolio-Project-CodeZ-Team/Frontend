@@ -19,7 +19,7 @@ const CommentContainer2 = ({ postId, isLiked }: CommentContainerProps) => {
   const [isClicked, setIsClicked] = useState(false)
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [likeCnt, setLikeCnt] = useState(0)
-
+  
   const [content, setContent] = useState('')
   const [commentId, setCommentId] = useState(0)
   const [comment, setComment] = useState<CommentDataTypes[]>([])

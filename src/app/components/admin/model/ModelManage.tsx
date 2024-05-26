@@ -12,6 +12,7 @@ import ModelManageInfo from './ModelManageInfo'
 const ModelManage = () => {
   const [page, setPage] = useState(1)
   const [pageData, setPageData] = useRecoilState(versionState)
+  console.log(pageData, '가져온 페이지 데이터')
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)

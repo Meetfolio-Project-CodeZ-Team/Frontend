@@ -54,11 +54,12 @@ const CheckPoint = ({
       console.error('데이터 저장에 실패했습니다.')
     }
     const responseData = await response.json()
+    console.log(usingType, coverLetterId, responseData, '포인트 사용 후 응답')
 
     setShowInputs(true)
     setAnalysisClicked(true)
     closeCheck()
-    if (usingType === 'USE_COVER_LETTER') window.location.reload()
+    if(usingType==='USE_COVER_LETTER') window.location.reload()
   }
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
@@ -66,10 +67,10 @@ const CheckPoint = ({
         <div className="w-[435px] h-[566px] flex flex-col items-center text-xl font-bold mt-[57px]">
           <div className="text-3xl">{CHECK_POINT[0]}</div>
           <div className="text-[#616161] text-[22px] font-medium mt-[26px]">
-            {usingType === 'USE_COVER_LETTER' ? CHECK_POINT[5] : CHECK_POINT[4]}
+            {usingType==='USE_COVER_LETTER' ? CHECK_POINT[5]: CHECK_POINT[4]}
           </div>
           <div className="absolute bottom-32 right-16 text-[#616161] text-[14px] font-medium mt-[12px]">
-            {usingType === 'USE_COVER_LETTER' && CHECK_POINT[6]}
+            {usingType==='USE_COVER_LETTER' &&CHECK_POINT[6]}
           </div>
           <div className="flex absolute left-[61px] top-[194px] gap-x-[175px]">
             <div className="flex flex-col gap-y-2">
@@ -116,8 +117,8 @@ const CheckPoint = ({
             {isOpen && (
               <ChargePoint
                 closeCharge={closeModal}
+                cost={cost}
                 coverLetterId={coverLetterId}
-                isGuest={usingType === 'USE_COVER_LETTER'}
               />
             )}
           </div>

@@ -10,7 +10,11 @@ const ExpKeywordContainer = () => {
   const isEntered =
     experienceData.jobKeyword !== '' && experienceData.expStacks.length > 0
 
+  
+
+  
   const [expStack, setExpStack] = useState('')
+ 
 
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -39,9 +43,11 @@ const ExpKeywordContainer = () => {
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleAddKeyword(event)
+      handleAddKeyword(event) 
     }
   }
+
+
 
   const goToNextPage = () => {
     setExperienceNumber(experienceNumber + 1)
@@ -98,6 +104,7 @@ const ExpKeywordContainer = () => {
         <div className="w-[1200px] h-[241px] relative mt-[82px] justify-center items-center mx-auto">
           <div className="w-[1200px] h-[241px] left-0 top-0 absolute">
             <div className="w-[1200px] h-[241px] left-0 top-0 absolute bg-white rounded-[30px] shadow">
+              
               <button
                 className={`w-[105px] h-11 left-[248px] top-[146px] absolute text-black ${experienceData.jobKeyword === 'BACKEND' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
                 onClick={(event) => handleButtonClick('BACKEND', event)}
@@ -184,6 +191,7 @@ const ExpKeywordContainer = () => {
               >
                 추가하기
               </button>
+              
             </div>
           </div>
           {expStacks.length === 0 && (

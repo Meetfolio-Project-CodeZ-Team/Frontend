@@ -12,14 +12,14 @@ import Input from '../common/Input'
 
 interface ChargePointProps {
   closeCharge: () => void
+  cost: number
   coverLetterId: number
-  isGuest?: boolean
 }
 
 const ChargePoint = ({
   closeCharge,
+  cost,
   coverLetterId,
-  isGuest,
 }: ChargePointProps) => {
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
@@ -34,9 +34,7 @@ const ChargePoint = ({
       approval_url:
         coverLetterId === 0
           ? `http://www.meetfolio.kro.kr:60005/mypage/mypoint`
-          : isGuest === true
-            ? `http://www.meetfolio.kro.kr:60005/mypage/myCovletDetail/${coverLetterId}?isGuest=true`
-            : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
+          : `http://www.meetfolio.kro.kr:60005/coverletter?id=${coverLetterId}`,
     }
     const requestConfig = {
       method: 'POST',
@@ -54,6 +52,7 @@ const ChargePoint = ({
 
     const data = await response.json()
     setTid(data.tid)
+    console.log(data)
 
     const requestTid = {
       point: Number(chargeP),

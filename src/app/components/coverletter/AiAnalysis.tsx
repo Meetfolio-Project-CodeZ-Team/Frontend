@@ -11,10 +11,11 @@ interface AnalysisData {
 }
 
 interface AiAnalysisProps {
-  analysisData: AnalysisData | null
+  analysisData: AnalysisData | null 
 }
 
 const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
+  
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
@@ -185,7 +186,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   </defs>
                 </svg>
                 <div className="w-[150px] h-[60px]  left-[25px] top-[75px] absolute text-center text-black text-2xl font-bold leading-[30px] z-20">
-                  {analysisData?.skill_keywords?.[1]}
+                {analysisData?.skill_keywords?.[1]}
                 </div>
               </div>
             </div>

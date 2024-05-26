@@ -59,7 +59,7 @@ const MyExpCard = ({
       const data = await response.json()
       setExpCards({
         ...data.result.experienceInfo,
-        experienceId: experienceId,
+        experienceId: experienceId, 
       })
     } catch (error) {
       console.error(error)
@@ -72,7 +72,7 @@ const MyExpCard = ({
     if (!expCards) return null
     const modalProps = {
       ...expCards,
-      experienceId: experienceId,
+      experienceId: experienceId, 
       closeModal,
     }
     switch (pageNumber) {
@@ -83,7 +83,7 @@ const MyExpCard = ({
       case 2:
         return <MyExpDetailModal3 {...modalProps} />
       default:
-        return null
+        return null 
     }
   }
 

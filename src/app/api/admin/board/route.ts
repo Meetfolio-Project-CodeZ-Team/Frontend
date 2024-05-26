@@ -6,8 +6,9 @@ export async function GET(request: Request): Promise<NextResponse> {
   let accessToken = getCookie(request, 'accessToken')
   const { searchParams } = new URL(request.url)
   const keyword = searchParams.get('keyword') || ''
-  const page = searchParams.get('page') || '0'
+  const page = searchParams.get('page') || ''
   const data = await getBoard(accessToken, keyword, page).then((data) => data)
+  console.log(data, '대쉬보드 요청이에요')
 
   return NextResponse.json(data)
 }

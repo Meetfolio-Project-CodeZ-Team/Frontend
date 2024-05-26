@@ -20,8 +20,10 @@ interface MyBoardCardProps {
   boardType?: string
   jobCategory?: string
   likeStatus: string
-  profile?: string
+  profile?:string
 }
+
+
 
 const MyLikeCard = ({
   title,
@@ -36,7 +38,7 @@ const MyLikeCard = ({
   boardType,
   jobCategory,
   likeStatus,
-  profile,
+  profile
 }: MyBoardCardProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [isLiked, setIsliked] = useState(false)

@@ -14,6 +14,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
+
   const router = useRouter()
 
   useEffect(() => {

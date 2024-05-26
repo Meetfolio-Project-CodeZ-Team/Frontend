@@ -11,7 +11,7 @@ import { covletData, covletNum } from '../../recoil/coverletter'
 export default function CovletMainPage() {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
-
+  
   const [userInfo, setUser] = useState<memberInfo | null>(null)
 
   useEffect(() => {

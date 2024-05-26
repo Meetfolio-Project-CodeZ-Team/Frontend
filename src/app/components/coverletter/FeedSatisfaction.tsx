@@ -7,7 +7,9 @@ interface SatisfactionProps {
 }
 
 const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
+  
   const [satisfaction, setSatisfaction] = useState<number>(0)
+  
 
   const router = useRouter()
 
@@ -80,6 +82,7 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
                 onClick={() => handleSatisfaction(rating)}
               >
                 {satisfaction >= rating ? (
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -109,6 +112,7 @@ const FeedSatisfaction = ({ feedback_id }: SatisfactionProps) => {
                     </g>
                   </svg>
                 ) : (
+                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"

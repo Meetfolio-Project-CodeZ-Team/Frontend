@@ -7,6 +7,7 @@ export async function GET(request: Request): Promise<NextResponse> {
   const id = searchParams.get('experienceId') || ''
   let accessToken = getCookie(request, 'accessToken')
   const data = await getMyExpDetail(accessToken, id).then((data) => data)
+  
 
   return NextResponse.json(data)
 }

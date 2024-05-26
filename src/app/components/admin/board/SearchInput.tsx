@@ -22,6 +22,8 @@ const SearchInput = ({ searchBoard, searchUser }: SearchInputProps) => {
         : `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user/search?keyword=${title}`,
     )
     const resData = await response.json()
+    console.log(resData, 'res요청 성공')
+
     searchBoard && searchBoard(resData.result)
     searchUser && setUserData(resData.result)
   }

@@ -13,16 +13,21 @@ interface FeedbackData {
 }
 
 interface AiFeedContainerProps {
-  feedbackData: FeedbackData | null
+  feedbackData: FeedbackData | null 
 }
 
 const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
   const router = useRouter()
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
+  
 
   useEffect(() => {
     window.scrollTo(0, 0)
   })
+
+  
+
+  
 
   return (
     <div className="w-[931px] h-[960px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
@@ -63,8 +68,10 @@ const AiFeedContainer = ({ feedbackData }: AiFeedContainerProps) => {
           추천 자기소개서 문항
         </div>
       </div>
+      
 
       <div className="w-[870px] h-[40px] left-[82px] top-[980px] absolute">
+        
         <button
           className="text-white  bg-stone-300 border-0 py-[15px] px-[300px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={openModal}

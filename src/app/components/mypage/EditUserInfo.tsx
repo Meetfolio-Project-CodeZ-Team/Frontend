@@ -14,7 +14,7 @@ import {
 import {
   PROFILE_EMOJI,
   PROFILE_EMOJI_PT1,
-  PROFILE_EMOJI_PT2,
+  PROFILE_EMOJI_PT2
 } from '@/app/constants/signup'
 import { userData } from '@/app/recoil/mypage'
 import {
@@ -33,6 +33,8 @@ import Keyword from '../signup/onboard/Keyword'
 import DropDownMajor from '../signup/onboard/dropdown/DropDownMajor'
 import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 
+
+
 interface UserInfo {
   email: string
   grade: string
@@ -50,6 +52,7 @@ interface UpdateUserInfoRequest {
 }
 
 const EditUserInfo = () => {
+  
   const router = useRouter()
   const [passwordVerified, setPasswordVerified] = useState(false)
   const [verifyPw, setVerifyPw] = useState('')
@@ -95,6 +98,7 @@ const EditUserInfo = () => {
   const [profileIndex, setProfileIndex] = useState<number>()
 
   const updateUser = async () => {
+   
     const requestBody: UpdateUserInfoRequest = {
       grade: GRADE_ENUM[grade],
       jobKeyword: JOB_ENUM[clickedKeyword],
@@ -102,6 +106,7 @@ const EditUserInfo = () => {
       profile: PROFILE_EMOJI[profile],
     }
 
+    
     if (password.length > 0) {
       if (
         !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
@@ -116,6 +121,7 @@ const EditUserInfo = () => {
       }
       requestBody.password = password
     } else {
+      
       requestBody.password = null
     }
 
@@ -138,14 +144,15 @@ const EditUserInfo = () => {
           responseData.message || '서버 오류로 정보 수정에 실패했습니다.',
         )
       }
-
+      
       updateUserInfo()
 
       setTimeout(() => {
         router.push('/mypage')
-      }, 2000)
+      }, 2000) 
     } catch (error) {
       console.error('정보 수정 중 오류가 발생했습니다:', error)
+      
     }
   }
 
@@ -161,7 +168,7 @@ const EditUserInfo = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-
+        
         setUserInfos(data.result)
         setMajor(data.result.major)
         setGrade(data.result.grade)
@@ -185,10 +192,11 @@ const EditUserInfo = () => {
         return college as collegeType
       }
     }
-    return 'IT융합대학'
+    return 'IT융합대학' 
   }
 
   useEffect(() => {
+    
     setCollege(findCollegeByMajor(major))
   }, [major])
 
@@ -329,6 +337,7 @@ const EditUserInfo = () => {
               학과
             </div>
             <div className="w-[700px] h-[60px] left-0 top-[30px] absolute">
+              
               <div className="flex gap-x-5 ">
                 <DropDownMajor
                   options={COLLEGE}

@@ -30,6 +30,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
   }
   const saveExpData = async () => {
     const { expStacks, ...dataToSend } = experienceData
+    
 
     const urlPath = isEdit
       ? `/api/experiences/update?id=${id}`
@@ -51,7 +52,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
     }
     goToNextPage()
   }
-
+  
   return (
     <div className="justify-center items-center">
       <div className="w-[1440px] h-[39px] justify-center items-center mx-auto inline-flex mt-[85px] gap-[20px]">

@@ -1,3 +1,5 @@
+import { FeedbackData } from '../recoil/coverletter'
+
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER
 
 const patchRequest = async (

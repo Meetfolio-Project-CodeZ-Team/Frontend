@@ -8,5 +8,7 @@ export async function POST(request: Request) {
   const id = searchParams.get('id') || ''
   const data = await postBoardDetail(accessToken, id)
 
+  
+
   return NextResponse.json(data)
 }

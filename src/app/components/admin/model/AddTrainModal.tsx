@@ -37,6 +37,7 @@ const AddTrainModal = ({
       closeModal()
       setIsLoading(false)
       trainData()
+      console.log(resData)
     }
   }
 

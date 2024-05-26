@@ -14,6 +14,7 @@ export default function ExperiencePage() {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
+  
 
   useEffect(() => {
     const fetchData = async () => {

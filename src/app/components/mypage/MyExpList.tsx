@@ -55,6 +55,7 @@ const MyExpList = () => {
   }
 
   useEffect(() => {
+    
     const fetchExpCards = async () => {
       try {
         const response = await fetch(`/api/mypage/myExp?page=${page - 1}`)

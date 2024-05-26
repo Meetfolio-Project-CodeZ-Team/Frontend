@@ -1,3 +1,4 @@
+
 interface PaymentCardProps {
   createdAt: string
   payment: number
@@ -13,6 +14,7 @@ interface CovletCardDetail {
   keyword1: string
   keyword2: string
   jobKeyword: string
+  
 }
 
 const PaymentCard = ({
@@ -21,6 +23,8 @@ const PaymentCard = ({
   point,
   totalPoint,
 }: PaymentCardProps) => {
+
+
   return (
     <div className="flex gap-[218px] items-center w-full h-[59px] py-[2px] border-b border-stone-400 mt-[0px]">
       <div className="text-black text-lg font-semibold leading-snug absolute left-[10px] w-[170px] text-start">

@@ -1,3 +1,4 @@
+
 interface PointCardProps {
   createdAt: string
   type: string
@@ -13,9 +14,12 @@ interface CovletCardDetail {
   keyword1: string
   keyword2: string
   jobKeyword: string
+  
 }
 
 const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
+  
+
   return (
     <div className="flex gap-[218px] items-center w-full h-[59px] py-[20px] border-b border-stone-400 mt-[0px]">
       <div className="text-black text-lg font-semibold leading-snug absolute left-[10px] w-[170px] text-start">

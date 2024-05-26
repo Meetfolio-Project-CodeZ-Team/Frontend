@@ -43,6 +43,8 @@ const ExpCard = ({
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
 
+ 
+
   return (
     <div
       className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] mb-[20px] bg-[#DEE5ED] rounded-[10px] cursor-pointer ml-[20px]"
