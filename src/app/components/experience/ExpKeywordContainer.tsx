@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
-import NameBox from '../common/NameBox'
+import NameBox from './NameBox'
 
 const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
