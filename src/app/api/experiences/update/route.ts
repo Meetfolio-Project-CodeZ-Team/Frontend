@@ -7,7 +7,7 @@ export async function PATCH(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const id = searchParams.get('id') || ''
-  console.log('넥스트 서버에서 가져온 id', id)
+  
 
   const expData = await request.json()
 

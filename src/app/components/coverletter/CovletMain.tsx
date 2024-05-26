@@ -1,6 +1,6 @@
 import { successCopy } from '@/app/utils/toast'
 import { Switch } from '@headlessui/react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -14,7 +14,6 @@ interface CovletFinishContainerProps {
 }
 
 const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
-  const router = useRouter()
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [tid, setTid] = useRecoilState(tidState)
@@ -98,7 +97,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     if (coverletterData.shareType) {
       setEnabled(coverletterData.shareType === 'PUBLIC')
     }
-  }, [coverletterData.shareType]) // coverletterData의 shareType이 바뀔 때마다 enabled를 업데이트
+  }, [coverletterData.shareType]) 
 
   useEffect(() => {
     const newShareType = enabled ? 'PUBLIC' : 'PRIVATE'
@@ -128,11 +127,11 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
-      // 텍스트 영역을 선택합니다.
+     
       textArea.select()
-      textArea.setSelectionRange(0, 99999) // 모바일 기기를 위해
+      textArea.setSelectionRange(0, 99999) 
 
-      // 복사 명령을 실행합니다.
+     
       try {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
@@ -255,9 +254,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         </div>
       </div>
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
-        {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
-          저장하기
-        </div> */}
+        
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={saveCovData}

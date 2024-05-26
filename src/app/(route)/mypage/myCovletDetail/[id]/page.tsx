@@ -89,7 +89,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   }, [])
 
   useEffect(() => {
-    console.log(`Fetching details for ID: ${params.id}`)
+    
     if (params.id && typeof params.id === 'string') {
       fetch(`/api/mypage/myCovletDetail?coverLetterId=${Number(params.id)}`)
         .then((response) => response.json())
@@ -105,7 +105,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           if (data && data.result && data.result.analysisInfo) {
             setAnalySisData(data.result.analysisInfo)
           }
-          console.log(data)
+          
         })
         .catch((error) => {
           console.error('Failed to fetch cover letter details:', error)

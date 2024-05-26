@@ -59,7 +59,7 @@ const PointCharge = () => {
   }
 
   useEffect(() => {
-    // 서버에서 자소서카드 데이터를 가져오는 함수
+    
     const fetchUserInfos = async () => {
       try {
         const response = await fetch(`/api/mypage/mypayment?page=${page - 1}`)

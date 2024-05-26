@@ -1,45 +1,39 @@
 'use client'
 
-import { SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-import Link from 'next/link'
-import { userData } from '@/app/recoil/mypage'
-import Input from '../common/Input'
 import {
-  COLLEGE,
   CLASS_ENUM,
+  COLLEGE,
   GRADE,
-  SIGNUP,
-  JOBKEYWORD,
   GRADE_ENUM,
+  JOBKEYWORD,
   JOB_ENUM,
+  SIGNUP,
 } from '@/app/constants/auth'
-import DropDownMajor from '../signup/onboard/dropdown/DropDownMajor'
-import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
-import Keyword from '../signup/onboard/Keyword'
-import Button from '../common/Button'
-import { useRouter } from 'next/navigation'
+import {
+  PROFILE_EMOJI,
+  PROFILE_EMOJI_PT1,
+  PROFILE_EMOJI_PT2
+} from '@/app/constants/signup'
+import { userData } from '@/app/recoil/mypage'
 import {
   failVerifyPw,
   pwAlert,
   successVerifyPw,
   updateUserInfo,
 } from '@/app/utils/toast'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Icons from '../common/Icons'
-import { eye } from '@/app/ui/svg/common/eye'
-import {
-  EMOJI_VALUE,
-  PROFILE_EMOJI,
-  PROFILE_EMOJI_PT1,
-  PROFILE_EMOJI_PT2,
-} from '@/app/constants/signup'
+import Input from '../common/Input'
 import Emoji from '../signup/onboard/Emoji'
+import Keyword from '../signup/onboard/Keyword'
+import DropDownMajor from '../signup/onboard/dropdown/DropDownMajor'
+import DropDownOB from '../signup/onboard/dropdown/DropDownOB'
 
-interface UserInfoProps {
-  memberId?: number
-}
+
 
 interface UserInfo {
   email: string
@@ -58,7 +52,7 @@ interface UpdateUserInfoRequest {
 }
 
 const EditUserInfo = () => {
-  const [userInfoData, setUserInfoData] = useState(userData)
+  
   const router = useRouter()
   const [passwordVerified, setPasswordVerified] = useState(false)
   const [verifyPw, setVerifyPw] = useState('')
@@ -104,7 +98,7 @@ const EditUserInfo = () => {
   const [profileIndex, setProfileIndex] = useState<number>()
 
   const updateUser = async () => {
-    // 비밀번호 패턴 검사
+   
     const requestBody: UpdateUserInfoRequest = {
       grade: GRADE_ENUM[grade],
       jobKeyword: JOB_ENUM[clickedKeyword],
@@ -112,7 +106,7 @@ const EditUserInfo = () => {
       profile: PROFILE_EMOJI[profile],
     }
 
-    // 비밀번호가 입력되었는지 확인하고, 유효한 경우에만 추가
+    
     if (password.length > 0) {
       if (
         !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,20}$/.test(
@@ -127,7 +121,7 @@ const EditUserInfo = () => {
       }
       requestBody.password = password
     } else {
-      // 비밀번호 필드가 비어있다면 null을 설정 (API의 요구사항에 따라 선택적)
+      
       requestBody.password = null
     }
 
@@ -150,17 +144,15 @@ const EditUserInfo = () => {
           responseData.message || '서버 오류로 정보 수정에 실패했습니다.',
         )
       }
-      console.log('정보가 성공적으로 수정되었습니다.')
-      console.log(requestBody, '수정한 회원정보 데이터')
+      
       updateUserInfo()
 
       setTimeout(() => {
         router.push('/mypage')
-      }, 2000) // 2초 후에 메인 페이지로 이동
+      }, 2000) 
     } catch (error) {
       console.error('정보 수정 중 오류가 발생했습니다:', error)
-      // 사용자에게 오류 메시지 표시
-      // 예: toast.error(error.message || '정보 수정 중 오류가 발생했습니다.');
+      
     }
   }
 
@@ -176,7 +168,7 @@ const EditUserInfo = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        console.log('유저 정보 데이터', data.result)
+        
         setUserInfos(data.result)
         setMajor(data.result.major)
         setGrade(data.result.grade)
@@ -200,11 +192,11 @@ const EditUserInfo = () => {
         return college as collegeType
       }
     }
-    return 'IT융합대학' // 찾지 못했을 경우 기본값으로 설정
+    return 'IT융합대학' 
   }
 
   useEffect(() => {
-    // 전공이 변경되었을 때 단과대학도 업데이트
+    
     setCollege(findCollegeByMajor(major))
   }, [major])
 
@@ -345,9 +337,7 @@ const EditUserInfo = () => {
               학과
             </div>
             <div className="w-[700px] h-[60px] left-0 top-[30px] absolute">
-              {/* <div className="w-[513.17px] h-[22.50px] left-[39.63px] top-[18.75px] absolute text-gray-900 text-xl font-medium leading-[30px]">
-              {userInfos.major}
-            </div> */}
+              
               <div className="flex gap-x-5 ">
                 <DropDownMajor
                   options={COLLEGE}

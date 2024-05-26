@@ -35,7 +35,7 @@ const MyExpCardDetail = ({
   closeModal,
   isGuest,
 }: ExperienceCardDetail) => {
-  console.log(experienceId, 'id 수정 삭제에서 가져오기')
+
 
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -65,7 +65,7 @@ const MyExpCardDetail = ({
   }
 
   const deleteExp = async (experienceId: number) => {
-    console.log('경험카드 삭제 요청이에요', experienceId)
+    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
@@ -75,7 +75,7 @@ const MyExpCardDetail = ({
       )
 
       if (res.ok) {
-        console.log('경험카드가 성공적으로 삭제되었습니다.')
+        
         window.location.reload()
       } else {
         const errorData = await res.json()

@@ -7,17 +7,7 @@ import { useRecoilState } from 'recoil'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
 import CommentContainer2 from './common/CommentContainer2'
-interface BoardCardDetailProps {
-  title?: string
-  content?: string
-  boardId?: number
-  groupCategory?: string
-  recruitment?: string
-  registrationDate?: string
-  memberName?: string
-  peopleNumber?: number
-  // closeModal: () => void
-}
+
 
 interface BoardDetailContainer {
   nickname?: string
@@ -27,7 +17,7 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
-  const [isLiked, setIsliked] = useState(false)
+  
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const path =
     data?.boardType === 'GROUP'
@@ -66,8 +56,6 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
     }
   }, [selectedId])
 
-  console.log('디테일 가져온 데이터', data)
-  console.log('닉네임', nickname)
 
   const goBack = () => {
     router.push('/mypage/myboard')

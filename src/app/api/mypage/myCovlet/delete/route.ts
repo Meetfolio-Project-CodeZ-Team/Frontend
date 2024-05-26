@@ -7,7 +7,7 @@ export async function DELETE(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const coverLetterId = searchParams.get('coverLetterId') || ''
-  console.log(coverLetterId, '삭제 전 아이디')
+  
 
   try {
     const data = await deleteCov(accessToken, coverLetterId)

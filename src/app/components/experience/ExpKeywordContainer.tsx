@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { expNum, expData } from '../../recoil/experience'
-import NameBox from './NameBox'
+import { expData, expNum } from '../../recoil/experience'
+import NameBox from '../common/NameBox'
 
 const ExpKeywordContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -10,17 +10,11 @@ const ExpKeywordContainer = () => {
   const isEntered =
     experienceData.jobKeyword !== '' && experienceData.expStacks.length > 0
 
-  console.log(
-    experienceData,
-    '리코일 데이터어',
-    experienceData.expStacks.length,
-  )
-  console.log('Job Keyword:', experienceData.jobKeyword)
-  console.log('Current expStack:', experienceData.expStacks.length)
+  
 
-  // const [expStacks, setExpStacks] = useState<string[]>([])
+  
   const [expStack, setExpStack] = useState('')
-  // console.log(expStacks.join(',')) // 배열 스트링으로 변환
+ 
 
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -49,20 +43,11 @@ const ExpKeywordContainer = () => {
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleAddKeyword(event) // 여기서 handleAddKeyword를 호출
+      handleAddKeyword(event) 
     }
   }
 
-  // const handleRemoveKeyword = (index: number) => {
-  //   const newExpStack = [...expStack]
-  //   newExpStack.splice(index, 1)
-  //   setExpStack(newExpStack)
-  // }
 
-  // const handleSave = (event: React.MouseEvent) => {
-  //   event.preventDefault()
-  //   setExperienceData({ ...experienceData, stack: expStack.join(', ') })
-  // }
 
   const goToNextPage = () => {
     setExperienceNumber(experienceNumber + 1)
@@ -119,9 +104,7 @@ const ExpKeywordContainer = () => {
         <div className="w-[1200px] h-[241px] relative mt-[82px] justify-center items-center mx-auto">
           <div className="w-[1200px] h-[241px] left-0 top-0 absolute">
             <div className="w-[1200px] h-[241px] left-0 top-0 absolute bg-white rounded-[30px] shadow">
-              {/* <button className="w-[105px] h-11 left-[248px] top-[146px] absolute text-black bg-gray-200 border-0 py-2 px-0 focus:outline-none hover:bg-blue-300 rounded-[10px] text-lg">
-                백엔드
-              </button> */}
+              
               <button
                 className={`w-[105px] h-11 left-[248px] top-[146px] absolute text-black ${experienceData.jobKeyword === 'BACKEND' ? 'bg-blue-300' : 'bg-gray-200'} border-0 py-2 px-0 focus:outline-none rounded-[10px] text-lg`}
                 onClick={(event) => handleButtonClick('BACKEND', event)}
@@ -208,7 +191,7 @@ const ExpKeywordContainer = () => {
               >
                 추가하기
               </button>
-              {/* 기술 스택 키워드 목록 */}
+              
             </div>
           </div>
           {expStacks.length === 0 && (

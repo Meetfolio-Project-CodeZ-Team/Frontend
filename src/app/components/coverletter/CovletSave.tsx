@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
-import { expNum } from '../../recoil/experience'
 import CheckPoint from '../points/CheckPoint'
 import AiAnalysis from './AiAnalysis'
 import AiFeedContainer from './AiFeedContainer'
@@ -23,7 +22,7 @@ interface ExperienceCard {
 }
 
 const CovletSave = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
@@ -72,22 +71,21 @@ const CovletSave = () => {
   }
 
   const handleShowClick = () => {
-    setShowInputs(true) // 입력창을 보이게 설정
-    setFeedbackClicked(true) // 피드백 버튼이 클릭되었음을 설정
+    setShowInputs(true) 
+    setFeedbackClicked(true) 
   }
 
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
-      // 텍스트 영역을 선택합니다.
+      
       textArea.select()
-      textArea.setSelectionRange(0, 99999) // 모바일 기기를 위해
+      textArea.setSelectionRange(0, 99999) 
 
-      // 복사 명령을 실행합니다.
+     
       try {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
-        console.log('Copy text command was ' + msg)
         successCopy()
       } catch (err) {
         console.error('Unable to copy text: ', err)
@@ -147,8 +145,7 @@ const CovletSave = () => {
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-      console.log('데이터가 성공적으로 저장되었습니다.', resData)
-      console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
+     
       requestAIFeedback()
     }
   }
@@ -204,17 +201,16 @@ const CovletSave = () => {
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-      console.log('데이터가 성공적으로 저장되었습니다.', resData)
-      console.log('데이터가 성공적으로 저장되었습니다.', coverletterData)
+      
       requestAIAnalysis()
     }
   }
 
-  // AI 피드백 요청 함수
+  
   const requestAIFeedback = async () => {
     setIsLoading(true)
     const { coverLetterId } = coverletterData
-    console.log(coverLetterId, '자소서 아이디')
+    
 
     try {
       const response = await fetch(
@@ -235,7 +231,7 @@ const CovletSave = () => {
       const data = await response.json()
       setFeedbackData(data)
       setFeedbackReceived(true)
-      console.log('AI 피드백 요청 성공:', data)
+      
     } catch (error) {
       console.error('AI 피드백 요청에 실패했습니다.', error)
       alert('AI 피드백 요청에 실패했습니다. 오류를 확인해주세요.')
@@ -244,11 +240,11 @@ const CovletSave = () => {
     }
   }
 
-  //직무 역량 분석 요청 함수
+ 
   const requestAIAnalysis = async () => {
     setIsLoading(true)
     const { coverLetterId } = coverletterData
-    console.log(coverLetterId, '자소서 아이디')
+    
 
     try {
       const response = await fetch(
@@ -269,7 +265,7 @@ const CovletSave = () => {
       const data = await response.json()
       setAnalysisData(data)
       setAnalysisReceived(true)
-      console.log('직무 역량 분석 성공:', data)
+      
     } catch (error) {
       console.error('직무 역량 분석 요청에 실패했습니다.', error)
       alert('직무 역량 분석 요청에 실패했습니다. 오류를 확인해주세요.')
@@ -284,7 +280,7 @@ const CovletSave = () => {
   }
 
   if (isLoading) {
-    return <AiLoading /> // 로딩 상태일 때 로딩 컴포넌트 표시
+    return <AiLoading /> 
   }
 
   if (feedbackReceived) {
@@ -510,9 +506,7 @@ const CovletSave = () => {
       <div
         className={`w-[1000px] h-[60px]  ${showInputs ? 'top-[1220px] left-[30px]' : 'top-[1050px] left-[45px]'} absolute pb-[150px]`}
       >
-        {/* <div className="w-[556.33px] left-[161.34px] top-[12px] absolute text-center text-slate-600 text-2xl font-semibold  leading-9">
-          저장하기
-        </div> */}
+        
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={() => {

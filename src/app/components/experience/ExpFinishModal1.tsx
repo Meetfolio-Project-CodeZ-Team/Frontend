@@ -1,15 +1,14 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
-import { expNum, expData, modalNum } from '../../recoil/experience'
-import { useRouter } from 'next/navigation'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import { useState } from 'react'
 import { portNum } from '@/app/recoil/mypage'
+import NextArrow from '@/app/ui/svg/arrow/NextArrow'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import { useRouter } from 'next/navigation'
+import { useRecoilState } from 'recoil'
+import { expData, modalNum } from '../../recoil/experience'
 
 const ExpFinishModal1 = () => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
@@ -21,7 +20,7 @@ const ExpFinishModal1 = () => {
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
-      // 마지막 페이지에서 'Next' 클릭 시 첫 페이지로 이동
+      
       setPageNumber(0)
     }
   }
@@ -30,7 +29,7 @@ const ExpFinishModal1 = () => {
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
-      // 첫 페이지에서 'Prev' 클릭 시 마지막 페이지로 이동
+     
       setPageNumber(totalPages - 1)
     }
   }
@@ -52,18 +51,7 @@ const ExpFinishModal1 = () => {
     }
   }
 
-  const goToPreviousPage = () => {
-    setExperienceNumber(experienceNumber - 1)
-  }
-
-  const handleTextareaChange = (
-    event: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    setExperienceData({
-      ...experienceData,
-      [event.target.name]: event.target.value,
-    })
-  }
+  
   const handleButtonClick = () => {
     setExperienceData({
       title: '',
@@ -79,29 +67,10 @@ const ExpFinishModal1 = () => {
       expStacks: [],
     })
     setPortfolioNumber(1)
-    router.push('/mypage') // '/main'으로 경로 이동
+    router.push('/mypage') 
   }
 
-  const saveExpData = async () => {
-    const { expStacks, ...dataToSend } = experienceData
-    console.log(experienceData.stack)
-
-    const response = await fetch('/api/experiences', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...dataToSend,
-        stack: expStacks.join(' / '),
-        jobKeyword: 'AI',
-      }),
-    })
-    console.log(experienceData.stack)
-    if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
-    }
-  }
+  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">

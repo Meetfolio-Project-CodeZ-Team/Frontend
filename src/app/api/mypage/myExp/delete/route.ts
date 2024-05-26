@@ -7,7 +7,7 @@ export async function DELETE(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
 
   const experienceId = searchParams.get('experienceId') || ''
-  console.log(experienceId, '삭제 전 아이디')
+  
 
   try {
     const data = await deleteExp(accessToken, experienceId)

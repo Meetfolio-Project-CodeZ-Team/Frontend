@@ -1,14 +1,13 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
-import { expNum, expData, modalNum } from '../../../recoil/experience'
-import { useRouter } from 'next/navigation'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import { useEffect, useState } from 'react'
-import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from '../../admin/common/DeleteModal'
 import { useModal2 } from '@/app/hooks/useModal2'
+import NextArrow from '@/app/ui/svg/arrow/NextArrow'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { expData, expNum, modalNum } from '../../../recoil/experience'
+import DeleteModal from '../../admin/common/DeleteModal'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -39,8 +38,8 @@ const MyExpDetailModal1 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
-  console.log(experienceId, 'id 수정 삭제에서 가져오기')
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
+  
+  
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
@@ -59,7 +58,7 @@ const MyExpDetailModal1 = ({
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
-      // 마지막 페이지에서 'Next' 클릭 시 첫 페이지로 이동
+      
       setPageNumber(0)
     }
   }
@@ -68,7 +67,7 @@ const MyExpDetailModal1 = ({
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
-      // 첫 페이지에서 'Prev' 클릭 시 마지막 페이지로 이동
+      
       setPageNumber(totalPages - 1)
     }
   }
@@ -108,7 +107,7 @@ const MyExpDetailModal1 = ({
   }
 
   const deleteExp = async (experienceId: number) => {
-    console.log('경험카드 삭제 요청이에요', experienceId)
+    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
@@ -118,7 +117,7 @@ const MyExpDetailModal1 = ({
       )
 
       if (res.ok) {
-        console.log('경험카드가 성공적으로 삭제되었습니다.')
+        
         window.location.reload()
       } else {
         const errorData = await res.json()
@@ -169,7 +168,7 @@ const MyExpDetailModal1 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation() 
               handlePrevClick()
             }}
           >
@@ -178,7 +177,7 @@ const MyExpDetailModal1 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation() 
               handleNextClick()
             }}
           >
