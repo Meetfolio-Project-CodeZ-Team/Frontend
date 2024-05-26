@@ -8,7 +8,6 @@ import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
 import CommentContainer2 from './common/CommentContainer2'
 
-
 interface BoardDetailContainer {
   nickname?: string
   profile?: string
@@ -17,7 +16,7 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const isSelected = selectedId !== 999
   const [data, setData] = useState<BoardInfoTypes | null>(null)
-  
+
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const path =
     data?.boardType === 'GROUP'
@@ -55,7 +54,6 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
       fetchData()
     }
   }, [selectedId])
-
 
   const goBack = () => {
     router.push('/mypage/myboard')

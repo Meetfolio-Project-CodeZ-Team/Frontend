@@ -59,7 +59,6 @@ const PointCharge = () => {
   }
 
   useEffect(() => {
-    
     const fetchUserInfos = async () => {
       try {
         const response = await fetch(`/api/mypage/mypayment?page=${page - 1}`)

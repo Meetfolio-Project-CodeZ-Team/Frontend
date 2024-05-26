@@ -13,7 +13,6 @@ const ExpFinishContainer = () => {
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const router = useRouter()
 
-
   const displayKeyword = (keyword: any) => {
     switch (keyword) {
       case 'BACKEND':
@@ -40,7 +39,7 @@ const ExpFinishContainer = () => {
       case 2:
         return <ExpFinishModal3 />
       default:
-        return null 
+        return null
     }
   }
 
@@ -70,7 +69,7 @@ const ExpFinishContainer = () => {
       advance: '',
       expStacks: [],
     })
-    router.push('/mypage/myexperience') 
+    router.push('/mypage/myexperience')
   }
 
   const saveExpData = async () => {
@@ -200,10 +199,7 @@ const ExpFinishContainer = () => {
           저장하기
         </button>
       </div>
-      <div className="justify-center items-center">
-        
-        {getCurrentModal()}
-      </div>
+      <div className="justify-center items-center">{getCurrentModal()}</div>
     </div>
   )
 }

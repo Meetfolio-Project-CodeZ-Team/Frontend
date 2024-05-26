@@ -23,7 +23,6 @@ interface MyBoardCardProps {
   profile?: string
 }
 
-
 const MyBoardCard = ({
   title,
   content,
@@ -39,7 +38,6 @@ const MyBoardCard = ({
   likeStatus,
   profile,
 }: MyBoardCardProps) => {
-  
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [isLiked, setIsliked] = useState(false)
   const router = useRouter()

@@ -37,7 +37,6 @@ const MyLike = () => {
   }
 
   useEffect(() => {
-    
     const fetchBoardCards = async () => {
       try {
         const response = await fetch(`/api/mypage/mylike`)
@@ -45,7 +44,7 @@ const MyLike = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        
+
         setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
         console.error(error)
@@ -54,7 +53,6 @@ const MyLike = () => {
 
     fetchBoardCards()
   }, [])
-
 
   return (
     <div className="w-full h-[1090px] relative">
@@ -86,9 +84,7 @@ const MyLike = () => {
       <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {boardCards.length > 0 ? (
-            boardCards.map((a) => (
-              <MyLikeCard key={a.boardId} {...a} /> 
-            ))
+            boardCards.map((a) => <MyLikeCard key={a.boardId} {...a} />)
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">

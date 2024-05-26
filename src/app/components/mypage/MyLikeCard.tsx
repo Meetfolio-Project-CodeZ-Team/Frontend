@@ -23,8 +23,6 @@ interface MyBoardCardProps {
   profile?: string
 }
 
-
-
 const MyLikeCard = ({
   title,
   content,

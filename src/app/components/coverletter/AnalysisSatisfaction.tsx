@@ -7,9 +7,7 @@ interface SatisfactionProps {
 }
 
 const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
-  
   const [satisfaction, setSatisfaction] = useState<number>(0)
-  
 
   const router = useRouter()
 
@@ -22,7 +20,6 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
       console.error('유효하지 않은 feedback ID입니다.')
       return
     }
-    
 
     const response = await fetch(
       `/api/coverLetter/analysSatis?id=${analysis_id}`,
@@ -82,7 +79,6 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                 onClick={() => handleSatisfaction(rating)}
               >
                 {satisfaction >= rating ? (
-                 
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -112,7 +108,6 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                     </g>
                   </svg>
                 ) : (
-                  
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
