@@ -7,12 +7,12 @@ interface AdminNavContainerProps {
 
 const AdminNavContainer = ({ selected }: AdminNavContainerProps) => {
   return (
-    <div className="flex flex-col w-[320px] pl-[53px] pt-[84px] shadow-lg">
+    <div className="flex flex-col w-[320px] pl-[53px] pt-[84px] shadow-lg bg-[#DEE5ED]">
       <div className="flex items-center mb-[60px] gap-x-4">
         <div className="w-12 h-12 bg-[#486284] rounded-[100px]"></div>
         <div className="text-[25px] font-semibold">관리자</div>
       </div>
-      <div className="flex flex-col gap-y-8 text-[22px] font-normal leading-[33px]">
+      <div className="flex flex-col gap-y-8 text-[22px] font-normal">
         <Link
           className={`${selected === 'dashboard' && 'font-bold'}`}
           href="/admin"
