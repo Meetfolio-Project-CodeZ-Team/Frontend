@@ -1,4 +1,3 @@
-import { useModal } from '@/app/hooks/useModal'
 import ShowCard from '../main/ShowCard'
 
 interface CardProps {
@@ -20,12 +19,11 @@ const Card = ({
   title,
   experienceId,
 }: CardProps) => {
-  const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
 
   return (
     <div className="relative w-[304px] h-[388px] px-[17px] pt-[13px] pb-[23px] bg-[#DEE5ED] rounded-[10px]">
       <div className="top-3 right-4 absolute">
-        <div className="flex relative items-center justify-center w-[96px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px]">
+        <div className="flex relative items-center justify-center px-4 h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px]">
           {experienceType}
         </div>
       </div>
