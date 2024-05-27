@@ -1,6 +1,7 @@
 'use client'
 import { JOBKEYWORD_USER } from '@/app/constants/auth'
 import { userState } from '@/app/recoil/admin'
+import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
 import SearchInput from '../board/SearchInput'
 import DropDownU from '../common/DropDownU'
@@ -8,7 +9,16 @@ import UserBoard from '../user/UserBoard'
 
 const UserContainer = () => {
   const [userData, setUserData] = useRecoilState(userState)
-
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/user`,
+      )
+      const resData = await response.json()
+      setUserData(resData.result)
+    }
+    fetchData()
+  }, [])
   const getKeywordUser = async (selectedJob: string) => {
     try {
       const response = await fetch(

@@ -80,6 +80,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
               {transKeyword(String(analysisData?.job_keyword))}
             </div>
             <JobAnal2
+              jKeyword={transKeyword(String(analysisData?.job_keyword))}
               backend={Number(analysisData?.job_suitability)}
               all={100 - Number(analysisData?.job_suitability)}
             />
