@@ -481,15 +481,14 @@ const MyCovletCardDetail = ({
             <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-6xl font-bold  leading-[108px]">
               {roundedPercentage}%
             </div>
-            <div className="w-[360px] h-[360px] left-[155px] top-[198px] absolute  justify-center items-center inline-flex">
+            <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
               <div className="w-[360px] h-[360px] relative">
-                <div className="w-[85px] h-7 left-[180px] top-[205px] absolute text-black text-center text-xl font-bold  leading-[30px]">
-                  {jobKeyword}
-                </div>
                 <JobAnal2
-                  backend={Number(roundedPercentage)}
+                  jKeyword={jobKeyword}
+                  accuracy={Number(roundedPercentage)}
                   all={100 - Number(roundedPercentage)}
                 />
+                <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
               </div>
             </div>
             <div className="w-[569px] h-[202px]  top-[713px] absolute">
