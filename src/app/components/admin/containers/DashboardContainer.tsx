@@ -27,7 +27,7 @@ const DashboardContainer = () => {
         totalCount={data?.aiServiceInfo.totalCount || 0}
       />
       <UserUsage
-        totalCount={data?.aiServiceInfo.totalCount||0}
+        totalCount={data?.aiServiceInfo.totalCount || 0}
         satisfaction={data?.aiServiceInfo.satisfaction || 0}
         paymentInfo={data?.paymentInfo || 0}
       />

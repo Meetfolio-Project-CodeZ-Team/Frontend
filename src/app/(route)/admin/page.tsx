@@ -6,17 +6,16 @@ import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 
 export default function AdminPage() {
-  
-    return (
-      <section className="flex flex-col min-h-screen relative">
-        <Header isAdmin={true} />
-        <div className="flex w-[full] mb-[200px]">
-          <AdminNavContainer selected={'dashboard'} />
-          <div className="flex-grow">
-            <DashboardContainer  />
-          </div>
+  return (
+    <section className="flex flex-col min-h-screen relative">
+      <Header isAdmin={true} />
+      <div className="flex w-[full] mb-[200px]">
+        <AdminNavContainer selected={'dashboard'} />
+        <div className="flex-grow">
+          <DashboardContainer />
         </div>
-        <Footer />
-      </section>
-    )
+      </div>
+      <Footer />
+    </section>
+  )
 }

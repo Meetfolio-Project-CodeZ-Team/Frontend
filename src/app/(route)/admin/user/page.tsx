@@ -8,7 +8,7 @@ const userPage = () => {
     <section className="flex flex-col min-h-screen relative">
       <Header isAdmin={true} />
       <div className="flex w-[full] h-[auto]">
-          <AdminNavContainer selected={'user'} />
+        <AdminNavContainer selected={'user'} />
         <div className="flex-grow">
           <UserContainer />
         </div>

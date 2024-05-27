@@ -78,7 +78,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
               accuracy={Number(analysisData?.job_suitability)}
               all={100 - Number(analysisData?.job_suitability)}
             />
-            <div className='bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]' ></div>
+            <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
           </div>
         </div>
         <div className="w-[618px] h-[241px] top-[713px] absolute">

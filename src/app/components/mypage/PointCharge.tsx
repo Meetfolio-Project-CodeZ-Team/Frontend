@@ -141,9 +141,7 @@ const PointCharge = () => {
           <Icons className="mt-2" name={pointW} />
           충전하기
         </div>
-        {isOpen && (
-          <ChargePoint closeCharge={closeModal} coverLetterId={0} />
-        )}
+        {isOpen && <ChargePoint closeCharge={closeModal} coverLetterId={0} />}
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트

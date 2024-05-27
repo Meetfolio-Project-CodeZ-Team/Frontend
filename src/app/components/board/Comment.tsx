@@ -81,7 +81,7 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
   }, [data, isEdit])
 
   return (
-    <div className='flex flex-col'>
+    <div className="flex flex-col">
       <div className="w-[90%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
         <ToastContainer />
         {isOpen && (

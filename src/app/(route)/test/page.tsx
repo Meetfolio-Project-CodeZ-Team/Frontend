@@ -14,8 +14,7 @@ const page = () => {
             {'yng1404'}{' '}
           </span>
           <span className="text-black text-3xl font-bold leading-[45px]">
-            님과 {'BACKEND'}의 직무
-            적합도는
+            님과 {'BACKEND'}의 직무 적합도는
           </span>
           <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
             {87}%
@@ -35,12 +34,8 @@ const page = () => {
 
         <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
           <div className="w-[360px] h-[360px] relative">
-            <JobAnal2
-              jKeyword={'백엔드'}
-              accuracy={87}
-              all={87}
-            />
-            <div className='bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]' ></div>
+            <JobAnal2 jKeyword={'백엔드'} accuracy={87} all={87} />
+            <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
           </div>
         </div>
         <div className="w-[618px] h-[241px] top-[713px] absolute">
