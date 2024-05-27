@@ -85,8 +85,8 @@ const ReComment = ({
   }, [data, isEdit])
 
   return (
-    <div className="w-full">
-      <div className="w-[100%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
+    <div className="w-full flex justify-end">
+      <div className="w-[80%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
         <ToastContainer />
         {isOpen && (
           <DeleteModal
