@@ -71,19 +71,14 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         <div className="w-[547px] h-[29px]  top-[150px] absolute text-black text-2xl font-medium  leading-9">
           👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
         </div>
-        <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-7xl font-bold  leading-[108px]">
-          {analysisData?.job_suitability}%
-        </div>
-        <div className="w-[360px] h-[360px] left-[165px] top-[198px] absolute  justify-center items-center inline-flex">
+        <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
           <div className="w-[360px] h-[360px] relative">
-            <div className="w-[85px] h-7 left-[179px] top-[205px] absolute text-black text-xl text-center font-bold  leading-[30px]">
-              {transKeyword(String(analysisData?.job_keyword))}
-            </div>
             <JobAnal2
               jKeyword={transKeyword(String(analysisData?.job_keyword))}
-              backend={Number(analysisData?.job_suitability)}
+              accuracy={Number(analysisData?.job_suitability)}
               all={100 - Number(analysisData?.job_suitability)}
             />
+            <div className='bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]' ></div>
           </div>
         </div>
         <div className="w-[618px] h-[241px] top-[713px] absolute">
@@ -103,7 +98,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                     d="M67 130.5C102.07 130.5 130.5 102.07 130.5 67C130.5 31.9299 102.07 3.5 67 3.5C31.9299 3.5 3.5 31.9299 3.5 67C3.5 102.07 31.9299 130.5 67 130.5Z"
                     fill="white"
                     stroke="#CFE8FF"
-                    stroke-width="7"
+                    strokeWidth="7"
                   />
                 </svg>
                 <svg
@@ -155,7 +150,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                     r="85"
                     fill="white"
                     stroke="#529EFF"
-                    stroke-width="10"
+                    strokeWidth="10"
                   />
                 </svg>
                 <svg
@@ -206,7 +201,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   r="63.5"
                   fill="white"
                   stroke="#7AAAE8"
-                  stroke-width="7"
+                  strokeWidth="7"
                 />
               </svg>
               <svg

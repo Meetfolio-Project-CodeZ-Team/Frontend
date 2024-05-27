@@ -7,12 +7,12 @@ import {
 } from '@nextui-org/react'
 
 interface JobAnalProps {
-  backend: number
+  accuracy: number
   all: number
   jKeyword?: string
 }
 const JobAnal = (jobAnal: JobAnalProps) => {
-  const { backend, all, jKeyword } = jobAnal
+  const { accuracy, all, jKeyword } = jobAnal
   return (
     <div>
       <Card className="w-[400px] h-[400px] bg-transparent shadow-none">
@@ -20,11 +20,11 @@ const JobAnal = (jobAnal: JobAnalProps) => {
           <CircularProgress
             classNames={{
               svg: 'w-80 h-80',
-              indicator: 'default',
-              track: 'stroke-[#D8E9FF]/80',
-              value: 'text-5xl font-semibold text-black',
+              indicator: 'stroke-[#0A7AFF]',
+              track: 'stroke-[#D8E9FF]/90',
+              value: 'text-5xl font-semibold text-[#486284]',
             }}
-            value={backend}
+            value={89}
             strokeWidth={4}
             showValueLabel={true}
           />
@@ -37,7 +37,7 @@ const JobAnal = (jobAnal: JobAnalProps) => {
             }}
             variant="bordered"
           >
-            {jKeyword}
+            {'jKeyword'}
           </Chip>
         </CardFooter>
       </Card>

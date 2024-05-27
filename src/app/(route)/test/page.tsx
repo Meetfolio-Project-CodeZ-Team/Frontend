@@ -37,7 +37,7 @@ const page = () => {
           <div className="w-[360px] h-[360px] relative">
             <JobAnal2
               jKeyword={'백엔드'}
-              backend={87}
+              accuracy={87}
               all={87}
             />
             <div className='bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]' ></div>
