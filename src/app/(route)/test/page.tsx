@@ -1,48 +1,9 @@
+'use client'
+import JobAnal2 from '@/app/components/mypage/common/JobAnal2'
 import { useModal } from '@/app/hooks/useModal'
-import { useEffect, useState } from 'react'
-import JobAnal2 from '../mypage/common/JobAnal2'
-import AnalysisSatisfaction from './AnalysisSatisfaction'
 
-interface AnalysisData {
-  analysis_id: number
-  job_suitability: number
-  skill_keywords: string[]
-  job_keyword: string
-}
-
-interface AiAnalysisProps {
-  analysisData: AnalysisData | null
-}
-
-const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
-  const [userInfo, setUser] = useState<memberInfo | null>(null)
+const page = () => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-
-  const transKeyword = (keyword: string) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-    }
-  }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/main/user`,
-      )
-      const resData = await response.json()
-      setUser(resData.result)
-    }
-    fetchData()
-  }, [])
 
   return (
     <div className="w-[1000px] h-[1000px] mb-[100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
@@ -50,14 +11,13 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         <div className="w-[910px] h-[0px] top-[70px] absolute border  border-zinc-300"></div>
         <div className="w-[773px] h-[52px] top-[101px] absolute text-center">
           <span className="text-[#0A7AFF] text-3xl font-bold leading-[45px]">
-            {userInfo?.memberName}{' '}
+            {'yng1404'}{' '}
           </span>
           <span className="text-black text-3xl font-bold leading-[45px]">
-            님과 {transKeyword(String(analysisData?.job_keyword))}의 직무
-            적합도는
+            님과 {'BACKEND'}의 직무 적합도는
           </span>
           <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
-            {analysisData?.job_suitability}%
+            {87}%
           </span>
           <span className="text-black text-3xl font-bold leading-[45px]">
             입니다.
@@ -65,19 +25,16 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         </div>
 
         <div className=" top-[643px] absolute text-black text-2xl font-bold  leading-9">
-          <span className="text-[#0A7AFF]">{userInfo?.memberName} </span>
+          <span className="text-[#0A7AFF]">yng1404 </span>
           <span>님은 이런 역량이 두드러져요!</span>
         </div>
         <div className="w-[547px] h-[29px]  top-[150px] absolute text-black text-2xl font-medium  leading-9">
           👍 조금만 더 노력하면 분명 원하는 목표에 도달할 거예요!
         </div>
+
         <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
           <div className="w-[360px] h-[360px] relative">
-            <JobAnal2
-              jKeyword={transKeyword(String(analysisData?.job_keyword))}
-              accuracy={Number(analysisData?.job_suitability)}
-              all={100 - Number(analysisData?.job_suitability)}
-            />
+            <JobAnal2 jKeyword={'백엔드'} accuracy={87} all={87} />
             <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
           </div>
         </div>
@@ -98,7 +55,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                     d="M67 130.5C102.07 130.5 130.5 102.07 130.5 67C130.5 31.9299 102.07 3.5 67 3.5C31.9299 3.5 3.5 31.9299 3.5 67C3.5 102.07 31.9299 130.5 67 130.5Z"
                     fill="white"
                     stroke="#CFE8FF"
-                    strokeWidth="7"
+                    stroke-width="7"
                   />
                 </svg>
                 <svg
@@ -129,7 +86,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   </defs>
                 </svg>
                 <div className="w-[100px] h-[58px] left-[25px] top-[45px] absolute text-center text-black text-lg font-bold leading-[30px] z-20">
-                  {analysisData?.skill_keywords?.[0]}
+                  {'키워드1'}
                 </div>
               </div>
             </div>
@@ -150,7 +107,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                     r="85"
                     fill="white"
                     stroke="#529EFF"
-                    strokeWidth="10"
+                    stroke-width="10"
                   />
                 </svg>
                 <svg
@@ -181,7 +138,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   </defs>
                 </svg>
                 <div className="w-[150px] h-[60px]  left-[25px] top-[75px] absolute text-center text-black text-2xl font-bold leading-[30px] z-20">
-                  {analysisData?.skill_keywords?.[1]}
+                  {'키워드2'}
                 </div>
               </div>
             </div>
@@ -201,7 +158,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                   r="63.5"
                   fill="white"
                   stroke="#7AAAE8"
-                  strokeWidth="7"
+                  stroke-width="7"
                 />
               </svg>
               <svg
@@ -232,7 +189,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
                 </defs>
               </svg>
               <div className="w-[100px] h-[58px] left-[25px] top-[45px] absolute text-center text-black text-lg font-bold leading-[30px] z-20">
-                {analysisData?.skill_keywords?.[2]}
+                {'키워드3'}
               </div>
             </div>
           </div>
@@ -340,13 +297,10 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
           >
             솔루션 결과 저장하기
           </button>
-          {analysisData && isOpen && (
-            <AnalysisSatisfaction analysis_id={analysisData.analysis_id} />
-          )}
         </div>
       </div>
     </div>
   )
 }
 
-export default AiAnalysis
+export default page
