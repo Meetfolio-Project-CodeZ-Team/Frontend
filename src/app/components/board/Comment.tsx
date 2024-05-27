@@ -81,7 +81,7 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
   }, [data, isEdit])
 
   return (
-    <div>
+    <div className='flex flex-col'>
       <div className="w-[90%] border-2 h-auto border-[#486284] pl-4 py-2 rounded-[8px]">
         <ToastContainer />
         {isOpen && (
@@ -159,7 +159,7 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
           </div>
         )}
       </div>
-      <div className="absolute right-0 mt-8 gap-y-8 flex flex-col w-[90%]">
+      <div className="mt-8 gap-y-8 flex flex-col w-[100%]">
         {data.childComments.map((comment, i) => (
           <ReComment
             data={comment}

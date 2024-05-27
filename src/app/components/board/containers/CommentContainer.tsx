@@ -25,9 +25,6 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [commentId, setCommentId] = useState(0)
   const [content, setContent] = useState('')
 
-  console.log(selectedId, '선택된 id')
-  console.log(comment, '선택된 댓글 데이터')
-
   const like = async (id: number) => {
     const res = await fetch(`/api/board/like?id=${id}`, {
       method: 'POST',
@@ -50,7 +47,6 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
       body: JSON.stringify(reqBody),
     })
     const resData = await res.json()
-    console.log(resData, '댓글응답')
     const response = await fetch(`/api/board/comment?id=${postId}`)
     const getRes = await response.json()
     setComment(getRes.result.commentItems)
@@ -72,7 +68,6 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
       const resData = await response.json()
       setComment(resData.result.commentItems)
       setIsClicked(false)
-      console.log('가져온 댓글 데이터', resData.result)
     }
     fetchData()
   }, [postId])
@@ -111,7 +106,7 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
               />
             </div>
           </div>
-          <div className="absolute top-[280px] left-10 flex flex-col gap-y-9 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
+          <div className="absolute top-[280px] left-10 flex flex-col gap-y-7 w-[90%] h-[70%] overflow-y-auto scrollbar-hide z-50">
             {comment.map((data, i) => (
               <Comment
                 data={data}
