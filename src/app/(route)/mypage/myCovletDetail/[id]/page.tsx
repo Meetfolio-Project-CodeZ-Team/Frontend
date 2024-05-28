@@ -121,8 +121,10 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
         <UserNavContainer
           isGuest={isGuest || ''}
           selected={'portfolio'}
-          nickname={writerName||userInfo?.memberName}
-          profile={profile||userInfo?.profile}
+          nickname={
+            writerName === 'undefined' ? userInfo?.memberName : writerName || ''
+          }
+          profile={profile === 'undefined' ? userInfo?.profile : profile || ''}
         />
         <div className="flex-grow">
           <MyCovletCardDetail
