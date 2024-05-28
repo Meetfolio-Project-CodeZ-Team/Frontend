@@ -21,6 +21,7 @@ export default function UserMyPage() {
       setUser(resData.result)
     }
     fetchData()
+    setPortfolioNumber(0)
   }, [])
   return (
     <section className="flex flex-col min-h-screen relative">
