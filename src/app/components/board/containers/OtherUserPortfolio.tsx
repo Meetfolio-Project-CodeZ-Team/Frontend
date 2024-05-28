@@ -25,7 +25,9 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
         },
       })
       const data = await response.json()
+
       setProfile(data.result.profile)
+
 
       isExp
         ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
@@ -33,7 +35,6 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
     }
     getData()
   }, [isExp])
-
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />

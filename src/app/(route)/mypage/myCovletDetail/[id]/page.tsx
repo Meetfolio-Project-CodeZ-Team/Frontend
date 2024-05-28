@@ -101,6 +101,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             })
           }
           if (data && data.result && data.result.feedbackInfo) {
+            
             setFeedBackData(data.result.feedbackInfo)
           }
           if (data && data.result && data.result.analysisInfo) {
