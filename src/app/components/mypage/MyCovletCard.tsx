@@ -7,6 +7,8 @@ interface MyCovletCardProps {
   createdAt: string
   index: number
   isGuest?: boolean
+  writerName?: string
+  profile?: string
 }
 
 const MyCovletCard = ({
@@ -16,10 +18,14 @@ const MyCovletCard = ({
   createdAt,
   index,
   isGuest,
+  writerName,
+  profile,
 }: MyCovletCardProps) => {
   const router = useRouter()
   const fetchCovletCards = () => {
-    router.push(`/mypage/myCovletDetail/${coverLetterId}?isGuest=${isGuest}`)
+    router.push(
+      `/mypage/myCovletDetail/${coverLetterId}?isGuest=${isGuest}&writerName=${writerName}&profile=${profile}`,
+    )
   }
 
   return (
