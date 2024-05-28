@@ -22,7 +22,6 @@ interface ExperienceCard {
 }
 
 const CovletSave = () => {
-  
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [expCards, setExpCards] = useState<ExperienceCard[]>([])
@@ -71,18 +70,16 @@ const CovletSave = () => {
   }
 
   const handleShowClick = () => {
-    setShowInputs(true) 
-    setFeedbackClicked(true) 
+    setShowInputs(true)
+    setFeedbackClicked(true)
   }
 
   const handleCopyText = () => {
     const textArea = document.getElementById('answer') as HTMLTextAreaElement
     if (textArea) {
-      
       textArea.select()
-      textArea.setSelectionRange(0, 99999) 
+      textArea.setSelectionRange(0, 99999)
 
-     
       try {
         const successful = document.execCommand('copy')
         const msg = successful ? 'successful' : 'unsuccessful'
@@ -145,7 +142,6 @@ const CovletSave = () => {
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-     
       requestAIFeedback()
     }
   }
@@ -207,16 +203,13 @@ console.log(' 수정 요청');
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')
     } else {
-      
       requestAIAnalysis()
     }
   }
 
-  
   const requestAIFeedback = async () => {
     setIsLoading(true)
     const { coverLetterId } = coverletterData
-    
 
     try {
       const response = await fetch(
@@ -237,7 +230,6 @@ console.log(' 수정 요청');
       const data = await response.json()
       setFeedbackData(data)
       setFeedbackReceived(true)
-      
     } catch (error) {
       console.error('AI 피드백 요청에 실패했습니다.', error)
       alert('AI 피드백 요청에 실패했습니다. 오류를 확인해주세요.')
@@ -246,11 +238,9 @@ console.log(' 수정 요청');
     }
   }
 
- 
   const requestAIAnalysis = async () => {
     setIsLoading(true)
     const { coverLetterId } = coverletterData
-    
 
     try {
       const response = await fetch(
@@ -271,7 +261,6 @@ console.log(' 수정 요청');
       const data = await response.json()
       setAnalysisData(data)
       setAnalysisReceived(true)
-      
     } catch (error) {
       console.error('직무 역량 분석 요청에 실패했습니다.', error)
       alert('직무 역량 분석 요청에 실패했습니다. 오류를 확인해주세요.')
@@ -286,7 +275,7 @@ console.log(' 수정 요청');
   }
 
   if (isLoading) {
-    return <AiLoading /> 
+    return <AiLoading />
   }
 
   if (feedbackReceived) {
@@ -512,7 +501,6 @@ console.log(' 수정 요청');
       <div
         className={`w-[1000px] h-[60px]  ${showInputs ? 'top-[1220px] left-[30px]' : 'top-[1050px] left-[45px]'} absolute pb-[150px]`}
       >
-        
         <button
           className="text-white bg-stone-300 border-0 py-[18px] px-[360px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
           onClick={() => {

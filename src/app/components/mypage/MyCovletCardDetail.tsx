@@ -43,8 +43,6 @@ const MyCovletCardDetail = ({
   jobSuitability,
   isPaid,
 }: CovletCardDetail) => {
-  
-
   const router = useRouter()
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
@@ -76,7 +74,7 @@ const MyCovletCardDetail = ({
     try {
       const successful = document.execCommand('copy')
       const msg = successful ? 'successful' : 'unsuccessful'
-      
+
       alert('Text copied to clipboard!')
     } catch (err) {
       console.error('Failed to copy text: ', err)
@@ -105,7 +103,6 @@ const MyCovletCardDetail = ({
   }
 
   const deleteCov = async (coverLetterId: number) => {
-    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myCovlet/delete?coverLetterId=${coverLetterId}`,
@@ -115,7 +112,6 @@ const MyCovletCardDetail = ({
       )
 
       if (res.ok) {
-        
         router.push(`/mypage`)
       } else {
         const errorData = await res.json()
@@ -133,10 +129,10 @@ const MyCovletCardDetail = ({
   useEffect(() => {
     const shouldReload = localStorage.getItem('reloaded') !== 'true'
     if (shouldReload) {
-      localStorage.setItem('reloaded', 'true') 
+      localStorage.setItem('reloaded', 'true')
       window.location.reload()
     } else {
-      localStorage.removeItem('reloaded') 
+      localStorage.removeItem('reloaded')
     }
   }, [coverLetterId])
 
@@ -324,7 +320,6 @@ const MyCovletCardDetail = ({
         )}
       </div>
     )
-    
   } else if (!hasFeedback && !hasAnalysis) {
     return (
       <div className="w-full h-[800px] relative">
@@ -426,7 +421,6 @@ const MyCovletCardDetail = ({
           </div>
         )}
       </div>
-      
     )
   } else if (!hasFeedback && hasAnalysis) {
     return (
@@ -487,16 +481,14 @@ const MyCovletCardDetail = ({
             <div className="w-[180px] h-[124px] left-[581px] top-[360px] absolute text-black text-6xl font-bold  leading-[108px]">
               {roundedPercentage}%
             </div>
-            <div className="w-[360px] h-[360px] left-[155px] top-[198px] absolute  justify-center items-center inline-flex">
+            <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
               <div className="w-[360px] h-[360px] relative">
-                
-                <div className="w-[85px] h-7 left-[180px] top-[205px] absolute text-black text-center text-xl font-bold  leading-[30px]">
-                  {jobKeyword}
-                </div>
                 <JobAnal2
-                  backend={Number(roundedPercentage)}
+                  jKeyword={jobKeyword}
+                  accuracy={Number(roundedPercentage)}
                   all={100 - Number(roundedPercentage)}
                 />
+                <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
               </div>
             </div>
             <div className="w-[569px] h-[202px]  top-[713px] absolute">

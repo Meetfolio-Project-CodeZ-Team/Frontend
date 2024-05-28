@@ -7,7 +7,6 @@ export async function GET(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
   const page = searchParams.get('page') || '0'
   const data = await getMyExp(accessToken, page).then((data) => data)
-  
 
   return NextResponse.json(data)
 }

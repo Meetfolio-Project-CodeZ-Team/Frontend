@@ -59,7 +59,6 @@ const PointCharge = () => {
   }
 
   useEffect(() => {
-    
     const fetchUserInfos = async () => {
       try {
         const response = await fetch(`/api/mypage/mypayment?page=${page - 1}`)
@@ -72,7 +71,6 @@ const PointCharge = () => {
       } catch (error) {}
     }
     fetchUserInfos()
-    
   }, [page])
 
   return (
@@ -115,7 +113,7 @@ const PointCharge = () => {
       </div>
       <div className="w-[1060px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute ">
         <div className="w-full h-full ml-[0px] gap-[0px] flex flex-col">
-          {userPayments.map((a,index) => (
+          {userPayments.map((a, index) => (
             <PaymentCard key={index} {...a} />
           ))}
         </div>
@@ -143,15 +141,13 @@ const PointCharge = () => {
           <Icons className="mt-2" name={pointW} />
           충전하기
         </div>
-        {isOpen && (
-          <ChargePoint closeCharge={closeModal} cost={0} coverLetterId={0} />
-        )}
+        {isOpen && <ChargePoint closeCharge={closeModal} coverLetterId={0} />}
       </div>
       <div className="w-[105.75px] h-[18px] left-[75px] top-[82.68px] absolute text-gray-900 text-[28px] font-bold font-['Rubik'] leading-[30px]">
         포인트
       </div>
-      <div className='flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6'>
-      <ReactPaginate
+      <div className="flex w-full items-center justify-center pl-20 pt-6 pr-12 absolute top-[950px] right-6">
+        <ReactPaginate
           className="flex items-center justify-center h-[40px] gap-[20px] text-[17px]  text-[#868686] font-semibold cursor-pointer"
           previousLabel={
             <div className="pt-0.5">
@@ -167,7 +163,7 @@ const PointCharge = () => {
           onPageChange={handlePageChange}
           activeClassName={'active text-[#486284]'}
         />
-        </div>
+      </div>
     </div>
   )
 }

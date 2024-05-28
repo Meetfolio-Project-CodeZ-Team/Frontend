@@ -54,7 +54,6 @@ const PortfolioContainer = () => {
   })
 
   useEffect(() => {
-    
     const fetchCovletCards = async () => {
       try {
         const response = await fetch(`/api/mypage/myCovlet?page=${page - 1}`)
@@ -62,7 +61,7 @@ const PortfolioContainer = () => {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        
+
         setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
         setPageInfo(data.result.coverLetterInfo)
       } catch (error) {
@@ -71,8 +70,6 @@ const PortfolioContainer = () => {
     }
     fetchCovletCards()
   }, [page])
-
-
 
   return (
     <div className="w-full h-[1200px] relative">

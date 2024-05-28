@@ -1,5 +1,3 @@
-'use client'
-
 import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
 import BoardContainer from '@/app/components/admin/containers/BoardContainer'
 import Footer from '@/app/components/layout/Footer'

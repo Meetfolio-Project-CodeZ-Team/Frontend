@@ -35,8 +35,6 @@ const MyExpCardDetail = ({
   closeModal,
   isGuest,
 }: ExperienceCardDetail) => {
-
-
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
@@ -65,7 +63,6 @@ const MyExpCardDetail = ({
   }
 
   const deleteExp = async (experienceId: number) => {
-    
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
@@ -75,7 +72,6 @@ const MyExpCardDetail = ({
       )
 
       if (res.ok) {
-        
         window.location.reload()
       } else {
         const errorData = await res.json()

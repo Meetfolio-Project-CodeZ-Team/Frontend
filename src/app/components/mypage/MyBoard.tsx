@@ -53,8 +53,6 @@ const MyBoard = () => {
     fetchBoardCards()
   }, [])
 
-  
-
   return (
     <div className="w-full h-[1090px] relative ">
       <div className="w-full h-full left-0 top-0 absolute bg-gray-50 mb-10" />
@@ -85,9 +83,7 @@ const MyBoard = () => {
       <div className="w-[1150px] h-[850px] mt-[200px] flex flex-col absolute overflow-y-auto scrollbar-hide">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {boardCards.length > 0 ? (
-            boardCards.map((a) => (
-              <MyBoardCard key={a.boardId} {...a} /> 
-            ))
+            boardCards.map((a) => <MyBoardCard key={a.boardId} {...a} />)
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">
               <div className="text-center">

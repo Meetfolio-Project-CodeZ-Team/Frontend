@@ -13,7 +13,7 @@ const BoardContainer = () => {
 
   const initBoard = async () => {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board`,
+      `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/board?page=0`,
     )
     const resData = await response.json()
     setBoardData(resData?.result)

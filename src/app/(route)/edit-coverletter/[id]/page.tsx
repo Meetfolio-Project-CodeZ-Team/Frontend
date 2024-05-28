@@ -16,7 +16,6 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const [analySisData, setAnalySisData] = useRecoilState(analysisData)
 
-
   const router = useRouter()
 
   useEffect(() => {

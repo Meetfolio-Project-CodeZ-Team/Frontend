@@ -1,6 +1,5 @@
 'use client'
-// import AdminNavContainer from '@/app/components/admin/containers/AdminNavContainer'
-import NameBox from '@/app/components/common/NameBox'
+import NameBox from '@/app/components/experience/NameBox'
 import Button from '@/app/components/common/Button'
 import Input from '@/app/components/common/Input'
 import Header from '@/app/components/layout/Header'
