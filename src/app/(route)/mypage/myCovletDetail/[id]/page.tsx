@@ -21,6 +21,8 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
   const [analySisData, setAnalySisData] = useRecoilState(analysisData)
   const isGuest = paramsData.get('isGuest')
+  const writerName = paramsData.get('writerName')
+  const profile = paramsData.get('profile')
 
   const [tid, setTid] = useRecoilState(tidState)
   const router = useRouter()
@@ -119,8 +121,8 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
         <UserNavContainer
           isGuest={isGuest || ''}
           selected={'portfolio'}
-          nickname={userInfo?.memberName}
-          profile={userInfo?.profile}
+          nickname={writerName||userInfo?.memberName}
+          profile={profile||userInfo?.profile}
         />
         <div className="flex-grow">
           <MyCovletCardDetail
