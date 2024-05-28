@@ -102,7 +102,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
           <div className="w-[742px] h-[117px] left-[74px] top-[240px] absolute">
             <div className="w-[737px] h-[78px] left-[5px] top-[39px] absolute">
               <input
-                type="text"
+                type="date"
                 value={experienceData.startDate}
                 onChange={handleInputChange}
                 id="startDate"
@@ -123,7 +123,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
             </div>
             <div className="w-[290px] h-[55px] left-[452px] top-[39px] absolute">
               <input
-                type="text"
+                type="date"
                 value={experienceData.endDate}
                 onChange={handleInputChange}
                 id="endDate"
