@@ -36,6 +36,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   setTid(tid)
 
+
   useEffect(() => {
     if (pg_token) {
       const getTid = async () => {
