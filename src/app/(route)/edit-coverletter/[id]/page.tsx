@@ -4,7 +4,7 @@ import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
-import { covletData, covletNum } from '@/app/recoil/coverletter'
+import { analysisData, covletData, covletNum, feedbackData } from '@/app/recoil/coverletter'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -13,6 +13,8 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
   const [covletNumber, setCovletNumber] = useRecoilState(covletNum)
   const [coverletterData, setCoverLetterData] = useRecoilState(covletData)
   const [userInfo, setUser] = useState<memberInfo | null>(null)
+  const [feedBackData, setFeedBackData] = useRecoilState(feedbackData)
+  const [analySisData, setAnalySisData] = useRecoilState(analysisData)
 
   const router = useRouter()
 
@@ -42,6 +44,12 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
               shareType: transShareType(data.result.coverLetterInfo.shareType),
               jobKeyword: transKeyword(data.result.coverLetterInfo.jobKeyword),
             })
+          }
+          if (data && data.result && data.result.feedbackInfo) {
+            setFeedBackData(data.result.feedbackInfo)
+          }
+          if (data && data.result && data.result.analysisInfo) {
+            setAnalySisData(data.result.analysisInfo)
           }
         })
         .catch((error) => {
