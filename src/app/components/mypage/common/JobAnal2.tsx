@@ -24,7 +24,7 @@ const JobAnal = (jobAnal: JobAnalProps) => {
               track: 'stroke-[#D8E9FF]/90',
               value: 'text-5xl font-semibold text-[#486284]',
             }}
-            value={89}
+            value={accuracy}
             strokeWidth={4}
             showValueLabel={true}
           />
@@ -37,7 +37,7 @@ const JobAnal = (jobAnal: JobAnalProps) => {
             }}
             variant="bordered"
           >
-            {'jKeyword'}
+            {jKeyword}
           </Chip>
         </CardFooter>
       </Card>
