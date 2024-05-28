@@ -98,8 +98,8 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
               ...data.result.coverLetterInfo,
             })
           }
-          console.log('data',data)
           if (data && data.result && data.result.feedbackInfo) {
+            
             setFeedBackData(data.result.feedbackInfo)
           }
           if (data && data.result && data.result.analysisInfo) {

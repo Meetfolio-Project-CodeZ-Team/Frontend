@@ -293,16 +293,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
-        <button
-          className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveCovData}
-          type="button"
-        >
-          {isEdit ? '수정하기' : '저장하기'}
-        </button>
-      </div>
-      {/* <div className="absolute left-[10px] top-[750px]">
+      {/* <div className="absolute left-[10px] top-[750px] ">
         <div className="w-[931px] h-[960px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
           <div className="w-[931px] h-[958px] left-0 top-0 flex">
             <div className="w-[854px] h-[350px] left-[42px] top-[181px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
@@ -346,6 +337,15 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div> */}
+      <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
+        <button
+          className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
+          onClick={saveCovData}
+          type="button"
+        >
+          {isEdit ? '수정하기' : '저장하기'}
+        </button>
+      </div>
       <ExpCardList />
     </div>
   )
