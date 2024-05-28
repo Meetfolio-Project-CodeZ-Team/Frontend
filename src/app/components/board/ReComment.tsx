@@ -6,6 +6,7 @@ import NavBar from '@/app/ui/svg/common/NavBar'
 import Reply from '@/app/ui/svg/common/Reply'
 import { timeCalculate } from '@/app/utils/date'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import { useRecoilState } from 'recoil'
@@ -120,15 +121,20 @@ const ReComment = ({
         ) : (
           <div className="relative">
             <div className="flex h-[42px] text-sm font-bold gap-x-3 items-center relative">
-              <div className="w-6 h-6">
-                <Image
-                  width={24}
-                  height={24}
-                  src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data.profile || '')]}.png`}
-                  alt="logoIcon"
-                />
-              </div>
-              <div>{data.memberName}</div>
+              <Link
+                className="cursor-pointer flex gap-x-3 items-center"
+                href={isAuthor ? `/mypage` : `/userpage/${data?.memberName}`}
+              >
+                <div className="w-6 h-6">
+                  <Image
+                    width={24}
+                    height={24}
+                    src={`/Images/Emoji/${PROFILE_EMOJI[PROFILE_EMOJI.indexOf(data.profile || '')]}.png`}
+                    alt="logoIcon"
+                  />
+                </div>
+                <div>{data.memberName}</div>
+              </Link>
               <div>{timeCalculate(data.sinceCreation)}</div>
               {isAuthor &&
                 (isClicked ? (
