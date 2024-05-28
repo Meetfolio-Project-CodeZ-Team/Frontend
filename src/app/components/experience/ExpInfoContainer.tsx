@@ -83,8 +83,8 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
             <div className="w-[91px] h-8 left-0 top-[4px] absolute text-center text-black text-base font-semibold leading-normal">
               경험 제목
             </div>
-            <div className="w-[133px] h-[23px] left-[875px] top-[94px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              50자 이내
+            <div className="w-[133px] h-[23px] left-[885px] top-[94px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+              20자 이내
             </div>
             <div className="w-[988px] h-[55px] left-[5px] top-[39px] absolute">
               <input
@@ -94,7 +94,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="title"
                 name="title"
                 placeholder="ex) 가천대 해커톤 대회 참가"
-                maxLength={50}
+                maxLength={20}
                 className="w-full h-[50px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
@@ -111,13 +111,13 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 maxLength={10}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
-              <div className="w-[133px] h-[23px] left-[157px] top-[50px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+              <div className="w-[133px] h-[23px] left-[147px] top-[50px] absolute text-center text-black text-opacity-30 text-base font-medium leading-normal">
                 ex) 2024-02-18
               </div>
               <div className="w-[66px] h-[33px] left-[333px] top-0 absolute text-center text-black text-opacity-40 text-[32px] font-semibold  leading-[48px]">
                 ~
               </div>
-              <div className="w-[133px] h-[23px] left-[604px] top-[50px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+              <div className="w-[133px] h-[23px] left-[594px] top-[50px] absolute text-center text-black text-opacity-30 text-base font-medium leading-normal">
                 ex) 2024-02-18
               </div>
             </div>
@@ -145,8 +145,8 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
             <div className="w-[110px] h-8 left-[5px] top-[4px] absolute text-center text-black text-base font-semibold leading-normal">
               경험 카테고리
             </div>
-            <div className="w-[133px] h-[23px] left-[870px] top-[94px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              50자 이내
+            <div className="w-[133px] h-[23px] left-[880px] top-[94px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+              12자 이내
             </div>
             <div className="w-[988px] h-[55px] left-0 top-[39px] absolute">
               <input
@@ -156,7 +156,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="experienceType"
                 name="experienceType"
                 placeholder="ex) 대외활동, 공모전, 인턴, 아르바이트"
-                maxLength={50}
+                maxLength={12}
                 className="w-full h-[50px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
@@ -176,7 +176,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
             <div className="w-[139px] h-8 left-0 top-[4px] absolute text-center text-black text-base font-semibold leading-normal">
               업무사항
             </div>
-            <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+            <div className="w-[133px] h-[23px] left-[906px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
               100자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
@@ -206,7 +206,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
             <div className="w-[139px] h-8 left-[29px] top-[4px] absolute text-center text-black text-base font-semibold leading-normal">
               경험 동기 & 이유
             </div>
-            <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
+            <div className="w-[133px] h-[23px] left-[906px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
               100자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
