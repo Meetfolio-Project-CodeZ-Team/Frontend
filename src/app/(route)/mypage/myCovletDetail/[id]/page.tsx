@@ -114,19 +114,17 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
     }
   }, [params.id])
 
-  const isGuestValue = isGuest !== 'undefined' && isGuest !== null ? isGuest : ''
-  const writerNameValue = writerName !== 'undefined' && writerName !== null ? writerName : userInfo?.memberName
-  const profileValue = profile !== 'undefined' && profile !== null ? profile : userInfo?.profile
-
   return (
     <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-full h-full mb-[200px]">
         <UserNavContainer
-         isGuest={isGuestValue}
-         selected={'portfolio'}
-         nickname={writerNameValue}
-         profile={profileValue}
+          isGuest={isGuest || ''}
+          selected={'portfolio'}
+          nickname={
+            writerName === 'undefined' ? userInfo?.memberName : writerName || ''
+          }
+          profile={profile === 'undefined' ? userInfo?.profile : profile || ''}
         />
         <div className="flex-grow">
           <MyCovletCardDetail
