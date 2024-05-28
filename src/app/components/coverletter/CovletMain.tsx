@@ -209,6 +209,33 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     }
     goToNextPage()
   }
+  const updateCovData = async () => {
+    const { ...dataToSend } = coverletterData
+
+    const urlPath = isEdit
+      ? `/api/coverletters/save?id=${id}`
+      : `/api/coverletters`
+    const methodType = isEdit ? 'PATCH' : 'POST'
+    const response = await fetch(urlPath, {
+      method: methodType,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...dataToSend,
+      }),
+    })
+    const resData = await response.json()
+    setCoverLetterData({
+      ...coverletterData,
+      coverLetterId: resData.result.coverLetterId,
+    })
+
+    if (!response.ok) {
+      console.error('데이터 저장에 실패했습니다.')
+    }
+    router.push('/mypage')
+  }
 
   return (
     <div className="w-[1440px] h-[1319px] relative">
@@ -340,7 +367,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={saveCovData}
+          onClick={isEdit? updateCovData : saveCovData}
           type="button"
         >
           {isEdit ? '수정하기' : '저장하기'}
