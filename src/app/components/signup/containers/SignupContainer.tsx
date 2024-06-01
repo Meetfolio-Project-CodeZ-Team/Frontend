@@ -48,7 +48,7 @@ const SignupContainer = () => {
     )
     if (res.ok) {
       router.push('/signup/onboard')
-    }else{
+    } else {
       setAuthCode('')
       mismatchAlert()
     }
@@ -87,7 +87,7 @@ const SignupContainer = () => {
           onChange={(e) => setAuthCode(e.target.value)}
           placeholder="인증코드 입력하기"
           textValue={authCode}
-          onEnterPress={() =>authorizeCode(email, authCode)}
+          onEnterPress={() => authorizeCode(email, authCode)}
         />
       </div>
       <div className="flex flex-col gap-y-5">
