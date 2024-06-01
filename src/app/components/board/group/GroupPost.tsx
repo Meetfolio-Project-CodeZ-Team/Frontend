@@ -57,7 +57,7 @@ const GroupPost = ({ data }: GroupPostProps) => {
         {data.content.length > 52 ? (
           <>
             {data.content.slice(0, 52)}
-            <span>...</span>
+            ...
           </>
         ) : (
           data.content
