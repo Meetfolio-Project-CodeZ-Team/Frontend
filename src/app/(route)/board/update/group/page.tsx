@@ -18,7 +18,6 @@ export default function PatchGroupPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
     getUser()
   }, [id])

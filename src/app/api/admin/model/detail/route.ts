@@ -6,8 +6,6 @@ export async function POST(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
   const id = searchParams.get('id') || ''
   const accessToken = getCookie(request, 'accessToken')
-  console.log(id, 'url로 가져온 id')
-
   const data = await postmodelDetail(accessToken, id).then((data) => data)
 
   return NextResponse.json(data)

@@ -14,7 +14,6 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
   const [isExp, setIsExp] = useState(false)
   const [profile, setProfile] = useState('')
   const path = isExp ? 'expcard' : 'coverletter'
-  console.log(covletCards)
 
   useEffect(() => {
     const getData = async () => {

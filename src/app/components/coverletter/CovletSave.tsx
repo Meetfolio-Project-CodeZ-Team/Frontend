@@ -156,7 +156,6 @@ const CovletSave = () => {
       jobKeyword,
       coverLetterId,
     } = coverletterData
-console.log(' 수정 요청');
 
     if (!coverLetterId) {
       console.error('coverLetterId가 없습니다.')
@@ -190,15 +189,12 @@ console.log(' 수정 요청');
         jobKeyword,
       }),
     })
-    console.log(response,' 수정 요청 응답');
-    console.log(response,' 수정 요청 시기에 데이터',coverletterData);
 
     const resData = await response.json()
     setCoverLetterData({
       ...coverletterData,
       coverLetterId: resData.result.coverLetterId,
     })
-    console.log(resData,' 수정 요청 응답 데이터 반환');
 
     if (!response.ok) {
       console.error('데이터 저장에 실패했습니다.')

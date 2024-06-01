@@ -35,7 +35,6 @@ const UserExpDetailModal1 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
-  console.log(experienceId, 'id 수정 삭제에서 가져오기')
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
   const handleModalClick = (

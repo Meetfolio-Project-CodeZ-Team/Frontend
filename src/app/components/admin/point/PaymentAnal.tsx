@@ -33,7 +33,6 @@ const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
     }
     fetchData()
   }, [page])
-  console.log(pageData)
 
   const handleMonthChange = (increment: number) => {
     if (month === '12' && increment === +1) {
@@ -51,7 +50,6 @@ const PaymentAnal = (paymentAnal: PaymentAnalProps) => {
       setMonth(newMonth.toString())
     }
   }
-  console.log(paymentAnal, '결제 내역')
 
   return (
     <div className="flex flex-col items-center gap-y-5 mt-[28px] mb-[80px]">

@@ -15,7 +15,6 @@ const JobPost = ({ data }: JobPostProps) => {
   const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [isLiked, setIsliked] = useState(false)
   const [likeCnt, setLikeCnt] = useState(0)
-  console.log(data, '게시물 데이터')
 
   return (
     <div

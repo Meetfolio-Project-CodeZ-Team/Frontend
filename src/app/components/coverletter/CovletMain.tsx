@@ -127,8 +127,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         })
     }
   }, [isEdit, id])
-  console.log(feedbackInfo, '피드백 데이터')
-  console.log(analysisInfo, '분석 데이터')
 
   const handleToggle = () => {
     setEnabled(!enabled)

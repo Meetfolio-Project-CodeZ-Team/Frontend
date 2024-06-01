@@ -9,8 +9,6 @@ const Stack = () => {
   const [name, setName] = useState('')
   const [names, setNames] = useState<string[]>([])
 
-  console.log(names.join(',')) // 배열 스트링으로 변환
-
   const handleDelete = (index: number) => {
     const newStrings = [...names]
     newStrings.splice(index, 1)

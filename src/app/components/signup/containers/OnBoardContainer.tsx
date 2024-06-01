@@ -44,7 +44,6 @@ const OnBoardContainer = () => {
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
-  console.log('현재 이모지 상태', PROFILE_EMOJI[profile])
 
   const signUp = async () => {
     if (
@@ -60,7 +59,6 @@ const OnBoardContainer = () => {
         major: major,
         profile: PROFILE_EMOJI[profile],
       }
-      console.log(requestBody)
       const requestOptions = {
         method: 'POST',
         headers: {

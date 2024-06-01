@@ -5,10 +5,11 @@ import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 
-
 export default function UserPage({ params }: { params: { id: string } }) {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
-  const [otherUserInfo, setOtherUser] = useState<{ profile: string } | null>(null)
+  const [otherUserInfo, setOtherUser] = useState<{ profile: string } | null>(
+    null,
+  )
   const [covletCards, setCovletCards] = useState<CovletCard[]>([])
   const [expCards, setExpCards] = useState<ExpCard[]>([])
   const [isExp, setIsExp] = useState(false)
@@ -35,8 +36,6 @@ export default function UserPage({ params }: { params: { id: string } }) {
           },
         })
         const data = await response.json()
-        console.log(data, '가져온 자소서 데이터')
-        console.log('프로필', data.result?.profile)
 
         if (data.isSuccess && data.result?.profile) {
           setOtherUser({
@@ -60,7 +59,7 @@ export default function UserPage({ params }: { params: { id: string } }) {
     <section className="flex flex-col min-h-screen relative">
       <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="flex w-[full] h-[980px] mb-[200px]">
-        <OtherUserNav nickname={params.id} profile={otherUserInfo?.profile}/>
+        <OtherUserNav nickname={params.id} profile={otherUserInfo?.profile} />
         <div className="flex-grow">
           <OtherUserPortfolio username={params.id} />
         </div>

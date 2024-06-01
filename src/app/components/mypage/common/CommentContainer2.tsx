@@ -45,7 +45,6 @@ const CommentContainer2 = ({ postId, isLiked }: CommentContainerProps) => {
       body: JSON.stringify(reqBody),
     })
     const resData = await res.json()
-    console.log(resData, '댓글응답')
     const response = await fetch(`/api/board/comment?id=${postId}`)
     const getRes = await response.json()
     setComment(getRes.result.commentItems)
