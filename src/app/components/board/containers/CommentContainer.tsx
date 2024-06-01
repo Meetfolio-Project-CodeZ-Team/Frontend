@@ -93,7 +93,9 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
                   isReply ? '대댓글을 입력하세요...' : '댓글을 입력하세요...'
                 }
                 onChange={(e) => setContent(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && LeaveComment &&LeaveComment()}
+                onKeyDown={(e) =>
+                  e.key === 'Enter' && LeaveComment && LeaveComment()
+                }
                 value={content}
               ></textarea>
             </div>

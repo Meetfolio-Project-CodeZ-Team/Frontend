@@ -27,7 +27,6 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
 
       setProfile(data.result.profile)
 
-
       isExp
         ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
         : setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
@@ -82,7 +81,13 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
           <div className="w-[500px] h-full ml-[60px] gap-[20px]">
             {covletCards.length > 0 ? (
               covletCards.map((a) => (
-                <MyCovletCard key={a.coverLetterId} {...a} isGuest={true} writerName={username} profile={profile} />
+                <MyCovletCard
+                  key={a.coverLetterId}
+                  {...a}
+                  isGuest={true}
+                  writerName={username}
+                  profile={profile}
+                />
               ))
             ) : (
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">

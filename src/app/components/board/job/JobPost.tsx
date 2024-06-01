@@ -39,19 +39,15 @@ const JobPost = ({ data }: JobPostProps) => {
         {data.jobCategory}
       </div>
       <div className="absolute top-[74px] left-[28px] text-[18px] font-bold">
-      {data.title.length > 23 ? (
-          <>
-            {data.title.slice(0, 23)}...
-          </>
+        {data.title.length > 23 ? (
+          <>{data.title.slice(0, 23)}...</>
         ) : (
           data.title
         )}
       </div>
       <div className="absolute top-[106px] left-[28px] text-base font-normal w-[323px] h-[70px]">
         {data.content.length > 60 ? (
-          <>
-            {data.content.slice(0, 60)}...
-          </>
+          <>{data.content.slice(0, 60)}...</>
         ) : (
           data.content
         )}
