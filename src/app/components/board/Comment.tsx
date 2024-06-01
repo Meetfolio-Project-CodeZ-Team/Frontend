@@ -97,6 +97,9 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
             <textarea
               className="w-[70%] h-[100%] p-3 text focus:outline-none overflow-y-auto scrollbar-hide"
               value={content}
+              onKeyDown={(e) =>
+                e.key === 'Enter' && updateComment && updateComment()
+              }
               onChange={(e) => setContent(e.target.value)}
             ></textarea>
             <div className="absolute flex gap-x-2 top-[88px] right-[18px] cursor-pointer">
@@ -129,7 +132,7 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
                     alt="logoIcon"
                   />
                 </div>
-              <div>{data.memberName}</div>
+                <div>{data.memberName}</div>
               </Link>
               <div>{timeCalculate(data.sinceCreation)}</div>
               {isAuthor &&

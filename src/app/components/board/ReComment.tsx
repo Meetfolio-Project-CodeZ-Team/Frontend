@@ -102,6 +102,9 @@ const ReComment = ({
               className="w-[70%] h-[100%] p-3 text focus:outline-none overflow-y-auto scrollbar-hide"
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              onKeyDown={(e) =>
+                e.key === 'Enter' && updateComment && updateComment()
+              }
             ></textarea>
             <div className="absolute flex gap-x-2 top-[88px] right-[18px] cursor-pointer">
               <Button
