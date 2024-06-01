@@ -10,17 +10,6 @@ import ChargePoint from '../points/ChargePoint'
 import PaymentCard from './PaymentCard'
 import ReactPaginate from 'react-paginate'
 
-interface UserInfoProps {
-  email: string
-  grade: string
-  major: string
-  jobKeyword: onlyJobType
-  memberId?: number
-  point: number
-  status: string
-  registrationDate: string
-}
-
 interface UserPoint {
   myPoint: number
   isFirst: boolean

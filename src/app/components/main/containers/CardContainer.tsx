@@ -1,12 +1,12 @@
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
 import Card from '../../common/Card'
-import { Pagination, Autoplay, EffectCoverflow } from 'swiper/modules'
 
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
 interface CardContainerProps {
   cardData: CardDataTypes[]
 }

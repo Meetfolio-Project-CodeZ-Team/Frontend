@@ -72,12 +72,8 @@ const MyCovletCardDetail = ({
     textArea.select()
 
     try {
-      const successful = document.execCommand('copy')
-      const msg = successful ? 'successful' : 'unsuccessful'
-
       alert('Text copied to clipboard!')
     } catch (err) {
-      console.error('Failed to copy text: ', err)
       alert('Failed to copy text.')
     }
 

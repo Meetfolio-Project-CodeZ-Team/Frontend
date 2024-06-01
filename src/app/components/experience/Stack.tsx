@@ -1,9 +1,9 @@
 'use client'
-import NameBox from '@/app/components/experience/NameBox'
 import Button from '@/app/components/common/Button'
 import Input from '@/app/components/common/Input'
+import NameBox from '@/app/components/experience/NameBox'
 import Header from '@/app/components/layout/Header'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const Stack = () => {
   const [name, setName] = useState('')

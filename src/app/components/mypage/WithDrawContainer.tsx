@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { logout } from '@/app/utils/cookies'
 import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from './common/DeleteModal'
 import { failVerifyPw, successVerifyPw } from '@/app/utils/toast'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import DeleteModal from './common/DeleteModal'
 
 interface UserInfoProps {
   email: string
@@ -21,7 +19,6 @@ interface UserInfoProps {
 }
 
 const WithDrawContainer = () => {
-  const router = useRouter()
   const [userInfos, setUserInfos] = useState<UserInfoProps>()
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [passwordVerified, setPasswordVerified] = useState(false)
