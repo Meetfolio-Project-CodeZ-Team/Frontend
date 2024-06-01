@@ -2,10 +2,10 @@ import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { selectedPostId } from '@/app/recoil/board'
 import { comment } from '@/app/ui/IconsPath'
 import Like from '@/app/ui/svg/main/Like'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
-import Image from 'next/image'
 
 interface JobPostProps {
   data: BoardInfoTypes
@@ -40,13 +40,18 @@ const JobPost = ({ data }: JobPostProps) => {
         {data.jobCategory}
       </div>
       <div className="absolute top-[74px] left-[28px] text-[18px] font-bold">
-        {data.title}
+      {data.title.length > 23 ? (
+          <>
+            {data.title.slice(0, 23)}...
+          </>
+        ) : (
+          data.title
+        )}
       </div>
       <div className="absolute top-[106px] left-[28px] text-base font-normal w-[323px] h-[70px]">
         {data.content.length > 60 ? (
           <>
-            {data.content.slice(0, 60)}
-            <span>...</span>
+            {data.content.slice(0, 60)}...
           </>
         ) : (
           data.content
