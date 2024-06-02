@@ -153,3 +153,8 @@ export const getComments = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/board-comments/${id}?page=0`
   return await getRequest(url, accessToken)
 }
+
+export const getBoardDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await getRequest(url, accessToken)
+}
