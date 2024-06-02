@@ -16,7 +16,6 @@ import {
   PROFILE_EMOJI_PT1,
   PROFILE_EMOJI_PT2,
 } from '@/app/constants/signup'
-import { userData } from '@/app/recoil/mypage'
 import {
   failVerifyPw,
   pwAlert,
@@ -82,17 +81,13 @@ const EditUserInfo = () => {
 
   const [password, setPassWord] = useState('')
   const [checkPW, setCheckPW] = useState('')
-  const [pw, setPw] = useState('')
   const [clickedKeyword, setClickedKeyword] = useState<onlyJobType>('백엔드')
   const [grade, setGrade] = useState<GradeEnum>('1학년')
   const [profile, setProfile] = useState(0)
   const [isHovered, setIsHovered] = useState(false)
   const [major, setMajor] = useState('')
-  const isEntered = pw !== '' && major !== ''
   const isSame = checkPW === password
   const [userInfos, setUserInfos] = useState<UserInfo>()
-  const [isOpen, setIsOpen] = useState(false)
-  const [profileIndex, setProfileIndex] = useState<number>()
 
   const updateUser = async () => {
     const requestBody: UpdateUserInfoRequest = {

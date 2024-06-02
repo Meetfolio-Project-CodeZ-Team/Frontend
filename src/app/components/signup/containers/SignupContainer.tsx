@@ -46,11 +46,12 @@ const SignupContainer = () => {
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/signup/auth`,
       requestOptions,
     )
-    if (!res.ok) {
+    if (res.ok) {
+      router.push('/signup/onboard')
+    } else {
       setAuthCode('')
       mismatchAlert()
     }
-    router.push('/signup/onboard')
   }
 
   return (
@@ -86,6 +87,7 @@ const SignupContainer = () => {
           onChange={(e) => setAuthCode(e.target.value)}
           placeholder="인증코드 입력하기"
           textValue={authCode}
+          onEnterPress={() => authorizeCode(email, authCode)}
         />
       </div>
       <div className="flex flex-col gap-y-5">

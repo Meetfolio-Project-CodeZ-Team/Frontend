@@ -72,12 +72,8 @@ const MyCovletCardDetail = ({
     textArea.select()
 
     try {
-      const successful = document.execCommand('copy')
-      const msg = successful ? 'successful' : 'unsuccessful'
-
       alert('Text copied to clipboard!')
     } catch (err) {
-      console.error('Failed to copy text: ', err)
       alert('Failed to copy text.')
     }
 
@@ -170,7 +166,9 @@ const MyCovletCardDetail = ({
             </svg>
           </button>
         </div>
-        <div className={`w-[1090px] h-[965px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'} `}>
+        <div
+          className={`w-[1090px] h-[965px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'} `}
+        >
           <div className="w-[260.26px] h-[49px] left-[415px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
             AI 자기소개서 피드백
           </div>
@@ -274,7 +272,9 @@ const MyCovletCardDetail = ({
             ) : null
           ) : null}
         </div>
-        <div className={`w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex `}>
+        <div
+          className={`w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex `}
+        >
           <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
             <div className="w-[76px] text-center text-white text-[25px] font-semibold leading-[37.50px]">
               문항
@@ -290,7 +290,9 @@ const MyCovletCardDetail = ({
             </div>
           </div>
         </div>
-        <div className={`w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex `}>
+        <div
+          className={`w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex `}
+        >
           <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
             <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
               #{keyword1}
@@ -456,7 +458,9 @@ const MyCovletCardDetail = ({
             </svg>
           </button>
         </div>
-        <div className={`w-[1090px] h-[1030px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'}`}>
+        <div
+          className={`w-[1090px] h-[1030px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'}`}
+        >
           <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
             <div className="w-[950px] h-[0px] top-[70px] absolute border  border-zinc-300"></div>
             <div className="w-[773px] h-[52px] top-[101px] absolute text-center text-black text-3xl font-bold  leading-[45px]">

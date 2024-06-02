@@ -32,6 +32,7 @@ const SearchInput = ({ searchBoard, searchUser }: SearchInputProps) => {
         className="w-[200px]"
         type={'search'}
         onChange={(e) => setTitle(e.target.value)}
+        onEnterPress={() => getKeywordBoard(title)}
       />
       <div className="cursor-pointer">
         <Icons name={search} onClick={() => getKeywordBoard(title)} />

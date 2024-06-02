@@ -4,7 +4,6 @@ import JobPost from '../job/JobPost'
 
 const JobBoardContainer = () => {
   const [boardData, setBoardData] = useRecoilState(boardDataState)
-  console.log(boardData, '게시물 목록')
 
   if (boardData) {
     return (

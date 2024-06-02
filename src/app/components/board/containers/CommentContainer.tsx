@@ -1,6 +1,6 @@
 'use client'
 
-import { commentArrState, selectedPostId } from '@/app/recoil/board'
+import { commentArrState } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useEffect, useState } from 'react'
@@ -17,7 +17,6 @@ interface CommentContainerProps {
 
 const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
   const [comment, setComment] = useRecoilState(commentArrState)
-  const [selectedId, setSelectedId] = useRecoilState(selectedPostId)
   const [likeStatus, setLikeStatus] = useState(isLiked)
   const [isClicked, setIsClicked] = useState(false)
   const [isReply, setIsReply] = useState(false)
@@ -94,6 +93,9 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
                   isReply ? '대댓글을 입력하세요...' : '댓글을 입력하세요...'
                 }
                 onChange={(e) => setContent(e.target.value)}
+                onKeyDown={(e) =>
+                  e.key === 'Enter' && LeaveComment && LeaveComment()
+                }
                 value={content}
               ></textarea>
             </div>

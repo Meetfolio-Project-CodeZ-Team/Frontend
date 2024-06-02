@@ -11,13 +11,13 @@ export default function ErrorPage({
 }) {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const router = useRouter()
-  useEffect(() => {
-    document.cookie =
-      'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-    document.cookie =
-      'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
-    router.push('/login')
-  }, [error])
+  // useEffect(() => {
+  //   document.cookie =
+  //     'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  //   document.cookie =
+  //     'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+  //   router.push('/login')
+  // }, [error])
 
   useEffect(() => {
     const fetchData = async () => {

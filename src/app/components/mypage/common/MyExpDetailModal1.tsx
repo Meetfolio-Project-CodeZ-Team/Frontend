@@ -6,7 +6,7 @@ import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { expData, expNum, modalNum } from '../../../recoil/experience'
+import { expData, modalNum } from '../../../recoil/experience'
 import DeleteModal from '../../admin/common/DeleteModal'
 
 interface ExperienceCardDetail {
@@ -258,18 +258,3 @@ const MyExpDetailModal1 = ({
 }
 
 export default MyExpDetailModal1
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

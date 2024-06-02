@@ -50,7 +50,7 @@ const Input = ({
       name={name}
       onFocus={onFocus}
       onBlur={onBlur}
-      onKeyPress={(e) => e.key === 'Enter' && onEnterPress && onEnterPress()}
+      onKeyDown={(e) => e.key === 'Enter' && onEnterPress && onEnterPress()}
       onChange={onChange}
       className={buttonStyles}
       accept={accept}

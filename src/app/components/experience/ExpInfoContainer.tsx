@@ -29,9 +29,9 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
     })
   }
   const handleInputChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setExperienceData({ ...experienceData, [name]: value });
-  };
+    const { name, value } = event.target
+    setExperienceData({ ...experienceData, [name]: value })
+  }
 
   const handleTextareaChange = (
     event: React.ChangeEvent<HTMLTextAreaElement>,
@@ -113,10 +113,10 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 name="startDate"
                 placeholder="YYYY-MM-DD"
                 maxLength={10}
-                max={new Date().toISOString().split("T")[0]}
+                max={new Date().toISOString().split('T')[0]}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
-              
+
               <div className="w-[133px] h-[23px] left-[147px] top-[50px] absolute text-center text-black text-opacity-30 text-base font-medium leading-normal">
                 ex) 2024-02-18
               </div>
@@ -136,7 +136,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 name="endDate"
                 placeholder="YYYY-MM-DD"
                 maxLength={10}
-                max={new Date().toISOString().split("T")[0]}
+                max={new Date().toISOString().split('T')[0]}
                 min={experienceData.startDate}
                 className="w-[275px] h-[45px]  bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />

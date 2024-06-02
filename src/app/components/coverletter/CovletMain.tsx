@@ -36,7 +36,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
 
   setTid(tid)
 
-
   useEffect(() => {
     if (pg_token) {
       const getTid = async () => {
@@ -127,8 +126,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         })
     }
   }, [isEdit, id])
-  console.log(feedbackInfo, '피드백 데이터')
-  console.log(analysisInfo, '분석 데이터')
 
   const handleToggle = () => {
     setEnabled(!enabled)
@@ -368,7 +365,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={isEdit? updateCovData : saveCovData}
+          onClick={isEdit ? updateCovData : saveCovData}
           type="button"
         >
           {isEdit ? '수정하기' : '저장하기'}
