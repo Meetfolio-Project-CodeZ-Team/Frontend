@@ -40,13 +40,7 @@ const BoardCardDetail = ({ nickname, profile }: BoardDetailContainer) => {
     if (isSelected) {
       const fetchData = async () => {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
+          `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${selectedId}`
         )
         const resData = await response.json()
         setData(resData.result.boardInfo)
