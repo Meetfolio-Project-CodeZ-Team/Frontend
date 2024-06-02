@@ -42,6 +42,11 @@ const MyPointContainer = () => {
     window.scrollTo(0, 0)
   }
 
+  const goToSavingPage = () => {
+    setPointNumber(2)
+    window.scrollTo(0, 0)
+  }
+
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)
   }
@@ -117,6 +122,12 @@ const MyPointContainer = () => {
         onClick={goToChargePage}
       >
         <div>충전 내역</div>
+      </div>
+      <div
+        className="left-[315px] top-[295px] absolute text-black text-xl font-bold leading-[30px] cursor-pointer"
+        onClick={goToSavingPage}
+      >
+        <div>적립 내역</div>
       </div>
       <div
         className="w-52 h-[54.45px] left-[900px] top-[160px] absolute items-center justify-center"

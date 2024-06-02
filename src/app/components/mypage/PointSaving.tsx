@@ -4,11 +4,11 @@ import { useModal } from '@/app/hooks/useModal'
 import { pointNum } from '@/app/recoil/mypage'
 import { leftAngle, pointW, rightAngle } from '@/app/ui/IconsPath'
 import { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 import { useRecoilState } from 'recoil'
 import Icons from '../common/Icons'
 import ChargePoint from '../points/ChargePoint'
-import PaymentCard from './PaymentCard'
-import ReactPaginate from 'react-paginate'
+import SavingCard from './SavingCard'
 
 interface UserPoint {
   myPoint: number
@@ -18,17 +18,16 @@ interface UserPoint {
   listSize: number
   totalElements: number
 }
-
-interface UserPaymentProps {
+interface PointCardProps {
   createdAt: string
-  payment: number
+  coverLetterId: number
   point: number
   totalPoint: number
 }
 
-const PointCharge = () => {
+const PointSaving = () => {
   const [userInfos, setUserInfos] = useState<UserPoint>()
-  const [userPayments, setUserPayments] = useState<UserPaymentProps[]>([])
+  const [pointCards, setPointCards] = useState<PointCardProps[]>([])
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [pointNumber, setPointNumber] = useRecoilState(pointNum)
   const [page, setPage] = useState<number>(1)
@@ -55,13 +54,13 @@ const PointCharge = () => {
   useEffect(() => {
     const fetchUserInfos = async () => {
       try {
-        const response = await fetch(`/api/mypage/mypayment?page=${page - 1}`)
+        const response = await fetch(`/api/mypage/saving?page=${page - 1}`)
         if (!response.ok) {
           throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
         }
         const data = await response.json()
-        setUserPayments(data.result.paymentInfo.paymentList)
-        setUserInfos(data.result.paymentInfo)
+        setPointCards(data.result.pointInfo.pointList)
+        setUserInfos(data.result.pointInfo)
       } catch (error) {}
     }
     fetchUserInfos()
@@ -85,18 +84,18 @@ const PointCharge = () => {
       <div className="w-[1070px] h-[510px] left-[76px] top-[342px] absolute flex-col justify-start items-start gap-3 inline-flex">
         <div className="w-[1070px] h-[0px] relative">
           <div className="w-[1065px] h-[0px] left-0 top-0 absolute border border-zinc-600"></div>
-          <div className="w-[100px] h-[0px] left-[110px] top-[-0.5px] absolute border-2 border-gray-800" />
+          <div className="w-[100px] h-[0px] left-[226px] top-[-0.5px] absolute border-2 border-gray-800" />
         </div>
         <div className="h-[39px] relative">
           <div className="w-full h-[27px]  top-0 absolute gap-[218px] items-center inline-flex">
             <div className="text-black text-lg font-semibold leading-[27px] absolute left-[6px] w-[170px] text-center">
-              충전 일시
+              적립일
             </div>
             <div className="text-black text-lg font-normal leading-[27px] absolute left-[300px] w-[150px] text-center">
-              충전 포인트
+              자소서 번호
             </div>
             <div className="text-black text-lg font-normal leading-[27px]  text-center absolute left-[618px] w-[100px]">
-              충전 금액
+              적립 포인트
             </div>
             <div className="text-black text-lg font-normal leading-[27px] text-center absolute left-[914px] w-[100px]">
               보유 포인트
@@ -105,10 +104,10 @@ const PointCharge = () => {
           <div className="w-[1065px] h-[0px] left-0 top-[39px] absolute border border-zinc-600"></div>
         </div>
       </div>
-      <div className="w-[1060px] h-[850px] left-[76px] mt-[398px] flex flex-col absolute ">
+      <div className="w-[1065px] h-[600px] left-[76px] mt-[394px] flex flex-col absolute ">
         <div className="w-full h-full ml-[0px] gap-[0px] flex flex-col">
-          {userPayments.map((a, index) => (
-            <PaymentCard key={index} {...a} />
+          {pointCards.map((a, index) => (
+            <SavingCard key={index} {...a} />
           ))}
         </div>
       </div>
@@ -168,4 +167,4 @@ const PointCharge = () => {
   )
 }
 
-export default PointCharge
+export default PointSaving

@@ -3,6 +3,7 @@ import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import MyPointContainer from '@/app/components/mypage/MyPointContainer'
 import PointCharge from '@/app/components/mypage/PointCharge'
+import PointSaving from '@/app/components/mypage/PointSaving'
 import UserNavContainer from '@/app/components/mypage/UserNavContainer'
 import { tidState } from '@/app/recoil/coverletter'
 import { pointNum } from '@/app/recoil/mypage'
@@ -91,6 +92,7 @@ export default function MyPointPage() {
         <div className="flex-grow">
           {pointNumber === 0 && <MyPointContainer />}
           {pointNumber === 1 && <PointCharge />}
+          {pointNumber === 2 && <PointSaving />}
         </div>
       </div>
       <Footer />
