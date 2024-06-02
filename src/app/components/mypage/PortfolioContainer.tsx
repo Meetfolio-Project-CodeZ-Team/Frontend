@@ -113,7 +113,9 @@ const PortfolioContainer = () => {
       <div className="w-[1150px] h-[900px] mt-[200px] flex flex-col absolute ">
         <div className="w-[500px] h-full ml-[60px] gap-[20px]">
           {covletCards?.length > 0 ? (
-            covletCards.map((a) => <MyCovletCard key={a.coverLetterId} {...a} />)
+            covletCards.map((a) => (
+              <MyCovletCard key={a.coverLetterId} {...a} />
+            ))
           ) : (
             <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[80px] ">
               <div className="text-center ">

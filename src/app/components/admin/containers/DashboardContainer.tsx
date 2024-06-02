@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, useState } from 'react'
 import JobAnal from '../dashboard/JobAnal'
 import PointAnal from '../dashboard/PointAnal'

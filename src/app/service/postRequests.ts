@@ -15,7 +15,6 @@ const postRequest = async (
       headers: { ...commonHeaders, Authorization: 'Bearer ' + accessToken },
       body: JSON.stringify(body),
     })
-    console.log(response, url, '조회하기')
 
     return response.json()
   } catch (error) {
@@ -82,13 +81,7 @@ export const postUsingPoint = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}/points`
-  console.log(id, '로 포인트', point, '사용')
   return await postRequest(url, point, accessToken)
-}
-
-export const postBoardDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/boards/${id}`
-  return await postRequest(url, null, accessToken)
 }
 
 export const postEmployment = async (
@@ -172,19 +165,6 @@ export const postAdditionalTrain = async (accessToken: string) => {
   return await postRequest(url, null, accessToken)
 }
 
-export const getModelList = async (accessToken: string, page: string) => {
-  const url =
-    page !== ''
-      ? `${SERVER_URL}/api/admins/data-management/version?page=${page}`
-      : `${SERVER_URL}/api/admins/data-management/version`
-  return await postRequest(url, null, accessToken)
-}
-
-export const postmodelDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
-  return await postRequest(url, null, accessToken)
-}
-
 export const postLike = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/board-likes/${id}`
   return await postRequest(url, null, accessToken)
@@ -200,7 +180,6 @@ export const postComment = async (
 }
 
 export const activeModel = async (accessToken: string, id: string) => {
-  console.log(G_SERVER_URL, ' 서버주소')
   const url = `${G_SERVER_URL}/api/admins/model-management/version/${id}`
   return await postRequest(url, null, accessToken)
 }

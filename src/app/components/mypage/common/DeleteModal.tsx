@@ -1,10 +1,10 @@
 'use client'
 
 import { close } from '@/app/ui/IconsPath'
+import { logout } from '@/app/utils/cookies'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Icons from '../../common/Icons'
-import { logout } from '@/app/utils/cookies'
 
 interface DeleteModalProps {
   closeModal: () => void

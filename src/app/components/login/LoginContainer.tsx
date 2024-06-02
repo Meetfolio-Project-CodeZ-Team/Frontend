@@ -64,6 +64,7 @@ const LoginContainer = () => {
             type={'login'}
             onChange={(e) => setPw(e.target.value)}
             placeholder="비밀번호"
+            onEnterPress={postLogin}
           />
           <div
             className="cursor-pointer absolute right-4"

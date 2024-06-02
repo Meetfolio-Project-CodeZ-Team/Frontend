@@ -6,7 +6,6 @@ export async function GET(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
   const jobKeyword = searchParams.get('jobKeyword') || ''
   const page = searchParams.get('page') || '0'
-  console.log(jobKeyword)
 
   let accessToken = getCookie(request, 'accessToken')
   const data = await getUser(accessToken, jobKeyword, page).then((data) => data)

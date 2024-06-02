@@ -1,14 +1,10 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
-import { expNum, expData, modalNum } from '../../../recoil/experience'
-import { useRouter } from 'next/navigation'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import { useEffect, useState } from 'react'
-import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from '../../admin/common/DeleteModal'
-import { useModal2 } from '@/app/hooks/useModal2'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { modalNum } from '../../../recoil/experience'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -39,13 +35,8 @@ const UserExpDetailModal1 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail) => {
-  console.log(experienceId, 'id 수정 삭제에서 가져오기')
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
-  const { isOpen, openmodal, closemodal, handlemodalClick } = useModal2(false)
-  const router = useRouter()
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
@@ -59,7 +50,6 @@ const UserExpDetailModal1 = ({
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
-      // 마지막 페이지에서 'Next' 클릭 시 첫 페이지로 이동
       setPageNumber(0)
     }
   }
@@ -68,7 +58,6 @@ const UserExpDetailModal1 = ({
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
-      // 첫 페이지에서 'Prev' 클릭 시 마지막 페이지로 이동
       setPageNumber(totalPages - 1)
     }
   }
@@ -87,45 +76,6 @@ const UserExpDetailModal1 = ({
         return '디자인'
       default:
         return keyword
-    }
-  }
-  const onEditClick = () => {
-    setExperienceData({
-      title,
-      startDate,
-      endDate,
-      experienceType,
-      task,
-      motivation,
-      detail,
-      advance,
-      stack,
-      jobKeyword,
-      expStacks: stack.split(' / '),
-    })
-
-    router.push(`/edit-experience/${experienceId}`)
-  }
-
-  const deleteExp = async (experienceId: number) => {
-    console.log('경험카드 삭제 요청이에요', experienceId)
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
-        {
-          method: 'DELETE',
-        },
-      )
-
-      if (res.ok) {
-        console.log('경험카드가 성공적으로 삭제되었습니다.')
-        window.location.reload()
-      } else {
-        const errorData = await res.json()
-        console.error('Error details:', errorData)
-      }
-    } catch (error) {
-      console.error('Network or other error:', error)
     }
   }
 
@@ -245,18 +195,3 @@ const UserExpDetailModal1 = ({
 }
 
 export default UserExpDetailModal1
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

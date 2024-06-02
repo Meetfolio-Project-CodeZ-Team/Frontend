@@ -18,7 +18,6 @@ export default function PatchEmploymentPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
     getUser()
   }, [id])

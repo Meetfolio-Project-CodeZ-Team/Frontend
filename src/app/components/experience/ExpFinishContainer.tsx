@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
 import { expData, expNum, modalNum } from '../../recoil/experience'
 import ExpFinishModal1 from './ExpFinishModal1'
@@ -11,24 +10,6 @@ const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
-  const router = useRouter()
-
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
 
   const getCurrentModal = () => {
     switch (pageNumber) {
@@ -54,22 +35,6 @@ const ExpFinishContainer = () => {
       ...experienceData,
       [event.target.name]: event.target.value,
     })
-  }
-  const handleButtonClick = () => {
-    setExperienceData({
-      title: '',
-      startDate: '',
-      endDate: '',
-      experienceType: '',
-      task: '',
-      motivation: '',
-      jobKeyword: '',
-      stack: '',
-      detail: '',
-      advance: '',
-      expStacks: [],
-    })
-    router.push('/mypage/myexperience')
   }
 
   const saveExpData = async () => {
@@ -205,18 +170,3 @@ const ExpFinishContainer = () => {
 }
 
 export default ExpFinishContainer
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

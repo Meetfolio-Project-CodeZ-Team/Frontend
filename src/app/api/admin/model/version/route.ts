@@ -1,8 +1,8 @@
-import { getModelList } from '@/app/service/postRequests'
+import { getModelList } from '@/app/service/getRequests'
 import { getCookie } from '@/app/utils/cookies'
 import { NextResponse } from 'next/server'
 
-export async function POST(request: Request) {
+export async function GET(request: Request): Promise<NextResponse> {
   const { searchParams } = new URL(request.url)
   const page = searchParams.get('page') || ''
   const accessToken = getCookie(request, 'accessToken')

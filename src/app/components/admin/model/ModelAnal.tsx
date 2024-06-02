@@ -18,7 +18,6 @@ interface ModelAnalProps {
 }
 
 const ModelAnal = ({ modelEvaluation }: ModelAnalProps) => {
-  console.log(modelEvaluation, '배열')
   if (modelEvaluation.length > 2) {
     const options = {
       responsive: true,

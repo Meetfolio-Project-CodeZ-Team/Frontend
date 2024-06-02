@@ -101,7 +101,6 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
             })
           }
           if (data && data.result && data.result.feedbackInfo) {
-            
             setFeedBackData(data.result.feedbackInfo)
           }
           if (data && data.result && data.result.analysisInfo) {
@@ -150,17 +149,3 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   )
 }
 export default MyCovletDetailPage
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

@@ -1,19 +1,19 @@
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
-import Card from '../../common/Card'
-
 import 'swiper/css'
 import 'swiper/css/effect-coverflow'
 import 'swiper/css/pagination'
-interface CardContainerProps {
-  cardData: CardDataTypes[]
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules'
+
+interface ExpCardSwiperProps {
+  cardsArr: JSX.Element[]
 }
-export default function CardContainer({ cardData }: CardContainerProps) {
+
+const ExpCardSwiper = ({ cardsArr }: ExpCardSwiperProps) => {
   return (
     <Swiper
-      className="my-5"
+      className=""
       effect={'coverflow'}
       grabCursor={true}
       centeredSlides={true}
@@ -29,22 +29,19 @@ export default function CardContainer({ cardData }: CardContainerProps) {
         dynamicBullets: true,
       }}
       modules={[Pagination, EffectCoverflow, Autoplay]}
-      slidesPerView={4}
+      slidesPerView={1}
       autoplay={{ delay: 2000, disableOnInteraction: false }}
     >
-      {cardData.map((card, index) => (
-        <SwiperSlide key={index}>
-          <Card
-            experienceType={card.experienceType}
-            startDate={card.startDate}
-            endDate={card.endDate}
-            jobKeyword={card.jobKeyword}
-            stack={card.stack}
-            title={card.jobKeyword}
-            experienceId={card.experienceId}
-          />
+      {cardsArr.map((card, index) => (
+        <SwiperSlide
+          className='"fixed top-0 left-0 w-full h-full flex items-center justify-center z-50"'
+          key={index}
+        >
+          {card}
         </SwiperSlide>
       ))}
     </Swiper>
   )
 }
+
+export default ExpCardSwiper

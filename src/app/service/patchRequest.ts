@@ -28,7 +28,6 @@ export const updatePost = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/boards/${id}`
-  console.log(url, '요청경로')
 
   return await patchRequest(url, postContent, accessToken)
 }

@@ -48,7 +48,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
       <div className="w-[442px] h-[444px] rounded-[20px] bg-white relative flex justify-center items-center">
         <div className="w-[235px] h-[49px] top-[148px] absolute text-center text-black text-xl font-bold leading-[30px]">
-          AI 직무 역량 분석 결과에 대한 {' '} 나의 만족도는?
+          AI 직무 역량 분석 결과에 대한 나의 만족도는?
         </div>
         <div className="w-[265px] h-[49px]  top-[64px] absolute text-center text-black text-3xl font-bold leading-[45px]">
           만족도 조사

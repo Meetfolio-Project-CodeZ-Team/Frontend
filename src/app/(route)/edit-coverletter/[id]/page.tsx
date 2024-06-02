@@ -4,7 +4,12 @@ import CovletMain from '@/app/components/coverletter/CovletMain'
 import CovletSave from '@/app/components/coverletter/CovletSave'
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
-import { analysisData, covletData, covletNum, feedbackData } from '@/app/recoil/coverletter'
+import {
+  analysisData,
+  covletData,
+  covletNum,
+  feedbackData,
+} from '@/app/recoil/coverletter'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
