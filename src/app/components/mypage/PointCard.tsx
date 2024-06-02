@@ -5,16 +5,6 @@ interface PointCardProps {
   totalPoint: number
 }
 
-interface CovletCardDetail {
-  shareType: string
-  question: string
-  answer: string
-  coverLetterId: number
-  keyword1: string
-  keyword2: string
-  jobKeyword: string
-}
-
 const PointCard = ({ createdAt, type, point, totalPoint }: PointCardProps) => {
   return (
     <div className="flex gap-[218px] items-center w-full h-[59px] py-[20px] border-b border-stone-400 mt-[0px]">
