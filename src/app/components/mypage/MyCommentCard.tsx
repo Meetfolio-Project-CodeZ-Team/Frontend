@@ -50,7 +50,7 @@ const MyCommentCard = ({
             {content}
           </div>
         </div>
-        <div className="w-[300px] h-[18px] left-[34px] top-[20px] absolute text-zinc-600 text-lg font-bold leading-[30px]">
+        <div className=" h-[18px] left-[34px] top-[20px] absolute text-zinc-600 text-lg font-bold leading-[30px]">
           {boardTitle}
         </div>
         <div className="left-[970px] top-[67px] absolute text-slate-600 text-sm font-normal leading-[30px]">
