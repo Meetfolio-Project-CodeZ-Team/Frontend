@@ -153,3 +153,21 @@ export const getComments = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/board-comments/${id}?page=0`
   return await getRequest(url, accessToken)
 }
+
+export const getBoardDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/boards/${id}`
+  return await getRequest(url, accessToken)
+}
+
+export const getModelList = async (accessToken: string, page: string) => {
+  const url =
+    page !== ''
+      ? `${SERVER_URL}/api/admins/data-management/version?page=${page}`
+      : `${SERVER_URL}/api/admins/data-management/version`
+  return await getRequest(url, accessToken)
+}
+
+export const getModelDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
+  return await getRequest(url, accessToken)
+}

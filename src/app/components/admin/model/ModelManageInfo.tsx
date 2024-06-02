@@ -19,17 +19,10 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [detailData, setDetailData] = useState<modelResultTypes | null>(null)
 
-  const postModelDetail = async () => {
+  const getModelDetail = async () => {
     openModal()
-    const requestOpt = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/detail?id=${modelId}`,
-      requestOpt,
     )
     const resData = await res.json()
     setDetailData(resData.result)
@@ -59,7 +52,7 @@ const ModelManageInfo = (trainInfo: ModelManageInfoProps) => {
         </div>
         <div className="w-[72px] flex items-center justify-center">
           <div
-            onClick={postModelDetail}
+            onClick={getModelDetail}
             className={`w-16 h-9 ${status === 'ACTIVE' ? 'bg-[#486283]' : 'bg-[#C4C4C4]'} rounded-[15px] text-white text-[16px] font-semibold flex items-center justify-center shadow-md cursor-pointer`}
           >
             {'배포'}

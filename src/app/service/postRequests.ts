@@ -84,11 +84,6 @@ export const postUsingPoint = async (
   return await postRequest(url, point, accessToken)
 }
 
-export const postBoardDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/boards/${id}`
-  return await postRequest(url, null, accessToken)
-}
-
 export const postEmployment = async (
   accessToken: string,
   boardData: PostEmployment,
@@ -167,19 +162,6 @@ export const sendApprove = async (accessToken: string, data: any) => {
 
 export const postAdditionalTrain = async (accessToken: string) => {
   const url = `${G_SERVER_URL}/api/admins/model-management/train`
-  return await postRequest(url, null, accessToken)
-}
-
-export const getModelList = async (accessToken: string, page: string) => {
-  const url =
-    page !== ''
-      ? `${SERVER_URL}/api/admins/data-management/version?page=${page}`
-      : `${SERVER_URL}/api/admins/data-management/version`
-  return await postRequest(url, null, accessToken)
-}
-
-export const postmodelDetail = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
   return await postRequest(url, null, accessToken)
 }
 

@@ -21,7 +21,6 @@ const ModelManage = () => {
     const fetchData = async () => {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/version?page=${page - 1}`,
-        { method: 'POST' },
       )
       const resData = await res.json()
 
