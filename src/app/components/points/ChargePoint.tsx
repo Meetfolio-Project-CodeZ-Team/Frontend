@@ -24,7 +24,7 @@ const ChargePoint = ({
   const router = useRouter()
   const [chargeP, setChargeP] = useState('')
   const [tid, setTid] = useRecoilState(tidState)
-  const isHundred = Number(chargeP) % 100 === 0 && Number(chargeP) > 100
+  const isHundred = Number(chargeP) % 100 === 0 && Number(chargeP) >= 100
 
   const connectPay = async () => {
     const SECRET_KEY = 'DEV0B0F086576B04B715B7404AA618D4C0B985A'
