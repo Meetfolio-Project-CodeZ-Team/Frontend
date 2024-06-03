@@ -141,7 +141,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -331,7 +331,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[180px] absolute border-2 border-gray-300 rounded-[15px] ">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -433,7 +433,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>

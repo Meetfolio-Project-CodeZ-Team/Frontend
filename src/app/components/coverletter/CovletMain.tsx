@@ -318,50 +318,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      {/* <div className="absolute left-[10px] top-[750px] ">
-        <div className="w-[931px] h-[960px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
-          <div className="w-[931px] h-[958px] left-0 top-0 flex">
-            <div className="w-[854px] h-[350px] left-[42px] top-[181px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
-              {feedbackInfo?.correction}
-            </div>
-          </div>
-          <div className="w-[890px] h-[0px] top-[70px] absolute border  ml-[22px] border-zinc-300"></div>
-          <div className="w-[910px] h-[50px]  top-[100px] absolute">
-            <div className="w-[910px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
-            <div className="w-[228px] h-[49px] left-[358px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
-              자기소개서 첨삭 결과
-            </div>
-          </div>
-          <div className="w-[253px] h-[49px] left-[345px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
-            AI 자기소개서 피드백
-          </div>
-
-          <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
-            <div className="list-none space-y-2">
-              {[1, 2, 3].map((index) => {
-                const key = `recommendQuestion${index}` as keyof FeedbackInfo
-                return feedbackInfo && feedbackInfo[key] ? (
-                  <li
-                    key={index}
-                    className="relative pl-4 bg-blue-200 text-base px-3 py-2 rounded-[10px]"
-                  >
-                    <div className="absolute w-[25px] h-[25px] flex items-center justify-center bg-[#486283] text-white font-bold rounded-full left-[-2.5rem] top-1/2 transform -translate-y-1/2">
-                      {index}
-                    </div>
-                    {feedbackInfo[key]}
-                  </li>
-                ) : null
-              })}
-            </div>
-          </div>
-          <div className="w-[910px] h-[50px]  top-[550px] absolute">
-            <div className="w-[910px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
-            <div className="w-[228px] h-[49px] left-[358px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
-              추천 자기소개서 문항
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
