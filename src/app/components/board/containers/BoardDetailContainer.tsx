@@ -59,7 +59,6 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
   return (
     <div className="w-full h-full relative border-white border-b-2">
       <ToastContainer />
-
       {isSelected ? (
         <div className="w-full h-full relative ">
           <div>
@@ -126,7 +125,7 @@ const BoardDetailContainer = ({ nickname }: BoardDetailContainerProps) => {
               </div>
             )}
             <div
-              className={`flex absolute pr-8 left-7 ${data?.peopleNumber ? 'top-[260px] ' : 'top-[230px]'} break-all h-[70%] overflow-y-auto`}
+              className={`flex absolute pr-8 left-7 ${data?.peopleNumber ? 'top-[260px] ' : 'top-[230px]'} break-all h-[70%] overflow-y-auto whitespace-pre-wrap`}
             >
               {data?.content}
             </div>
