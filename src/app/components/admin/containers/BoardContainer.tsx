@@ -25,7 +25,7 @@ const BoardContainer = () => {
         커뮤니티 관리
       </div>
       <div className="flex items-center w-[1013px] justify-between">
-        <SearhBoard searchBoard={setBoardData} />
+        <SearhBoard searchUser={false} guideText='제목으로 게시물을 검색' />
         <DropDownB options={Board} title={'전체'} setBoardType={setBoardType} />
       </div>
       {boardData && <ComunityBoard boardType={boardType} />}
