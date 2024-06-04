@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, modalNum } from '../../../recoil/experience'
 import DeleteModal from '../../admin/common/DeleteModal'
+import { JOB_ENUM } from '@/app/constants/auth'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -65,23 +66,6 @@ const MyExpDetailModal2 = ({
       setPageNumber(pageNumber - 1)
     } else {
       setPageNumber(totalPages - 1)
-    }
-  }
-
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
     }
   }
 
@@ -152,7 +136,7 @@ const MyExpDetailModal2 = ({
               </div>
               <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(jobKeyword)}
+                  {JOB_ENUM[jobKeyword]}
                 </div>
               </div>
             </div>
@@ -185,7 +169,7 @@ const MyExpDetailModal2 = ({
           나의 활동 & 경험 내용{' '}
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {detail}
         </div>
 

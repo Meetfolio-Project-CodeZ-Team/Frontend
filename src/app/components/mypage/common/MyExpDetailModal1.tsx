@@ -1,5 +1,6 @@
 'use client'
 
+import { JOB_ENUM } from '@/app/constants/auth'
 import { useModal2 } from '@/app/hooks/useModal2'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
@@ -68,22 +69,6 @@ const MyExpDetailModal1 = ({
     }
   }
 
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
   const onEditClick = () => {
     setExperienceData({
       title,
@@ -152,7 +137,7 @@ const MyExpDetailModal1 = ({
               </div>
               <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(jobKeyword)}
+                  {JOB_ENUM[jobKeyword]}
                 </div>
               </div>
             </div>
@@ -182,7 +167,7 @@ const MyExpDetailModal1 = ({
           업무 사항{' '}
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[248px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {task}
         </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
@@ -221,7 +206,7 @@ const MyExpDetailModal1 = ({
           경험 동기
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[434px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {motivation}
         </div>
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
