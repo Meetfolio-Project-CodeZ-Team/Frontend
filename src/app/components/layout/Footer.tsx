@@ -17,7 +17,7 @@ const Footer = () => {
               <Image
                 width={24}
                 height={24}
-                src="/Images/mfLogo.png"
+                src="/Images/mfLogo.webp"
                 alt="logoIcon"
               />
               <div className="font-bold text-[20px]">MeetFolio</div>
@@ -33,7 +33,7 @@ const Footer = () => {
             <Image
               width={24}
               height={24}
-              src="/Images/githubIcon.png"
+              src="/Images/githubIcon.webp"
               alt="github icon"
             />
           </div>
