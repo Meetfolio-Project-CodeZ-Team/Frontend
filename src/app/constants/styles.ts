@@ -47,7 +47,7 @@ export const INPUT_STYLE = {
   onboard: (className: string) =>
     `w-[700px] text-xl font-medium pl-10 h-[60px] bg-white rounded-[6px] border-[2px] border-[#C4C4C4] ${className}`,
   search: (className: string) =>
-    `w-[280px] h-[32px] bg-white rounded-[10px] focus:outline-none ${className}`,
+    `w-[280px] h-[32px] bg-white focus:outline-none ${className}`,
   exp1: (className: string) =>
     `w-[900px] text-xl font-medium pl-7 h-15 bg-white rounded-[10px] border border-[#C4C4C4] ${className}`,
   train: (className: string) =>

@@ -1,10 +1,9 @@
 'use client'
 import { MODEL_NAV } from '@/app/constants/admin'
 import { modelNum } from '@/app/recoil/admin'
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import ModelManage from '../model/ModelManage'
-import ModelTrain from '../model/ModelTrain'
 import ModelUsage from '../model/ModelUsage'
 
 const ModelContainer = () => {
@@ -12,6 +11,9 @@ const ModelContainer = () => {
   const [modelData, setModelData] = useState<ResponseModelData | null>(null)
   const marginBorder =
     titleNum === 1 ? 'ml-[154px]' : titleNum === 2 ? 'ml-[290px]' : ''
+
+  const ModelTrain = dynamic(() => import('../model/ModelTrain'))
+  const ModelManage = dynamic(() => import('../model/ModelManage'))
 
   useEffect(() => {
     const fetchData = async () => {

@@ -8,7 +8,7 @@ const MainImage = () => {
       <Image
         className="absolute top-0 left-0 rounded-[30px] z-0"
         fill
-        src="/Images/background.png"
+        src="/Images/background.webp"
         alt="backgroundImage"
         priority={true}
       />

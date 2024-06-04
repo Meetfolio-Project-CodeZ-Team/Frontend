@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import ExpCard from './ExpCard'
-import Link from 'next/link'
 import ExpCardDetail from './ExpCardDetail'
 
 interface ExperienceCard {

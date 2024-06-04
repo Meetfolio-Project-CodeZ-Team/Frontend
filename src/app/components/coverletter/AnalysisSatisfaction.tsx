@@ -94,7 +94,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                         height="18"
                         rx="9"
                         stroke="#0A7AFF"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                       <rect
                         id="circle"
@@ -123,7 +123,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
                         height="18"
                         rx="9"
                         stroke="#98A7B8"
-                        stroke-width="2"
+                        strokeWidth="2"
                       />
                       <rect
                         id="circle"

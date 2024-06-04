@@ -5,6 +5,7 @@ import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { modalNum } from '../../../recoil/experience'
+import { transKeyword } from '@/app/utils/transKeyword'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -62,23 +63,6 @@ const UserExpDetailModal3 = ({
     }
   }
 
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
-
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
       <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
@@ -109,7 +93,7 @@ const UserExpDetailModal3 = ({
               </div>
               <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(jobKeyword)}
+                  {transKeyword(jobKeyword)}
                 </div>
               </div>
             </div>
@@ -142,7 +126,7 @@ const UserExpDetailModal3 = ({
           결과 및 성과
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {advance}
         </div>
         <div

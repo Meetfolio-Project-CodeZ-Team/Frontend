@@ -21,6 +21,7 @@ const PostEmploymentContainer = ({
   const [content, setContent] = useState('')
   const contentment = title !== '' && content != '' && clickedKeyword !== null
   const router = useRouter()
+
   const handleClick = (keyword: onlyJobType) => {
     setClickedKeyword(keyword)
   }
