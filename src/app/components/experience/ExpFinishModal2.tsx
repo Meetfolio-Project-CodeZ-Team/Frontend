@@ -104,7 +104,7 @@ const ExpFinishModal2 = () => {
           나의 활동 & 경험 내용{' '}
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {experienceData.detail}
         </div>
         <div

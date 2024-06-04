@@ -101,7 +101,7 @@ const ExpFinishModal1 = () => {
           업무 사항{' '}
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[248px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {experienceData.task}
         </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
@@ -120,7 +120,7 @@ const ExpFinishModal1 = () => {
           경험 동기
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[434px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {experienceData.motivation}
         </div>
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
