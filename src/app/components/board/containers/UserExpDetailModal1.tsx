@@ -103,7 +103,7 @@ const UserExpDetailModal1 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation() 
+              event.stopPropagation()
               handlePrevClick()
             }}
           >

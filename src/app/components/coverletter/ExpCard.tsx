@@ -38,7 +38,6 @@ const ExpCard = ({
   experienceId,
   onClick,
 }: MyExpCardProps) => {
-
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
 

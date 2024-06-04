@@ -38,7 +38,10 @@ const UserContainer = () => {
     <div className="flex flex-col gap-y-6 bg-white w-[full] pl-[54px] pt-[27px] pb-[44px]">
       <div className="text-[28px] font-bold">회원 관리</div>
       <div className="flex items-center w-[1013px] justify-between">
-        <SearchInput searchUser={true} guideText='검색하려는 회원의 이메일을 입력' />
+        <SearchInput
+          searchUser={true}
+          guideText="검색하려는 회원의 이메일을 입력"
+        />
         <DropDownU
           options={JOBKEYWORD_USER}
           title={'전체'}

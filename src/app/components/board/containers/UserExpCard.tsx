@@ -82,7 +82,7 @@ const UserExpCard = ({
       case 2:
         return <UserExpDetailModal3 {...modalProps} />
       default:
-        return null 
+        return null
     }
   }
 

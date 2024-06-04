@@ -87,7 +87,9 @@ const LoginContainer = () => {
           <Link href={'/signup'}>
             <div className="font-semibold underline">회원가입</div>
           </Link>
-          <div className="text-gray-700 text-[16px]">아직 회원이 아니신가요?</div>
+          <div className="text-gray-700 text-[16px]">
+            아직 회원이 아니신가요?
+          </div>
         </div>
       </div>
     </div>
