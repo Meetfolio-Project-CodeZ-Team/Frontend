@@ -83,9 +83,12 @@ const LoginContainer = () => {
           onClickHandler={() => postLogin()}
           className={isInserted ? ' bg-white' : 'text-white'}
         />
-        <Link href={'/signup'}>
-          <div className="pt-4 text-lg font-semibold underline">회원가입</div>
-        </Link>
+        <div className="flex gap-x-2 pt-4 pr-6 w-full flex-row-reverse text-[18px] item">
+          <Link href={'/signup'}>
+            <div className="font-semibold underline">회원가입</div>
+          </Link>
+          <div className="text-gray-700 text-[16px]">아직 회원이 아니신가요?</div>
+        </div>
       </div>
     </div>
   )
