@@ -103,7 +103,7 @@ const UserExpDetailModal1 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation() 
               handlePrevClick()
             }}
           >
@@ -112,7 +112,7 @@ const UserExpDetailModal1 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation()
               handleNextClick()
             }}
           >
