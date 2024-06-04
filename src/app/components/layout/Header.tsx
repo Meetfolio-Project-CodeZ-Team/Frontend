@@ -22,8 +22,9 @@ const Header = ({ isAdmin, nickname, profile }: HeaderProps) => {
             <Image
               width={40}
               height={40}
-              src="/Images/mfLogo.png"
+              src="/Images/mfLogo.webp"
               alt="logoIcon"
+              style={{ width: 40, height: 40 }}
             />
             eetfolio
             {isAdmin && (

@@ -10,7 +10,7 @@ import {
   feedbackData,
   tidState,
 } from '@/app/recoil/coverletter'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
@@ -25,7 +25,6 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
   const profile = paramsData.get('profile')
 
   const [tid, setTid] = useRecoilState(tidState)
-  const router = useRouter()
   const paramsInfo = useSearchParams()
   const pg_token = paramsInfo.get('pg_token')
 

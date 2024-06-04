@@ -121,16 +121,6 @@ export const kakaoRequest = async (body: any) => {
   }
 }
 
-export const postUserExpCard = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/members?memberName=${id}`
-  return await postRequest(url, null, accessToken)
-}
-
-export const postUserCovelet = async (accessToken: string, id: string) => {
-  const url = `${SERVER_URL}/api/coverLetters/members?memberName=${id}`
-  return await postRequest(url, null, accessToken)
-}
-
 export const postTid = async (data: any, accessToken: string) => {
   const url = `${SERVER_URL}/api/payments/ready `
   return await postRequest(url, data, accessToken)

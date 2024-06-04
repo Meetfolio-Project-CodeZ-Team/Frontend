@@ -1,4 +1,3 @@
-import React from 'react'
 const Back1 = () => {
   return (
     <svg
@@ -23,16 +22,16 @@ const Back1 = () => {
       <path
         d="M99.51 45.0725C111.735 51.9175 120 64.9925 120 80C120 102.093 102.092 120 80 120C57.9075 120 40 102.093 40 80C40 65.2825 47.9475 52.4225 59.785 45.4775"
         stroke="url(#paint0_linear_389_3890)"
-        stroke-width="10"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeWidth="10"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <path
         d="M80 80V30"
         stroke="#486284"
-        stroke-width="10"
-        stroke-miterlimit="10"
-        stroke-linecap="round"
+        strokeWidth="10"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
       />
       <defs>
         <linearGradient

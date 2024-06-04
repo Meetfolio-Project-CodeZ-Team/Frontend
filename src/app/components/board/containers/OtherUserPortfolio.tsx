@@ -17,22 +17,16 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`/api/userpage/${path}?id=${username}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const response = await fetch(`/api/userpage/${path}?id=${username}`, {})
       const data = await response.json()
 
       setProfile(data.result.profile)
-
       isExp
         ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
         : setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
     }
     getData()
-  }, [isExp])
+  }, [isExp, username])
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />

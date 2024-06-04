@@ -16,9 +16,10 @@ const Footer = () => {
             <div className="flex items-center gap-x-1.5 mb-2">
               <Image
                 width={24}
-                height={24}
-                src="/Images/mfLogo.png"
+                height={22.5}
+                src="/Images/mfLogo.webp"
                 alt="logoIcon"
+                style={{ width: 24, height: 22.5 }}
               />
               <div className="font-bold text-[20px]">MeetFolio</div>
               <div className="font-light text-[16px]">Copyright</div>
@@ -33,7 +34,7 @@ const Footer = () => {
             <Image
               width={24}
               height={24}
-              src="/Images/githubIcon.png"
+              src="/Images/githubIcon.webp"
               alt="github icon"
             />
           </div>

@@ -11,8 +11,8 @@ const PrevArrow = () => {
         <path
           d="M37 9L14.5355 31.4645C12.5829 33.4171 12.5829 36.5829 14.5355 38.5355L37 61"
           stroke="white"
-          stroke-width="5"
-          stroke-linecap="round"
+          strokeWidth="5"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -24,7 +24,7 @@ const PrevArrow = () => {
           width="48.929"
           height="77"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix

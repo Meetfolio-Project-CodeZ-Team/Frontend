@@ -141,7 +141,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -154,12 +154,12 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
@@ -331,7 +331,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[180px] absolute border-2 border-gray-300 rounded-[15px] ">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -344,12 +344,12 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
@@ -433,7 +433,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -446,12 +446,12 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
@@ -511,7 +511,7 @@ const MyCovletCardDetail = ({
                         d="M67 130.5C102.07 130.5 130.5 102.07 130.5 67C130.5 31.9299 102.07 3.5 67 3.5C31.9299 3.5 3.5 31.9299 3.5 67C3.5 102.07 31.9299 130.5 67 130.5Z"
                         fill="white"
                         stroke="#CFE8FF"
-                        stroke-width="7"
+                        strokeWidth="7"
                       />
                     </svg>
                     <svg
@@ -563,7 +563,7 @@ const MyCovletCardDetail = ({
                         r="85"
                         fill="white"
                         stroke="#529EFF"
-                        stroke-width="10"
+                        strokeWidth="10"
                       />
                     </svg>
                     <svg
@@ -614,7 +614,7 @@ const MyCovletCardDetail = ({
                       r="63.5"
                       fill="white"
                       stroke="#7AAAE8"
-                      stroke-width="7"
+                      strokeWidth="7"
                     />
                   </svg>
                   <svg
