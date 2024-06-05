@@ -1,6 +1,6 @@
 import { useModal } from '@/app/hooks/useModal'
 import { covletData } from '@/app/recoil/coverletter'
-import { successCopy } from '@/app/utils/toast'
+import { replyKeyword, successCopy } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
@@ -34,7 +34,10 @@ const CovletSave = () => {
   const [analysisReceived, setAnalysisReceived] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
+  const isBlank =
+    coverletterData.keyword1 === '' ||
+    coverletterData.keyword2 === '' ||
+    coverletterData.jobKeyword === ''
   useEffect(() => {
     const fetchExpCards = async () => {
       try {
@@ -101,24 +104,6 @@ const CovletSave = () => {
       jobKeyword,
       coverLetterId,
     } = coverletterData
-
-    if (!coverLetterId) {
-      console.error('coverLetterId가 없습니다.')
-      return
-    }
-
-    if (
-      !answer ||
-      !question ||
-      !shareType ||
-      !keyword1 ||
-      !keyword2 ||
-      !jobKeyword
-    ) {
-      console.error('모든 필드를 채워주세요.')
-      return
-    }
-
     const response = await fetch(`/api/coverletters/save?id=${coverLetterId}`, {
       method: 'PATCH',
       headers: {
@@ -204,6 +189,10 @@ const CovletSave = () => {
   }
 
   const requestAIFeedback = async () => {
+    if (isBlank) {
+      replyKeyword()
+      return
+    }
     setIsLoading(true)
     const { coverLetterId } = coverletterData
 

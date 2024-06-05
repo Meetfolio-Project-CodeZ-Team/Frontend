@@ -1,4 +1,4 @@
-import { successCopy } from '@/app/utils/toast'
+import { replyBlank, successCopy } from '@/app/utils/toast'
 import { Switch } from '@headlessui/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -179,6 +179,10 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   }
 
   const saveCovData = async () => {
+    if (coverletterData.answer === '' || coverletterData.question === '') {
+      replyBlank()
+      return 0
+    }
     const { ...dataToSend } = coverletterData
 
     const urlPath = isEdit
@@ -205,6 +209,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     }
     goToNextPage()
   }
+  
   const updateCovData = async () => {
     const { ...dataToSend } = coverletterData
 
