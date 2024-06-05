@@ -1,7 +1,7 @@
 import { useModal } from '@/app/hooks/useModal'
 import { transKeyword } from '@/app/utils/transKeyword'
 import { useEffect, useState } from 'react'
-import JobAnal2 from '../mypage/common/JobAnal2'
+import JobAnal from '../mypage/common/JobAnal'
 import AnalysisSatisfaction from './AnalysisSatisfaction'
 
 interface AnalysisData {
@@ -58,7 +58,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         </div>
         <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
           <div className="w-[360px] h-[360px] relative">
-            <JobAnal2
+            <JobAnal
               jKeyword={transKeyword(analysisData?.job_keyword || '')}
               accuracy={Number(analysisData?.job_suitability)}
               all={100 - Number(analysisData?.job_suitability)}
