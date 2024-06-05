@@ -135,6 +135,13 @@ const replyKeyword = () => {
   })
 }
 
+const replyBoard = () => {
+  toast.warning('입력,  체크 요소들을 확인해주세요!', {
+    icon: () => '🤔',
+    ...commonOptions,
+  })
+}
+
 export {
   addTrainData,
   authCodeAlert,
@@ -154,4 +161,5 @@ export {
   trainData,
   trainStop,
   updateUserInfo,
+  replyBoard
 }
