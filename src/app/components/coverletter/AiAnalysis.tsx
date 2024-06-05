@@ -1,4 +1,5 @@
 import { useModal } from '@/app/hooks/useModal'
+import { transKeyword } from '@/app/utils/transKeyword'
 import { useEffect, useState } from 'react'
 import JobAnal2 from '../mypage/common/JobAnal2'
 import AnalysisSatisfaction from './AnalysisSatisfaction'
@@ -17,21 +18,6 @@ interface AiAnalysisProps {
 const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
   const [userInfo, setUser] = useState<memberInfo | null>(null)
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
-
-  const transKeyword = (keyword: string) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-    }
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,8 +39,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
             {userInfo?.memberName}{' '}
           </span>
           <span className="text-black text-3xl font-bold leading-[45px]">
-            님과 {transKeyword(String(analysisData?.job_keyword))}의 직무
-            적합도는
+            님과 {transKeyword(analysisData?.job_keyword || '')}의 직무 적합도는
           </span>
           <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
             {analysisData?.job_suitability}%
@@ -74,7 +59,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
         <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
           <div className="w-[360px] h-[360px] relative">
             <JobAnal2
-              jKeyword={transKeyword(String(analysisData?.job_keyword))}
+              jKeyword={transKeyword(analysisData?.job_keyword || '')}
               accuracy={Number(analysisData?.job_suitability)}
               all={100 - Number(analysisData?.job_suitability)}
             />
