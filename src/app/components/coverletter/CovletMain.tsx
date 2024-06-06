@@ -1,6 +1,6 @@
 import { successCopy } from '@/app/utils/toast'
 import { Switch } from '@headlessui/react'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -13,8 +13,6 @@ import {
   tidState,
 } from '../../recoil/coverletter'
 import ExpCardList from './ExpCardList'
-import { useRouter } from 'next/navigation'
-import AiFeedContainer from './AiFeedContainer'
 
 interface CovletFinishContainerProps {
   isEdit?: boolean
@@ -35,7 +33,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
   const coverletterId = params.get('id')
 
   setTid(tid)
-
 
   useEffect(() => {
     if (pg_token) {
@@ -127,7 +124,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
         })
     }
   }, [isEdit, id])
-  
+
 
   const handleToggle = () => {
     setEnabled(!enabled)
@@ -252,12 +249,12 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width="1.5"
+                strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6"
               >
                 <path
-                  stroke-linecap="round"
+                  strokeLinecap="round"
                   stroke-linejoin="round"
                   d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
                 />
@@ -320,54 +317,10 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           </div>
         </div>
       </div>
-      {/* <div className="absolute left-[10px] top-[750px] ">
-        <div className="w-[931px] h-[960px] relative mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px] mb-[100px]">
-          <div className="w-[931px] h-[958px] left-0 top-0 flex">
-            <div className="w-[854px] h-[350px] left-[42px] top-[181px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide">
-              {feedbackInfo?.correction}
-            </div>
-          </div>
-          <div className="w-[890px] h-[0px] top-[70px] absolute border  ml-[22px] border-zinc-300"></div>
-          <div className="w-[910px] h-[50px]  top-[100px] absolute">
-            <div className="w-[910px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
-            <div className="w-[228px] h-[49px] left-[358px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
-              자기소개서 첨삭 결과
-            </div>
-          </div>
-          <div className="w-[253px] h-[49px] left-[345px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
-            AI 자기소개서 피드백
-          </div>
-
-          <div className="w-[817px] h-[158px] left-[64px] top-[636px] absolute">
-            <div className="list-none space-y-2">
-              {[1, 2, 3].map((index) => {
-                const key = `recommendQuestion${index}` as keyof FeedbackInfo
-                return feedbackInfo && feedbackInfo[key] ? (
-                  <li
-                    key={index}
-                    className="relative pl-4 bg-blue-200 text-base px-3 py-2 rounded-[10px]"
-                  >
-                    <div className="absolute w-[25px] h-[25px] flex items-center justify-center bg-[#486283] text-white font-bold rounded-full left-[-2.5rem] top-1/2 transform -translate-y-1/2">
-                      {index}
-                    </div>
-                    {feedbackInfo[key]}
-                  </li>
-                ) : null
-              })}
-            </div>
-          </div>
-          <div className="w-[910px] h-[50px]  top-[550px] absolute">
-            <div className="w-[910px] h-[50px] left-0 top-0 absolute bg-gradient-to-r from-white to-blue-100 rounded-[10px]" />
-            <div className="w-[228px] h-[49px] left-[358px] top-[6px] absolute text-center text-black text-2xl font-bold leading-9">
-              추천 자기소개서 문항
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="w-[870px] h-[60px] left-[59px] top-[750px] absolute">
         <button
           className="text-white  bg-stone-300 border-0 py-[18px] px-[380px] focus:outline-none hover:bg-gray-800 rounded-[30px] text-xl font-semibold"
-          onClick={isEdit? updateCovData : saveCovData}
+          onClick={isEdit ? updateCovData : saveCovData}
           type="button"
         >
           {isEdit ? '수정하기' : '저장하기'}

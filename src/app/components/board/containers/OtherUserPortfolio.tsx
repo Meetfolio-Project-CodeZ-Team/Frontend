@@ -14,27 +14,19 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
   const [isExp, setIsExp] = useState(false)
   const [profile, setProfile] = useState('')
   const path = isExp ? 'expcard' : 'coverletter'
-  console.log(covletCards)
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`/api/userpage/${path}?id=${username}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const response = await fetch(`/api/userpage/${path}?id=${username}`, {})
       const data = await response.json()
 
       setProfile(data.result.profile)
-
-
       isExp
         ? setExpCards(data.result.experienceCardInfo.experienceCardItems)
         : setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
     }
     getData()
-  }, [isExp])
+  }, [isExp, username])
   return (
     <div className="w-full h-[1090px] relative">
       <div className="w-full h-[979px] left-0 top-0 absolute bg-gray-50 " />
@@ -83,7 +75,13 @@ const OtherUserPortfolio = ({ username }: OtherUserPortfolioProps) => {
           <div className="w-[500px] h-full ml-[60px] gap-[20px]">
             {covletCards.length > 0 ? (
               covletCards.map((a) => (
-                <MyCovletCard key={a.coverLetterId} {...a} isGuest={true} writerName={username} profile={profile} />
+                <MyCovletCard
+                  key={a.coverLetterId}
+                  {...a}
+                  isGuest={true}
+                  writerName={username}
+                  profile={profile}
+                />
               ))
             ) : (
               <div className="w-[1060px] h-[500px] flex items-center justify-center mt-[40px] ">

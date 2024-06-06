@@ -158,3 +158,26 @@ export const getBoardDetail = async (accessToken: string, id: string) => {
   const url = `${SERVER_URL}/api/boards/${id}`
   return await getRequest(url, accessToken)
 }
+
+export const getModelList = async (accessToken: string, page: string) => {
+  const url =
+    page !== ''
+      ? `${SERVER_URL}/api/admins/data-management/version?page=${page}`
+      : `${SERVER_URL}/api/admins/data-management/version`
+  return await getRequest(url, accessToken)
+}
+
+export const getModelDetail = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/admins/data-management/version/${id}`
+  return await getRequest(url, accessToken)
+}
+
+export const getUserCovelet = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/coverLetters/members?memberName=${id}`
+  return await getRequest(url, accessToken)
+}
+
+export const getUserExpCard = async (accessToken: string, id: string) => {
+  const url = `${SERVER_URL}/api/experience-cards/members?memberName=${id}`
+  return await getRequest(url, accessToken)
+}

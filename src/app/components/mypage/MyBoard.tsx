@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import MyBoardCard from './MyBoardCard'
-import { useRecoilState } from 'recoil'
 import { boardNum } from '@/app/recoil/mypage'
+import { useEffect, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import MyBoardCard from './MyBoardCard'
 interface BoardCard {
   title?: string
   content?: string

@@ -1,12 +1,11 @@
-import { useState } from 'react'
 import ShowCard from '@/app/components/main/ShowCard'
+import { useState } from 'react'
 
-import { useRecoilState } from 'recoil'
-import { modalNum } from '@/app/recoil/experience'
 import UserExpDetailModal1 from '@/app/components/board/containers/UserExpDetailModal1'
+import { modalNum } from '@/app/recoil/experience'
+import { useRecoilState } from 'recoil'
 import UserExpDetailModal2 from './UserExpDetailModal2'
 import UserExpDetailModal3 from './UserExpDetailModal3'
-import { useRouter, usePathname } from 'next/navigation'
 
 interface MyExpCardProps {
   experienceType: string
@@ -44,8 +43,6 @@ const UserExpCard = ({
   experienceId,
   isGuest,
 }: MyExpCardProps) => {
-  const stackArr = stack.split(',')
-
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
@@ -59,7 +56,6 @@ const UserExpCard = ({
         throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
       }
       const data = await response.json()
-      console.log('경험분해 세부정보 조회', data.result.experienceInfo)
       setExpCards({
         ...data.result.experienceInfo,
         experienceId: experienceId, // experienceId 명시적으로 추가
@@ -86,7 +82,7 @@ const UserExpCard = ({
       case 2:
         return <UserExpDetailModal3 {...modalProps} />
       default:
-        return null // 기본적으로는 null을 반환하거나 첫 번째 모달을 띄울 수도 있습니다.
+        return null
     }
   }
 
@@ -96,7 +92,7 @@ const UserExpCard = ({
       onClick={fetchExpCards}
     >
       <div className="top-3 right-4 absolute">
-        <div className="flex items-center justify-center w-[95px] h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px] overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div className="flex items-center justify-center w-[auto] px-3 h-[30px] bg-[#7AA9E7] text-sm font-semibold rounded-[30px] overflow-x-auto whitespace-nowrap scrollbar-hide">
           {experienceType}
         </div>
       </div>
@@ -113,8 +109,8 @@ const UserExpCard = ({
         <div className="flex w-20 h-9 px-3 bg-white rounded justify-center items-center gap-2">
           {jobKeyword}
         </div>
-        <div className="flex w-[180px] h-9 px-1 bg-white rounded justify-center items-center gap-2 ">
-          <div className="flex w-[170px] h-5  text-[12px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div className="flex w-[auto] h-9 px-4 bg-white rounded justify-center items-center gap-2 ">
+          <div className="flex text-[12px] text-center rounded justify-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-hide">
             {stack}
           </div>
         </div>

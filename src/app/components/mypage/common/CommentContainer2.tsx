@@ -1,14 +1,12 @@
 'use client'
 
-import { selectedPostId } from '@/app/recoil/board'
 import CommentUp from '@/app/ui/svg/main/CommentUp'
 import Like from '@/app/ui/svg/main/Like'
 import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useRecoilState } from 'recoil'
-import Button from '../../common/Button'
 import Comment from '../../board/Comment'
+import Button from '../../common/Button'
 
 interface CommentContainerProps {
   postId: number
@@ -47,7 +45,6 @@ const CommentContainer2 = ({ postId, isLiked }: CommentContainerProps) => {
       body: JSON.stringify(reqBody),
     })
     const resData = await res.json()
-    console.log(resData, '댓글응답')
     const response = await fetch(`/api/board/comment?id=${postId}`)
     const getRes = await response.json()
     setComment(getRes.result.commentItems)

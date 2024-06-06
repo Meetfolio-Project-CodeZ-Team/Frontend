@@ -1,5 +1,3 @@
-'use client'
-
 import Footer from '@/app/components/layout/Footer'
 import Header from '@/app/components/layout/Header'
 import SignupContainer from '@/app/components/signup/containers/SignupContainer'

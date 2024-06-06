@@ -3,9 +3,10 @@
 import { portNum } from '@/app/recoil/mypage'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import { transKeyword } from '@/app/utils/transKeyword'
 import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
-import { expData, expNum, modalNum } from '../../recoil/experience'
+import { expData, modalNum } from '../../recoil/experience'
 
 const ExpFinishModal2 = () => {
   const [experienceData, setExperienceData] = useRecoilState(expData)
@@ -13,40 +14,7 @@ const ExpFinishModal2 = () => {
   const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
   const router = useRouter()
 
-  const totalPages = 3
-
-  const handleNextClick = () => {
-    if (pageNumber < totalPages - 1) {
-      setPageNumber(pageNumber + 1)
-    } else {
-      setPageNumber(0)
-    }
-  }
-
-  const handlePrevClick = () => {
-    if (pageNumber > 0) {
-      setPageNumber(pageNumber - 1)
-    } else {
-      setPageNumber(totalPages - 1)
-    }
-  }
-
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
+  
 
   const handleButtonClick = () => {
     setExperienceData({
@@ -81,38 +49,26 @@ const ExpFinishModal2 = () => {
               </div>
             </div>
           </div>
-          <div className="w-[373px]  relative">
-            <div className="px-5 left-[140.62px] top-0 absolute bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] inline-flex">
-              <div className="text-center text-white text-sm font-bold leading-[23px]">
-                {experienceData.expStacks.join(' / ')}
-              </div>
-            </div>
-            <div className="w-[142.74px]  left-0 top-0 absolute justify-start items-start gap-3 inline-flex">
+          <div className="w-[373px] flex flex-inline gap-3 relative">
+            <div className="flex items-center gap-3">
               <div className="text-center text-gray-900 text-[16px] font-bold leading-[27px]">
                 직무 |{' '}
               </div>
-              <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(experienceData.jobKeyword)}
+                {transKeyword(experienceData.jobKeyword)}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
+                <div className="text-center text-white text-sm font-bold leading-[23px]">
+                {experienceData.expStacks.join(' / ')}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        {/* <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={handlePrevClick}
-          >
-            <PrevArrow />
-          </div>
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={handleNextClick}
-          >
-            <NextArrow />
-          </div>
-        </div> */}
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
           {experienceData.title}
         </div>
@@ -120,7 +76,7 @@ const ExpFinishModal2 = () => {
           나의 활동 & 경험 내용{' '}
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {experienceData.detail}
         </div>
         <div
@@ -144,18 +100,3 @@ const ExpFinishModal2 = () => {
 }
 
 export default ExpFinishModal2
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

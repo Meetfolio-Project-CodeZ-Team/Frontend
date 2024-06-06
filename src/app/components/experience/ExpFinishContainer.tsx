@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useRecoilState } from 'recoil'
 import { expData, expNum, modalNum } from '../../recoil/experience'
 import ExpFinishModal1 from './ExpFinishModal1'
@@ -10,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation } from 'swiper/modules'
 import { useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -20,35 +20,7 @@ const ExpFinishContainer = () => {
   const nextRef = useRef<HTMLDivElement>(null)
   const swiperRef = useRef<any>(null)
 
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
-
-  const getCurrentModal = () => {
-    switch (pageNumber) {
-      case 0:
-        return <ExpFinishModal1 />
-      case 1:
-        return <ExpFinishModal2 />
-      case 2:
-        return <ExpFinishModal3 />
-      default:
-        return null
-    }
-  }
+  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -61,22 +33,6 @@ const ExpFinishContainer = () => {
       ...experienceData,
       [event.target.name]: event.target.value,
     })
-  }
-  const handleButtonClick = () => {
-    setExperienceData({
-      title: '',
-      startDate: '',
-      endDate: '',
-      experienceType: '',
-      task: '',
-      motivation: '',
-      jobKeyword: '',
-      stack: '',
-      detail: '',
-      advance: '',
-      expStacks: [],
-    })
-    router.push('/mypage/myexperience')
   }
 
   const saveExpData = async () => {
@@ -253,18 +209,3 @@ const ExpFinishContainer = () => {
 }
 
 export default ExpFinishContainer
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

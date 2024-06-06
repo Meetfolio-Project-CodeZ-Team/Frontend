@@ -18,7 +18,6 @@ export default function PatchEmploymentPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
     getUser()
   }, [id])
@@ -27,12 +26,6 @@ export default function PatchEmploymentPage() {
     const fetchData = async () => {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/board/detail?id=${id}`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
       )
       const resData = await response.json()
       setData(resData.result.boardInfo)

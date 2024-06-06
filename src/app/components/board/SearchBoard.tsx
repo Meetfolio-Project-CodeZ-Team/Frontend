@@ -28,6 +28,7 @@ const SearchBoard = ({ isJob }: SearchBoardProps) => {
         type={'search'}
         onChange={(e) => setTitle(e.target.value)}
         className="w-[170px] text-base"
+        onEnterPress={searchPost}
       />
       <div className="cursor-pointer" onClick={searchPost}>
         <Icons name={search} />

@@ -22,7 +22,7 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
     useState<GroupBoardTypes | null>(null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
-  const [member, setMember] = useState('')
+  const [member, setMember] = useState('0')
   const contentment =
     title !== '' &&
     content != '' &&

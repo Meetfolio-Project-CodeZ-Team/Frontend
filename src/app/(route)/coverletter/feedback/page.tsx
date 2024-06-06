@@ -21,7 +21,6 @@ export default function CovletFeedbackPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
 
     fetchData()

@@ -1,15 +1,11 @@
 'use client'
 
-import { useRecoilState } from 'recoil'
-import { expNum, expData, modalNum } from '../../../recoil/experience'
-import { useRouter } from 'next/navigation'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import NextArrow from '@/app/ui/svg/arrow/NextArrow'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import { useState } from 'react'
-import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from '../../admin/common/DeleteModal'
-import { useModal2 } from '@/app/hooks/useModal2'
-import DeleteModal2 from '../../admin/common/DeleteModal2'
+import { useRecoilState } from 'recoil'
+import { modalNum } from '../../../recoil/experience'
+import { transKeyword } from '@/app/utils/transKeyword'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -40,12 +36,8 @@ const UserExpDetailModal3 = ({
   advance,
   closeModal,
 }: ExperienceCardDetail & { isGuest?: boolean }) => {
-  const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
-  const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
   const [isHovered, setIsHovered] = useState(false)
-  const { isOpen, openmodal, closemodal, handlemodalClick } = useModal2(false)
-  const router = useRouter()
   const handleModalClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
@@ -59,7 +51,6 @@ const UserExpDetailModal3 = ({
     if (pageNumber < totalPages - 1) {
       setPageNumber(pageNumber + 1)
     } else {
-      // 마지막 페이지에서 'Next' 클릭 시 첫 페이지로 이동
       setPageNumber(0)
     }
   }
@@ -68,65 +59,7 @@ const UserExpDetailModal3 = ({
     if (pageNumber > 0) {
       setPageNumber(pageNumber - 1)
     } else {
-      // 첫 페이지에서 'Prev' 클릭 시 마지막 페이지로 이동
       setPageNumber(totalPages - 1)
-    }
-  }
-
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
-
-  const onEditClick = () => {
-    setExperienceData({
-      title,
-      startDate,
-      endDate,
-      experienceType,
-      task,
-      motivation,
-      detail,
-      advance,
-      stack,
-      jobKeyword,
-      expStacks: stack.split(' / '),
-    })
-
-    router.push(`/edit-experience/${experienceId}`)
-  }
-
-  const deleteExp = async (experienceId: number) => {
-    console.log('경험카드 삭제 요청이에요', experienceId)
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/mypage/myExp/delete?experienceId=${experienceId}`,
-        {
-          method: 'DELETE',
-        },
-      )
-
-      if (res.ok) {
-        console.log('경험카드가 성공적으로 삭제되었습니다.')
-        window.location.reload()
-      } else {
-        const errorData = await res.json()
-        console.error('Error details:', errorData)
-      }
-    } catch (error) {
-      console.error('Network or other error:', error)
     }
   }
 
@@ -160,7 +93,7 @@ const UserExpDetailModal3 = ({
               </div>
               <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(jobKeyword)}
+                  {transKeyword(jobKeyword)}
                 </div>
               </div>
             </div>
@@ -170,7 +103,7 @@ const UserExpDetailModal3 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer "
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation()
               handlePrevClick()
             }}
           >
@@ -179,7 +112,7 @@ const UserExpDetailModal3 = ({
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={(event) => {
-              event.stopPropagation() // 다른 이벤트와 충돌을 방지하기 위해 이벤트 전파를 멈추는 코드를 추가
+              event.stopPropagation()
               handleNextClick()
             }}
           >
@@ -193,7 +126,7 @@ const UserExpDetailModal3 = ({
           결과 및 성과
         </div>
         <div className="w-[439px] h-[260px] left-[30px] top-[265px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[240px] left-[40px] top-[275px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {advance}
         </div>
         <div
@@ -239,18 +172,3 @@ const UserExpDetailModal3 = ({
 }
 
 export default UserExpDetailModal3
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

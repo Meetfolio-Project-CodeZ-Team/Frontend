@@ -2,13 +2,13 @@
 import { boardDataState, boardTypeState } from '@/app/recoil/board'
 import { leftAngle, rightAngle } from '@/app/ui/IconsPath'
 import Pencil from '@/app/ui/svg/common/Pencil'
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
 import { useRecoilState } from 'recoil'
 import Icons from '../../common/Icons'
 import BoardHeader from '../BoardHeader'
-import GroupBoardContainer from './GroupBoardContainer'
 import JobBoardContainer from './JobBoardContainer'
 
 interface BoardContainerProps {
@@ -22,6 +22,7 @@ const BoardContainer = ({ nickname, profile }: BoardContainerProps) => {
   const path = isJob ? 'employment' : 'group'
   const router = useRouter()
   const [boardData, setBoardData] = useRecoilState(boardDataState)
+  const GroupBoardContainer = dynamic(() => import('./GroupBoardContainer'))
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setPage(() => selected + 1)

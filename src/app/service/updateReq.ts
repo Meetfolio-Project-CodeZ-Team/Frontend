@@ -28,7 +28,6 @@ export const updateExp = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/experiences/${id}`
-  console.log(url, '요청경로')
 
   return await patchRequest(url, experienceContent, accessToken)
 }
@@ -39,7 +38,6 @@ export const saveCov = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/${id}`
-  console.log(url, '요청경로')
 
   return await patchRequest(url, coverLetterContent, accessToken)
 }
@@ -49,8 +47,6 @@ export const updateUser = async (
   accessToken: string,
 ) => {
   const url = `${SERVER_URL}/api/mypage`
-  console.log(url, '요청경로')
-
   return await patchRequest(url, userContent, accessToken)
 }
 
@@ -60,8 +56,6 @@ export const updateSatisfaction = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/satisfaction?feedbackId=${id}`
-  console.log(url, '요청경로')
-
   return await patchRequest(url, Content, accessToken)
 }
 
@@ -71,7 +65,5 @@ export const updateSatisfaction2 = async (
   id: string,
 ) => {
   const url = `${SERVER_URL}/api/coverLetters/satisfaction?analysisId=${id}`
-  console.log(url, '요청경로')
-
   return await patchRequest(url, Content, accessToken)
 }

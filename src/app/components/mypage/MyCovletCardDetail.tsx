@@ -72,12 +72,8 @@ const MyCovletCardDetail = ({
     textArea.select()
 
     try {
-      const successful = document.execCommand('copy')
-      const msg = successful ? 'successful' : 'unsuccessful'
-
       alert('Text copied to clipboard!')
     } catch (err) {
-      console.error('Failed to copy text: ', err)
       alert('Failed to copy text.')
     }
 
@@ -145,7 +141,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide  ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -158,19 +154,21 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
             </svg>
           </button>
         </div>
-        <div className={`w-[1090px] h-[965px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'} `}>
+        <div
+          className={`w-[1090px] h-[965px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'} `}
+        >
           <div className="w-[260.26px] h-[49px] left-[415px] top-[18px] absolute text-center text-blue-400 text-3xl font-bold leading-[45px]">
             AI 자기소개서 피드백
           </div>
@@ -274,7 +272,9 @@ const MyCovletCardDetail = ({
             ) : null
           ) : null}
         </div>
-        <div className={`w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex `}>
+        <div
+          className={`w-[672px] h-[53px] left-[216px] top-[62px] absolute justify-center items-center gap-3 inline-flex `}
+        >
           <div className="w-24 h-[50px] px-5 bg-slate-600 rounded-[30px] justify-center items-center gap-2 flex">
             <div className="w-[76px] text-center text-white text-[25px] font-semibold leading-[37.50px]">
               문항
@@ -290,7 +290,9 @@ const MyCovletCardDetail = ({
             </div>
           </div>
         </div>
-        <div className={`w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex `}>
+        <div
+          className={`w-[670px] h-[50px] left-[240px] top-[150px] absolute justify-start items-start gap-[35px] inline-flex `}
+        >
           <div className="w-[200px] h-[50px] px-5 bg-blue-50 rounded-[30px] justify-center items-center gap-2 flex">
             <div className="text-center text-blue-400 text-xl font-semibold leading-[30px]">
               #{keyword1}
@@ -329,7 +331,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[180px] absolute border-2 border-gray-300 rounded-[15px] ">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -342,12 +344,12 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
@@ -431,7 +433,7 @@ const MyCovletCardDetail = ({
           <div className="w-full h-full left-0 top-0 absolute bg-white " />
           <div className="w-[1090px] h-[440px] left-[60px] top-[222px] absolute border-2 border-gray-300 rounded-[15px] overflow-y-auto  scrollbar-hide">
             <div
-              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'}`}
+              className={`w-[1020px] h-[405px] left-[30px] top-[18px] absolute text-black text-xl font-medium leading-[30px] overflow-y-auto  scrollbar-hide ${!paid && 'blur'} whitespace-pre-wrap overflow-y-auto scrollbar-hide`}
             >
               {answer}
             </div>
@@ -444,19 +446,21 @@ const MyCovletCardDetail = ({
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.8"
+              strokeWidth="1.8"
               stroke="currentColor"
               className="w-7 h-7"
             >
               <path
-                stroke-linecap="round"
+                strokeLinecap="round"
                 stroke-linejoin="round"
                 d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6"
               />
             </svg>
           </button>
         </div>
-        <div className={`w-[1090px] h-[1030px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'}`}>
+        <div
+          className={`w-[1090px] h-[1030px] left-[60px] top-[765px] absolute border-2 border-gray-300 rounded-[15px] ${!paid && 'blur'}`}
+        >
           <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
             <div className="w-[950px] h-[0px] top-[70px] absolute border  border-zinc-300"></div>
             <div className="w-[773px] h-[52px] top-[101px] absolute text-center text-black text-3xl font-bold  leading-[45px]">
@@ -507,7 +511,7 @@ const MyCovletCardDetail = ({
                         d="M67 130.5C102.07 130.5 130.5 102.07 130.5 67C130.5 31.9299 102.07 3.5 67 3.5C31.9299 3.5 3.5 31.9299 3.5 67C3.5 102.07 31.9299 130.5 67 130.5Z"
                         fill="white"
                         stroke="#CFE8FF"
-                        stroke-width="7"
+                        strokeWidth="7"
                       />
                     </svg>
                     <svg
@@ -559,7 +563,7 @@ const MyCovletCardDetail = ({
                         r="85"
                         fill="white"
                         stroke="#529EFF"
-                        stroke-width="10"
+                        strokeWidth="10"
                       />
                     </svg>
                     <svg
@@ -610,7 +614,7 @@ const MyCovletCardDetail = ({
                       r="63.5"
                       fill="white"
                       stroke="#7AAAE8"
-                      stroke-width="7"
+                      strokeWidth="7"
                     />
                   </svg>
                   <svg

@@ -47,10 +47,10 @@ const UserInfo = (userInfo: UserInfoProps) => {
   return (
     <div className="flex flex-col w-[1034px] h-[50px]">
       <div className="flex w-[1034px] h-[50px] border-b border-[#BDBDBD] items-center text-black text-lg">
-        <div className="w-[136px] text-center">{registrationDate}</div>
-        <div className="w-[231px] text-center">{email}</div>
+        <div className="w-[128px] text-center">{registrationDate}</div>
+        <div className="w-[228px] text-center text-[16px]">{email}</div>
         <div className="w-[94px] text-center">{grade}</div>
-        <div className="w-[176px] text-center">{major}</div>
+        <div className="w-[188px] text-center">{major}</div>
         <div className="w-[107px] text-center">{jobKeyword}</div>
         <div className="w-[152px] text-center">{point}</div>
         <div

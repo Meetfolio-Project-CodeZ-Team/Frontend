@@ -12,8 +12,8 @@ const NextArrow = () => {
           id="Vector"
           d="M13 61L35.4645 38.5355C37.4171 36.5829 37.4171 33.4171 35.4645 31.4645L13 9"
           stroke="#FAFBFD"
-          stroke-width="5"
-          stroke-linecap="round"
+          strokeWidth="5"
+          strokeLinecap="round"
           stroke-linejoin="round"
         />
       </g>
@@ -25,7 +25,7 @@ const NextArrow = () => {
           width="48.929"
           height="77"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix

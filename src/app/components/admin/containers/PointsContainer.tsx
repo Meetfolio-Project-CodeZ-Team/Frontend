@@ -1,8 +1,8 @@
 'use client'
 import { MONTH, POINT_ANAL, YEAR } from '@/app/constants/admin'
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import CalendarDropDown from '../point/CalendarDropDown'
-import PaymentAnal from '../point/PaymentAnal'
 import PointAnalDetail from '../point/PointAnalDetail'
 
 const PointsContainer = () => {
@@ -11,6 +11,8 @@ const PointsContainer = () => {
   const [month, setMonth] = useState('5')
   const [pointData, setPointData] = useState<ResponsePoint | null>(null)
   const [paymentData, setPaymentData] = useState<ResponsePayment | null>(null)
+
+  const PaymentAnal = dynamic(() => import('../point/PaymentAnal'))
 
   useEffect(() => {
     const fetchData = async () => {

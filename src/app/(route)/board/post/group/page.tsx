@@ -17,7 +17,6 @@ export default function PostGroupPage() {
       )
       const resData = await response.json()
       setUser(resData.result)
-      console.log(resData)
     }
     getUser()
   }, [nickname])

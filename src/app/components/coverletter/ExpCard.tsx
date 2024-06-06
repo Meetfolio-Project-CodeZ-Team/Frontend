@@ -38,8 +38,6 @@ const ExpCard = ({
   experienceId,
   onClick,
 }: MyExpCardProps) => {
-  const stackArr = stack.split(',')
-
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
 

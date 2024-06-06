@@ -1,13 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { logout } from '@/app/utils/cookies'
 import { useModal } from '@/app/hooks/useModal'
-import DeleteModal from './common/DeleteModal'
 import { failVerifyPw, successVerifyPw } from '@/app/utils/toast'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
+import DeleteModal from './common/DeleteModal'
 
 interface UserInfoProps {
   email: string
@@ -21,7 +19,6 @@ interface UserInfoProps {
 }
 
 const WithDrawContainer = () => {
-  const router = useRouter()
   const [userInfos, setUserInfos] = useState<UserInfoProps>()
   const { isOpen, openModal, closeModal, handleModalClick } = useModal(false)
   const [passwordVerified, setPasswordVerified] = useState(false)
@@ -123,19 +120,19 @@ const WithDrawContainer = () => {
               height="12"
               rx="4"
               stroke="black"
-              stroke-width="1"
+              strokeWidth="1"
             />
             <path
               d="M10 15L11.5 16.5L14.5 13.5"
               stroke="black"
-              stroke-width="1"
-              stroke-linecap="round"
+              strokeWidth="1"
+              strokeLinecap="round"
               stroke-linejoin="round"
             />
             <path
               d="M16 9V7C16 4.79086 14.2091 3 12 3V3C9.79086 3 8 4.79086 8 7L8 9"
               stroke="black"
-              stroke-width="1"
+              strokeWidth="1"
             />
           </svg>
           <input

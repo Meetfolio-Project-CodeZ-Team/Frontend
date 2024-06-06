@@ -8,6 +8,7 @@ import { useRecoilState } from 'recoil'
 import { expData, modalNum } from '../../../recoil/experience'
 import DeleteModal from '../../admin/common/DeleteModal'
 import ExpDeleteModal from './ExpDeleteModal'
+import { transKeyword } from '@/app/utils/transKeyword'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -49,7 +50,6 @@ const MyExpDetailModal1 = ({
     event.stopPropagation()
     
   }
-
 
   const onEditClick = () => {
     setExperienceData({
@@ -107,19 +107,21 @@ const MyExpDetailModal1 = ({
               </div>
             </div>
           </div>
-          <div className="w-[373px]  relative">
-            <div className="px-5 left-[140.62px] top-0 absolute bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] inline-flex">
-              <div className="text-center text-white text-sm font-bold leading-[23px]">
-                {stack}
-              </div>
-            </div>
-            <div className="w-[142.74px]  left-0 top-0 absolute justify-start items-start gap-3 inline-flex">
+          <div className="w-[373px] flex flex-inline gap-3 relative">
+            <div className="flex items-center gap-3">
               <div className="text-center text-gray-900 text-[16px] font-bold leading-[27px]">
                 직무 |{' '}
               </div>
-              <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {JOB_ENUM[jobKeyword]}
+                  {transKeyword(jobKeyword)}
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
+                <div className="text-center text-white text-sm font-bold leading-[23px]">
+                  {stack}
                 </div>
               </div>
             </div>
@@ -205,3 +207,4 @@ const MyExpDetailModal1 = ({
 }
 
 export default MyExpDetailModal1
+
