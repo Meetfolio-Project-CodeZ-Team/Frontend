@@ -2,13 +2,13 @@
 
 import { JOB_ENUM } from '@/app/constants/auth'
 import { useModal2 } from '@/app/hooks/useModal2'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, modalNum } from '../../../recoil/experience'
 import DeleteModal from '../../admin/common/DeleteModal'
+import ExpDeleteModal from './ExpDeleteModal'
+import { transKeyword } from '@/app/utils/transKeyword'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -48,25 +48,6 @@ const MyExpDetailModal3 = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     event.stopPropagation()
-    setPageNumber(0)
-  }
-
-  const totalPages = 3
-
-  const handleNextClick = () => {
-    if (pageNumber < totalPages - 1) {
-      setPageNumber(pageNumber + 1)
-    } else {
-      setPageNumber(0)
-    }
-  }
-
-  const handlePrevClick = () => {
-    if (pageNumber > 0) {
-      setPageNumber(pageNumber - 1)
-    } else {
-      setPageNumber(totalPages - 1)
-    }
   }
 
   const onEditClick = () => {
@@ -108,8 +89,8 @@ const MyExpDetailModal3 = ({
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-      <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+      <div className="absolute w-full h-full justify-center items-center " />
       <div
         className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px]"
         onClick={handleModalClick}
@@ -125,42 +106,24 @@ const MyExpDetailModal3 = ({
               </div>
             </div>
           </div>
-          <div className="w-[373px]  relative">
-            <div className="px-5 left-[140.62px] top-0 absolute bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] inline-flex">
-              <div className="text-center text-white text-sm font-bold leading-[23px]">
-                {stack}
-              </div>
-            </div>
-            <div className="w-[142.74px]  left-0 top-0 absolute justify-start items-start gap-3 inline-flex">
+          <div className="w-[373px] flex flex-inline gap-3 relative">
+            <div className="flex items-center gap-3">
               <div className="text-center text-gray-900 text-[16px] font-bold leading-[27px]">
                 직무 |{' '}
               </div>
-              <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {JOB_ENUM[jobKeyword]}
+                  {transKeyword(jobKeyword)}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer "
-            onClick={(event) => {
-              event.stopPropagation()
-              handlePrevClick()
-            }}
-          >
-            <PrevArrow />
-          </div>
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={(event) => {
-              event.stopPropagation()
-              handleNextClick()
-            }}
-          >
-            <NextArrow />
+            <div className="flex items-center gap-3">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
+                <div className="text-center text-white text-sm font-bold leading-[23px]">
+                  {stack}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
@@ -193,7 +156,7 @@ const MyExpDetailModal3 = ({
           </div>
           <div onClick={handlemodalClick}>
             {isOpen && (
-              <DeleteModal
+              <ExpDeleteModal
                 closeModal={closemodal}
                 deleteUser={() => deleteExp(experienceId)}
                 text="정말 삭제하시겠습니까?"
