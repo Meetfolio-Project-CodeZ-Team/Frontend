@@ -246,6 +246,8 @@ const CovletSave = () => {
       const data = await response.json()
       setAnalysisData(data)
       setAnalysisReceived(true)
+      console.log(data, 'data')
+      console.log('coverID', coverLetterId)
     } catch (error) {
       console.error('직무 역량 분석 요청에 실패했습니다.', error)
       alert('직무 역량 분석 요청에 실패했습니다. 오류를 확인해주세요.')
@@ -256,7 +258,7 @@ const CovletSave = () => {
 
   const handleSaveWithoutFeedback = async () => {
     const { coverLetterId } = coverletterData
-    router.push(`/mypage/myCovletDetail/${coverLetterId}`)
+    router.push(`/mypage`)
   }
 
   if (isLoading) {
