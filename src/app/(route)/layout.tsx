@@ -1,3 +1,4 @@
+import { NextUIProvider } from '@nextui-org/react'
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import RecoilProvider from '../context/RecoilProvider'
@@ -28,7 +29,9 @@ export default function RootLayout({
       <body
         className={`bg-[#DEE5ED] h-screen min-w-[850px] mx-auto ${pretendard.className}`}
       >
-        <RecoilProvider>{children}</RecoilProvider>
+        <NextUIProvider>
+          <RecoilProvider>{children}</RecoilProvider>
+        </NextUIProvider>
       </body>
     </html>
   )
