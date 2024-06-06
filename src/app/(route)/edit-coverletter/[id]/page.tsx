@@ -10,6 +10,7 @@ import {
   covletNum,
   feedbackData,
 } from '@/app/recoil/coverletter'
+import { transKeyword } from '@/app/utils/transKeyword'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
@@ -76,20 +77,7 @@ const EditCoverLetterPage = ({ params }: { params: { id: string } }) => {
 }
 
 export default EditCoverLetterPage
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}
+
 const transShareType = (shareType: string) => {
   return shareType === '공개' ? 'PUBLIC' : 'PRIVATE'
 }
