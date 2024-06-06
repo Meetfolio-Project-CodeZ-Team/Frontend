@@ -1,10 +1,15 @@
 import { modalNum } from '@/app/recoil/experience'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import ShowCard from '../main/ShowCard'
+import { Navigation } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
 import MyExpDetailModal1 from './common/MyExpDetailModal1'
 import MyExpDetailModal2 from './common/MyExpDetailModal2'
 import MyExpDetailModal3 from './common/MyExpDetailModal3'
+import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
+import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 
 interface MyExpCardProps {
   experienceType: string
@@ -47,6 +52,9 @@ const MyExpCard = ({
   const [expCards, setExpCards] = useState<ExperienceCardDetail>()
   const [isOpen, setIsOpen] = useState(false)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
+  const prevRef = useRef<HTMLDivElement>(null)
+  const nextRef = useRef<HTMLDivElement>(null)
+  const swiperRef = useRef<any>(null)
 
   const fetchExpCards = async () => {
     try {
@@ -61,12 +69,23 @@ const MyExpCard = ({
         ...data.result.experienceInfo,
         experienceId: experienceId,
       })
+      setPageNumber(0) // 모달을 열 때 페이지 번호를 0으로 초기화
+      setIsOpen(true)
+      console.log('페이지 넘버', pageNumber)
     } catch (error) {
       console.error(error)
     }
-    setIsOpen(true)
   }
   const closeModal = () => setIsOpen(false)
+
+  useEffect(() => {
+    if (isOpen && swiperRef.current) {
+      setTimeout(() => {
+        swiperRef.current.update()
+        swiperRef.current.slideTo(0, 0)
+      }, 0)
+    }
+  }, [isOpen])
 
   const renderModal = () => {
     if (!expCards) return null
@@ -75,16 +94,44 @@ const MyExpCard = ({
       experienceId: experienceId,
       closeModal,
     }
-    switch (pageNumber) {
-      case 0:
-        return <MyExpDetailModal1 {...modalProps} />
-      case 1:
-        return <MyExpDetailModal2 {...modalProps} />
-      case 2:
-        return <MyExpDetailModal3 {...modalProps} />
-      default:
-        return null
-    }
+    return (
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          spaceBetween={50}
+          slidesPerView={1}
+          onSlideChange={(swiper) => setPageNumber(swiper.activeIndex)}
+          initialSlide={0}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          modules={[Navigation]}
+          className="w-full h-full max-w-[630px] max-h-[720px]"
+        >
+          <SwiperSlide>
+            <MyExpDetailModal1 {...modalProps} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <MyExpDetailModal2 {...modalProps} />
+          </SwiperSlide>
+          <SwiperSlide>
+            <MyExpDetailModal3 {...modalProps} />
+          </SwiperSlide>
+          <div
+            ref={prevRef}
+            className="swiper-button-prev swiper-button-disabled"
+            style={{ color: '#FAFBFD' }}
+          ></div>
+          <div
+            ref={nextRef}
+            className="swiper-button-next"
+            style={{ color: '#FAFBFD' }}
+          ></div>
+        </Swiper>
+      </div>
+    )
   }
 
   return (

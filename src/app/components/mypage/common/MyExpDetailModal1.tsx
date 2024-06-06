@@ -1,13 +1,13 @@
 'use client'
 
+import { JOB_ENUM } from '@/app/constants/auth'
 import { useModal2 } from '@/app/hooks/useModal2'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { expData, expNum, modalNum } from '../../../recoil/experience'
+import { expData, modalNum } from '../../../recoil/experience'
 import DeleteModal from '../../admin/common/DeleteModal'
+import ExpDeleteModal from './ExpDeleteModal'
 
 interface ExperienceCardDetail {
   experienceId: number
@@ -47,43 +47,10 @@ const MyExpDetailModal1 = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     event.stopPropagation()
-    setPageNumber(0)
+    
   }
 
-  const totalPages = 3
 
-  const handleNextClick = () => {
-    if (pageNumber < totalPages - 1) {
-      setPageNumber(pageNumber + 1)
-    } else {
-      setPageNumber(0)
-    }
-  }
-
-  const handlePrevClick = () => {
-    if (pageNumber > 0) {
-      setPageNumber(pageNumber - 1)
-    } else {
-      setPageNumber(totalPages - 1)
-    }
-  }
-
-  const displayKeyword = (keyword: any) => {
-    switch (keyword) {
-      case 'BACKEND':
-        return '백엔드'
-      case 'AI':
-        return 'AI'
-      case 'WEB':
-        return '웹개발'
-      case 'APP':
-        return '앱개발'
-      case 'DESIGN':
-        return '디자인'
-      default:
-        return keyword
-    }
-  }
   const onEditClick = () => {
     setExperienceData({
       title,
@@ -123,8 +90,8 @@ const MyExpDetailModal1 = ({
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-      <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-40">
+      <div className="absolute w-full h-full justify-center items-center " />
       <div
         className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px] shadow"
         onClick={handleModalClick}
@@ -152,37 +119,17 @@ const MyExpDetailModal1 = ({
               </div>
               <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {displayKeyword(jobKeyword)}
+                  {JOB_ENUM[jobKeyword]}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer "
-            onClick={(event) => {
-              event.stopPropagation()
-              handlePrevClick()
-            }}
-          >
-            <PrevArrow />
-          </div>
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={(event) => {
-              event.stopPropagation()
-              handleNextClick()
-            }}
-          >
-            <NextArrow />
           </div>
         </div>
         <div className="left-[30px] top-[214px] absolute text-black text-lg font-semibold leading-[27px]">
           업무 사항{' '}
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[248px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[259px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {task}
         </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">
@@ -208,7 +155,7 @@ const MyExpDetailModal1 = ({
           </div>
           <div onClick={handlemodalClick}>
             {isOpen && (
-              <DeleteModal
+              <ExpDeleteModal
                 closeModal={closemodal}
                 deleteUser={() => deleteExp(experienceId)}
                 text="정말 삭제하시겠습니까?"
@@ -221,7 +168,7 @@ const MyExpDetailModal1 = ({
           경험 동기
         </div>
         <div className="w-[439px] h-[140px] left-[30px] top-[434px] absolute bg-slate-100 rounded-[10px]" />
-        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal">
+        <div className="w-[415px] h-[120px] left-[40px] top-[445px] absolute text-black text-base font-medium leading-normal overflow-y-auto whitespace-pre-wrap">
           {motivation}
         </div>
         <div className="w-[95px] h-4 left-[390px] top-[20px] absolute justify-start items-start gap-[4px] inline-flex">
@@ -258,18 +205,3 @@ const MyExpDetailModal1 = ({
 }
 
 export default MyExpDetailModal1
-
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}

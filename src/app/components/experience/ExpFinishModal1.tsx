@@ -68,7 +68,7 @@ const ExpFinishModal1 = () => {
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-      <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
+      <div className="absolute w-full h-full justify-center items-center " />
       <div className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px]">
         <div className="w-[436.91px] h-[73px] left-[30px] top-[120px] absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="justify-start items-start gap-3 inline-flex">
@@ -99,7 +99,7 @@ const ExpFinishModal1 = () => {
             </div>
           </div>
         </div>
-        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
+        {/* <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
           <div
             className="w-[26px] h-[52px] relative cursor-pointer"
             onClick={handlePrevClick}
@@ -112,7 +112,7 @@ const ExpFinishModal1 = () => {
           >
             <NextArrow />
           </div>
-        </div>
+        </div> */}
         <div className="left-[30px] top-[214px] absolute text-black text-lg font-semibold leading-[27px]">
           업무 사항{' '}
         </div>
