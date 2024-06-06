@@ -125,6 +125,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     }
   }, [isEdit, id])
 
+
   const handleToggle = () => {
     setEnabled(!enabled)
     const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'

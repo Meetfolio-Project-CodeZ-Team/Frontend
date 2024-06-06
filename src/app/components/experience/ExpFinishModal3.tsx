@@ -14,23 +14,6 @@ const ExpFinishModal3 = () => {
   const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
   const router = useRouter()
 
-  const totalPages = 3
-
-  const handleNextClick = () => {
-    if (pageNumber < totalPages - 1) {
-      setPageNumber(pageNumber + 1)
-    } else {
-      setPageNumber(0)
-    }
-  }
-
-  const handlePrevClick = () => {
-    if (pageNumber > 0) {
-      setPageNumber(pageNumber - 1)
-    } else {
-      setPageNumber(totalPages - 1)
-    }
-  }
 
   const handleButtonClick = () => {
     setExperienceData({
@@ -51,8 +34,8 @@ const ExpFinishModal3 = () => {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center z-50">
-      <div className="absolute w-full h-full justify-center items-center bg-black bg-opacity-50" />
+    <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center ">
+      <div className="absolute w-full h-full justify-center items-center " />
       <div className="w-[500px] h-[650px] relative bg-slate-200 rounded-[10px]">
         <div className="w-[436.91px] h-[73px] left-[30px] top-[120px] absolute flex-col justify-start items-start gap-3 inline-flex">
           <div className="justify-start items-start gap-3 inline-flex">
@@ -65,36 +48,24 @@ const ExpFinishModal3 = () => {
               </div>
             </div>
           </div>
-          <div className="w-[373px]  relative">
-            <div className="px-5 left-[140.62px] top-0 absolute bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] inline-flex">
-              <div className="text-center text-white text-sm font-bold leading-[23px]">
-                {experienceData.expStacks.join(' / ')}
-              </div>
-            </div>
-            <div className="w-[142.74px]  left-0 top-0 absolute justify-start items-start gap-3 inline-flex">
+          <div className="w-[373px] flex flex-inline gap-3 relative">
+            <div className="flex items-center gap-3">
               <div className="text-center text-gray-900 text-[16px] font-bold leading-[27px]">
                 직무 |{' '}
               </div>
-              <div className=" px-5 bg-gray-900 top-[1px] rounded-[30px] justify-center items-center gap-[5px] flex">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                  {transKeyword(experienceData.jobKeyword)}
+                {transKeyword(experienceData.jobKeyword)}
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div className="w-[640px] h-[52px] mt-[280px] ml-[-75px] justify-start items-start gap-[580px] inline-flex absolute">
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={handlePrevClick}
-          >
-            <PrevArrow />
-          </div>
-          <div
-            className="w-[26px] h-[52px] relative cursor-pointer"
-            onClick={handleNextClick}
-          >
-            <NextArrow />
+            <div className="flex items-center gap-3">
+              <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
+                <div className="text-center text-white text-sm font-bold leading-[23px]">
+                {experienceData.expStacks.join(' / ')}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="w-[400px] h-11 left-[45px] top-[45px] absolute text-center text-gray-900 text-2xl font-semibold leading-[45px]">

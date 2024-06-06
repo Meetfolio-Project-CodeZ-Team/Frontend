@@ -5,24 +5,22 @@ import { expData, expNum, modalNum } from '../../recoil/experience'
 import ExpFinishModal1 from './ExpFinishModal1'
 import ExpFinishModal2 from './ExpFinishModal2'
 import ExpFinishModal3 from './ExpFinishModal3'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+import { Navigation } from 'swiper/modules'
+import { useEffect, useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 const ExpFinishContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
   const [pageNumber, setPageNumber] = useRecoilState(modalNum)
+  const router = useRouter()
+  const prevRef = useRef<HTMLDivElement>(null)
+  const nextRef = useRef<HTMLDivElement>(null)
+  const swiperRef = useRef<any>(null)
 
-  const getCurrentModal = () => {
-    switch (pageNumber) {
-      case 0:
-        return <ExpFinishModal1 />
-      case 1:
-        return <ExpFinishModal2 />
-      case 2:
-        return <ExpFinishModal3 />
-      default:
-        return null
-    }
-  }
+  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -55,6 +53,14 @@ const ExpFinishContainer = () => {
       console.error('데이터 저장에 실패했습니다.')
     }
   }
+  useEffect(() => {
+    if (swiperRef.current && prevRef.current && nextRef.current) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     <div className="justify-center items-center">
@@ -164,7 +170,40 @@ const ExpFinishContainer = () => {
           저장하기
         </button>
       </div>
-      <div className="justify-center items-center">{getCurrentModal()}</div>
+      <div className="fixed inset-0 flex items-center justify-center z-50">
+      <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <Swiper onSwiper={(swiper) => (swiperRef.current = swiper)}
+          spaceBetween={50}
+          slidesPerView={1}
+          onSlideChange={(swiper) => setPageNumber(swiper.activeIndex)}
+          initialSlide={pageNumber}
+          navigation={{
+            prevEl: prevRef.current,
+            nextEl: nextRef.current,
+          }}
+          modules={[Navigation]}
+          className="w-full h-full max-w-[630px] max-h-[720px]">
+          <SwiperSlide>
+            <ExpFinishModal1 />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ExpFinishModal2 />
+          </SwiperSlide>
+          <SwiperSlide>
+            <ExpFinishModal3 />
+          </SwiperSlide>
+          <div
+            ref={prevRef}
+            className="swiper-button-prev swiper-button-disabled"
+            style={{ color: '#FAFBFD' }}
+          ></div>
+          <div
+            ref={nextRef}
+            className="swiper-button-next"
+            style={{ color: '#FAFBFD' }}
+          ></div>
+        </Swiper>
+      </div>
     </div>
   )
 }
