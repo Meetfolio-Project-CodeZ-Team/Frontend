@@ -110,9 +110,10 @@ const Comment = ({ data, setReply, setCommentId }: CommentProps) => {
                 onClickHandler={cancelEdit}
               />
               <Button
+                className={content === '' ? 'bg-gray-400' : ''}
                 buttonText={'수정'}
                 type={'editCommentBtn'}
-                isDisabled={false}
+                isDisabled={content === ''}
                 onClickHandler={() => updateComment()}
               />
             </div>

@@ -8,6 +8,7 @@ import Header from '@/app/components/layout/Header'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../../recoil/experience'
+import { transKeyword } from '@/app/utils/transKeyword'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -67,17 +68,4 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 }
 
 export default EditExperiencePage
-const transKeyword = (keyword: string) => {
-  switch (keyword) {
-    case '백엔드':
-      return 'BACKEND'
-    case 'AI':
-      return 'AI'
-    case '웹개발':
-      return 'WEB'
-    case '앱개발':
-      return 'APP'
-    case '디자인':
-      return 'DESIGN'
-  }
-}
+

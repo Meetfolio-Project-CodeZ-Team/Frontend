@@ -5,12 +5,14 @@ import {
   RECRUIT_CATEGORY,
   RECRUIT_KEYWORD,
 } from '@/app/constants/board'
+import { replyBoard } from '@/app/utils/toast'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
 import Keyword from '../../signup/onboard/Keyword'
-
 interface PostGroupContainerProps {
   isEdit?: boolean
   data?: BoardInfoTypes
@@ -27,7 +29,7 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
     title !== '' &&
     content != '' &&
     clickedKeyword !== null &&
-    member !== '' &&
+    member !== '0' &&
     clickedCategory != null
   const router = useRouter()
 
@@ -54,6 +56,10 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
   }
 
   const postGroup = async () => {
+    if (!contentment) {
+      replyBoard()
+      return
+    }
     const requestBody = {
       title: title,
       content: content,
@@ -77,6 +83,7 @@ const PostGroupContainer = ({ isEdit, data }: PostGroupContainerProps) => {
 
   return (
     <div className="flex flex-col w-full bg-white h-[786px] rounded-3xl px-[58px] py-9">
+      <ToastContainer />
       <div className="flex gap-x-5 mb-4 items-center">
         <div className="flex flex-col">
           <div className="text-xl font-bold pl-4">{'모집 카테고리'}</div>

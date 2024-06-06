@@ -6,7 +6,9 @@ import { useEffect, useState } from 'react'
 import Button from '../../common/Button'
 import Input from '../../common/Input'
 import Keyword from '../../signup/onboard/Keyword'
-
+import { replyBoard } from '@/app/utils/toast'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 interface PostEmploymentContainerProps {
   isEdit?: boolean
   data?: BoardInfoTypes
@@ -38,6 +40,10 @@ const PostEmploymentContainer = ({
   }, [])
 
   const postEmployment = async () => {
+    if(!contentment){
+      replyBoard()
+      return
+    }
     const requestBody = {
       title: title,
       content: content,
@@ -59,6 +65,7 @@ const PostEmploymentContainer = ({
 
   return (
     <div className="flex flex-col w-full bg-white h-[786px] rounded-3xl px-[58px] py-9 text-[16px]">
+      <ToastContainer/>
       <div className="text-xl font-bold">{'직무 카테고리  '}</div>
       <div className="flex gap-x-[33px] mt-[18px] mb-7">
         {JOBKEYWORD.map((str, index) => (

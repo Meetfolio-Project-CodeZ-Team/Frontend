@@ -101,9 +101,10 @@ const CommentContainer = ({ postId, isLiked }: CommentContainerProps) => {
             </div>
             <div className="absolute top-[97px] right-[18px] cursor-pointer">
               <Button
+                className={content === '' ? 'bg-gray-400' : ''}
                 buttonText={'작성'}
                 type={'addBoardBtn'}
-                isDisabled={false}
+                isDisabled={content === ''}
                 onClickHandler={() => LeaveComment()}
               />
             </div>

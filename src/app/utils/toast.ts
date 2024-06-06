@@ -121,21 +121,45 @@ const replyAlert = () => {
   })
 }
 
+const replyBlank = () => {
+  toast.warning('질문 혹은 답변을 입력해주세요!', {
+    icon: () => '🤔',
+    ...commonOptions,
+  })
+}
+
+const replyKeyword = () => {
+  toast.warning('키워드와 직무를 입력해주세요!', {
+    icon: () => '🤔',
+    ...commonOptions,
+  })
+}
+
+const replyBoard = () => {
+  toast.warning('입력,  체크 요소들을 확인해주세요!', {
+    icon: () => '🤔',
+    ...commonOptions,
+  })
+}
+
 export {
-  authCodeAlert,
-  pwAlert,
-  mismatchAlert,
-  deleteUserAlert,
-  textLimitAlert,
   addTrainData,
-  failLogin,
-  updateUserInfo,
-  successCopy,
+  authCodeAlert,
+  changeVersion,
   deletePostAlert,
+  deleteUserAlert,
+  failLogin,
   failVerifyPw,
+  mismatchAlert,
+  pwAlert,
+  replyAlert,
+  replyBlank,
+  replyKeyword,
+  successCopy,
   successVerifyPw,
+  textLimitAlert,
   trainData,
   trainStop,
-  changeVersion,
-  replyAlert,
+  updateUserInfo,
+  replyBoard
 }

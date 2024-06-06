@@ -24,7 +24,7 @@ const JobAnal = (jobAnal: JobAnalProps) => {
               track: 'stroke-[#D8E9FF]/90',
               value: 'text-5xl font-semibold text-[#486284]',
             }}
-            value={accuracy}
+            value={accuracy > 95 ? accuracy - 5 : accuracy}
             strokeWidth={4}
             showValueLabel={true}
           />

@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil'
 import DeleteModal from '../admin/common/DeleteModal'
 import Button from '../common/Button'
 import CheckPoint from '../points/CheckPoint'
-import JobAnal2 from './common/JobAnal2'
+import JobAnal from './common/JobAnal'
 
 interface CovletCardDetail {
   coverLetterId: number
@@ -486,7 +486,7 @@ const MyCovletCardDetail = ({
             </div>
             <div className="w-[360px] h-[360px] left-[285px] top-[198px] absolute  justify-center items-center inline-flex">
               <div className="w-[360px] h-[360px] relative">
-                <JobAnal2
+                <JobAnal
                   jKeyword={jobKeyword}
                   accuracy={Number(roundedPercentage)}
                   all={100 - Number(roundedPercentage)}
