@@ -5,10 +5,10 @@ import ExpFinishContainer from '@/app/components/experience/ExpFinishContainer'
 import ExpInfoContainer from '@/app/components/experience/ExpInfoContainer'
 import ExpKeywordContainer from '@/app/components/experience/ExpKeywordContainer'
 import Header from '@/app/components/layout/Header'
+import { transKeyword } from '@/app/utils/transKeyword'
 import { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../../recoil/experience'
-import { transKeyword } from '@/app/utils/transKeyword'
 
 const EditExperiencePage = ({ params }: { params: { id: string } }) => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
@@ -54,9 +54,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
     <section className="flex flex-col items-center min-h-screen relative">
       <Header nickname={userInfo?.memberName} profile={userInfo?.profile} />
       <div className="w-[1440px] mb-[250px]">
-        {experienceNumber === 0 && (
-          <ExpInfoContainer isEdit={true} id={params.id} />
-        )}
+        {experienceNumber === 0 && <ExpInfoContainer />}
         {experienceNumber === 1 && <ExpKeywordContainer />}
         {experienceNumber === 2 && (
           <ExpContentContainer isEdit={true} id={params.id} />
@@ -68,4 +66,3 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
 }
 
 export default EditExperiencePage
-
