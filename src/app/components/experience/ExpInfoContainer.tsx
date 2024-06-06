@@ -1,12 +1,7 @@
 import { useRecoilState } from 'recoil'
 import { expData, expNum } from '../../recoil/experience'
 
-interface ExpFinishContainerProps {
-  isEdit?: boolean
-  id?: string
-}
-
-const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
+const ExpInfoContainer = () => {
   const [experienceNumber, setExperienceNumber] = useRecoilState(expNum)
   const [experienceData, setExperienceData] = useRecoilState(expData)
 
@@ -185,7 +180,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
               업무사항
             </div>
             <div className="w-[133px] h-[23px] left-[906px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              100자 이내
+              250자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
@@ -194,7 +189,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="task"
                 name="task"
                 placeholder="ex)  와이어 프레임 설계, AI 모델링, UI/UX 디자인 "
-                maxLength={100}
+                maxLength={250}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
@@ -215,7 +210,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
               경험 동기 & 이유
             </div>
             <div className="w-[133px] h-[23px] left-[906px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              100자 이내
+              250자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
@@ -224,7 +219,7 @@ const ExpInfoContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="motivation"
                 name="motivation"
                 placeholder="ex)  팀 프로젝트를 통해 개발 및 협업 역량을 향상시키고 싶어서 참여함. "
-                maxLength={100}
+                maxLength={250}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
