@@ -1,11 +1,11 @@
+import { PROFILE_EMOJI } from '@/app/constants/signup'
 import { selectedPostId } from '@/app/recoil/board'
 import Comment from '@/app/ui/svg/main/Comment'
 import Like from '@/app/ui/svg/main/Like'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useRecoilState } from 'recoil'
-import Image from 'next/image'
-import { PROFILE_EMOJI } from '@/app/constants/signup'
 
 interface MyBoardCardProps {
   title?: string
@@ -78,8 +78,10 @@ const MyBoardCard = ({
           />
         </div>
       </div>
-      <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug">
-        {content}
+      <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug ">
+        {(content!==undefined && content.length < 360)
+          ? content
+          : content?.substring(0, 360) + '...'}
         <br />
         <br />{' '}
       </div>
