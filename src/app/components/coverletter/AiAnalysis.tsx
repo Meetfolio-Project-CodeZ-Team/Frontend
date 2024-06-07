@@ -30,6 +30,12 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
     fetchData()
   }, [])
 
+  const jobSuitability =
+    Number(analysisData?.job_suitability) > 95
+      ? Number(analysisData?.job_suitability) - 5
+      : analysisData?.job_suitability
+  console.log(jobSuitability)
+
   return (
     <div className="w-[1000px] h-[1000px] mb-[100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">
       <div className="w-[981px] h-[1000px] left-0 top-0 flex items-center justify-center mx-auto relative ">
@@ -42,7 +48,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
             님과 {transKeyword(analysisData?.job_keyword || '')}의 직무 적합도는
           </span>
           <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
-            {analysisData?.job_suitability}%
+            {jobSuitability}%
           </span>
           <span className="text-black text-3xl font-bold leading-[45px]">
             입니다.
