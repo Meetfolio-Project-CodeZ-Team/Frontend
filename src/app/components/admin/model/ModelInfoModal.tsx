@@ -31,7 +31,6 @@ const ModelInfoModal = ({ closeModal, data, status }: ModelInfoModalProps) => {
 
     const verRes = await fetch(
       `${process.env.NEXT_PUBLIC_NEXT_SERVER}/api/admin/model/version?page=${0}`,
-      { method: 'POST' },
     )
     const verData = await verRes.json()
 
