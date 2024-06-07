@@ -86,6 +86,12 @@ const MyCovletCardDetail = ({
 
   const percentage = Math.ceil(roundedPercentage)
 
+  const JobSuitability =
+    Number(percentage) > 95
+      ? Number(percentage) - 5
+      : percentage
+  console.log(jobSuitability)
+
   const onEditClick = () => {
     setCoverLetterData({
       coverLetterId,
@@ -471,7 +477,7 @@ const MyCovletCardDetail = ({
                 님과 {jobKeyword}의 직무 적합도는
               </span>
               <span className="bg-[#D8E9FF] text-black px-2 py-1 rounded-md text-3xl font-bold">
-                {percentage}%
+                {JobSuitability}%
               </span>
               <span className="text-black text-3xl font-bold leading-[45px]">
                 입니다.
