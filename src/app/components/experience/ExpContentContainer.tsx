@@ -100,7 +100,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
               나의 활동 & 경험 내용
             </div>
             <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              100자 이내
+              250자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
@@ -109,7 +109,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="detail"
                 name="detail"
                 placeholder="ex) 개발 기간이 짧아서 최대한 빠르게 수행해야 했음"
-                maxLength={100}
+                maxLength={250}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
@@ -130,7 +130,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
               결과 및 성과
             </div>
             <div className="w-[133px] h-[23px] left-[896px] top-[190px] absolute text-center text-black text-opacity-50 text-base font-medium leading-normal">
-              100자 이내
+              250자 이내
             </div>
             <div className="w-[988px] h-[210px] left-[26px] top-[39px] absolute">
               <textarea
@@ -139,7 +139,7 @@ const ExpContentContainer = ({ isEdit, id }: ExpFinishContainerProps) => {
                 id="advance"
                 name="advance"
                 placeholder="ex) 팀 프로젝트를 통해 개발 및 협업 역량 향상되었음"
-                maxLength={100}
+                maxLength={250}
                 className="w-full h-[150px] text-xl bg-white  border border-gray-300 focus:border-gray-500 focus:ring-2 focus:ring-indigo-200  resize-none outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out rounded-[10px]"
               />
             </div>
