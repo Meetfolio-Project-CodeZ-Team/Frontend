@@ -150,7 +150,7 @@ const MyExpCard = ({
       <div className="absolute top-[258px] text-[15px] font-bold">
         {startDate + '~' + endDate}
       </div>
-      <div className="absolute w-[230px] top-[282px] text-2xl font-bold leading-9 overflow-x-auto whitespace-nowrap scrollbar-hide truncate">
+      <div className="absolute w-[270px] top-[282px] text-2xl font-bold leading-9 overflow-x-auto whitespace-nowrap scrollbar-hide truncate">
         {title}
       </div>
       <div className="flex gap-x-[20px] absolute top-[328px] text-[16px] font-semibold">
