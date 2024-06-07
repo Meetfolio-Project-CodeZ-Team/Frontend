@@ -85,6 +85,8 @@ const MyCovletCardDetail = ({
   const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
   const percentage = Math.ceil(roundedPercentage)
+  console.log(percentage)
+  
 
   const JobSuitability =
     Number(percentage) > 95
@@ -494,8 +496,8 @@ const MyCovletCardDetail = ({
               <div className="w-[360px] h-[360px] relative">
                 <JobAnal
                   jKeyword={jobKeyword}
-                  accuracy={Number(roundedPercentage)}
-                  all={100 - Number(roundedPercentage)}
+                  accuracy={JobSuitability}
+                  all={100 - JobSuitability}
                 />
                 <div className="bg-[#0A7AFF] w-5 h-5 rounded-[100px] absolute bottom-[-24px] left-[132px]"></div>
               </div>
