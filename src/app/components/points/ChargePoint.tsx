@@ -114,7 +114,7 @@ const ChargePoint = ({
             <div className="flex gap-x-3.5 pl-3">
               <Input
                 type={'default'}
-                onChange={() => console.log('선택')}
+                onChange={() => console.log('')}
                 inputType="radio"
                 className="w-[20px]"
               />

@@ -85,14 +85,9 @@ const MyCovletCardDetail = ({
   const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
   const percentage = Math.ceil(roundedPercentage)
-  console.log(percentage)
-  
 
   const JobSuitability =
-    Number(percentage) > 95
-      ? Number(percentage) - 5
-      : percentage
-  console.log(jobSuitability)
+    Number(percentage) > 95 ? Number(percentage) - 5 : percentage
 
   const onEditClick = () => {
     setCoverLetterData({
