@@ -5,8 +5,8 @@ import { expData, expNum, modalNum } from '../../recoil/experience'
 import ExpFinishModal1 from './ExpFinishModal1'
 import ExpFinishModal2 from './ExpFinishModal2'
 import ExpFinishModal3 from './ExpFinishModal3'
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/swiper-bundle.css'
 import { Navigation } from 'swiper/modules'
 import { useEffect, useRef } from 'react'
 import { useRouter } from 'next/navigation'
@@ -19,8 +19,6 @@ const ExpFinishContainer = () => {
   const prevRef = useRef<HTMLDivElement>(null)
   const nextRef = useRef<HTMLDivElement>(null)
   const swiperRef = useRef<any>(null)
-
-  
 
   const goToPreviousPage = () => {
     setExperienceNumber(experienceNumber - 1)
@@ -55,12 +53,12 @@ const ExpFinishContainer = () => {
   }
   useEffect(() => {
     if (swiperRef.current && prevRef.current && nextRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
+      swiperRef.current.params.navigation.prevEl = prevRef.current
+      swiperRef.current.params.navigation.nextEl = nextRef.current
+      swiperRef.current.navigation.init()
+      swiperRef.current.navigation.update()
     }
-  }, []);
+  }, [])
 
   return (
     <div className="justify-center items-center">
@@ -171,8 +169,9 @@ const ExpFinishContainer = () => {
         </button>
       </div>
       <div className="fixed inset-0 flex items-center justify-center z-50">
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
-        <Swiper onSwiper={(swiper) => (swiperRef.current = swiper)}
+        <div className="absolute inset-0 bg-black bg-opacity-50" />
+        <Swiper
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
           spaceBetween={50}
           slidesPerView={1}
           onSlideChange={(swiper) => setPageNumber(swiper.activeIndex)}
@@ -182,7 +181,8 @@ const ExpFinishContainer = () => {
             nextEl: nextRef.current,
           }}
           modules={[Navigation]}
-          className="w-full h-full max-w-[630px] max-h-[720px]">
+          className="w-full h-full max-w-[630px] max-h-[720px]"
+        >
           <SwiperSlide>
             <ExpFinishModal1 />
           </SwiperSlide>

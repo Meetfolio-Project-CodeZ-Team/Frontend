@@ -14,8 +14,6 @@ const ExpFinishModal2 = () => {
   const [portfolioNumber, setPortfolioNumber] = useRecoilState(portNum)
   const router = useRouter()
 
-  
-
   const handleButtonClick = () => {
     setExperienceData({
       title: '',
@@ -56,14 +54,14 @@ const ExpFinishModal2 = () => {
               </div>
               <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-semibold leading-[23px]">
-                {transKeyword(experienceData.jobKeyword)}
+                  {transKeyword(experienceData.jobKeyword)}
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="px-5 bg-gray-900 rounded-[30px] justify-center items-center gap-[5px] flex">
                 <div className="text-center text-white text-sm font-bold leading-[23px]">
-                {experienceData.expStacks.join(' / ')}
+                  {experienceData.expStacks.join(' / ')}
                 </div>
               </div>
             </div>
