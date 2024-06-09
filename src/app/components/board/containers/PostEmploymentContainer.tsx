@@ -40,7 +40,7 @@ const PostEmploymentContainer = ({
   }, [])
 
   const postEmployment = async () => {
-    if(!contentment){
+    if (!contentment) {
       replyBoard()
       return
     }
@@ -65,7 +65,7 @@ const PostEmploymentContainer = ({
 
   return (
     <div className="flex flex-col w-full bg-white h-[786px] rounded-3xl px-[58px] py-9 text-[16px]">
-      <ToastContainer/>
+      <ToastContainer />
       <div className="text-xl font-bold">{'직무 카테고리  '}</div>
       <div className="flex gap-x-[33px] mt-[18px] mb-7">
         {JOBKEYWORD.map((str, index) => (

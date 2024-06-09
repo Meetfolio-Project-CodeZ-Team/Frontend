@@ -48,7 +48,6 @@ const MyExpDetailModal2 = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     event.stopPropagation()
-   
   }
 
   const onEditClick = () => {
