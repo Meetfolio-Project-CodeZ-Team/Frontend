@@ -85,9 +85,14 @@ const MyCovletCardDetail = ({
   const roundedPercentage = Math.round(jobSuitabilityPercentage * 100) / 100
 
   const percentage = Math.ceil(roundedPercentage)
+ 
+  
 
   const JobSuitability =
-    Number(percentage) > 95 ? Number(percentage) - 5 : percentage
+    Number(percentage) > 95
+      ? Number(percentage) - 5
+      : percentage
+  
 
   const onEditClick = () => {
     setCoverLetterData({
@@ -116,10 +121,10 @@ const MyCovletCardDetail = ({
         router.push(`/mypage`)
       } else {
         const errorData = await res.json()
-        console.error('Error details:', errorData)
+        
       }
     } catch (error) {
-      console.error('Network or other error:', error)
+      
     }
   }
   const hasFeedback =

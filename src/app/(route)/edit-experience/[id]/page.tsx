@@ -44,9 +44,7 @@ const EditExperiencePage = ({ params }: { params: { id: string } }) => {
             })
           }
         })
-        .catch((error) => {
-          console.error('Failed to fetch experience details:', error)
-        })
+        
     }
   }, [params.id])
 

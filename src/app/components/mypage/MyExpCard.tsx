@@ -65,10 +65,11 @@ const MyExpCard = ({
         ...data.result.experienceInfo,
         experienceId: experienceId,
       })
-      setPageNumber(0)
+      setPageNumber(0) 
       setIsOpen(true)
+     
     } catch (error) {
-      console.error(error)
+     
     }
   }
   const closeModal = () => setIsOpen(false)

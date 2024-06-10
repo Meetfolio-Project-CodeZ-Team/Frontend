@@ -65,7 +65,7 @@ const MyExpList = () => {
         setExpCards(data.result.experienceCardInfo.experienceCardItems)
         setPageInfo(data.result.experienceCardInfo)
       } catch (error) {
-        console.error(error)
+        
       }
     }
 
