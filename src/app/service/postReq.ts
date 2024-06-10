@@ -18,7 +18,7 @@ const postRequest = async (
 
     return response.json()
   } catch (error) {
-    console.log('Error:', error)
+    
   }
 }
 

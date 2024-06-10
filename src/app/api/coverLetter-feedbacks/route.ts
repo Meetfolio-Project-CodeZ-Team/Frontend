@@ -12,6 +12,6 @@ export async function POST(request: Request) {
 
     return NextResponse.json(data)
   } catch (error) {
-    throw new Error('Error submitting recruiter data')
+    
   }
 }

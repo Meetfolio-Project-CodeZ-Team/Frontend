@@ -81,10 +81,10 @@ const MyExpDetailModal2 = ({
         window.location.reload()
       } else {
         const errorData = await res.json()
-        console.error('Error details:', errorData)
+        
       }
     } catch (error) {
-      console.error('Network or other error:', error)
+     
     }
   }
 

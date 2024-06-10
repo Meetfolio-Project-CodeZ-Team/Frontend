@@ -23,12 +23,12 @@ const ExpCardList = () => {
         `/api/mypage/myExpDetail?experienceId=${card.experienceId}`,
       )
       if (!response.ok) {
-        throw new Error('상세 정보를 가져오는데 실패했습니다.')
+        
       }
       const detailData = await response.json()
       setSelectedCard(detailData.result.experienceInfo)
     } catch (error) {
-      console.error(error)
+      
     }
   }
 

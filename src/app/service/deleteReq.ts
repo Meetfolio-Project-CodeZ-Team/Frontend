@@ -23,7 +23,7 @@ const deleteRequest = async (
 
     return response
   } catch (error) {
-    console.log('Error:', error)
+    
   }
 }
 

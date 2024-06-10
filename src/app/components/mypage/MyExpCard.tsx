@@ -69,11 +69,11 @@ const MyExpCard = ({
         ...data.result.experienceInfo,
         experienceId: experienceId,
       })
-      setPageNumber(0) // 모달을 열 때 페이지 번호를 0으로 초기화
+      setPageNumber(0) 
       setIsOpen(true)
-      console.log('페이지 넘버', pageNumber)
+     
     } catch (error) {
-      console.error(error)
+     
     }
   }
   const closeModal = () => setIsOpen(false)

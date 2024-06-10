@@ -43,12 +43,12 @@ const CovletSave = () => {
       try {
         const response = await fetch('/api/mypage/myExp')
         if (!response.ok) {
-          throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
+          
         }
         const data = await response.json()
         setExpCards(data.result.experienceCardInfo.experienceCardItems)
       } catch (error) {
-        console.error(error)
+       
       }
     }
     fetchExpCards()
@@ -88,8 +88,7 @@ const CovletSave = () => {
         const msg = successful ? 'successful' : 'unsuccessful'
         successCopy()
       } catch (err) {
-        console.error('Unable to copy text: ', err)
-        alert('Failed to copy text.')
+        
       }
     }
   }
@@ -125,7 +124,7 @@ const CovletSave = () => {
       coverLetterId: resData.result.coverLetterId,
     })
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
+      
     } else {
       requestAIFeedback()
     }
@@ -143,7 +142,7 @@ const CovletSave = () => {
     } = coverletterData
 
     if (!coverLetterId) {
-      console.error('coverLetterId가 없습니다.')
+      
       return
     }
 
@@ -155,7 +154,7 @@ const CovletSave = () => {
       !keyword2 ||
       !jobKeyword
     ) {
-      console.error('모든 필드를 채워주세요.')
+      
       return
     }
 
@@ -182,7 +181,7 @@ const CovletSave = () => {
     })
 
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
+      
     } else {
       requestAIAnalysis()
     }
@@ -209,15 +208,14 @@ const CovletSave = () => {
       )
 
       if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status}`)
+        
       }
 
       const data = await response.json()
       setFeedbackData(data)
       setFeedbackReceived(true)
     } catch (error) {
-      console.error('AI 피드백 요청에 실패했습니다.', error)
-      alert('AI 피드백 요청에 실패했습니다. 오류를 확인해주세요.')
+      
     } finally {
       setIsLoading(false)
     }
@@ -240,17 +238,16 @@ const CovletSave = () => {
       )
 
       if (!response.ok) {
-        throw new Error(`Server responded with status: ${response.status}`)
+       
       }
 
       const data = await response.json()
       setAnalysisData(data)
       setAnalysisReceived(true)
-      console.log(data, 'data')
-      console.log('coverID', coverLetterId)
+      
     } catch (error) {
-      console.error('직무 역량 분석 요청에 실패했습니다.', error)
-      alert('직무 역량 분석 요청에 실패했습니다. 오류를 확인해주세요.')
+      
+      
     } finally {
       setIsLoading(false)
     }

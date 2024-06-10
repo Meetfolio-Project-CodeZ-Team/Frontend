@@ -75,7 +75,7 @@ const EditUserInfo = () => {
         failVerifyPw()
       }
     } catch (error) {
-      console.error('비밀번호 검증 중 오류 발생:', error)
+      
     }
   }
 
@@ -140,7 +140,7 @@ const EditUserInfo = () => {
         router.push('/mypage')
       }, 2000)
     } catch (error) {
-      console.error('정보 수정 중 오류가 발생했습니다:', error)
+      
     }
   }
 
@@ -167,7 +167,7 @@ const EditUserInfo = () => {
         ].findIndex((emoji) => emoji === data.result.profile)
         setProfile(profileIndex >= 0 ? profileIndex : 0)
       } catch (error) {
-        console.error(error)
+        
       }
     }
     fetchUserInfos()

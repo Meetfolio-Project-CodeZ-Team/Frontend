@@ -120,7 +120,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
           }
         })
         .catch((error) => {
-          console.error('Failed to fetch coverletter details:', error)
+          
         })
     }
   }, [isEdit, id])
@@ -206,7 +206,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     })
 
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
+      
     }
     goToNextPage()
   }
@@ -234,7 +234,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     })
 
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
+      
     }
     router.push('/mypage')
   }

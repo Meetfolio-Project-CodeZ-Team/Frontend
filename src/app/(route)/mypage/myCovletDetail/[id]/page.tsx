@@ -107,7 +107,7 @@ const MyCovletDetailPage = ({ params }: { params: { id: string } }) => {
           }
         })
         .catch((error) => {
-          console.error('Failed to fetch cover letter details:', error)
+          
         })
     }
   }, [params.id])

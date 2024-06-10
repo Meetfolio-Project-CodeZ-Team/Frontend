@@ -46,7 +46,7 @@ const MyBoard = () => {
         const data = await response.json()
         setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
-        console.error(error)
+        
       }
     }
 

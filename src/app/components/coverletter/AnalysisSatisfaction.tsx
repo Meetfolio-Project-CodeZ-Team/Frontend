@@ -17,7 +17,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
 
   const checkSatisfaction = async () => {
     if (analysis_id === 0) {
-      console.error('유효하지 않은 feedback ID입니다.')
+     
       return
     }
 
@@ -34,7 +34,7 @@ const AnalysisSatisfaction = ({ analysis_id }: SatisfactionProps) => {
       },
     )
     if (!response.ok) {
-      console.error('데이터 저장에 실패했습니다.')
+      
     }
     const responseData = await response.json()
     router.push('/mypage')

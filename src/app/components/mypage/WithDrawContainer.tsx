@@ -42,7 +42,7 @@ const WithDrawContainer = () => {
         failVerifyPw()
       }
     } catch (error) {
-      console.error('비밀번호 검증 중 오류 발생:', error)
+      
     }
   }
 
@@ -56,7 +56,7 @@ const WithDrawContainer = () => {
         const data = await response.json()
         setUserInfos(data.result)
       } catch (error) {
-        console.error(error)
+       
       }
     }
 
@@ -75,10 +75,10 @@ const WithDrawContainer = () => {
       if (res.ok) {
       } else {
         const errorData = await res.json()
-        console.error('Error details:', errorData)
+      
       }
     } catch (error) {
-      console.error('Network or other error:', error)
+      
     }
   }
 
