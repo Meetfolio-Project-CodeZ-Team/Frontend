@@ -1,15 +1,13 @@
 import { modalNum } from '@/app/recoil/experience'
 import { useEffect, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import ShowCard from '../main/ShowCard'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
+import ShowCard from '../main/ShowCard'
 import MyExpDetailModal1 from './common/MyExpDetailModal1'
 import MyExpDetailModal2 from './common/MyExpDetailModal2'
 import MyExpDetailModal3 from './common/MyExpDetailModal3'
-import PrevArrow from '@/app/ui/svg/arrow/PrevArrow'
-import NextArrow from '@/app/ui/svg/arrow/NextArrow'
 
 interface MyExpCardProps {
   experienceType: string
@@ -61,9 +59,7 @@ const MyExpCard = ({
       const response = await fetch(
         `/api/mypage/myExpDetail?experienceId=${experienceId}`,
       )
-      if (!response.ok) {
-        throw new Error('서버에서 데이터를 가져오는 데 실패했습니다.')
-      }
+
       const data = await response.json()
       setExpCards({
         ...data.result.experienceInfo,

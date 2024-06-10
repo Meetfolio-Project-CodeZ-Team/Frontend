@@ -1,6 +1,6 @@
 'use client'
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 interface DeleteModalProps {
   closeModal: () => void
   deleteUser?: () => void
@@ -16,7 +16,7 @@ const ExpDeleteModal = ({ closeModal, deleteUser, text }: DeleteModalProps) => {
 
   return ReactDOM.createPortal(
     <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="absolute inset-0 " />
+      <div className="absolute inset-0 " />
       <div className="w-[548px] h-[234px] rounded-[15px] bg-[#D3DCE7] relative">
         <div className="w-[427px] h-[52px] left-[64px] top-[80px] absolute text-center text-gray-900 text-[28px] font-bold font-['Plus Jakarta Sans'] leading-[42px]">
           {text}
@@ -35,7 +35,7 @@ const ExpDeleteModal = ({ closeModal, deleteUser, text }: DeleteModalProps) => {
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   )
 }
 

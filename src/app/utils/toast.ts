@@ -161,5 +161,5 @@ export {
   trainData,
   trainStop,
   updateUserInfo,
-  replyBoard
+  replyBoard,
 }

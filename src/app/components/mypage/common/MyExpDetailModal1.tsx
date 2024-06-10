@@ -48,7 +48,6 @@ const MyExpDetailModal1 = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     event.stopPropagation()
-    
   }
 
   const onEditClick = () => {
@@ -207,4 +206,3 @@ const MyExpDetailModal1 = ({
 }
 
 export default MyExpDetailModal1
-

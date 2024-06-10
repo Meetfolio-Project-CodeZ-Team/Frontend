@@ -79,7 +79,7 @@ const MyBoardCard = ({
         </div>
       </div>
       <div className="w-[1035px] h-[73px] left-[29px] top-[113px] absolute text-gray-900 text-[15px] font-medium leading-snug ">
-        {(content!==undefined && content.length < 360)
+        {content !== undefined && content.length < 360
           ? content
           : content?.substring(0, 360) + '...'}
         <br />

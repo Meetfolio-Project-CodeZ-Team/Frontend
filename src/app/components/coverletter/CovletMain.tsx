@@ -125,7 +125,6 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     }
   }, [isEdit, id])
 
-
   const handleToggle = () => {
     setEnabled(!enabled)
     const newShareType = !enabled ? 'PUBLIC' : 'PRIVATE'
@@ -210,7 +209,7 @@ const CovletMain = ({ isEdit, id }: CovletFinishContainerProps) => {
     }
     goToNextPage()
   }
-  
+
   const updateCovData = async () => {
     const { ...dataToSend } = coverletterData
 
