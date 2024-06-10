@@ -41,4 +41,3 @@ export default function BoardDetailPage({
   )
 }
 
-//폴더명 테스트

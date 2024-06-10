@@ -34,7 +34,7 @@ const AiAnalysis = ({ analysisData }: AiAnalysisProps) => {
     Number(analysisData?.job_suitability) > 95
       ? Number(analysisData?.job_suitability) - 5
       : analysisData?.job_suitability
-  console.log(jobSuitability)
+  
 
   return (
     <div className="w-[1000px] h-[1000px] mb-[100px] relative  mt-[30px] items-center justify-center mx-auto bg-gray-50 rounded-[15px]">

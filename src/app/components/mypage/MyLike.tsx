@@ -47,7 +47,7 @@ const MyLike = () => {
 
         setBoardCards(data.result.boardListInfo.boardInfo)
       } catch (error) {
-        console.error(error)
+        
       }
     }
 

@@ -18,7 +18,7 @@ const patchRequest = async (
       return await response.json()
     }
   } catch (error) {
-    console.log('Error:', error)
+   
   }
 }
 

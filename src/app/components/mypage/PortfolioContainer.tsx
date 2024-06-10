@@ -65,7 +65,7 @@ const PortfolioContainer = () => {
         setCovletCards(data.result.coverLetterInfo.coverLetterInfo)
         setPageInfo(data.result.coverLetterInfo)
       } catch (error) {
-        console.error(error)
+       
       }
     }
     fetchCovletCards()

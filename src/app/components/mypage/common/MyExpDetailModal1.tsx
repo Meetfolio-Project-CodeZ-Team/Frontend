@@ -48,7 +48,6 @@ const MyExpDetailModal1 = ({
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
     event.stopPropagation()
-    
   }
 
   const onEditClick = () => {
@@ -82,10 +81,10 @@ const MyExpDetailModal1 = ({
         window.location.reload()
       } else {
         const errorData = await res.json()
-        console.error('Error details:', errorData)
+        
       }
     } catch (error) {
-      console.error('Network or other error:', error)
+      
     }
   }
 
@@ -207,4 +206,3 @@ const MyExpDetailModal1 = ({
 }
 
 export default MyExpDetailModal1
-

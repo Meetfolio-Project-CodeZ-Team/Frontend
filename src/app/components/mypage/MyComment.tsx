@@ -42,7 +42,7 @@ const MyComment = () => {
 
         setBoardCards(data.result.commentInfo.commentInfo)
       } catch (error) {
-        console.error(error)
+       
       }
     }
 
